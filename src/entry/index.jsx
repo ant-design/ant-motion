@@ -10,6 +10,7 @@ import Home from '../home';
 import Language from '../language';
 import Page from '../common/Page';
 import Cases from '../cases';
+import Grid from '../language/space';
 
 class Index extends Component {
   constructor() {
@@ -60,7 +61,7 @@ ReactDOM.render(<Router history={hashHistory}>
       <Route path="index" component={Home} />
     </Route>
     <Route path="/:pageName" component={Page}>
-      <Route path="abc" component={Language} />
+      <Route path="grid" component={Grid} />
     </Route>
   </Route>
 </Router>, document.getElementById('react-content'));

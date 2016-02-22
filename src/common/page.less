@@ -33,8 +33,8 @@
         }
       }
       & li {
-        &[disabled]{
-          & *{
+        &[disabled] {
+          & * {
             pointer-events: none;
             color: @list-disabled-color;
           }
@@ -118,12 +118,78 @@
       & p {
         line-height: 1.8;
         margin: 1em 0;
+        font-size: 14px;
       }
       & .text {
-        max-width: 700px;
+        max-width: 800px;
       }
-      & .rc-autoresponsive-container{
+      & .rc-autoresponsive-container {
         margin-top: 40px;
+      }
+      & .dotted-line {
+        height: 1px;
+        border-top: 1px dashed @line-color;
+        display: block;
+      }
+      & .timer-wrapper {
+        width: 90%;
+        margin: 20px auto auto;
+        border-radius: 10px;
+        border: 1px dashed @line-color;
+        padding: 20px;
+        & h3 {
+          font-weight: normal;
+        }
+        & .demo-wrapper {
+          width: 450px;
+          margin: 40px auto 10px;
+          height: 61px;
+          position: relative;
+          & .east {
+            & .line {
+              width: 330px;
+              height: 1px;
+              background: @line-deep-color;
+              display: block;
+              position: absolute;
+              left: 60px;
+              top: 30px;
+            }
+            & .arrow {
+              width: 10px;
+              height: 10px;
+              display: block;
+              position: absolute;
+              right: 60px;
+              top: 26px;
+              border-right: solid;
+              border-top: solid;
+              border-width: 1px;
+              border-color: @line-deep-color;
+              transform: rotate(45deg);
+            }
+          }
+        }
+      }
+      & .text-highlight {
+        color: @active-color;
+      }
+
+      & .circle, & .circle-dashed {
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        background: rgba(232, 223, 250, .7);
+        border-radius: 20px;
+        border: 1px solid @active-color;
+        top:10px;
+      }
+      & .circle{
+        z-index: 1;
+      }
+      .circle-dashed{
+        border-style: dashed;
+        right: 0;
       }
     }
   }

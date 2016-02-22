@@ -79,9 +79,6 @@ class Page extends React.Component {
   }
 
   listElement(item, i) {
-    function liClick() {
-      this.liClick.bind(this, this.props._keys + i, item.children.length);
-    }
     const href = this.props.href.split('/');
     let className = '';
     if (item.children) {
@@ -91,8 +88,8 @@ class Page extends React.Component {
       if (!this.ulOpen[this.props._keys + i] && this.judgeChildActive(item.children)) {
         className = 'active';
       }
-
-      return (<li key={`${this.props._keys}.${item.href || 'index'}`}
+      const liClick = this.liClick.bind(this, this.props._keys + i, item.children.length);
+      return (<li key={`${this.props._keys}.${item.key || 'index'}`}
         className={className} disabled={item.disabled}
       >
         <h4
