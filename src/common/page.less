@@ -1,0 +1,131 @@
+@import "custom";
+
+@content: page;
+.@{content} {
+  width: 100%;
+  overflow: hidden;
+  &-wrapper {
+    width: 92%;
+    background: @page-bg-color;
+    margin: 24px auto;
+    padding: 24px 0 0;
+    overflow: hidden;
+    border-radius: 6px;
+    position: relative;
+    & > aside {
+      width: 220px;
+      padding-bottom: 50px;
+      float: left;
+      transform: translateX(1px);
+      position: relative;
+      z-index: 1;
+      & > ul > li, & > div > ul > li {
+        overflow: hidden;
+        position: relative;
+        z-index: 1;
+        & i {
+          margin-left: 6px;
+          opacity: .67;
+          font-style: normal;
+        }
+        & > div > ul {
+          margin-left: 16px;
+        }
+      }
+      & li {
+        &[disabled]{
+          & *{
+            pointer-events: none;
+            color: @list-disabled-color;
+          }
+        }
+        & h4 {
+          font-size: 14px;
+          font-weight: 600;
+          padding: 0 0 0 24px;
+          line-height: 40px;
+          height: 40px;
+          margin: 0;
+          cursor: pointer;
+          z-index: 1;
+          position: relative;
+          background: #fff;
+          border-right: 1px solid @line-color;
+          transition: color .3s, border-color .3s;
+          & > * {
+            pointer-events: none;
+          }
+          &:after {
+            position: absolute;
+            top: 0;
+            right: 20px;
+            display: block;
+            content: "\E602";
+            font-family: "anticon";
+            transform: scale(.6);
+            font-size: 12px;
+            opacity: 0;
+            transition: all .3s;
+          }
+          &:hover {
+            &:after {
+              opacity: 1;
+            }
+          }
+          &.open {
+            &:after {
+              transform: scale(.6) rotate(180deg);
+            }
+          }
+        }
+        & a {
+          line-height: 40px;
+          height: 40px;
+          display: block;
+          padding-left: 24px;
+          font-size: 14px;
+          color: @text-color;
+          border-right: 1px solid transparent;
+          transition: color .3s, border-color .3s;
+          &:hover {
+            color: @active-color;
+            border-color: @active-color;
+          }
+        }
+        &.active a, &.active h4 {
+          color: @active-color;
+          border-color: @active-color;
+        }
+      }
+    }
+    & > section {
+      border-left: 1px solid @line-color;
+      margin-left: 220px;
+      position: relative;
+      padding: 0 40px 24px;
+      min-height: 600px;
+      overflow: hidden;
+      color: #999;
+      & .@{content}-content {
+        position: relative;
+      }
+      & h1 {
+        font-weight: lighter;
+        font-size: 28px;
+        color: @text-color;
+        margin: 0 auto 20px;
+      }
+      & p {
+        line-height: 1.8;
+        margin: 1em 0;
+      }
+      & .text {
+        max-width: 700px;
+      }
+      & .rc-autoresponsive-container{
+        margin-top: 40px;
+      }
+    }
+  }
+}
+

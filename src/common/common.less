@@ -1,0 +1,113 @@
+@import 'custom';
+
+html, body {
+  background: #000;
+  font-family: "PingFang SC", "Helvetica Neue", Helvetica, "Hiragino Sans GB", "Microsoft YaHei", "\5FAE\8F6F\96C5\9ED1", Arial, sans-serif;
+}
+
+img {
+  border: 0;
+}
+
+a:hover {
+  color: @active-color;
+}
+
+@header: header;
+.@{header} {
+  height: 64px;
+  background: rgba(216, 216, 216, .15);
+  overflow: hidden;
+  position: relative;
+  z-index: 9999;
+  &-logo {
+    display: inline-block;
+    margin: 15px 0 0 4%;
+    height: 33px;
+  }
+  &-nav {
+    float: right;
+    margin-right: 4%;
+    line-height: 64px;
+    position: relative;
+    & ul {
+      overflow: hidden;
+      position: relative;
+      & li {
+        float: left;
+        text-align: center;
+        width: 90px;
+        & a {
+          width: 100%;
+          height: 100%;
+          font-size: 14px;
+          display: block;
+          color: #fff;
+          &:hover, &.active {
+            color: @active-color;
+          }
+          &[disabled] {
+            color: @disabled-color;
+          }
+        }
+      }
+    }
+  }
+  &-bar {
+    width: 90px;
+    height: 3px;
+    background: @active-color;
+    position: absolute;
+    bottom: 0;
+  }
+}
+
+@footer: footer;
+.@{footer} {
+  height: 135px;
+  background: rgba(216, 216, 216, .15);
+  overflow: hidden;
+  position: relative;
+  z-index: 9998;
+  & ul {
+    margin: 0 2%;
+    & li {
+      float: left;
+      padding: 15px 2%;
+      width: 25%;
+
+      & h2 {
+        font-size: 16px;
+        line-height: 30px;
+        font-weight: lighter;
+      }
+      & a {
+        color: #BEC4C8;
+        margin: 5px 10px 0 0;
+        font-weight: lighter;
+        &:hover {
+          color: @active-color;
+        }
+      }
+    }
+  }
+}
+
+.queue-anim-leaving {
+  position: absolute !important;
+  width: 100%;
+}
+
+.rc-autoresponsive-container {
+  & > a {
+    border-radius: 6px;
+    border: 1px solid @line-color;
+    transition: box-shadow .3s @ease-out, transform .3s @ease-out;
+    & img {
+      margin: 22px;
+    }
+    &:hover {
+      box-shadow: 0 0 8px rgba(0, 0, 0, .25);
+    }
+  }
+}

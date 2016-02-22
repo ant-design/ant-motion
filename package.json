@@ -1,0 +1,37 @@
+{
+  "name": "antd-demo",
+  "version": "0.1.0",
+  "entry": {
+    "index": "./src/entry/index.jsx"
+  },
+  "dependencies": {
+    "antd": "~0.12.0",
+    "atool-build": "0.5.x",
+    "babel-plugin-antd": "^0.2.0",
+    "es3ify-loader": "^0.1.0",
+    "react": "~0.14.6",
+    "react-dom": "~0.14.6",
+    "react-router": "~2.0.0",
+    "rc-tween-one": "0.2.x",
+    "rc-queue-anim": "~0.11.5",
+    "autoresponsive-react": "1.1.x"
+  },
+  "devDependencies": {
+    "dora": "0.2.x",
+    "dora-plugin-atool-build": "0.4.x",
+    "dora-plugin-hmr": "0.3.x",
+    "dora-plugin-proxy": "0.5.x",
+    "eslint": "1.10.x",
+    "eslint-config-airbnb": "4.0.x",
+    "eslint-plugin-react": "3.16.x",
+    "pre-commit": "1.x"
+  },
+  "pre-commit": [
+    "lint"
+  ],
+  "scripts": {
+    "dev": "dora -p 8111 --plugins atool-build,proxy,hmr",
+    "lint": "eslint --ext .js,.jsx src",
+    "build": "atool-build -o ./dist/${npm_package_family}/${npm_package_name}/${npm_package_version}"
+  }
+}

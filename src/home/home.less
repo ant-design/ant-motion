@@ -1,0 +1,40 @@
+.banner {
+  position: relative;
+  &-text {
+    position: absolute;
+    top: 45%;
+    left: 10%;
+    text-align: right;
+    color: #fff;
+    & h1 {
+      font-size: 46px;
+      letter-spacing: 3px;
+      font-weight: normal;
+    }
+    & > span {
+      display: block;
+      font-size: 16px;
+      font-weight: lighter;
+      margin: 5px 5px 10px 0;
+    }
+    & > a {
+      margin: 10px 7px 10px auto;
+      font-size: 16px;
+      border: 1px solid #5E30B5;
+      color: #5E30B5;
+      width: 120px;
+      padding: 8px 20px;
+      border-radius: 6px;
+      transition: box-shadow .3s, border .3s, color .3s;
+      display: inline-block;
+      text-align: center;
+      line-height: 21px;
+
+      &:hover {
+        box-shadow: 0 0 10px #6B49FF;
+        border-color: #6635F5;
+        color: #6635F5;
+      }
+    }
+  }
+}
