@@ -64,7 +64,7 @@ class Home extends React.Component {
         <TweenOne component="video" animation={{ opacity: 1, delay: 300, duration: 1000 }}
           autoPlay width="100%" style={{ opacity: 0 }}
         >
-          <source src="../video.mp4" type="video/mp4" />
+          <source src="https://os.alipayobjects.com/rmsportal/vmZjVCXfxETfcgb.mp4 " type="video/mp4" />
           <img src="https://t.alipayobjects.com/images/T18V8mXfhdXXXXXXXX.jpg" width="100%" />
         </TweenOne>
       </div>
