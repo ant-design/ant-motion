@@ -14,15 +14,33 @@ class Cases extends React.Component {
     super(...arguments);
     this.state = {
       containerWidth: null,
+      data: null,
     };
     this.getImageData();
+    [
+      'onWindowResized',
+    ].forEach((method) => this[method] = this[method].bind(this));
   }
 
   componentDidMount() {
-    window.addEventListener('resize', () => {
-      this.setState({
-        containerWidth: ReactDOM.findDOMNode(this.refs.container).clientWidth,
-      });
+    if (window.addEventListener) {
+      window.addEventListener('resize', this.onWindowResized);
+    } else {
+      window.attachEvent('onresize', this.onWindowResized);
+    }
+  }
+
+  componentWillUnmount() {
+    if (window.addEventListener) {
+      window.removeEventListener('resize', this.onWindowResized);
+    } else {
+      window.detachEvent('onresize', this.onWindowResized);
+    }
+  }
+
+  onWindowResized() {
+    this.setState({
+      containerWidth: ReactDOM.findDOMNode(this.refs.container).clientWidth,
     });
   }
 

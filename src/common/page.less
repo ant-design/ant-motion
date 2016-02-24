@@ -102,8 +102,8 @@
       border-left: 1px solid @line-color;
       margin-left: 220px;
       position: relative;
-      padding: 0 40px 24px;
-      min-height: 600px;
+      padding: 0 40px 40px;
+      min-height: 800px;
       overflow: hidden;
       color: #999;
       & .@{content}-content {
@@ -134,9 +134,8 @@
       & .timer-wrapper {
         width: 90%;
         margin: 20px auto auto;
-        border-radius: 10px;
-        border: 1px dashed @line-color;
         padding: 20px;
+        .page-pro();
         & h3 {
           font-weight: normal;
         }
@@ -145,6 +144,7 @@
           margin: 40px auto 10px;
           height: 61px;
           position: relative;
+          overflow: hidden;
           & .east {
             & .line {
               width: 330px;
@@ -182,14 +182,40 @@
         background: rgba(232, 223, 250, .7);
         border-radius: 20px;
         border: 1px solid @active-color;
-        top:10px;
+        top: 10px;
       }
-      & .circle{
+      & .circle {
         z-index: 1;
       }
-      .circle-dashed{
+      .circle-dashed {
         border-style: dashed;
         right: 0;
+      }
+      & .timer-queue-wrapper {
+        width: 100%;
+        height: 395px;
+        margin: 20px auto 0;
+        background: #F4F4F4;
+        border-radius: 6px;
+        overflow: hidden;
+        & .demo-content {
+          width: 80%;
+          margin: 10px auto;
+          position: relative;
+          & .demo-kp {
+            margin: 20px auto;
+            & ul li {
+              display: inline-block;
+              width: 22%;
+              height: 100px;
+              background: @active-color;
+              margin-right: 4%;
+              &:last-child {
+                margin-right: 0;
+              }
+            }
+          }
+        }
       }
     }
   }

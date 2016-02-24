@@ -7,8 +7,10 @@
 
 @page-bg-color: #fff;
 
+@shadow-color: rgba(0, 0, 0, 0.15);
+
 // Animation
-@ease-out            : cubic-bezier(0.215, 0.61, 0.355, 1);
+@ease-out: cubic-bezier(0.215, 0.61, 0.355, 1);
 @ease-in             : cubic-bezier(0.55, 0.055, 0.675, 0.19);
 @ease-in-out         : cubic-bezier(0.645, 0.045, 0.355, 1);
 @ease-out-back       : cubic-bezier(0.12, 0.4, 0.29, 1.46);
@@ -20,3 +22,18 @@
 @ease-out-quint      : cubic-bezier(0.23, 1, 0.32, 1);
 @ease-in-quint       : cubic-bezier(0.755, 0.05, 0.855, 0.06);
 @ease-in-out-quint   : cubic-bezier(0.86, 0, 0.07, 1);
+
+// 详细页图片或框框的样式;
+.page-shadow() {
+  box-shadow: 0 0 8px @shadow-color;
+}
+
+.page-pro() {
+  border-radius: 6px;
+  border: 1px solid @line-color;
+  transition: box-shadow .3s @ease-out;
+  &:hover {
+    .page-shadow();
+  }
+}
+

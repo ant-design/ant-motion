@@ -7,10 +7,7 @@ import Footer from '../common/Footer';
 import QueueAnim from 'rc-queue-anim';
 
 import Home from '../home';
-import Language from '../language';
 import Page from '../common/Page';
-import Cases from '../cases';
-import Grid from '../language/space';
 
 class Index extends Component {
   constructor() {
@@ -20,20 +17,30 @@ class Index extends Component {
   render() {
     const key = this.props.location.pathname;
     const keys = this.props.params.pageName;
+    const contentName = this.props.params.contentName;
     const _key = keys ? 'page' : 'index';
     const child = this.props.children;
     let children = child.props.children;
-    if (!child.props.children) {
-      switch (keys) {
-        case 'language':
-          children = <Language />;
-          break;
-        case 'cases':
-          children = <Cases />;
-          break;
-        default:
-          children = null;
-      }
+    switch (keys) {
+      case 'language':
+        switch (contentName) {
+          case 'space':
+            children = React.createElement(require('../language/space'));
+            break;
+          default:
+            children = React.createElement(require('../language'));
+        }
+        break;
+      case 'cases':
+        switch (contentName) {
+          case 'list':
+            break;
+          default:
+            children = React.createElement(require('../cases'));
+        }
+        break;
+      default:
+        children = null;
     }
     return (<div>
       <Header activeKey={keys} />
@@ -60,8 +67,7 @@ ReactDOM.render(<Router history={hashHistory}>
     <Route path="/" component={Home}>
       <Route path="index" component={Home} />
     </Route>
-    <Route path="/:pageName" component={Page}>
-      <Route path="grid" component={Grid} />
-    </Route>
+    <Route path="/:pageName/" component={Page} />
+    <Route path="/:pageName/:contentName" component={Page} />
   </Route>
 </Router>, document.getElementById('react-content'));
