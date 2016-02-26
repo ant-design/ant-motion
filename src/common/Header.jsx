@@ -2,12 +2,8 @@ import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import TweenOne from 'rc-tween-one';
 
-const navArr = [
-  { name: '首页', href: '/', key: 'home' },
-  { name: '语言', href: '/language/', key: 'language' },
-  { name: '组件', href: '/component/', disabled: true, key: 'component' },
-  { name: '实践', href: '/cases/', key: 'cases' },
-];
+const navArr = require('./list').nav;
+
 class Header extends React.Component {
   constructor() {
     super(...arguments);

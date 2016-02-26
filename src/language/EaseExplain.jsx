@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import TweenOne from 'rc-tween-one';
 
-class AnimExplain extends React.Component {
+class EaseExplain extends React.Component {
   constructor() {
     super(...arguments);
     this.state = {
@@ -58,7 +58,7 @@ class AnimExplain extends React.Component {
     </div>);
   }
 }
-AnimExplain.propTypes = {
+EaseExplain.propTypes = {
   className: PropTypes.string,
   leftHide: PropTypes.bool,
   rightHide: PropTypes.bool,
@@ -68,7 +68,7 @@ AnimExplain.propTypes = {
   children: PropTypes.any,
 };
 
-AnimExplain.defaultProps = {
-  className: 'timer-wrapper',
+EaseExplain.defaultProps = {
+  className: 'content-wrapper',
 };
-export default AnimExplain;
+export default EaseExplain;

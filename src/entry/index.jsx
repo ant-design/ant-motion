@@ -27,6 +27,15 @@ class Index extends Component {
           case 'space':
             children = React.createElement(require('../language/space'));
             break;
+          case 'transition':
+            children = React.createElement(require('../language/transition'));
+            break;
+          case 'interact':
+            children = React.createElement(require('../language/interact'));
+            break;
+          case 'aware':
+            children = React.createElement(require('../language/aware'));
+            break;
           default:
             children = React.createElement(require('../language'));
         }
@@ -45,7 +54,7 @@ class Index extends Component {
     return (<div>
       <Header activeKey={keys} />
       <div className="content" style={{ minHeight: 600 }}>
-        <QueueAnim type="bottom" duration={600}>
+        <QueueAnim type="bottom" duration={600} ease="easeInOutQuad">
           { React.cloneElement(child, { key: _key, href: key, _keys: keys }, children) }
         </QueueAnim>
       </div>

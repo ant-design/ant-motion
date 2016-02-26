@@ -129,12 +129,12 @@ class Page extends React.Component {
     return (<div className={this.props.className}>
       <div className={`${this.props.className}-wrapper`}>
         <aside>
-          <QueueAnim type={['bottom', 'top']} duration={450}>
+          <QueueAnim type={['bottom', 'top']} duration={450} ease="easeInOutQuad">
             <QueueAnim key={this.props._keys} component="ul" type="bottom">{list}</QueueAnim>
           </QueueAnim>
         </aside>
         <section>
-          <QueueAnim type={['right', 'left']} duration={450}
+          <QueueAnim type={['right', 'left']} duration={450} ease="easeInOutQuad"
             className={`${this.props.className}-content`}
           >
             <div key={this.props.href}>{this.props.children}</div>

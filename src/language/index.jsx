@@ -1,6 +1,6 @@
 import React from 'react';
 import QueueAnim from 'rc-queue-anim';
-import AnimExplain from './AnimExplain';
+import EaseExplain from './EaseExplain';
 
 class Timer extends React.Component {
   constructor() {
@@ -39,7 +39,7 @@ class Timer extends React.Component {
       <p className="text">物体运动在时间栅格中具有不同运动速率和出场，动画停止与启动都不是瞬间完成的，
         因它需要一段缓冲的时间来加速或减速，因此当物体突然移动或停止，会显的很不自然。
       </p>
-      <AnimExplain
+      <EaseExplain
         animation={{
           left: 410, duration: 1000, repeat: -1,
           yoyo: true, repeatDelay: 500, ease: 'easeInOutCubic',
@@ -48,8 +48,8 @@ class Timer extends React.Component {
       >
         单物体可视范围内点到点之间的运动，采用的是
         <span className="text-highlight"> ease-in-out </span>
-      </AnimExplain>
-      <AnimExplain
+      </EaseExplain>
+      <EaseExplain
         title="2.单物体可视范围外进场的运动"
         leftHide
         animation={{
@@ -61,16 +61,16 @@ class Timer extends React.Component {
         单物体进入可视范围的运动，采用的是
         <span className="text-highlight"> ease-out </span>
 
-      </AnimExplain>
-      <AnimExplain
+      </EaseExplain>
+      <EaseExplain
         title="3.单物体可视范围内出场的运动"
         rightHide
         animation={{ left: 510, duration: 1000, repeat: -1, repeatDelay: 500, ease: 'easeInCubic' }}
       >
         单物体出可视范围的运动，采用的是
         <span className="text-highlight"> ease-in </span>
-      </AnimExplain>
-      <div className="timer-wrapper">
+      </EaseExplain>
+      <div className="content-wrapper">
         <h3>4.区块出场栅格</h3>
         <div style={{ width: 760, margin: '20px auto' }}>
           <img src="https://t.alipayobjects.com/images/T1_shmXf0gXXXXXXXX.jpg" width="760" />

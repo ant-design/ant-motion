@@ -51,7 +51,7 @@
           position: relative;
           background: #fff;
           border-right: 1px solid @line-color;
-          transition: color .3s, border-color .3s;
+          transition: color .3s @ease-out, border-color .3s @ease-out;
           & > * {
             pointer-events: none;
           }
@@ -86,7 +86,7 @@
           font-size: 14px;
           color: @text-color;
           border-right: 1px solid transparent;
-          transition: color .3s, border-color .3s;
+          transition: color .3s @ease-out, border-color .3s @ease-out;
           &:hover {
             color: @active-color;
             border-color: @active-color;
@@ -115,13 +115,29 @@
         color: @text-color;
         margin: 0 auto 20px;
       }
+      & h2 {
+        font-size: 20px;
+      }
+      & h3 {
+        font-size: 16px;
+      }
+      & h2, & h3 {
+        font-weight: lighter;;
+        margin: 1.6em 0 .6em 0;
+        clear: both;
+      }
       & p {
         line-height: 1.8;
         margin: 1em 0;
-        font-size: 14px;
+      }
+      & ul.list > li {
+        list-style: circle;
+        margin-left: 20px;
+        padding-left: 4px;
       }
       & .text {
         max-width: 800px;
+        display: block;
       }
       & .rc-autoresponsive-container {
         margin-top: 40px;
@@ -131,13 +147,15 @@
         border-top: 1px dashed @line-color;
         display: block;
       }
-      & .timer-wrapper {
+      & .content-wrapper {
         width: 90%;
         margin: 20px auto auto;
         padding: 20px;
         .page-pro();
         & h3 {
           font-weight: normal;
+          margin: auto;
+          font-size: 14px;
         }
         & .demo-wrapper {
           width: 450px;
@@ -175,6 +193,12 @@
         color: @active-color;
       }
 
+      & .content-img {
+        margin: 20px 0;
+        max-width: 800px;
+        position: relative;
+      }
+
       & .circle, & .circle-dashed {
         width: 40px;
         height: 40px;
@@ -204,7 +228,7 @@
           position: relative;
           & .demo-kp {
             margin: 20px auto;
-            & ul li {
+            & > ul > li {
               display: inline-block;
               width: 22%;
               height: 100px;
