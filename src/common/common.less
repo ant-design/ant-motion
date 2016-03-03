@@ -32,6 +32,17 @@ a:hover {
     display: inline-block;
     margin: 15px 0 0 4%;
     height: 33px;
+    & img{
+      vertical-align: middle;
+    }
+    & a span{
+      display: inline-block;
+      height: 40px;
+      line-height: 40px;
+      font-size: 18px;
+      color: #fff;
+      margin-left: 10px;
+    }
   }
   &-nav {
     float: right;
@@ -94,6 +105,7 @@ a:hover {
         color: #BEC4C8;
         margin: 5px 10px 0 0;
         font-weight: lighter;
+        transition: color .3s @ease-out;
         &:hover {
           color: @active-color;
         }

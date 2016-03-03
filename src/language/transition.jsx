@@ -19,14 +19,13 @@ class Transition extends React.Component {
         <h2>承上启下（视图变化时保持上下文)</h2>
         <h3>页面间切换</h3>
         <span>在视图变化时保持上下文; 滑入与滑出: 可以有效构建虚拟空</span>
-        <VideoExplain src="https://os.alipayobjects.com/rmsportal/MSNqVuabLgPfbxM.mp4" />
+        <VideoExplain src="https://os.alipayobjects.com/rmsportal/EejaUGsyExkXyXr.mp4" />
         <h3>传送带切换(走马灯)</h3>
         <span>可极大地扩展虚拟空间。</span>
-        <VideoExplain src="https://os.alipayobjects.com/rmsportal/MSNqVuabLgPfbxM.mp4" />
+        <VideoExplain src="https://os.alipayobjects.com/rmsportal/GIutPgZMTyfFfrH.mp4" />
         <h3>折叠窗口</h3>
         <span>在视图切换时，有助于保持上下文，同时也能拓展虚拟空间。</span>
-        <VideoExplain src="https://os.alipayobjects.com/rmsportal/GjMxCeEUgvhekUf.mp4" />
-        <h2></h2>
+        <VideoExplain src="https://os.alipayobjects.com/rmsportal/ERKhqHlcHiCDSQu.mp4" />
       </div>
     );
   }

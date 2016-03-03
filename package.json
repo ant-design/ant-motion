@@ -7,14 +7,15 @@
   "dependencies": {
     "antd": "~0.12.0",
     "atool-build": "0.5.x",
+    "autoresponsive-react": "1.1.x",
     "babel-plugin-antd": "^0.2.0",
     "es3ify-loader": "^0.1.0",
+    "rc-queue-anim": "~0.11.5",
+    "rc-tween-one": "0.2.x",
     "react": "~0.14.6",
     "react-dom": "~0.14.6",
-    "react-router": "~2.0.0",
-    "rc-tween-one": "0.2.x",
-    "rc-queue-anim": "~0.11.5",
-    "autoresponsive-react": "1.1.x"
+    "react-highlight": "^0.7.0",
+    "react-router": "~2.0.0"
   },
   "devDependencies": {
     "dora": "0.2.x",

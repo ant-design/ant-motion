@@ -14,12 +14,23 @@ class Page extends React.Component {
     this.state = {
       list,
       ulTween: this.getTweenData(this.props, list),
+      minHeight: 800,
     };
     [
       'liClick',
       'listElement',
       'judgeChildActive',
+      'onWindowResized',
     ].forEach((method) => this[method] = this[method].bind(this));
+  }
+
+  componentDidMount() {
+    if (window.addEventListener) {
+      window.addEventListener('resize', this.onWindowResized);
+    } else {
+      window.attachEvent('onresize', this.onWindowResized);
+    }
+    this.onWindowResized();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -29,6 +40,23 @@ class Page extends React.Component {
       const ulTween = this.getTweenData(nextProps, list);
       this.setState({ list, ulTween });
     }
+  }
+
+  componentWillUnmount() {
+    if (window.addEventListener) {
+      window.removeEventListener('resize', this.onWindowResized);
+    } else {
+      window.detachEvent('onresize', this.onWindowResized);
+    }
+  }
+
+  onWindowResized() {
+    this.clientHeight = window.innerHeight ||
+      document.documentElement.clientHeight ||
+      document.body.clientHeight;
+    this.setState({
+      minHeight: this.clientHeight - 112,
+    });
   }
 
   getTweenData(props, list) {
@@ -133,7 +161,7 @@ class Page extends React.Component {
             <QueueAnim key={this.props._keys} component="ul" type="bottom">{list}</QueueAnim>
           </QueueAnim>
         </aside>
-        <section>
+        <section style={{ minHeight: this.state.minHeight }}>
           <QueueAnim type={['right', 'left']} duration={450} ease="easeInOutQuad"
             className={`${this.props.className}-content`}
           >

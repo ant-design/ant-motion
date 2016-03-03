@@ -48,6 +48,14 @@ class Index extends Component {
             children = React.createElement(require('../cases'));
         }
         break;
+      case 'component':
+        switch (contentName) {
+          case 'tween-one':
+            break;
+          default:
+            children = React.createElement(require('../component'));
+        }
+        break;
       default:
         children = null;
     }

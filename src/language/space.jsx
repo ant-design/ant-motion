@@ -26,7 +26,7 @@ class Grid extends React.Component {
       <span className="text">如果 banner 里加入跟随鼠标移动,
         加入空间层次，有效的给每层元素不同的参数，摸拟现实的视差效果。</span>
       <p className="content-img">
-        <img src="https://os.alipayobjects.com/rmsportal/nJlXoAXodWxSmcV.png" width="100%" />
+        <img src="https://os.alipayobjects.com/rmsportal/toYrPymhuHeZSWv.jpg" width="100%" />
       </p>
     </div>);
   }

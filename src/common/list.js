@@ -2,7 +2,7 @@ const list = {
   nav: [
     { name: '首页', href: '/', key: 'home' },
     { name: '语言', href: '/language/', key: 'language' },
-    { name: '组件', href: '/component/', disabled: true, key: 'component' },
+    { name: '组件', href: '/component/', key: 'component' },
     { name: '实践', href: '/cases/', key: 'cases' },
   ],
   language: [
@@ -35,6 +35,46 @@ const list = {
     {
       title: '改善感知',
       href: 'aware',
+    },
+  ],
+  component: [
+    {
+      title: 'Ant Motion of React',
+      href: '',
+    },
+    {
+      title: 'Component',
+      key: 'componet',
+      open: true,
+      children: [
+        {
+          title: 'TweenOne',
+          desc: '单元素动画',
+          href: 'tween-one',
+        },
+        {
+          title: 'QueueAnim',
+          desc: '进出场动画',
+          href: 'queue-anim',
+        },
+        {
+          title: 'ScrollAnim',
+          desc: '页面滚动动画',
+          href: 'scroll-anim',
+        },
+        {
+          title: 'BannerAnim',
+          desc: 'banner动画',
+          href: 'banner-anim',
+          disabled: true,
+        },
+        {
+          title: 'IconAnim',
+          desc: 'Icon变换动画',
+          href: 'icon-anim',
+          disabled: true,
+        },
+      ],
     },
   ],
   cases: [
