@@ -94,7 +94,7 @@ class Header extends React.Component {
         style={{ transform: 'translateX(-30px)', opacity: 0 }}
       >
         <Link to="/" key="logo">
-          <img height="33" src="https://os.alipayobjects.com/rmsportal/IwAqwmFOJJVHsBY.svg" /> Ant Motion
+          <img height="33" src="https://os.alipayobjects.com/rmsportal/xmffOECeJNyecDZ.svg" />
         </Link>
       </TweenOne>
       <TweenOne component="nav"

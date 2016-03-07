@@ -1,0 +1,109 @@
+@import '../common/custom';
+
+@demo: demo-layout;
+.@{demo} {
+  margin: 1em auto;
+  position: relative;
+  width: 100%;
+  &-wrapper {
+    display: inline-block;
+    width: 100%;
+    & ul {
+      padding: 0 8px;
+      display: inline-block;
+      &:last-child {
+        padding-right: 0;
+      }
+      &:first-child {
+        padding-left: 0;
+      }
+      & li {
+        .page-pro();
+        margin: 0 0 16px 0;
+        overflow: hidden;
+      }
+    }
+  }
+}
+
+@code: code-box;
+.@{code} {
+  &-demo {
+    padding: 20px;
+    border-bottom: 1px solid @line-color;
+  }
+  &-shape {
+    position: relative;
+    margin: 40px auto;
+    width: 50px;
+    height: 50px;
+    border-radius: 4px;
+    background: @primary-color;
+  }
+  & &-meta {
+    padding: 20px;
+    position: relative;
+    & > h1 {
+      font-size: 18px;
+      margin: 0 auto 5px;
+    }
+    &-content {
+      font-size: 12px;
+      padding-right: 25px;
+    }
+    &-icon {
+      position: absolute;
+      right: 15px;
+      bottom: 15px;
+      cursor: pointer;
+      width: 26px;
+      height: 26px;
+      border: 1px solid @line-deep-color;
+      border-radius: 13px;
+      font-size: 12px;
+      line-height: 28px;
+      text-align: center;
+      transition: transform .3s @ease-out;
+      color: @line-deep-color;
+      opacity: .5;
+      &:before {
+        content: "\E603";
+        display: block;
+        font-family: "anticon" !important;
+      }
+      &.open {
+        transform: rotate(180deg);
+      }
+    }
+  }
+  &-highlight {
+    border-top: 1px dashed @line-color;
+    overflow: hidden;
+    & pre code {
+      border-radius: 0;
+      padding: 20px;
+    }
+  }
+
+  .demo-buttons {
+    text-align: center;
+    margin: 0 auto;
+    & button {
+      margin: 0 5px;
+      &:last-child {
+        margin-right: 0;
+      }
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+
+  & .demo-bezier-shape {
+    width: 5px;
+    height: 5px;
+    background: #7569FF;
+    position: absolute;
+    top: 0;
+  }
+}

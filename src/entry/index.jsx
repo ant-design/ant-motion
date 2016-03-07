@@ -51,6 +51,7 @@ class Index extends Component {
       case 'component':
         switch (contentName) {
           case 'tween-one':
+            children = React.createElement(require('../component/tween-one/index'));
             break;
           default:
             children = React.createElement(require('../component'));

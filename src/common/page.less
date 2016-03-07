@@ -89,13 +89,13 @@
           border-right: 1px solid transparent;
           transition: color .3s @ease-out, border-color .3s @ease-out;
           &:hover {
-            color: @active-color;
-            border-color: @active-color;
+            color: @primary-color;
+            border-color: @primary-color;
           }
         }
         &.active a, &.active h4 {
-          color: @active-color;
-          border-color: @active-color;
+          color: @primary-color;
+          border-color: @primary-color;
         }
       }
     }
@@ -134,11 +134,35 @@
       & img {
         vertical-align: middle;
       }
-      & code {
+      & code{
+        margin: 0 3px;
+        background: #f7f7f7;
+        padding: 1px 6px;
+        border-radius: 3px;
+        color: #888;
+        font-size: .8rem;
+        border: 1px solid #e9e9e9;
+      }
+      & pre code {
         background: #f7f7f7;
         border-radius: 6px;
         padding: 1em 2em;
         margin: 0;
+        border: none;
+      }
+      & .bold{
+        font-weight: bold;
+      }
+      & h4{
+        font-size: 14px;
+        margin: .6em auto;
+      }
+      & blockquote{
+        font-size: 90%;
+        color: #999;
+        border-left: 4px solid #e9e9e9;
+        padding-left: .8em;
+        margin: 1em 0;
       }
       & ul.list > li {
         list-style: circle;
@@ -200,7 +224,7 @@
         }
       }
       & .text-highlight {
-        color: @active-color;
+        color: @primary-color;
       }
 
       & .content-img {
@@ -215,7 +239,7 @@
         position: absolute;
         background: rgba(232, 223, 250, .7);
         border-radius: 20px;
-        border: 1px solid @active-color;
+        border: 1px solid @primary-color;
         top: 10px;
       }
       & .circle {
@@ -242,13 +266,32 @@
               display: inline-block;
               width: 22%;
               height: 100px;
-              background: @active-color;
+              background: @primary-color;
               margin-right: 4%;
               &:last-child {
                 margin-right: 0;
               }
             }
           }
+        }
+      }
+      & .api-table{
+        border-collapse: collapse;
+        border-spacing: 0;
+        empty-cells: show;
+        border: 1px solid #e9e9e9;
+        width: 100%;
+        margin-bottom: 24px;
+        & th{
+          background: #F7F7F7;
+          white-space: nowrap;
+          color: #5C6B77;
+          font-weight: 600;
+        }
+        & th, & td{
+          border: 1px solid #e9e9e9;
+          padding: 8px 16px;
+          text-align: left;
         }
       }
     }

@@ -1,24 +1,22 @@
-@import 'custom';
+@import 'ant-d';
 
 html, body {
   background: #000;
   font-family: "PingFang SC", "Helvetica Neue", Helvetica, "Hiragino Sans GB", "Microsoft YaHei", "\5FAE\8F6F\96C5\9ED1", Arial, sans-serif;
 }
 
-img {
-  border: 0;
-}
 
-video{
+video {
   display: b;
 }
 
-a:hover {
-  color: @active-color;
+
+.text-center {
+  text-align: center;
 }
 
-.text-center{
-  text-align: center;
+a{
+  transition: color .3s @ease-out;
 }
 
 @header: header;
@@ -32,16 +30,12 @@ a:hover {
     display: inline-block;
     margin: 15px 0 0 4%;
     height: 33px;
-    & img{
-      vertical-align: middle;
+    & img {
+      vertical-align: top;
+      display: block;
     }
-    & a span{
-      display: inline-block;
-      height: 40px;
-      line-height: 40px;
-      font-size: 18px;
-      color: #fff;
-      margin-left: 10px;
+    & a {
+      display: block;
     }
   }
   &-nav {
@@ -64,7 +58,7 @@ a:hover {
           color: #fff;
           transition: color .3s @ease-out;
           &:hover, &.active {
-            color: @active-color;
+            color: @primary-color;
           }
           &[disabled] {
             color: @disabled-color;
@@ -76,7 +70,7 @@ a:hover {
   &-bar {
     width: 90px;
     height: 3px;
-    background: @active-color;
+    background: @primary-color;
     position: absolute;
     bottom: 0;
   }
@@ -107,7 +101,7 @@ a:hover {
         font-weight: lighter;
         transition: color .3s @ease-out;
         &:hover {
-          color: @active-color;
+          color: @primary-color;
         }
       }
     }

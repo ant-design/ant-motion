@@ -1,15 +1,14 @@
 import React from 'react';
-import Highlight from 'react-highlight';
-import 'highlight.js/styles/tomorrow.css';
+import Highlight from './Highlight';
+
 
 class About extends React.Component {
   render() {
     return (<div >
       <h1>Ant Motion of React</h1>
       <p>这是 Ant Motion 的所有 React 组件的演示站点, 可结合 Ant Design 来实现更炫酷的页面结够.</p>
-      <p>
-        <img src="https://os.alipayobjects.com/rmsportal/IwAqwmFOJJVHsBY.svg" width="100" />
-        <span style={{ fontSize: 50, margin: '0 10px' }}> Ant Motion</span>
+      <p style={{ width: '100%', maxWidth: '400px' }}>
+        <img style={{ verticalAlign: 'top' }} src="https://os.alipayobjects.com/rmsportal/tdjazOmUHhUKXxZ.svg" width="100%" />
       </p>
       <h2>特性</h2>
       <ul className="list">
@@ -24,7 +23,7 @@ class About extends React.Component {
       <p>每个组件单个安装, 如:</p>
       <div>
         <Highlight>
-          {"$ npm install rc-tween-one"}
+          {"$ npm install rc-tween-one --save"}
         </Highlight>
       </div>
       <h2>如何贡献</h2>
