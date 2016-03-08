@@ -110,6 +110,17 @@
       & .@{content}-content {
         position: relative;
       }
+      & h2, & h3, & h4 {
+        & a{
+          opacity: 0;
+          transition: opacity .3s @ease-out;
+        }
+        &:hover {
+          & a{
+            opacity: 1;
+          }
+        }
+      }
       & h1 {
         font-weight: lighter;
         font-size: 28px;
@@ -134,7 +145,7 @@
       & img {
         vertical-align: middle;
       }
-      & code{
+      & code {
         margin: 0 3px;
         background: #f7f7f7;
         padding: 1px 6px;
@@ -150,14 +161,14 @@
         margin: 0;
         border: none;
       }
-      & .bold{
+      & .bold {
         font-weight: bold;
       }
-      & h4{
+      & h4 {
         font-size: 14px;
         margin: .6em auto;
       }
-      & blockquote{
+      & blockquote {
         font-size: 90%;
         color: #999;
         border-left: 4px solid #e9e9e9;
@@ -275,20 +286,20 @@
           }
         }
       }
-      & .api-table{
+      & .api-table {
         border-collapse: collapse;
         border-spacing: 0;
         empty-cells: show;
         border: 1px solid #e9e9e9;
         width: 100%;
         margin-bottom: 24px;
-        & th{
+        & th {
           background: #F7F7F7;
           white-space: nowrap;
           color: #5C6B77;
           font-weight: 600;
         }
-        & th, & td{
+        & th, & td {
           border: 1px solid #e9e9e9;
           padding: 8px 16px;
           text-align: left;

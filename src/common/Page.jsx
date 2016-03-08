@@ -1,9 +1,19 @@
 import React, { PropTypes } from 'react';
 import TweenOne from 'rc-tween-one';
 import './page.less';
-import { Link } from 'react-router';
+import { Link, hashHistory } from 'react-router';
 import QueueAnim from 'rc-queue-anim';
 const listNav = require('./list');
+import raf from 'rc-tween-one/node_modules/raf';
+import easingTypes from 'rc-tween-one/node_modules/tween-functions';
+
+function currentScrollTop() {
+  const supportPageOffset = window.pageXOffset !== undefined;
+  const isCSS1Compat = ((document.compatMode || '') === 'CSS1Compat');
+  const isCSS1ScrollTop = isCSS1Compat ?
+    document.documentElement.scrollTop : document.body.scrollTop;
+  return supportPageOffset ? window.pageYOffset : isCSS1ScrollTop;
+}
 
 class Page extends React.Component {
   constructor() {
@@ -11,6 +21,7 @@ class Page extends React.Component {
     this.ulOpen = {};
     const list = listNav[this.props._keys] || [];
     this.navHeight = 40;
+    this.rafID = -1;
     this.state = {
       list,
       ulTween: this.getTweenData(this.props, list),
@@ -21,8 +32,14 @@ class Page extends React.Component {
       'listElement',
       'judgeChildActive',
       'onWindowResized',
+      'getTitle',
+      'scrollTo',
+      'frame',
+      'cancelRequestAnimationFrame',
+      'titleClick',
     ].forEach((method) => this[method] = this[method].bind(this));
   }
+
 
   componentDidMount() {
     if (window.addEventListener) {
@@ -31,6 +48,7 @@ class Page extends React.Component {
       window.attachEvent('onresize', this.onWindowResized);
     }
     this.onWindowResized();
+    this.timeout = setTimeout(this.getTitle);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -40,6 +58,11 @@ class Page extends React.Component {
       const ulTween = this.getTweenData(nextProps, list);
       this.setState({ list, ulTween });
     }
+  }
+
+  componentDidUpdate() {
+    clearTimeout(this.timeout);
+    this.timeout = setTimeout(this.getTitle);
   }
 
   componentWillUnmount() {
@@ -74,6 +97,81 @@ class Page extends React.Component {
       }
     });
     return ulTween;
+  }
+
+  getTitle() {
+    const titleArr = document.querySelectorAll(
+      '.page-wrapper section h2,' +
+      '.page-wrapper section h3,' +
+      '.page-wrapper section h4'
+    );
+    const hash = window.location.hash.split('#')[1];
+    const hashParts = hash.split('?')[0];
+    for (let i = 0; i < titleArr.length; i++) {
+      const item = titleArr[i];
+      if (!item.children.length) {
+        item.id = item.innerHTML.replace(/\s+/g, '');
+        item.innerHTML = `${item.innerHTML}<a href="#${hashParts}?anchor=${item.id}"> #</a>`;
+        item.querySelector('a').onclick = this.titleClick;
+      }
+    }
+    clearTimeout(this.tweenTimeout);
+    this.tweenTimeout = setTimeout(this.scrollTo, 350);
+  }
+
+  frame() {
+    if (this.rafID === -1) {
+      return;
+    }
+
+    const hash = window.location.hash.split('#')[1];
+    const parame = {};
+    hash.split('?')[1].split('&').map((str) => {
+      const _str = str.replace('=', '/=/').split('/=/');
+      parame[_str[0]] = _str[1];
+    });
+    let toTop = 0;
+    if (parame.anchor) {
+      const element = document.querySelector(`#${parame.anchor}`);
+      if (element) {
+        toTop = element.getBoundingClientRect().top;
+        const docTop = document.documentElement.getBoundingClientRect().top;
+        toTop = Math.round(toTop) - Math.round(docTop);
+      } else {
+        this.cancelRequestAnimationFrame();
+        return;
+      }
+    } else {
+      this.cancelRequestAnimationFrame();
+      return;
+    }
+    const duration = 450;
+    const now = Date.now();
+    const progressTime = now - this.initTime > duration ? duration : now - this.initTime;
+    const easeValue = easingTypes.easeInOutCubic(progressTime, this.scrollTop, toTop, duration);
+    window.scrollTo(window.scrollX, easeValue);
+    if (progressTime === duration) {
+      this.cancelRequestAnimationFrame();
+    } else {
+      raf(this.frame);
+    }
+  }
+
+  scrollTo() {
+    this.scrollTop = currentScrollTop();
+    this.initTime = Date.now();
+    this.rafID = raf(this.frame);
+  }
+
+  titleClick(e) {
+    e.preventDefault();
+    this.scrollTo();
+    hashHistory.push(e.currentTarget.href.split('#')[1]);
+  }
+
+  cancelRequestAnimationFrame() {
+    raf.cancel(this.rafID);
+    this.rafID = -1;
   }
 
   judgeChildActive(child) {

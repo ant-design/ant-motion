@@ -115,7 +115,7 @@ ReactDOM.render(<TweenOne animation={{ x: 100 }} />, mountNode);`}
         </tr>
         </tbody>
       </table>
-      <h4>animation = &#123; &#125;</h4>
+      <h4>animation</h4>
       <blockquote>
         <p><code>transform</code> 需要设定设始值， 必需在 <code>style</code> 里设定</p>
       </blockquote>
@@ -179,8 +179,8 @@ ReactDOM.render(<TweenOne animation={{ x: 100 }} />, mountNode);`}
         </tr>
         </tbody>
       </table>
-      <h4>animation = [ ] 时为 timeline</h4>
-      <h4>bezier = &#123; &#125;</h4>
+      <blockquote><p>animation 等于 Array 时为 timeline</p></blockquote>
+      <h4>bezier</h4>
       <table className="api-table">
         <thead>
         <tr>

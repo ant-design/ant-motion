@@ -6,18 +6,20 @@
   },
   "dependencies": {
     "antd": "~0.12.0",
+    "antd-md-loader": "^0.1.0-beta.5",
     "atool-build": "0.5.x",
     "autoresponsive-react": "1.1.x",
     "babel-plugin-antd": "^0.2.0",
     "es3ify-loader": "^0.1.0",
     "highlight.js": "~9.2.0",
+    "history": "~2.0.1",
     "object-assign": "~4.0.x",
     "rc-queue-anim": "~0.11.5",
     "rc-tween-one": "0.2.x",
     "react": "~0.14.6",
     "react-dom": "~0.14.6",
-    "react-router": "~2.0.0",
-    "antd-md-loader": "^0.1.0-beta.5"
+    "react-router": "~2.0.0-rc6",
+    "scroll-behavior": "~0.3.3"
   },
   "devDependencies": {
     "dora": "0.2.x",

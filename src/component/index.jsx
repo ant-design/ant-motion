@@ -8,7 +8,10 @@ class About extends React.Component {
       <h1>Ant Motion of React</h1>
       <p>这是 Ant Motion 的所有 React 组件的演示站点, 可结合 Ant Design 来实现更炫酷的页面结够.</p>
       <p style={{ width: '100%', maxWidth: '400px' }}>
-        <img style={{ verticalAlign: 'top' }} src="https://os.alipayobjects.com/rmsportal/tdjazOmUHhUKXxZ.svg" width="100%" />
+        <img style={{ verticalAlign: 'top' }}
+          src="https://os.alipayobjects.com/rmsportal/tdjazOmUHhUKXxZ.svg"
+          width="100%"
+        />
       </p>
       <h2>特性</h2>
       <ul className="list">

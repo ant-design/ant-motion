@@ -9,6 +9,9 @@ import QueueAnim from 'rc-queue-anim';
 import Home from '../home';
 import Page from '../common/Page';
 
+// import useStandardScroll from 'scroll-behavior/lib/useStandardScroll';
+// const history = useStandardScroll(() => hashHistory)();
+
 class Index extends Component {
   constructor() {
     super(...arguments);
