@@ -55,7 +55,7 @@ Timeline.propTypes = {
   paused: PropTypes.bool,
 };
 
-const mdString = `import TweenOne from 'rc-tween-one'
+const mdString = `import TweenOne from 'rc-tween-one';
 
 ReactDOM.render(<TweenOne
   animation={[

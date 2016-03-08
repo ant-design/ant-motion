@@ -24,7 +24,7 @@ Position.propTypes = {
   paused: PropTypes.bool,
 };
 
-const mdString = `import TweenOne from 'rc-tween-one'
+const mdString = `import TweenOne from 'rc-tween-one';
 
 ReactDOM.render(<TweenOne
   animation={{ left: '20%', yoyo: true, repeat: -1, duration: 1000 }}

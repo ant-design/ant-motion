@@ -23,7 +23,7 @@ Rotate.propTypes = {
   paused: PropTypes.bool,
 };
 
-const mdString = `import TweenOne from 'rc-tween-one'
+const mdString = `import TweenOne from 'rc-tween-one';
 
 ReactDOM.render(<TweenOne
   animation={{ rotate: 360, repeat: -1, duration: 1000 }}

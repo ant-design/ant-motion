@@ -1,10 +1,9 @@
 /**
  * Created by jljsj on 16/2/22.
  */
-
+function noop() {
+}
 export function load(vars) {
-  function noop() {
-  }
   const _onUpdate = vars.onUpdate || noop;
   const _onComplete = vars.onComplete || noop;
   let loadNum = 0;
