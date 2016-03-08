@@ -12,7 +12,7 @@ export function load(vars) {
   function getLoad() {
     const src = data[loadNum].src;
     const img = new Image();
-    img.onload = img.onerror = function () {
+    img.onload = img.onerror = () => {
       _onUpdate(loadNum);
       loadNum++;
       if (loadNum >= data.length) {
