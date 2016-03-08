@@ -4,10 +4,13 @@ import DemoLayout, { Item } from '../DemoLayout';
 
 import Basic from './demo/basic';
 import Enter from './demo/enter-leave';
+import Custom from './demo/custom';
+import Change from './demo/change';
+import Page from './demo/page';
 
 class QueueAnimDemo extends React.Component {
   getStyle() {
-    return `<style>
+    return `
 .code-box-demo .demo-header {
   width: 100%;
   background: #ebedee;
@@ -162,7 +165,7 @@ class QueueAnimDemo extends React.Component {
   display: block;
   content: "";
 }
-</style>`;
+`;
   }
 
   render() {
@@ -210,7 +213,109 @@ ReactDOM.render(<QueueAnim>
         <Item title={Enter.title} content={Enter.content} code={Enter.mdString}>
           <Enter.Comp />
         </Item>
+        <Item title={Custom.title} content={Custom.content} code={Custom.mdString}>
+          <Custom.Comp />
+        </Item>
+        <Item title={Change.title} content={Change.content} code={Change.mdString}>
+          <Change.Comp />
+        </Item>
+        <Item title={Page.title} content={Page.content} code={Page.mdString}>
+          <Page.Comp />
+        </Item>
       </DemoLayout>
+      <blockquote>
+        <p>router 例子
+          <a
+            href="https://github.com/ant-motion/ant-motion/blob/master/src/entry/index.jsx#L66"
+            target="_blank"
+          >
+            查看本站代码
+          </a>，或
+          <a href="http://react-component.github.io/queue-anim/" target="_blank">
+            查看更多
+          </a>
+          queueAnim 例子；
+        </p>
+      </blockquote>
+      <h2>API 说明</h2>
+      <table className="api-table">
+        <thead>
+        <tr>
+          <th>参数</th>
+          <th>类型</th>
+          <th>默认</th>
+          <th>详细</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>type</td>
+          <td>string / array</td>
+          <td><code>right</code></td>
+          <td>动画内置参数 <br /> <code>left</code>&nbsp;
+            <code>right</code>&nbsp;
+            <code>top</code>&nbsp;
+            <code>bottom</code>&nbsp;
+            <code>scale</code>&nbsp;
+            <code>scaleBig</code>&nbsp;
+            <code>scaleX</code>&nbsp;
+            <code>scaleY</code>
+          </td>
+        </tr>
+        <tr>
+          <td>animConfig</td>
+          <td>object / array</td>
+          <td>null</td>
+          <td>
+            配置动画参数
+            <br /> 如 <code>&#123; opacity:[1, 0],translateY:[0, -30] &#125;</code>
+            具体参考 <a href="http://julian.com/research/velocity">velocity</a> 的写法
+          </td>
+        </tr>
+        <tr>
+          <td>delay</td>
+          <td>number / array</td>
+          <td>0</td>
+          <td>整个动画的延时,以毫秒为单位</td>
+        </tr>
+        <tr>
+          <td>duration</td>
+          <td>number / array</td>
+          <td>500</td>
+          <td>每个动画的时间,以毫秒为单位</td>
+        </tr>
+        <tr>
+          <td>interval</td>
+          <td>number / array</td>
+          <td>100</td>
+          <td>每个动画的间隔时间,以毫秒为单位</td>
+        </tr>
+        <tr>
+          <td>leaveReverse</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>出场时是否倒放,从最后一个 dom 开始往上播放</td>
+        </tr>
+        <tr>
+          <td>ease</td>
+          <td>string / array</td>
+          <td><code>easeOutQuart</code></td>
+          <td>动画的缓动函数,<a href="http://julian.com/research/velocity/#easing">查看详细</a></td>
+        </tr>
+        <tr>
+          <td>animatingClassName</td>
+          <td>array</td>
+          <td><code>['queue-anim-entering', 'queue-anim-leaving']</code></td>
+          <td>进出场动画进行中的类名</td>
+        </tr>
+        <tr>
+          <td>component</td>
+          <td>string</td>
+          <td><code>div</code></td>
+          <td>QueueAnim 替换的标签名</td>
+        </tr>
+        </tbody>
+      </table>
     </div>);
   }
 }

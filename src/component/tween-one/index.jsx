@@ -219,7 +219,7 @@ ReactDOM.render(<TweenOne animation={{ x: 100 }} />, mountNode);`}
       <blockquote>
         <p>贝赛尔曲线API参照
           <a href="http://greensock.com/docs/#/HTML5/GSAP/Plugins/BezierPlugin/" target="_blank">
-            & gsap BezierPlugin
+             gsap BezierPlugin
           </a>
         </p>
       </blockquote>
