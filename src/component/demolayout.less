@@ -8,19 +8,29 @@
   &-wrapper {
     display: inline-block;
     width: 100%;
+    margin: 0 0 12px 0;
+    &:last-child{
+      margin: 0 0 -3px 0;
+    }
     & ul {
-      padding: 0 8px;
+      padding: 0 5px;
       display: inline-block;
       &:last-child {
-        padding-right: 0;
+        padding: 0 0 0 10px;
       }
       &:first-child {
-        padding-left: 0;
+        padding: 0 10px 0 0;
+      }
+      &:only-child{
+        padding: 0;
       }
       & li {
         .page-pro();
-        margin: 0 0 16px 0;
+        margin: 0 0 15px 0;
         overflow: hidden;
+        &:last-child{
+          margin: 0;
+        }
       }
     }
   }
@@ -31,6 +41,7 @@
   &-demo {
     padding: 20px;
     border-bottom: 1px solid @line-color;
+    position: relative;
   }
   &-shape {
     position: relative;

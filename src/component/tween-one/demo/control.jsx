@@ -65,9 +65,11 @@ class Control extends React.Component {
           reverse={this.state.reverse}
           moment={this.state.moment}
           className="code-box-shape"
-          style={{ margin: '25px 0' }}
+          style={{ margin: '40px 0' }}
         />
-        <div className="demo-buttons">
+        <div className="demo-buttons"
+          style={{ position: 'absolute', width: 292, left: '50%', marginLeft: -146, bottom: 15 }}
+        >
           <Button type="primary" onClick={this.onClick}>play</Button>
           <Button type="primary" onClick={this.onPause}>pause</Button>
           <Button type="primary" onClick={this.onReverse}>reverse</Button>
@@ -150,9 +152,11 @@ class Control extends React.Component {
           reverse={this.state.reverse}
           moment={this.state.moment}
           className="code-box-shape"
-          style={{ margin: '25px 0' }}
+          style={{ margin: '40px 0' }}
         />
-        <div className="demo-buttons">
+        <div className="demo-buttons"
+          style={{ position: 'absolute', width: 292, left: '50%', marginLeft: -146, bottom: 15 }}
+        >
           <Button type="primary" onClick={this.onClick}>play</Button>
           <Button type="primary" onClick={this.onPause}>pause</Button>
           <Button type="primary" onClick={this.onReverse}>reverse</Button>
@@ -163,7 +167,11 @@ class Control extends React.Component {
   }
 }
 ReactDOM.render(<Control />, mountNode)`;
+const title = '变更动画参数';
+const content = '可操作型变更动画';
 export default {
   Comp: Control,
   mdString,
+  title,
+  content,
 };

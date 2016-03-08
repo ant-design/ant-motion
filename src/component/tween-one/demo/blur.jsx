@@ -28,7 +28,13 @@ const mdString = `import TweenOne from 'rc-tween-one'
 ReactDOM.render(<TweenOne
   animation={{ filter: 'blur(10px)', yoyo: true, repeat: -1, duration: 1000 }}
 />, mountNode)`;
+
+const title = '模糊效果';
+const content = '鼠标经过可查看模糊效果';
+
 export default {
   Comp: Blur,
   mdString,
+  title,
+  content,
 };

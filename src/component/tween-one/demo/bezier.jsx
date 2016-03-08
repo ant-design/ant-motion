@@ -50,7 +50,12 @@ const mdString = `import TweenOne from 'rc-tween-one'
 ReactDOM.render(<TweenOne
   animation={{ filter: 'blur(10px)', yoyo: true, repeat: -1, duration: 1000 }}
 />, mountNode)`;
+
+const title = '曲线动画';
+const content = '贝赛尔曲线动画';
 export default {
   Comp: Bezier,
   mdString,
+  title,
+  content,
 };

@@ -30,7 +30,12 @@ ReactDOM.render(<TweenOne
   animation={{ scale: '0', yoyo: true, repeat: -1, duration: 1000 }}
   style={{ transform: 'scale(1)' }}
 />, mountNode)`;
+const title = '缩放效果';
+const content = '鼠标经过可查看缩放效果';
+
 export default {
   Comp: Scale,
   mdString,
+  title,
+  content,
 };

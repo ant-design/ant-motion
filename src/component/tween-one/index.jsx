@@ -10,6 +10,7 @@ import Timeline from './demo/timeline';
 import Control from './demo/control';
 import Bezier from './demo/bezier';
 
+
 class Tween extends React.Component {
   render() {
     return (<div >
@@ -33,31 +34,31 @@ class Tween extends React.Component {
       <h3>使用</h3>
       <div>
         <Highlight>
-          {`import TweenOne from 'rc-tween-one'
+          {`import TweenOne from 'rc-tween-one';
 ReactDOM.render(<TweenOne animation={{ x: 100 }} />, mountNode);`}
         </Highlight>
       </div>
       <h3>示例</h3>
       <DemoLayout col="8">
-        <Item title="位移效果" content="鼠标经过可查看位移效果" code={Position.mdString}>
+        <Item title={Position.title} content={Position.content} code={Position.mdString}>
           <Position.Comp />
         </Item>
-        <Item title="缩放效果" content="鼠标经过可查看缩放效果" code={Scale.mdString}>
+        <Item title={Scale.title} content={Scale.content} code={Scale.mdString}>
           <Scale.Comp />
         </Item>
-        <Item title="旋转效果" content="鼠标经过可查看旋转效果" code={Rotate.mdString}>
+        <Item title={Rotate.title} content={Rotate.content} code={Rotate.mdString}>
           <Rotate.Comp />
         </Item>
-        <Item title="模糊效果" content="鼠标经过可查看模糊效果" code={Blur.mdString}>
+        <Item title={Blur.title} content={Blur.content} code={Blur.mdString}>
           <Blur.Comp />
         </Item>
-        <Item title="时间轴效果" content="鼠标经过可查看时间轴效果" code={Timeline.mdString}>
+        <Item title={Timeline.title} content={Timeline.content} code={Timeline.mdString}>
           <Timeline.Comp />
         </Item>
-        <Item title="变更动画参数" content="可操作型变更动画" code={Control.mdString}>
+        <Item title={Control.title} content={Control.content} code={Control.mdString}>
           <Control.Comp />
         </Item>
-        <Item title="曲线动画" content="贝赛尔曲线动画" code={Bezier.mdString} col="24">
+        <Item title={Bezier.title} content={Bezier.content} code={Bezier.mdString} col="24">
           <Bezier.Comp />
         </Item>
       </DemoLayout>
@@ -216,9 +217,9 @@ ReactDOM.render(<TweenOne animation={{ x: 100 }} />, mountNode);`}
         </tbody>
       </table>
       <blockquote>
-        <p>贝赛尔曲线详细API参照
+        <p>贝赛尔曲线API参照
           <a href="http://greensock.com/docs/#/HTML5/GSAP/Plugins/BezierPlugin/" target="_blank">
-            &nbsp; gsap BezierPlugin
+            & gsap BezierPlugin
           </a>
         </p>
       </blockquote>

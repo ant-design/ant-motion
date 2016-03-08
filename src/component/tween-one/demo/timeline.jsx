@@ -69,7 +69,12 @@ ReactDOM.render(<TweenOne
   ]}
   style={{ transform: 'scale(1)', position: 'relative' }}
 />, mountNode)`;
+const title = '时间轴效果';
+const content = '鼠标经过可查看时间轴效果';
+
 export default {
   Comp: Timeline,
   mdString,
+  title,
+  content,
 };
