@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import assign from 'object-assign';
-import Highlight from './Highlight';
+import Highlight from './../Highlight';
 import TweenOne from 'rc-tween-one';
 import './demolayout.less';
 

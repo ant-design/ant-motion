@@ -1,7 +1,20 @@
+# 缩放效果
+
+- order: 1
+- cols: 3
+
+鼠标经过可查看缩放效果。
+
+---
+
+
+
+
+```jsx
 import React, { PropTypes } from 'react';
 import TweenOne from 'rc-tween-one';
 
-class Scale extends React.Component {
+class Demo extends React.Component {
 
   constructor() {
     super(...arguments);
@@ -18,24 +31,10 @@ class Scale extends React.Component {
     );
   }
 }
-Scale.propTypes = {
+Demo.propTypes = {
   children: PropTypes.any,
   className: PropTypes.string,
   paused: PropTypes.bool,
 };
-
-const mdString = `import TweenOne from 'rc-tween-one';
-
-ReactDOM.render(<TweenOne
-  animation={{ scale: '0', yoyo: true, repeat: -1, duration: 1000 }}
-  style={{ transform: 'scale(1)' }}
-/>, mountNode)`;
-const title = '缩放效果';
-const content = '鼠标经过可查看缩放效果';
-
-export default {
-  Comp: Scale,
-  mdString,
-  title,
-  content,
-};
+ReactDOM.render(<Demo/>, mountNode);
+```

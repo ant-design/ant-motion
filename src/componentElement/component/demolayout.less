@@ -1,4 +1,4 @@
-@import '../common/custom';
+@import '../../common/custom';
 
 @demo: demo-layout;
 .@{demo} {
@@ -58,6 +58,7 @@
     & > h1 {
       font-size: 18px;
       margin: 0 auto 5px;
+      font-weight: lighter;
     }
     &-content {
       font-size: 12px;
@@ -89,12 +90,15 @@
       }
     }
   }
-  &-highlight {
+  & &-highlight {
     border-top: 1px dashed @line-color;
     overflow: hidden;
-    & pre code {
-      border-radius: 0;
-      padding: 20px;
+    & pre {
+      margin: 0;
+      code {
+        border-radius: 0;
+        padding: 20px;
+      }
     }
   }
 
@@ -119,4 +123,6 @@
     position: absolute;
     top: 0;
   }
+
+
 }

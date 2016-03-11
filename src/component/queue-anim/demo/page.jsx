@@ -19,14 +19,6 @@ class Demo extends React.Component {
     });
   }
 
-  getStyle() {
-    return `
-    .code-box-demo .queue-anim-leaving{
-      position: relative !important;
-    }
-    `;
-  }
-
   render() {
     const childrenArr = [<div className="demo-header" key="header">
       <div className="logo">
@@ -69,7 +61,6 @@ class Demo extends React.Component {
     ];
     return (
       <div>
-        <style dangerouslySetInnerHTML={{ __html: this.getStyle() }}></style>
         <p className="buttons" style={{ marginBottom: 20 }}>
           <Button type="primary" onClick={this.onClick}>切换</Button>
         </p>

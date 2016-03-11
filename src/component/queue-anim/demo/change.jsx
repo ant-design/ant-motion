@@ -44,18 +44,9 @@ class Demo extends React.Component {
     });
   }
 
-  getStyle() {
-    return `
-    .code-box-demo .queue-anim-leaving{
-      position: relative !important;
-    }
-    `;
-  }
-
   render() {
     return (
       <div>
-        <style dangerouslySetInnerHTML={{ __html: this.getStyle() }}></style>
         <p className="buttons">
           <Button type="primary" onClick={this.onClick}>切换</Button>
           <Button onClick={this.onAdd} style={{ marginLeft: 10 }}>添加</Button>

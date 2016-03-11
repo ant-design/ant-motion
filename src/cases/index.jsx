@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import AutoResponsive from 'autoresponsive-react';
-import { load } from '../common/util';
+import { load } from '../componentElement/util';
 
 const imgData = [
   { src: 'https://t.alipayobjects.com/images/T1nbhmXfphXXXXXXXX.jpg', width: 211, height: 535, href: '#' },

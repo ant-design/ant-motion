@@ -1,12 +1,14 @@
 import React from 'react';
-import Highlight from '../Highlight';
-import DemoLayout, { Item } from '../DemoLayout';
+import Highlight from '../../componentElement/Highlight';
+import DemoLayout, { Item } from '../../componentElement/component/DemoLayout';
 
-import Basic from './demo/basic';
-import Enter from './demo/enter-leave';
-import Custom from './demo/custom';
-import Change from './demo/change';
-import Page from './demo/page';
+const demoArr = [
+  { comp: require('./demo/basic') },
+  { comp: require('./demo/enter-leave') },
+  { comp: require('./demo/custom') },
+  { comp: require('./demo/change') },
+  { comp: require('./demo/page'), col: 24 },
+];
 
 class QueueAnimDemo extends React.Component {
   getStyle() {
@@ -165,10 +167,26 @@ class QueueAnimDemo extends React.Component {
   display: block;
   content: "";
 }
+
+.code-box-demo .queue-anim-leaving{
+  position: relative !important;
+}
+
 `;
   }
 
   render() {
+    const demoCodeChild = demoArr.map((_item, i) => {
+      const item = _item.comp;
+      return (
+        <Item col={_item.col} title={item.title} content={item.content}
+          code={item.mdString} key={i}
+        >
+          <item.Comp />
+        </Item>
+      );
+    });
+
     return (<div>
       <style dangerouslySetInnerHTML={{ __html: this.getStyle() }}></style>
       <h1>QueueAnim 进出场动画</h1>
@@ -207,21 +225,7 @@ ReactDOM.render(<QueueAnim>
       </blockquote>
       <h2>示例</h2>
       <DemoLayout col="12">
-        <Item title={Basic.title} content={Basic.content} code={Basic.mdString}>
-          <Basic.Comp />
-        </Item>
-        <Item title={Enter.title} content={Enter.content} code={Enter.mdString}>
-          <Enter.Comp />
-        </Item>
-        <Item title={Custom.title} content={Custom.content} code={Custom.mdString}>
-          <Custom.Comp />
-        </Item>
-        <Item title={Change.title} content={Change.content} code={Change.mdString}>
-          <Change.Comp />
-        </Item>
-        <Item title={Page.title} content={Page.content} code={Page.mdString}>
-          <Page.Comp />
-        </Item>
+        {demoCodeChild}
       </DemoLayout>
       <blockquote>
         <p>router 例子

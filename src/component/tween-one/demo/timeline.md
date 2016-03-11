@@ -1,7 +1,17 @@
+# 时间轴效果
+
+- order: 4
+- cols: 3
+
+鼠标经过可查看时间轴效果。
+
+---
+
+```jsx
 import React, { PropTypes } from 'react';
 import TweenOne from 'rc-tween-one';
 
-class Timeline extends React.Component {
+class Demo extends React.Component {
 
   constructor() {
     super(...arguments);
@@ -49,32 +59,11 @@ class Timeline extends React.Component {
     );
   }
 }
-Timeline.propTypes = {
+Demo.propTypes = {
   children: PropTypes.any,
   className: PropTypes.string,
   paused: PropTypes.bool,
 };
+ReactDOM.render(<Demo/>, mountNode);
 
-const mdString = `import TweenOne from 'rc-tween-one';
-
-ReactDOM.render(<TweenOne
-  animation={[
-    { left: '-40%' },
-    { left: '40%' },
-    { top: '30px' },
-    { scale: 0.7 },
-    { scale: 1 },
-    { top: 0 },
-    { left: '0%' },
-  ]}
-  style={{ transform: 'scale(1)', position: 'relative' }}
-/>, mountNode)`;
-const title = '时间轴效果';
-const content = '鼠标经过可查看时间轴效果';
-
-export default {
-  Comp: Timeline,
-  mdString,
-  title,
-  content,
-};
+```

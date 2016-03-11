@@ -1,7 +1,17 @@
+# 位移效果
+
+- order: 0
+- cols: 3
+
+鼠标经过可查看位移效果。
+
+---
+
+```jsx
 import React, { PropTypes } from 'react';
 import TweenOne from 'rc-tween-one';
 
-class Position extends React.Component {
+class Demo extends React.Component {
 
   constructor() {
     super(...arguments);
@@ -18,24 +28,12 @@ class Position extends React.Component {
     );
   }
 }
-Position.propTypes = {
+Demo.propTypes = {
   children: PropTypes.any,
   className: PropTypes.string,
   paused: PropTypes.bool,
 };
 
-const mdString = `import TweenOne from 'rc-tween-one';
+ReactDOM.render(<Demo/>, mountNode);
 
-ReactDOM.render(<TweenOne
-  animation={{ left: '20%', yoyo: true, repeat: -1, duration: 1000 }}
-  style={{ left: '-20%' }}
-/>, mountNode)`;
-const title = '位移效果';
-const content = '鼠标经过可查看位移效果';
-
-export default {
-  Comp: Position,
-  mdString,
-  title,
-  content,
-};
+```

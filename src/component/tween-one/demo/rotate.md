@@ -1,7 +1,17 @@
+# 旋转效果
+
+- order: 2
+- cols: 3
+
+鼠标经过可查看旋转效果。
+
+---
+
+```jsx
 import React, { PropTypes } from 'react';
 import TweenOne from 'rc-tween-one';
 
-class Rotate extends React.Component {
+class Demo extends React.Component {
 
   constructor() {
     super(...arguments);
@@ -17,23 +27,10 @@ class Rotate extends React.Component {
     );
   }
 }
-Rotate.propTypes = {
+Demo.propTypes = {
   children: PropTypes.any,
   className: PropTypes.string,
   paused: PropTypes.bool,
 };
-
-const mdString = `import TweenOne from 'rc-tween-one';
-
-ReactDOM.render(<TweenOne
-  animation={{ rotate: 360, repeat: -1, duration: 1000 }}
-/>, mountNode)`;
-const title = '旋转效果';
-const content = '鼠标经过可查看旋转效果';
-
-export default {
-  Comp: Rotate,
-  mdString,
-  title,
-  content,
-};
+ReactDOM.render(<Demo/>, mountNode);
+```

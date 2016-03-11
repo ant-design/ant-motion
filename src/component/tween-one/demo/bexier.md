@@ -1,7 +1,17 @@
+# 曲线动画
+
+- order: 6
+- cols: 1
+
+贝赛尔曲线动画。
+
+---
+
+```jsx
 import React, { PropTypes } from 'react';
 import TweenOne from 'rc-tween-one';
 
-class Bezier extends React.Component {
+class Demo extends React.Component {
 
   constructor() {
     super(...arguments);
@@ -39,23 +49,11 @@ class Bezier extends React.Component {
     );
   }
 }
-Bezier.propTypes = {
+Demo.propTypes = {
   children: PropTypes.any,
   className: PropTypes.string,
   paused: PropTypes.bool,
 };
+ReactDOM.render(<Demo/>, mountNode);
 
-const mdString = `import TweenOne from 'rc-tween-one';
-
-ReactDOM.render(<TweenOne
-  animation={{ filter: 'blur(10px)', yoyo: true, repeat: -1, duration: 1000 }}
-/>, mountNode)`;
-
-const title = '曲线动画';
-const content = '贝赛尔曲线动画';
-export default {
-  Comp: Bezier,
-  mdString,
-  title,
-  content,
-};
+```

@@ -1,9 +1,10 @@
 import React, { PropTypes } from 'react';
 import TweenOne from 'rc-tween-one';
-import './page.less';
-import { Link, hashHistory } from 'react-router';
+import './list.less';
+import './markdown.less';
+import { Link } from 'react-router';
 import QueueAnim from 'rc-queue-anim';
-const listNav = require('./list');
+const listNav = require('../list');
 import raf from 'rc-tween-one/node_modules/raf';
 import easingTypes from 'rc-tween-one/node_modules/tween-functions';
 
@@ -27,16 +28,15 @@ class Page extends React.Component {
       ulTween: this.getTweenData(this.props, list),
       minHeight: 800,
     };
+    this.oneEnter = false;
     [
       'liClick',
       'listElement',
       'judgeChildActive',
       'onWindowResized',
-      'getTitle',
       'scrollTo',
       'frame',
       'cancelRequestAnimationFrame',
-      'titleClick',
     ].forEach((method) => this[method] = this[method].bind(this));
   }
 
@@ -48,7 +48,6 @@ class Page extends React.Component {
       window.attachEvent('onresize', this.onWindowResized);
     }
     this.onWindowResized();
-    this.timeout = setTimeout(this.getTitle);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -61,8 +60,13 @@ class Page extends React.Component {
   }
 
   componentDidUpdate() {
-    clearTimeout(this.timeout);
-    this.timeout = setTimeout(this.getTitle);
+    if (!this.oneEnter) {
+      clearTimeout(this.tweenTimeout);
+      this.tweenTimeout = setTimeout(this.scrollTo, 350);
+    } else {
+      this.scrollTo();
+    }
+    this.oneEnter = true;
   }
 
   componentWillUnmount() {
@@ -99,40 +103,13 @@ class Page extends React.Component {
     return ulTween;
   }
 
-  getTitle() {
-    const titleArr = document.querySelectorAll(
-      '.page-wrapper section h2,' +
-      '.page-wrapper section h3,' +
-      '.page-wrapper section h4'
-    );
-    const hash = window.location.hash.split('#')[1];
-    const hashParts = hash.split('?')[0];
-    for (let i = 0; i < titleArr.length; i++) {
-      const item = titleArr[i];
-      if (!item.children.length) {
-        item.id = item.innerHTML.replace(/\s+/g, '');
-        item.innerHTML = `${item.innerHTML}<a href="#${hashParts}?anchor=${item.id}"> #</a>`;
-        item.querySelector('a').onclick = this.titleClick;
-      }
-    }
-    clearTimeout(this.tweenTimeout);
-    this.tweenTimeout = setTimeout(this.scrollTo, 350);
-  }
-
   frame() {
     if (this.rafID === -1) {
       return;
     }
-
-    const hash = window.location.hash.split('#')[1];
-    const parame = {};
-    hash.split('?')[1].split('&').map((str) => {
-      const _str = str.replace('=', '/=/').split('/=/');
-      parame[_str[0]] = _str[1];
-    });
     let toTop = 0;
-    if (parame.anchor) {
-      const element = document.querySelector(`#${parame.anchor}`);
+    if (this.props.query) {
+      const element = document.querySelector(`#${this.props.query}`);
       if (element) {
         toTop = element.getBoundingClientRect().top;
         const docTop = document.documentElement.getBoundingClientRect().top;
@@ -161,12 +138,6 @@ class Page extends React.Component {
     this.scrollTop = currentScrollTop();
     this.initTime = Date.now();
     this.rafID = raf(this.frame);
-  }
-
-  titleClick(e) {
-    e.preventDefault();
-    this.scrollTo();
-    hashHistory.push(e.currentTarget.href.split('#')[1]);
   }
 
   cancelRequestAnimationFrame() {
@@ -275,6 +246,7 @@ Page.propTypes = {
   list: PropTypes.array,
   href: PropTypes.string,
   _keys: PropTypes.string,
+  query: PropTypes.string,
   content: PropTypes.object,
   children: PropTypes.any,
 };

@@ -1,7 +1,17 @@
+# 模糊效果
+
+- order: 3
+- cols: 3
+
+鼠标经过可查看模糊效果。
+
+---
+
+```jsx
 import React, { PropTypes } from 'react';
 import TweenOne from 'rc-tween-one';
 
-class Blur extends React.Component {
+class Demo extends React.Component {
 
   constructor() {
     super(...arguments);
@@ -17,24 +27,11 @@ class Blur extends React.Component {
     );
   }
 }
-Blur.propTypes = {
+Demo.propTypes = {
   children: PropTypes.any,
   className: PropTypes.string,
   paused: PropTypes.bool,
 };
+ReactDOM.render(<Demo/>, mountNode);
 
-const mdString = `import TweenOne from 'rc-tween-one';
-
-ReactDOM.render(<TweenOne
-  animation={{ filter: 'blur(10px)', yoyo: true, repeat: -1, duration: 1000 }}
-/>, mountNode)`;
-
-const title = '模糊效果';
-const content = '鼠标经过可查看模糊效果';
-
-export default {
-  Comp: Blur,
-  mdString,
-  title,
-  content,
-};
+```

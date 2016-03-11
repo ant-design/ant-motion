@@ -2,15 +2,19 @@ import '../common/lib';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import ReactDOM from 'react-dom';
 import React, { Component } from 'react';
-import Header from '../common/Header';
-import Footer from '../common/Footer';
+import Header from '../componentElement/Header';
+import Footer from '../componentElement/Footer';
 import QueueAnim from 'rc-queue-anim';
 
-import Home from '../home';
-import Page from '../common/Page';
+import Article from '../componentElement/Article';
+import ComponentDoc from '../componentElement/ComponentDoc';
 
-// import useStandardScroll from 'scroll-behavior/lib/useStandardScroll';
-// const history = useStandardScroll(() => hashHistory)();
+import Home from '../home';
+import Page from '../componentElement/Page/index';
+
+import language from '../../_site/data/language';
+import component from '../../_site/data/component';
+
 
 class Index extends Component {
   constructor() {
@@ -21,27 +25,15 @@ class Index extends Component {
     const key = this.props.location.pathname;
     const keys = this.props.params.pageName;
     const contentName = this.props.params.contentName;
+    const query = this.props.location.query.scrollTo;
     const _key = keys ? 'page' : 'index';
     const child = this.props.children;
     let children = child.props.children;
+    let desc;
     switch (keys) {
       case 'language':
-        switch (contentName) {
-          case 'space':
-            children = React.createElement(require('../language/space'));
-            break;
-          case 'transition':
-            children = React.createElement(require('../language/transition'));
-            break;
-          case 'interact':
-            children = React.createElement(require('../language/interact'));
-            break;
-          case 'aware':
-            children = React.createElement(require('../language/aware'));
-            break;
-          default:
-            children = React.createElement(require('../language'));
-        }
+        desc = language[`src/${keys}/${contentName || 'time'}.md`];
+        children = <Article content={desc} pathname={key} />;
         break;
       case 'cases':
         switch (contentName) {
@@ -52,25 +44,26 @@ class Index extends Component {
         }
         break;
       case 'component':
-        switch (contentName) {
-          case 'tween-one':
-            children = React.createElement(require('../component/tween-one/'));
-            break;
-          case 'queue-anim':
-            children = React.createElement(require('../component/queue-anim/'));
-            break;
-          default:
-            children = React.createElement(require('../component'));
+        desc = component[`src/${keys}/${contentName ? `${contentName}/index` : 'introduce'}.md`];
+        if (contentName) {
+          children = <ComponentDoc content={desc} pathname={key} contentName={contentName}/>;
+        } else {
+          children = <Article content={desc} pathname={key} />;
         }
         break;
       default:
         children = null;
     }
+
     return (<div>
       <Header activeKey={keys} />
       <div className="content" style={{ minHeight: 600 }}>
         <QueueAnim type="bottom" duration={600} ease="easeInOutQuad">
-          { React.cloneElement(child, { key: _key, href: key, _keys: keys }, children) }
+          {
+            React.cloneElement(child, {
+              key: _key, href: key, _keys: keys, query,
+            }, children)
+          }
         </QueueAnim>
       </div>
       <Footer />
