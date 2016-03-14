@@ -1,8 +1,10 @@
-# Ant Motion
+# Ant Motion [![node version][node-image]][node-url]
+
+[node-image]: https://img.shields.io/badge/node.js-%3E=_0.10-green.svg?style=flat-square
+[node-url]: http://nodejs.org/download/
 
 <img src="https://os.alipayobjects.com/rmsportal/tdjazOmUHhUKXxZ.svg"
-  width="100%"
-  style= "max-width: 300px; vertical-align: top"
+  width="300"
 />
 
 一个高效的页面动效解决方案
