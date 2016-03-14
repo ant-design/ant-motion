@@ -1,25 +1,15 @@
-# antd-demo
+# Ant Motion
 
-## Environment
+一个高效的页面动效解决方案
 
-```
-node >= 4
-```
+<img src="https://os.alipayobjects.com/rmsportal/IjqEyFKamUcapGY.png" width="100%" style="max-width: 720px"/>
 
-## Code Style
-
-https://github.com/airbnb/javascript
 
 ## Develop
 
 ```
-npm run dev
+npm start
 ```
 
 访问 http://127.0.0.1:8989 
 
-## Build
-
-```
-npm run build
-```
