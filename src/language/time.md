@@ -3,6 +3,8 @@
 - category: 基本原则
 - order: 0
 - chinese: 时间栅格
+- index: true
+- parentOrder: 0
 
 ---
 

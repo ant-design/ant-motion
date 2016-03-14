@@ -1,3 +1,46 @@
+import language from '../../_site/data/language';
+import component from '../../_site/data/component';
+import cases from '../../_site/data/cases';
+
+function getMenuItems(data) {
+  const menuMeta = Object.keys(data)
+    .map(key => data[key].meta);
+  const menuItems = [];
+  menuMeta.sort((a, b) =>
+    parseInt(parseFloat(a.order) + parseFloat(a.parentOrder || 0), 10)
+      - parseInt(parseFloat(b.order) + parseFloat(b.parentOrder || 0), 10)
+  ).forEach(meta => {
+    const category = meta.category;
+    const item = {};
+    item.title = meta.chinese || meta.english;
+    item.disabled = meta.disabled;
+    item.order = meta.order;
+    item.href = meta.fileName.split('/')[2].split('.')[0];
+    if (meta.index) {
+      item.href = '';
+    }
+    if (category) {
+      const itemArr = menuItems.filter(_item => _item.title === category);
+      const items = itemArr[0] || { title: category };
+      items.children = items.children || [];
+
+      items.open = items.open === false ? items.open : !meta.parentClose;
+      items.disabled = items.disabled || meta.parentDisabled;
+      items.order = items.order || meta.parentOrder;
+      if (category === 'Components') {
+        item.title = meta.english;
+        item.desc = meta.chinese;
+      }
+      items.children.push(item);
+      if (!itemArr.length) {
+        menuItems.push(items);
+      }
+    } else {
+      menuItems.push(item);
+    }
+  });
+  return menuItems;
+}
 const list = {
   nav: [
     { name: '首页', href: '/', key: 'home' },
@@ -5,104 +48,8 @@ const list = {
     { name: '组件', href: '/component/', key: 'component' },
     { name: '实践', href: '/cases/', key: 'cases' },
   ],
-  language: [
-    {
-      title: '基本原则',
-      children: [
-        {
-          title: '时间栅格',
-          href: '',
-        },
-        {
-          title: '大气空间',
-          href: 'space',
-        },
-        {
-          title: '微秒运动',
-          href: 'abc',
-          disabled: true,
-        },
-      ],
-    },
-    {
-      title: '巧用过渡',
-      href: 'transition',
-    },
-    {
-      title: '增强示意',
-      href: 'interact',
-    },
-    {
-      title: '改善感知',
-      href: 'aware',
-    },
-  ],
-  component: [
-    {
-      title: 'Ant Motion of React',
-      href: '',
-    },
-    {
-      title: 'Component',
-      key: 'componet',
-      open: true,
-      children: [
-        {
-          title: 'TweenOne',
-          desc: '单元素动画',
-          href: 'tween-one',
-        },
-        {
-          title: 'QueueAnim',
-          desc: '进出场动画',
-          href: 'queue-anim',
-        },
-        {
-          title: 'ScrollAnim',
-          desc: '页面滚动动画',
-          href: 'scroll-anim',
-        },
-        {
-          title: 'BannerAnim',
-          desc: 'banner动画',
-          href: 'banner-anim',
-          disabled: true,
-        },
-        {
-          title: 'IconAnim',
-          desc: 'Icon变换动画',
-          href: 'icon-anim',
-          disabled: true,
-        },
-      ],
-    },
-  ],
-  cases: [
-    {
-      title: '页面示例',
-      children: [
-        {
-          title: '首页案例',
-          href: '',
-        },
-        {
-          title: '列表案例',
-          href: 'list',
-          disabled: true,
-        },
-      ],
-    },
-    {
-      title: '单元素示例',
-      key: 'one',
-      disabled: true,
-      children: [
-        {
-          title: '进出场示例',
-          href: 'queue',
-        },
-      ],
-    },
-  ],
+  language: getMenuItems(language),
+  component: getMenuItems(component),
+  cases: getMenuItems(cases),
 };
 export default list;

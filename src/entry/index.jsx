@@ -14,6 +14,7 @@ import Page from '../componentElement/Page/index';
 
 import language from '../../_site/data/language';
 import component from '../../_site/data/component';
+import cases from '../../_site/data/cases';
 
 
 class Index extends Component {
@@ -36,12 +37,8 @@ class Index extends Component {
         children = <Article content={desc} pathname={key} />;
         break;
       case 'cases':
-        switch (contentName) {
-          case 'list':
-            break;
-          default:
-            children = React.createElement(require('../cases'));
-        }
+        desc = cases[`src/${keys}/${contentName || 'home'}.md`];
+        children = <Article content={desc} pathname={key} />;
         break;
       case 'component':
         desc = component[`src/${keys}/${contentName ? `${contentName}/index` : 'introduce'}.md`];

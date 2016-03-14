@@ -1,15 +1,10 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import AutoResponsive from 'autoresponsive-react';
-import { load } from '../componentElement/util';
+import { load } from '../../componentElement/util';
 
-const imgData = [
-  { src: 'https://t.alipayobjects.com/images/T1nbhmXfphXXXXXXXX.jpg', width: 211, height: 535, href: '#' },
-  { src: 'https://t.alipayobjects.com/images/T18HlmXllgXXXXXXXX.jpg', width: 211, height: 490, href: '#' },
-  { src: 'https://t.alipayobjects.com/images/T1PrdmXjVhXXXXXXXX.jpg', width: 211, height: 490, href: '#' },
-];
 
-class Cases extends React.Component {
+class AutoResponsiveDemo extends React.Component {
   constructor() {
     super(...arguments);
     this.state = {
@@ -46,10 +41,10 @@ class Cases extends React.Component {
 
   getImageData() {
     load({
-      data: imgData,
+      data: this.props.imgArr,
       onComplete: () => {
         this.setState({
-          data: imgData,
+          data: this.props.imgArr,
         });
       },
     });
@@ -77,22 +72,19 @@ class Cases extends React.Component {
   }
 
   render() {
-    let loadChild = (<div className="load">
-      加载中...
-    </div>);
-
     if (this.state.data) {
-      loadChild = (<AutoResponsive ref="container" {...this.getAutoResProps()}>
+      return (<AutoResponsive ref="container" {...this.getAutoResProps()} {...this.props}>
         {this.state.data.map(this.getImgChild)}
       </AutoResponsive>);
     }
-    return (<div>
-      <h1>首页动效组合案例</h1>
-      <p className="text">首页（Display Page）一般是指当用户进入某个网站时浏览到的第一个页面，也可以当作着陆页（Landing
-        Page）来吸引用户的注意。在此，我们归纳整理了几种最常见的展示类模板，可以用于灵活的搭配组合。</p>
-      {loadChild}
+    return (<div className="load">
+      加载中...
     </div>);
   }
 }
+AutoResponsiveDemo.propTypes = {
+  className: PropTypes.string,
+  imgArr: PropTypes.array,
+};
 
-export default Cases;
+export default AutoResponsiveDemo;

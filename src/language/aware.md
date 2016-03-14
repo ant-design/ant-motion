@@ -1,8 +1,8 @@
 # Aware
 
-- order: 2
+- order: 3
 - chinese: 改善感知
-
+- disabled: true
 ---
 
 

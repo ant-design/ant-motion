@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import * as utils from '../util';
 import { Link } from 'react-router';
 import Icon from 'antd/lib/icon';
-import Affix from 'antd/lib/affix';
 import Button from 'antd/lib/button';
 import DemoLayout, { Item } from '../../componentElement/component/DemoLayout';
 import _demosList from '../../../_site/data/demos-list';
@@ -36,7 +35,7 @@ class ComponentDoc extends React.Component {
     const demosToChild = demos.sort((a, b) =>
       parseInt(a.meta.order, 10) - parseInt(b.meta.order, 10)
     ).map((demoData, i) => {
-      const col = Math.round(24 / (demoData.meta.cols || 1));
+      const col = Math.round(24 / (demoData.meta.cols || content.meta.cols || 1));
       const _content = demoData.intro.map(utils.objectToComponent.bind(null, this.props.pathname));
       const Comp = demoData.preview;
       return (<Item col={col} title={demoData.meta.english} content={_content}
@@ -45,17 +44,6 @@ class ComponentDoc extends React.Component {
         {Comp}
       </Item>);
     });
-    const jumper = content.description.filter(node => node.type === 'h2')
-      .map(node => (<li key={node.children.replace(/[~'!<>@#$%^&*()-+_=:\s]/g, '')}>
-          <Link to={{
-            pathname: this.props.pathname,
-            query: { scrollTo: node.children.replace(/[~'!<>@#$%^&*()-+_=:\s]/g, '') },
-          }}
-          >
-            { node.children }
-          </Link>
-        </li>)
-      );
     const childrenToRender =
       description.map(utils.objectToComponent.bind(null, this.props.pathname));
 
@@ -66,15 +54,11 @@ class ComponentDoc extends React.Component {
       }
       return utils.objectToComponent(this.props.pathname, child, i);
     });
-
     return (
       <div className={this.props.className}>
-        <Affix className="toc-affix">
-          <ul className="toc demos-anchor">
-            { jumper }
-          </ul>
-        </Affix>
-        <h1>{content.meta.chinese || content.meta.english}
+
+        <h1>{content.meta.english}
+          <i>{content.meta.chinese}</i>
           <iframe key="github-btn"
             src={`https://ghbtns.com/github-btn.html?user=react-component&repo=${this.props.contentName}&type=star&count=true`}
             frameBorder="0" scrolling="0" width="98px" height="20px"

@@ -176,7 +176,6 @@ class Page extends React.Component {
   }
 
   listElement(item, i) {
-    const href = this.props.href.split('/');
     let className = '';
     if (item.children) {
       // 返回二级菜单
@@ -186,7 +185,7 @@ class Page extends React.Component {
         className = 'active';
       }
       const liClick = this.liClick.bind(this, this.props._keys + i, item.children.length);
-      return (<li key={`${this.props._keys}.${item.key || 'index'}`}
+      return (<li key={`${this.props._keys}.${item.title}`}
         className={className} disabled={item.disabled}
       >
         <h4
@@ -203,12 +202,10 @@ class Page extends React.Component {
         </TweenOne>
       </li>);
     }
-
-    const _href = item.href.replace(/[/]/g, '') || 'index';
+    const contentName = this.props.params.contentName;
+    const _href = item.href.replace(/[/]/g, '') || item.title;
     className = '';
-    if (href.indexOf(_href) >= 0 ||
-      ((_href === 'index' || _href === '' || _href === '/') &&
-      (href[2] === '' || !href[2]))) {
+    if (contentName === _href || _href === item.title && !contentName) {
       className = 'active';
     }
     return (<li key={`${this.props._keys}.${_href}`}
@@ -249,6 +246,7 @@ Page.propTypes = {
   query: PropTypes.string,
   content: PropTypes.object,
   children: PropTypes.any,
+  params: PropTypes.object,
 };
 
 Page.defaultProps = {
