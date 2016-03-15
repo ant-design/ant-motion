@@ -5,8 +5,8 @@ import './markdown.less';
 import { Link } from 'react-router';
 import QueueAnim from 'rc-queue-anim';
 const listNav = require('../list');
-import raf from 'rc-tween-one/node_modules/raf';
-import easingTypes from 'rc-tween-one/node_modules/tween-functions';
+import raf from 'raf';
+import easingTypes from 'tween-functions';
 
 function currentScrollTop() {
   const supportPageOffset = window.pageXOffset !== undefined;

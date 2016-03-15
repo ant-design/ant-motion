@@ -1,18 +1,18 @@
 {
-  "name": "antd-demo",
+  "name": "antd-motion",
   "version": "0.1.0",
   "entry": {
-    "index": "./src/entry/index.jsx"
+    "index": "./src/entry/index.jsx",
+    "demo1": "./demo/page/demo1/index.jsx"
   },
   "dependencies": {
+    "raf": "3.1.x",
+    "tween-functions": "1.0.x",
     "antd-md-loader": "0.1.0-beta.8",
     "mark-twain": "^0.2.0-beta.4",
     "ramda": "^0.19.1",
     "highlight.js": "~9.2.0",
     "object-assign": "~4.0.x",
-    "rc-queue-anim": "~0.11.5",
-    "rc-tween-one": "0.2.x",
-    "rc-scroll-anim": "0.2.x",
     "antd": "~0.12.0",
     "atool-build": "0.5.x",
     "autoresponsive-react": "1.1.x",
@@ -20,7 +20,10 @@
     "es3ify-loader": "^0.1.0",
     "react": "~0.14.6",
     "react-dom": "~0.14.6",
-    "react-router": "~2.0.0"
+    "react-router": "~2.0.0",
+    "rc-queue-anim": "~0.11.5",
+    "rc-tween-one": "0.2.x",
+    "rc-scroll-anim": "0.2.x"
   },
   "devDependencies": {
     "dora": "0.2.x",
