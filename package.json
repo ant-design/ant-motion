@@ -44,6 +44,6 @@
     "site": "npm run clean && ./scripts/build-website.js && atool-build && mv dist/* _site && rm -rf dist && cp CNAME index.html _site",
     "start": "npm run clean && ./scripts/build-website.js && npm run dev",
     "clean": "rm -rf _site dist",
-    "deploy": "npm run site && ./scripts/deploy.js"
+    "deploy": "npm run site && node ./scripts/deploy.js"
   }
 }

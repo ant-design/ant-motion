@@ -1,5 +1,3 @@
-#! /usr/bin/env node
-
 var ghPages = require('gh-pages');
 var path = require('path');
 ghPages.publish(path.join(process.cwd(), '_site'), {
