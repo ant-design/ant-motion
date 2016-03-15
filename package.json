@@ -2,38 +2,38 @@
   "name": "antd-motion",
   "version": "0.1.0",
   "entry": {
-    "index": "./src/entry/index.jsx",
-    "demo1": "./demo/page/demo1/index.jsx"
+    "index": "./src/entry/index.jsx"
   },
   "dependencies": {
-    "raf": "3.1.x",
-    "tween-functions": "1.0.x",
-    "antd-md-loader": "0.1.0-beta.8",
-    "mark-twain": "^0.2.0-beta.4",
-    "ramda": "^0.19.1",
-    "highlight.js": "~9.2.0",
-    "object-assign": "~4.0.x",
-    "antd": "~0.12.0",
-    "atool-build": "0.5.x",
-    "autoresponsive-react": "1.1.x",
-    "babel-plugin-antd": "^0.2.0",
-    "es3ify-loader": "^0.1.0",
-    "react": "~0.14.6",
-    "react-dom": "~0.14.6",
-    "react-router": "~2.0.0",
     "rc-queue-anim": "~0.11.5",
     "rc-tween-one": "0.2.x",
     "rc-scroll-anim": "0.2.x"
   },
   "devDependencies": {
+    "antd": "~0.12.0",
+    "antd-md-loader": "~0.1.0-beta.9",
+    "atool-build": "0.5.x",
+    "autoresponsive-react": "1.1.x",
+    "babel-plugin-antd": "^0.2.0",
     "dora": "0.2.x",
     "dora-plugin-atool-build": "0.4.x",
     "dora-plugin-hmr": "0.3.x",
     "dora-plugin-proxy": "0.5.x",
+    "es3ify-loader": "^0.1.0",
     "eslint": "1.10.x",
     "eslint-config-airbnb": "4.0.x",
     "eslint-plugin-react": "3.16.x",
-    "pre-commit": "1.x"
+    "gh-pages": "^0.11.0",
+    "highlight.js": "~9.2.0",
+    "mark-twain": "^0.2.0-beta.4",
+    "object-assign": "4.0.x",
+    "pre-commit": "1.x",
+    "raf": "3.1.x",
+    "ramda": "^0.19.1",
+    "react": "~0.14.6",
+    "react-dom": "~0.14.6",
+    "react-router": "~2.0.0",
+    "tween-functions": "1.0.x"
   },
   "pre-commit": [
     "lint"
@@ -41,8 +41,9 @@
   "scripts": {
     "dev": "dora -p 8111 --plugins atool-build,proxy,hmr",
     "lint": "eslint --ext .js,.jsx src",
-    "build": "atool-build -o ./dist/${npm_package_family}/${npm_package_name}/${npm_package_version}",
+    "site": "npm run clean && ./scripts/build-website.js && atool-build && mv dist/* _site && rm -rf dist && cp CNAME index.html _site",
     "start": "npm run clean && ./scripts/build-website.js && npm run dev",
-    "clean": "rm -rf _site dist"
+    "clean": "rm -rf _site dist",
+    "deploy": "npm run site && ./scripts/deploy.js"
   }
 }

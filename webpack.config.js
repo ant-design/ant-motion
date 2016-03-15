@@ -6,12 +6,5 @@ module.exports = function(webpackConfig) {
     }
     return loader;
   });
-
-  // Fix ie8 compatibility
-  webpackConfig.module.loaders.unshift({
-    test: /\.jsx?$/,
-    loader: 'es3ify',
-  });
-
   return webpackConfig;
 };
