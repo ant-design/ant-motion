@@ -1,0 +1,40 @@
+@header: header;
+.@{header} {
+  height: 64px;
+  background: @nav-bg-color;
+  position: fixed;
+  width: 100%;
+  z-index: 9999;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.25);
+  &-logo {
+    display: inline-block;
+    margin: 15px 0 0 4%;
+    height: 33px;
+    & img {
+      vertical-align: top;
+      display: block;
+    }
+    & a {
+      display: block;
+    }
+  }
+  &-nav {
+    float: right;
+    margin-right: 4%;
+    line-height: 64px;
+    position: relative;
+    & .ant-menu-horizontal {
+      border-bottom-color: transparent;
+    }
+    & .ant-menu {
+      background: transparent;
+      color: @text-color-light;
+      line-height: 62px;
+
+    }
+    & .ant-menu-horizontal > .ant-menu-item-active {
+      color: @primary-color;
+      border-bottom-color: @primary-color;
+    }
+  }
+}

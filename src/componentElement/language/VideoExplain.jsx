@@ -105,7 +105,9 @@ class VideoExplain extends React.Component {
   render() {
     return (
       <div className={this.props.className}>
-        <video preload loop style={{ width: '100%' }}>
+        <video preload autoPlay={this.props.autoPlay} loop={this.props.loop}
+          style={{ width: '100%' }}
+        >
           <source src={this.props.src} type={this.props.videoType} />
         </video>
         <TweenOne animation={this.state.alpha}>
@@ -117,8 +119,12 @@ class VideoExplain extends React.Component {
               <rect width="100%" height="100%" fill="rgba(0,0,0,0.35)" />
               <g transform={this.state.playBtnXY}>
                 <circle r="30" fill="rgba(255,255,255,1)" />
-                <TweenOne component="rect" width="4" fill="#999"
-                  style={{ height: 20, transform: 'translate(-8px,-14px) rotate(-45deg)' }}
+                <TweenOne component="rect" fill="#999"
+                  style={{
+                    height: 20,
+                    width: 4,
+                    transform: 'translate(-8px,-14px) rotate(-45deg)',
+                  }}
                   animation={this.state.leftBar}
                 />
                 <TweenOne component="rect" width="4" fill="#999"
@@ -140,11 +146,13 @@ VideoExplain.propTypes = {
   src: PropTypes.string,
   videoType: PropTypes.string,
   autoPlay: PropTypes.bool,
+  loop: PropTypes.bool,
 };
 
 VideoExplain.defaultProps = {
   className: 'content-img',
   videoType: 'video/mp4',
+  loop: true,
 };
 
 export default VideoExplain;

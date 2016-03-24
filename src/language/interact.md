@@ -44,9 +44,9 @@ import VideoExplain from '../componentElement/language/VideoExplain';
 ReactDOM.render(<VideoExplain src="https://os.alipayobjects.com/rmsportal/XrUIWmsmOlEnZGc.mp4" />, mountNode);
 ```
 
-### 弹出框唤起
+### 弹出框呼出
 
-从页面的某个按钮唤起弹出框时, 弹框从按钮处唤起, 可提示用户弹框与按钮的关第;
+从页面的某个按钮呼出弹出框时, 弹框从按钮处呼起, 可提示用户弹框与按钮的关第;
 
 ```__react
 import React from 'react';

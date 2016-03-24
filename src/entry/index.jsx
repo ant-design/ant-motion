@@ -54,7 +54,7 @@ class Index extends Component {
 
     return (<div>
       <Header activeKey={keys} />
-      <div className="content" style={{ minHeight: 600 }}>
+      <section className="content" style={{ minHeight: 600 }}>
         <QueueAnim type="bottom" duration={600} ease="easeInOutQuad">
           {
             React.cloneElement(child, {
@@ -62,7 +62,7 @@ class Index extends Component {
             }, children)
           }
         </QueueAnim>
-      </div>
+      </section>
       <Footer />
     </div>);
   }

@@ -2,7 +2,8 @@
   "name": "antd-motion",
   "version": "0.1.0",
   "entry": {
-    "index": "./src/entry/index.jsx"
+    "index": "./src/entry/index.jsx",
+    "templet/page/homeDemo1/index": "./templet/page/homeDemo1/index.jsx"
   },
   "dependencies": {
     "rc-queue-anim": "~0.11.5",

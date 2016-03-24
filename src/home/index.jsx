@@ -71,7 +71,7 @@ class Home extends React.Component {
       <QueueAnim className="banner-text" type="bottom" duration={500}>
         <h1 key="h1">Ant Motion</h1>
         <span key="span">高效的动效设计解决方案</span>
-        <Link to="" key="link">开始使用</Link>
+        <Link to="/cases/" key="link">开始使用</Link>
       </QueueAnim>
     </div>);
   }

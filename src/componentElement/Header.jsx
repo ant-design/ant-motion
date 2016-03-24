@@ -88,13 +88,14 @@ class Header extends React.Component {
       className={this.props.className}
       animation={{ opacity: 1 }}
       style={{ opacity: 0 }}
+      component="header"
     >
       <TweenOne className={`${this.props.className}-logo`}
         animation={{ x: '0', opacity: 1, duration: 800 }}
         style={{ transform: 'translateX(-30px)', opacity: 0 }}
       >
         <Link to="/" key="logo">
-          <img height="33" src="https://os.alipayobjects.com/rmsportal/xmffOECeJNyecDZ.svg" />
+          <img height="33" src="https://os.alipayobjects.com/rmsportal/mlcYmsRilwraoAe.svg" />
         </Link>
       </TweenOne>
       <TweenOne component="nav"
