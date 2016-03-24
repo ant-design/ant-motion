@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react';
 import assign from 'object-assign';
-import Highlight from './../Highlight';
 import TweenOne from 'rc-tween-one';
 import './demolayout.less';
 
@@ -94,9 +93,9 @@ class Item extends React.Component {
         style={this.state.highlightBoxStyle}
       >
         <TweenOne animation={this.state.highlightAnim} style={this.state.highlightStyle}>
-          <Highlight>
-            {this.props.code}
-          </Highlight>
+          <pre>
+            <code className="js" dangerouslySetInnerHTML={{ __html: this.props.code }}/>
+          </pre>
         </TweenOne>
       </div>
     </li>);

@@ -31,7 +31,7 @@ class Page4 extends React.Component {
             </li>
             <li key="1">
               <div>
-                <img src={this.props.img[0]} width="115" />
+                <img src={this.props.img[1]} width="115" />
               </div>
               <h2>SLIDERS</h2>
               <i />
@@ -42,7 +42,18 @@ class Page4 extends React.Component {
             </li>
             <li key="2">
               <div>
-                <img src={this.props.img[0]} width="115" />
+                <img src={this.props.img[2]} width="115" />
+              </div>
+              <h2>SLIDERS</h2>
+              <i />
+              <p>Image source from the network Demo,
+                please upload pictures to replace.
+                Image source from the networkDemo
+              </p>
+            </li>
+            <li key="3">
+              <div>
+                <img src={this.props.img[3]} width="115" />
               </div>
               <h2>SLIDERS</h2>
               <i />
@@ -66,6 +77,7 @@ Page4.propTypes = {
 Page4.defaultProps = {
   className: 'page4',
   img: [
+    'https://os.alipayobjects.com/rmsportal/eHBUBcXxqzLRitB.png',
     'https://os.alipayobjects.com/rmsportal/eHBUBcXxqzLRitB.png',
     'https://os.alipayobjects.com/rmsportal/eHBUBcXxqzLRitB.png',
     'https://os.alipayobjects.com/rmsportal/eHBUBcXxqzLRitB.png',

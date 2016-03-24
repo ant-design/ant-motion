@@ -39,7 +39,7 @@ class ComponentDoc extends React.Component {
       const _content = demoData.intro.map(utils.objectToComponent.bind(null, this.props.pathname));
       const Comp = demoData.preview;
       return (<Item col={col} title={demoData.meta.english} content={_content}
-        code={demoData.code} key={i}
+        code={demoData.highlightedCode} key={i}
       >
         {Comp}
       </Item>);

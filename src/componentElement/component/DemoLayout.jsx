@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react';
 import assign from 'object-assign';
 import Item from './DemoItem';
-import '../../../node_modules/highlight.js/styles/tomorrow.css';
 import './demolayout.less';
 
 class DemoLayout extends React.Component {

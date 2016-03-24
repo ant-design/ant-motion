@@ -21,6 +21,7 @@
     }
   }
   & > h2, & > h3, & > h4 {
+    color: @title-color;
     & a {
       opacity: 0;
       transition: opacity .3s @ease-out;
@@ -32,9 +33,9 @@
     }
   }
   & > h1 {
-    font-weight: lighter;
+    font-weight: normal;
     font-size: 28px;
-    color: @text-color;
+    color: @title-color;
     margin: 0 auto 20px;
     & > i {
       font-style: normal;
@@ -52,11 +53,12 @@
   }
   & > h3 {
     font-size: 16px;
-    font-weight: bold;
+    font-weight: normal;
   }
   & > h4 {
     font-size: 14px;
     margin: 1em auto;
+    font-weight: normal;
   }
   & > p {
     line-height: 1.8;
@@ -76,9 +78,10 @@
   }
   & pre {
     margin: 1em 0;
+    background: #f7f7f7;
+    border-radius: 6px;
     & code {
-      background: #f7f7f7;
-      border-radius: 6px;
+      background: transparent;
       padding: 1em 2em;
       margin: 0;
       border: none;
