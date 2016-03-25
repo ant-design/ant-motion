@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import motionTool from '../../tool/';
+
 import Header from './component/Header';
 import Banner from './component/Banner';
 import Page1 from './component/Page1';
@@ -12,18 +14,31 @@ import Footer from './component/Footer';
 import '../../common/ant-d.less';
 import './assets/index.less';
 
-class Home extends React.Component {
+const Components = [Header, Banner, Page1, Page2, Page3, Page4, Footer];
+
+const config = {
+  name: 'demoAnimation',
+  version: '0.0.1',
+};
+
+// TODO: add file loader
+// 主要配置分为2类,文案图片配置与参数配置
+Components.forEach(Component=> {
+  config[Component.name] = Component.config;
+});
+
+class Demo extends React.Component {
   render() {
-    return (<section className="content-wap">
-      <Header />
-      <Banner />
-      <Page1 />
-      <Page2 />
-      <Page3 />
-      <Page4 />
-      <Footer />
-    </section>);
+    return <setction class='content-wap'>
+      {
+        Components.map(Component=> {
+          return React.createElement(Component, {...this.props[Component['name']]})
+        })
+      }
+    </setction>
   }
 }
 
-ReactDOM.render(<Home />, document.getElementById('react-content'));
+Demo = motionTool(config)(Demo);
+
+ReactDOM.render(<Demo />, document.getElementById('react-content'));

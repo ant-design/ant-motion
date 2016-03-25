@@ -10,7 +10,7 @@ class Banner extends React.Component {
       <TweenOne animation={{ opacity: 0, type: 'from' }} className={this.props.className}>
         <div
           style={{
-          backgroundImage: `url(${this.props.bgImg})`,
+          backgroundImage: `url(${this.props.dataSource.bgImg})`,
           }}
           className={`${this.props.className}-bg`}
         />
@@ -38,7 +38,9 @@ Banner.propTypes = {
 
 Banner.defaultProps = {
   className: 'banner',
-  bgImg: 'https://os.alipayobjects.com/rmsportal/IhCNTqPpLeTNnwr.jpg',
+  dataSource: {
+    bgImg: 'https://os.alipayobjects.com/rmsportal/IhCNTqPpLeTNnwr.jpg',
+  },
   anim: {
     type: 'bottom',
     delay: 300,

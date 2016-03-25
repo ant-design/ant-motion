@@ -4,11 +4,13 @@ import Menu from 'antd/lib/menu';
 
 class Header extends React.Component {
   render() {
-    const img = this.props.img;
+    console.log("this.props", this.props.variables);
+    const {img} = this.props.dataSource;
+    const {delay, duration} = this.props.variables;
     const animData = ['left', 'right'].map((style, i) => {
-      const anim = this.props.anim.anim[style];
-      anim.delay = i * (this.props.anim.delay || 100) + this.props.anim.delay;
-      anim.duration = this.props.duration;
+      const anim = this.props.variables[style];
+      anim.delay = i * (delay || 100) + delay;
+      anim.duration = duration;
       anim.type = 'from';
       return anim
     });
@@ -44,15 +46,69 @@ Header.propTypes = {
 
 Header.defaultProps = {
   className: 'header',
-  img: 'https://os.alipayobjects.com/rmsportal/mlcYmsRilwraoAe.svg',
-  anim: {
-    anim: {
-      left: { x: -30, opacity: 0, },
-      right: { x: 30, opacity: 0, },
-    },
+  dataSource: {
+    img: 'https://os.alipayobjects.com/rmsportal/mlcYmsRilwraoAe.svg',
+    menu1: '导航一',
+    menu2: '导航二',
+    menu3: '导航三',
+    menu4: '导航四',
+  },
+  variables: {
+    left: { x: -30, opacity: 0, },
+    right: { x: 30, opacity: 0, },
     duration: 800,
     delay: 100,
   },
 };
+
+// hidden start
+Header.config = {
+  name: 'ant motion header',
+  dataSource: [
+    {
+      key: 'img',
+      name: 'icon',
+      value: 'https://os.alipayobjects.com/rmsportal/YysxJDMuhbSlKid.png',
+    },
+    {
+      key: 'menu1',
+      name: '导航一',
+      value: '导航一',
+    },
+    {
+      key: 'menu2',
+      name: '导航二',
+      value: '导航二',
+    },
+    {
+      key: 'menu3',
+      name: '导航三',
+      value: '导航三',
+    },
+    {
+      key: 'menu4',
+      name: '导航四',
+      value: '导航四',
+    },
+  ],
+  variables: [
+    {
+      key: 'animation',
+      name: '时长',
+      value: 800,
+    },
+    {
+      key: 'duration',
+      name: '时长',
+      value: 800,
+    },
+    {
+      key: 'delay',
+      name: '延迟时间',
+      value: 100,
+    },
+  ],
+};
+// hidden end
 
 export default Header;
