@@ -16,7 +16,8 @@ class Header extends React.Component {
     });
     return (<TweenOne component="header"
       animation={{ opacity: 0, type: 'from' }}
-      className={this.props.className}
+      className={`${this.props.className} root`}
+             id={this.props.id}
     >
       <TweenOne className={`${this.props.className}-logo`}
         animation={animData[0]}
@@ -45,6 +46,7 @@ Header.propTypes = {
 };
 
 Header.defaultProps = {
+  id: 'header',
   className: 'header',
   dataSource: {
     img: 'https://os.alipayobjects.com/rmsportal/mlcYmsRilwraoAe.svg',
