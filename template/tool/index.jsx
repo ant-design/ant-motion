@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import './index.less';
 import {Input, InputNumber} from 'antd';
 import OverLay from './OverLay';
+import Mask from './Mask';
 import $ from 'jquery';
 
 const motionTool = (config) => (ComposedComponent) => {
@@ -19,6 +20,7 @@ const motionTool = (config) => (ComposedComponent) => {
           left: 0,
           top: 0,
         },
+        showMask: false,
         config,
       };
       const self = this;
@@ -41,7 +43,7 @@ const motionTool = (config) => (ComposedComponent) => {
             const overlayOffset = $overlayTarget.offset();
 
             self.setState({
-              current: $overlayTarget.attr('id'),
+              currentId: $overlayTarget.attr('id'),
               overlay: {
                 top: overlayOffset.top,
                 left: overlayOffset.left,
@@ -71,7 +73,9 @@ const motionTool = (config) => (ComposedComponent) => {
     }
 
     handleClick() {
-      console.log("current", this.state);
+      this.setState({
+        showMask: !this.state.showMask,
+      });
     }
 
     render() {
@@ -126,6 +130,7 @@ const motionTool = (config) => (ComposedComponent) => {
           })}
         </div>
         <ComposedComponent {...convertedState}/>
+        {this.state.showMask ? <Mask /> : ""}
       </div>
     }
 
