@@ -75,12 +75,12 @@ const motionTool = (config) => (ComposedComponent) => {
     }
 
     render() {
-      let convertedState = {...this.state.config};
+      let convertedState = { ...this.state.config };
       // convert config
       for (let key in this.state.config) {
-        let componentState = {...this.state.config[key]} || {};
+        let componentState = { ...this.state.config[key] } || {};
         const {dataSource, variables} = componentState;
-        if (dataSource && dataSource.length> 0) {
+        if (dataSource && dataSource.length > 0) {
           let res = {};
           dataSource.forEach(item => {
             res[item.key] = item.value;
@@ -93,8 +93,8 @@ const motionTool = (config) => (ComposedComponent) => {
             res[item.key] = item.value;
           });
           componentState.variables = res;
-          componentState.variables.left =  { x: -30, opacity: 0, };
-          componentState.variables.right =  { x: 30, opacity: 0, };
+          componentState.variables.left = { x: -30, opacity: 0, };
+          componentState.variables.right = { x: 30, opacity: 0, };
         }
         convertedState[key] = componentState;
       }
@@ -102,30 +102,31 @@ const motionTool = (config) => (ComposedComponent) => {
       // default checked Header
       let comp = this.state.config['Header'];
       return <div style={{'display': 'inline'}}>
-        <OverLay {...this.state.overlay} onClick={::this.handleClick}/>
+        <OverLay {...this.state.overlay} onClick={::this.handleClick} />
         <div className="tool-data-panel">
           <h3>data</h3>
           <ul>
-            {comp.dataSource.map(data => {
-              return <li>
+            {comp.dataSource.map((data, i) => {
+              return <li key={i}>
                 {data.name}
-                <Input type="text" value={data.value} onChange={this.changeValue.bind(this, 'Header', data.key)}/>
+                <Input type="text" value={data.value} onChange={this.changeValue.bind(this, 'Header', data.key)} />
               </li>
-            })}
+              })}
           </ul>
         </div>
         <div className="tool-variable-panel">
           <h3>variable</h3>
-          {comp.variables.map(data => {
-            return <li>
+          {comp.variables.map((data, i) => {
+            return <li key={i}>
               {data.name}
-                {typeof data.value === 'number' ?
-                  <InputNumber min={1} max={10} defaultValue={data.value} onChange={this.changeValue.bind(this, 'Header', data.key)} /> :
-                  <Input type="text" value={data.value} onChange={this.changeValue.bind(this, 'Header', data.key)}/>}
+              {typeof data.value === 'number' ?
+              <InputNumber min={1} max={10} defaultValue={data.value}
+                onChange={this.changeValue.bind(this, 'Header', data.key)} /> :
+              <Input type="text" value={data.value} onChange={this.changeValue.bind(this, 'Header', data.key)} />}
             </li>
-          })}
+            })}
         </div>
-        <ComposedComponent {...convertedState}/>
+        <ComposedComponent {...convertedState} />
       </div>
     }
 

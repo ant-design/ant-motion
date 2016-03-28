@@ -7,7 +7,7 @@ import Icon from 'antd/lib/icon';
 class Banner extends React.Component {
   render() {
     return (
-      <TweenOne animation={{ opacity: 0, type: 'from' }} className={this.props.className + ' root'} id={this.props.id}>
+      <TweenOne animation={{ opacity: 0, type: 'from' }} className={`${this.props.className} root`} id={this.props.id}>
         <div
           style={{
           backgroundImage: `url(${this.props.dataSource.bgImg})`,

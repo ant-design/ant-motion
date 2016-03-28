@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import QueueAnim from 'rc-queue-anim';
+import TweenOne from 'rc-tween-one';
 import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
 
 class Page4 extends React.Component {
@@ -7,14 +8,20 @@ class Page4 extends React.Component {
     return (
       <div className={this.props.className}>
         <OverPack scrollName="page4" playScale={0.4} className={`${this.props.className}-wap`}>
-          <QueueAnim {...this.props.anim.title} hideProps={{ child: null }} key="0">
-            <h1 key="h1">PAGE TITLE</h1>
-            <p className={`${this.props.className}-center-text`} key="p">
-              Demo source from the network, please upload pictures to replace.
-              Demo source from the network, please uploadpictures to replace.
-              Demo source from the network, please upload pictures to replace.
-            </p>
-          </QueueAnim>
+          <TweenOne component="h1" key="h1"
+            hideProps={{ reverse: true }}
+            animation={{ ...this.props.anim.title, type: 'from' }}
+          >
+            PAGE TITLE
+          </TweenOne>
+          <TweenOne component="p" className={`${this.props.className}-center-text`} key="p"
+            hideProps={{ reverse: true }}
+            animation={{ ...this.props.anim.title, delay: 100, type: 'from' }}
+          >
+            Demo source from the network, please upload pictures to replace.
+            Demo source from the network, please uploadpictures to replace.
+            Demo source from the network, please upload pictures to replace.
+          </TweenOne>
           <QueueAnim {...this.props.anim.img} component="ul"
             hideProps={{ child: null }} key="1"
           >
@@ -84,10 +91,8 @@ Page4.defaultProps = {
   ],
   anim: {
     title: {
-      type: 'bottom',
-      leaveReverse: true,
-      ease: 'easeInOutQuart',
-      duration: 450,
+      y: 30,
+      opacity: 0,
     },
     img: {
       type: 'bottom',

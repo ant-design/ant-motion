@@ -6,7 +6,7 @@ import TweenOne from 'rc-tween-one';
 class Footer extends React.Component {
   render() {
     return (
-      <OverPack className={this.props.className + 'root'} playScale={0.05} id={this.props.id}>
+      <OverPack className={`${this.props.className} root`} playScale={0.05} id={this.props.id}>
         <TweenOne
           key="0" hideProps={{ reverse: true }}
           animation={{...this.props.anim, type: 'from' }}

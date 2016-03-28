@@ -29,10 +29,10 @@ Components.forEach(Component=> {
 
 class Demo extends React.Component {
   render() {
-    return <setction class='content-wap'>
+    return <setction className='content-wap'>
       {
-        Components.map(Component=> {
-          return React.createElement(Component, {...this.props[Component['name']]})
+        Components.map((Component, i)=> {
+          return React.createElement(Component, {...this.props[Component['name']], key: i})
         })
       }
     </setction>
