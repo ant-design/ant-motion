@@ -10,9 +10,6 @@ class Page2 extends React.Component {
       <OverPack scrollName="page2" className={`content ${this.props.className}`}>
         <TweenOne animation={{ ...this.props.anim.imgAnimate, type: 'from'}}
           hideProps={{ reverse: true }}
-          style={{
-            transform: 'scaleX(1) scaleY(1)',
-          }}
           key="img"
           className="img"
         >
@@ -46,7 +43,7 @@ Page2.defaultProps = {
     leaveReverse: true,
     ease: 'easeInOutQuart',
     duration: 450,
-    imgAnimate: { scaleX: 0, scaleY:0, opacity: 0 }
+    imgAnimate: { scale: 0, opacity: 0 }
   }
 };
 export default Page2;
