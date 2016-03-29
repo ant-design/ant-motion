@@ -1,31 +1,34 @@
 import React, { PropTypes } from 'react';
 import TweenOne from 'rc-tween-one';
 import Menu from 'antd/lib/menu';
+import animType from '../../../common/animType';
 
 class Header extends React.Component {
   render() {
     console.log("this.props", this.props.variables);
-    const {img} = this.props.dataSource;
-    const {delay, duration} = this.props.variables;
-    const animData = ['left', 'right'].map((style, i) => {
-      const anim = this.props.variables[style];
+    const { img } = this.props.dataSource;
+    const { type, delay, duration } = this.props.variables;
+    const animData = ['one', 'tow'].map((order, i) => {
+      const anim = animType[type][order] || animType[type].one;
+      anim.animation.delay = i * (delay || 100) + delay;
       anim.delay = i * (delay || 100) + delay;
+      anim.animation.duration = duration;
       anim.duration = duration;
-      anim.type = 'from';
+      anim.animation.type = 'from';
       return anim
     });
     return (<TweenOne component="header"
       animation={{ opacity: 0, type: 'from' }}
       className={`${this.props.className} root`}
-             id={this.props.id}
+      id={this.props.id}
     >
       <TweenOne className={`${this.props.className}-logo`}
-        animation={animData[0]}
+        {...animData[0]}
       >
         <img height="33" src={img} />
       </TweenOne>
       <TweenOne className={`${this.props.className}-nav`}
-        animation={animData[1]}
+        {...animData[1]}
       >
         <Menu onClick={this.handleClick}
           mode="horizontal">
@@ -40,9 +43,10 @@ class Header extends React.Component {
 }
 
 Header.propTypes = {
+  id: PropTypes.string,
   className: PropTypes.string,
-  img: PropTypes.string,
-  anim: PropTypes.object,
+  dataSource: PropTypes.object,
+  variables: PropTypes.object,
 };
 
 Header.defaultProps = {
@@ -56,8 +60,7 @@ Header.defaultProps = {
     menu4: '导航四',
   },
   variables: {
-    left: { x: -30, opacity: 0, },
-    right: { x: 30, opacity: 0, },
+    type: 'leftRightPoly',
     duration: 800,
     delay: 100,
   },
@@ -95,9 +98,9 @@ Header.config = {
   ],
   variables: [
     {
-      key: 'animation',
-      name: '时长',
-      value: 800,
+      key: 'type',
+      name: '样式',
+      value: 'leftRightPoly',
     },
     {
       key: 'duration',

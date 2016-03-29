@@ -14,7 +14,15 @@ import Footer from './component/Footer';
 import '../../common/ant-d.less';
 import './assets/index.less';
 
-const Components = [Header, Banner, Page1, Page2, Page3, Page4, Footer];
+const Components = [
+  { name: 'Header', comp: Header },
+  { name: 'Banner', comp: Banner },
+  { name: 'Page1', comp: Page1 },
+  { name: 'Page2', comp: Page2 },
+  { name: 'Page3', comp: Page3 },
+  { name: 'Page4', comp: Page4 },
+  { name: 'Footer', comp: Footer },
+];
 
 const config = {
   name: 'demoAnimation',
@@ -23,18 +31,18 @@ const config = {
 
 // TODO: add file loader
 // 主要配置分为2类,文案图片配置与参数配置
-Components.forEach(Component=> {
-  config[Component.name] = Component.config;
+Components.forEach(Component => {
+  config[Component.name] = Component.comp.config;
 });
 
 class Demo extends React.Component {
   render() {
     return <setction className='content-wap'>
       {
-        Components.map((Component, i)=> {
-          return React.createElement(Component, {...this.props[Component['name']], key: i})
-        })
-      }
+        Components.map((Component, i) => {
+          return React.createElement(Component.comp, {...this.props[Component.name], key: i})
+          })
+        }
     </setction>
   }
 }

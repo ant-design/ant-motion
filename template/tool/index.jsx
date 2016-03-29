@@ -1,9 +1,12 @@
 import React, { PropTypes } from 'react';
 import './index.less';
-import {Input, InputNumber} from 'antd';
+import {Input, InputNumber, Select} from 'antd';
+const Option = Select.Option;
 import OverLay from './OverLay';
 import Mask from './Mask';
 import $ from 'jquery';
+
+import animType from '../common/animType';
 
 const motionTool = (config) => (ComposedComponent) => {
 
@@ -31,7 +34,7 @@ const motionTool = (config) => (ComposedComponent) => {
         let $target = $(e.target);
         let $parentWrapper = $target.parents('.root');
         let $overlayTarget;
-        console.log("$parentWrapper", $parentWrapper);
+        // console.log("$parentWrapper", $parentWrapper);
         if ($target.hasClass('root') || $parentWrapper.length > 0) {
           if ($target.hasClass('root')) {
             $overlayTarget = $target;
@@ -66,16 +69,35 @@ const motionTool = (config) => (ComposedComponent) => {
         }
 
       }, false);
+
+      [
+        'panelHandleChange',
+        'removeScroll'
+      ].forEach((method) => this[method] = this[method].bind(this));
     }
 
     changeValue(componentName, key, event) {
       console.log("key, event", key, event.target.value);
     }
 
+    removeScroll(e) {
+      e.preventDefault();
+    }
+
     handleClick() {
+      // 禁止滚动;
+      if (this.state.showMask) {
+        window.removeEventListener('wheel', this.removeScroll)
+      } else {
+        window.addEventListener('wheel', this.removeScroll);
+      }
       this.setState({
         showMask: !this.state.showMask,
       });
+    }
+
+    panelHandleChange(value) {
+      console.log(value)
     }
 
     render() {
@@ -97,42 +119,57 @@ const motionTool = (config) => (ComposedComponent) => {
             res[item.key] = item.value;
           });
           componentState.variables = res;
-          componentState.variables.left = { x: -30, opacity: 0, };
-          componentState.variables.right = { x: 30, opacity: 0, };
         }
         convertedState[key] = componentState;
       }
 
       // default checked Header
       let comp = this.state.config['Header'];
-      return <div style={{'display': 'inline'}}>
-        <OverLay {...this.state.overlay} onClick={::this.handleClick} />
-        <div className="tool-data-panel">
-          <h3>data</h3>
-          <ul>
-            {comp.dataSource.map((data, i) => {
-              return <li key={i}>
-                {data.name}
-                <Input type="text" value={data.value} onChange={this.changeValue.bind(this, 'Header', data.key)} />
-              </li>
-              })}
-          </ul>
-        </div>
-        <div className="tool-variable-panel">
-          <h3>variable</h3>
-          {comp.variables.map((data, i) => {
-            return <li key={i}>
-              {data.name}
-              {typeof data.value === 'number' ?
-              <InputNumber min={1} max={10} defaultValue={data.value}
-                onChange={this.changeValue.bind(this, 'Header', data.key)} /> :
-              <Input type="text" value={data.value} onChange={this.changeValue.bind(this, 'Header', data.key)} />}
-            </li>
-            })}
-        </div>
-        <ComposedComponent {...convertedState} />
-        {this.state.showMask ? <Mask /> : ""}
-      </div>
+      const animContent = comp.variables.map((data, i) => {
+        const child = Object.keys(animType).map(key => {
+          return (<Option value={key} key={key}>{key}</Option>);
+        });
+        const inputOrSelect = data.key === 'type' ?
+          (<Select defaultValue={data.value} getPopupContainer={()=>{
+            return document.getElementById('V-Panel');
+          }}
+            onChange={this.panelHandleChange}
+          >
+            {child}
+          </Select>) :
+          <Input type="text" value={data.value} onChange={this.changeValue.bind(this, 'Header', data.key)} />;
+        const animContentChild = typeof data.value === 'number' ?
+          <InputNumber min={1} max={10} defaultValue={data.value}
+            onChange={this.changeValue.bind(this, 'Header', data.key)} /> :
+          inputOrSelect;
+        return (
+          <li key={i}>
+            {data.name}
+            {animContentChild}
+          </li>);
+      });
+
+      return (
+        <div style={{'display': 'inline'}}>
+          <OverLay {...this.state.overlay} onClick={::this.handleClick} />
+          <div className="tool-data-panel">
+            <h3>data</h3>
+            <ul>
+              {comp.dataSource.map((data, i) => {
+                return <li key={i}>
+                  {data.name}
+                  <Input type="text" value={data.value} onChange={this.changeValue.bind(this, 'Header', data.key)} />
+                </li>
+                })}
+            </ul>
+          </div>
+          <div className="tool-variable-panel" id="V-Panel">
+            <h3>variable</h3>
+            {animContent}
+          </div>
+          <ComposedComponent {...convertedState} />
+          {this.state.showMask ? <Mask /> : ""}
+        </div>);
     }
 
   };
