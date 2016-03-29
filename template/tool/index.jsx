@@ -1,12 +1,14 @@
 import React, { PropTypes } from 'react';
 import './index.less';
-import {Input, InputNumber, Select} from 'antd';
+import {Input, InputNumber, Select, Button } from 'antd';
 const Option = Select.Option;
 import OverLay from './OverLay';
 import Mask from './Mask';
 import $ from 'jquery';
 
 import animType from '../common/animType';
+
+import assign from 'object-assign';
 
 const motionTool = (config) => (ComposedComponent) => {
 
@@ -27,6 +29,8 @@ const motionTool = (config) => (ComposedComponent) => {
         config,
       };
       const self = this;
+
+      this.config = {};
       // bind hover event
       // http://stackoverflow.com/questions/10618001/javascript-mouseover-mouseout-issue-with-child-element
       document.addEventListener("mouseover", (e) => {
@@ -72,12 +76,13 @@ const motionTool = (config) => (ComposedComponent) => {
 
       [
         'panelHandleChange',
-        'removeScroll'
+        'removeScroll',
+        'panelMake',
       ].forEach((method) => this[method] = this[method].bind(this));
     }
 
-    changeValue(componentName, key, event) {
-      console.log("key, event", key, event.target.value);
+    changeValue(componentName, key, value) {
+      this.config[key] = value;
     }
 
     removeScroll(e) {
@@ -97,14 +102,22 @@ const motionTool = (config) => (ComposedComponent) => {
     }
 
     panelHandleChange(value) {
+      this.config.type = value;
       console.log(value)
+    }
+
+    panelMake() {
+      // Header 怎么获取....
+      // const config = assign({}, this.state.config, this.config);
+      // console.log(this.config, config)
+      // this.setState({ config });
     }
 
     render() {
       let convertedState = { ...this.state.config };
       // convert config
       for (let key in this.state.config) {
-        let componentState = { ...this.state.config[key] } || {};
+        let componentState = typeof this.state.config[key] === 'string' ? this.state.config[key] : { ...this.state.config[key] } || {};
         const {dataSource, variables} = componentState;
         if (dataSource && dataSource.length > 0) {
           let res = {};
@@ -122,12 +135,11 @@ const motionTool = (config) => (ComposedComponent) => {
         }
         convertedState[key] = componentState;
       }
-
       // default checked Header
       let comp = this.state.config['Header'];
       const animContent = comp.variables.map((data, i) => {
         const child = Object.keys(animType).map(key => {
-          return (<Option value={key} key={key}>{key}</Option>);
+          return (<Option value={key} key={key}>{animType[key].name}</Option>);
         });
         const inputOrSelect = data.key === 'type' ?
           (<Select defaultValue={data.value} getPopupContainer={()=>{
@@ -139,7 +151,7 @@ const motionTool = (config) => (ComposedComponent) => {
           </Select>) :
           <Input type="text" value={data.value} onChange={this.changeValue.bind(this, 'Header', data.key)} />;
         const animContentChild = typeof data.value === 'number' ?
-          <InputNumber min={1} max={10} defaultValue={data.value}
+          <InputNumber min={100} step={100} defaultValue={data.value}
             onChange={this.changeValue.bind(this, 'Header', data.key)} /> :
           inputOrSelect;
         return (
@@ -166,6 +178,7 @@ const motionTool = (config) => (ComposedComponent) => {
           <div className="tool-variable-panel" id="V-Panel">
             <h3>variable</h3>
             {animContent}
+            <Button type="primary" onClick={this.panelMake}>生成</Button>
           </div>
           <ComposedComponent {...convertedState} />
           {this.state.showMask ? <Mask /> : ""}
