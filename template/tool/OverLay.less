@@ -1,7 +1,10 @@
+@import "../common/custom.less";
 .motion-overlay {
   z-index: 9999;
   position: absolute;
-  background-color: #A0C6E9;
+  background-color: rgba(160, 198, 233, .25);
   cursor: pointer;
+  pointer-events: none;
+  transition: height .3s @ease-in-out-circ, width .3s @ease-in-out-circ, top .3s @ease-in-out-circ, left .3s @ease-in-out-circ;
 }
 

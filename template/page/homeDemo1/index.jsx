@@ -14,32 +14,23 @@ import Footer from './component/Footer';
 import '../../common/ant-d.less';
 import './assets/index.less';
 
+import config from './webdefault.config.js';
+
 const Components = [
-  { name: 'Header', comp: Header },
-  { name: 'Banner', comp: Banner },
-  { name: 'Page1', comp: Page1 },
-  { name: 'Page2', comp: Page2 },
-  { name: 'Page3', comp: Page3 },
-  { name: 'Page4', comp: Page4 },
-  { name: 'Footer', comp: Footer },
+  { name: 'header', comp: Header },
+  { name: 'banner', comp: Banner },
+  { name: 'page1', comp: Page1 },
+  { name: 'page2', comp: Page2 },
+  { name: 'page3', comp: Page3 },
+  { name: 'page4', comp: Page4 },
+  { name: 'footer', comp: Footer },
 ];
 
-const config = {
-  name: 'demoAnimation',
-  version: '0.0.1',
-};
-
-// TODO: add file loader
-// 主要配置分为2类,文案图片配置与参数配置
-Components.forEach(Component => {
-  config[Component.name] = Component.comp.config;
-});
-
-class Demo extends React.Component {
+class Index extends React.Component {
   render() {
     return <setction className='content-wap'>
       {
-        Components.map((Component, i) => {
+        Components.map((Component, i)=> {
           return React.createElement(Component.comp, {...this.props[Component.name], key: i})
           })
         }
@@ -47,6 +38,6 @@ class Demo extends React.Component {
   }
 }
 
-Demo = motionTool(config)(Demo);
+const Demo = motionTool(config)(Index);
 
 ReactDOM.render(<Demo />, document.getElementById('react-content'));

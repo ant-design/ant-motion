@@ -5,15 +5,17 @@ import animType from '../../../common/animType';
 
 class Header extends React.Component {
   render() {
-    console.log("this.props", this.props.variables);
-    const { img } = this.props.dataSource;
-    const { type, delay, duration } = this.props.variables;
+    // console.log("this.props", this.props.variables);
+    const { img, menu1, menu2, menu3, menu4 } = this.props.dataSource;
+    const { type, delay, interval, duration } = this.props.variables;
     const animData = ['one', 'tow'].map((order, i) => {
       const anim = animType[type][order] || animType[type].one;
       anim.animation.delay = i * (delay || 100) + delay;
       anim.delay = i * (delay || 100) + delay;
       anim.animation.duration = duration;
       anim.duration = duration;
+      // 间隔只给区块队列动画使用.. queueAnim 用;
+      anim.interval = interval;
       anim.animation.type = 'from';
       return anim
     });
@@ -32,10 +34,10 @@ class Header extends React.Component {
       >
         <Menu onClick={this.handleClick}
           mode="horizontal">
-          <Menu.Item key="a">导航一</Menu.Item>
-          <Menu.Item key="b">导航二</Menu.Item>
-          <Menu.Item key="c">导航三</Menu.Item>
-          <Menu.Item key="d">导航四 </Menu.Item>
+          <Menu.Item key="a">{menu1}</Menu.Item>
+          <Menu.Item key="b">{menu2}</Menu.Item>
+          <Menu.Item key="c">{menu3}</Menu.Item>
+          <Menu.Item key="d">{menu4} </Menu.Item>
         </Menu>
       </TweenOne>
     </TweenOne>);
@@ -62,58 +64,9 @@ Header.defaultProps = {
   variables: {
     type: 'leftRightPoly',
     duration: 800,
+    interval: 100,
     delay: 100,
   },
 };
-
-// hidden start
-Header.config = {
-  name: 'ant motion header',
-  dataSource: [
-    {
-      key: 'img',
-      name: 'icon',
-      value: 'https://os.alipayobjects.com/rmsportal/YysxJDMuhbSlKid.png',
-    },
-    {
-      key: 'menu1',
-      name: '导航一',
-      value: '导航一',
-    },
-    {
-      key: 'menu2',
-      name: '导航二',
-      value: '导航二',
-    },
-    {
-      key: 'menu3',
-      name: '导航三',
-      value: '导航三',
-    },
-    {
-      key: 'menu4',
-      name: '导航四',
-      value: '导航四',
-    },
-  ],
-  variables: [
-    {
-      key: 'type',
-      name: '样式',
-      value: 'leftRightPoly',
-    },
-    {
-      key: 'duration',
-      name: '时长',
-      value: 800,
-    },
-    {
-      key: 'delay',
-      name: '延迟时间',
-      value: 100,
-    },
-  ],
-};
-// hidden end
 
 export default Header;

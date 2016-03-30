@@ -3,7 +3,7 @@ import './Mask.less';
 
 class Mask extends React.Component {
   render() {
-    return <div className="motion-mask"></div>;
+    return <div className="motion-mask" {...this.props}>{this.props.children}</div>;
   }
 }
 
