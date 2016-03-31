@@ -2,6 +2,7 @@ export default {
   name: 'demoAnimation',
   version: '0.0.1',
   header: {
+    template: require("raw-js!./component/Header"),
     dataSource: [
       {
         key: 'img',
