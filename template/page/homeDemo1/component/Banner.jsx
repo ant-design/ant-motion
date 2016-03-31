@@ -15,7 +15,6 @@ class Banner extends React.Component {
       interval,
       duration,
     };
-    console.log(title)
     return (
       <TweenOne animation={{ opacity: 0, type: 'from' }} className={`${this.props.className} root`} id={this.props.id}>
         <div

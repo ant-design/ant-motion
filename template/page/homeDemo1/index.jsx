@@ -27,11 +27,16 @@ const Components = [
 ];
 
 class Index extends React.Component {
+  constructor() {
+    super(...arguments);
+  }
+
   render() {
     return <setction className='content-wap'>
       {
-        Components.map((Component, i)=> {
-          return React.createElement(Component.comp, {...this.props[Component.name], key: i})
+        Components.map(Component => {
+          const props = this.props[Component.name] || {};
+          return React.createElement(Component.comp, {...props, key: Component.name + (props.dateNow || 0) })
           })
         }
     </setction>

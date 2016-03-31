@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import './index.less';
-import {Input, InputNumber, Select, Button } from 'antd';
+import { Input, InputNumber, Select, Button } from 'antd';
 const Option = Select.Option;
 import OverLay from './OverLay';
 import Mask from './Mask';
@@ -19,27 +19,20 @@ const motionTool = (config) => (ComposedComponent) => {
       super();
       // map config to state
       this.state = {
-        currentId: '',
-        overlay: {
-          height: 0,
-          width: $(document).width(),
-          left: 0,
-          top: 0,
-        },
         showMask: false,
         config,
         maskChild: null,
-        childId: null,
+        childId: '',
       };
       this.config = {};
 
       [
-        'panelHandleChange',
-        'removeScroll',
-        'panelMake',
+        'setURLConfig',
+        'getURLConfig',
         'handleClick',
         'convertConfig',
         'getToolChild',
+        'getConfig',
       ].forEach((method) => this[method] = this[method].bind(this));
     }
 
@@ -51,42 +44,39 @@ const motionTool = (config) => (ComposedComponent) => {
         let $target = $(e.target);
         let $parentWrapper = $target.parents('.root');
         let $overlayTarget;
-        // console.log("$parentWrapper", $parentWrapper);
         if ($target.hasClass('root') || $parentWrapper.length > 0) {
           if ($target.hasClass('root')) {
             $overlayTarget = $target;
           } else if ($parentWrapper) {
             $overlayTarget = $parentWrapper;
           }
-
-          if ($overlayTarget.length > 0 && !this.state.showMask) {
-            const overlayOffset = $overlayTarget.offset();
-            this.setState({
-              currentId: $overlayTarget.attr('id'),
-              overlay: {
-                top: overlayOffset.top,
-                left: overlayOffset.left,
-                height: $overlayTarget.height(),
-                width: $overlayTarget.width(),
-              }
-            });
-          }
         }
-        const dom = $target.attr('class') && $target.attr('class').indexOf('root') >= 0 ? $target : $parentWrapper;
-        if (dom.attr('class') && dom.attr('class').indexOf('root') >= 0) {
-          this.parentWrapper = dom;
-          dom.unbind('click', this.handleClick);
-          dom.bind('click', this.handleClick);
+        if ($overlayTarget && $overlayTarget.attr('class') &&
+          $overlayTarget.attr('class').indexOf('root') >= 0) {
+          this.overlayTarget = $overlayTarget;
+          $overlayTarget.unbind('dblclick', this.handleClick);
+          $overlayTarget.bind('dblclick', this.handleClick);
         }
       }, false);
     }
 
-    changeValue(componentName, key, value) {
-      this.config[key] = value;
+    changeValue(key, name, e) {
+      const dom = e.target;
+      const configChild = this.config[this.state.childId] = this.config[this.state.childId] || {};
+      configChild[name] = configChild[name] || {};
+      configChild[name][key] = dom.value;
     }
 
-    removeScroll(e) {
-      e.preventDefault();
+    numberChangeValue(key, name, value) {
+      const configChild = this.config[this.state.childId] = this.config[this.state.childId] || {};
+      configChild[name] = configChild[name] || {};
+      configChild[name][key] = value;
+    }
+
+    panelHandleChange(name, value) {
+      this.config[this.state.childId] = this.config[this.state.childId] || {};
+      this.config[this.state.childId][name] = this.config[this.state.childId][name] || {};
+      this.config[this.state.childId][name].type = value;
     }
 
     getMaskChild(parent, docHeight) {
@@ -117,15 +107,14 @@ const motionTool = (config) => (ComposedComponent) => {
       // 禁止滚动;
       if (this.state.showMask) {
         $('html').attr('style', '');
-        //window.removeEventListener('wheel', this.removeScroll)
+        this.config = {};
       } else {
-        //window.addEventListener('wheel', this.removeScroll);
         $('html').css({ overflow: 'hidden' });
       }
       const docHeight = $(document).height();
       const showMask = !this.state.showMask;
-      let childId = showMask ? this.parentWrapper.attr('id') : null;
-      let maskChild = showMask ? this.getMaskChild(this.parentWrapper, docHeight) : null;
+      let childId = showMask ? this.overlayTarget.attr('id') : null;
+      let maskChild = showMask ? this.getMaskChild(this.overlayTarget, docHeight) : null;
       this.setState({
         showMask,
         maskChild,
@@ -134,16 +123,32 @@ const motionTool = (config) => (ComposedComponent) => {
       });
     }
 
-    panelHandleChange(value) {
-      this.config.type = value;
-      console.log(value)
+
+    setURLConfig(name, item) {
+      const url = decodeURIComponent(location.hash || '').replace('#', '');
+      const config = JSON.parse(url.split('=')[1] || '{}');
+      const childIdItem = config[this.state.childId] || {};
+      childIdItem[name] = childIdItem[name] || {};
+      Object.keys(item).forEach(key => {
+        childIdItem[name][key] = item[key];
+      });
+      config[this.state.childId] = childIdItem;
+      const configString = JSON.stringify(config);
+      location.hash = `#config=${encodeURIComponent(configString)}`;
     }
 
-    panelMake() {
+    clickMake(name) {
       // Header 怎么获取....
-      // const config = assign({}, this.state.config, this.config);
-      // console.log(this.config, config)
-      // this.setState({ config });
+      const config = this.state.config;
+      const configChild = this.config[this.state.childId] || {};
+      const item = configChild[name];
+      if (item) {
+        Object.keys(item).forEach(this.getConfig.bind(this, name, item, config, this.state.childId, true));
+        this.setURLConfig(name, item);
+        this.setState({ config }, ()=> {
+          this.config[this.state.childId][name] = {};
+        });
+      }
     }
 
     convertConfig(data) {
@@ -173,16 +178,16 @@ const motionTool = (config) => (ComposedComponent) => {
     getToolChild(comp) {
       const dataSource = comp.dataSource ? comp.dataSource : [];
       const textContent = dataSource.map((data, i) => {
+        // console.log(data.key === 'content');
         const type = data.value.length >= 50 ? 'textarea' : 'text';
         return <li key={i}>
           {data.name}
-          <Input type={type} placeholder={data.value} onChange={this.changeValue.bind(this, 'Header', data.key)} />
+          <Input type={type} placeholder={data.value} onChange={this.changeValue.bind(this, data.key, 'dataSource')} />
         </li>
       });
       const variables = comp.variables ? comp.variables : [];
 
       const animContent = variables.map((data, i) => {
-        const textType = data.value >= 50 ? 'textarea' : 'text';
         let animOptionChild;
         if (data.key === 'type') {
           animOptionChild = Object.keys(animType).map(key => {
@@ -190,20 +195,18 @@ const motionTool = (config) => (ComposedComponent) => {
               <Option value={key} key={key}>{animType[key].name}</Option>);
           }).filter(c => c);
         }
-        const inputOrSelect = data.key === 'type' ?
-          (<Select defaultValue={data.value} getPopupContainer={()=>{
-            return document.getElementById('V-Panel');
-          }}
-            onChange={this.panelHandleChange}
+        const animContentChild = data.key === 'type' ?
+          (<Select defaultValue={data.value}
+            getPopupContainer={() => {
+                return document.getElementById('V-Panel');
+              }}
+            onChange={this.panelHandleChange.bind(this, 'variables')}
           >
             {animOptionChild}
           </Select>) :
-          <Input type={textType} placeholder={data.value}
-            onChange={this.changeValue.bind(this, this.state.childId, data.key)} />;
-        const animContentChild = typeof data.value === 'number' ?
-          <InputNumber min={100} step={100} defaultValue={data.value}
-            onChange={this.changeValue.bind(this, this.state.childId, data.key)} /> :
-          inputOrSelect;
+          (<InputNumber min={100} step={100} defaultValue={data.value}
+            onChange={this.numberChangeValue.bind(this, data.key, 'variables')}
+          />);
         return (
           <li key={i}>
             {data.name}
@@ -216,24 +219,59 @@ const motionTool = (config) => (ComposedComponent) => {
           <h3>文案编辑</h3>
           <ul>
             {textContent}
+            <Button type="primary" onClick={this.clickMake.bind(this, 'dataSource')}>保存</Button>
           </ul>
         </div>,
         <div className="tool-variable-panel" id="V-Panel" visible key="variable">
           <h3>动画编辑</h3>
           {animContent}
-          <Button type="primary" onClick={this.panelMake}>生成</Button>
+          <Button type="primary" onClick={this.clickMake.bind(this, 'variables')}>保存</Button>
         </div>
       ] : null;
     }
 
+    getConfig(name, item, config, childId, nowBool, childKey) {
+      const configChild = config[childId];
+      let configForKeyData = configChild[name];
+      configForKeyData = configForKeyData.map(childItem => {
+        const _item = childItem;
+        if (_item.key === childKey) {
+          _item.value = item[childKey];
+        }
+        return _item;
+      });
+      configChild[name] = configForKeyData;
+
+      if (name === 'variables' && nowBool) {
+        configChild.dateNow = Date.now();
+      }
+      config[childId] = configChild;
+    }
+
+    getURLConfig(config) {
+      const url = decodeURIComponent(location.hash || '').replace('#', '');
+      const urlConfig = JSON.parse(url.split('=')[1] || '{}');
+      const _config = config;
+      // 大类,如banner
+      Object.keys(urlConfig).forEach(key => {
+        const item = urlConfig[key];
+        // 二级,如variables
+        Object.keys(item).forEach(_key => {
+          const _item = item[_key];
+          // 三级,如delay
+          Object.keys(_item).forEach(this.getConfig.bind(this, _key, _item, _config, key, false));
+        })
+      });
+      console.log(_config)
+      return _config;
+    }
+
     render() {
-      console.log(this.convertConfig(assign({}, this.state.config)))
-      const toolContent = this.getToolChild(this.state.config[this.state.childId] || {});
+      const config = this.getURLConfig(this.state.config);
+      const toolContent = this.getToolChild(config[this.state.childId] || {});
       return (
         <div style={{'display': 'inline'}}>
-          <Animate showProp="visible" transitionName="fade">
-            {!this.state.showMask ? <OverLay {...this.state.overlay} visible /> : null}
-          </Animate>
+          <OverLay />
           <Animate showProp="visible" transitionName="zoom">
             {toolContent}
           </Animate>
@@ -243,7 +281,6 @@ const motionTool = (config) => (ComposedComponent) => {
           </Animate>
         </div>);
     }
-
   };
 };
 
