@@ -173,7 +173,7 @@ const motionTool = (config) => (ComposedComponent) => {
               });
               item.value = itemValue;
             }
-            res[item.key] = item.remove ? '$remove' : item.value;
+            res[item.key] = item[`${item.key}remove`] ? '$remove' : item.value;
           });
           componentState.dataSource = res;
         }
