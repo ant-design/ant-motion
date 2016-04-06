@@ -1,23 +1,167 @@
+@import "../common/custom.less";
+
 .tool-data-panel {
-  z-index: 10000;
-  position: fixed;
-  top: 100px;
-  left: 50px;
-  width: 200px;
-  min-height: 400px;
-  background-color: #fff;
-  border: 1px solid #000;
-  padding: 10px;
+  right: 50px;
+  width: 250px;
+  & > h3 {
+    color: #fff;
+    font-weight: normal;
+    background: @primary-color;
+    line-height: 30px;
+    & > span {
+      margin-left: 5px;
+    }
+  }
+  & > ul {
+    margin: 10px auto;
+    max-height: 400px;
+    overflow: auto;
+    & > li > h4 {
+      line-height: 24px;
+      margin: 5px auto 0;
+      color: #fff;
+      & > .data-cross-button {
+        float: right;
+        opacity: 0;
+        transition: opacity .3s @ease-in-out, color .3s @ease-in-out;
+        font-size: 16px;
+      }
+      &:hover {
+        & > .data-cross-button {
+          opacity: 1;
+        }
+      }
+      &:before {
+        display: inline-block;
+        content: '';
+        background: @primary-color;
+        width: 5px;
+        height: 5px;
+        border-radius: 5px;
+        margin-right: 10px;
+      }
+    }
+  }
+  & .data-table-mask {
+    overflow: hidden;
+  }
+  & .data-table {
+    & > ul > li > p {
+      margin-top: 5px;
+      color: @text-title-color
+    }
+  }
+
+  & > * {
+    padding: 0 10px;
+    text-align: left;
+  }
+  & textarea {
+    min-height: 80px;
+  }
+
+  & textarea, & input {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid @text-color;
+    border-radius: 0;
+    &:hover, &:focus {
+      border: none;
+      border-bottom: 1px solid @text-color;
+      box-shadow: none;
+    }
+  }
+
 }
 
 .tool-variable-panel {
-  z-index: 10000;
+  left: 50px;
+  width: 70px;
+  & > ul {
+    padding: 20px 10px 10px;
+    & li {
+      text-align: center;
+
+      & button {
+        outline: 0;
+        width: 100%;
+        padding: 8px 10px;
+        border-radius: 6px;
+        border: 1px solid transparent;
+        background: transparent;
+        transition: border .3s @ease-in-out, background .3s @ease-in-out;
+        &:active, &.active, &:focus {
+          border-color: @primary-color;
+          background: #000;
+        }
+      }
+    }
+  }
+}
+
+.tool-data-panel, .tool-variable-panel {
+  border-radius: 6px;
+  max-height: 500px;
+  background-color: #2F313B;
+  z-index: 1000;
   position: fixed;
-  top: 100px;
-  right: 50px;
-  width: 200px;
-  min-height: 400px;
-  background-color: #fff;
-  border: 1px solid #000;
-  padding: 10px;
+  overflow: hidden;
+  top: 80px;
+  box-shadow: 0 2px 8px fade(#000, 35);
+  text-align: center;
+  padding-bottom: 15px;
+  & .tool-logo {
+    background: @primary-color;
+    text-align: center;
+    overflow: hidden;
+    & img {
+      display: inline-block;
+      margin: 10px auto auto;
+    }
+    & p {
+      margin: 0 auto 10px;
+      color: #fff;
+    }
+  }
+
+}
+
+.tool-popover {
+  & .ant-select, .ant-input-number {
+    width: 100%;
+  }
+}
+
+.no-padding-right .ant-popover-inner-content {
+  padding: 8px 0px 8px 16px;
+}
+
+.tool-list {
+  max-height: 285px;
+  overflow: auto;
+  & li {
+    height: 30px;
+    line-height: 30px;
+    cursor: pointer;
+    position: relative;
+    transition: color .3s @ease-in-out;
+    &:before {
+      font-family: "anticon" !important;
+      content: "\E62E";
+      display: block;
+      position: absolute;
+      right: 15px;
+      transform: scale(0);
+      transition: transform .3s @ease-in-out;
+    }
+    &.active {
+      color: @primary-color;
+      &:before {
+        transform: scale(1);
+      }
+    }
+    &:hover {
+      color: @primary-color;
+    }
+  }
 }

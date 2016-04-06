@@ -7,12 +7,14 @@ class Header extends React.Component {
   render() {
     // console.log("this.props", this.props.variables);
     const { img, menu1, menu2, menu3, menu4 } = this.props.dataSource;
-    const { type, delay, interval, duration } = this.props.variables;
+    const { type, delay, interval, duration, ease } = this.props.variables;
     const animData = ['one', 'tow'].map((order, i) => {
       const anim = animType[type][order] || animType[type].one;
-      anim.animation.delay = i * (delay || 100) + delay;
-      anim.delay = i * (delay || 100) + delay;
+      anim.animation.delay = i * (interval || 100) + delay;
+      anim.animation.ease = ease;
       anim.animation.duration = duration;
+      anim.delay = delay;
+      anim.ease = ease;
       anim.duration = duration;
       // 间隔只给区块队列动画使用.. queueAnim 用;
       anim.interval = interval;

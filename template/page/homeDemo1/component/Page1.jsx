@@ -5,7 +5,7 @@ import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
 class Page1 extends React.Component {
   render() {
     return (
-      <OverPack scrollName="page1" className={`content ${this.props.className} root`}>
+      <OverPack scrollName="page1" className={`content ${this.props.className} root`} id={this.props.id}>
         <QueueAnim hideProps={{ child: null }} key="queue" {...this.props.anim}>
           <h1 key="h1">PAGE TITLE</h1>
           <i className='line' key="i" />
@@ -22,11 +22,13 @@ class Page1 extends React.Component {
 
 Page1.propTypes = {
   className: PropTypes.string,
+  id: PropTypes.string,
   anim: PropTypes.object,
 };
 
 Page1.defaultProps = {
   className: 'page1',
+  id: 'page1',
   anim: {
     type: 'bottom',
     leaveReverse: true,

@@ -6,8 +6,9 @@ export default {
     dataSource: [
       {
         key: 'img',
-        name: 'icon',
-        value: 'https://os.alipayobjects.com/rmsportal/YysxJDMuhbSlKid.png',
+        name: 'logo',
+        value: 'https://os.alipayobjects.com/rmsportal/mlcYmsRilwraoAe.svg',
+        link: '',
       },
       {
         key: 'menu1',
@@ -33,23 +34,33 @@ export default {
     variables: [
       {
         key: 'type',
-        name: '动画样式',
-        value: 'leftRightPoly',
+        name: '样式',
+        value: 'bottomPosition',
+        icon: 'https://os.alipayobjects.com/rmsportal/npZvNtlUVWrrKuC.svg',
+      },
+      {
+        key: 'ease',
+        name: '缓动',
+        value: 'easeInOutQuart',
+        icon: 'https://os.alipayobjects.com/rmsportal/lgPiDrfdcBgViAu.svg',
       },
       {
         key: 'duration',
-        name: '动画时长',
-        value: 800,
+        name: '时长',
+        value: 300,
+        icon: 'https://os.alipayobjects.com/rmsportal/PjZWmtkBAYbNrRo.svg',
       },
       {
         key: 'interval',
-        name: '动画间隔',
+        name: '间隔',
         value: 100,
+        icon: 'https://os.alipayobjects.com/rmsportal/KLvLgWxtdqTeLFj.svg',
       },
       {
         key: 'delay',
-        name: '延迟时间',
-        value: 100,
+        name: '延迟',
+        value: 0,
+        icon: 'https://os.alipayobjects.com/rmsportal/KLvLgWxtdqTeLFj.svg'
       },
     ],
   },
@@ -57,46 +68,62 @@ export default {
     dataSource: [
       {
         key: 'bgImg',
-        name: '背景',
-        value: 'https://os.alipayobjects.com/rmsportal/YysxJDMuhbSlKid.png',
+        name: '背景图片',
+        value: 'https://os.alipayobjects.com/rmsportal/IhCNTqPpLeTNnwr.jpg',
       },
       {
-        key: 'title',
-        name: '标题',
-        value: 'Ant Motion Demo',
-      },
-      {
-        key: 'content',
-        name: '内容',
-        value: 'Image source from the network Demo, please upload pictures to replace.Image source from the network Demo, please upload pictures to replace',
-      },
-      {
-        key: 'button',
-        name: '按钮',
-        value: 'Learn More',
+        key: 'text',
+        name: '文字区块',
+        value: {
+          title: {
+            key: 'title',
+            name: '标题',
+            value: 'Ant Motion Demo',
+          },
+          content: {
+            key: 'content',
+            name: '内容',
+            value: 'Image source from the network Demo, please upload pictures to replace.Image source from the network Demo, please upload pictures to replace',
+          },
+          button: {
+            key: 'button',
+            name: '按钮',
+            value: 'Learn More',
+          },
+        },
       },
     ],
     variables: [
       {
         key: 'type',
-        name: '动画样式',
+        name: '样式',
         value: 'bottomPosition',
         donType: ['leftRightPoly', 'topBottomPoly'],
+        icon: 'https://os.alipayobjects.com/rmsportal/npZvNtlUVWrrKuC.svg',
+      },
+      {
+        key: 'ease',
+        name: '缓动',
+        value: 'easeInOutQuart',
+        icon: 'https://os.alipayobjects.com/rmsportal/lgPiDrfdcBgViAu.svg',
       },
       {
         key: 'duration',
-        name: '动画时长',
-        value: 800,
+        name: '时长',
+        value: 300,
+        icon: 'https://os.alipayobjects.com/rmsportal/PjZWmtkBAYbNrRo.svg',
       },
       {
         key: 'interval',
-        name: '动画间隔',
+        name: '间隔',
         value: 100,
+        icon: 'https://os.alipayobjects.com/rmsportal/KLvLgWxtdqTeLFj.svg',
       },
       {
         key: 'delay',
-        name: '延迟时间',
-        value: 100,
+        name: '延迟',
+        value: 0,
+        icon: 'https://os.alipayobjects.com/rmsportal/KLvLgWxtdqTeLFj.svg'
       },
     ],
   }

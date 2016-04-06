@@ -1,0 +1,14 @@
+@import "../../common/custom.less";
+
+.motion-overlay {
+  z-index: 9999;
+  position: absolute;
+  cursor: pointer;
+  pointer-events: none;
+  border: 1px dashed @text-color;
+  & p {
+    background-color: @primary-color;
+    float: left;
+  }
+}
+

@@ -7,13 +7,12 @@ import animType from '../../../common/animType';
 
 class Banner extends React.Component {
   render() {
-    const { bgImg, title, content, button } = this.props.dataSource;
-    const { type, delay, interval, duration } = this.props.variables;
+    const { bgImg, text } = this.props.dataSource;
+    const { title, content, button } = text;
+    const { type } = this.props.variables;
     const animData = {
+      ...this.props.variables,
       type: animType[type].one.type,
-      delay,
-      interval,
-      duration,
     };
     return (
       <TweenOne animation={{ opacity: 0, type: 'from' }} className={`${this.props.className} root`} id={this.props.id}>
@@ -24,9 +23,9 @@ class Banner extends React.Component {
           className={`${this.props.className}-bg`}
         />
         <QueueAnim {...animData} className={`${this.props.className}-title`}>
-          <h1 key="h1">{title}</h1>
-          <p key="content">{content}</p>
-          <Button type="ghost" key="button">{button}</Button>
+          {title ? <h1 key="h1">{title}</h1> : null}
+          {content ? <p key="content">{content}</p> : null}
+          {button ? <Button type="ghost" key="button">{button}</Button> : null}
         </QueueAnim>
 
         <TweenOne animation={{ y: '-=20', yoyo: true, repeat: -1, duration: 1000 }}
@@ -49,10 +48,12 @@ Banner.defaultProps = {
   className: 'banner',
   dataSource: {
     bgImg: 'https://os.alipayobjects.com/rmsportal/IhCNTqPpLeTNnwr.jpg',
-    title: 'Ant Motion Demo',
-    content: 'Image source from the network Demo, please upload pictures to replace.Image source' +
-    ' from the network Demo, please upload pictures to replace.',
-    button: 'Learn More'
+    text: {
+      title: 'Ant Motion Demo',
+      content: 'Image source from the network Demo, please upload pictures to replace.Image source' +
+      ' from the network Demo, please upload pictures to replace.',
+      button: 'Learn More',
+    },
   },
   variables: {
     type: 'bottomPosition',
