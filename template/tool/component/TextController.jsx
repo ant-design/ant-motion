@@ -80,7 +80,7 @@ class TextController extends Common {
         </a>
       </h4>
       <div className="data-table-mask">
-        <Animate component="div" key={i} showProp="visible" transitionName="zoom-up">
+        <Animate component="div" key={i} showProp="visible" transitionName="zoom-up-margin">
           {addOrRemove ? child : null}
         </Animate>
       </div>
