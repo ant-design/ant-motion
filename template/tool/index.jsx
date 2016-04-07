@@ -190,6 +190,7 @@ const motionTool = (config) => (ComposedComponent) => {
     }
 
     callBack() {
+      console.log(config)
       const _config = this.getURLConfig(config);
       this.setState({ config: _config });
     }

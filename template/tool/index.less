@@ -25,6 +25,12 @@
         opacity: 0;
         transition: opacity .3s @ease-in-out, color .3s @ease-in-out;
         font-size: 16px;
+        & > i {
+          transition: transform .3s @ease-in-out;
+          &.add {
+            transform: rotate(-135deg);
+          }
+        }
       }
       &:hover {
         & > .data-cross-button {

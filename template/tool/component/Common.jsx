@@ -11,7 +11,16 @@ class Common extends React.Component {
       'clickMake',
       'setURLConfig',
       'changeValue',
+      'convertValue',
     ].forEach((method) => this[method] = this[method].bind(this));
+  }
+
+  convertValue(_data) {
+    const data = assign({}, _data);
+    Object.keys(data).forEach(key => {
+      data[key] = data[key].value;
+    });
+    return data;
   }
 
   getConfig(name, item, config, childId, nowBool, childKey) {
@@ -20,16 +29,14 @@ class Common extends React.Component {
     configForKeyData = configForKeyData.map(childItem => {
       const _item = assign({}, childItem);
       if (childItem.key === childKey) {
-        console.log(_item.key)
-        _item[`${_item.key}remove`] = item[`${_item.key}remove`];
         if (typeof item[childKey] === 'object') {
           const _itemValue = assign({}, _item.value);
           Object.keys(item[childKey]).forEach(key => {
-            // const _itemValueKey = assign({}, _itemValue[key]);
-            // _itemValueKey.value = item[childKey][key];
-            // _itemValue[key] = _itemValueKey;
+            const _itemValueKey = assign({}, _itemValue[key]);
+            _itemValueKey.value = item[childKey][key];
+            _itemValue[key] = _itemValueKey;
             // 保存修改过的东西
-            _itemValue[key].value = item[childKey][key]
+            // _itemValue[key].value = item[childKey][key]
           });
           _item.value = _itemValue;
         } else if (item[childKey]) {

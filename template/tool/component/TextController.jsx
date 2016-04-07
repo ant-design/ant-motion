@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react';
-// import Animate from 'rc-animate';
-import TweenOne from 'rc-tween-one';
+import Animate from 'rc-animate';
 import assign from 'object-assign';
 import Common from './Common';
 import { Input, Button, Icon } from 'antd';
@@ -18,7 +17,6 @@ class TextController extends Common {
       'changeValue',
       'addOrRemoveTextContent',
       'removeURLData',
-      'convertValue',
     ].forEach((method) => this[method] = this[method].bind(this));
   }
 
@@ -27,26 +25,16 @@ class TextController extends Common {
     const config = JSON.parse(url.split('=')[1] || '{}');
     const childIdItem = config[this.state.childId] || {};
     delete childIdItem[name][key];
-    delete childIdItem[name][`${key}remove`];
     config[this.state.childId] = childIdItem;
     const configString = JSON.stringify(config);
     location.hash = `#config=${encodeURIComponent(configString)}`;
   }
 
-  convertValue(_data) {
-    const data = assign({}, _data);
-    Object.keys(data).forEach(key => {
-      data[key] = data[key].value;
-    });
-    return data;
-  }
-
   addOrRemoveTextContent(data, name, bool) {
     const key = data.key;
     let removeObject = {};
-    removeObject[key] = typeof data.value === 'object' ? this.convertValue(data.value) : data.value;
+    removeObject[key] = '$remove';
     if (bool) {
-      removeObject[`${key}remove`] = true;
       this.setURLConfig(name, removeObject);
     } else {
       this.removeURLData(name, data.key);
@@ -60,7 +48,7 @@ class TextController extends Common {
     if (typeof data.value === 'object') {
       const table = Object.keys(data.value).map((key, ii) => {
         const _data = data.value[key];
-        type = _data.value.length >= 50 ? 'textarea' : 'text';
+        type = _data.key === 'content' ? 'textarea' : 'text';
         return <li key={ii}>
           <p>{_data.name}</p>
           <div>
@@ -69,33 +57,32 @@ class TextController extends Common {
           </div>
         </li>
       });
+
       child = (<div className="data-table" visible key="111">
         <ul>
           {table}
         </ul>
       </div>)
     } else {
-      type = data.value.length >= 50 ? 'textarea' : 'text';
+      type = data.key === 'content' ? 'textarea' : 'text';
       child = (<div visible key="111">
         <Input type={type} placeholder={data.value}
           onChange={this.changeValue.bind(this, data.key, 'dataSource')} />
       </div>);
     }
-    const addOrRemove = data[`${data.key}remove`] ? false : true;
-    console.log(data)
+    const addOrRemove = data.value === '$remove' ? false : true;
     return (<li key={i}>
       <h4>{data.name}
         <a onClick={this.addOrRemoveTextContent.bind(this, data, 'dataSource', addOrRemove)}
           className="data-cross-button"
         >
-          {addOrRemove ? <Icon type="cross-circle-o" /> : <Icon type="plus-circle-o" />}
+          <Icon type="cross-circle-o" className={addOrRemove ? '' :'add'} />
         </a>
       </h4>
       <div className="data-table-mask">
-        <TweenOne component="div" key={i}
-          animation={{ marginTop: data[`${data.key}remove`] ? -400 : 0, ease: data[`${data.key}remove`] ? 'easeInCirc' : 'easeOutCirc' }}>
-          {child}
-        </TweenOne>
+        <Animate component="div" key={i} showProp="visible" transitionName="zoom-up">
+          {addOrRemove ? child : null}
+        </Animate>
       </div>
     </li>);
   }
