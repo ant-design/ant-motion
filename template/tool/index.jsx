@@ -189,9 +189,11 @@ const motionTool = (config) => (ComposedComponent) => {
       return convertedState;
     }
 
-    callBack() {
-      console.log(config)
-      const _config = this.getURLConfig(config);
+    callBack(name) {
+      config[this.state.childId].dateNow = this.state.config[this.state.childId].dateNow;
+      const data = name === 'variables' ? this.state.config : config;
+      const dateBool = name === 'variables' ? true : false;
+      const _config = this.getURLConfig(data, dateBool);
       this.setState({ config: _config });
     }
 

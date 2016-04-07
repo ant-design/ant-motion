@@ -39,7 +39,7 @@ class TextController extends Common {
     } else {
       this.removeURLData(name, data.key);
     }
-    this.props.callBack();
+    this.props.callBack('dataSource');
   }
 
   getTextContent(data, i) {

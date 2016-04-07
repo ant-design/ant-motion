@@ -54,7 +54,7 @@ class Common extends React.Component {
     config[childId] = configChild;
   }
 
-  getURLConfig(config) {
+  getURLConfig(config, dateBool) {
     const url = decodeURIComponent(location.hash || '').replace('#', '');
     const urlConfig = JSON.parse(url.split('=')[1] || '{}');
     const _config = assign({}, config);
@@ -65,7 +65,7 @@ class Common extends React.Component {
       Object.keys(item).forEach(_key => {
         const _item = item[_key];
         // 三级,如delay
-        Object.keys(_item).forEach(this.getConfig.bind(this, _key, _item, _config, key, false));
+        Object.keys(_item).forEach(this.getConfig.bind(this, _key, _item, _config, key, dateBool));
       })
     });
     return _config;
@@ -96,15 +96,12 @@ class Common extends React.Component {
 
   clickMake(name, callBack) {
     // Header 怎么获取....
-    const config = this.state.config;
     const configChild = this.config[this.state.childId] || {};
     const item = configChild[name];
     if (item) {
-      console.log(item.text)
-      Object.keys(item).forEach(this.getConfig.bind(this, name, item, config, this.state.childId, true));
       this.setURLConfig(name, item);
       this.config[this.state.childId][name] = {};
-      callBack();
+      callBack(name);
     }
   }
 
