@@ -18,7 +18,7 @@ class NavController extends React.Component {
     const show = !this.state.show;
     this.setState({
       show,
-    })
+    });
   }
 
   render() {
