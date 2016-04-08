@@ -2,8 +2,7 @@ import React, { PropTypes } from 'react';
 import Animate from 'rc-animate';
 import Common from './Common';
 import { Input, Button, Icon } from 'antd';
-function noop() {
-}
+
 class TextController extends Common {
   constructor() {
     super(...arguments);
@@ -20,8 +19,8 @@ class TextController extends Common {
   }
 
   removeURLData(name, key) {
-    const url = decodeURIComponent(location.hash || '').replace('#', '');
-    const config = JSON.parse(url.split('=')[1] || '{}');
+    const configStr = this.getURLData('config');
+    const config = JSON.parse(configStr || '{}');
     const childIdItem = config[this.state.childId] || {};
     delete childIdItem[name][key];
     config[this.state.childId] = childIdItem;
@@ -38,7 +37,6 @@ class TextController extends Common {
     } else {
       this.removeURLData(name, data.key);
     }
-    this.props.callBack('dataSource');
   }
 
   getTextContent(data, i) {
@@ -96,7 +94,7 @@ class TextController extends Common {
 
   render() {
     const textContent = this.props.data.map(this.getTextContent);
-    const clickMake = this.clickMake.bind(this, 'dataSource', this.props.callBack);
+    const clickMake = this.clickMake.bind(this, 'dataSource');
     return (
       <div className="tool-data-panel" visible>
         <h3><Icon type="copy" />内容编辑</h3>
@@ -118,12 +116,10 @@ TextController.propTypes = {
   data: PropTypes.array,
   childId: PropTypes.string,
   stateConfig: PropTypes.object,
-  callBack: PropTypes.func,
 };
 
 TextController.defaultProps = {
   className: 'tool-data-panel',
-  callBack: noop,
 };
 
 export default TextController;

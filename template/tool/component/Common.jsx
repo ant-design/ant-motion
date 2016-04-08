@@ -22,7 +22,7 @@ class Common extends React.Component {
     return r ? unescape(r[2]) : null;
   }
 
-  getURLConfig(config, dateBool) {
+  getURLConfig(config) {
     const urlConfig = JSON.parse(this.getURLData('config') || '{}');
     const _config = assign({}, config);
     // 大类,如banner
@@ -31,9 +31,12 @@ class Common extends React.Component {
       // 二级,如variables
       Object.keys(item).forEach(_key => {
         const _item = item[_key];
+        const configChild = assign({}, _config[key]);
+        if (typeof _item !== 'object') {
+          configChild[_key] = item[_key];
+        }
         // 三级,如delay
         Object.keys(_item).forEach(childKey => {
-          const configChild = assign({}, _config[key]);
           let configForKeyData = configChild[_key];
           configForKeyData = configForKeyData.map(childItem => {
             const assignChildItem = assign({}, childItem);
@@ -56,27 +59,28 @@ class Common extends React.Component {
             return assignChildItem;
           });
           configChild[_key] = configForKeyData;
-
-          if (_key === 'variables' && dateBool) {
-            configChild.dateNow = Date.now();
-          }
-          _config[key] = configChild;
         });
+        _config[key] = configChild;
       });
     });
     return _config;
   }
 
-  setURLConfig(name, item) {
+  setURLConfig(name, item, dateNow) {
     const configStr = this.getURLData('config');
     const config = JSON.parse(configStr || '{}');
     const childIdItem = config[this.state.childId] || {};
+    if (dateNow) {
+      childIdItem.dateNow = dateNow;
+    }
     childIdItem[name] = childIdItem[name] || {};
     Object.keys(item).forEach(key => {
       if (item[key] && typeof item[key] === 'object') {
         childIdItem[name][key] = childIdItem[name][key] || {};
         Object.keys(item[key]).forEach(_key => {
-          childIdItem[name][key][_key] = item[key][_key];
+          if (item[key][_key]) {
+            childIdItem[name][key][_key] = item[key][_key];
+          }
         });
       } else if (item[key]) {
         childIdItem[name][key] = item[key];
@@ -99,14 +103,14 @@ class Common extends React.Component {
     return data;
   }
 
-  clickMake(name, callBack) {
+  clickMake(name) {
     // Header 怎么获取....
     const configChild = this.config[this.state.childId] || {};
     const item = configChild[name];
     if (item) {
-      this.setURLConfig(name, item);
+      const dateNow = name === 'variables' ? Date.now() : null;
+      this.setURLConfig(name, item, dateNow);
       this.config[this.state.childId][name] = {};
-      callBack(name);
     }
   }
 

@@ -1,9 +1,10 @@
 import React, { PropTypes } from 'react';
+import Common from './Common';
 import TweenOne from 'rc-tween-one';
 import { Button, Icon } from 'antd';
 import './Nav.less';
 
-class NavController extends React.Component {
+class NavController extends Common {
   constructor() {
     super(...arguments);
     this.state = {
@@ -11,7 +12,17 @@ class NavController extends React.Component {
     };
     [
       'iconClick',
+      'resetData',
     ].forEach((method) => this[method] = this[method].bind(this));
+  }
+
+  resetData() {
+    const configStr = this.getURLData('config');
+    const url = decodeURIComponent(location.hash || '').replace('#', '');
+    const reg = new RegExp(`(^|&)config=${configStr}`, 'i');
+    const otherUrl = (url.replace(reg, '').split('&') || []).filter(_item => _item).join('&');
+    location.reload();
+    location.hash = `#${otherUrl}`;
   }
 
   iconClick() {
@@ -29,8 +40,8 @@ class NavController extends React.Component {
         >
           <ul>
             <li><a href="http://motion.ant.design">返回主站</a></li>
-            <li><a disabled>查看教程</a></li>
-            <li><a>重置参数</a></li>
+            <li><a href="http://motion.ant.design/#/cases/help">查看教程</a></li>
+            <li><a onClick={this.resetData}>重置参数</a></li>
             <li><Button type="primary">预览模式</Button></li>
             <li><Button type="primary">生成页面</Button></li>
           </ul>
@@ -38,7 +49,7 @@ class NavController extends React.Component {
         <div className={`${this.props.className}-icon`}
           onClick={this.iconClick}
         >
-          <Icon type="down" className={this.state.show ? '' : 'up'}/>
+          <Icon type="down" className={this.state.show ? '' : 'up'} />
         </div>
       </div>
     );

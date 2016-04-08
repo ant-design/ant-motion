@@ -38,9 +38,6 @@ const easeing = [
   'easeInOutBounce',
 ];
 
-function noop() {
-}
-
 class AnimController extends Common {
   constructor() {
     super(...arguments);
@@ -134,7 +131,7 @@ class AnimController extends Common {
 
   render() {
     const animContent = this.props.data.map(this.getAnimContent);
-    const clickMake = this.clickMake.bind(this, 'variables', this.props.callBack);
+    const clickMake = this.clickMake.bind(this, 'variables');
     return (
       <div className="tool-variable-panel" id="V-Panel" visible>
         <div className="tool-logo">
@@ -159,12 +156,10 @@ AnimController.propTypes = {
   data: PropTypes.array,
   childId: PropTypes.string,
   stateConfig: PropTypes.object,
-  callBack: PropTypes.func,
 };
 
 AnimController.defaultProps = {
   className: 'tool-data-panel',
-  callBack: noop,
 };
 
 export default AnimController;

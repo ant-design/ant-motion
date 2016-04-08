@@ -15,6 +15,11 @@ class List extends React.Component {
     ].forEach((method) => this[method] = this[method].bind(this));
   }
 
+  componentWillReceiveProps(nextProps) {
+    const { defaultValue } = nextProps;
+    this.setState({ defaultValue });
+  }
+
   listOnClick(value, e) {
     this.props.onChange(value, e);
     this.setState({

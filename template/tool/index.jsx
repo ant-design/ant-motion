@@ -39,7 +39,7 @@ const motionTool = (config) => (ComposedComponent) =>
         'handleClick',
         'handleEnter',
         'getMaskChild',
-        'callBack',
+        'toUrl',
       ].forEach((method) => this[method] = this[method].bind(this));
     }
 
@@ -61,6 +61,7 @@ const motionTool = (config) => (ComposedComponent) =>
           });
         }
       });
+      window.addEventListener('hashchange', this.toUrl);
       this.componentDidUpdate();
     }
 
@@ -72,6 +73,13 @@ const motionTool = (config) => (ComposedComponent) =>
       // 添加双击事件
       $('.root').unbind('dblclick', this.handleClick);
       $('.root').bind('dblclick', this.handleClick);
+    }
+
+    toUrl() {
+      const _config = this.getURLConfig(config);
+      this.setState({
+        config: _config,
+      });
     }
 
     getMaskChild(parent, docHeight) {
@@ -193,16 +201,8 @@ const motionTool = (config) => (ComposedComponent) =>
       return convertedState;
     }
 
-    callBack(name) {
-      const _config = config;
-      _config[this.state.childId].dateNow = this.state.config[this.state.childId].dateNow;
-      const data = name === 'variables' ? this.state.config : _config;
-      const dateBool = name === 'variables' ? true : false;
-      const __config = this.getURLConfig(data, dateBool);
-      this.setState({ config: __config });
-    }
-
     render() {
+      // console.log(this.state.config.banner)
       const toolContent = this.getToolChild(this.state.config[this.state.childId] || {});
       return (
         <div style={{ display: 'inline' }}>

@@ -37,7 +37,7 @@ class Index extends Component {
         children = <Article content={desc} pathname={key} />;
         break;
       case 'cases':
-        desc = cases[`src/${keys}/${contentName || 'help'}.md`];
+        desc = cases[`src/${keys}/${contentName || 'about'}.md`];
         children = <Article content={desc} pathname={key} />;
         break;
       case 'component':
