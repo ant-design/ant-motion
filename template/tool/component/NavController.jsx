@@ -8,19 +8,25 @@ class NavController extends Common {
   constructor() {
     super(...arguments);
     this.state = {
-      show: true,
+      show: !this.getURLData('mode'),
+      mode: !this.getURLConfig('mode'),
     };
     [
       'iconClick',
       'resetData',
+      'switchMode',
+      'removeUrlData',
     ].forEach((method) => this[method] = this[method].bind(this));
   }
 
-  resetData() {
-    const configStr = this.getURLData('config');
+  removeUrlData(name) {
     const url = decodeURIComponent(location.hash || '').replace('#', '');
-    const reg = new RegExp(`(^|&)config=${configStr}`, 'i');
-    const otherUrl = (url.replace(reg, '').split('&') || []).filter(_item => _item).join('&');
+    const reg = new RegExp(`(^|&)${name}=([^&]*)(&|$)`, 'i');
+    return url.replace(reg, '');
+  }
+
+  resetData() {
+    const otherUrl = this.removeUrlData('config');
     location.reload();
     location.hash = `#${otherUrl}`;
   }
@@ -29,6 +35,16 @@ class NavController extends Common {
     const show = !this.state.show;
     this.setState({
       show,
+    });
+  }
+
+  switchMode() {
+    const mode = !this.getURLData('mode');
+    const otherUrl = this.removeUrlData('mode');
+    location.hash = `#${otherUrl}${mode ? `&mode=${mode}` : ''}`;
+    this.setState({
+      show: !mode,
+      mode: !mode,
     });
   }
 
@@ -42,7 +58,11 @@ class NavController extends Common {
             <li><a href="http://motion.ant.design">返回主站</a></li>
             <li><a href="http://motion.ant.design/#/cases/help">查看教程</a></li>
             <li><a onClick={this.resetData}>重置参数</a></li>
-            <li><Button type="primary">预览模式</Button></li>
+            <li>
+              <Button type="primary" onClick={this.switchMode}>
+                {this.state.mode ? '预览' : '编辑'}模式
+              </Button>
+            </li>
             <li><Button type="primary">生成页面</Button></li>
           </ul>
         </TweenOne>

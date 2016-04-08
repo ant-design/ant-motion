@@ -33,8 +33,10 @@ const motionTool = (config) => (ComposedComponent) =>
           text: '',
         },
         childId: '',
+        showMode: !this.getURLData('mode'),
       };
       ['getToolChild',
+        'docMouseOver',
         'convertConfig',
         'handleClick',
         'handleEnter',
@@ -45,22 +47,6 @@ const motionTool = (config) => (ComposedComponent) =>
 
     componentDidMount() {
       // 滑出root后,虚线删除
-      $(document).bind('mouseover', (e) => {
-        const $target = $(e.target);
-        const $parentWrapper = $target.parents('.root');
-        if (!$target.hasClass('root') && !$parentWrapper.length) {
-          this.setState({
-            currentId: null,
-            overlay: {
-              top: 0,
-              left: 0,
-              width: 0,
-              height: 0,
-              text: '',
-            },
-          });
-        }
-      });
       window.addEventListener('hashchange', this.toUrl);
       this.componentDidUpdate();
     }
@@ -69,16 +55,40 @@ const motionTool = (config) => (ComposedComponent) =>
       // bind hover event
       // http://stackoverflow.com/questions/10618001/javascript-mouseover-mouseout-issue-with-child-element
       $('.root').unbind('mouseenter', this.handleEnter);
-      $('.root').bind('mouseenter', this.handleEnter);
-      // 添加双击事件
       $('.root').unbind('dblclick', this.handleClick);
-      $('.root').bind('dblclick', this.handleClick);
+      $(document).unbind('mouseover', this.docMouseOver);
+
+      if (this.state.showMode) {
+        $(document).bind('mouseover', this.docMouseOver);
+        $('.root').bind('mouseenter', this.handleEnter);
+        // 添加双击事件
+        $('.root').bind('dblclick', this.handleClick);
+      }
+    }
+
+    docMouseOver(e) {
+      const $target = $(e.target);
+      const $parentWrapper = $target.parents('.root');
+      if (!$target.hasClass('root') && !$parentWrapper.length) {
+        this.setState({
+          currentId: null,
+          overlay: {
+            top: 0,
+            left: 0,
+            width: 0,
+            height: 0,
+            text: '',
+          },
+        });
+      }
     }
 
     toUrl() {
       const _config = this.getURLConfig(config);
+      const showMode = !this.getURLData('mode');
       this.setState({
         config: _config,
+        showMode,
       });
     }
 
@@ -202,25 +212,32 @@ const motionTool = (config) => (ComposedComponent) =>
     }
 
     render() {
-      // console.log(this.state.config.banner)
       const toolContent = this.getToolChild(this.state.config[this.state.childId] || {});
-      return (
-        <div style={{ display: 'inline' }}>
-          {!this.state.showMask && this.state.currentId ?
+      const childToRender = this.state.showMode ? [
+        !this.state.showMask && this.state.currentId ?
           <OverLay {...this.state.overlay} visible key="0">
             {this.state.overlay.text}
-          </OverLay> : null}
-          <Animate showProp="visible" transitionName="zoom">
-            {toolContent}
-          </Animate>
-          <ComposedComponent
-            {...this.convertConfig(assign({}, this.state.config))}
-          />
-          <Animate component={Mask} showProp="visible" transitionName="fade"
-            style={{ height: this.state.maskHeight }}
-          >
-            {this.state.showMask ? this.state.maskChild : null}
-          </Animate>
+          </OverLay> : null,
+        <Animate showProp="visible" transitionName="zoom" key="tool">
+          {toolContent}
+        </Animate>,
+        <ComposedComponent
+          {...this.convertConfig(assign({}, this.state.config))}
+          key="comp"
+        />,
+        <Animate component={Mask} showProp="visible" transitionName="fade"
+          style={{ height: this.state.maskHeight }}
+          key="mask"
+        >
+          {this.state.showMask ? this.state.maskChild : null}
+        </Animate>,
+      ] : (<ComposedComponent
+        {...this.convertConfig(assign({}, this.state.config))}
+        key="comp"
+      />);
+      return (
+        <div style={{ display: 'inline' }}>
+          {childToRender}
           <NavController />
         </div>);
     }
