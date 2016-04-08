@@ -19,6 +19,11 @@ class NavController extends Common {
     ].forEach((method) => this[method] = this[method].bind(this));
   }
 
+  componentWillReceiveProps(nextProps) {
+    const { defaultValue } = nextProps;
+    this.setState({ defaultValue });
+  }
+
   removeUrlData(name) {
     const url = decodeURIComponent(location.hash || '').replace('#', '');
     const reg = new RegExp(`(^|&)${name}=([^&]*)(&|$)`, 'i');
@@ -60,7 +65,7 @@ class NavController extends Common {
             <li><a onClick={this.resetData}>重置参数</a></li>
             <li>
               <Button type="primary" onClick={this.switchMode}>
-                {this.state.mode ? '预览' : '编辑'}模式
+                {!this.state.mode ? '预览模式' : '编辑模式'}
               </Button>
             </li>
             <li><Button type="primary">生成页面</Button></li>

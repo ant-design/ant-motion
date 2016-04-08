@@ -8,7 +8,10 @@ export default {
         key: 'img',
         name: 'logo',
         value: 'https://os.alipayobjects.com/rmsportal/mlcYmsRilwraoAe.svg',
-        link: '',
+        link: {
+          name: '上传图片',
+          href: '',
+        },
       },
       {
         key: 'menu1',
@@ -70,6 +73,10 @@ export default {
         key: 'bgImg',
         name: '背景图片',
         value: 'https://os.alipayobjects.com/rmsportal/IhCNTqPpLeTNnwr.jpg',
+        link: {
+          name: '上传图片',
+          href: '',
+        },
       },
       {
         key: 'text',

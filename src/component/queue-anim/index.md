@@ -40,7 +40,7 @@ ReactDOM.render(<QueueAnim>
 | type       | string / array | `right` | 动画内置参数 <br/> `left` `right` `top` `bottom` `scale` `scaleBig` `scaleX` `scaleY`|
 | animConfig | object / array | null    | 配置动画参数 <br/> 如 `{opacity:[1, 0],translateY:[0, -30]}` 具体参考 [velocity](http://julian.com/research/velocity) 的写法|
 | delay      | number / array | 0       | 整个动画的延时,以毫秒为单位 |
-| duration   | number / array | 500     | 每个动画的时间,以毫秒为单位  |
+| duration   | number / array | 450     | 每个动画的时间,以毫秒为单位  |
 | interval   | number / array | 100     | 每个动画的间隔时间,以毫秒为单位  |
 | leaveReverse | boolean      | false   | 出场时是否倒放,从最后一个 dom 开始往上播放 |
 | ease       | string / array | `easeOutQuart` | 动画的缓动函数,[查看详细](http://julian.com/research/velocity/#easing) |

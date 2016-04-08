@@ -74,7 +74,9 @@ class TextController extends Common {
     const addOrRemove = data.value === '$remove' ? false : true;
     const onAddOrRemove = this.addOrRemoveTextContent.bind(this, data, 'dataSource', addOrRemove);
     return (<li key={i}>
-      <h4>{data.name}
+      <h4>{data.name}{data.link ? <a href={data.link.href} target="_blank" className="upload">
+        {data.link.name}
+      </a> : null}
         <a onClick={onAddOrRemove}
           className="data-cross-button"
         >
