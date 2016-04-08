@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import Popover from 'antd/lib/popover';
 function noop() {
 }
@@ -14,11 +14,11 @@ class MotionPopover extends React.Component {
   }
 
   visibleChange(e) {
-    const currentChange = this.props.onVisibleChange || noop;
+    const currentChange = this.props.onVisibleChange;
     currentChange(e);
     this.setState({
       visible: e,
-    })
+    });
   }
 
   render() {
@@ -29,5 +29,14 @@ class MotionPopover extends React.Component {
     );
   }
 }
+
+MotionPopover.propTypes = {
+  onVisibleChange: PropTypes.func,
+  children: PropTypes.any,
+};
+
+MotionPopover.defaultProps = {
+  onVisibleChange: noop,
+};
 
 export default MotionPopover;

@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import assign from 'object-assign';
 class Common extends React.Component {
   constructor() {
@@ -8,51 +8,11 @@ class Common extends React.Component {
     [
       'getURLConfig',
       'getURLData',
-      'getConfig',
       'clickMake',
       'setURLConfig',
       'changeValue',
       'convertValue',
     ].forEach((method) => this[method] = this[method].bind(this));
-  }
-
-  convertValue(_data) {
-    const data = assign({}, _data);
-    Object.keys(data).forEach(key => {
-      data[key] = data[key].value;
-    });
-    return data;
-  }
-
-  getConfig(name, item, config, childId, nowBool, childKey) {
-    const configChild = assign({}, config[childId]);
-    let configForKeyData = configChild[name];
-    configForKeyData = configForKeyData.map(childItem => {
-      const _item = assign({}, childItem);
-      if (childItem.key === childKey) {
-        if (typeof item[childKey] === 'object') {
-          const _itemValue = assign({}, _item.value);
-          Object.keys(item[childKey]).forEach(key => {
-            const _itemValueKey = assign({}, _itemValue[key]);
-            _itemValueKey.value = item[childKey][key];
-            _itemValue[key] = _itemValueKey;
-            // 保存修改过的东西
-            // _itemValue[key].value = item[childKey][key]
-          });
-          _item.value = _itemValue;
-        } else if (item[childKey]) {
-          // 这里存不住,,恢复默认;
-          _item.value = item[childKey];
-        }
-      }
-      return _item;
-    });
-    configChild[name] = configForKeyData;
-
-    if (name === 'variables' && nowBool) {
-      configChild.dateNow = Date.now();
-    }
-    config[childId] = configChild;
   }
 
   getURLData(name) {
@@ -72,8 +32,37 @@ class Common extends React.Component {
       Object.keys(item).forEach(_key => {
         const _item = item[_key];
         // 三级,如delay
-        Object.keys(_item).forEach(this.getConfig.bind(this, _key, _item, _config, key, dateBool));
-      })
+        Object.keys(_item).forEach(childKey => {
+          const configChild = assign({}, _config[key]);
+          let configForKeyData = configChild[_key];
+          configForKeyData = configForKeyData.map(childItem => {
+            const assignChildItem = assign({}, childItem);
+            if (childItem.key === childKey) {
+              if (typeof _item[childKey] === 'object') {
+                const _itemValue = assign({}, assignChildItem.value);
+                Object.keys(_item[childKey]).forEach(_itemKey => {
+                  const _itemValueKey = assign({}, _itemValue[_itemKey]);
+                  _itemValueKey.value = _item[childKey][_itemKey];
+                  _itemValue[_itemKey] = _itemValueKey;
+                  // 保存修改过的东西
+                  // _itemValue[key].value = item[childKey][key]
+                });
+                assignChildItem.value = _itemValue;
+              } else if (_item[childKey]) {
+                // 这里存不住,,恢复默认;
+                assignChildItem.value = _item[childKey];
+              }
+            }
+            return assignChildItem;
+          });
+          configChild[_key] = configForKeyData;
+
+          if (_key === 'variables' && dateBool) {
+            configChild.dateNow = Date.now();
+          }
+          _config[key] = configChild;
+        });
+      });
     });
     return _config;
   }
@@ -88,7 +77,7 @@ class Common extends React.Component {
         childIdItem[name][key] = childIdItem[name][key] || {};
         Object.keys(item[key]).forEach(_key => {
           childIdItem[name][key][_key] = item[key][_key];
-        })
+        });
       } else if (item[key]) {
         childIdItem[name][key] = item[key];
       }
@@ -96,10 +85,18 @@ class Common extends React.Component {
 
     const url = decodeURIComponent(location.hash || '').replace('#', '');
     const reg = new RegExp(`(^|&)config=${configStr}`, 'i');
-    const otherUrl = (url.replace(reg, '').split('&') || []).filter(item => item).join('&');
+    const otherUrl = (url.replace(reg, '').split('&') || []).filter(_item => _item).join('&');
     config[this.state.childId] = childIdItem;
     const configString = JSON.stringify(config);
     location.hash = `#config=${encodeURIComponent(configString)}${otherUrl ? `&${otherUrl}` : ''}`;
+  }
+
+  convertValue(_data) {
+    const data = assign({}, _data);
+    Object.keys(data).forEach(key => {
+      data[key] = data[key].value;
+    });
+    return data;
   }
 
   clickMake(name, callBack) {
@@ -117,7 +114,7 @@ class Common extends React.Component {
     const keys = _key.split('&>');
     const dom = e.target;
     const configChild = this.config[this.state.childId] = this.config[this.state.childId] || {};
-    let key = keys[0];
+    const key = keys[0];
     configChild[name] = configChild[name] || {};
     if (keys.length === 2) {
       configChild[name][keys[0]] = configChild[name][keys[0]] || {};
@@ -125,7 +122,6 @@ class Common extends React.Component {
     } else {
       configChild[name][key] = dom.value;
     }
-
   }
 }
 

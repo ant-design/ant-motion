@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react';
 import Animate from 'rc-animate';
-import assign from 'object-assign';
 import Common from './Common';
 import { Input, Button, Icon } from 'antd';
 function noop() {
@@ -32,7 +31,7 @@ class TextController extends Common {
 
   addOrRemoveTextContent(data, name, bool) {
     const key = data.key;
-    let removeObject = {};
+    const removeObject = {};
     removeObject[key] = '$remove';
     if (bool) {
       this.setURLConfig(name, removeObject);
@@ -49,34 +48,42 @@ class TextController extends Common {
       const table = Object.keys(data.value).map((key, ii) => {
         const _data = data.value[key];
         type = _data.key === 'content' ? 'textarea' : 'text';
-        return <li key={ii}>
+        const changeValue = this.changeValue.bind(this, `${data.key}&>${key}`, 'dataSource');
+        return (<li key={ii}>
           <p>{_data.name}</p>
           <div>
             <Input type={type} placeholder={_data.value}
-              onChange={this.changeValue.bind(this, `${data.key}&>${key}`, 'dataSource')} />
+              onChange={changeValue}
+            />
           </div>
-        </li>
+        </li>);
       });
 
       child = (<div className="data-table" visible key="111">
         <ul>
           {table}
         </ul>
-      </div>)
+      </div>);
     } else {
       type = data.key === 'content' ? 'textarea' : 'text';
+      const changeValue = this.changeValue.bind(this, data.key, 'dataSource');
       child = (<div visible key="111">
         <Input type={type} placeholder={data.value}
-          onChange={this.changeValue.bind(this, data.key, 'dataSource')} />
+          onChange={changeValue}
+        />
       </div>);
     }
     const addOrRemove = data.value === '$remove' ? false : true;
+    const onAddOrRemove = this.addOrRemoveTextContent.bind(this, data, 'dataSource', addOrRemove);
     return (<li key={i}>
       <h4>{data.name}
-        <a onClick={this.addOrRemoveTextContent.bind(this, data, 'dataSource', addOrRemove)}
+        <a onClick={onAddOrRemove}
           className="data-cross-button"
         >
-          <Icon type="cross-circle-o" className={addOrRemove ? '' :'add'} />
+          <Icon
+            type="cross-circle-o"
+            className={addOrRemove ? '' : 'add'}
+          />
         </a>
       </h4>
       <div className="data-table-mask">
@@ -89,6 +96,7 @@ class TextController extends Common {
 
   render() {
     const textContent = this.props.data.map(this.getTextContent);
+    const clickMake = this.clickMake.bind(this, 'dataSource', this.props.callBack);
     return (
       <div className="tool-data-panel" visible>
         <h3><Icon type="copy" />内容编辑</h3>
@@ -96,7 +104,10 @@ class TextController extends Common {
           {textContent}
         </ul>
         <Button type="primary" size="small"
-          onClick={this.clickMake.bind(this, 'dataSource',this.props.callBack)}>保存</Button>
+          onClick={clickMake}
+        >
+          保存
+        </Button>
       </div>
     );
   }

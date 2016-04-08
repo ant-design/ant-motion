@@ -6,5 +6,8 @@ class Mask extends React.Component {
     return <div className="motion-mask" {...this.props}>{this.props.children}</div>;
   }
 }
+Mask.propTypes = {
+  children: PropTypes.any,
+};
 
 export default Mask;

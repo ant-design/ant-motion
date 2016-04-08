@@ -24,7 +24,9 @@ class NavController extends React.Component {
   render() {
     return (
       <div {...this.props}>
-        <TweenOne animation={{ y: this.state.show ? 0 : 64 }} className={`${this.props.className}-bar`}>
+        <TweenOne animation={{ y: this.state.show ? 0 : 64 }}
+          className={`${this.props.className}-bar`}
+        >
           <ul>
             <li><a href="http://motion.ant.design">返回主站</a></li>
             <li><a disabled>查看教程</a></li>

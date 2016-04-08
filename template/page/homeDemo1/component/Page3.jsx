@@ -19,7 +19,7 @@ class Page3 extends React.Component {
           </p>
           <Button key="button" type="ghost">Learn More</Button>
         </QueueAnim>
-        <TweenOne animation={{ ...this.props.anim.imgAnimate, type: 'from'}}
+        <TweenOne animation={{ ...this.props.anim.imgAnimate, type: 'from' }}
           hideProps={{ reverse: true }}
           key="img"
           className="img"
@@ -34,6 +34,7 @@ class Page3 extends React.Component {
 Page3.propTypes = {
   className: PropTypes.string,
   anim: PropTypes.object,
+  img: PropTypes.string,
 };
 
 Page3.defaultProps = {
@@ -45,7 +46,7 @@ Page3.defaultProps = {
     ease: 'easeInOutQuart',
     duration: 450,
     imgAnimate: { x: 30, opacity: 0 },
-  }
+  },
 };
 
 export default Page3;

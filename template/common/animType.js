@@ -8,21 +8,21 @@ export default {
     one: {
       type: 'left',
       animation: { x: -30, opacity: 0 },
-    }
+    },
   },
   rightPosition: {
     name: '从右往左',
     one: {
       type: 'right',
       animation: { x: 30, opacity: 0 },
-    }
+    },
   },
   topPosition: {
     name: '从上往下',
     one: {
       type: 'top',
       animation: { y: -30, opacity: 0 },
-    }
+    },
   },
   bottomPosition: {
     name: '从下往上',
@@ -58,20 +58,20 @@ export default {
     one: {
       type: 'scale',
       animation: { scale: 0, opacity: 0 },
-    }
+    },
   },
   scaleBig: {
     name: '从大到小',
     one: {
       type: 'scaleBig',
       animation: { scale: 2, opacity: 0 },
-    }
+    },
   },
   alpha: {
     name: '淡入淡出',
     one: {
       type: 'alpha',
       animation: { opacity: 0 },
-    }
-  }
-}
+    },
+  },
+};

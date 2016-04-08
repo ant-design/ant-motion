@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import './index.less';
 
 import $ from 'jquery';
@@ -15,9 +15,8 @@ import Animate from 'rc-animate';
 import Common from './component/Common';
 
 
-const motionTool = (config) => (ComposedComponent) => {
-
-  return class Wrapper extends Common {
+const motionTool = (config) => (ComposedComponent) =>
+  class Wrapper extends Common {
     constructor() {
       super(...arguments);
       const _config = this.getURLConfig(config);
@@ -35,8 +34,7 @@ const motionTool = (config) => (ComposedComponent) => {
         },
         childId: '',
       };
-      [
-        'getToolChild',
+      ['getToolChild',
         'convertConfig',
         'handleClick',
         'handleEnter',
@@ -59,8 +57,8 @@ const motionTool = (config) => (ComposedComponent) => {
               width: 0,
               height: 0,
               text: '',
-            }
-          })
+            },
+          });
         }
       });
       this.componentDidUpdate();
@@ -80,22 +78,26 @@ const motionTool = (config) => (ComposedComponent) => {
       let maskChild;
       if (parent.offset().top) {
         maskChild = [
-          <div key="1" style={{
-                height: parent.offset().top,
-                top: 0,
-                left: 0,
-              }}
+          <div key="1"
+            style={{
+              height: parent.offset().top,
+              top: 0,
+              left: 0,
+            }}
             visible
           />,
-          <div key="2" style={{
-                height: docHeight - parent.offset().top - parent.height(),
-                top: parent.offset().top + parent.height(),
-              }}
+          <div key="2"
+            style={{
+              height: docHeight - parent.offset().top - parent.height(),
+              top: parent.offset().top + parent.height(),
+            }}
             visible
           />,
-        ]
+        ];
       } else {
-        maskChild = (<div style={{ height: docHeight - parent.height(), top: parent.height() }} visible />);
+        maskChild = (<div
+          style={{ height: docHeight - parent.height(), top: parent.height() }} visible
+        />);
       }
       return maskChild;
     }
@@ -111,7 +113,7 @@ const motionTool = (config) => (ComposedComponent) => {
           width: $target.width(),
           height: $target.height(),
           text: id,
-        }
+        },
       });
     }
 
@@ -126,8 +128,8 @@ const motionTool = (config) => (ComposedComponent) => {
       }
       const docHeight = $(document).height();
       const showMask = !this.state.showMask;
-      let childId = showMask ? $target.attr('id') : null;
-      let maskChild = showMask ? this.getMaskChild($target, docHeight) : null;
+      const childId = showMask ? $target.attr('id') : null;
+      const maskChild = showMask ? this.getMaskChild($target, docHeight) : null;
       this.setState({
         showMask,
         maskChild,
@@ -161,10 +163,11 @@ const motionTool = (config) => (ComposedComponent) => {
     convertConfig(data) {
       const convertedState = assign({}, data);
       Object.keys(convertedState).forEach(key => {
-        const componentState = typeof convertedState[key] === 'string' ? convertedState[key] : assign({}, convertedState[key]);
-        const {dataSource, variables} = componentState;
+        const componentState = typeof convertedState[key] === 'string' ?
+          convertedState[key] : assign({}, convertedState[key]);
+        const { dataSource, variables } = componentState;
         if (dataSource && dataSource.length > 0) {
-          let res = {};
+          const res = {};
           dataSource.forEach(_item => {
             const item = assign({}, _item);
             if (typeof item.value === 'object') {
@@ -179,7 +182,7 @@ const motionTool = (config) => (ComposedComponent) => {
           componentState.dataSource = res;
         }
         if (variables && variables.length > 0) {
-          let res = {};
+          const res = {};
           variables.forEach(item => {
             res[item.key] = item.value;
           });
@@ -191,30 +194,37 @@ const motionTool = (config) => (ComposedComponent) => {
     }
 
     callBack(name) {
-      config[this.state.childId].dateNow = this.state.config[this.state.childId].dateNow;
-      const data = name === 'variables' ? this.state.config : config;
+      const _config = config;
+      _config[this.state.childId].dateNow = this.state.config[this.state.childId].dateNow;
+      const data = name === 'variables' ? this.state.config : _config;
       const dateBool = name === 'variables' ? true : false;
-      const _config = this.getURLConfig(data, dateBool);
-      this.setState({ config: _config });
+      const __config = this.getURLConfig(data, dateBool);
+      this.setState({ config: __config });
     }
 
     render() {
       const toolContent = this.getToolChild(this.state.config[this.state.childId] || {});
       return (
-        <div style={{'display': 'inline'}}>
-          {!this.state.showMask&& this.state.currentId ?
-          <OverLay {...this.state.overlay} visible key="0">{this.state.overlay.text}</OverLay> : null}
+        <div style={{ display: 'inline' }}>
+          {!this.state.showMask && this.state.currentId ?
+          <OverLay {...this.state.overlay} visible key="0">
+            {this.state.overlay.text}
+          </OverLay> : null}
           <Animate showProp="visible" transitionName="zoom">
             {toolContent}
           </Animate>
-          <ComposedComponent {...this.convertConfig(assign({}, this.state.config))} />
+          <ComposedComponent
+            {...this.convertConfig(assign({}, this.state.config))}
+          />
           <Animate component={Mask} showProp="visible" transitionName="fade"
-            style={{ height: this.state.maskHeight }}>{this.state.showMask ? this.state.maskChild : null}
+            style={{ height: this.state.maskHeight }}
+          >
+            {this.state.showMask ? this.state.maskChild : null}
           </Animate>
           <NavController />
         </div>);
     }
   };
-};
+
 
 export default motionTool;

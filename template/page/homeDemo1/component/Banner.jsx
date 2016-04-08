@@ -15,10 +15,14 @@ class Banner extends React.Component {
       type: animType[type].one.type,
     };
     return (
-      <TweenOne animation={{ opacity: 0, type: 'from' }} className={`${this.props.className} root`} id={this.props.id}>
+      <TweenOne
+        animation={{ opacity: 0, type: 'from' }}
+        className={`${this.props.className} root`}
+        id={this.props.id}
+      >
         <div
           style={{
-          backgroundImage: `url(${bgImg})`,
+            backgroundImage: `url(${bgImg})`,
           }}
           className={`${this.props.className}-bg`}
         />
@@ -39,7 +43,10 @@ class Banner extends React.Component {
 }
 
 Banner.propTypes = {
+  id: PropTypes.string,
   className: PropTypes.string,
+  dataSource: PropTypes.object,
+  variables: PropTypes.object,
   anim: PropTypes.object,
 };
 
@@ -50,8 +57,8 @@ Banner.defaultProps = {
     bgImg: 'https://os.alipayobjects.com/rmsportal/IhCNTqPpLeTNnwr.jpg',
     text: {
       title: 'Ant Motion Demo',
-      content: 'Image source from the network Demo, please upload pictures to replace.Image source' +
-      ' from the network Demo, please upload pictures to replace.',
+      content: 'Image source from the network Demo, please upload pictures to replace.' +
+      'Image source from the network Demo, please upload pictures to replace.',
       button: 'Learn More',
     },
   },
@@ -60,7 +67,7 @@ Banner.defaultProps = {
     duration: 800,
     interval: 100,
     delay: 100,
-  }
+  },
 };
 
 export default Banner;

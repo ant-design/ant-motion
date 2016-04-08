@@ -79,6 +79,7 @@ class Page4 extends React.Component {
 Page4.propTypes = {
   className: PropTypes.string,
   anim: PropTypes.object,
+  img: PropTypes.array,
 };
 
 Page4.defaultProps = {
@@ -99,8 +100,8 @@ Page4.defaultProps = {
       leaveReverse: true,
       ease: 'easeInOutQuart',
       duration: 450,
-    }
-  }
+    },
+  },
 };
 
 export default Page4;

@@ -32,6 +32,7 @@
     "mark-twain": "^0.2.0-beta.4",
     "object-assign": "4.0.x",
     "pre-commit": "1.x",
+    "babel-eslint": "^6.0.0",
     "raf": "3.1.x",
     "ramda": "^0.19.1",
     "react": "~0.14.6",
@@ -44,7 +45,7 @@
   ],
   "scripts": {
     "dev": "dora -p 8111 --plugins atool-build,proxy,hmr",
-    "lint": "eslint --ext .js,.jsx src,template",
+    "lint": "eslint --ext .js,.jsx src template",
     "site": "npm run clean && ./scripts/build-website.js && atool-build && mv dist/* _site && rm -rf dist && cp CNAME index.html _site",
     "start": "npm run clean && ./scripts/build-website.js && npm run dev",
     "clean": "rm -rf _site dist",

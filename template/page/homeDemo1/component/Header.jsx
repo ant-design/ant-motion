@@ -19,7 +19,7 @@ class Header extends React.Component {
       // 间隔只给区块队列动画使用.. queueAnim 用;
       anim.interval = interval;
       anim.animation.type = 'from';
-      return anim
+      return anim;
     });
     return (<TweenOne component="header"
       animation={{ opacity: 0, type: 'from' }}
@@ -35,7 +35,8 @@ class Header extends React.Component {
         {...animData[1]}
       >
         <Menu onClick={this.handleClick}
-          mode="horizontal">
+          mode="horizontal"
+        >
           <Menu.Item key="a">{menu1}</Menu.Item>
           <Menu.Item key="b">{menu2}</Menu.Item>
           <Menu.Item key="c">{menu3}</Menu.Item>

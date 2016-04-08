@@ -27,19 +27,17 @@ const Components = [
 ];
 
 class Index extends React.Component {
-  constructor() {
-    super(...arguments);
-  }
-
   render() {
-    return <setction className='content-wap'>
-      {
-        Components.map(Component => {
-          const props = this.props[Component.name] || {};
-          return React.createElement(Component.comp, {...props, key: Component.name + (props.dateNow || 0) })
-          })
-        }
-    </setction>
+    const childrenToRender = Components.map(Component => {
+      const props = this.props[Component.name] || {};
+      return React.createElement(
+        Component.comp,
+        { ...props, key: Component.name + (props.dateNow || 0) }
+      );
+    });
+    return (<setction className="content-wap">
+      {childrenToRender}
+    </setction>);
   }
 }
 

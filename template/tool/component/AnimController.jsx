@@ -1,10 +1,9 @@
 import React, { PropTypes } from 'react';
-import assign from 'object-assign';
 import animType from '../../common/animType';
 import Common from './Common';
 import Popover from './Popover';
 import List from './List';
-import { Input, InputNumber, Button, Icon } from 'antd';
+import { Input, InputNumber, Button } from 'antd';
 const easeing = [
   'linear',
   'easeInSine',
@@ -59,7 +58,7 @@ class AnimController extends Common {
     const keys = _key.split('&>');
     const dom = e.target;
     const configChild = this.config[this.state.childId] = this.config[this.state.childId] || {};
-    let key = keys[0];
+    const key = keys[0];
     configChild.variables = configChild.variables || {};
     if (keys.length === 2) {
       configChild.variables[keys[0]] = configChild.variables[keys[0]] || {};
@@ -83,38 +82,44 @@ class AnimController extends Common {
 
   getAnimContent(data, i) {
     let animOptionChild;
+    let panelHandleChange;
     if (data.key === 'type') {
-      animOptionChild = Object.keys(animType).map(key => {
-        return (data.donType || []).indexOf(key) >= 0 ? null : (
-          <li value={key} key={key}>{animType[key].name}</li>);
-      }).filter(c => c);
+      animOptionChild = Object.keys(animType).map(key => (data.donType || []).indexOf(key) >= 0 ?
+        null : (<li value={key} key={key}>{animType[key].name}</li>)).filter(c => c);
     }
+    const numberChangeValue = this.numberChangeValue.bind(this, data.key);
+    const changeValue = this.changeValue.bind(this, data.key);
     let inputNumOrStr = typeof data.value === 'number' ? (
-      <InputNumber min={data.key==='delay' ? 0 : 100} step={100} defaultValue={data.value}
-        onChange={this.numberChangeValue.bind(this, data.key)}
-      />) : (<Input type='text' placeholder={data.value}
-      onChange={this.changeValue.bind(this, data.key)} />);
+      <InputNumber
+        min={data.key === 'delay' ? 0 : 100}
+        step={100}
+        defaultValue={data.value}
+        onChange={numberChangeValue}
+      />) : (<Input type="text" placeholder={data.value}
+        onChange={changeValue}
+      />);
     if (data.key === 'ease') {
-      const easeChild = easeing.map(key => {
-        return (<li value={key} key={key}>{key}</li>);
-      });
+      const easeChild = easeing.map(key => <li value={key} key={key}>{key}</li>);
+      panelHandleChange = this.panelHandleChange.bind(this, 'ease');
       inputNumOrStr = (<List defaultValue={data.value}
-        onChange={this.panelHandleChange.bind(this, 'ease')}
+        onChange={panelHandleChange}
         className="tool-list"
       >
         {easeChild}
       </List>);
     }
+    panelHandleChange = this.panelHandleChange.bind(this, 'type');
     const animContentChild = data.key === 'type' ?
       (
         <List defaultValue={data.value}
-          onChange={this.panelHandleChange.bind(this, 'type')}
+          onChange={panelHandleChange}
           className="tool-list"
         >
           {animOptionChild}
         </List>) : inputNumOrStr;
     const placement = data.key === 'type' || data.key === 'ease' ? 'rightTop' : 'right';
-    const overlayClassName = data.key === 'type' || data.key === 'ease' ? 'tool-popover no-padding-right' : 'tool-popover';
+    const overlayClassName = data.key === 'type' || data.key === 'ease' ?
+      'tool-popover no-padding-right' : 'tool-popover';
     return (
       <li key={i}>
         <Popover placement={placement}
@@ -129,6 +134,7 @@ class AnimController extends Common {
 
   render() {
     const animContent = this.props.data.map(this.getAnimContent);
+    const clickMake = this.clickMake.bind(this, 'variables', this.props.callBack);
     return (
       <div className="tool-variable-panel" id="V-Panel" visible>
         <div className="tool-logo">
@@ -139,7 +145,7 @@ class AnimController extends Common {
           {animContent}
         </ul>
         <Button type="primary" size="small"
-          onClick={this.clickMake.bind(this, 'variables', this.props.callBack)}
+          onClick={clickMake}
         >
           保存
         </Button>

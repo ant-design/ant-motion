@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import assign from 'object-assign';
 
 function noop() {
-};
+}
 
 class List extends React.Component {
   constructor() {
@@ -19,7 +19,7 @@ class List extends React.Component {
     this.props.onChange(value, e);
     this.setState({
       defaultValue: value,
-    })
+    });
   }
 
   render() {
@@ -37,13 +37,14 @@ class List extends React.Component {
     });
     return React.createElement(
       this.props.component,
-      { ...this.props },
+      this.props,
       childrenToRender
-    )
+    );
   }
 }
 
 List.propTypes = {
+  children: PropTypes.any,
   className: PropTypes.string,
   component: PropTypes.any,
   defaultValue: PropTypes.string,

@@ -2,7 +2,7 @@ export default {
   name: 'demoAnimation',
   version: '0.0.1',
   header: {
-    template: require("raw-js!./component/Header"),
+    template: require('raw-js!./component/Header'),
     dataSource: [
       {
         key: 'img',
@@ -60,7 +60,7 @@ export default {
         key: 'delay',
         name: '延迟',
         value: 0,
-        icon: 'https://os.alipayobjects.com/rmsportal/KLvLgWxtdqTeLFj.svg'
+        icon: 'https://os.alipayobjects.com/rmsportal/KLvLgWxtdqTeLFj.svg',
       },
     ],
   },
@@ -83,7 +83,8 @@ export default {
           content: {
             key: 'content',
             name: '内容',
-            value: 'Image source from the network Demo, please upload pictures to replace.Image source from the network Demo, please upload pictures to replace',
+            value: 'Image source from the network Demo, please upload pictures to replace.' +
+            'Image source from the network Demo, please upload pictures to replace',
           },
           button: {
             key: 'button',
@@ -123,8 +124,8 @@ export default {
         key: 'delay',
         name: '延迟',
         value: 0,
-        icon: 'https://os.alipayobjects.com/rmsportal/KLvLgWxtdqTeLFj.svg'
+        icon: 'https://os.alipayobjects.com/rmsportal/KLvLgWxtdqTeLFj.svg',
       },
     ],
-  }
-}
+  },
+};
