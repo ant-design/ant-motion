@@ -4,7 +4,7 @@
 - order: 0
 - chinese: banner案例
 - parentDisabled: true
-- parentOrder: 1
+- parentOrder: 2
 - parentClose: true
 
 ---

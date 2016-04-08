@@ -7,6 +7,7 @@ class Common extends React.Component {
     this.config = {};
     [
       'getURLConfig',
+      'getURLData',
       'getConfig',
       'clickMake',
       'setURLConfig',
@@ -54,9 +55,15 @@ class Common extends React.Component {
     config[childId] = configChild;
   }
 
-  getURLConfig(config, dateBool) {
+  getURLData(name) {
     const url = decodeURIComponent(location.hash || '').replace('#', '');
-    const urlConfig = JSON.parse(url.split('=')[1] || '{}');
+    const reg = new RegExp(`(^|&)${name}=([^&]*)(&|$)`, 'i');
+    const r = url.match(reg);
+    return r ? unescape(r[2]) : null;
+  }
+
+  getURLConfig(config, dateBool) {
+    const urlConfig = JSON.parse(this.getURLData('config') || '{}');
     const _config = assign({}, config);
     // 大类,如banner
     Object.keys(urlConfig).forEach(key => {
@@ -72,11 +79,10 @@ class Common extends React.Component {
   }
 
   setURLConfig(name, item) {
-    const url = decodeURIComponent(location.hash || '').replace('#', '');
-    const config = JSON.parse(url.split('=')[1] || '{}');
+    const configStr = this.getURLData('config');
+    const config = JSON.parse(configStr || '{}');
     const childIdItem = config[this.state.childId] || {};
     childIdItem[name] = childIdItem[name] || {};
-    // if (!item.remove) {
     Object.keys(item).forEach(key => {
       if (item[key] && typeof item[key] === 'object') {
         childIdItem[name][key] = childIdItem[name][key] || {};
@@ -87,11 +93,13 @@ class Common extends React.Component {
         childIdItem[name][key] = item[key];
       }
     });
-    // }
 
+    const url = decodeURIComponent(location.hash || '').replace('#', '');
+    const reg = new RegExp(`(^|&)config=${configStr}`, 'i');
+    const otherUrl = (url.replace(reg, '').split('&') || []).filter(item => item).join('&');
     config[this.state.childId] = childIdItem;
     const configString = JSON.stringify(config);
-    location.hash = `#config=${encodeURIComponent(configString)}`;
+    location.hash = `#config=${encodeURIComponent(configString)}${otherUrl ? `&${otherUrl}` : ''}`;
   }
 
   clickMake(name, callBack) {

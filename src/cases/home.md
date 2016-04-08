@@ -3,8 +3,7 @@
 - category: 页面示例
 - order: 0
 - chinese: 首页案例
-- index: true
-- parentOrder: 0
+- parentOrder: 1
 
 ---
 

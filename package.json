@@ -15,7 +15,7 @@
     "jquery": "~2.2.2",
     "raw-js-loader": "~1.0.0",
     "antd": "~0.12.0",
-    "antd-md-loader": "~0.1.0-beta.9",
+    "antd-md-loader": "0.1.0-beta.16",
     "atool-build": "0.5.x",
     "autoresponsive-react": "1.1.x",
     "babel-plugin-antd": "^0.2.0",

@@ -1,12 +1,13 @@
 import React, { PropTypes } from 'react';
 import './index.less';
-import OverLay from './component/OverLay';
-import Mask from './component/Mask';
 
 import $ from 'jquery';
 
 import AnimController from './component/AnimController';
 import TextController from './component/TextController';
+import OverLay from './component/OverLay';
+import Mask from './component/Mask';
+import NavController from './component/NavController';
 
 import assign from 'object-assign';
 import Animate from 'rc-animate';
@@ -210,6 +211,7 @@ const motionTool = (config) => (ComposedComponent) => {
           <Animate component={Mask} showProp="visible" transitionName="fade"
             style={{ height: this.state.maskHeight }}>{this.state.showMask ? this.state.maskChild : null}
           </Animate>
+          <NavController />
         </div>);
     }
   };

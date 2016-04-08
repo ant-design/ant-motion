@@ -5,7 +5,7 @@
   position: fixed;
   width: 100%;
   z-index: 1000;
-  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 5px 8px fade(#000, 15);
   &-logo {
     display: inline-block;
     margin: 15px 0 0 4%;
@@ -33,8 +33,8 @@
 
     }
     & .ant-menu-horizontal > .ant-menu-item-active {
-      color: @primary-color;
-      border-bottom-color: @primary-color;
+      color: @link-hover-color;
+      border-bottom-color: @link-hover-color;
     }
   }
 }

@@ -1,0 +1,53 @@
+@import "../../common/custom.less";
+
+.tool-nav {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  z-index: 1001;
+  &-bar {
+    height: 64px;
+    background: fade(#000, 65);
+    box-shadow: 0 -5px 8px fade(#000, 15);
+    & ul {
+      float: right;
+      margin-right: 4%;
+      & li {
+        float: left;
+        padding: 0 10px;
+        line-height: 64px;
+        & a {
+          color: @text-color-light;
+          &:hover {
+            color: @link-hover-color;
+          }
+          &[disabled] {
+            color: #999;
+          }
+        }
+      }
+    }
+  }
+  &-icon {
+    width: 100px;
+    height: 15px;
+    background: @primary-color;
+    color: #fff;
+    border-radius: 6px 6px 0 0;
+    text-align: center;
+    font-size: 12px;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    margin-left: -50px;
+    box-shadow: 0 0 5px fade(#000, 35);
+    cursor: pointer;
+    & i {
+      transition: transform .3s @ease-in-out;
+      transform-origin: 50% 5px;
+      &.up {
+        transform: rotate(180deg);
+      }
+    }
+  }
+}
