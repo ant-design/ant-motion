@@ -10,7 +10,7 @@ export default {
         value: 'https://os.alipayobjects.com/rmsportal/mlcYmsRilwraoAe.svg',
         link: {
           name: '上传图片',
-          href: '',
+          href: 'https://rmsportal.alipay.com/',
         },
       },
       {
@@ -75,7 +75,7 @@ export default {
         value: 'https://os.alipayobjects.com/rmsportal/IhCNTqPpLeTNnwr.jpg',
         link: {
           name: '上传图片',
-          href: '',
+          href: 'https://rmsportal.alipay.com/',
         },
       },
       {
