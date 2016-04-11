@@ -72,19 +72,24 @@ class TextController extends Common {
       </div>);
     }
     const addOrRemove = data.value === '$remove' ? false : true;
-    const onAddOrRemove = this.addOrRemoveTextContent.bind(this, data, 'dataSource', addOrRemove);
+    // 删除添加后期优化
+    /*
+     const onAddOrRemove = this.addOrRemoveTextContent.bind(this, data, 'dataSource', addOrRemove);
+     <a onClick={onAddOrRemove}
+     className="data-cross-button"
+     >
+     <Icon
+     type="cross-circle-o"
+     className={addOrRemove ? '' : 'add'}
+     />
+     </a>
+     */
     return (<li key={i}>
-      <h4>{data.name}{data.link ? <a href={data.link.href} target="_blank" className="upload">
-        {data.link.name}
-      </a> : null}
-        <a onClick={onAddOrRemove}
-          className="data-cross-button"
-        >
-          <Icon
-            type="cross-circle-o"
-            className={addOrRemove ? '' : 'add'}
-          />
-        </a>
+      <h4>{data.name}
+        {data.size ? <span className="size">尺寸参考:{data.size}</span> : null}
+        {data.link ? <a href={data.link.href} target="_blank" className="upload">
+          {data.link.name}
+        </a> : null}
       </h4>
       <div className="data-table-mask">
         <Animate component="div" key={i} showProp="visible" transitionName="zoom-up-margin">

@@ -56,10 +56,10 @@ const motionTool = (config) => (ComposedComponent) =>
       // http://stackoverflow.com/questions/10618001/javascript-mouseover-mouseout-issue-with-child-element
       $('.root').unbind('mouseenter', this.handleEnter);
       $('.root').unbind('dblclick', this.handleClick);
-      $(document).unbind('mouseover', this.docMouseOver);
+      // $(document).unbind('mouseover', this.docMouseOver);
 
       if (this.state.showMode) {
-        $(document).bind('mouseover', this.docMouseOver);
+        // $(document).bind('mouseover', this.docMouseOver);
         $('.root').bind('mouseenter', this.handleEnter);
         // 添加双击事件
         $('.root').bind('dblclick', this.handleClick);

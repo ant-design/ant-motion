@@ -3,6 +3,7 @@ import animType from '../../common/animType';
 import Common from './Common';
 import Popover from './Popover';
 import List from './List';
+import iconSrc from './iconSrc';
 import { Input, InputNumber, Button } from 'antd';
 const easeing = [
   'linear',
@@ -124,7 +125,7 @@ class AnimController extends Common {
           overlayClassName={overlayClassName}
           trigger="click"
         >
-          <button><img src={data.icon} /><p>{data.name}</p></button>
+          <button><img src={iconSrc[data.key]} /><p>{data.name}</p></button>
         </Popover>
       </li>);
   }

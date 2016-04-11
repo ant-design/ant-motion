@@ -32,12 +32,12 @@ class Common extends React.Component {
       Object.keys(item).forEach(_key => {
         const _item = item[_key];
         const configChild = assign({}, _config[key]);
+        let configForKeyData = configChild[_key];
         if (typeof _item !== 'object') {
           configChild[_key] = item[_key];
         }
         // 三级,如delay
         Object.keys(_item).forEach(childKey => {
-          let configForKeyData = configChild[_key];
           configForKeyData = configForKeyData.map(childItem => {
             const assignChildItem = assign({}, childItem);
             if (childItem.key === childKey) {

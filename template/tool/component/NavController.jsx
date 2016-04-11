@@ -2,6 +2,8 @@ import React, { PropTypes } from 'react';
 import Common from './Common';
 import TweenOne from 'rc-tween-one';
 import { Button, Icon, Modal } from 'antd';
+import scrollEvent from 'rc-scroll-anim/lib/EventDispatcher';
+import { currentScrollTop } from 'rc-scroll-anim/lib/util';
 import './Nav.less';
 const confirm = Modal.confirm;
 
@@ -10,7 +12,7 @@ class NavController extends Common {
     super(...arguments);
     this.state = {
       show: !this.getURLData('mode'),
-      mode: !this.getURLConfig('mode'),
+      mode: !this.getURLData('mode'),
     };
     [
       'iconClick',
@@ -19,12 +21,40 @@ class NavController extends Common {
       'makePageURL',
       'copyURL',
       'removeUrlData',
+      'scrollEvent',
     ].forEach((method) => this[method] = this[method].bind(this));
+    this.scrollTop = currentScrollTop();
+    this.scrollName = 'stop';
+    scrollEvent.addEventListener('scroll', this.scrollEvent);
   }
 
   componentWillReceiveProps(nextProps) {
     const { defaultValue } = nextProps;
     this.setState({ defaultValue });
+  }
+
+  scrollEvent() {
+    const scrollTop = currentScrollTop();
+    let scrollName = 'stop';
+    if (scrollTop > this.scrollTop + 30) {
+      scrollName = 'bottom';
+      this.scrollTop = scrollTop;
+    } else if (scrollTop < this.scrollTop - 30) {
+      scrollName = 'top';
+      this.scrollTop = scrollTop;
+    }
+    if (this.scrollName !== scrollName) {
+      if (scrollName === 'bottom') {
+        this.setState({
+          show: false,
+        });
+      } else if (scrollName === 'top') {
+        this.setState({
+          show: true,
+        });
+      }
+      this.scrollName = scrollName;
+    }
   }
 
   removeUrlData(name) {
@@ -83,7 +113,7 @@ class NavController extends Common {
             <li><a onClick={this.resetData}>重置参数</a></li>
             <li>
               <Button type="primary" onClick={this.switchMode}>
-                {!this.state.mode ? '预览模式' : '编辑模式'}
+                {!this.state.mode ? '编辑模式' : '预览模式'}
               </Button>
             </li>
             <li><Button type="primary" onClick={this.makePageURL}>生成页面</Button></li>

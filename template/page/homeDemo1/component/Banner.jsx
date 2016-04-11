@@ -27,9 +27,9 @@ class Banner extends React.Component {
           className={`${this.props.className}-bg`}
         />
         <QueueAnim {...animData} className={`${this.props.className}-title`}>
-          {title ? <h1 key="h1">{title}</h1> : null}
-          {content ? <p key="content">{content}</p> : null}
-          {button ? <Button type="ghost" key="button">{button}</Button> : null}
+          {typeof text === 'object' ? [<h1 key="h1">{title}</h1>,
+          <p key="content">{content}</p>,
+          <Button type="ghost" key="button">{button}</Button>] : null}
         </QueueAnim>
 
         <TweenOne animation={{ y: '-=20', yoyo: true, repeat: -1, duration: 1000 }}
@@ -47,7 +47,6 @@ Banner.propTypes = {
   className: PropTypes.string,
   dataSource: PropTypes.object,
   variables: PropTypes.object,
-  anim: PropTypes.object,
 };
 
 Banner.defaultProps = {
@@ -64,9 +63,9 @@ Banner.defaultProps = {
   },
   variables: {
     type: 'bottomPosition',
-    duration: 800,
+    duration: 450,
     interval: 100,
-    delay: 100,
+    delay: 0,
   },
 };
 

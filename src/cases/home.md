@@ -14,7 +14,7 @@ import React, { PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import AutoResponsiveDemo from '../componentElement/cases/AutoResponsiveDemo';
 const imgData = [
-  { src: 'https://t.alipayobjects.com/images/T1nbhmXfphXXXXXXXX.jpg', width: 211, height: 535, href: '#' },
+  { src: 'https://t.alipayobjects.com/images/T1nbhmXfphXXXXXXXX.jpg', width: 211, height: 535, href: '/template/page/homeDemo1/' },
   { src: 'https://t.alipayobjects.com/images/T18HlmXllgXXXXXXXX.jpg', width: 211, height: 490, href: '#' },
   { src: 'https://t.alipayobjects.com/images/T1PrdmXjVhXXXXXXXX.jpg', width: 211, height: 490, href: '#' },
 ];

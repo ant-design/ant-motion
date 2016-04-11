@@ -8,6 +8,7 @@ export default {
         key: 'img',
         name: 'logo',
         value: 'https://os.alipayobjects.com/rmsportal/mlcYmsRilwraoAe.svg',
+        size: '152*33',
         link: {
           name: '上传图片',
           href: 'https://rmsportal.alipay.com/',
@@ -39,31 +40,26 @@ export default {
         key: 'type',
         name: '样式',
         value: 'bottomPosition',
-        icon: 'https://os.alipayobjects.com/rmsportal/npZvNtlUVWrrKuC.svg',
       },
       {
         key: 'ease',
         name: '缓动',
         value: 'easeInOutQuart',
-        icon: 'https://os.alipayobjects.com/rmsportal/lgPiDrfdcBgViAu.svg',
       },
       {
         key: 'duration',
         name: '时长',
-        value: 300,
-        icon: 'https://os.alipayobjects.com/rmsportal/PjZWmtkBAYbNrRo.svg',
+        value: 450,
       },
       {
         key: 'interval',
         name: '间隔',
         value: 100,
-        icon: 'https://os.alipayobjects.com/rmsportal/KLvLgWxtdqTeLFj.svg',
       },
       {
         key: 'delay',
         name: '延迟',
         value: 0,
-        icon: 'https://os.alipayobjects.com/rmsportal/KLvLgWxtdqTeLFj.svg',
       },
     ],
   },
@@ -107,31 +103,387 @@ export default {
         name: '样式',
         value: 'bottomPosition',
         donType: ['leftRightPoly', 'topBottomPoly'],
-        icon: 'https://os.alipayobjects.com/rmsportal/npZvNtlUVWrrKuC.svg',
       },
       {
         key: 'ease',
         name: '缓动',
         value: 'easeInOutQuart',
-        icon: 'https://os.alipayobjects.com/rmsportal/lgPiDrfdcBgViAu.svg',
       },
       {
         key: 'duration',
         name: '时长',
-        value: 300,
-        icon: 'https://os.alipayobjects.com/rmsportal/PjZWmtkBAYbNrRo.svg',
+        value: 450,
       },
       {
         key: 'interval',
         name: '间隔',
         value: 100,
-        icon: 'https://os.alipayobjects.com/rmsportal/KLvLgWxtdqTeLFj.svg',
       },
       {
         key: 'delay',
         name: '延迟',
         value: 0,
-        icon: 'https://os.alipayobjects.com/rmsportal/KLvLgWxtdqTeLFj.svg',
+      },
+    ],
+  },
+  page1: {
+    dataSource: [
+      {
+        key: 'text',
+        name: '文字区块',
+        value: {
+          title: {
+            key: 'title',
+            name: '标题',
+            value: 'PAGE TITLE',
+          },
+          content: {
+            key: 'content',
+            name: '内容',
+            value: 'Demo source from the network, please upload pictures to replace. ' +
+            'Demo source from the network, please upload pictures to replace. ' +
+            'Demo source from the network, please upload pictures to replace.',
+          },
+        },
+      },
+    ],
+    variables: [
+      {
+        key: 'type',
+        name: '样式',
+        value: 'bottomPosition',
+        donType: ['leftRightPoly', 'topBottomPoly'],
+      },
+      {
+        key: 'ease',
+        name: '缓动',
+        value: 'easeInOutQuart',
+      },
+      {
+        key: 'duration',
+        name: '时长',
+        value: 450,
+      },
+      {
+        key: 'interval',
+        name: '间隔',
+        value: 100,
+      },
+      {
+        key: 'delay',
+        name: '延迟',
+        value: 0,
+      },
+    ],
+  },
+  page2: {
+    dataSource: [
+      {
+        key: 'img',
+        name: '配图',
+        value: 'https://os.alipayobjects.com/rmsportal/uxvINJWDtuEWPeg.png',
+        size: '352*470',
+        link: {
+          name: '上传图片',
+          href: 'https://rmsportal.alipay.com/',
+        },
+      },
+      {
+        key: 'text',
+        name: '文字区块',
+        value: {
+          title: {
+            key: 'title',
+            name: '标题',
+            value: 'Ant Motion Demo',
+          },
+          content: {
+            key: 'content',
+            name: '内容',
+            value: 'Image source from the network Demo, please upload pictures to replace. ' +
+            'Image source from the network Demo,please upload pictures to replace. ' +
+            'Image source from the network Demo, please upload pictures to replace. ' +
+            'Image source from the network Demo, please upload pictures to replace.<br /> ' +
+            'Image source from the network Demo,please upload pictures to replace. ' +
+            'Image source from the network Demo, please upload pictures to replace.',
+          },
+          button: {
+            key: 'button',
+            name: '按钮',
+            value: 'Learn More',
+          },
+        },
+      },
+    ],
+    variables: [
+      {
+        key: 'type',
+        name: '样式',
+        value: 'leftRightPoly',
+      },
+      {
+        key: 'ease',
+        name: '缓动',
+        value: 'easeInOutQuart',
+      },
+      {
+        key: 'duration',
+        name: '时长',
+        value: 450,
+      },
+      {
+        key: 'interval',
+        name: '间隔',
+        value: 100,
+      },
+      {
+        key: 'delay',
+        name: '延迟',
+        value: 0,
+      },
+    ],
+  },
+  page3: {
+    dataSource: [
+      {
+        key: 'img',
+        name: '配图',
+        value: 'https://os.alipayobjects.com/rmsportal/JugUOImfNERsOAb.png',
+        size: '352*285',
+        link: {
+          name: '上传图片',
+          href: 'https://rmsportal.alipay.com/',
+        },
+      },
+      {
+        key: 'text',
+        name: '文字区块',
+        value: {
+          title: {
+            key: 'title',
+            name: '标题',
+            value: 'Ant Motion Demo',
+          },
+          content: {
+            key: 'content',
+            name: '内容',
+            value: 'Image source from the network Demo, please upload pictures to replace. ' +
+            'Image source from the network Demo,please upload pictures to replace. ' +
+            'Image source from the network Demo, please upload pictures to replace. ' +
+            'Image source from the network Demo, please upload pictures to replace.<br /> ' +
+            'Image source from the network Demo,please upload pictures to replace. ' +
+            'Image source from the network Demo, please upload pictures to replace.',
+          },
+          button: {
+            key: 'button',
+            name: '按钮',
+            value: 'Learn More',
+          },
+        },
+      },
+    ],
+    variables: [
+      {
+        key: 'type',
+        name: '样式',
+        value: 'leftRightPoly',
+      },
+      {
+        key: 'ease',
+        name: '缓动',
+        value: 'easeInOutQuart',
+      },
+      {
+        key: 'duration',
+        name: '时长',
+        value: 450,
+      },
+      {
+        key: 'interval',
+        name: '间隔',
+        value: 100,
+      },
+      {
+        key: 'delay',
+        name: '延迟',
+        value: 0,
+      },
+    ],
+  },
+  page4: {
+    dataSource: [
+      {
+        key: 'text',
+        name: '文字区块',
+        value: {
+          title: {
+            key: 'title',
+            name: '标题',
+            value: 'PAGE TITLE',
+          },
+          content: {
+            key: 'content',
+            name: '内容',
+            value: 'Demo source from the network, please upload pictures to replace. ' +
+            'Demo source from the network, please upload pictures to replace. ' +
+            'Demo source from the network, please upload pictures to replace.',
+          },
+        },
+      },
+      {
+        key: 'img1',
+        name: '图片区块1',
+        value: {
+          img: {
+            key: 'img',
+            name: '图片',
+            size: '115*115',
+            value: 'https://os.alipayobjects.com/rmsportal/eHBUBcXxqzLRitB.png',
+          },
+          title: {
+            key: 'title',
+            name: '标题',
+            value: 'SLIDERS',
+          },
+          content: {
+            key: 'content',
+            name: '内容',
+            value: 'Image source from the network Demo, please upload pictures to replace.' +
+            ' Image source from the network Demo',
+          },
+        },
+      },
+      {
+        key: 'img2',
+        name: '图片区块2',
+        value: {
+          img: {
+            key: 'img',
+            name: '图片',
+            size: '115*115',
+            value: 'https://os.alipayobjects.com/rmsportal/eHBUBcXxqzLRitB.png',
+          },
+          title: {
+            key: 'title',
+            name: '标题',
+            value: 'SLIDERS',
+          },
+          content: {
+            key: 'content',
+            name: '内容',
+            value: 'Image source from the network Demo, please upload pictures to replace.' +
+            ' Image source from the network Demo',
+          },
+        },
+      },
+      {
+        key: 'img3',
+        name: '图片区块3',
+        value: {
+          img: {
+            key: 'img',
+            name: '图片',
+            size: '115*115',
+            value: 'https://os.alipayobjects.com/rmsportal/eHBUBcXxqzLRitB.png',
+          },
+          title: {
+            key: 'title',
+            name: '标题',
+            value: 'SLIDERS',
+          },
+          content: {
+            key: 'content',
+            name: '内容',
+            value: 'Image source from the network Demo, please upload pictures to replace.' +
+            ' Image source from the network Demo',
+          },
+        },
+      },
+      {
+        key: 'img4',
+        name: '图片区块4',
+        value: {
+          img: {
+            key: 'img',
+            name: '图片',
+            size: '115*115',
+            value: 'https://os.alipayobjects.com/rmsportal/eHBUBcXxqzLRitB.png',
+          },
+          title: {
+            key: 'title',
+            name: '标题',
+            value: 'SLIDERS',
+          },
+          content: {
+            key: 'content',
+            name: '内容',
+            value: 'Image source from the network Demo, please upload pictures to replace.' +
+            ' Image source from the network Demo',
+          },
+        },
+      },
+    ],
+    variables: [
+      {
+        key: 'type',
+        name: '样式',
+        value: 'bottomPosition',
+      },
+      {
+        key: 'ease',
+        name: '缓动',
+        value: 'easeInOutQuart',
+      },
+      {
+        key: 'duration',
+        name: '时长',
+        value: 450,
+      },
+      {
+        key: 'interval',
+        name: '间隔',
+        value: 100,
+      },
+      {
+        key: 'delay',
+        name: '延迟',
+        value: 0,
+      },
+    ],
+  },
+  footer: {
+    dataSource: [
+      {
+        key: 'text',
+        content: '内容',
+        value: 'Copyright © 2015 The Project by <a href="#">Ant Motion</a>. All Rights Reserved',
+      },
+    ],
+    variables: [
+      {
+        key: 'type',
+        name: '样式',
+        value: 'bottomPosition',
+      },
+      {
+        key: 'ease',
+        name: '缓动',
+        value: 'easeInOutQuart',
+      },
+      {
+        key: 'duration',
+        name: '时长',
+        value: 450,
+      },
+      {
+        key: 'interval',
+        name: '间隔',
+        value: 100,
+      },
+      {
+        key: 'delay',
+        name: '延迟',
+        value: 0,
       },
     ],
   },
