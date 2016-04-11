@@ -5,7 +5,7 @@
 
 ---
 
-这是 Ant Motion 的所有 React 组件的演示站点, 可结合 Ant Design 来实现更炫酷的页面结够.
+这是 Ant Motion 的所有 React 组件的演示站点, 可结合 Ant Design 来实现更炫酷的页面结构。
 <p/>
 <img src="https://os.alipayobjects.com/rmsportal/hkHesMBYfIIdRnT.svg"
   width="100%"
