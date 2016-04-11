@@ -1,8 +1,9 @@
 import React, { PropTypes } from 'react';
 import Common from './Common';
 import TweenOne from 'rc-tween-one';
-import { Button, Icon } from 'antd';
+import { Button, Icon, Modal } from 'antd';
 import './Nav.less';
+const confirm = Modal.confirm;
 
 class NavController extends Common {
   constructor() {
@@ -15,6 +16,8 @@ class NavController extends Common {
       'iconClick',
       'resetData',
       'switchMode',
+      'makePageURL',
+      'copyURL',
       'removeUrlData',
     ].forEach((method) => this[method] = this[method].bind(this));
   }
@@ -43,6 +46,21 @@ class NavController extends Common {
     });
   }
 
+  copyURL() {
+
+  }
+
+  makePageURL() {
+    confirm({
+      title: '你烘焙的动效页面已经出锅！请享用~',
+      content: '你的链接',
+      iconClassName: 'exclamation-circle purple',
+      okText: '拷贝',
+      className: 'abc',
+      onOk: this.copyURL,
+    });
+  }
+
   switchMode() {
     const mode = !this.getURLData('mode');
     const otherUrl = this.removeUrlData('mode');
@@ -68,7 +86,7 @@ class NavController extends Common {
                 {!this.state.mode ? '预览模式' : '编辑模式'}
               </Button>
             </li>
-            <li><Button type="primary">生成页面</Button></li>
+            <li><Button type="primary" onClick={this.makePageURL}>生成页面</Button></li>
           </ul>
         </TweenOne>
         <div className={`${this.props.className}-icon`}
