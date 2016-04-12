@@ -108,8 +108,8 @@ class NavController extends Common {
           className={`${this.props.className}-bar`}
         >
           <ul>
-            <li><a href="http://motion.ant.design">返回主站</a></li>
-            <li><a href="http://motion.ant.design/#/cases/help">查看教程</a></li>
+            <li><a href="../">返回主站</a></li>
+            <li><a href="../#/cases/help">查看教程</a></li>
             <li><a onClick={this.resetData}>重置参数</a></li>
             <li>
               <Button type="primary" onClick={this.switchMode}>
