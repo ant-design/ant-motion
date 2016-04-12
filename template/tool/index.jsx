@@ -37,7 +37,7 @@ const motionTool = (config) => (ComposedComponent) =>
         showMode: !this.getURLData('mode'),
       };
       ['getToolChild',
-        'docMouseOver',
+        'handleLeave',
         'convertConfig',
         'handleClick',
         'handleEnter',
@@ -56,31 +56,14 @@ const motionTool = (config) => (ComposedComponent) =>
       // bind hover event
       // http://stackoverflow.com/questions/10618001/javascript-mouseover-mouseout-issue-with-child-element
       $('.root').unbind('mouseenter', this.handleEnter);
+      $('.root').unbind('mouseleave', this.handleLeave);
       $('.root').unbind('dblclick', this.handleClick);
-      // $(document).unbind('mouseover', this.docMouseOver);
 
       if (this.state.showMode) {
-        // $(document).bind('mouseover', this.docMouseOver);
         $('.root').bind('mouseenter', this.handleEnter);
+        $('.root').bind('mouseleave', this.handleLeave);
         // 添加双击事件
         $('.root').bind('dblclick', this.handleClick);
-      }
-    }
-
-    docMouseOver(e) {
-      const $target = $(e.target);
-      const $parentWrapper = $target.parents('.root');
-      if (!$target.hasClass('root') && !$parentWrapper.length) {
-        this.setState({
-          currentId: null,
-          overlay: {
-            top: 0,
-            left: 0,
-            width: 0,
-            height: 0,
-            text: '',
-          },
-        });
       }
     }
 
@@ -132,6 +115,19 @@ const motionTool = (config) => (ComposedComponent) =>
           width: $target.width(),
           height: $target.height(),
           text: id,
+        },
+      });
+    }
+
+    handleLeave() {
+      this.setState({
+        currentId: null,
+        overlay: {
+          top: 0,
+          left: 0,
+          width: 0,
+          height: 0,
+          text: '',
         },
       });
     }

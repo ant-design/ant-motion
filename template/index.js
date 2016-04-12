@@ -3,7 +3,9 @@ $(() => {
   const loadFunc = {
     init() {
       const url = this.getURLData('page');
+      // 增加进度条.
       $(`<link rel="stylesheet" type="text/css" href="${url}index.css" />`).appendTo($('head'));
+      $.ajaxSetup({ cache: true });
       $.getScript(`${url}index.js`);
     },
     getURLData(name) {

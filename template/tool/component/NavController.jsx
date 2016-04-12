@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import Common from './Common';
 import TweenOne from 'rc-tween-one';
 import { Button, Icon, Modal } from 'antd';
+import CopyToClipboard from 'react-copy-to-clipboard';
 import scrollEvent from 'rc-scroll-anim/lib/EventDispatcher';
 import { currentScrollTop } from 'rc-scroll-anim/lib/util';
 import './Nav.less';
@@ -104,9 +105,10 @@ class NavController extends Common {
         title: '你烘焙的动效页面已经出锅！请享用~',
         content: shortenUrl,
         iconClassName: 'exclamation-circle purple',
-        okText: '拷贝',
+        okText: <CopyToClipboard text={shortenUrl}>
+          <span>拷贝</span>
+        </CopyToClipboard>,
         className: 'abc',
-        onOk: this.copyURL,
       });
     });
   }
