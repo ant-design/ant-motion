@@ -1,7 +1,7 @@
 import React from 'react';
 import './index.less';
 
-import $ from 'jquery';
+// import $ from 'jquery';
 
 import AnimController from './component/AnimController';
 import TextController from './component/TextController';
@@ -14,6 +14,7 @@ import Animate from 'rc-animate';
 
 import Common from './component/Common';
 
+const $ = window.$;
 
 const motionTool = (config) => (ComposedComponent) =>
   class Wrapper extends Common {

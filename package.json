@@ -1,8 +1,9 @@
 {
   "name": "antd-motion",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "entry": {
     "index": "./src/entry/index.jsx",
+    "template/index": "./template/index.js",
     "template/page/homeDemo1/index": "./template/page/homeDemo1/index.jsx"
   },
   "dependencies": {
@@ -47,7 +48,7 @@
   "scripts": {
     "dev": "dora -p 8111 --plugins atool-build,proxy,hmr",
     "lint": "eslint --ext .js,.jsx src template",
-    "site": "npm run clean && ./scripts/build-website.js && atool-build && mv dist/* _site && rm -rf dist && cp CNAME index.html _site",
+    "site": "npm run clean && ./scripts/build-website.js && atool-build && mv dist/* _site && rm -rf dist && cp CNAME index.html _site && cp template/index.html _site/template",
     "start": "npm run clean && ./scripts/build-website.js && npm run dev",
     "clean": "rm -rf _site dist",
     "deploy": "npm run site && node ./scripts/deploy.js"

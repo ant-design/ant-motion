@@ -1,5 +1,8 @@
 import React, { PropTypes } from 'react';
-import highlight from 'highlight.js';
+import highlight from 'highlight.js/lib/highlight.js';
+highlight.registerLanguage('xml', require('highlight.js/lib/languages/xml'));
+highlight.registerLanguage('css', require('highlight.js/lib/languages/css'));
+highlight.registerLanguage('javascript', require('highlight.js/lib/languages/javascript'));
 
 class Highlight extends React.Component {
   constructor() {

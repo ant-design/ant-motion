@@ -71,7 +71,7 @@ export default {
         value: 'https://os.alipayobjects.com/rmsportal/IhCNTqPpLeTNnwr.jpg',
         link: {
           name: '上传图片',
-          href: 'https://rmsportal.alipay.com/',
+          href: 'http://site.alipay.net/xingmin.zhu/toast/',
         },
       },
       {
@@ -185,7 +185,7 @@ export default {
         size: '352*470',
         link: {
           name: '上传图片',
-          href: 'https://rmsportal.alipay.com/',
+          href: 'http://site.alipay.net/xingmin.zhu/toast/',
         },
       },
       {
@@ -252,7 +252,7 @@ export default {
         size: '352*285',
         link: {
           name: '上传图片',
-          href: 'https://rmsportal.alipay.com/',
+          href: 'http://site.alipay.net/xingmin.zhu/toast/',
         },
       },
       {
