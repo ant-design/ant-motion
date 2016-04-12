@@ -2,7 +2,7 @@ export default {
   name: 'demoAnimation',
   version: '0.0.1',
   header: {
-    template: require('raw-js!./component/Header'),
+    template: require('raw-js!../../element/nav1/Header'),
     dataSource: [
       {
         key: 'img',
@@ -39,7 +39,7 @@ export default {
       {
         key: 'type',
         name: '样式',
-        value: 'bottomPosition',
+        value: 'leftRightPoly',
       },
       {
         key: 'ease',

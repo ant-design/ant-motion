@@ -4,6 +4,7 @@
   "entry": {
     "index": "./src/entry/index.jsx",
     "template/index": "./template/index.js",
+    "template/element/nav1/index": "./template/element/nav1/index.jsx",
     "template/page/homeDemo1/index": "./template/page/homeDemo1/index.jsx"
   },
   "dependencies": {

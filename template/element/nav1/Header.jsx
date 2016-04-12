@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import TweenOne from 'rc-tween-one';
 import Menu from 'antd/lib/menu';
-import animType from '../../../common/animType';
+import animType from '../../common/animType';
 
 class Header extends React.Component {
   render() {

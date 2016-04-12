@@ -3,11 +3,13 @@
 - category: 页面示例
 - order: 0
 - chinese: 首页案例
-- parentOrder: 2
+- parentOrder: 3
 
 ---
 
 首页（Display Page）一般是指当用户进入某个网站时浏览到的第一个页面，也可以当作着陆页（Landing Page）来吸引用户的注意。在此，我们归纳整理了几种最常见的展示类模板，可以用于灵活的搭配组合。
+
+## 案例
 
 ```__react
 import React, { PropTypes } from 'react';
