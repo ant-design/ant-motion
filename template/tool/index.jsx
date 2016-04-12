@@ -70,6 +70,15 @@ const motionTool = (config) => (ComposedComponent) =>
     toUrl() {
       const _config = this.getURLConfig(config);
       const showMode = !this.getURLData('mode');
+      if (!showMode) {
+        $('html').attr('style', '');
+        this.setState({
+          showMask: false,
+          maskChild: null,
+          maskHeight: 0,
+          childId: '',
+        });
+      }
       this.setState({
         config: _config,
         showMode,

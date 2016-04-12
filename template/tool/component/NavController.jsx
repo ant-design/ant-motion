@@ -116,7 +116,7 @@ class NavController extends Common {
   switchMode() {
     const mode = !this.getURLData('mode');
     const otherUrl = this.removeUrlData('mode');
-    location.hash = `#${otherUrl}${mode ? `&mode=${mode}` : ''}`;
+    location.hash = `#${encodeURIComponent(otherUrl)}${mode ? `&mode=${mode}` : ''}`;
     this.setState({
       show: !mode,
       mode: !mode,
