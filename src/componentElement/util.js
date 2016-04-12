@@ -4,7 +4,7 @@
 import React from 'react';
 
 import { Link } from 'react-router';
-// import Highlight from './Highlight';
+import Highlight from './Highlight';
 
 
 function noop() {
@@ -80,7 +80,6 @@ export function objectToComponent(pathname, object, index) {
     ]);
   }
 
-  /*
   if (object.type === 'code') {
     const innerHTML = object.props.lang === '__html';
     return (
@@ -89,7 +88,6 @@ export function objectToComponent(pathname, object, index) {
       </Highlight>
     );
   }
-  */
 
   if (typeof children === 'string') {
     return React.createElement(object.type, {
