@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import Common from './Common';
 import TweenOne from 'rc-tween-one';
-import { Button, Icon, Modal } from 'antd';
+import { Button, Icon, Modal, Tooltip } from 'antd';
 import CopyToClipboard from 'react-copy-to-clipboard';
 import scrollEvent from 'rc-scroll-anim/lib/EventDispatcher';
 import { currentScrollTop } from 'rc-scroll-anim/lib/util';
@@ -24,6 +24,8 @@ class NavController extends Common {
       'copyURL',
       'removeUrlData',
       'scrollEvent',
+      'urlBack',
+      'urlForward',
     ].forEach((method) => this[method] = this[method].bind(this));
     this.scrollTop = currentScrollTop();
     this.scrollName = 'stop';
@@ -123,12 +125,28 @@ class NavController extends Common {
     });
   }
 
+  urlBack() {
+    history.back();
+  }
+
+  urlForward() {
+    history.forward();
+  }
+
   render() {
     return (
       <div {...this.props}>
         <TweenOne animation={{ y: this.state.show ? 0 : 64 }}
           className={`${this.props.className}-bar`}
         >
+          <ul className="undo-redo-bar">
+            <Tooltip title="Undo">
+              <li onClick={this.urlBack}><Icon type="left" /></li>
+            </Tooltip>
+            <Tooltip title="Redo">
+              <li onClick={this.urlForward}><Icon type="right" /></li>
+            </Tooltip>
+          </ul>
           <ul>
             <li><a href="../">返回主站</a></li>
             <li><a href="../#/cases/help">查看教程</a></li>

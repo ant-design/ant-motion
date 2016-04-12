@@ -9,6 +9,29 @@
     height: 64px;
     background: fade(#000, 65);
     box-shadow: 0 -5px 8px fade(#000, 15);
+    & .undo-redo-bar {
+      float: left;
+      margin-left: 4%;
+      color: #fff;
+      & li {
+        width: 64px;
+        text-align: center;
+        border-left: 1px solid #666;
+        cursor: pointer;
+        transition: background .3s @ease-in-out;
+        &:nth-child(2) {
+          border-right: 1px solid #666;
+        }
+        &[disabled] {
+          color: #666;
+          pointer-events: none;
+          cursor: not-allowed;
+        }
+        &:hover {
+          background: fade(#fff, 15);
+        }
+      }
+    }
     & ul {
       float: right;
       margin-right: 4%;
@@ -51,6 +74,7 @@
     }
   }
 }
-.purple{
+
+.purple {
   color: @primary-color !important;
 }
