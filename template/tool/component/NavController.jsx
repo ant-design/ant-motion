@@ -6,6 +6,7 @@ import scrollEvent from 'rc-scroll-anim/lib/EventDispatcher';
 import { currentScrollTop } from 'rc-scroll-anim/lib/util';
 import './Nav.less';
 const confirm = Modal.confirm;
+const $ = window.$;
 
 class NavController extends Common {
   constructor() {
@@ -80,14 +81,33 @@ class NavController extends Common {
 
   }
 
+  _shorten(url, cb) {
+    // 调用 dwz.cn 服务, 使用中转服务器发请求
+    const apiUrl = 'http://motion.applinzi.com/';
+    const encodedUrl = encodeURIComponent(url);
+
+    const reqUrl = `${apiUrl}?url=${encodedUrl}`;
+
+    $.ajax({
+      url: reqUrl,
+      success: data => {
+        if (data.tinyurl && cb) {
+          cb(data.tinyurl);
+        }
+      },
+    });
+  }
+
   makePageURL() {
-    confirm({
-      title: '你烘焙的动效页面已经出锅！请享用~',
-      content: '你的链接',
-      iconClassName: 'exclamation-circle purple',
-      okText: '拷贝',
-      className: 'abc',
-      onOk: this.copyURL,
+    this._shorten(location.href, shortenUrl => {
+      confirm({
+        title: '你烘焙的动效页面已经出锅！请享用~',
+        content: shortenUrl,
+        iconClassName: 'exclamation-circle purple',
+        okText: '拷贝',
+        className: 'abc',
+        onOk: this.copyURL,
+      });
     });
   }
 
