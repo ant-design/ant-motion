@@ -3,17 +3,6 @@ $(() => {
   const loadFunc = {
     init() {
       const url = this.getURLData('page');
-      /*
-       const cssFile = document.createElement('link');
-       cssFile.setAttribute('rel', 'stylesheet');
-       cssFile.setAttribute('type', 'text/css');
-       cssFile.setAttribute('href', `${url}index.css`);
-       document.getElementsByTagName('head')[0].appendChild(cssFile);
-       const jsFile = document.createElement('script');
-       jsFile.setAttribute('type', 'text/javascript');
-       jsFile.setAttribute('src', `${url}index.js`);
-       document.getElementsByTagName('head')[0].appendChild(jsFile);
-       */
       $(`<link rel="stylesheet" type="text/css" href="${url}index.css" />`).appendTo($('head'));
       $.getScript(`${url}index.js`);
     },
