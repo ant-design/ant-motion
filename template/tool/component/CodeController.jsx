@@ -2,8 +2,9 @@ import React, { PropTypes } from 'react';
 import { Icon } from 'antd';
 import TweenOne from 'rc-tween-one';
 import './code.less';
-import Highlight from '../../../src/componentElement/Highlight';
-import '../../../src/common/tomorrow.less';
+import highlight from 'highlight.js/lib/highlight.js';
+highlight.registerLanguage('javascript', require('highlight.js/lib/languages/javascript'));
+import 'highlight.js/styles/tomorrow-night.css';
 
 class CodeController extends React.Component {
   constructor() {
@@ -30,19 +31,27 @@ class CodeController extends React.Component {
 
   render() {
     const currentData = this.getCurrentDataForm(this.props.currentData);
+    const dataStr = `
+动效与文字参数, 替换掉 props 里的数据:
+
+${highlight.highlightAuto(currentData).value}
+
+${this.props.childId}代码:
+
+${this.props.code || ''}
+`;
     return (<TweenOne
-      animation={{ right: this.state.show ? 500 : 0 }}
+      animation={{ right: this.state.show ? 600 : 0 }}
       className={this.props.className}
     >
       <div className={`${this.props.className}-icon`} onClick={this.onClick}>
         code
         <Icon type="caret-left" className={this.state.show ? '' : 'right'} />
       </div>
-      <div className={`${this.props.className}-pack`}>
-        <Highlight className="js" key="code">
-          {`动效与文字参数, 替换掉 props 里的数据: \n${currentData} \n\n${this.props.childId}代码:
-          \n${this.props.code || ''}\n`}
-        </Highlight>
+      <div className={`${this.props.className}-pack highlight`}>
+        <pre>
+          <code dangerouslySetInnerHTML={{ __html: dataStr }}></code>
+        </pre>
       </div>
     </TweenOne>);
   }

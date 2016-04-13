@@ -64,7 +64,7 @@ export default {
     ],
   },
   banner: {
-    template: require('raw-js!./component/Banner'),
+    template: require('raw-js!../../element/banner1/Banner'),
     dataSource: [
       {
         key: 'bgImg',
@@ -128,6 +128,7 @@ export default {
     ],
   },
   page1: {
+    template: require('raw-js!../../element/page1/Page1'),
     dataSource: [
       {
         key: 'text',
@@ -178,6 +179,7 @@ export default {
     ],
   },
   page2: {
+    template: require('raw-js!../../element/page2/Page2'),
     dataSource: [
       {
         key: 'img',
@@ -245,6 +247,7 @@ export default {
     ],
   },
   page3: {
+    template: require('raw-js!../../element/page3/Page3'),
     dataSource: [
       {
         key: 'img',

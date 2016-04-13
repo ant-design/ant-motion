@@ -5,6 +5,10 @@
     "index": "./src/entry/index.jsx",
     "template/index": "./template/index.js",
     "template/element/nav1/index": "./template/element/nav1/index.jsx",
+    "template/element/banner1/index": "./template/element/banner1/index.jsx",
+    "template/element/page1/index": "./template/element/page1/index.jsx",
+    "template/element/page2/index": "./template/element/page2/index.jsx",
+    "template/element/page3/index": "./template/element/page3/index.jsx",
     "template/page/homeDemo1/index": "./template/page/homeDemo1/index.jsx"
   },
   "dependencies": {
@@ -15,7 +19,7 @@
   },
   "devDependencies": {
     "react-copy-to-clipboard": "^4.0.1",
-    "raw-js-loader": "~1.0.0",
+    "raw-js-loader": "^1.2.0",
     "antd": "~0.12.0",
     "antd-md-loader": "0.1.0-beta.16",
     "atool-build": "0.5.x",
@@ -30,15 +34,15 @@
     "eslint-config-airbnb": "4.0.x",
     "eslint-plugin-react": "3.16.x",
     "gh-pages": "^0.11.0",
-    "highlight.js": "~9.2.0",
+    "highlight.js": "^9.2.0",
     "mark-twain": "^0.2.0-beta.4",
     "object-assign": "4.0.x",
     "pre-commit": "1.x",
     "babel-eslint": "^6.0.0",
     "raf": "3.1.x",
     "ramda": "^0.19.1",
-    "react": "~0.14.6",
-    "react-dom": "~0.14.6",
+    "react": "15.x",
+    "react-dom": "15.x",
     "react-router": "~2.0.0",
     "tween-functions": "1.0.x",
     "mkdirp": "^0.5.1"

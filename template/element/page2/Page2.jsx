@@ -3,8 +3,8 @@ import QueueAnim from 'rc-queue-anim';
 import TweenOne from 'rc-tween-one';
 import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
 import Button from 'antd/lib/button';
-import animType from '../../../common/animType';
-
+import animType from '../../common/animType';
+import './page2.less';
 class Page2 extends React.Component {
   render() {
     const { img, text } = this.props.dataSource;
@@ -23,21 +23,28 @@ class Page2 extends React.Component {
       anim.animation.type = 'from';
       return anim;
     });
+    const textToRender = (typeof text === 'object' ? [<h2 key="h2">{title}</h2>,
+      <p key="p" dangerouslySetInnerHTML={{ __html: content }}></p>,
+      <Button key="button" type="ghost">{button}</Button>] : null);
     return (
-      <OverPack scrollName="page2" className={`content ${this.props.className} root`}
+      <OverPack scrollName="page2"
+        className={`content ${this.props.className} root`}
         id={this.props.id}
       >
-        <TweenOne {...animData[0]}
+        <TweenOne
+          {...animData[0]}
           hideProps={{ reverse: true }}
           key="img"
           className="img"
         >
           <img src={img} width="352" />
         </TweenOne>
-        <QueueAnim {...animData[1]} hideProps={{ child: null }} key="text" className="text">
-          {typeof text === 'object' ? [<h2 key="h2">{title}</h2>,
-          <p key="p" dangerouslySetInnerHTML={{ __html: content }} />,
-          <Button key="button" type="ghost">{button}</Button>] : null}
+        <QueueAnim
+          {...animData[1]}
+          hideProps={{ child: null }}
+          key="text" className="text"
+        >
+          {textToRender}
         </QueueAnim>
       </OverPack>
     );

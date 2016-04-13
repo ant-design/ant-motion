@@ -3,7 +3,8 @@ import Button from 'antd/lib/button';
 import QueueAnim from 'rc-queue-anim';
 import TweenOne from 'rc-tween-one';
 import Icon from 'antd/lib/icon';
-import animType from '../../../common/animType';
+import animType from '../../common/animType';
+import './banner.less';
 
 class Banner extends React.Component {
   render() {
@@ -25,13 +26,12 @@ class Banner extends React.Component {
             backgroundImage: `url(${bgImg})`,
           }}
           className={`${this.props.className}-bg`}
-        />
+        ></div>
         <QueueAnim {...animData} className={`${this.props.className}-title`}>
           {typeof text === 'object' ? [<h1 key="h1">{title}</h1>,
           <p key="content">{content}</p>,
           <Button type="ghost" key="button">{button}</Button>] : null}
         </QueueAnim>
-
         <TweenOne animation={{ y: '-=20', yoyo: true, repeat: -1, duration: 1000 }}
           className={`${this.props.className}-icon`}
         >

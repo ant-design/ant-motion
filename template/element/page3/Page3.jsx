@@ -3,7 +3,8 @@ import QueueAnim from 'rc-queue-anim';
 import TweenOne from 'rc-tween-one';
 import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
 import Button from 'antd/lib/button';
-import animType from '../../../common/animType';
+import animType from '../../common/animType';
+import './page3.less';
 
 class Page3 extends React.Component {
   render() {

@@ -1,7 +1,8 @@
 import React, { PropTypes } from 'react';
 import QueueAnim from 'rc-queue-anim';
 import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
-import animType from '../../../common/animType';
+import animType from '../../common/animType';
+import './page1.less';
 
 class Page1 extends React.Component {
   render() {
@@ -19,10 +20,7 @@ class Page1 extends React.Component {
       >
         <QueueAnim hideProps={{ child: null }} key="queue" {...animData}>
           {typeof text === 'object' ? [<h1 key="h1">{title}</h1>,
-          <i
-            className="line"
-            key="i"
-          />,
+          <i className="line" key="i" />,
           <p className={`${this.props.className}-center-text`} key="p">
             {content}
           </p>] : null}

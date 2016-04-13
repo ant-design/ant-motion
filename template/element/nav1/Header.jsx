@@ -2,6 +2,8 @@ import React, { PropTypes } from 'react';
 import TweenOne from 'rc-tween-one';
 import Menu from 'antd/lib/menu';
 import animType from '../../common/animType';
+import './nav1.less';
+const Item = Menu.Item;
 
 class Header extends React.Component {
   render() {
@@ -20,26 +22,21 @@ class Header extends React.Component {
       anim.animation.type = 'from';
       return anim;
     });
-    return (<TweenOne component="header"
+    return (<TweenOne
+      component="header"
       animation={{ opacity: 0, type: 'from' }}
       className={`${this.props.className} root`}
       id={this.props.id}
     >
-      <TweenOne className={`${this.props.className}-logo`}
-        {...animData[0]}
-      >
+      <TweenOne className={`${this.props.className}-logo`} {...animData[0]}>
         <img height="33" src={img} />
       </TweenOne>
-      <TweenOne className={`${this.props.className}-nav`}
-        {...animData[1]}
-      >
-        <Menu onClick={this.handleClick}
-          mode="horizontal"
-        >
-          <Menu.Item key="a">{menu1}</Menu.Item>
-          <Menu.Item key="b">{menu2}</Menu.Item>
-          <Menu.Item key="c">{menu3}</Menu.Item>
-          <Menu.Item key="d">{menu4} </Menu.Item>
+      <TweenOne className={`${this.props.className}-nav`} {...animData[1]}>
+        <Menu onClick={this.handleClick} mode="horizontal">
+          <Item key="a">{menu1}</Item>
+          <Item key="b">{menu2}</Item>
+          <Item key="c">{menu3}</Item>
+          <Item key="d">{menu4} </Item>
         </Menu>
       </TweenOne>
     </TweenOne>);

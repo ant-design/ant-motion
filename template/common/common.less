@@ -1,40 +1,38 @@
-@header: header;
-.@{header} {
-  height: 64px;
-  background: @nav-bg-color;
-  position: fixed;
+#react-content {
+  height: 100%;
+  .content-wap {
+    display: inline;
+    overflow: unset;
+  }
+}
+
+.content {
+  max-width: 1200px;
   width: 100%;
-  z-index: 970;
-  box-shadow: 0 5px 8px fade(#000, 15);
-  &-logo {
-    display: inline-block;
-    margin: 15px 0 0 4%;
-    height: 33px;
-    & img {
-      vertical-align: top;
-      display: block;
-    }
-    & a {
-      display: block;
+  margin: auto;
+  & button {
+    border: 1px solid @primary-color;
+    color: @primary-color;
+    transition: color .3s @ease-out, border .3s @ease-out;
+    margin: 20px 0;
+    & span {
+      line-height: 24px;
+      font-size: 14px;
+      padding: 5px;
     }
   }
-  &-nav {
+  & .img img {
     float: right;
-    margin-right: 4%;
-    line-height: 64px;
-    position: relative;
-    & .ant-menu-horizontal {
-      border-bottom-color: transparent;
-    }
-    & .ant-menu {
-      background: transparent;
-      color: @text-color-light;
-      line-height: 62px;
+    padding: 0 10%;
+    width: 100%;
+    max-width: 500px;
+  }
+  & .text {
+    & h2 {
+      color: #000;
+      font-size: 28px;
+      margin: 100px auto 20px;
 
-    }
-    & .ant-menu-horizontal > .ant-menu-item-active {
-      color: @link-hover-color;
-      border-bottom-color: @link-hover-color;
     }
   }
 }
