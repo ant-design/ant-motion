@@ -162,7 +162,7 @@ class NavController extends Common {
         <div className={`${this.props.className}-icon`}
           onClick={this.iconClick}
         >
-          <Icon type="down" className={this.state.show ? '' : 'up'} />
+          <Icon type="caret-down" className={this.state.show ? '' : 'up'} />
         </div>
       </div>
     );

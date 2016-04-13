@@ -64,6 +64,7 @@ export default {
     ],
   },
   banner: {
+    template: require('raw-js!./component/Banner'),
     dataSource: [
       {
         key: 'bgImg',

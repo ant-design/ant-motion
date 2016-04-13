@@ -5,7 +5,6 @@ import animType from '../../common/animType';
 
 class Header extends React.Component {
   render() {
-    // console.log("this.props", this.props.variables);
     const { img, menu1, menu2, menu3, menu4 } = this.props.dataSource;
     const { type, delay, interval, duration, ease } = this.props.variables;
     const animData = ['one', 'tow'].map((order, i) => {

@@ -1,0 +1,60 @@
+@import "../../common/custom.less";
+
+.tool-code {
+  position: fixed;
+  right: 0px;
+  z-index: 1001;
+  overflow: unset;
+  height: 100%;
+  width: 50px;
+  pointer-events: none;
+  & * {
+    pointer-events: all;
+  }
+  &-icon {
+    width: 50px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 6px 0 0 6px;
+    background: @primary-color;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 2px 8px fade(#000, 35);
+    position: absolute;
+    top: 50%;
+    margin-top: -15px;
+    z-index: 10;
+    & > i {
+      transform: scale(.5);
+      transition: transform .3s @ease-in-out;
+    }
+    & .right {
+      transform: scale(.5) rotate(180deg);
+    }
+  }
+  &-pack {
+    width: 500px;
+    height: 80%;
+    position: absolute;
+    top: 10%;
+    left: 50px;
+    z-index: 9;
+    border-radius: 6px 0 0 6px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px fade(#000, 35);
+    & > pre {
+      height: 100%;
+      background: #2F313B;
+      & > code {
+        background: transparent;
+        border: none;
+        height: 100%;
+        color: #ececec;
+        & .hljs-comment {
+          color: #666;
+        }
+      }
+    }
+  }
+}

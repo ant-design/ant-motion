@@ -8,6 +8,7 @@ import TextController from './component/TextController';
 import OverLay from './component/OverLay';
 import Mask from './component/Mask';
 import NavController from './component/NavController';
+import CodeController from './component/CodeController';
 
 import assign from 'object-assign';
 import Animate from 'rc-animate';
@@ -168,7 +169,6 @@ const motionTool = (config) => (ComposedComponent) =>
           childId={this.state.childId}
           stateConfig={this.state.config}
           data={configComp.dataSource || []}
-          callBack={this.callBack}
           key="0"
           visible
         />,
@@ -176,7 +176,6 @@ const motionTool = (config) => (ComposedComponent) =>
           childId={this.state.childId}
           stateConfig={this.state.config}
           data={configComp.variables || []}
-          callBack={this.callBack}
           key="1"
           visible
         />,
@@ -219,6 +218,7 @@ const motionTool = (config) => (ComposedComponent) =>
 
     render() {
       const toolContent = this.getToolChild(this.state.config[this.state.childId] || {});
+      const convertConfig = this.convertConfig(assign({}, this.state.config));
       const childToRender = this.state.showMode ? [
         !this.state.showMask && this.state.currentId ?
           <OverLay {...this.state.overlay} visible key="0">
@@ -227,6 +227,17 @@ const motionTool = (config) => (ComposedComponent) =>
         <Animate showProp="visible" transitionName="zoom" key="tool">
           {toolContent}
         </Animate>,
+        <Animate showProp="visible" transitionName="move-right" key="code-box">
+          {this.state.showMask ?
+          <CodeController visible
+            code={this.state.config[this.state.childId].template}
+            currentData={JSON.stringify(convertConfig[this.state.childId], null, 2)}
+            childId={this.state.childId}
+            key="code"
+          />
+            : null}
+        </Animate>,
+
         <ComposedComponent
           {...this.convertConfig(assign({}, this.state.config))}
           key="comp"
@@ -238,7 +249,7 @@ const motionTool = (config) => (ComposedComponent) =>
           {this.state.showMask ? this.state.maskChild : null}
         </Animate>,
       ] : (<ComposedComponent
-        {...this.convertConfig(assign({}, this.state.config))}
+        {...convertConfig}
         key="comp"
       />);
       return (
