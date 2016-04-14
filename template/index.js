@@ -7,7 +7,7 @@ $(() => {
       $(`<link rel="stylesheet" type="text/css" href="${url}index.css" />`).appendTo($('head'));
       $.ajaxSetup({ cache: true });
       $.getScript(`${url}index.js`);
-      $('title').html(`${url.split('/')[1]}展示`);
+      $('title').html(`${url.split('/')[1]}展示 - 一个高效的动效设计解决方案`);
     },
     getURLData(name) {
       const url = decodeURIComponent(location.search || '').replace('?', '').split('#')[0];
