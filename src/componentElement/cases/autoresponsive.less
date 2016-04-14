@@ -1,0 +1,11 @@
+@import "../../common/custom";
+.rc-autoresponsive-container {
+  margin-top: 40px;
+  & > a {
+    .page-pro();
+    transition: box-shadow .3s @ease-out, transform .3s @ease-out;
+    & img {
+      margin: 20px;
+    }
+  }
+}

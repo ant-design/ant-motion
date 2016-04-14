@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import AutoResponsive from 'autoresponsive-react';
 import { load } from '../../componentElement/util';
+import './autoresponsive.less';
 
 
 class AutoResponsiveDemo extends React.Component {
@@ -53,7 +54,7 @@ class AutoResponsiveDemo extends React.Component {
 
   getAutoResProps() {
     return {
-      itemMargin: 40,
+      itemMargin: 20,
       containerWidth: this.state.containerWidth || document.body.clientWidth * 0.92 - 300,
       itemClassName: 'item',
       transitionDuration: '.3',
@@ -62,7 +63,7 @@ class AutoResponsiveDemo extends React.Component {
 
   getImgChild(item, i) {
     return (<a className="item"
-      style={{ width: item.width + 44, height: item.height + 44 }}
+      style={{ width: item.width + 40, height: item.height + 40 }}
       key={i}
       href={item.href}
       target="_blank"

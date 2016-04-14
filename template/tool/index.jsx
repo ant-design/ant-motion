@@ -101,14 +101,14 @@ const motionTool = (config) => (ComposedComponent) =>
           <div key="2"
             style={{
               height: docHeight - parent.offset().top - parent.height(),
-              top: parent.offset().top + parent.height(),
+              top: parent.offset().top + parent.outerHeight(),
             }}
             visible
           />,
         ];
       } else {
         maskChild = (<div
-          style={{ height: docHeight - parent.height(), top: parent.height() }} visible
+          style={{ height: docHeight - parent.outerHeight(), top: parent.outerHeight() }} visible
         />);
       }
       return maskChild;
@@ -122,8 +122,8 @@ const motionTool = (config) => (ComposedComponent) =>
         overlay: {
           top: $target.offset().top,
           left: $target.offset().left,
-          width: $target.width(),
-          height: $target.height(),
+          width: $target.outerWidth(),
+          height: $target.outerHeight(),
           text: id,
         },
       });
@@ -253,7 +253,7 @@ const motionTool = (config) => (ComposedComponent) =>
         key="comp"
       />);
       return (
-        <div style={{ display: 'inline' }}>
+        <div className="tool-warp">
           {childToRender}
           <NavController />
         </div>);
