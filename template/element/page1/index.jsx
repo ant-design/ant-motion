@@ -3,14 +3,14 @@ import ReactDOM from 'react-dom';
 
 import motionTool from '../../tool/';
 
-import Page1 from './Page1';
+import Page1 from './Page';
 
 import '../../common/ant-d.less';
 
-import config from './webdefault.config.js';
+import config from './webdefault.config';
 
 const Components = [
-  { name: 'page1', comp: Page1 },
+  { name: config.name, comp: Page1 },
 ];
 
 class Index extends React.Component {
@@ -19,7 +19,7 @@ class Index extends React.Component {
       const props = this.props[Component.name] || {};
       return React.createElement(
         Component.comp,
-        { ...props, key: Component.name + (props.dateNow || 0) }
+        { ...props, id: Component.name, key: Component.name + (props.dateNow || 0) }
       );
     });
     return (<setction className="content-wap">

@@ -1,7 +1,7 @@
 export default {
   name: 'banner1',
   version: '0.0.1',
-  banner: {
+  banner1: {
     template: require('raw-js!./Banner'),
     dataSource: [
       {

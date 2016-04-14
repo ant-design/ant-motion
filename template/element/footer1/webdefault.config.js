@@ -1,26 +1,13 @@
 export default {
-  name: 'page1',
+  name: 'footer1',
   version: '0.0.1',
-  page1: {
-    template: require('raw-js!./Page'),
+  footer1: {
+    template: require('raw-js!./Footer'),
     dataSource: [
       {
         key: 'text',
-        name: '文字区块',
-        value: {
-          title: {
-            key: 'title',
-            name: '标题',
-            value: 'PAGE TITLE',
-          },
-          content: {
-            key: 'content',
-            name: '内容',
-            value: 'Demo source from the network, please upload pictures to replace. ' +
-            'Demo source from the network, please upload pictures to replace. ' +
-            'Demo source from the network, please upload pictures to replace.',
-          },
-        },
+        name: '内容',
+        value: 'Copyright © 2015 The Project by <a href="#">Ant Motion</a>. All Rights Reserved',
       },
     ],
     variables: [

@@ -2,7 +2,8 @@ import React, { PropTypes } from 'react';
 import QueueAnim from 'rc-queue-anim';
 import TweenOne from 'rc-tween-one';
 import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
-import animType from '../../../common/animType';
+import animType from '../../common/animType';
+import './page.less';
 
 class Page4 extends React.Component {
   render() {
@@ -73,7 +74,6 @@ Page4.propTypes = {
 
 Page4.defaultProps = {
   className: 'page4',
-  id: 'page4',
   dataSource: {
     text: {
       title: 'PAGE TITLE',

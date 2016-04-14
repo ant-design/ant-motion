@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import TweenOne from 'rc-tween-one';
 import Menu from 'antd/lib/menu';
 import animType from '../../common/animType';
-import './nav1.less';
+import './header.less';
 const Item = Menu.Item;
 
 class Header extends React.Component {
@@ -51,7 +51,6 @@ Header.propTypes = {
 };
 
 Header.defaultProps = {
-  id: 'header',
   className: 'header',
   dataSource: {
     img: 'https://os.alipayobjects.com/rmsportal/mlcYmsRilwraoAe.svg',

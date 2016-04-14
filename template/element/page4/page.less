@@ -1,33 +1,6 @@
-@import '../../../common/custom.less';
-
+@import '../../common/custom.less';
 .page4 {
   min-height: 120px;
-  & h1 {
-    text-align: center;
-    color: @primary-color;
-    margin: 20px auto 5px;
-    font-size: 32px;
-  }
-  & i.line {
-    width: 100px;
-    height: 1px;
-    background: #000;
-    margin: auto;
-    display: block;
-  }
-  &-center-text {
-    text-align: center;
-    width: 60%;
-    margin: 10px auto;
-  }
-}
-
-.img, .text {
-  float: left;
-  width: 50%;
-}
-
-.page4 {
   height: 500px;
   background: @bg-color-light;
   &-wap {
@@ -64,11 +37,22 @@
       }
     }
   }
-}
-
-.footer{
-  background: @bg-color;
-  height: 80px;
-  text-align: center;
-  line-height: 60px;
+  & h1 {
+    text-align: center;
+    color: @primary-color;
+    margin: 20px auto 5px;
+    font-size: 32px;
+  }
+  & i.line {
+    width: 100px;
+    height: 1px;
+    background: #000;
+    margin: auto;
+    display: block;
+  }
+  &-center-text {
+    text-align: center;
+    width: 60%;
+    margin: 10px auto;
+  }
 }

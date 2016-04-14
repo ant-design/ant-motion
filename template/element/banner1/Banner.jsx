@@ -50,7 +50,6 @@ Banner.propTypes = {
 };
 
 Banner.defaultProps = {
-  id: 'banner',
   className: 'banner',
   dataSource: {
     bgImg: 'https://os.alipayobjects.com/rmsportal/IhCNTqPpLeTNnwr.jpg',

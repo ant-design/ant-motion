@@ -7,10 +7,10 @@ import Header from './Header';
 
 import '../../common/ant-d.less';
 
-import config from './webdefault.config.js';
+import config from './webdefault.config';
 
 const Components = [
-  { name: 'header', comp: Header },
+  { name: config.name, comp: Header },
 ];
 
 class Index extends React.Component {
@@ -19,7 +19,7 @@ class Index extends React.Component {
       const props = this.props[Component.name] || {};
       return React.createElement(
         Component.comp,
-        { ...props, key: Component.name + (props.dateNow || 0) }
+        { ...props, id: Component.name, key: Component.name + (props.dateNow || 0) }
       );
     });
     return (<setction className="content-wap">

@@ -2,7 +2,7 @@ export default {
   name: 'page2',
   version: '0.0.1',
   page2: {
-    template: require('raw-js!./Page2'),
+    template: require('raw-js!./Page'),
     dataSource: [
       {
         key: 'img',

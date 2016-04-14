@@ -5,27 +5,25 @@ import motionTool from '../../tool/';
 
 import Header from '../../element/nav1/Header';
 import Banner from '../../element/banner1/Banner';
-import Page1 from '../../element/page1/Page1';
-import Page2 from '../../element/page2/Page2';
-import Page3 from '../../element/page3/Page3';
-import Page4 from './component/Page4';
-import Footer from './component/Footer';
+import Page1 from '../../element/page1/Page';
+import Page2 from '../../element/page2/Page';
+import Page3 from '../../element/page3/Page';
+import Page4 from '../../element/page4/Page';
+import Footer from '../../element/footer1/Footer';
 
 import '../../common/ant-d.less';
-import './assets/index.less';
 
 import config from './webdefault.config.js';
 
 const Components = [
-  { name: 'header', comp: Header },
-  { name: 'banner', comp: Banner },
+  { name: 'nav1', comp: Header },
+  { name: 'banner1', comp: Banner },
   { name: 'page1', comp: Page1 },
   { name: 'page2', comp: Page2 },
   { name: 'page3', comp: Page3 },
   { name: 'page4', comp: Page4 },
-  { name: 'footer', comp: Footer },
+  { name: 'footer1', comp: Footer },
 ];
-
 
 class Index extends React.Component {
   render() {
@@ -33,7 +31,7 @@ class Index extends React.Component {
       const props = this.props[Component.name] || {};
       return React.createElement(
         Component.comp,
-        { ...props, key: Component.name + (props.dateNow || 0) }
+        { ...props, id: Component.name, key: Component.name + (props.dateNow || 0) }
       );
     });
     return (<setction className="content-wap">

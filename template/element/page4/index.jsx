@@ -3,14 +3,14 @@ import ReactDOM from 'react-dom';
 
 import motionTool from '../../tool/';
 
-import Page3 from './Page';
+import Page4 from './Page';
 
 import '../../common/ant-d.less';
 
 import config from './webdefault.config';
 
 const Components = [
-  { name: config.name, comp: Page3 },
+  { name: config.name, comp: Page4 },
 ];
 
 class Index extends React.Component {
