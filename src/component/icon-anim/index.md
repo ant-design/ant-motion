@@ -1,7 +1,7 @@
 # IconAnim
 
 - category: Components
-- order: 4
+- order: 5
 - chinese: Icon 动画
 - disabled: true
 

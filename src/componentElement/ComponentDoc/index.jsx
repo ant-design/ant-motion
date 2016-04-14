@@ -31,7 +31,6 @@ class ComponentDoc extends React.Component {
     const content = this.props.content;
     const { description, meta } = content;
     const demos = demosList[meta.fileName] || [];
-
     const demosToChild = demos.sort((a, b) =>
       parseInt(a.meta.order, 10) - parseInt(b.meta.order, 10)
     ).map((demoData, i) => {
@@ -39,7 +38,11 @@ class ComponentDoc extends React.Component {
       const _content = demoData.intro.map(utils.objectToComponent.bind(null, this.props.pathname));
       const Comp = demoData.preview;
       return (<Item col={col} title={demoData.meta.english} content={_content}
-        code={demoData.highlightedCode} key={i}
+        code={demoData.highlightedCode}
+        styleCode={demoData.highlightedStyle}
+        _style={demoData.style}
+        id={demoData.id}
+        key={i}
       >
         {Comp}
       </Item>);

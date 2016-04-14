@@ -2,7 +2,7 @@
 
 - category: Components
 - chinese: 页面滚动动画
-- order: 2
+- order: 3
 
 ---
 

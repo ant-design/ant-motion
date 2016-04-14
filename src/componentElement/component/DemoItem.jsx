@@ -74,12 +74,14 @@ class Item extends React.Component {
       childProps.paused = this.state.paused;
       children = React.cloneElement(this.props.children, childProps);
     }
-    return (<li {...this.props}>
+    return (<li className={this.props.className} id={this.props.id}>
       <div className={`${this.props.className}-demo`}
         onMouseEnter={this.mouseEnter}
         onMouseLeave={this.mouseLeave}
       >
         {children}
+        {!!this.props._style ?
+        <style dangerouslySetInnerHTML={{ __html: this.props._style }} /> : null}
       </div>
       <div className={`${this.props.className}-meta`}>
         <h1>{this.props.title}</h1>
@@ -94,7 +96,10 @@ class Item extends React.Component {
       >
         <TweenOne animation={this.state.highlightAnim} style={this.state.highlightStyle}>
           <pre>
-            <code className="js" dangerouslySetInnerHTML={{ __html: this.props.code }}/>
+            <code className="js" dangerouslySetInnerHTML={{ __html: this.props.code }} />
+            {this.props.styleCode ?
+            <code className="css" dangerouslySetInnerHTML={{ __html: this.props.styleCode }} />
+              : null}
           </pre>
         </TweenOne>
       </div>
@@ -108,6 +113,9 @@ Item.propTypes = {
   title: PropTypes.any,
   content: PropTypes.any,
   code: PropTypes.string,
+  styleCode: PropTypes.string,
+  _style: PropTypes.string,
+  id: PropTypes.string,
 };
 
 Item.defaultProps = {
