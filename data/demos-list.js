@@ -1,4 +1,9 @@
 module.exports = {
+  'src/component/animate/index.md': [
+    require('antd-md?demo&fileName=src/component/animate/demo/appear.md!../../src/component/animate/demo/appear.md'),
+    require('antd-md?demo&fileName=src/component/animate/demo/remove.md!../../src/component/animate/demo/remove.md'),
+    require('antd-md?demo&fileName=src/component/animate/demo/simple.md!../../src/component/animate/demo/simple.md'),
+  ],
   'src/component/queue-anim/index.md': [
     require('antd-md?demo&fileName=src/component/queue-anim/demo/basic.md!../../src/component/queue-anim/demo/basic.md'),
     require('antd-md?demo&fileName=src/component/queue-anim/demo/change.md!../../src/component/queue-anim/demo/change.md'),
