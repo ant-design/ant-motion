@@ -3,7 +3,7 @@
 - category: Components
 - order: 1
 - cols: 3
-- chinese: 样式动画
+- chinese: 样式进出场动画
 
 ---
 

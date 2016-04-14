@@ -1,7 +1,7 @@
 # TweenOne
 
 - category: Components
-- chinese: 单元素进出场
+- chinese: 单元素动画
 - order: 0
 
 
