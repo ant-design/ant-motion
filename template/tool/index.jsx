@@ -217,6 +217,14 @@ const motionTool = (config) => (ComposedComponent) =>
     }
 
     render() {
+      const make = this.getURLData('make');
+      if (make) {
+        return (
+          <ComposedComponent
+            {...this.convertConfig(assign({}, this.state.config))}
+            key="comp"
+          />);
+      }
       const toolContent = this.getToolChild(this.state.config[this.state.childId] || {});
       const convertConfig = this.convertConfig(assign({}, this.state.config));
       const childToRender = this.state.showMode ? [

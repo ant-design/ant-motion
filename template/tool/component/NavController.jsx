@@ -21,7 +21,6 @@ class NavController extends Common {
       'resetData',
       'switchMode',
       'makePageURL',
-      'copyURL',
       'removeUrlData',
       'scrollEvent',
       'urlBack',
@@ -80,10 +79,6 @@ class NavController extends Common {
     });
   }
 
-  copyURL() {
-
-  }
-
   _shorten(url, cb) {
     // 调用 dwz.cn 服务, 使用中转服务器发请求
     const apiUrl = 'http://motion.applinzi.com/';
@@ -102,7 +97,9 @@ class NavController extends Common {
   }
 
   makePageURL() {
-    this._shorten(location.href, shortenUrl => {
+    const dataHref = location.hash;
+    const sign = dataHref ? '&' : '#';
+    this._shorten(`${location.href}${sign}make=true`, shortenUrl => {
       confirm({
         title: '你烘焙的动效页面已经出锅！请享用~',
         content: shortenUrl,
