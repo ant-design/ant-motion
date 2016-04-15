@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import Common from './Common';
 import TweenOne from 'rc-tween-one';
-import { Button, Icon, Modal, Tooltip } from 'antd';
+import { Button, Icon, Modal, Tooltip, message } from 'antd';
 import CopyToClipboard from 'react-copy-to-clipboard';
 import scrollEvent from 'rc-scroll-anim/lib/EventDispatcher';
 import { currentScrollTop } from 'rc-scroll-anim/lib/util';
@@ -23,6 +23,7 @@ class NavController extends Common {
       'makePageURL',
       'removeUrlData',
       'scrollEvent',
+      'onCopy',
       'urlBack',
       'urlForward',
     ].forEach((method) => this[method] = this[method].bind(this));
@@ -96,6 +97,10 @@ class NavController extends Common {
     });
   }
 
+  onCopy() {
+    message.success('拷贝成功，现在可以去分享你定制的页面了！');
+  }
+
   makePageURL() {
     const dataHref = location.hash;
     const sign = dataHref ? '&' : '#';
@@ -104,10 +109,9 @@ class NavController extends Common {
         title: '你烘焙的动效页面已经出锅！请享用~',
         content: shortenUrl,
         iconClassName: 'exclamation-circle purple',
-        okText: <CopyToClipboard text={shortenUrl}>
-          <span>拷贝</span>
+        okText: <CopyToClipboard text={shortenUrl} onCopy={this.onCopy}>
+          <span className="copy">拷贝</span>
         </CopyToClipboard>,
-        className: 'abc',
       });
     });
   }
@@ -115,7 +119,8 @@ class NavController extends Common {
   switchMode() {
     const mode = !this.getURLData('mode');
     const otherUrl = this.removeUrlData('mode');
-    location.hash = `#${encodeURIComponent(otherUrl)}${mode ? `&mode=${mode}` : ''}`;
+    location.hash = otherUrl ? `#${encodeURIComponent(otherUrl)}${mode ? `&mode=${mode}` : ''}`
+      : `${mode ? `#mode=${mode}` : ''}`;
     this.setState({
       show: !mode,
       mode: !mode,
