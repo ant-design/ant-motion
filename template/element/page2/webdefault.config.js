@@ -7,7 +7,7 @@ export default {
       {
         key: 'img',
         name: '配图',
-        value: 'https://os.alipayobjects.com/rmsportal/uxvINJWDtuEWPeg.png',
+        value: 'https://os.alipayobjects.com/rmsportal/BGwZWphjWXyDFlW.png',
         size: '352*470',
         link: {
           name: '上传图片',

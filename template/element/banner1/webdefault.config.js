@@ -8,10 +8,6 @@ export default {
         key: 'bgImg',
         name: '背景图片',
         value: 'https://os.alipayobjects.com/rmsportal/IhCNTqPpLeTNnwr.jpg',
-        link: {
-          name: '上传图片',
-          href: 'http://site.alipay.net/xingmin.zhu/toast/',
-        },
       },
       {
         key: 'text',

@@ -1,13 +1,11 @@
 import React, { PropTypes } from 'react';
 import QueueAnim from 'rc-queue-anim';
-import TweenOne from 'rc-tween-one';
 import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
 import animType from '../../common/animType';
 import './page.less';
 
 class Page4 extends React.Component {
   render() {
-    const { title, content } = this.props.dataSource.text;
     const { type, delay, interval, duration, ease } = this.props.variables;
     const animData = ['one', 'tow'].map((order, i) => {
       const anim = animType[type][order] || animType[type].one;
@@ -23,7 +21,7 @@ class Page4 extends React.Component {
       anim.leaveReverse = true;
       return anim;
     });
-    const imgDataToRender = Object.keys(this.props.dataSource).filter(key => key !== 'text')
+    const imgDataToRender = Object.keys(this.props.dataSource).filter(key => key !== 'bgImg')
       .map((key, i) => {
         const itemData = this.props.dataSource[key];
         if (itemData === '$remove') {
@@ -38,31 +36,21 @@ class Page4 extends React.Component {
           <p dangerouslySetInnerHTML={{ __html: itemData.content }} />
         </li>);
       });
+    const bgImg = this.props.dataSource.bgImg;
+    const style = bgImg && bgImg !== 'null' ? {
+      background: `url(${bgImg}) fixed center / cover`,
+    } : null;
     return (
-      <div className={this.props.className}>
+      <div className={this.props.className}
+        style={style}
+      >
         <OverPack scrollName="page4" className={`${this.props.className}-wap root`}
           id={this.props.id}
         >
-          <TweenOne component="h1" key="h1"
-            hideProps={{ reverse: true }}
-            animation={{ ...animData[0].animation }}
-          >
-            {title}
-          </TweenOne>
-          <TweenOne component="p" className={`${this.props.className}-center-text`} key="p"
-            hideProps={{ reverse: true }}
-            animation={{ ...animData[0].animation, delay: interval }}
-            dangerouslySetInnerHTML={{ __html: content }}
-          />
           <QueueAnim {...animData[1]} delay={[0, animData[1].delay + 100]} component="ul"
             hideProps={{ child: null }} key="1"
           >
-            {imgDataToRender.filter((item, i) => i < 4)}
-          </QueueAnim>
-          <QueueAnim {...animData[1]} delay={[animData[1].delay + 100, 0]} component="ul"
-            hideProps={{ child: null }} key="2"
-          >
-            {imgDataToRender.filter((item, i) => i >= 4)}
+            {imgDataToRender}
           </QueueAnim>
         </OverPack>
       </div>
@@ -78,14 +66,9 @@ Page4.propTypes = {
 };
 
 Page4.defaultProps = {
-  className: 'page4',
+  className: 'page6',
   dataSource: {
-    text: {
-      title: 'PAGE TITLE',
-      content: 'Demo source from the network, please upload pictures to replace. ' +
-      'Demo source from the network, please upload pictures to replace. ' +
-      'Demo source from the network, please upload pictures to replace.',
-    },
+    bgImg: 'https://os.alipayobjects.com/rmsportal/cvoQWlUZsvZlWsB.jpg',
     img1: {
       img: 'https://os.alipayobjects.com/rmsportal/eHBUBcXxqzLRitB.png',
       title: 'SLIDERS',
@@ -105,30 +88,6 @@ Page4.defaultProps = {
       ' Image source from the network Demo',
     },
     img4: {
-      img: 'https://os.alipayobjects.com/rmsportal/eHBUBcXxqzLRitB.png',
-      title: 'SLIDERS',
-      content: 'Image source from the network Demo, please upload pictures to replace.' +
-      ' Image source from the network Demo',
-    },
-    img5: {
-      img: 'https://os.alipayobjects.com/rmsportal/eHBUBcXxqzLRitB.png',
-      title: 'SLIDERS',
-      content: 'Image source from the network Demo, please upload pictures to replace.' +
-      ' Image source from the network Demo',
-    },
-    img6: {
-      img: 'https://os.alipayobjects.com/rmsportal/eHBUBcXxqzLRitB.png',
-      title: 'SLIDERS',
-      content: 'Image source from the network Demo, please upload pictures to replace.' +
-      ' Image source from the network Demo',
-    },
-    img7: {
-      img: 'https://os.alipayobjects.com/rmsportal/eHBUBcXxqzLRitB.png',
-      title: 'SLIDERS',
-      content: 'Image source from the network Demo, please upload pictures to replace.' +
-      ' Image source from the network Demo',
-    },
-    img8: {
       img: 'https://os.alipayobjects.com/rmsportal/eHBUBcXxqzLRitB.png',
       title: 'SLIDERS',
       content: 'Image source from the network Demo, please upload pictures to replace.' +

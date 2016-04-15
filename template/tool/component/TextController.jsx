@@ -48,7 +48,15 @@ class TextController extends Common {
         type = _data.key === 'content' ? 'textarea' : 'text';
         const changeValue = this.changeValue.bind(this, `${data.key}&>${key}`, 'dataSource');
         return (<li key={ii}>
-          <p>{_data.name}</p>
+          <p>{_data.name}
+            {_data.size ? <span className="size">尺寸参考:{_data.size}</span> : null}
+            {_data.key.indexOf('img') >= 0 || _data.key.indexOf('Img') >= 0 ?
+            <a href="http://site.alipay.net/xingmin.zhu/toast/"
+              target="_blank" className="upload"
+            >
+              上传图片
+            </a> : null}
+          </p>
           <div>
             <Input type={type} placeholder={_data.value}
               onChange={changeValue}
@@ -87,8 +95,12 @@ class TextController extends Common {
     return (<li key={i}>
       <h4>{data.name}
         {data.size ? <span className="size">尺寸参考:{data.size}</span> : null}
-        {data.link ? <a href={data.link.href} target="_blank" className="upload">
-          {data.link.name}
+        {(data.key.indexOf('img') >= 0 || data.key.indexOf('Img') >= 0)
+          && typeof data.value === 'string' ?
+        <a href="http://site.alipay.net/xingmin.zhu/toast/"
+          target="_blank" className="upload"
+        >
+          上传图片
         </a> : null}
       </h4>
       <div className="data-table-mask">

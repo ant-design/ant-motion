@@ -1,7 +1,7 @@
 # Help
 
 - order: 1
-- chinese: 如何使用
+- chinese: 视频教程
 
 ---
 

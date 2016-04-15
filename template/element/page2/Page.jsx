@@ -60,7 +60,7 @@ Page2.propTypes = {
 Page2.defaultProps = {
   className: 'page2',
   dataSource: {
-    img: 'https://os.alipayobjects.com/rmsportal/IhCNTqPpLeTNnwr.jpg',
+    img: 'https://os.alipayobjects.com/rmsportal/BGwZWphjWXyDFlW.png',
     text: {
       title: 'Ant Motion Demo',
       content: 'Image source from the network Demo, please upload pictures to replace.' +

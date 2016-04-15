@@ -31,7 +31,7 @@ class Page4 extends React.Component {
         }
         return (<li key={i}>
           <div>
-            <img src={itemData.img} width="115" />
+            <img src={itemData.img} width="150" />
           </div>
           <h2>{itemData.title}</h2>
           <i />
@@ -40,7 +40,7 @@ class Page4 extends React.Component {
       });
     return (
       <div className={this.props.className}>
-        <OverPack scrollName="page4" className={`${this.props.className}-wap root`}
+        <OverPack scrollName="page5" className={`${this.props.className}-wap root`}
           id={this.props.id}
         >
           <TweenOne component="h1" key="h1"
@@ -57,12 +57,7 @@ class Page4 extends React.Component {
           <QueueAnim {...animData[1]} delay={[0, animData[1].delay + 100]} component="ul"
             hideProps={{ child: null }} key="1"
           >
-            {imgDataToRender.filter((item, i) => i < 4)}
-          </QueueAnim>
-          <QueueAnim {...animData[1]} delay={[animData[1].delay + 100, 0]} component="ul"
-            hideProps={{ child: null }} key="2"
-          >
-            {imgDataToRender.filter((item, i) => i >= 4)}
+            {imgDataToRender.filter((item, i) => i < 3)}
           </QueueAnim>
         </OverPack>
       </div>
@@ -78,7 +73,7 @@ Page4.propTypes = {
 };
 
 Page4.defaultProps = {
-  className: 'page4',
+  className: 'page5',
   dataSource: {
     text: {
       title: 'PAGE TITLE',
@@ -99,36 +94,6 @@ Page4.defaultProps = {
       ' Image source from the network Demo',
     },
     img3: {
-      img: 'https://os.alipayobjects.com/rmsportal/eHBUBcXxqzLRitB.png',
-      title: 'SLIDERS',
-      content: 'Image source from the network Demo, please upload pictures to replace.' +
-      ' Image source from the network Demo',
-    },
-    img4: {
-      img: 'https://os.alipayobjects.com/rmsportal/eHBUBcXxqzLRitB.png',
-      title: 'SLIDERS',
-      content: 'Image source from the network Demo, please upload pictures to replace.' +
-      ' Image source from the network Demo',
-    },
-    img5: {
-      img: 'https://os.alipayobjects.com/rmsportal/eHBUBcXxqzLRitB.png',
-      title: 'SLIDERS',
-      content: 'Image source from the network Demo, please upload pictures to replace.' +
-      ' Image source from the network Demo',
-    },
-    img6: {
-      img: 'https://os.alipayobjects.com/rmsportal/eHBUBcXxqzLRitB.png',
-      title: 'SLIDERS',
-      content: 'Image source from the network Demo, please upload pictures to replace.' +
-      ' Image source from the network Demo',
-    },
-    img7: {
-      img: 'https://os.alipayobjects.com/rmsportal/eHBUBcXxqzLRitB.png',
-      title: 'SLIDERS',
-      content: 'Image source from the network Demo, please upload pictures to replace.' +
-      ' Image source from the network Demo',
-    },
-    img8: {
       img: 'https://os.alipayobjects.com/rmsportal/eHBUBcXxqzLRitB.png',
       title: 'SLIDERS',
       content: 'Image source from the network Demo, please upload pictures to replace.' +
