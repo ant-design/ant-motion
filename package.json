@@ -14,6 +14,7 @@
     "template/element/page5/index": "./template/element/page5/index.jsx",
     "template/element/page6/index": "./template/element/page6/index.jsx",
     "template/element/footer1/index": "./template/element/footer1/index.jsx",
+    "template/element/footer2/index": "./template/element/footer2/index.jsx",
     "template/page/homeDemo1/index": "./template/page/homeDemo1/index.jsx"
   },
   "dependencies": {

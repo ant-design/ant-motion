@@ -36,7 +36,7 @@ Footer.propTypes = {
 Footer.defaultProps = {
   className: 'footer',
   dataSource: {
-    text: 'Copyright © 2015 The Project by <a href="#">Ant Motion</a>. All Rights Reserved',
+    text: 'Copyright © 2016 The Project by <a href="#">Ant Motion</a>. All Rights Reserved',
   },
   variables: {
     type: 'bottomPosition',

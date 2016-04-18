@@ -7,7 +7,7 @@ export default {
       {
         key: 'text',
         name: '内容',
-        value: 'Copyright © 2015 The Project by <a href="#">Ant Motion</a>. All Rights Reserved',
+        value: 'Copyright © 2016 The Project by <a href="#">Ant Motion</a>. All Rights Reserved',
       },
     ],
     variables: [
