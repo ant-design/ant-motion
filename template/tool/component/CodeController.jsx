@@ -36,7 +36,7 @@ class CodeController extends React.Component {
 
 ${highlight.highlightAuto(currentData).value}
 
-${this.props.childId}代码:
+代码:
 
 ${this.props.code || ''}
 `;

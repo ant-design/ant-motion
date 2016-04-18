@@ -58,7 +58,8 @@ class TextController extends Common {
             </a> : null}
           </p>
           <div>
-            <Input type={type} placeholder={_data.value}
+            <Input type={type}
+              defaultValue={_data.value}
               onChange={changeValue}
             />
           </div>
@@ -74,7 +75,8 @@ class TextController extends Common {
       type = data.key === 'content' ? 'textarea' : 'text';
       const changeValue = this.changeValue.bind(this, data.key, 'dataSource');
       child = (<div visible key="111">
-        <Input type={type} placeholder={data.value}
+        <Input type={type}
+          defaultValue={data.value}
           onChange={changeValue}
         />
       </div>);
