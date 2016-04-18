@@ -1,7 +1,7 @@
 export default {
   name: 'footer1',
   version: '0.0.1',
-  footer1: {
+  data: {
     template: require('raw-js!./Footer'),
     dataSource: [
       {

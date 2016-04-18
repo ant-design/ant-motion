@@ -6,6 +6,7 @@
     "template/index": "./template/index.js",
     "template/element/nav1/index": "./template/element/nav1/index.jsx",
     "template/element/banner1/index": "./template/element/banner1/index.jsx",
+    "template/element/banner2/index": "./template/element/banner2/index.jsx",
     "template/element/page1/index": "./template/element/page1/index.jsx",
     "template/element/page2/index": "./template/element/page2/index.jsx",
     "template/element/page3/index": "./template/element/page3/index.jsx",

@@ -1,7 +1,7 @@
 export default {
   name: 'page2',
   version: '0.0.1',
-  page2: {
+  data: {
     template: require('raw-js!./Page'),
     dataSource: [
       {
@@ -9,10 +9,6 @@ export default {
         name: '配图',
         value: 'https://os.alipayobjects.com/rmsportal/BGwZWphjWXyDFlW.png',
         size: '352*470',
-        link: {
-          name: '上传图片',
-          href: 'http://site.alipay.net/xingmin.zhu/toast/',
-        },
       },
       {
         key: 'text',

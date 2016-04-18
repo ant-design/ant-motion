@@ -1,5 +1,5 @@
 export default {
-  name: 'banner1',
+  name: 'banner2',
   version: '0.0.1',
   data: {
     template: require('raw-js!./Banner'),
@@ -7,8 +7,8 @@ export default {
       {
         key: 'bgImg',
         name: '背景图片',
-        size: '1920*1080',
-        value: 'https://os.alipayobjects.com/rmsportal/IhCNTqPpLeTNnwr.jpg',
+        size: '1920*375',
+        value: 'https://os.alipayobjects.com/rmsportal/vOPonounXgKXHUK.jpg',
       },
       {
         key: 'text',

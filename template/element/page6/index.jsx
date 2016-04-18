@@ -10,7 +10,7 @@ import '../../common/ant-d.less';
 import config from './webdefault.config';
 
 const Components = [
-  { name: config.name, comp: Page6 },
+  { name: 'data', comp: Page6 },
 ];
 
 class Index extends React.Component {

@@ -80,7 +80,7 @@ scrollScreen.unMount();
 ### OverPack 说明
 |   参数   |    类型    |   默认  |  说明   |
 |---------|------------|---------|--------|
-|  playScale |  number  |  `0.5` | 要在屏幕哪个区域开始播放， 0.5 为屏幕中间 |
+| playScale |  number / array  |  `0.5` | 要在屏幕哪个区域开始播放， 0.5 为屏幕中间, 如果为 array 时 replay 为 true, [bottomEnter, topLeave] enter为进入是的播放点， topLeave 为出屏的比例(当前显示屏的上面一屏)的百分点。topLeave 必须大于等于 bottomEnter。 |
 | always  | boolean | true | 重复播放，如为 false 将只进入一遍，不再触发出场效果 |
 | scrollName | string | null | 需要定位的名称，parallax的 location 或 link 的 location, 都需要以此元素做定位 |
 | replay  |  boolean | false | 每次显示当前时是否都要动画, `false` 为只下往上滚时才有动画 |

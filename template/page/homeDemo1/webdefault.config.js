@@ -8,11 +8,11 @@ import footer1 from '../../element/footer1/webdefault.config';
 export default {
   name: 'demoAnimation',
   version: '0.0.1',
-  nav1: nav1[nav1.name],
-  banner1: banner1[banner1.name],
-  page1: page1[page1.name],
-  page2: page2[page2.name],
-  page3: page3[page3.name],
-  page4: page4[page4.name],
-  footer: footer1[footer1.name],
+  nav1: nav1.data,
+  banner1: banner1.data,
+  page1: page1.data,
+  page2: page2.data,
+  page3: page3.data,
+  page4: page4.data,
+  footer: footer1.data,
 };

@@ -1,7 +1,7 @@
 export default {
   name: 'nav1',
   version: '0.0.1',
-  nav1: {
+  data: {
     template: require('raw-js!../../element/nav1/Header'),
     dataSource: [
       {

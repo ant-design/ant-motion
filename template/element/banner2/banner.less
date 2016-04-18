@@ -1,16 +1,23 @@
 @import '../../common/custom.less';
+
 @banner: banner;
 .@{banner} {
   width: 100%;
-  height: 100%;
+  height: 375px;
   position: relative;
   text-align: center;
-  background-size: cover;
-  background-attachment: fixed;
+  &-bg {
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    position: absolute;
+  }
   &-title {
     display: inline-block;
     position: absolute;
-    top: 40%;
+    top: 25%;
     margin-left: -275px;
     font-size: 14px;
     color: @text-color-light;
@@ -22,7 +29,7 @@
     }
     & p {
       margin-bottom: 20px;
-      word-wrap:break-word;
+      word-wrap: break-word;
     }
     & button {
       border: 1px solid @primary-color;

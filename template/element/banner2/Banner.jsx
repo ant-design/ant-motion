@@ -2,7 +2,6 @@ import React, { PropTypes } from 'react';
 import Button from 'antd/lib/button';
 import QueueAnim from 'rc-queue-anim';
 import TweenOne from 'rc-tween-one';
-import Icon from 'antd/lib/icon';
 import animType from '../../common/animType';
 import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
 import './banner.less';
@@ -16,16 +15,24 @@ class Banner extends React.Component {
       ...this.props.variables,
       type: animType[type].one.type,
     };
+
     return (
       <OverPack replay
         scrollName="banner"
         className={`${this.props.className} root`}
         id={this.props.id}
         playScale={[0.3, 0.1]}
-        style={{
-          backgroundImage: `url(${bgImg})`,
-        }}
+
       >
+        <TweenOne
+          animation={{ opacity: 0, type: 'from' }}
+          className={`${this.props.className}-bg`}
+          style={{
+            backgroundImage: `url(${bgImg})`,
+          }}
+          hideProps={{ reverse: true }}
+          key="bg"
+        />
         <QueueAnim {...animData} className={`${this.props.className}-title`}
           hideProps={{ child: null }}
           key="text"
@@ -34,13 +41,6 @@ class Banner extends React.Component {
           <p key="content">{content}</p>,
           <Button type="ghost" key="button">{button}</Button>] : null}
         </QueueAnim>
-        <TweenOne animation={{ y: '-=20', yoyo: true, repeat: -1, duration: 1000 }}
-          className={`${this.props.className}-icon`}
-          hideProps={{ reverse: true }}
-          key="icon"
-        >
-          <Icon type="down" />
-        </TweenOne>
       </OverPack>
     );
   }
@@ -56,7 +56,7 @@ Banner.propTypes = {
 Banner.defaultProps = {
   className: 'banner',
   dataSource: {
-    bgImg: 'https://os.alipayobjects.com/rmsportal/IhCNTqPpLeTNnwr.jpg',
+    bgImg: 'https://os.alipayobjects.com/rmsportal/vOPonounXgKXHUK.jpg',
     text: {
       title: 'Ant Motion Demo',
       content: 'Image source from the network Demo, please upload pictures to replace.' +

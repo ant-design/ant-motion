@@ -1,7 +1,7 @@
 export default {
   name: 'page5',
   version: '0.0.1',
-  page5: {
+  data: {
     template: require('raw-js!./Page'),
     dataSource: [
       {
