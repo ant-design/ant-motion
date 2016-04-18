@@ -8,7 +8,7 @@ export default {
         key: 'bgImg',
         name: '背景图片',
         size: '1920*375',
-        value: 'https://os.alipayobjects.com/rmsportal/vOPonounXgKXHUK.jpg',
+        value: 'https://os.alipayobjects.com/rmsportal/uaQVvDrCwryVlbb.jpg',
       },
       {
         key: 'text',

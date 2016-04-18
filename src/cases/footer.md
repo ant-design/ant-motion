@@ -9,6 +9,7 @@
 
 页面页脚的效果展示。
 
+
 ## 案例
 
 ```__react
@@ -17,6 +18,7 @@ import ReactDOM from 'react-dom';
 import AutoResponsiveDemo from '../componentElement/cases/AutoResponsiveDemo';
 const imgData = [
   { src: 'https://os.alipayobjects.com/rmsportal/dtofZBboogpwLBo.jpg', width: 300, height: 175, href: '/template/?page=element/footer1/' },
+  { src: 'https://os.alipayobjects.com/rmsportal/iqJAyTvYRiUcPRD.jpg', width: 300, height: 175, href: '/template/?page=element/footer2/' },
 ];
 
 ReactDOM.render(<AutoResponsiveDemo imgArr={imgData} />, mountNode);

@@ -21,7 +21,9 @@ const imgData = [
   { src: 'https://os.alipayobjects.com/rmsportal/UCdkxnpLSjoCbCa.jpg', width: 300, height: 175, href: '/template/?page=element/page1/' },
   { src: 'https://os.alipayobjects.com/rmsportal/ilRAaLLWLByFnbj.jpg', width: 300, height: 175, href: '/template/?page=element/page2/' },
   { src: 'https://os.alipayobjects.com/rmsportal/hudULuLDMJXZjLU.jpg', width: 300, height: 175, href: '/template/?page=element/page3/' },
-  { src: 'https://os.alipayobjects.com/rmsportal/ALoKboYgBBNQLnb.jpg', width: 300, height: 175, href: '/template/?page=element/page4/' },
+  { src: 'https://os.alipayobjects.com/rmsportal/QrAJxLNtCIvFCUJ.jpg', width: 300, height: 175, href: '/template/?page=element/page4/' },
+  { src: 'https://os.alipayobjects.com/rmsportal/ALoKboYgBBNQLnb.jpg', width: 300, height: 175, href: '/template/?page=element/page5/' },
+  { src: 'https://os.alipayobjects.com/rmsportal/BuDEPTizIcflPWx.jpg', width: 300, height: 175, href: '/template/?page=element/page6/' },
 ];
 
 ReactDOM.render(<AutoResponsiveDemo imgArr={imgData} />, mountNode);

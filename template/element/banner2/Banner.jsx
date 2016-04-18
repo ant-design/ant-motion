@@ -56,7 +56,7 @@ Banner.propTypes = {
 Banner.defaultProps = {
   className: 'banner',
   dataSource: {
-    bgImg: 'https://os.alipayobjects.com/rmsportal/vOPonounXgKXHUK.jpg',
+    bgImg: 'https://os.alipayobjects.com/rmsportal/uaQVvDrCwryVlbb.jpg',
     text: {
       title: 'Ant Motion Demo',
       content: 'Image source from the network Demo, please upload pictures to replace.' +

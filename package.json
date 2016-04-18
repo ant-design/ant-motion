@@ -15,7 +15,8 @@
     "template/element/page6/index": "./template/element/page6/index.jsx",
     "template/element/footer1/index": "./template/element/footer1/index.jsx",
     "template/element/footer2/index": "./template/element/footer2/index.jsx",
-    "template/page/homeDemo1/index": "./template/page/homeDemo1/index.jsx"
+    "template/page/homeDemo1/index": "./template/page/homeDemo1/index.jsx",
+    "template/page/homeDemo2/index": "./template/page/homeDemo2/index.jsx"
   },
   "dependencies": {
     "rc-animate": "2.0.x",

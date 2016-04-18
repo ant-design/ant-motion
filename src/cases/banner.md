@@ -19,6 +19,7 @@ import ReactDOM from 'react-dom';
 import AutoResponsiveDemo from '../componentElement/cases/AutoResponsiveDemo';
 const imgData = [
   { src: 'https://os.alipayobjects.com/rmsportal/pBNHrhEWePeTCCt.jpg', width: 300, height: 175, href: '/template/?page=element/banner1/' },
+  { src: 'https://os.alipayobjects.com/rmsportal/qEySxOcxYwfVWjg.jpg', width: 300, height: 175, href: '/template/?page=element/banner2/' },
 ];
 
 ReactDOM.render(<AutoResponsiveDemo imgArr={imgData} />, mountNode);
