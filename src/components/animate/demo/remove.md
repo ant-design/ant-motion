@@ -5,8 +5,6 @@ title: 删除子级
 
 动画出场后将子级删除掉。
 
----
-
 ```jsx
 import Animate from 'rc-animate';
 import { Button } from 'antd';

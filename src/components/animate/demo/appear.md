@@ -5,9 +5,6 @@ title: 开始的进场
 
 开始的进场动画, css样式查看第一个demo。
 
-
----
-
 ```jsx
 import Animate from 'rc-animate';
 import { Button } from 'antd';

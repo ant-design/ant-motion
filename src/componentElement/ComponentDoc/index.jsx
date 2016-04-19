@@ -13,6 +13,10 @@ class ComponentDoc extends React.Component {
     };
   }
 
+  shouldComponentUpdate() {
+    return false;
+  }
+
   render() {
     const content = this.props.content;
     const { description, meta } = content;

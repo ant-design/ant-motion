@@ -4,6 +4,10 @@ import { getTagName, getChildren } from 'jsonml.js/lib/utils';
 import { Link } from 'react-router';
 
 class Article extends React.Component {
+  shouldComponentUpdate() {
+    return false;
+  }
+
   render() {
     const { content } = this.props;
     const { meta, intro, description } = content;
@@ -29,8 +33,8 @@ class Article extends React.Component {
             utils.jsonmlToComponent(
               location.pathname,
               ['section', { className: 'markdown' }].concat(intro)
-            )
-        }
+              )
+          }
         {
           jumper.length > 0 ?
           <section className="toc">

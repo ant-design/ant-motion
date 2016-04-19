@@ -5,8 +5,6 @@ title: 默认
 
 同时支持进场和离场动画。
 
----
-
 ```jsx
 import Animate from 'rc-animate';
 import { Button } from 'antd';

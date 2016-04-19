@@ -127,7 +127,13 @@ scrollScreen.unMount();
 | component | string         |  div  | 同上            |
 
 ### scrollScreen 说明
-#### .init(vars)
+
+> scrollScreen.init(vars);
+
+> scrollScreen.unMount();
+
+
+#### init
 - 功能: 滚动一屏窗口
 
 #### vars 
@@ -139,7 +145,7 @@ scrollScreen.unMount();
 | loop      | boolean        | false   | 前后相接循环  |
 | scrollInterval | number    | 1000    | 滚动事件间隔时间 |
 
-#### .unMount()
+#### unMount
 - 功能: 清除一屏滚动效果
 
 <style>

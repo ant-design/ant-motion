@@ -21,7 +21,7 @@ class Banner extends React.Component {
         scrollName="banner"
         className={`${this.props.className} root`}
         id={this.props.id}
-        playScale={[0.3, 0.1]}
+        playScale={[0.3, 0.6]}
 
       >
         <TweenOne
