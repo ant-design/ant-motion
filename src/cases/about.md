@@ -1,10 +1,11 @@
-# About
-
-- order: 0
-- chinese: 关于实践
-- index: true
-
 ---
+order: 0
+chinese: 关于实践
+index: true
+english: About
+---
+
+
 这是以 Ant Motion 的 React 组件遵从 Ant Design 的视觉规范来完成的 demo 页面，可灵活又快速的配置出你想要的首页模板。
 
 这里主要提供了单元素示例与配置完后的整页示例。

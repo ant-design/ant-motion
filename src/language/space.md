@@ -1,10 +1,11 @@
-# Space
-
-- category: 基本原则
-- order: 1
-- chinese: 大气空间
-
 ---
+category: 基本原则
+order: 1
+chinese: 大气空间
+english: Space
+---
+
+
 
 动效设计中存在Z轴向的空间距离来影响动画效果
 

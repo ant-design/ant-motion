@@ -1,9 +1,10 @@
-# Transition
-
-- order: 1
-- chinese: 巧用过渡
-
 ---
+order: 1
+chinese: 巧用过渡
+english: Transition
+---
+
+
 
 人脑灰质（Gray Matter）会对动态的事物（eg：移动、形变、色变等）保持敏感。 在界面中，适当的加入一些过渡效果，能让界面保持生动，同时也能增强用户和界面的沟通。
 

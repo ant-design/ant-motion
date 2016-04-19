@@ -1,11 +1,11 @@
-# TweenOne
-
-- category: Components
-- chinese: 单元素动画
-- order: 0
-
-
 ---
+category: Components
+chinese: 单元素动画
+order: 0
+english: TweenOne
+---
+
+
 
 这是个对单个元素标签做动效的组件，可以执行所有样式动画，包括3d，模糊等效果，还可以完成贝塞尔曲线动画。
 

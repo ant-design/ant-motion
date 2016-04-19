@@ -1,11 +1,12 @@
-# Animate
-
-- category: Components
-- order: 1
-- cols: 3
-- chinese: 样式进出场动画
-
 ---
+category: Components
+order: 1
+cols: 3
+chinese: 样式进出场动画
+english: Animate
+---
+
+
 
 对单个元素根据状态进行动画显示隐藏，需结合 css 或其它第三方动画类一起使用；
 

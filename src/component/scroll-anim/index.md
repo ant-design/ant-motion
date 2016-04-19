@@ -1,10 +1,11 @@
-# ScrollAnim
-
-- category: Components
-- chinese: 页面滚动动画
-- order: 3
-
 ---
+category: Components
+chinese: 页面滚动动画
+order: 3
+english: ScrollAnim
+---
+
+
 
 通过简单的配置，对页面里的元素添加随滚动条滚动的动画。
 

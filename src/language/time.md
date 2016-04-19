@@ -1,12 +1,13 @@
-# Time
-
-- category: 基本原则
-- order: 0
-- chinese: 时间栅格
-- index: true
-- parentOrder: 0
-
 ---
+category: 基本原则
+order: 0
+chinese: 时间栅格
+index: true
+parentOrder: 0
+english: Time
+---
+
+
 
 物体运动在时间栅格中具有不同运动速率和出场，动画停止与启动都不是瞬间完成的，因它需要一段缓冲的时间来加速或减速，因此当物体突然移动或停止，会显的很不自然。
 

@@ -1,11 +1,12 @@
-# QueueAnim
-
-- category: Components
-- chinese: 进出场动画
-- cols: 2
-- order: 2
-
 ---
+category: Components
+chinese: 进出场动画
+cols: 2
+order: 2
+english: QueueAnim
+---
+
+
 
 通过简单的配置对一组元素添加串行的进场动画效果。
 

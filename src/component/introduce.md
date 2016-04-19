@@ -1,9 +1,10 @@
-# Ant Motion of React
-
-- order: 0
-- index: true
-
 ---
+order: 0
+index: true
+english: Ant Motion of React
+---
+
+
 
 这是 Ant Motion 的所有 React 组件的演示站点, 可结合 Ant Design 来实现更炫酷的页面结构。
 <p/>

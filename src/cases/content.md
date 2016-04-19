@@ -1,11 +1,12 @@
-# Content
-
-- category: 单元素示例
-- order: 2
-- chinese: 内容示例
-- parentOrder: 2
-
 ---
+category: 单元素示例
+order: 2
+chinese: 内容示例
+parentOrder: 2
+english: Content
+---
+
+
 
 首页首屏下面的信息展示布局。
 

@@ -1,11 +1,12 @@
-# Banner
-
-- category: 单元素示例
-- order: 1
-- chinese: banner示例
-- parentOrder: 2
-
 ---
+category: 单元素示例
+order: 1
+chinese: banner示例
+parentOrder: 2
+english: Banner
+---
+
+
 
 首页首屏效果展示，一般由一张或多张图片加上网站的标语组成的 banner 部分。
 

@@ -1,11 +1,12 @@
-# Footer
-
-- category: 单元素示例
-- order: 3
-- chinese: 页尾示例
-- parentOrder: 2
-
 ---
+category: 单元素示例
+order: 3
+chinese: 页尾示例
+parentOrder: 2
+english: Footer
+---
+
+
 
 页面页脚的效果展示。
 

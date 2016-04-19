@@ -1,9 +1,10 @@
-# Interact
-
-- order: 2
-- chinese: 增强示意
-
 ---
+order: 2
+chinese: 增强示意
+english: Interact
+---
+
+
 
 将用户操作可视化, 来增强用户对操作行为的感知度, 同时也能对元素内容的认知;
 
