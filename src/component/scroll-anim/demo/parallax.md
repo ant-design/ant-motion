@@ -1,7 +1,8 @@
-# Parallax 示例
-
-- order: 1
-- cols: 1
+---
+order: 1
+cols: 1
+title: Parallax 示例
+---
 
 随滚动来播放动画
 

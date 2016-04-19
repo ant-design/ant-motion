@@ -1,7 +1,8 @@
-# parallax 的时间轴动画
-
-- order: 3
-- cols: 1
+---
+order: 3
+cols: 1
+title: parallax 的时间轴动画
+---
 
 可配置多个动画，然后再配合 playScale 完成滚动动画
 
