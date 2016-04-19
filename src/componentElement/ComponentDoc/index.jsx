@@ -1,23 +1,9 @@
 import React, { PropTypes } from 'react';
-import ReactDOM from 'react-dom';
 import * as utils from '../util';
 import { Link } from 'react-router';
 import Icon from 'antd/lib/icon';
-import Button from 'antd/lib/button';
 import DemoLayout, { Item } from '../../componentElement/component/DemoLayout';
-import _demosList from '../../../_site/data/demos-list';
-const antd = {
-  Button,
-};
-const demosList = {};
-Object.keys(_demosList).forEach((key) => {
-  const demoArr = _demosList[key].map(demo => {
-    const _demo = demo;
-    _demo.preview = demo.preview(React, ReactDOM, antd);
-    return _demo;
-  });
-  demosList[key] = demoArr;
-});
+import demosList from '../../../_site/data/demos-list';
 
 class ComponentDoc extends React.Component {
   constructor() {
@@ -30,14 +16,14 @@ class ComponentDoc extends React.Component {
   render() {
     const content = this.props.content;
     const { description, meta } = content;
-    const demos = demosList[meta.fileName] || [];
+    const demos = (demosList[meta.fileName] || []).filter((demoData) => !demoData.meta.hidden);
     const demosToChild = demos.sort((a, b) =>
       parseInt(a.meta.order, 10) - parseInt(b.meta.order, 10)
     ).map((demoData, i) => {
       const col = Math.round(24 / (demoData.meta.cols || content.meta.cols || 1));
-      const _content = demoData.intro.map(utils.objectToComponent.bind(null, this.props.pathname));
+      const _content = utils.jsonmlToComponent(this.props.pathname, ['div'].concat(demoData.intro));
       const Comp = demoData.preview;
-      return (<Item col={col} title={demoData.meta.english} content={_content}
+      return (<Item col={col} title={demoData.meta.title} content={_content}
         code={demoData.highlightedCode}
         styleCode={demoData.highlightedStyle}
         _style={demoData.style}
@@ -48,14 +34,14 @@ class ComponentDoc extends React.Component {
       </Item>);
     });
     const childrenToRender =
-      description.map(utils.objectToComponent.bind(null, this.props.pathname));
+      description.map(utils.jsonmlToComponent.bind(null, this.props.pathname));
 
     const apiChildren = (content.api || []).map((_child, i) => {
       const child = _child;
       if (child.type === 'h2' && child.children === 'API') {
         child.children = 'API 说明';
       }
-      return utils.objectToComponent(this.props.pathname, child, i);
+      return utils.jsonmlToComponent(this.props.pathname, child, i);
     });
     return (
       <div className={this.props.className}>

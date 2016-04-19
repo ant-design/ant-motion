@@ -6,8 +6,6 @@ title: parallax 的时间轴动画
 
 可配置多个动画，然后再配合 playScale 完成滚动动画
 
----
-
 ```jsx
 import { Parallax } from 'rc-scroll-anim';
 

@@ -1,5 +1,5 @@
 import language from '../../_site/data/language';
-import component from '../../_site/data/component';
+import components from '../../_site/data/components';
 import cases from '../../_site/data/cases';
 
 function getMenuItems(data) {
@@ -45,11 +45,11 @@ const list = {
   nav: [
     { name: '首页', href: '/', key: 'home' },
     { name: '语言', href: '/language/', key: 'language' },
-    { name: '组件', href: '/component/', key: 'component' },
+    { name: '组件', href: '/components/', key: 'components' },
     { name: '实践', href: '/cases/', key: 'cases' },
   ],
   language: getMenuItems(language),
-  component: getMenuItems(component),
+  components: getMenuItems(components),
   cases: getMenuItems(cases),
 };
 export default list;

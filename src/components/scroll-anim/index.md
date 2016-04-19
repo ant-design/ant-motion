@@ -33,7 +33,7 @@ $ npm install rc-scroll-anim --save
 ```jsx
 import ScrollAnim from 'rc-scroll-anim';
 const ScrollOverPack = ScrollAnim.OverPack;
-ReactDOM.render(<ScrollOverPack>
+ReactDOM.render((<ScrollOverPack>
   <QueueAnim key='queueAnim' hideProps={{ child: null }}>
     <div key='a'>依次进入</div>
     <div key='b'>依次进入</div>
@@ -44,14 +44,14 @@ ReactDOM.render(<ScrollOverPack>
     transitionAppear hideProps={{ child: null }}>
     rc-animate示例
   </Animate>
-</ScrollOverPack>, mountNode);
+</ScrollOverPack>), mountNode);
 ```
 
 #### Parallax
 
 ```jsx
 import ScrollParallax from 'rc-scroll-anim/lib/ScrollParallax';
-React.render(<ScrollParallax vars={{x:100}}>Parallax示例</ScrollPallax>, mountNode);
+React.render((<ScrollParallax vars={{x:100}}>Parallax示例</ScrollParallax>), mountNode);
 ```
 
 #### Link Element
@@ -75,7 +75,7 @@ scrollScreen.init();
 scrollScreen.unMount();
 ```
 
-> Link 例子等更多例子 <a href="http://react-component.github.io/scroll-anim/" target="_blank">查看更多 demo</a>
+> Link 例子等更多例子 [查看更多 demo](http://react-component.github.io/scroll-anim/)
 
 ## API
 ### OverPack 说明

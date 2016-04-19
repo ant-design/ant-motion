@@ -13,8 +13,6 @@ english: Time
 
 ```__react
 import EaseExplain from '../componentElement/language/EaseExplain';
-import React from 'react';
-import ReactDOM from 'react-dom';
 ReactDOM.render(<EaseExplain
   animation={{
     left: 410, duration: 1000, repeat: -1,
@@ -28,9 +26,6 @@ ReactDOM.render(<EaseExplain
 ```
 
 ```__react
-import EaseExplain from '../componentElement/language/EaseExplain';
-import React from 'react';
-import ReactDOM from 'react-dom';
 ReactDOM.render(<EaseExplain
   title="2.单物体可视范围外进场的运动"
   leftHide
@@ -43,9 +38,6 @@ ReactDOM.render(<EaseExplain
 ```
 
 ```__react
-import EaseExplain from '../componentElement/language/EaseExplain';
-import React from 'react';
-import ReactDOM from 'react-dom';
 ReactDOM.render(<EaseExplain
   title="3.单物体可视范围内出场的运动"
   rightHide
@@ -57,8 +49,6 @@ ReactDOM.render(<EaseExplain
 ```
 
 ```__react
-import React from 'react';
-import ReactDOM from 'react-dom';
 import QueueDemo from '../componentElement/language/QueueDemo';
 ReactDOM.render(<QueueDemo />, mountNode);
 ```

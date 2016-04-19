@@ -24,31 +24,18 @@ english: Transition
 
 在视图变化时保持上下文; 滑入与滑出: 可以有效构建虚拟空
 
-```__react
-import React from 'react';
-import ReactDOM from 'react-dom';
-import VideoExplain from '../componentElement/language/VideoExplain';
-ReactDOM.render(<VideoExplain src="https://os.alipayobjects.com/rmsportal/EejaUGsyExkXyXr.mp4" />, mountNode);
-```
+
+<video src="https://os.alipayobjects.com/rmsportal/EejaUGsyExkXyXr.mp4" />
 
 ### 传送带切换(走马灯)
 
 可极大地扩展虚拟空间。
 
-```__react
-import React from 'react';
-import ReactDOM from 'react-dom';
-import VideoExplain from '../componentElement/language/VideoExplain';
-ReactDOM.render(<VideoExplain src="https://os.alipayobjects.com/rmsportal/GIutPgZMTyfFfrH.mp4" />, mountNode);
-```
+<video src="https://os.alipayobjects.com/rmsportal/GIutPgZMTyfFfrH.mp4" />
+
 
 ### 折叠窗口
 
 在视图切换时，有助于保持上下文，同时也能拓展虚拟空间。
 
-```__react
-import React from 'react';
-import ReactDOM from 'react-dom';
-import VideoExplain from '../componentElement/language/VideoExplain';
-ReactDOM.render(<VideoExplain src="https://os.alipayobjects.com/rmsportal/ERKhqHlcHiCDSQu.mp4" />, mountNode);
-```
+<video src="https://os.alipayobjects.com/rmsportal/ERKhqHlcHiCDSQu.mp4" />

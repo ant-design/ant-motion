@@ -5,8 +5,6 @@ title: 进场和离场
 
 同时支持进场和离场动画。
 
----
-
 ````jsx
 import { Button } from 'antd';
 import QueueAnim from 'rc-queue-anim';

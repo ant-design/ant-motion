@@ -66,11 +66,13 @@ const steps = [
 
 ReactDOM.render(<Steps current={1}>{steps}</Steps>, mountNode);
 ```
+
 <style>
 .ant-steps{
   max-width: 900px;
 }
 </style>
+
 <br />
 
 或请查看视频教程。

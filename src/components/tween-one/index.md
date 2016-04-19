@@ -14,11 +14,14 @@ english: TweenOne
 - 在单个元素需要过渡到另外一点时使用
 
 ## 怎么使用
+
 ### 安装
+
 ```js
 $ npm install rc-tween-one --save
 ```
 ### 使用
+
 ```jsx
 import TweenOne from 'rc-tween-one';
 ReactDOM.render(<TweenOne animation={{ x:100 }} />, mountNode);
@@ -59,5 +62,5 @@ ReactDOM.render(<TweenOne animation={{ x:100 }} />, mountNode);
 | autoRotate | boolean | false | 跟随旋转 |
 | vars   | array  | null  |  贝赛尔点的位置，如 `{ x:100, y:100}` |
 
->贝赛尔曲线 API 参照 <a href="http://greensock.com/docs/#/HTML5/GSAP/Plugins/BezierPlugin/" target="_blank">gsap BezierPlugin</a>
+>贝赛尔曲线 API 参照 [gsap BezierPlugin](http://greensock.com/docs/#/HTML5/GSAP/Plugins/BezierPlugin/)
 

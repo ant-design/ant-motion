@@ -13,7 +13,7 @@ import Home from '../home';
 import Page from '../componentElement/Page/index';
 
 import language from '../../_site/data/language';
-import component from '../../_site/data/component';
+import component from '../../_site/data/components';
 import cases from '../../_site/data/cases';
 
 
@@ -40,7 +40,7 @@ class Index extends Component {
         desc = cases[`src/${keys}/${contentName || 'about'}.md`];
         children = <Article content={desc} pathname={key} />;
         break;
-      case 'component':
+      case 'components':
         desc = component[`src/${keys}/${contentName ? `${contentName}/index` : 'introduce'}.md`];
         if (contentName) {
           children = <ComponentDoc content={desc} pathname={key} contentName={contentName}/>;

@@ -5,8 +5,6 @@ title: 添加与删除
 
 场景里有增加或删除条目时也会触发动画。
 
----
-
 ````jsx
 import { Button } from 'antd';
 import QueueAnim from 'rc-queue-anim';

@@ -1,3 +1,4 @@
+/* eslint strict: 0 */
 'use strict';
 
 const fs = require('fs');
@@ -16,15 +17,29 @@ module.exports = function buildDemosList(dirs, outputPath) {
     return relativeIndex;
   }, demos);
 
-  let content = 'module.exports = {';
+  let content =
+    'const React  = require("react");\n' +
+    'const ReactDOM = require("react-dom");\n' +
+    'module.exports = {';
   Object.keys(groupedDemos).forEach((key) => {
     content += `\n  '${key}': [`;
     groupedDemos[key].forEach((fileName) => {
-      content += `\n    require('antd-md-loader?demo&fileName=${fileName}!../../${fileName}'),`;
+      const requirePath = path.relative(path.dirname(outputPath), fileName);
+      content += `\n    require('${requirePath}'),`;
     });
-    content += '\n  ],'
+    content += '\n  ],';
   });
-  content += '\n};';
+  content += '\n};\n';
+
+  // Extract preview as a components
+  content +=
+    'Object.keys(module.exports).map((key) => module.exports[key])\n' +
+    '  .forEach((demos) => {\n' +
+    '    demos.forEach((demo) => {\n' +
+    '      if (typeof demo.preview !== "function") return;\n' +
+    '      demo.preview = demo.preview(React, ReactDOM);\n' +
+    '    });\n' +
+    '  });';
 
   fs.writeFile(outputPath, content);
 };

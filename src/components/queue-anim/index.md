@@ -6,8 +6,6 @@ order: 2
 english: QueueAnim
 ---
 
-
-
 通过简单的配置对一组元素添加串行的进场动画效果。
 
 ## 何时使用
@@ -118,7 +116,6 @@ ReactDOM.render(<QueueAnim>
   width:15%;
   float:right;
   margin:12px 10px 0;
-
 }
 .code-box-demo .demo-content .demo-listBox .demo-list ul li {
   height: 25px;
@@ -171,7 +168,6 @@ ReactDOM.render(<QueueAnim>
   width: 15px;
   height: 15px;
   margin:2px 10% 0 0;
-
 }
 .code-box-demo .demo-footer {
   margin-top: 10px;
@@ -205,10 +201,8 @@ ReactDOM.render(<QueueAnim>
   display: block;
   content: "";
 }
-
 .code-box-demo .queue-anim-leaving{
   position: relative !important;
 }
-
 </style>
 

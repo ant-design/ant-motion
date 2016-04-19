@@ -1,12 +1,11 @@
 ---
-order: 3
+order: 2
 cols: 3
-title: 模糊效果
+title: 旋转效果
 ---
 
-鼠标经过可查看模糊效果。
+鼠标经过可查看旋转效果。
 
----
 
 ```jsx
 import React, { PropTypes } from 'react';
@@ -21,7 +20,7 @@ class Demo extends React.Component {
   render() {
     return (
       <TweenOne
-        animation={{ filter: 'blur(10px)', yoyo: true, repeat: -1, duration: 1000 }}
+        animation={{ r: 360, repeat: -1, duration: 1000 }}
         paused={this.props.paused}
         className="code-box-shape"
       />
@@ -34,5 +33,4 @@ Demo.propTypes = {
   paused: PropTypes.bool,
 };
 ReactDOM.render(<Demo/>, mountNode);
-
 ```

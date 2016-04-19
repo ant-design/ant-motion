@@ -6,7 +6,6 @@ title: 位移效果
 
 鼠标经过可查看位移效果。
 
----
 
 ```jsx
 import React, { PropTypes } from 'react';

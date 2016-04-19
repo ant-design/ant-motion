@@ -6,7 +6,6 @@ title: 自定义 parallax 的 playScale
 
 自定义 playScale，在屏幕中间开始播放，到 80％ 结束动画parallax-custom.md
 
----
 
 ```jsx
 import { Parallax } from 'rc-scroll-anim';

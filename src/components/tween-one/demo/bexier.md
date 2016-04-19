@@ -6,7 +6,6 @@ title: 曲线动画
 
 贝赛尔曲线动画。
 
----
 
 ```jsx
 import React, { PropTypes } from 'react';
@@ -37,15 +36,15 @@ class Demo extends React.Component {
             },
             duration: 5000,
           }}
-          style={{ margin: '0' }}
+          style={{ margin: 0 }}
           className="code-box-shape"
           paused={this.props.paused}
         />
-        <span className="demo-bezier-shape"/>
-        <span style={{ transform: 'translate(200px,200px)' }} className="demo-bezier-shape"/>
-        <span style={{ transform: 'translate(400px,0px)' }} className="demo-bezier-shape" />
-        <span style={{ transform: 'translate(600px,200px)' }} className="demo-bezier-shape" />
-        <span style={{ transform: 'translate(800px,0px)' }} className="demo-bezier-shape" />
+        <span className="demo-bezier-shape"></span>
+        <span style={{ transform: 'translate(200px,200px)' }} className="demo-bezier-shape"></span>
+        <span style={{ transform: 'translate(400px,0px)' }} className="demo-bezier-shape" ></span>
+        <span style={{ transform: 'translate(600px,200px)' }} className="demo-bezier-shape" ></span>
+        <span style={{ transform: 'translate(800px,0px)' }} className="demo-bezier-shape" ></span>
       </div>
     );
   }

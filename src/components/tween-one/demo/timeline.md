@@ -6,7 +6,6 @@ title: 时间轴效果
 
 鼠标经过可查看时间轴效果。
 
----
 
 ```jsx
 import React, { PropTypes } from 'react';

@@ -1,12 +1,10 @@
 ---
-order: 2
+order: 1
 cols: 3
-title: 旋转效果
+title: 缩放效果
 ---
 
-鼠标经过可查看旋转效果。
-
----
+鼠标经过可查看缩放效果。
 
 ```jsx
 import React, { PropTypes } from 'react';
@@ -21,8 +19,9 @@ class Demo extends React.Component {
   render() {
     return (
       <TweenOne
-        animation={{ r: 360, repeat: -1, duration: 1000 }}
+        animation={{ scale: 0, yoyo: true, repeat: -1, duration: 1000 }}
         paused={this.props.paused}
+        style={{ transform: 'scale(1)' }}
         className="code-box-shape"
       />
     );

@@ -6,7 +6,6 @@ title: Parallax 示例
 
 随滚动来播放动画
 
----
 
 ```jsx
 import { Parallax } from 'rc-scroll-anim';

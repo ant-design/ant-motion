@@ -1,16 +1,18 @@
+/* eslint strict: 0 */
 'use strict';
 
 const fs = require('fs');
-const R = require('ramda');
+const path = require('path');
 const utils = require('./utils');
 
 module.exports = function buildCommon(dirs, outputFile) {
   const mds = utils.findMDFile(dirs, true)
-          .filter((file) => !/install_en\.md$/gi.test(file)); // TODO
+    .filter((file) => !/install_en\.md$/gi.test(file)); // TODO
 
   let content = 'module.exports = {';
   mds.forEach((fileName) => {
-    content += `\n  '${fileName}': require('antd-md-loader?fileName=${fileName}!../../${fileName}'),`;
+    const requirePath = path.relative(path.dirname(outputFile), fileName);
+    content += `\n  '${fileName}': require('${requirePath}'),`;
   });
   content += '\n};';
 

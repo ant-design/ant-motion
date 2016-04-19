@@ -2,10 +2,11 @@
  * Created by jljsj on 16/2/22.
  */
 import React from 'react';
-
+import ReactDOM from 'react-dom';
 import { Link } from 'react-router';
-import Highlight from './Highlight';
-
+import toReactComponent from 'jsonml-to-react-component';
+import { getTagName, getAttributes, getChildren } from 'jsonml.js/lib/utils';
+import VideoPlayer from './language/VideoExplain';// 'react-sublime-video';
 
 function noop() {
 }
@@ -38,67 +39,38 @@ function isHeading(type) {
   return /h[1-6]/i.test(type);
 }
 
-export function objectToComponent(pathname, object, index) {
-  if (object === null) {
-    return null;
-  }
-
-  if (React.isValidElement(object)) {
-    return React.cloneElement(object, { key: index });
-  }
-
-  if (typeof object === 'function') {
-    return React.createElement(object, { key: index });
-  }
-
-  if (typeof object === 'string') {
-    return <span key={index}>{ object }</span>;
-  }
-
-  const children = object.children;
-
-  if (object.type === 'html') {
-    return React.createElement('div', {
-      className: 'markdown',
-      key: index,
-      dangerouslySetInnerHTML: { __html: children },
-    });
-  }
-
-  if (isHeading(object.type)) {
-    return React.createElement(object.type, {
-      key: index,
-      id: children.replace(/[~'!<>@#$%^&*()-+_=:\s]/g, ''),
-    }, [
-      object.children,
-      <Link
-        to={{ pathname,
-          query: { scrollTo: object.children.replace(/[~'!<>@#$%^&*()-+_=:\s]/g, '') },
-        }} className="anchor" key="anchor"
-      > #
-      </Link>,
-    ]);
-  }
-
-  if (object.type === 'code') {
-    const innerHTML = object.props.lang === '__html';
-    return (
-      <Highlight className={object.props.lang} key={index} innerHTML={innerHTML}>
-        {children}
-      </Highlight>
-    );
-  }
-
-  if (typeof children === 'string') {
-    return React.createElement(object.type, {
-      key: index,
-      dangerouslySetInnerHTML: { __html: children },
-    });
-  }
-
-  return React.createElement(
-    object.type,
-    { key: index },
-    children && children.map(objectToComponent.bind(null, pathname)) // `hr` has no children
-  );
+export function jsonmlToComponent(pathname, jsonml) {
+  return toReactComponent(jsonml, [
+    [(node) => React.isValidElement(node), (node, index) =>
+      React.cloneElement(node, { key: index }),
+    ],
+    [(node) => typeof node === 'function', (node, index) =>
+      React.cloneElement(node(React, ReactDOM), { key: index }),
+    ],
+    [(node) => isHeading(getTagName(node)), (node, index) => {
+      const children = getChildren(node);
+      return React.createElement(getTagName(node), {
+        key: index,
+        id: children,
+        ...getAttributes(node),
+      }, [
+        <span key="title">{ children.map((child) => toReactComponent(child)) }</span>,
+        (<Link to={{ pathname, query: { scrollTo: children } }} className="anchor" key="anchor">
+          #
+        </Link>),
+      ]);
+    }],
+    [node => getTagName(node) === 'pre' && getAttributes(node).highlighted, (node, index) =>
+      React.createElement('pre', { key: index, lang: getAttributes(node).lang },
+        React.createElement(
+          'code',
+          { dangerouslySetInnerHTML: { __html: getChildren(getChildren(node)[0])[0] } }
+        )
+      ),
+    ],
+    [(node) => getTagName(node) === 'video', (node, index) => {
+      const className = getAttributes(node).classname;
+      return <VideoPlayer {...getAttributes(node)} className={className} key={index} />;
+    }],
+  ]);
 }

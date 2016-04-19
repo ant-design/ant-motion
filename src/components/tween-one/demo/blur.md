@@ -1,14 +1,10 @@
 ---
-order: 1
+order: 3
 cols: 3
-title: 缩放效果
+title: 模糊效果
 ---
 
-鼠标经过可查看缩放效果。
-
----
-
-
+鼠标经过可查看模糊效果。
 
 
 ```jsx
@@ -24,9 +20,8 @@ class Demo extends React.Component {
   render() {
     return (
       <TweenOne
-        animation={{ scale: 0, yoyo: true, repeat: -1, duration: 1000 }}
+        animation={{ filter: 'blur(10px)', yoyo: true, repeat: -1, duration: 1000 }}
         paused={this.props.paused}
-        style={{ transform: 'scale(1)' }}
         className="code-box-shape"
       />
     );
@@ -38,4 +33,5 @@ Demo.propTypes = {
   paused: PropTypes.bool,
 };
 ReactDOM.render(<Demo/>, mountNode);
+
 ```

@@ -6,7 +6,6 @@ title: 变更动画参数
 
 可操作型变更动画。
 
----
 
 ```jsx
 import React, { PropTypes } from 'react';

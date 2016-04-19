@@ -9,5 +9,12 @@ module.exports = function(webpackConfig) {
     }
     return loader;
   });
+
+  webpackConfig.module.loaders.push({
+    test: /\.md$/,
+    exclude: /node_modules/,
+    loader: 'babel!antd-md',
+  });
+
   return webpackConfig;
 };
