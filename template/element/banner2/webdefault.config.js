@@ -5,7 +5,7 @@ export default {
     template: require('raw-js!./Banner'),
     dataSource: [
       {
-        key: 'block',
+        key: 'block1',
         name: '区块1屏',
         value: {
           title: {
