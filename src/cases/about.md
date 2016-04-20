@@ -10,13 +10,15 @@ english: About
 
 这里主要提供了单元素示例与配置完后的整页示例。
 
+**主要解决视觉设计师前期制作页面后，把需要的动效加在自已的页面加上，能够与程序员很好的沟通。**
+
 ### 单元素示例分为：
 - 导航的样式选择
 - banner的样式选择
 - 详细内容说明的样式选择
 - 页尾的样式
 
-[单无素代码地址](https://github.com/ant-motion/ant-motion/tree/master/template/element)
+> 如本页提供的页面不符合你的需求，可按照你的需求查找到相似的布局再作修改。[单无素代码地址](https://github.com/ant-motion/ant-motion/tree/master/template/element)
 
 ## 何时使用
 

@@ -1,0 +1,59 @@
+@import '../../common/custom.less';
+
+@page-wrapper: page6;
+.@{page-wrapper} {
+  min-height: 120px;
+  height: 386px;
+  background: @bg-color-light;
+  &-wap {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    text-align: center;
+    height: 100%;
+    overflow: hidden;
+    & ul {
+      margin: 20px auto;
+      float: left;
+      width: 100%;
+      &:first-child {
+        margin-bottom: 0;
+      }
+      &:last-child {
+        margin-top: 0;
+      }
+      & li {
+        float: left;
+        width: 50%;
+        padding: 20px;
+        &:nth-child(2n) {
+          padding-left: 10px;
+        }
+        &:nth-child(3n), &:first-child {
+          padding-right: 10px;
+        }
+        & .@{page-wrapper}-img {
+          float: left;
+          width: 30%;
+          position: relative;
+          & img {
+            width: 100%;
+          }
+        }
+        & .@{page-wrapper}-content {
+          float: left;
+          margin-left: 10%;
+          width: 60%;
+          text-align: left;
+        }
+        & h2 {
+          color: #000;
+          margin: 0 auto 10px;
+        }
+        & p {
+          color: #666;
+        }
+      }
+    }
+  }
+}

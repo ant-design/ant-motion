@@ -101,7 +101,7 @@ export default {
       {
         key: 'ease',
         name: '缓动',
-        value: 'easeInOutQuart',
+        value: 'easeOutQuart',
       },
       {
         key: 'duration',

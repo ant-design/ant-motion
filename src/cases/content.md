@@ -25,6 +25,8 @@ const imgData = [
   { src: 'https://os.alipayobjects.com/rmsportal/QrAJxLNtCIvFCUJ.jpg', width: 300, height: 175, href: '/template/?page=element/page4/' },
   { src: 'https://os.alipayobjects.com/rmsportal/ALoKboYgBBNQLnb.jpg', width: 300, height: 175, href: '/template/?page=element/page5/' },
   { src: 'https://os.alipayobjects.com/rmsportal/BuDEPTizIcflPWx.jpg', width: 300, height: 175, href: '/template/?page=element/page6/' },
+  { src: 'https://os.alipayobjects.com/rmsportal/IyKRHfWmYoOKsVn.jpg', width: 300, height: 175, href: '/template/?page=element/page7/' },
+  { src: 'https://os.alipayobjects.com/rmsportal/TuonrhoBVBTGacD.jpg', width: 300, height: 175, href: '/template/?page=element/page8/' },
 ];
 
 ReactDOM.render(<AutoResponsiveDemo imgArr={imgData} />, mountNode);

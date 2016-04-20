@@ -61,6 +61,7 @@ Header.defaultProps = {
   },
   variables: {
     type: 'leftRightPoly',
+    ease: 'easeOutQuart',
     duration: 800,
     interval: 100,
     delay: 100,

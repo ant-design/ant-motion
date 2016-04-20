@@ -47,7 +47,7 @@ class Page4 extends React.Component {
         <OverPack scrollName="page4" className={`${this.props.className}-wap root`}
           id={this.props.id}
         >
-          <QueueAnim {...animData[1]} delay={[0, animData[1].delay + 100]} component="ul"
+          <QueueAnim {...animData[1]} component="ul"
             hideProps={{ child: null }} key="1"
           >
             {imgDataToRender}
@@ -96,6 +96,7 @@ Page4.defaultProps = {
   },
   variables: {
     type: 'bottomPosition',
+    ease: 'easeOutQuart',
     duration: 450,
     interval: 100,
     delay: 0,

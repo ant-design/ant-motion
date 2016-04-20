@@ -102,6 +102,7 @@ Page4.defaultProps = {
   },
   variables: {
     type: 'bottomPosition',
+    ease: 'easeOutQuart',
     duration: 450,
     interval: 100,
     delay: 0,

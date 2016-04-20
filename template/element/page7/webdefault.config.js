@@ -5,99 +5,114 @@ export default {
     template: require('raw-js!./Page'),
     dataSource: [
       {
-        key: 'bgImg',
-        name: '背景图片',
-        value: 'https://os.alipayobjects.com/rmsportal/cvoQWlUZsvZlWsB.jpg',
-      },
-      {
-        key: 'img1',
-        name: '图片区块1',
+        key: 'block1',
+        name: '区块1',
         value: {
           img: {
             key: 'img',
             name: '图片',
-            size: '115*115',
-            value: 'https://os.alipayobjects.com/rmsportal/eHBUBcXxqzLRitB.png',
+            value: 'https://os.alipayobjects.com/rmsportal/rboHdMRnpmlcMOZ.png',
           },
           title: {
             key: 'title',
             name: '标题',
-            value: 'SLIDERS',
+            value: 'ANT MOTION DEMO',
           },
           content: {
             key: 'content',
             name: '内容',
             value: 'Image source from the network Demo, please upload pictures to replace.' +
-            ' Image source from the network Demo',
+            ' Image source from the network Demo, please upload pictures to replace. ' +
+            'Image source from the network Demo, please upload pictures to replace.',
+          },
+          button: {
+            key: 'button',
+            name: '按钮内容',
+            value: 'Learn More',
           },
         },
       },
       {
-        key: 'img2',
-        name: '图片区块2',
+        key: 'block2',
+        name: '区块2',
         value: {
           img: {
             key: 'img',
             name: '图片',
-            size: '115*115',
-            value: 'https://os.alipayobjects.com/rmsportal/eHBUBcXxqzLRitB.png',
+            value: 'https://os.alipayobjects.com/rmsportal/rboHdMRnpmlcMOZ.png',
           },
           title: {
             key: 'title',
             name: '标题',
-            value: 'SLIDERS',
+            value: 'ANT MOTION DEMO',
           },
           content: {
             key: 'content',
             name: '内容',
             value: 'Image source from the network Demo, please upload pictures to replace.' +
-            ' Image source from the network Demo',
+            ' Image source from the network Demo, please upload pictures to replace. ' +
+            'Image source from the network Demo, please upload pictures to replace.',
+          },
+          button: {
+            key: 'button',
+            name: '按钮内容',
+            value: 'Learn More',
           },
         },
       },
       {
-        key: 'img3',
-        name: '图片区块3',
+        key: 'block3',
+        name: '区块3',
         value: {
           img: {
             key: 'img',
             name: '图片',
-            size: '115*115',
-            value: 'https://os.alipayobjects.com/rmsportal/eHBUBcXxqzLRitB.png',
+            value: 'https://os.alipayobjects.com/rmsportal/rboHdMRnpmlcMOZ.png',
           },
           title: {
             key: 'title',
             name: '标题',
-            value: 'SLIDERS',
+            value: 'ANT MOTION DEMO',
           },
           content: {
             key: 'content',
             name: '内容',
             value: 'Image source from the network Demo, please upload pictures to replace.' +
-            ' Image source from the network Demo',
+            ' Image source from the network Demo, please upload pictures to replace. ' +
+            'Image source from the network Demo, please upload pictures to replace.',
+          },
+          button: {
+            key: 'button',
+            name: '按钮内容',
+            value: 'Learn More',
           },
         },
       },
       {
-        key: 'img4',
-        name: '图片区块4',
+        key: 'block4',
+        name: '区块4',
         value: {
           img: {
             key: 'img',
             name: '图片',
-            size: '115*115',
-            value: 'https://os.alipayobjects.com/rmsportal/eHBUBcXxqzLRitB.png',
+            value: 'https://os.alipayobjects.com/rmsportal/rboHdMRnpmlcMOZ.png',
           },
           title: {
             key: 'title',
             name: '标题',
-            value: 'SLIDERS',
+            value: 'ANT MOTION DEMO',
           },
           content: {
             key: 'content',
             name: '内容',
             value: 'Image source from the network Demo, please upload pictures to replace.' +
-            ' Image source from the network Demo',
+            ' Image source from the network Demo, please upload pictures to replace. ' +
+            'Image source from the network Demo, please upload pictures to replace.',
+          },
+          button: {
+            key: 'button',
+            name: '按钮内容',
+            value: 'Learn More',
           },
         },
       },

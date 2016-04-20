@@ -65,6 +65,7 @@ Page3.defaultProps = {
   },
   variables: {
     type: 'leftRightPoly',
+    ease: 'easeOutQuart',
     duration: 450,
     interval: 100,
     delay: 0,
