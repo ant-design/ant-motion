@@ -5,14 +5,8 @@ export default {
     template: require('raw-js!./Banner'),
     dataSource: [
       {
-        key: 'bgImg',
-        name: '背景图片',
-        size: '1920*400',
-        value: 'https://os.alipayobjects.com/rmsportal/uaQVvDrCwryVlbb.jpg',
-      },
-      {
-        key: 'text',
-        name: '文字区块',
+        key: 'block',
+        name: '区块1屏',
         value: {
           title: {
             key: 'title',
@@ -30,6 +24,12 @@ export default {
             name: '按钮',
             value: 'Learn More',
           },
+          bgImg: {
+            key: 'bgImg',
+            name: '背景图片',
+            size: '1920*400',
+            value: 'https://os.alipayobjects.com/rmsportal/uaQVvDrCwryVlbb.jpg',
+          },
         },
       },
     ],
@@ -43,7 +43,7 @@ export default {
       {
         key: 'ease',
         name: '缓动',
-        value: 'easeInOutQuart',
+        value: 'easeOutQuart',
       },
       {
         key: 'duration',

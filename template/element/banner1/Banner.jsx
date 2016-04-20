@@ -9,8 +9,8 @@ import './banner.less';
 
 class Banner extends React.Component {
   render() {
-    const { bgImg, text } = this.props.dataSource;
-    const { title, content, button } = text;
+    const { block1 } = this.props.dataSource;
+    const { title, content, button, bgImg } = block1;
     const { type } = this.props.variables;
     const animData = {
       ...this.props.variables,
@@ -30,7 +30,7 @@ class Banner extends React.Component {
           hideProps={{ child: null }}
           key="text"
         >
-          {typeof text === 'object' ? [<h1 key="h1">{title}</h1>,
+          {typeof block1 === 'object' ? [<h1 key="h1">{title}</h1>,
           <p key="content">{content}</p>,
           <Button type="ghost" key="button">{button}</Button>] : null}
         </QueueAnim>
@@ -56,16 +56,17 @@ Banner.propTypes = {
 Banner.defaultProps = {
   className: 'banner',
   dataSource: {
-    bgImg: 'https://os.alipayobjects.com/rmsportal/IhCNTqPpLeTNnwr.jpg',
-    text: {
+    block1: {
       title: 'Ant Motion Demo',
       content: 'Image source from the network Demo, please upload pictures to replace.' +
       'Image source from the network Demo, please upload pictures to replace.',
       button: 'Learn More',
+      bgImg: 'https://os.alipayobjects.com/rmsportal/IhCNTqPpLeTNnwr.jpg',
     },
   },
   variables: {
     type: 'bottomPosition',
+    ease: 'easeOutQuart',
     duration: 450,
     interval: 100,
     delay: 0,

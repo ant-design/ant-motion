@@ -1,5 +1,5 @@
 export default {
-  name: 'banner1',
+  name: 'banner3',
   version: '0.0.1',
   data: {
     template: require('raw-js!./Banner'),
@@ -29,6 +29,34 @@ export default {
             name: '背景图片',
             size: '1920*1080',
             value: 'https://os.alipayobjects.com/rmsportal/IhCNTqPpLeTNnwr.jpg',
+          },
+        },
+      },
+      {
+        key: 'block2',
+        name: '区块2屏',
+        value: {
+          title: {
+            key: 'title',
+            name: '标题',
+            value: 'Ant Motion Demo',
+          },
+          content: {
+            key: 'content',
+            name: '内容',
+            value: 'Image source from the network Demo, please upload pictures to replace.' +
+            'Image source from the network Demo, please upload pictures to replace',
+          },
+          button: {
+            key: 'button',
+            name: '按钮',
+            value: 'Learn More',
+          },
+          bgImg: {
+            key: 'bgImg',
+            name: '背景图片',
+            size: '1920*1080',
+            value: 'https://os.alipayobjects.com/rmsportal/uaQVvDrCwryVlbb.jpg',
           },
         },
       },

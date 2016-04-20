@@ -5,6 +5,10 @@
   position: fixed;
   bottom: 0;
   z-index: 981;
+  pointer-events: none;
+  & *{
+    pointer-events: auto;
+  }
   &-bar {
     height: 64px;
     background: fade(#000, 65);
