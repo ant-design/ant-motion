@@ -1,30 +1,39 @@
+const React  = require("react");
+const ReactDOM = require("react-dom");
 module.exports = {
-  'src/component/animate/index.md': [
-    require('antd-md?demo&fileName=src/component/animate/demo/appear.md!../../src/component/animate/demo/appear.md'),
-    require('antd-md?demo&fileName=src/component/animate/demo/remove.md!../../src/component/animate/demo/remove.md'),
-    require('antd-md?demo&fileName=src/component/animate/demo/simple.md!../../src/component/animate/demo/simple.md'),
+  'src/components/animate/index.md': [
+    require('../../src/components/animate/demo/appear.md'),
+    require('../../src/components/animate/demo/remove.md'),
+    require('../../src/components/animate/demo/simple.md'),
   ],
-  'src/component/queue-anim/index.md': [
-    require('antd-md?demo&fileName=src/component/queue-anim/demo/basic.md!../../src/component/queue-anim/demo/basic.md'),
-    require('antd-md?demo&fileName=src/component/queue-anim/demo/change.md!../../src/component/queue-anim/demo/change.md'),
-    require('antd-md?demo&fileName=src/component/queue-anim/demo/custom.md!../../src/component/queue-anim/demo/custom.md'),
-    require('antd-md?demo&fileName=src/component/queue-anim/demo/enter-leave.md!../../src/component/queue-anim/demo/enter-leave.md'),
-    require('antd-md?demo&fileName=src/component/queue-anim/demo/page.md!../../src/component/queue-anim/demo/page.md'),
-    require('antd-md?demo&fileName=src/component/queue-anim/demo/simple.md!../../src/component/queue-anim/demo/simple.md'),
+  'src/components/queue-anim/index.md': [
+    require('../../src/components/queue-anim/demo/basic.md'),
+    require('../../src/components/queue-anim/demo/change.md'),
+    require('../../src/components/queue-anim/demo/custom.md'),
+    require('../../src/components/queue-anim/demo/enter-leave.md'),
+    require('../../src/components/queue-anim/demo/page.md'),
+    require('../../src/components/queue-anim/demo/simple.md'),
   ],
-  'src/component/scroll-anim/index.md': [
-    require('antd-md?demo&fileName=src/component/scroll-anim/demo/overPack.md!../../src/component/scroll-anim/demo/overPack.md'),
-    require('antd-md?demo&fileName=src/component/scroll-anim/demo/parallax-custom.md!../../src/component/scroll-anim/demo/parallax-custom.md'),
-    require('antd-md?demo&fileName=src/component/scroll-anim/demo/parallax-timeline.md!../../src/component/scroll-anim/demo/parallax-timeline.md'),
-    require('antd-md?demo&fileName=src/component/scroll-anim/demo/parallax.md!../../src/component/scroll-anim/demo/parallax.md'),
+  'src/components/scroll-anim/index.md': [
+    require('../../src/components/scroll-anim/demo/overPack.md'),
+    require('../../src/components/scroll-anim/demo/parallax-custom.md'),
+    require('../../src/components/scroll-anim/demo/parallax-timeline.md'),
+    require('../../src/components/scroll-anim/demo/parallax.md'),
   ],
-  'src/component/tween-one/index.md': [
-    require('antd-md?demo&fileName=src/component/tween-one/demo/bexier.md!../../src/component/tween-one/demo/bexier.md'),
-    require('antd-md?demo&fileName=src/component/tween-one/demo/blur.md!../../src/component/tween-one/demo/blur.md'),
-    require('antd-md?demo&fileName=src/component/tween-one/demo/control.md!../../src/component/tween-one/demo/control.md'),
-    require('antd-md?demo&fileName=src/component/tween-one/demo/position.md!../../src/component/tween-one/demo/position.md'),
-    require('antd-md?demo&fileName=src/component/tween-one/demo/rotate.md!../../src/component/tween-one/demo/rotate.md'),
-    require('antd-md?demo&fileName=src/component/tween-one/demo/scale.md!../../src/component/tween-one/demo/scale.md'),
-    require('antd-md?demo&fileName=src/component/tween-one/demo/timeline.md!../../src/component/tween-one/demo/timeline.md'),
+  'src/components/tween-one/index.md': [
+    require('../../src/components/tween-one/demo/bezier.md'),
+    require('../../src/components/tween-one/demo/blur.md'),
+    require('../../src/components/tween-one/demo/control.md'),
+    require('../../src/components/tween-one/demo/position.md'),
+    require('../../src/components/tween-one/demo/rotate.md'),
+    require('../../src/components/tween-one/demo/scale.md'),
+    require('../../src/components/tween-one/demo/timeline.md'),
   ],
 };
+Object.keys(module.exports).map((key) => module.exports[key])
+  .forEach((demos) => {
+    demos.forEach((demo) => {
+      if (typeof demo.preview !== "function") return;
+      demo.preview = demo.preview(React, ReactDOM);
+    });
+  });
