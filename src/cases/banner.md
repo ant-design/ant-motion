@@ -14,7 +14,7 @@ english: Banner
 
 > 多页切换用的是 react-slick，页面切换出去后回来会卡死，暂不要使用，等 baanerAnim 完成。
 
-## 案例
+## 示例
 
 ```__react
 import React, { PropTypes } from 'react';

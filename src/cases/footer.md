@@ -11,7 +11,7 @@ english: Footer
 页面页脚的效果展示。
 
 
-## 案例
+## 示例
 
 ```__react
 import React, { PropTypes } from 'react';

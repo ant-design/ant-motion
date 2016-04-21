@@ -12,7 +12,7 @@ english: Content
 
 提供常见的布局与动画效果，可拼接形式组合成页面。
 
-## 案例
+## 示例
 
 ```__react
 import React, { PropTypes } from 'react';
