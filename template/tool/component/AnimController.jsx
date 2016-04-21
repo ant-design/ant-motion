@@ -4,7 +4,7 @@ import Common from './Common';
 import Popover from './Popover';
 import List from './List';
 import iconSrc from './iconSrc';
-import { Input, InputNumber, Button } from 'antd';
+import { Input, InputNumber } from 'antd';
 const easeing = [
   'linear',
   'easeInSine',
@@ -64,18 +64,22 @@ class AnimController extends Common {
     } else {
       configChild.variables[key] = dom.value;
     }
+    this.clickMake('variables');
   }
 
   numberChangeValue(key, value) {
     const configChild = this.config[this.state.childId] = this.config[this.state.childId] || {};
     configChild.variables = configChild.variables || {};
     configChild.variables[key] = value;
+    this.clickMake('variables');
   }
 
   panelHandleChange(type, value) {
     this.config[this.state.childId] = this.config[this.state.childId] || {};
     this.config[this.state.childId].variables = this.config[this.state.childId].variables || {};
     this.config[this.state.childId].variables[type] = value;
+
+    this.clickMake('variables');
   }
 
   getAnimContent(data, i) {
@@ -132,7 +136,7 @@ class AnimController extends Common {
 
   render() {
     const animContent = this.props.data.map(this.getAnimContent);
-    const clickMake = this.clickMake.bind(this, 'variables');
+    // const clickMake = this.clickMake.bind(this, 'variables');
     return (
       <div className="tool-variable-panel" id="V-Panel" visible>
         <div className="tool-logo">
@@ -142,11 +146,6 @@ class AnimController extends Common {
         <ul>
           {animContent}
         </ul>
-        <Button type="primary" size="small"
-          onClick={clickMake}
-        >
-          保存
-        </Button>
       </div>
     );
   }
