@@ -75,19 +75,23 @@ const motionTool = (config) => (ComposedComponent) =>
         $('html').attr('style', '');
         this.setState({
           showMask: false,
-          maskChild: null,
-          maskHeight: 0,
           childId: '',
         });
       }
       this.setState({
         config: _config,
         showMode,
+      }, () => {
+        this.setState({
+          maskChild: this.state.showMask ? this.getMaskChild() : null,
+        });
       });
     }
 
-    getMaskChild(parent, docHeight) {
+    getMaskChild() {
       let maskChild;
+      const parent = $(`#${this.state.childId}`);
+      const docHeight = $(document).height();
       if (parent.offset().top) {
         maskChild = [
           <div key="1"
@@ -151,15 +155,15 @@ const motionTool = (config) => (ComposedComponent) =>
       } else {
         $('html').css({ overflow: 'hidden' });
       }
-      const docHeight = $(document).height();
       const showMask = !this.state.showMask;
       const childId = showMask ? $target.attr('id') : null;
-      const maskChild = showMask ? this.getMaskChild($target, docHeight) : null;
       this.setState({
         showMask,
-        maskChild,
-        maskHeight: docHeight,
         childId,
+      }, () => {
+        this.setState({
+          maskChild: this.state.showMask ? this.getMaskChild() : null,
+        });
       });
     }
 
@@ -254,7 +258,7 @@ const motionTool = (config) => (ComposedComponent) =>
           style={{ height: this.state.maskHeight }}
           key="mask"
         >
-          {this.state.showMask ? this.state.maskChild : null}
+          {this.state.maskChild}
         </Animate>,
       ] : (<ComposedComponent
         {...convertConfig}

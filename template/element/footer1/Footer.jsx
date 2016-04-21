@@ -6,15 +6,21 @@ import './footer.less';
 
 class Footer extends React.Component {
   render() {
-    const { text } = this.props.dataSource;
+    const { text, height } = this.props.dataSource;
     const { type, delay, duration, ease } = this.props.variables;
     const animData = animType[type].one;
     animData.animation.delay = delay;
     animData.animation.ease = ease;
     animData.animation.duration = duration;
     animData.animation.type = 'from';
+    const _height = height.replace(/[0-9|.]/g, '') ? height : `${height}px`;
     return (
-      <OverPack className={`${this.props.className} root`} playScale={0.05} id={this.props.id}>
+      <OverPack
+        className={`${this.props.className} root`}
+        playScale={0.05}
+        id={this.props.id}
+        style={{ height: _height }}
+      >
         <TweenOne
           key="0" hideProps={{ reverse: true }}
           {...animData}
@@ -36,6 +42,7 @@ Footer.propTypes = {
 Footer.defaultProps = {
   className: 'footer',
   dataSource: {
+    height: '80px',
     text: 'Copyright © 2016 The Project by <a href="#">Ant Motion</a>. All Rights Reserved',
   },
   variables: {

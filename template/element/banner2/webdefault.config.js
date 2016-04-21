@@ -5,6 +5,11 @@ export default {
     template: require('raw-js!./Banner'),
     dataSource: [
       {
+        key: 'height',
+        name: '区块高度',
+        value: '400px',
+      },
+      {
         key: 'block1',
         name: '区块1屏',
         value: {

@@ -5,6 +5,11 @@ export default {
     template: require('raw-js!./Page'),
     dataSource: [
       {
+        key: 'height',
+        name: '区块高度',
+        value: '500px',
+      },
+      {
         key: 'text',
         name: '文字区块',
         value: {
@@ -23,7 +28,7 @@ export default {
         },
       },
       {
-        key: 'img1',
+        key: 'block1',
         name: '图片区块1',
         value: {
           img: {
@@ -46,7 +51,7 @@ export default {
         },
       },
       {
-        key: 'img2',
+        key: 'block2',
         name: '图片区块2',
         value: {
           img: {
@@ -69,7 +74,7 @@ export default {
         },
       },
       {
-        key: 'img3',
+        key: 'block3',
         name: '图片区块3',
         value: {
           img: {

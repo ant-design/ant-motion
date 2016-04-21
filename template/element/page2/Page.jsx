@@ -7,7 +7,7 @@ import animType from '../../common/animType';
 import './page.less';
 class Page2 extends React.Component {
   render() {
-    const { img, text } = this.props.dataSource;
+    const { img, text, height } = this.props.dataSource;
     const { title, content, button } = text;
     const { type, delay, interval, duration, ease } = this.props.variables;
     const animData = ['one', 'tow'].map((order, i) => {
@@ -26,10 +26,12 @@ class Page2 extends React.Component {
     const textToRender = (typeof text === 'object' ? [<h2 key="h2">{title}</h2>,
       <p key="p" dangerouslySetInnerHTML={{ __html: content }}></p>,
       <Button key="button" type="ghost">{button}</Button>] : null);
+    const _height = height.replace(/[0-9|.]/g, '') ? height : `${height}px`;
     return (
       <OverPack scrollName="page2"
         className={`content ${this.props.className} root`}
         id={this.props.id}
+        style={{ height: _height }}
       >
         <TweenOne
           {...animData[0]}
@@ -60,6 +62,7 @@ Page2.propTypes = {
 Page2.defaultProps = {
   className: 'page2',
   dataSource: {
+    height: '510px',
     img: 'https://os.alipayobjects.com/rmsportal/BGwZWphjWXyDFlW.png',
     text: {
       title: 'Ant Motion Demo',

@@ -8,21 +8,21 @@ import './banner.less';
 
 class Banner extends React.Component {
   render() {
-    const { block1 } = this.props.dataSource;
+    const { block1, height } = this.props.dataSource;
     const { title, content, button, bgImg } = block1;
     const { type } = this.props.variables;
     const animData = {
       ...this.props.variables,
       type: animType[type].one.type,
     };
-
+    const _height = height.replace(/[0-9|.]/g, '') ? height : `${height}px`;
     return (
       <OverPack replay
         scrollName="banner"
         className={`${this.props.className} root`}
         id={this.props.id}
         playScale={[0.3, 0.6]}
-
+        style={{ height: _height }}
       >
         <TweenOne
           animation={{ opacity: 0, type: 'from' }}
@@ -56,6 +56,7 @@ Banner.propTypes = {
 Banner.defaultProps = {
   className: 'banner',
   dataSource: {
+    height: '400px',
     block1: {
       title: 'Ant Motion Demo',
       content: 'Image source from the network Demo, please upload pictures to replace.' +

@@ -5,6 +5,11 @@ export default {
     template: require('raw-js!./Page'),
     dataSource: [
       {
+        key: 'height',
+        name: '区块高度',
+        value: '800px',
+      },
+      {
         key: 'text',
         name: '文字区块',
         value: {
@@ -23,7 +28,7 @@ export default {
         },
       },
       {
-        key: 'img1',
+        key: 'block1',
         name: '图片区块1',
         value: {
           img: {
@@ -46,7 +51,7 @@ export default {
         },
       },
       {
-        key: 'img2',
+        key: 'block2',
         name: '图片区块2',
         value: {
           img: {
@@ -69,7 +74,7 @@ export default {
         },
       },
       {
-        key: 'img3',
+        key: 'block3',
         name: '图片区块3',
         value: {
           img: {
@@ -92,7 +97,7 @@ export default {
         },
       },
       {
-        key: 'img4',
+        key: 'block4',
         name: '图片区块4',
         value: {
           img: {
@@ -115,7 +120,7 @@ export default {
         },
       },
       {
-        key: 'img5',
+        key: 'block5',
         name: '图片区块5',
         value: {
           img: {
@@ -138,7 +143,7 @@ export default {
         },
       },
       {
-        key: 'img6',
+        key: 'block6',
         name: '图片区块6',
         value: {
           img: {
@@ -161,7 +166,7 @@ export default {
         },
       },
       {
-        key: 'img7',
+        key: 'block7',
         name: '图片区块7',
         value: {
           img: {
@@ -184,7 +189,7 @@ export default {
         },
       },
       {
-        key: 'img8',
+        key: 'block8',
         name: '图片区块8',
         value: {
           img: {

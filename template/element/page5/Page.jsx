@@ -7,7 +7,8 @@ import './page.less';
 
 class Page4 extends React.Component {
   render() {
-    const { title, content } = this.props.dataSource.text;
+    const { text, height } = this.props.dataSource;
+    const { title, content } = text;
     const { type, delay, interval, duration, ease } = this.props.variables;
     const animData = ['one', 'tow'].map((order, i) => {
       const anim = animType[type][order] || animType[type].one;
@@ -23,7 +24,8 @@ class Page4 extends React.Component {
       anim.leaveReverse = true;
       return anim;
     });
-    const imgDataToRender = Object.keys(this.props.dataSource).filter(key => key !== 'text')
+    const imgDataToRender = Object.keys(this.props.dataSource)
+      .filter(key => key.indexOf('block') >= 0)
       .map((key, i) => {
         const itemData = this.props.dataSource[key];
         if (itemData === '$remove') {
@@ -38,8 +40,9 @@ class Page4 extends React.Component {
           <p dangerouslySetInnerHTML={{ __html: itemData.content }} />
         </li>);
       });
+    const _height = height.replace(/[0-9|.]/g, '') ? height : `${height}px`;
     return (
-      <div className={this.props.className}>
+      <div className={this.props.className} style={{ height: _height }}>
         <OverPack scrollName="page5" className={`${this.props.className}-wap root`}
           id={this.props.id}
         >
@@ -75,25 +78,26 @@ Page4.propTypes = {
 Page4.defaultProps = {
   className: 'page5',
   dataSource: {
+    height: '500px',
     text: {
       title: 'PAGE TITLE',
       content: 'Demo source from the network, please upload pictures to replace. ' +
       'Demo source from the network, please upload pictures to replace. ' +
       'Demo source from the network, please upload pictures to replace.',
     },
-    img1: {
+    block1: {
       img: 'https://os.alipayobjects.com/rmsportal/eHBUBcXxqzLRitB.png',
       title: 'SLIDERS',
       content: 'Image source from the network Demo, please upload pictures to replace.' +
       ' Image source from the network Demo',
     },
-    img2: {
+    block2: {
       img: 'https://os.alipayobjects.com/rmsportal/eHBUBcXxqzLRitB.png',
       title: 'SLIDERS',
       content: 'Image source from the network Demo, please upload pictures to replace.' +
       ' Image source from the network Demo',
     },
-    img3: {
+    block3: {
       img: 'https://os.alipayobjects.com/rmsportal/eHBUBcXxqzLRitB.png',
       title: 'SLIDERS',
       content: 'Image source from the network Demo, please upload pictures to replace.' +

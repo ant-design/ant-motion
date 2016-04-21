@@ -8,7 +8,7 @@ import './page.less';
 
 class Page3 extends React.Component {
   render() {
-    const { img, text } = this.props.dataSource;
+    const { img, text, height } = this.props.dataSource;
     const { title, content, button } = text;
     const { type, delay, interval, duration, ease } = this.props.variables;
     const animData = ['one', 'tow'].map((order, i) => {
@@ -24,9 +24,12 @@ class Page3 extends React.Component {
       anim.animation.type = 'from';
       return anim;
     });
+    const _height = height.replace(/[0-9|.]/g, '') ? height : `${height}px`;
     return (
-      <OverPack scrollName="page3" className={`content ${this.props.className} root`}
+      <OverPack scrollName="page3"
+        className={`content ${this.props.className} root`}
         id={this.props.id}
+        style={{ height: _height }}
       >
         <QueueAnim {...animData[0]} hideProps={{ child: null }} key="text" className="text">
           {typeof text === 'object' ? [<h2 key="h2">{title}</h2>,
@@ -55,6 +58,7 @@ Page3.propTypes = {
 Page3.defaultProps = {
   className: 'page3',
   dataSource: {
+    height: '380px',
     img: 'https://os.alipayobjects.com/rmsportal/IhCNTqPpLeTNnwr.jpg',
     text: {
       title: 'Ant Motion Demo',

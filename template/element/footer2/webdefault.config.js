@@ -5,6 +5,11 @@ export default {
     template: require('raw-js!./Footer'),
     dataSource: [
       {
+        key: 'height',
+        name: '区块高度',
+        value: '230px',
+      },
+      {
         key: 'block1',
         name: '区块1',
         value: {

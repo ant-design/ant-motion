@@ -7,8 +7,8 @@ import './footer.less';
 
 class Footer extends React.Component {
   render() {
-    const { text } = this.props.dataSource;
-    const liToRender = Object.keys(this.props.dataSource).filter(key => key !== 'text')
+    const { text, height } = this.props.dataSource;
+    const liToRender = Object.keys(this.props.dataSource).filter(key => key.indexOf('block') >= 0)
       .map((key, i) => {
         const item = this.props.dataSource[key];
         return (<li key={i}>
@@ -33,8 +33,14 @@ class Footer extends React.Component {
       anim.animation.type = 'from';
       return anim;
     });
+    const _height = height.replace(/[0-9|.]/g, '') ? height : `${height}px`;
     return (
-      <OverPack className={`${this.props.className} root`} playScale={0.1} id={this.props.id}>
+      <OverPack
+        className={`${this.props.className} root`}
+        playScale={0.1}
+        id={this.props.id}
+        style={{ height: _height }}
+      >
         <QueueAnim component="ul" {...animData[0]} key="queue"
           hideProps={{ child: null }}
         >
@@ -66,6 +72,7 @@ Footer.propTypes = {
 Footer.defaultProps = {
   className: 'footer',
   dataSource: {
+    height: '230px',
     block1: {
       title: 'ANT MOTION',
       content: 'A efficient motion design solutions',

@@ -5,6 +5,11 @@ export default {
     template: require('raw-js!./Page'),
     dataSource: [
       {
+        key: 'height',
+        name: '区块高度',
+        value: '390px',
+      },
+      {
         key: 'block1',
         name: '区块1',
         value: {
@@ -24,11 +29,6 @@ export default {
             value: 'Image source from the network Demo, please upload pictures to replace.' +
             ' Image source from the network Demo, please upload pictures to replace. ' +
             'Image source from the network Demo, please upload pictures to replace.',
-          },
-          button: {
-            key: 'button',
-            name: '按钮内容',
-            value: 'Learn More',
           },
         },
       },
@@ -53,11 +53,6 @@ export default {
             ' Image source from the network Demo, please upload pictures to replace. ' +
             'Image source from the network Demo, please upload pictures to replace.',
           },
-          button: {
-            key: 'button',
-            name: '按钮内容',
-            value: 'Learn More',
-          },
         },
       },
       {
@@ -81,11 +76,6 @@ export default {
             ' Image source from the network Demo, please upload pictures to replace. ' +
             'Image source from the network Demo, please upload pictures to replace.',
           },
-          button: {
-            key: 'button',
-            name: '按钮内容',
-            value: 'Learn More',
-          },
         },
       },
       {
@@ -108,11 +98,6 @@ export default {
             value: 'Image source from the network Demo, please upload pictures to replace.' +
             ' Image source from the network Demo, please upload pictures to replace. ' +
             'Image source from the network Demo, please upload pictures to replace.',
-          },
-          button: {
-            key: 'button',
-            name: '按钮内容',
-            value: 'Learn More',
           },
         },
       },

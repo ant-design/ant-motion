@@ -5,12 +5,17 @@ export default {
     template: require('raw-js!./Page'),
     dataSource: [
       {
+        key: 'height',
+        name: '区块高度',
+        value: '320px',
+      },
+      {
         key: 'bgImg',
         name: '背景图片',
         value: 'https://os.alipayobjects.com/rmsportal/cvoQWlUZsvZlWsB.jpg',
       },
       {
-        key: 'img1',
+        key: 'block1',
         name: '图片区块1',
         value: {
           img: {
@@ -33,7 +38,7 @@ export default {
         },
       },
       {
-        key: 'img2',
+        key: 'block2',
         name: '图片区块2',
         value: {
           img: {
@@ -56,7 +61,7 @@ export default {
         },
       },
       {
-        key: 'img3',
+        key: 'block3',
         name: '图片区块3',
         value: {
           img: {
@@ -79,7 +84,7 @@ export default {
         },
       },
       {
-        key: 'img4',
+        key: 'block4',
         name: '图片区块4',
         value: {
           img: {

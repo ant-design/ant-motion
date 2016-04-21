@@ -5,6 +5,11 @@ export default {
     template: require('raw-js!./Page'),
     dataSource: [
       {
+        key: 'height',
+        name: '区块高度',
+        value: '380px',
+      },
+      {
         key: 'img',
         name: '配图',
         value: 'https://os.alipayobjects.com/rmsportal/JugUOImfNERsOAb.png',

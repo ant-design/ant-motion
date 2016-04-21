@@ -21,7 +21,8 @@ class Page4 extends React.Component {
       anim.leaveReverse = true;
       return anim;
     });
-    const imgDataToRender = Object.keys(this.props.dataSource).filter(key => key !== 'bgImg')
+    const imgDataToRender = Object.keys(this.props.dataSource)
+      .filter(key => key.indexOf('block') >= 0)
       .map((key, i) => {
         const itemData = this.props.dataSource[key];
         if (itemData === '$remove') {
@@ -37,9 +38,12 @@ class Page4 extends React.Component {
           </div>
         </li>);
       });
+    const height = this.props.dataSource.height;
+    const _height = height.replace(/[0-9|.]/g, '') ? height : `${height}px`;
     const bgImg = this.props.dataSource.bgImg;
     const style = bgImg && bgImg !== 'null' ? {
       background: `url(${bgImg}) fixed center / cover`,
+      height: _height,
     } : null;
     return (
       <div className={this.props.className}
@@ -74,30 +78,34 @@ Page4.propTypes = {
 Page4.defaultProps = {
   className: 'page6',
   dataSource: {
-    bgImg: 'https://os.alipayobjects.com/rmsportal/cvoQWlUZsvZlWsB.jpg',
-    img1: {
-      img: 'https://os.alipayobjects.com/rmsportal/eHBUBcXxqzLRitB.png',
-      title: 'SLIDERS',
+    height: '390px',
+    block1: {
+      img: 'https://os.alipayobjects.com/rmsportal/rboHdMRnpmlcMOZ.png',
+      title: 'ANT MOTION DEMO',
       content: 'Image source from the network Demo, please upload pictures to replace.' +
-      ' Image source from the network Demo',
+      ' Image source from the network Demo, please upload pictures to replace. ' +
+      'Image source from the network Demo, please upload pictures to replace.',
     },
-    img2: {
-      img: 'https://os.alipayobjects.com/rmsportal/eHBUBcXxqzLRitB.png',
-      title: 'SLIDERS',
+    block2: {
+      img: 'https://os.alipayobjects.com/rmsportal/rboHdMRnpmlcMOZ.png',
+      title: 'ANT MOTION DEMO',
       content: 'Image source from the network Demo, please upload pictures to replace.' +
-      ' Image source from the network Demo',
+      ' Image source from the network Demo, please upload pictures to replace. ' +
+      'Image source from the network Demo, please upload pictures to replace.',
     },
-    img3: {
-      img: 'https://os.alipayobjects.com/rmsportal/eHBUBcXxqzLRitB.png',
-      title: 'SLIDERS',
+    block3: {
+      img: 'https://os.alipayobjects.com/rmsportal/rboHdMRnpmlcMOZ.png',
+      title: 'ANT MOTION DEMO',
       content: 'Image source from the network Demo, please upload pictures to replace.' +
-      ' Image source from the network Demo',
+      ' Image source from the network Demo, please upload pictures to replace. ' +
+      'Image source from the network Demo, please upload pictures to replace.',
     },
-    img4: {
-      img: 'https://os.alipayobjects.com/rmsportal/eHBUBcXxqzLRitB.png',
-      title: 'SLIDERS',
+    block4: {
+      img: 'https://os.alipayobjects.com/rmsportal/rboHdMRnpmlcMOZ.png',
+      title: 'ANT MOTION DEMO',
       content: 'Image source from the network Demo, please upload pictures to replace.' +
-      ' Image source from the network Demo',
+      ' Image source from the network Demo, please upload pictures to replace. ' +
+      'Image source from the network Demo, please upload pictures to replace.',
     },
   },
   variables: {

@@ -5,6 +5,11 @@ export default {
     template: require('raw-js!./Footer'),
     dataSource: [
       {
+        key: 'height',
+        name: '区块高度',
+        value: '80px',
+      },
+      {
         key: 'text',
         name: '内容',
         value: 'Copyright © 2016 The Project by <a href="#">Ant Motion</a>. All Rights Reserved',
