@@ -5,7 +5,7 @@ import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
 import animType from '../../common/animType';
 import './page.less';
 
-class Page4 extends React.Component {
+class Page5 extends React.Component {
   render() {
     const { text, height } = this.props.dataSource;
     const { title, content } = text;
@@ -68,14 +68,14 @@ class Page4 extends React.Component {
   }
 }
 
-Page4.propTypes = {
+Page5.propTypes = {
   className: PropTypes.string,
   id: PropTypes.string,
   dataSource: PropTypes.object,
   variables: PropTypes.object,
 };
 
-Page4.defaultProps = {
+Page5.defaultProps = {
   className: 'page5',
   dataSource: {
     height: '500px',
@@ -113,4 +113,4 @@ Page4.defaultProps = {
   },
 };
 
-export default Page4;
+export default Page5;

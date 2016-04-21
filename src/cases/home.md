@@ -21,7 +21,7 @@ import AutoResponsiveDemo from '../componentElement/cases/AutoResponsiveDemo';
 const imgData = [
   { src: 'https://os.alipayobjects.com/rmsportal/YKUyqXLytHHdIBg.jpg', width: 300, height: 776, href: '/template/?page=page/homeDemo1/' },
   { src: 'https://os.alipayobjects.com/rmsportal/VTmsWNGxNqSHFQp.jpg', width: 300, height: 709, href: '/template/?page=page/homeDemo2/' },
-  { src: 'https://os.alipayobjects.com/rmsportal/sqfxBJZKiCoWDmz.jpg', width: 300, height: 709, href: '#' },
+  { src: 'https://os.alipayobjects.com/rmsportal/sqfxBJZKiCoWDmz.jpg', width: 300, height: 709, href: '/template/?page=page/homeDemo3/' },
 ];
 
 ReactDOM.render(<AutoResponsiveDemo imgArr={imgData} />, mountNode);

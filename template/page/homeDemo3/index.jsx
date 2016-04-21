@@ -4,12 +4,11 @@ import ReactDOM from 'react-dom';
 import motionTool from '../../tool/';
 
 import Header from '../../element/nav1/Header';
-import Banner from '../../element/banner1/Banner';
-import Page1 from '../../element/page1/Page';
-import Page2 from '../../element/page2/Page';
-import Page3 from '../../element/page3/Page';
-import Page4 from '../../element/page4/Page';
-import Footer from '../../element/footer1/Footer';
+import Banner from '../../element/banner3/Banner';
+import Page1 from '../../element/page7/Page';
+import Page2 from '../../element/page8/Page';
+import Page3 from '../../element/page6/Page';
+import Footer from '../../element/footer2/Footer';
 
 import '../../common/ant-d.less';
 
@@ -21,7 +20,6 @@ const Components = [
   { name: 'page1', comp: Page1 },
   { name: 'page2', comp: Page2 },
   { name: 'page3', comp: Page3 },
-  { name: 'page4', comp: Page4 },
   { name: 'footer', comp: Footer },
 ];
 

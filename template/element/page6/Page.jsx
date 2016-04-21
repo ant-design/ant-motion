@@ -4,7 +4,7 @@ import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
 import animType from '../../common/animType';
 import './page.less';
 
-class Page4 extends React.Component {
+class Page6 extends React.Component {
   render() {
     const { type, delay, interval, duration, ease } = this.props.variables;
     const animData = ['one', 'tow'].map((order, i) => {
@@ -48,7 +48,7 @@ class Page4 extends React.Component {
       <div className={this.props.className}
         style={style}
       >
-        <OverPack scrollName="page4" className={`${this.props.className}-wap root`}
+        <OverPack scrollName="page6" className={`${this.props.className}-wap root`}
           id={this.props.id}
         >
           <QueueAnim {...animData[1]} component="ul"
@@ -62,14 +62,14 @@ class Page4 extends React.Component {
   }
 }
 
-Page4.propTypes = {
+Page6.propTypes = {
   className: PropTypes.string,
   id: PropTypes.string,
   dataSource: PropTypes.object,
   variables: PropTypes.object,
 };
 
-Page4.defaultProps = {
+Page6.defaultProps = {
   className: 'page6',
   dataSource: {
     height: '320px',
@@ -108,4 +108,4 @@ Page4.defaultProps = {
   },
 };
 
-export default Page4;
+export default Page6;

@@ -16,13 +16,13 @@ import '../../common/ant-d.less';
 import config from './webdefault.config.js';
 
 const Components = [
-  { name: 'nav1', comp: Header },
-  { name: 'banner1', comp: Banner },
+  { name: 'nav', comp: Header },
+  { name: 'banner', comp: Banner },
   { name: 'page1', comp: Page1 },
   { name: 'page2', comp: Page2 },
   { name: 'page3', comp: Page3 },
   { name: 'page4', comp: Page4 },
-  { name: 'footer1', comp: Footer },
+  { name: 'footer', comp: Footer },
 ];
 
 class Index extends React.Component {
