@@ -27,6 +27,17 @@ import TweenOne from 'rc-tween-one';
 ReactDOM.render(<TweenOne animation={{ x:100 }} />, mountNode);
 ```
 
+### TweenOneGroup
+```js
+var TweenOne = require('rc-tween-one');
+var React = require('react');
+var TweenOneGroup = TweenOne.TweenOneGroup;
+React.render(<TweenOneGroup>
+  <div key="0">demo</div>
+</TweenOneGroup>, container);
+```
+
+
 ## API
 
 |   参数   |    类型    |   默认  |  说明   |
@@ -36,7 +47,7 @@ ReactDOM.render(<TweenOne animation={{ x:100 }} />, mountNode);
 | reverse | boolean | false | 倒放动画 |
 | moment  | number |  null | 设置当前时间上的时间，设置完后设回 null |
 | onChange | function | null | 全局变动回调 |
-| component | string  | `div` | 需要替换的标签 |
+| component | React.Element/String  | `div` | 需要替换的标签 |
 
 ### animation
 
@@ -63,4 +74,14 @@ ReactDOM.render(<TweenOne animation={{ x:100 }} />, mountNode);
 | vars   | array  | null  |  贝赛尔点的位置，如 `{ x:100, y:100}` |
 
 >贝赛尔曲线 API 参照 [gsap BezierPlugin](http://greensock.com/docs/#/HTML5/GSAP/Plugins/BezierPlugin/)
+
+### TweenOneGroup
+
+|   参数   |    类型    |   默认  |  说明   |
+|---------|------------|---------|--------|
+| appear  | boolean    | true    | 元素是否有刚开始的进场动画 |
+| enter   | object / array / func | { x: 30, opacity: 0, type: 'from' } | 进场的 tween-one 数据，如果是数组是 tween-one 的 timeline。 func 参照 queue-anim, callbac({ key, index }) |
+| leave   | object / array / func | { x: 30, opacity: 0 } | 出场时的数据，同上 |
+| onEnd   | func       | -       | 每个动画结束后回调 |
+| component | React.Element/String | div | 需要替换的标签 |
 

@@ -28,10 +28,7 @@ class Item extends React.Component {
   onMount() {
     this.highlightDOM = this.refs.highlight;
     this.height = this.highlightDOM.getBoundingClientRect().height;
-    this.setState({
-      highlightBoxStyle: { display: 'none' },
-      highlightStyle: { marginTop: -this.height },
-    });
+    this.highlightDOM.style.display = 'none';
   }
 
   mouseEnter() {
@@ -49,13 +46,15 @@ class Item extends React.Component {
   iconClick() {
     if (!this.state.open) {
       this.setState({
-        highlightBoxStyle: null,
+        highlightBoxStyle: { display: 'inherit' },
+        highlightStyle: { marginTop: -this.height },
         highlightAnim: { marginTop: 0 },
         open: true,
       });
     } else {
       this.setState({
         highlightAnim: {
+          highlightStyle: { marginTop: 0 },
           marginTop: -this.height, onComplete: () => {
             this.setState({
               highlightBoxStyle: { display: 'none' },

@@ -30,7 +30,7 @@ class ComponentDoc extends React.Component {
       return (<Item col={col} title={demoData.meta.title} content={_content}
         code={demoData.highlightedCode}
         styleCode={demoData.highlightedStyle}
-        _style={demoData.style}
+        _style={demoData.style || null}
         id={demoData.id}
         key={i}
       >

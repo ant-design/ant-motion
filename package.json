@@ -1,6 +1,6 @@
 {
   "name": "antd-motion",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "entry": {
     "index": "./src/entry/index.jsx",
     "template/index": "./template/index.js",
@@ -26,7 +26,7 @@
     "rc-animate": "~2.0.3",
     "rc-queue-anim": "~0.11.5",
     "rc-scroll-anim": "~0.2.8",
-    "rc-tween-one": "~0.3.0",
+    "rc-tween-one": "~0.4.2",
     "rc-banner-anim": "~0.2.0"
   },
   "devDependencies": {
