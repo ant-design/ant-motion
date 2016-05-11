@@ -6,6 +6,14 @@ module.exports = {
     require('../../src/components/animate/demo/remove.md'),
     require('../../src/components/animate/demo/simple.md'),
   ],
+  'src/components/banner-anim/index.md': [
+    require('../../src/components/banner-anim/demo/autoplay.md'),
+    require('../../src/components/banner-anim/demo/bgParallax.md'),
+    require('../../src/components/banner-anim/demo/customArrowThumb.md'),
+    require('../../src/components/banner-anim/demo/followMouse.md'),
+    require('../../src/components/banner-anim/demo/simple.md'),
+    require('../../src/components/banner-anim/demo/video.md'),
+  ],
   'src/components/queue-anim/index.md': [
     require('../../src/components/queue-anim/demo/basic.md'),
     require('../../src/components/queue-anim/demo/change.md'),
