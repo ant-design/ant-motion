@@ -20,7 +20,7 @@ class Demo extends React.Component {
   render() {
     return (
       <TweenOne
-        animation={{ filter: 'blur(10px)', yoyo: true, repeat: -1, duration: 1000 }}
+        animation={{ blur: '10px', yoyo: true, repeat: -1, duration: 1000 }}
         paused={this.props.paused}
         className="code-box-shape"
       />
