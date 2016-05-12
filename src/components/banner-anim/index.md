@@ -1,7 +1,7 @@
 ---
 category: Components
 order: 4
-chinese: Banner 动画
+chinese: Banner动画
 english: BannerAnim
 ---
 
@@ -29,6 +29,7 @@ ReactDOM.render(<BannerAnim>
   </Element>
 </BannerAnim>, mountNode);
 ```
+> [查看更多 demo](http://react-component.github.io/banner-anim/)
 
 ## API
 

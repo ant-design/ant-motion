@@ -2,6 +2,7 @@
 order: 5
 cols: 3
 title: 变更动画参数
+mouseEnter: true
 ---
 
 可操作型变更动画。

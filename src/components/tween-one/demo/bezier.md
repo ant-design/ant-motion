@@ -2,6 +2,7 @@
 order: 6
 cols: 1
 title: 曲线动画
+mouseEnter: true
 ---
 
 贝赛尔曲线动画。

@@ -2,6 +2,7 @@
 order: 4
 cols: 3
 title: 时间轴效果
+mouseEnter: true
 ---
 
 鼠标经过可查看时间轴效果。

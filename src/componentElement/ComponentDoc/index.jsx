@@ -23,13 +23,14 @@ class ComponentDoc extends React.Component {
     const demos = (demosList[meta.fileName] || []).filter((demoData) => !demoData.meta.hidden);
     const demosToChild = demos.sort((a, b) =>
       parseInt(a.meta.order, 10) - parseInt(b.meta.order, 10)
-    ).map((demoData, i) => {
+    ).filter(demoData => !demoData.meta.disabled).map((demoData, i) => {
       const col = Math.round(24 / (demoData.meta.cols || content.meta.cols || 1));
       const _content = utils.jsonmlToComponent(this.props.pathname, ['div'].concat(demoData.intro));
       const Comp = demoData.preview;
       return (<Item col={col} title={demoData.meta.title} content={_content}
         code={demoData.highlightedCode}
         styleCode={demoData.highlightedStyle}
+        mouseEnter={demoData.meta.mouseEnter}
         _style={demoData.style || null}
         id={demoData.id}
         key={i}

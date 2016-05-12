@@ -2,6 +2,7 @@
 order: 2
 cols: 3
 title: 旋转效果
+mouseEnter: true
 ---
 
 鼠标经过可查看旋转效果。

@@ -2,6 +2,7 @@
 order: 0
 cols: 3
 title: 位移效果
+mouseEnter: true
 ---
 
 鼠标经过可查看位移效果。

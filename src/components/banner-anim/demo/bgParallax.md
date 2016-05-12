@@ -1,6 +1,7 @@
 ---
 order: 4
 title: 背景随滚动下滑
+disabled: true
 ---
 
 背景随滚动下滑(待优化)。

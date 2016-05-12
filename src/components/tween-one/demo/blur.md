@@ -2,6 +2,7 @@
 order: 3
 cols: 3
 title: 模糊效果
+mouseEnter: true
 ---
 
 鼠标经过可查看模糊效果。

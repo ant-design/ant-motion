@@ -75,8 +75,8 @@ class Item extends React.Component {
     }
     return (<li className={this.props.className} id={this.props.id}>
       <div className={`${this.props.className}-demo`}
-        onMouseEnter={this.mouseEnter}
-        onMouseLeave={this.mouseLeave}
+        onMouseEnter={this.props.mouseEnter ? this.mouseEnter : null}
+        onMouseLeave={this.props.mouseEnter ? this.mouseLeave : null}
       >
         {children}
         {!!this.props._style ?
@@ -115,6 +115,7 @@ Item.propTypes = {
   styleCode: PropTypes.string,
   _style: PropTypes.string,
   id: PropTypes.string,
+  mouseEnter: PropTypes.bool,
 };
 
 Item.defaultProps = {

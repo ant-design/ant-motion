@@ -1,6 +1,7 @@
 ---
 order: 3
 title: video背景
+disabled: true
 ---
 
 用 video 作为背景时。

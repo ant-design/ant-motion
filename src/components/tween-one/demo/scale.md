@@ -2,6 +2,7 @@
 order: 1
 cols: 3
 title: 缩放效果
+mouseEnter: true
 ---
 
 鼠标经过可查看缩放效果。
