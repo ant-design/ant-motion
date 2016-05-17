@@ -5,7 +5,7 @@
 
 <p align="center">
   <a href="http://moition.and.design">
-    <img src="https://os.alipayobjects.com/rmsportal/tdjazOmUHhUKXxZ.svg" width="400" />
+    <img src="https://os.alipayobjects.com/rmsportal/tdjazOmUHhUKXxZ.svg" width="600" />
   </a>
 </p>
 <p align="center">一个高效的页面动效解决方案。</p>
