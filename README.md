@@ -8,7 +8,9 @@
     <img src="https://os.alipayobjects.com/rmsportal/tdjazOmUHhUKXxZ.svg" width="600" />
   </a>
 </p>
-<p align="center">一个高效的页面动效解决方案。</p>
+
+#### 一个高效的页面动效解决方案。
+
 - 集合 react-component 里的动效组件与页面动效的示例。
 
 ## 链接
