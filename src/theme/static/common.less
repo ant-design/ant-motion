@@ -1,0 +1,139 @@
+@import 'ant-d';
+
+html, body {
+  background: #000;
+  font-family: "PingFang SC", "Helvetica Neue", Helvetica, "Hiragino Sans GB", "Microsoft YaHei", "\5FAE\8F6F\96C5\9ED1", Arial, sans-serif;
+}
+
+video {
+  display: block;
+}
+
+.text-center {
+  text-align: center;
+}
+
+a {
+  transition: color .3s @ease-out;
+}
+
+@header: header;
+.@{header}, @{header} {
+  height: 64px;
+  background: rgba(216, 216, 216, .15);
+  overflow: hidden;
+  position: relative;
+  z-index: 9999;
+  &-logo {
+    display: inline-block;
+    margin: 15px 0 0 4%;
+    height: 33px;
+    & img {
+      vertical-align: top;
+      display: block;
+    }
+    & a {
+      display: block;
+    }
+  }
+  &-nav {
+    float: right;
+    margin-right: 4%;
+    line-height: 64px;
+    position: relative;
+    & ul {
+      overflow: hidden;
+      position: relative;
+      & li {
+        float: left;
+        text-align: center;
+        width: 100px;
+        & a {
+          width: 100%;
+          height: 100%;
+          font-size: 14px;
+          display: block;
+          color: #fff;
+          transition: color .3s @ease-out;
+          &:hover, &.active {
+            color: @primary-color;
+          }
+          &[disabled] {
+            color: @disabled-color;
+          }
+        }
+      }
+    }
+  }
+  &-bar {
+    width: 100px;
+    height: 3px;
+    background: @primary-color;
+    position: absolute;
+    bottom: 0;
+  }
+}
+
+@footer: footer;
+.@{footer} {
+  height: 135px;
+  background: rgba(216, 216, 216, .15);
+  overflow: hidden;
+  position: relative;
+  z-index: 9998;
+  & ul {
+    margin: 0 2%;
+    & li {
+      float: left;
+      padding: 15px 2%;
+      width: 25%;
+
+      & h2 {
+        font-size: 16px;
+        line-height: 30px;
+        font-weight: lighter;
+      }
+      & a {
+        color: #BEC4C8;
+        margin: 5px 10px 0 0;
+        font-weight: lighter;
+        transition: color .3s @ease-out;
+        &:hover {
+          color: @primary-color;
+        }
+      }
+    }
+  }
+}
+
+.content-wrapper {
+  overflow: unset;
+  display: inline;
+}
+
+#react-content, #react-root {
+  height: 100%
+}
+
+
+
+#page-404 {
+  // height: calc(100% - 199px);
+  min-height: 680px;
+  text-align: center;
+  padding-top: 10%;
+  color: #999;
+  & h1 {
+    text-shadow: -1px -1px 4px #666;
+    font-size: 200px;
+  }
+}
+
+.content-wrapper > .tween-one-leaving, .queue-anim-leaving {
+  position: absolute !important;
+  width: 100%;
+}
+
+.video{
+  max-width: 800px;
+}

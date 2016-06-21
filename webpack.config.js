@@ -1,20 +1,19 @@
-module.exports = function(webpackConfig) {
+const webpack = require('atool-build/lib/webpack');
+const fs = require('fs');
+const path = require('path');
+const glob = require('glob');
 
-  webpackConfig.output.publicPath = "http://127.0.0.1:8111/";
+module.exports = function (webpackConfig) {
+  webpackConfig.babel.plugins.push('transform-runtime');
 
-  webpackConfig.module.loaders.forEach(function(loader) {
-    if (loader.loader === 'babel') {
-      // https://github.com/ant-design/babel-plugin-antd
-      loader.query.plugins.push('antd');
-    }
-    return loader;
-  });
-
-  webpackConfig.module.loaders.push({
-    test: /\.md$/,
-    exclude: /node_modules/,
-    loader: 'babel!antd-md',
-  });
+  // Load src/entries/*.js as entry automatically.
+  const files = glob.sync('./src/entries/*.js');
+  const newEntries = files.reduce(function(memo, file) {
+    const name = path.basename(file, '.js');
+    memo[name] = file;
+    return memo;
+  }, {});
+  webpackConfig.entry = Object.assign({}, webpackConfig.entry, newEntries);
 
   return webpackConfig;
 };

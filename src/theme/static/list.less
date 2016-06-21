@@ -1,0 +1,76 @@
+@import "./custom";
+
+@content: page;
+.@{content} {
+  width: 100%;
+  overflow: hidden;
+  &-content {
+    position: relative;
+  }
+  &-wrapper {
+    width: 92%;
+    background: @page-bg-color;
+    margin: 24px auto;
+    padding: 24px 0 0;
+    overflow: hidden;
+    border-radius: 6px;
+    position: relative;
+    & > aside {
+      width: 100%;
+      transform: translateX(1px);
+      position: relative;
+      height: 40px;
+      z-index: 1;
+      & > div > ul {
+        text-align: center;
+        & > li {
+          overflow: hidden;
+          position: relative;
+          z-index: 1;
+          display: inline-block;
+          & i {
+            margin-left: 6px;
+            opacity: .67;
+            font-style: normal;
+            font-size: 12px;
+          }
+          & > div > ul {
+            margin-left: 16px;
+          }
+        }
+      }
+      & li {
+        &[disabled] {
+          & * {
+            pointer-events: none;
+            color: @list-disabled-color;
+          }
+        }
+        & a {
+          line-height: 40px;
+          height: 40px;
+          display: block;
+          padding: 0 20px;
+          font-size: 14px;
+          color: @text-color;
+          border-bottom: 1px solid @line-color;
+          transition: color .3s @ease-out, border .3s @ease-out;
+          &:hover {
+            color: @primary-color;
+            border-color: @primary-color;
+          }
+        }
+        &.active a {
+          color: @primary-color;
+          border-color: @primary-color;
+        }
+      }
+    }
+    & > section {
+      margin: 24px 40px 40px;
+      position: relative;
+      min-height: 800px;
+    }
+  }
+}
+
