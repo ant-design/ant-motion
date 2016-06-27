@@ -1,7 +1,8 @@
 ---
 order: 4
 title: 背景随滚动下滑
-disabled: true
+hidden: true
+cols: 1
 ---
 
 背景随滚动下滑(待优化)。
@@ -9,6 +10,7 @@ disabled: true
 ````jsx
 import BannerAnim, { Element } from 'rc-banner-anim';
 import TweenOne from 'rc-tween-one';
+import 'rc-banner-anim/assets/index.css';
 class Demo extends React.Component {
   render(){
     return (

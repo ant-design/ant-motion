@@ -1,6 +1,6 @@
 ---
 order: 4
-cols: 3
+cols: 4
 title: 时间轴效果
 mouseEnter: true
 ---

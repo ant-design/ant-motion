@@ -1,12 +1,11 @@
 ---
 order: 5
-cols: 3
+cols: 4
 title: 变更动画参数
 mouseEnter: true
 ---
 
 可操作型变更动画。
-
 
 ```jsx
 import { PropTypes } from 'react';
@@ -71,7 +70,7 @@ class Demo extends React.Component {
     return (
       <div>
         <TweenOne
-          animation={{ x: 200, duration: 2000 }}
+          animation={{ left: '85%', duration: 2000 }}
           paused={this.state.paused}
           reverse={this.state.reverse}
           moment={this.state.moment}

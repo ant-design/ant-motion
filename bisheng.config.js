@@ -15,17 +15,8 @@ module.exports = {
     'bisheng-plugin-description',
     'bisheng-plugin-toc?maxDepth=2',
     'bisheng-plugin-react?lang=__react',
-    './src/bisheng-plugin-antm',
+    'bisheng-plugin-antd',
+    //'./src/bisheng-plugin-antm',
   ],
-  webpackConfig(config){
-    config.babel.plugins.push([
-      require.resolve('babel-plugin-antd'),
-      {
-        style: true,
-      },
-    ]);
-
-    return config;
-  },
   port: 8111,
 };

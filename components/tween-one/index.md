@@ -5,9 +5,9 @@ order: 0
 english: TweenOne
 ---
 
-
-
 这是个对单个元素标签做动效的组件，可以执行所有样式动画，包括3d，模糊等效果，还可以完成贝塞尔曲线动画。
+
+---
 
 ## 何时使用
 
@@ -75,6 +75,28 @@ React.render(<TweenOneGroup>
 
 >贝赛尔曲线 API 参照 [gsap BezierPlugin](http://greensock.com/docs/#/HTML5/GSAP/Plugins/BezierPlugin/)
 
+### SvgDrawPlugin
+
+SVGDraw = string or number;
+
+svg 线性动画，需要引入滤境
+
+``` jsx
+import SvgDrawPlugin from 'rc-tween-one/lib/plugin/SvgDrawPlugin';
+TweenOne.plugins.push(SvgDrawPlugin);
+```
+`{ SVGDraw: 30 }` or `{ SVGDraw: 'start end' }` start and end values can be %;
+
+### SvgMorphPlugin
+
+svg 路径形变动画，如 `{ d: 'M0 0L100 100', attr: 'attr' }`
+
+``` jsx
+import SvgMorphPlugin from 'rc-tween-one/lib/plugin/SvgMorphPlugin';
+TweenOne.plugins.push(SvgMorphPlugin);
+```
+
+
 ### TweenOneGroup
 
 |   参数   |    类型    |   默认  |  说明   |
@@ -83,5 +105,6 @@ React.render(<TweenOneGroup>
 | enter   | object / array / func | { x: 30, opacity: 0, type: 'from' } | 进场的 tween-one 数据，如果是数组是 tween-one 的 timeline。 func 参照 queue-anim, callbac({ key, index }) |
 | leave   | object / array / func | { x: 30, opacity: 0 } | 出场时的数据，同上 |
 | onEnd   | func       | -       | 每个动画结束后回调 |
+| animatingClassName | array | `['tween-one-entering', 'tween-one-leaving']` | 进出场的样式，如果是组件形式，需把 className 带到你的组件里 |
 | component | React.Element/String | div | 需要替换的标签 |
 

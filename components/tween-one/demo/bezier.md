@@ -1,5 +1,5 @@
 ---
-order: 6
+order: 8
 cols: 1
 title: 曲线动画
 mouseEnter: true
@@ -11,7 +11,8 @@ mouseEnter: true
 ```jsx
 import { PropTypes } from 'react';
 import TweenOne from 'rc-tween-one';
-
+import BezierPlugin from 'rc-tween-one/lib/plugin/BezierPlugin';
+TweenOne.plugins.push(BezierPlugin);
 class Demo extends React.Component {
 
   constructor() {

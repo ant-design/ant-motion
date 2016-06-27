@@ -1,6 +1,6 @@
 ---
 order: 2
-cols: 3
+cols: 4
 title: 旋转效果
 mouseEnter: true
 ---

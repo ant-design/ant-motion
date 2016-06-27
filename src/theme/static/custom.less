@@ -19,15 +19,17 @@
 
 // 详细页图片或框框的样式;
 .page-shadow() {
-  box-shadow: 0 0 8px @shadow-color;
+  box-shadow: 0 5px 8px @shadow-color;
 }
 
 .page-pro() {
   border-radius: 6px;
   border: 1px solid @line-color;
-  transition: box-shadow .3s @ease-out;
+  transform: translateY(0px);
+  transition: transform .3s @ease-out, box-shadow .3s @ease-out;
   &:hover {
     .page-shadow();
+    transform: translateY(-5px);
   }
 }
 

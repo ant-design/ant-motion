@@ -1,6 +1,7 @@
 ---
 order: 4
 title: 自定义动画进出场
+cols: 2
 ---
 
 通过 `animConfig` 来自定义动画进出场。

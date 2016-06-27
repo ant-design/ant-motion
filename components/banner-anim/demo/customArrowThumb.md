@@ -1,6 +1,7 @@
 ---
 order: 2
 title: 自定义左右箭头与缩略图
+cols: 1
 ---
 
 可定制自已所示的箭头。
@@ -8,6 +9,7 @@ title: 自定义左右箭头与缩略图
 ````jsx
 import BannerAnim from 'rc-banner-anim';
 import TweenOne, { TweenOneGroup } from 'rc-tween-one';
+import 'rc-banner-anim/assets/index.css';
 const { Element, Arrow, Thumb } = BannerAnim;
 class Demo extends React.Component {
   constructor() {
@@ -96,7 +98,7 @@ class Demo extends React.Component {
           <span key={i}><i style={{ backgroundImage: `url(${img})` }} /></span>
         );
     return (
-      <BannerAnim onChange={this.onChange} onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave}>
+      <BannerAnim onChange={this.onChange} onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave} prefixCls="custom-arrow-thumb">
         <Element key="aaa"
           prefixCls="banner-user-elem"
           img={this.imgArray[0]}
@@ -146,31 +148,31 @@ ReactDOM.render(
 ````
 
 ````css
-#components-components-demo-customArrowThumb .user-arrow {
+.custom-arrow-thumb .user-arrow {
   top: 50%;
   margin-top: -40px;
 }
-#components-components-demo-customArrowThumb .user-arrow .img-wrapper {
+.custom-arrow-thumb .user-arrow .img-wrapper {
   width: 120px;
   height: 80px;
   float: left;
   position: relative;
 }
-#components-components-demo-customArrowThumb .user-arrow .img-wrapper li {
+.custom-arrow-thumb .user-arrow .img-wrapper li {
   width: 100%;
   height: 100%;
   background-size: cover;
   background-position: center;
   position: absolute;
 }
-#components-components-demo-customArrowThumb .user-arrow .arrow {
+.custom-arrow-thumb .user-arrow .arrow {
   width: 20px;
   height: 80px;
   background: rgba(0, 0, 0, 0.3);
   position: relative;
 }
-#components-components-demo-customArrowThumb .user-arrow .arrow:before,
-#components-components-demo-customArrowThumb .user-arrow .arrow:after {
+.custom-arrow-thumb .user-arrow .arrow:before,
+.custom-arrow-thumb .user-arrow .arrow:after {
   width: 2px;
   height: 15px;
   background: #fff;
@@ -178,48 +180,48 @@ ReactDOM.render(
   content: ' ';
   position: absolute;
 }
-#components-components-demo-customArrowThumb .user-arrow.next {
+.custom-arrow-thumb .user-arrow.next {
   right: -120px;
 }
-#components-components-demo-customArrowThumb .user-arrow.next .arrow {
+.custom-arrow-thumb .user-arrow.next .arrow {
   float: left;
 }
-#components-components-demo-customArrowThumb .user-arrow.next .arrow:before {
+.custom-arrow-thumb .user-arrow.next .arrow:before {
   -webkit-transform: rotate(-40deg);
           transform: rotate(-40deg);
   top: 28px;
   left: 10px;
 }
-#components-components-demo-customArrowThumb .user-arrow.next .arrow:after {
+.custom-arrow-thumb .user-arrow.next .arrow:after {
   -webkit-transform: rotate(40deg);
           transform: rotate(40deg);
   bottom: 27px;
   left: 10px;
 }
-#components-components-demo-customArrowThumb .user-arrow.prev {
+.custom-arrow-thumb .user-arrow.prev {
   left: -120px;
 }
-#components-components-demo-customArrowThumb .user-arrow.prev .arrow {
+.custom-arrow-thumb .user-arrow.prev .arrow {
   float: right;
 }
-#components-components-demo-customArrowThumb .user-arrow.prev .arrow:before {
+.custom-arrow-thumb .user-arrow.prev .arrow:before {
   -webkit-transform: rotate(40deg);
           transform: rotate(40deg);
   top: 28px;
   left: 8px;
 }
-#components-components-demo-customArrowThumb .user-arrow.prev .arrow:after {
+.custom-arrow-thumb .user-arrow.prev .arrow:after {
   -webkit-transform: rotate(-40deg);
           transform: rotate(-40deg);
   bottom: 27px;
   left: 8px;
 }
-#components-components-demo-customArrowThumb .user-thumb {
+.custom-arrow-thumb .user-thumb {
   overflow: hidden;
   background: rgba(255, 255, 255, 0.15);
   height: 70px;
 }
-#components-components-demo-customArrowThumb .user-thumb > span {
+.custom-arrow-thumb .user-thumb > span {
   width: 80px;
   height: 60px;
   margin: 5px 5px;
@@ -228,10 +230,10 @@ ReactDOM.render(
           transition: background .3s;
   background: transparent;
 }
-#components-components-demo-customArrowThumb .user-thumb > span.active {
+.custom-arrow-thumb .user-thumb > span.active {
   background: rgba(255, 255, 255, 0.45);
 }
-#components-components-demo-customArrowThumb .user-thumb > span i {
+.custom-arrow-thumb .user-thumb > span i {
   display: block;
   width: 70px;
   height: 50px;

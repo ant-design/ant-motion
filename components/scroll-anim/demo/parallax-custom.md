@@ -1,5 +1,5 @@
 ---
-order: 2
+order: 1
 cols: 1
 title: 自定义 parallax 的 playScale
 ---

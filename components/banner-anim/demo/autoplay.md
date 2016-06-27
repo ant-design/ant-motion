@@ -1,6 +1,7 @@
 ---
 order: 1
 title: 自动播放
+cols: 1
 ---
 
 自动播放示例。
@@ -8,6 +9,7 @@ title: 自动播放
 ````jsx
 import BannerAnim, { Element } from 'rc-banner-anim';
 import TweenOne from 'rc-tween-one';
+import 'rc-banner-anim/assets/index.css';
 class Demo extends React.Component {
   render(){
     return (

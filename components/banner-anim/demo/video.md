@@ -1,7 +1,8 @@
 ---
 order: 3
 title: video背景
-disabled: true
+hidden: true
+cols: 1
 ---
 
 用 video 作为背景时。
@@ -9,6 +10,7 @@ disabled: true
 ````jsx
 import BannerAnim, { Element } from 'rc-banner-anim';
 import TweenOne from 'rc-tween-one';
+import 'rc-banner-anim/assets/index.css';
 const { Element } = BannerAnim;
 class Demo extends React.Component {
   render() {

@@ -1,6 +1,7 @@
 ---
 order: 2
 title: 进场和离场
+cols: 2
 ---
 
 通过把属性设置一个数组来分别表示进出场的效果，`type`、`animConfig`、`delay`、`duration`、`interval`、`ease` 等属性均支持配置为数组。

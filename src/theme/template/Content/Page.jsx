@@ -17,10 +17,10 @@ class Page extends React.Component {
   constructor() {
     super(...arguments);
     this.state = {};
-    console.log(44)
   }
 
-  getMenuItems(moduleData) {
+  getMenuItems(moduleData, pathNames) {
+    console.log(moduleData, pathNames)
     return moduleData.sort((a, b) => a.meta.order - b.meta.order).map((item, i) => {
       const meta = item.meta;
       const link = meta.filename.replace(/(\/index)|(.md)/g, '');
@@ -31,7 +31,10 @@ class Page extends React.Component {
         component="li"
         disabled={meta.disabled}
       >
-        <Link to={link}>{meta.chinese || meta.english}</Link>
+        {
+          link.split('/')[1] === pathNames[1]?
+          <a>{meta.chinese || meta.english}</a>:
+          <Link to={link}>{meta.chinese || meta.english}</Link>}
       </TweenOne>)
     });
   }
@@ -40,7 +43,7 @@ class Page extends React.Component {
     const className = `page`;
     const props = this.props;
     const pathNames = props.pathname.split('/');
-    const list = this.getMenuItems(moduleData[pathNames[0]]);
+    const list = this.getMenuItems(moduleData[pathNames[0]], pathNames);
     return <div className={`${className} ${this.props.className}`.trim()}>
       <div className={`${className}-wrapper`}>
         <aside>
@@ -58,7 +61,7 @@ class Page extends React.Component {
           component="section"
           style={{ minHeight: this.state.minHeight }}
         >
-          <div key={this.props.pathname}>{this.props.children}</div>
+          <div key={props.pathname}>{props.children}</div>
         </QueueAnim>
       </div>
     </div>

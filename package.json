@@ -5,8 +5,8 @@
     "rc-animate": "~2.0.3",
     "rc-queue-anim": "~0.11.10",
     "rc-scroll-anim": "~0.2.9",
-    "rc-tween-one": "~0.6.8",
-    "rc-banner-anim": "~0.2.7",
+    "rc-tween-one": "~0.6.12",
+    "rc-banner-anim": "~0.2.8",
     "rc-icon-anim": "~x"
   },
   "devDependencies": {
@@ -14,6 +14,7 @@
     "bisheng-plugin-description": "^0.1.0",
     "bisheng-plugin-react": "^0.1.0",
     "bisheng-plugin-toc": "0.2.0",
+    "bisheng-plugin-antd": "0.1.0",
     "dora-plugin-upload": "^0.3.1",
     "babel-plugin-antd": "0.4.x",
     "react-sublime-video": "^0.2.0",
@@ -23,7 +24,7 @@
     "eslint-plugin-import": "^1.6.1",
     "eslint-plugin-jsx-a11y": "^1.0.4",
     "eslint-plugin-react": "^5.0.1",
-    "antd": "~1.3.0",
+    "antd": "~1.5.0",
     "react": "15.x",
     "react-dom": "15.x",
     "react-router": "~2.0.0",

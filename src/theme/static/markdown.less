@@ -1,9 +1,10 @@
 @import "./custom";
 
-section.markdown{
+section.markdown {
   margin: 0;
 }
-.markdown {
+
+.markdown section, .markdown {
   & .toc {
     font-size: 14px;
     margin: 20px 0;
@@ -33,7 +34,7 @@ section.markdown{
     font-weight: normal;
     font-size: 28px;
     color: @title-color;
-    margin: 0 auto 20px;
+    margin: 0 auto 10px;
     & > i {
       font-style: normal;
       margin: 0 5px;
@@ -67,7 +68,6 @@ section.markdown{
   & code {
     margin: 0 3px;
     background: #f7f7f7;
-    padding: 1px 6px;
     border-radius: 3px;
     color: #888;
     font-size: .8rem;
@@ -79,7 +79,6 @@ section.markdown{
     border-radius: 6px;
     & code {
       background: transparent;
-      padding: 1em 2em;
       margin: 0;
       border: none;
       display: block;
@@ -166,7 +165,7 @@ section.markdown{
     color: @primary-color;
   }
 
-  & .content-img {
+  & .page-wrapper {
     margin: 20px 0;
     max-width: 800px;
     position: relative;

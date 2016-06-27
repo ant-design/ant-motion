@@ -9,7 +9,10 @@ module.exports = {
   routes: {
     '/': './template/Home/index',
     '/components/:contentName': ComponentDoc,
-    '/cases/:contentName': Article,
+    '/cases/about': Article,
+    '/cases/help': Article,
+    '/cases/page': Article,
+    '/cases/mosaic': './template/Content/Splicing',
     '/language/:contentName': Article,
   }
 }

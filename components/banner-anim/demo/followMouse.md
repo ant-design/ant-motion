@@ -1,6 +1,8 @@
 ---
 order: 5
 title: 随鼠标摆动
+cols: 1
+hidden: true
 ---
 
 跟随鼠标左右摆动。
@@ -8,6 +10,7 @@ title: 随鼠标摆动
 ````jsx
 import BannerAnim, { Element } from 'rc-banner-anim';
 import TweenOne from 'rc-tween-one';
+import 'rc-banner-anim/assets/index.css';
 const { Element } = BannerAnim;
 class Demo extends React.Component {
   render() {

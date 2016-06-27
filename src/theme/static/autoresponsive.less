@@ -1,11 +1,15 @@
 @import "./custom";
 .rc-autoresponsive-container {
   margin-top: 40px;
-  & > a {
-    .page-pro();
-    transition: box-shadow .3s @ease-out, transform .3s @ease-out;
-    & img {
-      margin: 10px;
+  & > .item{
+    transition: transform .3s @ease-out;
+    & > a {
+      display: block;
+      .page-pro();
+      transition: box-shadow .3s @ease-out, transform .3s @ease-out;
+      & img {
+        margin: 10px;
+      }
     }
   }
 }

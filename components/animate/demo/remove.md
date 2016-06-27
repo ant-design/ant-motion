@@ -7,7 +7,7 @@ title: 删除子级
 
 ```jsx
 import Animate from 'rc-animate';
-import { Button } from 'antd';
+import Button from 'antd/lib/button';
 class Test extends React.Component{
   constructor() {
     super(...arguments);

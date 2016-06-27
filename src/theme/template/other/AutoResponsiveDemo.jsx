@@ -83,14 +83,19 @@ class AutoResponsiveDemo extends React.Component {
   }
 
   getImgChild(item, i) {
-    return (<a className="item"
-      style={{ width: item.width + 20, height: item.height + 20 }}
+    return (<div
       key={i}
-      href={item.href}
-      target="_blank"
+      className="item"
+      style={{ width: item.width + 20, height: item.height + 20 }}
     >
-      <img src={item.src} width={item.width} height={item.height} />
-    </a>);
+      <a
+
+        href={item.href}
+        target="_blank"
+      >
+        <img src={item.src} width={item.width} height={item.height} />
+      </a>
+    </div>);
   }
 
   render() {

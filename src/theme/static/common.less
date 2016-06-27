@@ -23,7 +23,7 @@ a {
   background: rgba(216, 216, 216, .15);
   overflow: hidden;
   position: relative;
-  z-index: 9999;
+  z-index: 999;
   &-logo {
     display: inline-block;
     margin: 15px 0 0 4%;
@@ -80,7 +80,7 @@ a {
   background: rgba(216, 216, 216, .15);
   overflow: hidden;
   position: relative;
-  z-index: 9998;
+  z-index: 998;
   & ul {
     margin: 0 2%;
     & li {
@@ -115,8 +115,6 @@ a {
   height: 100%
 }
 
-
-
 #page-404 {
   // height: calc(100% - 199px);
   min-height: 680px;
@@ -134,6 +132,46 @@ a {
   width: 100%;
 }
 
-.video{
+.video {
   max-width: 800px;
+}
+
+// 修改弹出框动画
+.ant-modal.zoom-appear, .ant-modal.zoom-enter, .ant-modal.zoom-leave {
+  animation-duration: .3s;
+}
+
+@keyframes antZoomIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes antZoomOut {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+}
+
+// 修改 nprogress load 色
+#nprogress {
+  & .bar {
+    background: @primary-color;
+  }
+  & .peg {
+    box-shadow: 0 0 10px @primary-color, 0 0 5px @primary-color;
+  }
+  & .spinner-icon{
+    border-top-color: @primary-color;
+    border-left-color: @primary-color;
+  }
 }

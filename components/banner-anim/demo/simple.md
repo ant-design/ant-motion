@@ -1,6 +1,7 @@
 ---
 order: 0
 title: 默认
+cols: 1
 ---
 
 最简单的进场例子。
@@ -8,10 +9,11 @@ title: 默认
 ````jsx
 import BannerAnim, { Element } from 'rc-banner-anim';
 import TweenOne from 'rc-tween-one';
+import 'rc-banner-anim/assets/index.css';
 class Demo extends React.Component {
   render(){
     return (
-      <BannerAnim prefixCls="banner-user">
+      <BannerAnim prefixCls="banner-user"  type="grid">
         <Element 
           prefixCls="banner-user-elem"
           key="0" 
