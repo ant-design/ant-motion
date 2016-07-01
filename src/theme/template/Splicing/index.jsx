@@ -1,6 +1,6 @@
 import React from 'react';
 import webData from './template.config';
-import AutoResponsiveDemo from './AutoResponsiveDemo';
+import SplicingAutoResponsive from './SplicingAutoResponsive';
 import { TweenOneGroup } from 'rc-tween-one';
 import Tag from 'antd/lib/tag';
 import Button from 'antd/lib/button';
@@ -99,7 +99,7 @@ class Splicing extends React.Component {
             {this.getOptTags(key)}
           </div> : ''}
         </TweenOneGroup>
-        <AutoResponsiveDemo
+        <SplicingAutoResponsive
           imgArr={imgArr}
           onClick={onClick}
           checkbox={item.checkbox}
