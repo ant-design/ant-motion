@@ -3,7 +3,7 @@ const Link = require('react-router').Link;
 const toReactComponent = require('jsonml-to-react-component');
 const JsonML = require('jsonml.js/lib/utils');
 const VideoPlayer = require('./VideoPlayer');
-const AutoResponsiveDemo = require('./../../theme/template/other/AutoResponsiveDemo');
+const AutoResponsiveDemo = require('./../../theme/template/Splicing/AutoResponsiveDemo');
 
 function isHeading(node) {
   return /h[1-6]/i.test(JsonML.getTagName(node));

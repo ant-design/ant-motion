@@ -20,8 +20,14 @@ class Page extends React.Component {
   }
 
   getMenuItems(moduleData, pathNames) {
-    console.log(moduleData, pathNames)
-    return moduleData.sort((a, b) => a.meta.order - b.meta.order).map((item, i) => {
+    const splicingListArr = [];
+    if (pathNames[0] === 'cases') {
+      splicingListArr.push(
+        { meta: { filename: 'cases/splicing', english: 'Splicing', chinese: '自由搭配模板', order: 1 } },
+        { meta: { filename: 'cases/full', english: 'Full', chinese: '完整模板选择', order: 2 } }
+      )
+    }
+    return moduleData.concat(splicingListArr).sort((a, b) => a.meta.order - b.meta.order).map((item, i) => {
       const meta = item.meta;
       const link = meta.filename.replace(/(\/index)|(.md)/g, '');
       const className = this.props.pathname === link ? 'active' : '';

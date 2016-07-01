@@ -1,5 +1,5 @@
 ---
-order: 1
+order: 3
 chinese: 视频教程
 english: Help
 ---
@@ -15,8 +15,7 @@ english: Help
 
 ## 页面使用教程
 
-<video src="https://os.alipayobjects.com/rmsportal/FNfjXfcKKBlwaPg.mp4" className="help"/>
-
+敬请期待
 
 ## 拼接页面使用教程
 

@@ -11,8 +11,8 @@ module.exports = {
     '/components/:contentName': ComponentDoc,
     '/cases/about': Article,
     '/cases/help': Article,
-    '/cases/page': Article,
-    '/cases/mosaic': './template/Content/Splicing',
+    '/cases/full': Article,
+    '/cases/splicing': './template/Splicing/index',
     '/language/:contentName': Article,
   }
 }

@@ -5,12 +5,9 @@ module.exports = {
     './language',
     './components',
   ],
-  doraConfig: {
-    verbose: true,
-    plugins: ['dora-plugin-upload'],
-  },
   output: './_site',
   theme: './src/theme',
+  htmlTemplate: './index.html',
   plugins: [
     'bisheng-plugin-description',
     'bisheng-plugin-toc?maxDepth=2',

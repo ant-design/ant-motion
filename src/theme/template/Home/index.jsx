@@ -73,12 +73,5 @@ class Home extends React.Component {
     </div>);
   }
 }
-Home.propTypes = {
-};
-
-Home.defaultProps = {
-};
-
-
 
 export default Home;

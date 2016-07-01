@@ -2,10 +2,10 @@
   "name": "antd-motion",
   "version": "1.0.1",
   "dependencies": {
-    "rc-animate": "~2.0.3",
+    "rc-animate": "~2.1.0",
     "rc-queue-anim": "~0.11.10",
     "rc-scroll-anim": "~0.2.9",
-    "rc-tween-one": "~0.6.12",
+    "rc-tween-one": "~0.6.17",
     "rc-banner-anim": "~0.2.8",
     "rc-icon-anim": "~x"
   },
@@ -24,7 +24,7 @@
     "eslint-plugin-import": "^1.6.1",
     "eslint-plugin-jsx-a11y": "^1.0.4",
     "eslint-plugin-react": "^5.0.1",
-    "antd": "~1.5.0",
+    "antd": "~1.6.0",
     "react": "15.x",
     "react-dom": "15.x",
     "react-router": "~2.0.0",
