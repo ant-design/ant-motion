@@ -48,7 +48,6 @@ ReactDOM.render(<BannerAnim>
 | autoPlay |      boolean    |      `false`  | 自动播放 |
 | autoPlaySpeed |  number    |    5000       | 自动播放的时间 |
 | onChange |     func        |    -          |  幻灯片变换时调用，返回 onChange(`before` 或 `after`, 当前显示的位置) |
-| thumbFloat |   boolean     |   `true`      | 是否将 thumb 放在图片区域内，如果是 `false`，banner 的高度将加上 thumb 的高度 |
 | bgParallaxAll |  object    |   null        |  同 `Element` 里的 `bgParallax`, 这个设置后所有的子级都跟滚动条做视差 |
 | prefixCls |    string      |   -           |  自定义样式 |
 | children |  react.component|   -           | `Element`(必须), `Arrow`, `Thumb` |

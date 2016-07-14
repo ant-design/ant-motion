@@ -197,7 +197,7 @@ export default class ImgSort extends React.Component {
               children,
               animation: [],
             }, () => {
-              if(callbackBool){
+              if (callbackBool) {
                 this.props.onChange(children);
               }
             });
@@ -301,9 +301,10 @@ export default class ImgSort extends React.Component {
 
   render() {
     const childrenToRender = toArrayChildren(this.state.children).map(this.getChildren);
-
+    const props = { ...this.props };
+    ['component','components', 'animType'].forEach(key => delete props[key]);
     return React.createElement(this.props.component, {
-      ...this.props,
+      ...props,
       style: { ...this.state.style },
     }, childrenToRender);
   }

@@ -16,7 +16,7 @@ class Layout extends React.Component {
     const children = key === 'index' || path === '*' ?
       React.cloneElement(this.props.children, {
         key: key,
-      }) : (<Page key={key} pathname={this.props.location.pathname}>
+      }) : (<Page key={key} pathname={this.props.location.pathname} pageData={this.props.pageData}>
       {this.props.children}
     </Page>);
     pathKey = path === '*' ? '404' : pathKey;

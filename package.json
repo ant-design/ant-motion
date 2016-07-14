@@ -3,13 +3,14 @@
   "version": "1.0.1",
   "dependencies": {
     "rc-animate": "~2.1.0",
-    "rc-queue-anim": "~0.11.10",
-    "rc-scroll-anim": "~0.2.9",
-    "rc-tween-one": "~0.6.17",
-    "rc-banner-anim": "~0.2.8",
-    "rc-icon-anim": "~x"
+    "rc-banner-anim": "~0.2.11",
+    "rc-queue-anim": "~0.11.12",
+    "rc-scroll-anim": "~0.3.0",
+    "rc-tween-one": "~0.6.20",
+    "react": "^15.2.1"
   },
   "devDependencies": {
+    "react-copy-to-clipboard": "~4.2.0",
     "bisheng": "^0.7.0",
     "bisheng-plugin-description": "^0.1.0",
     "bisheng-plugin-react": "^0.1.0",

@@ -4,20 +4,23 @@ import { getChildren } from 'jsonml.js/lib/utils';
 import Promise from 'bluebird';
 import QueueAnim from 'rc-queue-anim';
 import { Link } from 'react-router';
-import { markdown } from 'bisheng/lib/utils/data';
-const moduleData = {};
-Object.keys(markdown).forEach(key => {
-  const children = Object.keys(markdown[key]).map(_key =>
-    markdown[key][_key].index || markdown[key][_key]
-  );
-  moduleData[key] = children;
-});
 
 class Page extends React.Component {
   constructor() {
     super(...arguments);
     this.state = {};
   }
+
+  getModuleData = (pageData) => {
+    const moduleData = {};
+    Object.keys(pageData).forEach(key => {
+      const children = Object.keys(pageData[key]).map(_key =>
+        pageData[key][_key].index || pageData[key][_key]
+      );
+      moduleData[key] = children;
+    });
+    return moduleData;
+  };
 
   getMenuItems(moduleData, pathNames) {
     const splicingListArr = [];
@@ -49,6 +52,7 @@ class Page extends React.Component {
     const className = `page`;
     const props = this.props;
     const pathNames = props.pathname.split('/');
+    const moduleData = this.getModuleData(props.pageData);
     const list = this.getMenuItems(moduleData[pathNames[0]], pathNames);
     return <div className={`${className} ${this.props.className}`.trim()}>
       <div className={`${className}-wrapper`}>

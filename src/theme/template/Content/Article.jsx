@@ -19,7 +19,7 @@ class Article extends React.Component {
     const pageData = props.pageData;
     const { meta, content, toc } = pageData;
     const { title, subtitle, chinese, english } = meta;
-    console.log(props)
+
     return (<DocumentTitle title={`${title || chinese || english} - Ant Motion`}>
       <article className="markdown">
         <h1>

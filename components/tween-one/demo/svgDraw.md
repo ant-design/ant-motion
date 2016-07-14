@@ -37,7 +37,7 @@ class Demo extends React.Component {
     return (
       <div style={{ textAlign: 'center' }}>
         <Button type="primary" onClick={this.onClick.bind(this)}>点击切换</Button>
-        <svg width="200" height="84" version="1.2" xmlns="http://www.w3.org/2000/svg" 
+        <svg width="200" height="84" version="1.2"
           style={{ display: 'block', margin: 'auto' }}
         >
           <TweenOne

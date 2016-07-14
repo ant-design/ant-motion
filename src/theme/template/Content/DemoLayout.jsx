@@ -56,8 +56,10 @@ class DemoLayout extends React.Component {
   }
 
   render() {
+    const props = { ...this.props };
+    delete props.col;
     return (
-      <div className={this.props.className} {...this.props}>
+      <div className={this.props.className} {...props}>
         {this.renderChildren()}
       </div>
     );

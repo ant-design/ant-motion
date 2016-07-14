@@ -148,6 +148,9 @@ ReactDOM.render(
 ````
 
 ````css
+.custom-arrow-thumb{
+  height: 400px;
+}
 .custom-arrow-thumb .user-arrow {
   top: 50%;
   margin-top: -40px;

@@ -112,7 +112,8 @@ class AutoResponsiveDemo extends React.Component {
         enter={{ scale: 0, type: 'from', opacity: 0, ease: 'easeOutBack', duration: 300 }}
         leave={{ scale: 0, opacity: 0, ease: 'easeInBack', duration: 300 }}
       >
-        {isLoad ? <img src={item.src} width="100%" /> : <Icon type="loading" />}
+        {isLoad ? <img src={item.src} width="100%"/>: <Icon type="loading" key="load"/>}
+        <div className="item-text" key="text"><p>{item.text}</p></div>
         {isOptIndex ? <Icon className="check" type="check-circle" key="check" /> : null}
       </TweenOneGroup>
     </div>);

@@ -1,0 +1,93 @@
+@import '../../../../static/custom.less';
+
+@header: header1;
+.@{header} {
+  height: 64px;
+  background: @template-nav-bg-color;
+  width: 100%;
+  z-index: 970;
+  box-shadow: 0 5px 8px fade(#000, 15);
+  &-logo {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 4%;
+    height: 33px;
+    margin-top: -16px;
+    & img {
+      vertical-align: top;
+      display: block;
+    }
+    & a {
+      display: block;
+    }
+  }
+  &-nav {
+    float: right;
+    line-height: 64px;
+    position: relative;
+    & .ant-menu-horizontal {
+      border-bottom-color: transparent;
+    }
+    & .ant-menu {
+      background: transparent;
+      color: @template-text-color-light;
+      line-height: 62px;
+      & li {
+        float: left;
+        text-align: center;
+        width: 100px;
+      }
+    }
+    & .ant-menu-horizontal > .ant-menu-item-active {
+      color: @link-hover-color;
+      border-bottom-color: @link-hover-color;
+    }
+  }
+  &-user {
+    float: right;
+    margin-right: 4%;
+    line-height: 62px;
+    height: 64px;
+    & .help {
+      width: 100px;
+      text-align: center;
+      font-size: 22px;
+      border-left: 1px solid fade(@line-color, 5);
+      & .anticon {
+        vertical-align: middle;
+      }
+      & span {
+        display: inline-block;
+        margin-left: 10px;
+        font-size: 12px;
+        line-height: 22px;
+      }
+    }
+    & .user {
+      font-size: 14px;
+      text-align: right;
+      width: 100px;
+      border-left: 1px solid fade(@line-color, 5);
+      & .img {
+        margin-left: 0;
+        & img {
+          vertical-align: middle;
+        }
+      }
+      & span {
+        display: inline-block;
+        margin-left: 10px;
+        font-size: 12px;
+        line-height: 24px;
+      }
+    }
+    & a {
+      display: inline-block;
+      color: #fff;
+    }
+    & a:hover {
+      color: @primary-color;
+    }
+  }
+}

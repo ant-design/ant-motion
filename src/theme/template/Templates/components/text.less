@@ -1,0 +1,115 @@
+@import '../../../static/custom.less';
+
+.tool-data-panel {
+  right: 50px;
+  width: 280px;
+  & > h3 {
+    color: #fff;
+    font-weight: normal;
+    background: @primary-color;
+    line-height: 30px;
+    & > i {
+      margin-right: 5px;
+    }
+  }
+  & > ul {
+    margin: 10px auto;
+    max-height: 400px;
+    overflow: auto;
+    & > li > h4 {
+      line-height: 24px;
+      margin: 5px auto 0;
+      color: #fff;
+      & .upload, & .size{
+        margin-left: 5px;
+        font-size: 12px;
+      }
+      & > .data-cross-button {
+        float: right;
+        opacity: 0;
+        transition: opacity .3s @ease-in-out, color .3s @ease-in-out;
+        font-size: 16px;
+        & > i {
+          transition: transform .3s @ease-in-out;
+          &.add {
+            transform: rotate(-135deg);
+          }
+        }
+      }
+      &:hover {
+        & > .data-cross-button {
+          opacity: 1;
+        }
+      }
+      &:before {
+        display: inline-block;
+        content: '';
+        background: @primary-color;
+        width: 5px;
+        height: 5px;
+        border-radius: 5px;
+        margin-right: 10px;
+      }
+    }
+  }
+  & .data-table-mask {
+    overflow: hidden;
+  }
+  & .data-table {
+    & > ul > li > p {
+      margin-top: 5px;
+      color: @template-text-title-color;
+      & .upload, & .size{
+      margin-left: 5px;
+      font-size: 12px;
+    }
+    }
+  }
+
+  & > * {
+    padding: 0 10px;
+    text-align: left;
+  }
+  & textarea {
+    min-height: 80px;
+  }
+
+  & textarea, & input {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid @template-text-color;
+    border-radius: 0;
+    &:hover, &:focus {
+      border: none;
+      border-bottom: 1px solid @template-text-color;
+      box-shadow: none;
+    }
+  }
+
+}
+.tool-data-panel {
+  border-radius: 6px;
+  max-height: 500px;
+  background-color: #2F313B;
+  z-index: 1000;
+  position: fixed;
+  overflow: hidden;
+  top: 80px;
+  box-shadow: 0 2px 8px fade(#000, 35);
+  text-align: center;
+  padding-bottom: 15px;
+  & .tool-logo {
+    background: @primary-color;
+    text-align: center;
+    overflow: hidden;
+    & img {
+      display: inline-block;
+      margin: 10px auto auto;
+    }
+    & p {
+      margin: 0 auto 10px;
+      color: #fff;
+    }
+  }
+
+}

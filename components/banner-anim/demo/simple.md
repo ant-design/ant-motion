@@ -39,8 +39,10 @@ ReactDOM.render(
 ````
 
 ````css
-.banner-user-elem{
+.banner-user{
   height: 400px;
+}
+.banner-user-elem{
   text-align: center;
   color: #fff;
   position: relative;

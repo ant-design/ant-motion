@@ -1,12 +1,15 @@
 import React from 'react';
-import webData from './template.config';
+import webData from './../template.config.js';
 import SplicingAutoResponsive from './SplicingAutoResponsive';
 import { TweenOneGroup } from 'rc-tween-one';
 import Tag from 'antd/lib/tag';
 import Button from 'antd/lib/button';
 import message from 'antd/lib/message';
 import Modal from 'antd/lib/modal';
+import Checkbox from 'antd/lib/checkbox';
 import ListSort from './ListSort';
+import { Link } from 'react-router';
+const CheckboxGroup = Checkbox.Group;
 
 class Splicing extends React.Component {
   static contextTypes = {
@@ -24,8 +27,13 @@ class Splicing extends React.Component {
       modalOpen: false,
       optImgChild: null,
       templateIds: [],
+      checkboxIds: [],
     };
   }
+
+  checkboxChange = (checkedValues)=> {
+    this.setState({ checkboxIds: checkedValues });
+  };
 
   onChildClick = (name, array) => {
     const templateOptData = this.state.templateOptData;
@@ -37,6 +45,10 @@ class Splicing extends React.Component {
     const templateOptData = this.state.templateOptData;
     templateOptData[key] = templateOptData[key].filter(_item => item.key !== _item.key);
     this.setState({ templateOptData });
+  };
+
+  onOk = () => {
+    window.scrollTo(0, 0);
   };
 
   getOptTags = (key) => (this.state.templateOptData[key] || []).map(item =>
@@ -79,10 +91,19 @@ class Splicing extends React.Component {
   getDataToChildren = () => {
     return Object.keys(webData).map(key => {
       const item = webData[key];
+      if (key === 'other') {
+        console.log(item)
+        return <div key={key} className={this.props.className}>
+          <h2>{item.name}</h2>
+          <div className={`${this.props.className}-checkbox-wrapper`}>
+            <CheckboxGroup options={item.data} onChange={this.checkboxChange} />
+          </div>
+        </div>
+      }
       const imgArr = item.data.map(imgData => {
         const _imgData = imgData;
         _imgData.width = 300;
-        _imgData.height = 185;
+        _imgData.height = 182;
         return _imgData
       });
       const onClick = this.onChildClick.bind(this, key);
@@ -109,9 +130,6 @@ class Splicing extends React.Component {
     });
   };
 
-  toTemplate = ()=> {
-    console.log(this.state.templateIds)
-  };
 
   onListSortChange = (children) => {
     const templateIds = children.map(item => item.props.id);
@@ -120,6 +138,9 @@ class Splicing extends React.Component {
 
   render() {
     const childrenToRender = this.getDataToChildren();
+    const link = encodeURIComponent(`t=${this.state.templateIds.join(',')}${
+       this.state.checkboxIds.length ? `&o=${this.state.checkboxIds.join(',')}`: ''
+      }`.trim());
     return (<div className={`${this.props.className}-wrapper`}>
       {childrenToRender}
       <div className="bottom-btn">
@@ -131,11 +152,19 @@ class Splicing extends React.Component {
         >
           <h2 className={`${this.props.className}-modal-title`}>页面布局预览</h2>
           <p className={`${this.props.className}-modal-explain`}>托动下面区块调整页面布局顺序。</p>
-          <ListSort className={`${this.props.className}-modal-img-wrapper`} onChange={this.onListSortChange}>
+          <ListSort
+            className={`${this.props.className}-modal-img-wrapper`}
+            onChange={this.onListSortChange}
+          >
             {this.state.optImgChild}
           </ListSort>
           <div className={`${this.props.className}-modal-button-wrapper`}>
-            <Button type="primary" onClick={this.toTemplate}>确定</Button>
+            <Link
+              to={`/templates/#${link}`}
+              onClick={this.onOk}
+            >
+              <Button type="primary">确定</Button>
+            </Link>
             <Button onClick={this.onCancel}>重选</Button>
           </div>
         </Modal>

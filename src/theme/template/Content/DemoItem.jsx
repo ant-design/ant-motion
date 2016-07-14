@@ -68,7 +68,9 @@ class Item extends React.Component {
     let children = this.props.children;
     if (typeof children === 'object') {
       const childProps = assign({}, this.props.children.props || {});
-      childProps.paused = this.state.paused;
+      if (this.props.mouseEnter) {
+        childProps.paused = this.state.paused;
+      }
       children = React.cloneElement(this.props.children, childProps);
     }
     let width;
