@@ -26,7 +26,7 @@ english: About
 
 ## 如何使用
 
-1. 如果在页面示例里的模板适合你的需求:
+1. 选择好你需要的模板，然后编辑内容，再生成链接:
 
 <br />
 
@@ -41,19 +41,24 @@ const steps = [
     status: 'process',
   },
   {
-    title: '编辑区块',
-    description: '进入页面后双击你想要编辑的区块',
+    title: '调整布局',
+    description: '在弹框里托动版本来调整布局',
     status: 'process',
   },
   {
-    title: '调试样式',
-    description: '在工具栏上调试好你的动画样式',
+    title: '生成模版',
+    description: '确定后跳到模板页面',
+    status: 'process',
+  },
+  {
+    title: '调整样式',
+    description: '双击需要编辑的区域编辑内容',
     status: 'process',
   },
   {
     title: '生成页面',
-    status: 'process',
-  },
+    description: '编辑完成后点击下方导航里的生成页面',
+  }
   {
     title: '拷贝链接',
     status: 'process',
@@ -75,6 +80,3 @@ ReactDOM.render(<Steps current={1}>{steps}</Steps>, mountNode);
 
 <br />
 
-或请查看视频教程。
-
-2. 如果在页面示例里的模板不适合你的需求，你可以选择自已想要的区块来拼接成一个页面（功能待开发。。。）。
