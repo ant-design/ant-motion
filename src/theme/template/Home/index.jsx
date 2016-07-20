@@ -74,7 +74,14 @@ class Home extends React.Component {
       <QueueAnim className="banner-text" type="bottom" duration={500} delay={800}>
         <h1 key="h1">Ant Motion</h1>
         <span key="span">设计者的动效翻译器</span>
-        <Link to="/cases/" key="link">开始使用</Link>
+        <Link to="/components/tween-one" key="comp">动效组件</Link>
+        <Link to="/cases/splicing" key="cases">首页拼接</Link>
+        <p key="github-btn">
+          <iframe
+            src={`https://ghbtns.com/github-btn.html?user=ant-motion&repo=ant-motion&type=star&count=true`}
+            frameBorder="0" scrolling="0" width="98px" height="20px"
+          />
+        </p>
       </QueueAnim>
     </div>);
   }
@@ -84,6 +91,6 @@ export default Home;
 
 export function collect(nextProps, c, callback, progress) {
   NProgress = progress;
-  Home.defaultProps = Object.assign({ }, Home.defaultProps, nextProps);
+  Home.defaultProps = Object.assign({}, Home.defaultProps, nextProps);
   callback(null, Home);
 }
