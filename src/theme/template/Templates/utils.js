@@ -1,23 +1,24 @@
 export function getURLData(name, url) {
-  const _url = decodeURIComponent(url || location.hash || '').replace('#', '');
+  const myUrl = decodeURIComponent(url || location.hash || '').replace('#', '');
   const reg = new RegExp(`(^|&)${name}=([^&]*)(&|$)`, 'i');
-  const r = _url.match(reg);
+  const r = myUrl.match(reg);
   return r ? r[2] : null;
 }
 
 // 合并到 template里的数据
 const mergeURLDataChild = (configData, dataItem, key) => {
-  const mergeChild = (config, item, key) => {
-    if (item.the === 'style') {
+  const mergeChild = (config, item, childKey) => {
+    const myItem = item;
+    if (myItem.the === 'style') {
       const uint = config.replace(/[^a-z|%]/g, '');
-      item.value = `${parseFloat(config)}${(uint || 'px')}`;
+      myItem.value = `${parseFloat(config)}${(uint || 'px')}`;
       return;
     }
-    item.value[key].value = config[key];
+    myItem.value[childKey].value = config[childKey];
   };
   dataItem.forEach(item => {
     if (item.key === key) {
-      Object.keys(configData[key]).forEach(mergeChild.bind(this, configData[key], item))
+      Object.keys(configData[key]).forEach(mergeChild.bind(this, configData[key], item));
     }
   });
 };
@@ -31,5 +32,5 @@ export function mergeURLDataToConfig(data, config) {
     const dataItem = data[name].data[id].dataSource;
     Object.keys(config[key]).forEach(mergeURLDataChild.bind(this, config[key], dataItem));
   });
-  return data
+  return data;
 }

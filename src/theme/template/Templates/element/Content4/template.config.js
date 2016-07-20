@@ -1,6 +1,7 @@
+const component = require('./index.jsx');
 export default {
   src: 'https://zos.alipayobjects.com/rmsportal/sgTBpfjKcsXWDtq.jpg',
-  component: require('./index.jsx'),
+  component,
   text: '案例较多的案例介绍页面',
   dataSource: [
     {
@@ -35,7 +36,7 @@ export default {
           name: '文字说明',
           value: 'ant design',
         },
-      }
+      },
     },
     {
       key: 'block2',
@@ -49,7 +50,7 @@ export default {
           name: '文字说明',
           value: 'ant motion',
         },
-      }
+      },
     },
     {
       key: 'block3',
@@ -63,7 +64,7 @@ export default {
           name: '文字说明',
           value: 'ant design',
         },
-      }
+      },
     },
     {
       key: 'block4',
@@ -77,7 +78,7 @@ export default {
           name: '文字说明',
           value: 'ant motion',
         },
-      }
+      },
     },
     {
       key: 'block5',
@@ -91,7 +92,7 @@ export default {
           name: '文字说明',
           value: 'ant design',
         },
-      }
+      },
     },
     {
       key: 'block6',
@@ -105,7 +106,7 @@ export default {
           name: '文字说明',
           value: 'ant motion',
         },
-      }
+      },
     },
     {
       key: 'block7',
@@ -119,7 +120,7 @@ export default {
           name: '文字说明',
           value: 'ant design',
         },
-      }
+      },
     },
     {
       key: 'block8',
@@ -133,7 +134,7 @@ export default {
           name: '文字说明',
           value: 'ant motion',
         },
-      }
-    }
-  ]
-}
+      },
+    },
+  ],
+};

@@ -1,6 +1,7 @@
+const component = require('./index.jsx');
 export default {
   src: 'https://zos.alipayobjects.com/rmsportal/aJutnIvTFWkEAWj.jpg',
-  component: require('./index.jsx'),
+  component,
   text: '简单型页尾',
   dataSource: [
     {
@@ -20,4 +21,4 @@ export default {
       },
     },
   ],
-}
+};

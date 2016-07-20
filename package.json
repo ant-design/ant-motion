@@ -2,6 +2,7 @@
   "name": "antd-motion",
   "version": "1.0.1",
   "dependencies": {
+    "babel-eslint": "^6.1.2",
     "rc-animate": "~2.3.0",
     "rc-banner-anim": "~0.2.11",
     "rc-queue-anim": "~0.11.12",

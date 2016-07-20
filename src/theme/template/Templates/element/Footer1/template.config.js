@@ -1,6 +1,7 @@
+const component = require('./index.jsx');
 export default {
   src: 'https://zos.alipayobjects.com/rmsportal/PEXAhbheOHVTyfM.jpg',
-  component: require('./index.jsx'),
+  component,
   text: '带信息或链接的尾页',
   dataSource: [
     {
@@ -98,9 +99,9 @@ export default {
         },
         contentLink: {
           name: '链接地址',
-          value: '#\n#\n#\n#'
-        }
-      }
+          value: '#\n#\n#\n#',
+        },
+      },
     },
     {
       key: 'copyright',
@@ -113,4 +114,4 @@ export default {
       },
     },
   ],
-}
+};

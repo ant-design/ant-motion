@@ -8,7 +8,10 @@ import Mask from './components/Mask';
 import NavController from './components/NavController';
 import TextController from './components/TextController';
 import { getURLData, mergeURLDataToConfig } from './utils';
-
+let NProgress = {
+  done: () => {
+  }
+};
 export default class Templates extends React.Component {
 
   constructor() {
@@ -88,11 +91,7 @@ export default class Templates extends React.Component {
   };
 
   onMouseEnter = (key, e) => {
-    const make = getURLData('make');
-    const mode = getURLData('mode');
-    if (make || mode) {
-      return;
-    }
+
     if (!this.state.currentKey) {
       const dom = $(e.currentTarget);
       this.setState({
@@ -196,7 +195,15 @@ export default class Templates extends React.Component {
     return children;
   };
 
+  onMaskClose = () => {
+    this.setState({
+      showMask: false,
+      currentKey: null,
+    });
+  };
+
   render() {
+    NProgress.done();
     const make = getURLData('make');
     const mode = getURLData('mode');
     const { overlay, currentKey, enterKey, showMask } = this.state;
@@ -228,7 +235,7 @@ export default class Templates extends React.Component {
       component=""
       key="mask"
     >
-      {showMask ? <Mask key="mask" top={overlay.top} height={overlay.height} />: null}
+      {showMask ? <Mask key="mask" top={overlay.top} height={overlay.height} onClick={this.onMaskClose}/>: null}
     </TweenOneGroup>);
     return (<div className="templates-wrapper">
       {children}
@@ -236,4 +243,10 @@ export default class Templates extends React.Component {
       <NavController key="nav" />
     </div>);
   }
+}
+
+export function collect(nextProps, c, callback, progress) {
+  NProgress = progress;
+  Templates.defaultProps = Object.assign({}, Templates.defaultProps, nextProps);
+  callback(null, Templates);
 }

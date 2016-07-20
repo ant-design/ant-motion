@@ -1,6 +1,7 @@
+const component = require('./index.jsx');
 export default {
   src: 'https://zos.alipayobjects.com/rmsportal/gyseCGEPqWjQpYF.jpg',
-  component: require('./index.jsx'),
+  component,
   text: '单张背景图的主页首屏幕，由一张单屏背景图',
   dataSource: [
     {
@@ -8,7 +9,7 @@ export default {
       the: 'style',
       name: '区块高度',
       value: '100%',
-      calc: true,// 如果是在导航后第一个区块，是否减去导航高度
+      calc: true, // 如果是在导航后第一个区块，是否减去导航高度
     },
     {
       key: 'block1',
@@ -32,7 +33,7 @@ export default {
           value: 'https://zos.alipayobjects.com/rmsportal/gGlUMYGEIvjDOOw.jpg',
           remark: '尺寸参考:1920*1080',
         },
-      }
-    }
-  ]
-}
+      },
+    },
+  ],
+};

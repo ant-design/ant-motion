@@ -1,6 +1,7 @@
+const component = require('./index.jsx');
 export default {
   src: 'https://zos.alipayobjects.com/rmsportal/pUFfIJXizTljrgZ.jpg',
-  component: require('./index.jsx'),
+  component,
   text: '产品有多个功能点介绍的场景',
   dataSource: [
     {
@@ -136,6 +137,6 @@ export default {
           value: '一站式、全周期大数据协同工作平台，PB级数据处理、毫秒级数据分析工具。',
         },
       },
-    }
-  ]
-}
+    },
+  ],
+};

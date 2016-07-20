@@ -1,6 +1,7 @@
+const component = require('./index.jsx');
 export default {
   src: 'https://zos.alipayobjects.com/rmsportal/WxCxyIKjMdCUUSJ.jpg',
-  component: require('./index.jsx'),
+  component,
   text: '产品的特性介绍模块(图右)',
   dataSource: [
     {
@@ -27,7 +28,7 @@ export default {
           value: '金融级联机交易处理中间件，大规模分布式计算机，数万笔/秒级并发能力，严格保证交易数据统一性。' +
           '金融级联机交易处理中间件，大规模分布式计算机，数万笔/秒级并发能力，严格保证交易数据统一性。',
         },
-      }
-    }
-  ]
-}
+      },
+    },
+  ],
+};

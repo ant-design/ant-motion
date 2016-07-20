@@ -1,6 +1,7 @@
+const component = require('./index.jsx');
 export default {
   src: 'https://zos.alipayobjects.com/rmsportal/CXrFvvZqkMwMHZo.jpg',
-  component: require('./index.jsx'),
+  component,
   text: '产品的特性介绍模块(图左)',
   dataSource: [
     {
@@ -25,10 +26,10 @@ export default {
         content: {
           name: '详细说明',
           value: '云资源集中编排、弹性伸缩、持续发布和部署，高可用及容灾。' +
-          '云资源集中编排、弹性伸缩、持续发布和部署，高可用及容灾。'+
+          '云资源集中编排、弹性伸缩、持续发布和部署，高可用及容灾。' +
           '云资源集中编排、弹性伸缩、持续发布和部署，高可用及容灾。',
         },
-      }
-    }
-  ]
-}
+      },
+    },
+  ],
+};

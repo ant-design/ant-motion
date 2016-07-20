@@ -1,6 +1,7 @@
+const component = require('./index.jsx');
 export default {
   src: 'https://zos.alipayobjects.com/rmsportal/ndmJrWwkQloTtKg.jpg',
-  component: require('./index.jsx'),
+  component,
   text: '用于需要video来更好的阐述功能如何使用时',
   dataSource: [
     {
@@ -25,7 +26,7 @@ export default {
           name: '说明',
           value: '科技想象力，金融创造力',
         },
-      }
-    }
-  ]
-}
+      },
+    },
+  ],
+};

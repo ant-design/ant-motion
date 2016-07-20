@@ -1,6 +1,7 @@
+const component = require('./index.jsx');
 export default {
   src: 'https://zos.alipayobjects.com/rmsportal/chnhazooyzrjWSv.jpg',
-  component: require('./index.jsx'),
+  component,
   text: '多张需要显示的背景图的产品主页的首屏',
   dataSource: [
     {
@@ -8,7 +9,7 @@ export default {
       the: 'style',
       name: '区块高度',
       value: '100%',
-      calc: true,// 如果是在导航后第一个区块，是否减去导航高度
+      calc: true, // 如果是在导航后第一个区块，是否减去导航高度
     },
     {
       key: 'block1',
@@ -32,7 +33,7 @@ export default {
           value: 'https://zos.alipayobjects.com/rmsportal/hzPBTkqtFpLlWCi.jpg',
           remark: '尺寸参考:1920*1080',
         },
-      }
+      },
     },
     {
       key: 'block2',
@@ -56,7 +57,7 @@ export default {
           value: 'https://zos.alipayobjects.com/rmsportal/xHxWkcvaIcuAdQl.jpg',
           remark: '尺寸参考:1920*1080',
         },
-      }
+      },
     },
     {
       key: 'block3',
@@ -80,7 +81,7 @@ export default {
           value: 'https://zos.alipayobjects.com/rmsportal/gGlUMYGEIvjDOOw.jpg',
           remark: '尺寸参考:1920*1080',
         },
-      }
+      },
     },
-  ]
-}
+  ],
+};

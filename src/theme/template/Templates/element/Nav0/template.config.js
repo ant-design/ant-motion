@@ -1,6 +1,7 @@
+const component = require('./index.jsx');
 export default {
   src: 'https://zos.alipayobjects.com/rmsportal/ZjfIAdkDVlpnilf.jpg',
-  component: require('./index.jsx'),
+  component,
   text: '普通型',
   dataSource: [
     {
@@ -32,8 +33,8 @@ export default {
         menu4: {
           name: '导航四',
           value: '导航四',
-        }
-      }
-    }
+        },
+      },
+    },
   ],
-}
+};
