@@ -62,11 +62,11 @@ class TextController extends React.Component {
     if (typeof data.value === 'object') {
       const table = Object.keys(data.value).map((key, ii) => {
         const _data = data.value[key];
-        type = key === 'content' ? 'textarea' : 'text';
+        type = key.match(/(content)/g) ? 'textarea' : 'text';
         const changeValue = this.changeValue.bind(this, data.key, key);
         return (<li key={ii}>
           <p>{_data.name}
-            {_data.size ? <span className="size">尺寸参考:{_data.size}</span> : null}
+            {_data.remark ? <span className="remark">{_data.remark}</span> : null}
             {key.match(/(img|logo)/i) ?
             <a href="http://site.alipay.net/xingmin.zhu/toast/"
               target="_blank" className="upload"

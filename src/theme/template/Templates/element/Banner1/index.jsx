@@ -27,12 +27,12 @@ class Banner extends React.Component {
       </Element>)
     });
     const props = { ...this.props };
+    delete props.name;
     delete props.dataSource;
     return (
       <OverPack
-        scrollName={this.props.className}
+        scrollName={this.props.name}
         {...props}
-        style={this.props.style}
         hideProps={{ icon: { reverse: true }, banner: { reverse: true }} }
       >
         <TweenOne
@@ -56,6 +56,7 @@ class Banner extends React.Component {
 
 Banner.propTypes = {
   className: PropTypes.string,
+  name: PropTypes.string,
   style: PropTypes.object,
   dataSource: PropTypes.object,
 };

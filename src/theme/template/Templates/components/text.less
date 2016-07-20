@@ -2,7 +2,7 @@
 
 .tool-data-panel {
   right: 50px;
-  width: 280px;
+  width: 320px;
   & > h3 {
     color: #fff;
     font-weight: normal;
@@ -16,14 +16,17 @@
     margin: 10px auto;
     max-height: 400px;
     overflow: auto;
+    & .upload, & .size, & .remark {
+      margin-left: 5px;
+      font-size: 12px;
+    }
+    & .remark {
+      color: #666;
+    }
     & > li > h4 {
       line-height: 24px;
       margin: 5px auto 0;
       color: #fff;
-      & .upload, & .size{
-        margin-left: 5px;
-        font-size: 12px;
-      }
       & > .data-cross-button {
         float: right;
         opacity: 0;
@@ -59,10 +62,10 @@
     & > ul > li > p {
       margin-top: 5px;
       color: @template-text-title-color;
-      & .upload, & .size{
-      margin-left: 5px;
-      font-size: 12px;
-    }
+      & .upload, & .size {
+        margin-left: 5px;
+        font-size: 12px;
+      }
     }
   }
 
@@ -87,6 +90,7 @@
   }
 
 }
+
 .tool-data-panel {
   border-radius: 6px;
   max-height: 500px;

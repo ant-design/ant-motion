@@ -9,11 +9,11 @@ class Header extends React.Component {
     const { logo, menu1, menu2, menu3, menu4 } = this.props.dataSource.block1;
     const props = { ...this.props };
     delete props.dataSource;
+    delete props.name;
     return (<TweenOne
       component="header"
       animation={{ opacity: 0, type: 'from' }}
       {...props}
-      style={this.props.style || {}}
     >
       <TweenOne className={`${this.props.className}-logo`}
         animation={{ x: -30, type: 'from', ease: 'easeOutQuad' }}
@@ -38,6 +38,7 @@ class Header extends React.Component {
 Header.propTypes = {
   style: PropTypes.object,
   className: PropTypes.string,
+  name: PropTypes.string,
   dataSource: PropTypes.object,
 };
 

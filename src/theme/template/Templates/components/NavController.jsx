@@ -72,9 +72,9 @@ class NavController extends React.Component {
   }
 
   resetData() {
-    const otherUrl = this.removeUrlData('config');
+    const otherUrl = this.removeUrlData('c');
     location.reload();
-    location.hash = `#${otherUrl}`;
+    location.hash = `#${encodeURIComponent(otherUrl)}`;
   }
 
   iconClick() {
@@ -156,7 +156,7 @@ class NavController extends React.Component {
           </ul>
           <ul>
             <li><a href="../">返回主站</a></li>
-            <li><a href="../#/cases/help">查看教程</a></li>
+            <li><a href="/cases/help" disabled>查看教程</a></li>
             <li><a onClick={this.resetData}>重置参数</a></li>
             <li>
               <Button type="primary" onClick={this.switchMode}>

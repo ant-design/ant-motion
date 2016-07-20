@@ -24,17 +24,17 @@ english: Transition
 
 在视图变化时保持上下文; 滑入与滑出: 可以有效构建虚拟空
 
-<video src="https://os.alipayobjects.com/rmsportal/EejaUGsyExkXyXr.mp4" class="video"/>
+<video src="https://os.alipayobjects.com/rmsportal/EejaUGsyExkXyXr.mp4" loop="true" class="video"/>
 
 ### 传送带切换(走马灯)
 
 可极大地扩展虚拟空间。
 
-<video src="https://os.alipayobjects.com/rmsportal/GIutPgZMTyfFfrH.mp4" class="video"/>
+<video src="https://os.alipayobjects.com/rmsportal/GIutPgZMTyfFfrH.mp4" loop="true" class="video"/>
 
 
 ### 折叠窗口
 
 在视图切换时，有助于保持上下文，同时也能拓展虚拟空间。
 
-<video src="https://os.alipayobjects.com/rmsportal/ERKhqHlcHiCDSQu.mp4" class="video"/>
+<video src="https://os.alipayobjects.com/rmsportal/ERKhqHlcHiCDSQu.mp4" loop="true" class="video"/>

@@ -3,6 +3,11 @@ import { Link } from 'react-router';
 import QueueAnim from 'rc-queue-anim';
 import TweenOne from 'rc-tween-one';
 import '../../static/style.js';
+
+let NProgress = {
+  done: () => {
+  }
+};
 class Home extends React.Component {
   constructor() {
     super(...arguments);
@@ -56,7 +61,8 @@ class Home extends React.Component {
   }
 
   render() {
-    return (<div style={{ height: 'calc(100% - 199px)' }}  className={`banner ${this.props.className}`.trim()}>
+    NProgress.done();
+    return (<div style={{ height: 'calc(100% - 199px)' }} className={`banner ${this.props.className}`.trim()}>
       <div style={this.state.style}>
         <TweenOne component="video" animation={{ opacity: 1, delay: 300, duration: 1000 }}
           autoPlay width="100%" style={{ opacity: 0 }}
@@ -75,3 +81,9 @@ class Home extends React.Component {
 }
 
 export default Home;
+
+export function collect(nextProps, c, callback, progress) {
+  NProgress = progress;
+  Home.defaultProps = Object.assign({ }, Home.defaultProps, nextProps);
+  callback(null, Home);
+}

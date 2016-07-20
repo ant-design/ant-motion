@@ -17,7 +17,7 @@ export default {
         logo: {
           name: 'logo图片',
           value: 'https://zos.alipayobjects.com/rmsportal/HqnZZjBjWRbjyMr.png',
-          size: '320*254',
+          remark: '尺寸参考:320*254',
         },
         content: {
           name: '广告语',
@@ -30,7 +30,7 @@ export default {
         bgImg: {
           name: '背景图片',
           value: 'https://zos.alipayobjects.com/rmsportal/gGlUMYGEIvjDOOw.jpg',
-          size: '1920*1080',
+          remark: '尺寸参考:1920*1080',
         },
       }
     }

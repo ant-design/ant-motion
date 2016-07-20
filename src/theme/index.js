@@ -7,16 +7,15 @@ module.exports = {
       template: './template/Layout/index',
       props: { ignoreScrollBehavior: true },
       children : [
-        { dataPath: '/', template: './template/Home/index' },
-        { dataPath: '/components/:contentName', template: ComponentDoc },
-        { dataPath: '/cases/about', template: Article },
-        { dataPath: '/cases/help', template: Article },
-        { dataPath: '/cases/full', template: Article },
-        { dataPath: '/cases/splicing', template: './template/Splicing/index' },
-        { dataPath: '/language/:contentName', template: Article },
-
+        { route: '/', dataPath: '/', template: './template/Home/index' },
+        { route: '/components/:contentName', dataPath: '/components/:contentName', template: ComponentDoc },
+        { route: '/cases/about', dataPath: '/cases/about', template: Article },
+        { route: '/cases/help', dataPath: '/cases/help', template: Article },
+        { route: '/cases/full', dataPath: '/cases/full', template: Article },
+        { route: '/cases/splicing', dataPath: '/cases/splicing', template: './template/Splicing/index' },
+        { route: '/language/:contentName', dataPath: '/language/:contentName', template: Article },
       ]
     },
-    { dataPath: '/templates/', template:  './template/Templates/index' },
+    { route: '/templates/', dataPath: '/templates/', template:  './template/Templates/index' },
   ]
 };

@@ -25,9 +25,9 @@ class Page extends React.Component {
   getMenuItems(moduleData, pathNames) {
     const splicingListArr = [];
     if (pathNames[0] === 'cases') {
+      // { meta: { filename: 'cases/full', english: 'Full', chinese: '完整模板选择', order: 2 } }
       splicingListArr.push(
-        { meta: { filename: 'cases/splicing', english: 'Splicing', chinese: '自由搭配模板', order: 1 } },
-        { meta: { filename: 'cases/full', english: 'Full', chinese: '完整模板选择', order: 2 } }
+        { meta: { filename: 'cases/splicing', english: 'Splicing', chinese: '自由搭配模板', order: 1 } }
       )
     }
     return moduleData.concat(splicingListArr).sort((a, b) => a.meta.order - b.meta.order).map((item, i) => {

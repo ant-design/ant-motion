@@ -32,11 +32,10 @@ class Test extends React.Component{
           <Button type="primary" onClick={this.onClick}>切换</Button>
         </p>
         <Animate
-          showProp="show"
           transitionName="fade"
           transitionAppear
         >
-          {this.state.show ? <div show className="code-box-shape" /> : null}
+          {this.state.show ? <div key="1" className="code-box-shape" /> : null}
         </Animate>
       </div>
     );

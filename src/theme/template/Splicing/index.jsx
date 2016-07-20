@@ -68,10 +68,10 @@ class Splicing extends React.Component {
     optKeys.sort((a, b) => webData[a].order - webData[b].order)
       .forEach(key => {
         templateOptData[key].forEach(item => {
-          templateIds.push(`${key}_${item.vars}`);
+          templateIds.push(`${key}_${item.vars}_${item.key}`);
           optImgChild.push(<span
             key={item.key}
-            id={`${key}_${item.vars}`}
+            id={`${key}_${item.vars}_${item.key}`}
           >
             <img src={webData[key].data[item.vars].src} width="100%" />
           </span>);
@@ -92,7 +92,6 @@ class Splicing extends React.Component {
     return Object.keys(webData).map(key => {
       const item = webData[key];
       if (key === 'other') {
-        console.log(item)
         return <div key={key} className={this.props.className}>
           <h2>{item.name}</h2>
           <div className={`${this.props.className}-checkbox-wrapper`}>

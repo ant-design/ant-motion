@@ -7,7 +7,7 @@ import OverLay from './components/OverLay';
 import Mask from './components/Mask';
 import NavController from './components/NavController';
 import TextController from './components/TextController';
-import { getURLData, mergeURLDataToConfigValue, mergeURLDataToConfig } from './utils';
+import { getURLData, mergeURLDataToConfig } from './utils';
 
 export default class Templates extends React.Component {
 
@@ -88,6 +88,11 @@ export default class Templates extends React.Component {
   };
 
   onMouseEnter = (key, e) => {
+    const make = getURLData('make');
+    const mode = getURLData('mode');
+    if (make || mode) {
+      return;
+    }
     if (!this.state.currentKey) {
       const dom = $(e.currentTarget);
       this.setState({
@@ -103,6 +108,11 @@ export default class Templates extends React.Component {
   };
 
   onMouseLeave = () => {
+    const make = getURLData('make');
+    const mode = getURLData('mode');
+    if (make || mode) {
+      return;
+    }
     if (!this.state.currentKey) {
       this.setState({
         enterKey: null,
@@ -111,6 +121,11 @@ export default class Templates extends React.Component {
   };
 
   onDoubleClick = (key, e) => {
+    const make = getURLData('make');
+    const mode = getURLData('mode');
+    if (make || mode) {
+      return;
+    }
     // 禁止滚动;
     if (this.state.showMask) {
       $('html').attr('style', '');
@@ -155,21 +170,24 @@ export default class Templates extends React.Component {
       props.onMouseEnter = this.onMouseEnter.bind(this, item);
       props.onMouseLeave = this.onMouseLeave.bind(this, item);
       props.onDoubleClick = this.onDoubleClick.bind(this, item);
-      return React.createElement(Component, { key: i, ref: item, ...props });
+      return React.createElement(Component, { key: i, name: item, ref: item, ...props });
     });
     // 判断其它里的；
     other.map(item => {
       switch (item) {
-        case 'fixed': {
+        case 'fixed':
+        {
           return;
         }
-        case 'point': {
+        case 'point':
+        {
           const Point = require('./Point');
           this.listPoint = true;
           children.push(<Point key="list" data={data} ref="list" />);
           break;
         }
-        case 'full': {
+        case 'full':
+        {
           this.scrollScreen = true;
           break;
         }
@@ -179,8 +197,15 @@ export default class Templates extends React.Component {
   };
 
   render() {
+    const make = getURLData('make');
+    const mode = getURLData('mode');
     const { overlay, currentKey, enterKey, showMask } = this.state;
     const children = this.getTemplatesToChildren();
+    if (make) {
+      return (<div className="templates-wrapper">
+        {children}
+      </div>)
+    }
     let data;
     let key;
     if (showMask) {
@@ -188,19 +213,27 @@ export default class Templates extends React.Component {
       key = `${keys[0]}${keys[1]}`;
       data = this.config[keys[0]].data[keys[1]].dataSource;
     }
+    const overlayChildren = !showMask && enterKey ?
+      <OverLay {...overlay} key="overlay">{this.state.enterKey}</OverLay> : null;
+    const textChildren = (<TweenOneGroup component=""
+      enter={{ opacity: 0, scale: 0, type: 'from', ease: 'easeOutBack' }}
+      leave={{ opacity: 0, scale: 0, ease: 'easeInBack' }}
+      key="text"
+    >
+      {showMask ? <TextController childKey={key} config={this.configURL} data={data} key="text" /> : null}
+    </TweenOneGroup>);
+    const maskChildren = (<TweenOneGroup
+      enter={{ opacity: 0, type: 'from' }}
+      leave={{ opacity:0 }}
+      component=""
+      key="mask"
+    >
+      {showMask ? <Mask key="mask" top={overlay.top} height={overlay.height} />: null}
+    </TweenOneGroup>);
     return (<div className="templates-wrapper">
       {children}
-      {!showMask && enterKey ? <OverLay {...overlay} >{this.state.enterKey}</OverLay> : null}
-      <TweenOneGroup enter={{ opacity: 0, type: 'from' }} leave={{ opacity:0 }} component="">
-        {showMask ? <Mask key="mask" top={overlay.top} height={overlay.height} />: null}
-      </TweenOneGroup>
+      {!mode ? [overlayChildren, textChildren, maskChildren] : null}
       <NavController key="nav" />
-      <TweenOneGroup component=""
-        enter={{ opacity: 0, scale: 0, type: 'from', ease: 'easeOutBack' }}
-        leave={{ opacity: 0, scale: 0, ease: 'easeInBack' }}
-      >
-        {showMask ? <TextController childKey={key} config={this.configURL} data={data} key="text" /> : null}
-      </TweenOneGroup>
     </div>);
   }
 }

@@ -12,14 +12,15 @@ class Banner extends React.Component {
     const { logo, content, button, bgImg } = block1;
     const props = { ...this.props };
     delete props.dataSource;
+    delete props.name;
     return (
       <OverPack replay
-        scrollName={this.props.className}
+        scrollName={this.props.name}
         playScale={[0.3, 0.1]}
         {...props}
         style={{
           backgroundImage: `url(${bgImg})`,
-          ...this.props.style,
+          ...props.style,
         }}
         hideProps={{ icon: { reverse: true } }}
       >
@@ -43,13 +44,13 @@ class Banner extends React.Component {
 
 Banner.propTypes = {
   className: PropTypes.string,
+  name: PropTypes.string,
   style: PropTypes.object,
   dataSource: PropTypes.object,
 };
 
 Banner.defaultProps = {
   className: 'banner0',
-  style: '',
   dataSource: {
     block1: {
       logo: 'https://zos.alipayobjects.com/rmsportal/glzXQktozLMgGtE.png',

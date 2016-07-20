@@ -5,14 +5,19 @@ import { getChildren } from 'jsonml.js/lib/utils';
 import * as utils from '../utils';
 import DocumentTitle from 'react-document-title';
 import DemoLayout, { Item } from './DemoLayout';
-
+let NProgress = {
+  done: () => {
+  }
+};
 class ComponentDoc extends React.Component {
   shouldComponentUpdate() {
     return false;
   }
+
   render() {
+    NProgress.done();
     const props = this.props;
-    const { pageData, location } = props;
+    const { pageData } = props;
     const demosToChild = Object.keys(pageData.demo).map(key => pageData.demo[key])
       .filter(item => !item.meta.hidden)
       .sort((a, b) => a.meta.order - b.meta.order)
@@ -36,7 +41,7 @@ class ComponentDoc extends React.Component {
     const { meta, api, content, description } = pageData.index;
     const { title, subtitle, chinese, english } = meta;
     const apiChildren = (api || []).map((_child, i) => {
-      const child = _child ;
+      const child = _child;
       if (child[0] === 'h2' && child[1] === 'API') {
         child[1] = 'API 说明'
       }
@@ -73,3 +78,9 @@ ComponentDoc.propTypes = {
 
 ComponentDoc.defaultProps = {};
 export default ComponentDoc;
+
+export function collect(nextProps, c, callback, progress) {
+  NProgress = progress;
+  ComponentDoc.defaultProps = Object.assign({}, ComponentDoc.defaultProps, nextProps);
+  callback(null, ComponentDoc);
+}

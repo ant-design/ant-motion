@@ -8,6 +8,11 @@ title: 默认
 ```jsx
 import Animate from 'rc-animate';
 import Button from 'antd/lib/button';
+const Div = (props) => {
+  const childrenProps = { ...props };
+  delete childrenProps.show;
+  return <div {...childrenProps} />;
+};
 class Test extends React.Component{
   constructor() {
     super(...arguments);
@@ -35,7 +40,7 @@ class Test extends React.Component{
           showProp="show"
           transitionName="fade"
         >
-          <div show={this.state.show} className="code-box-shape" />
+          <Div show={this.state.show} className="code-box-shape" />
         </Animate>
       </div>
     );

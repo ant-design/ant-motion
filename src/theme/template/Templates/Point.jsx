@@ -15,11 +15,10 @@ export default class Point extends React.Component{
 
   render(){
     const children = this.props.data.map(item => {
-      const location = item.replace('_', '');
-      if (location.indexOf('nav') >= 0) {
+      if (item.match('nav') || item.match('footer')) {
         return;
       }
-      return <Link key={item} className={this.props.className} location={location} />
+      return <Link key={item} className={this.props.className} location={item} />
     }).filter(item => item);
     return (<div className={`${this.props.className}-wrapper`} style={this.props.style}>
       {children}

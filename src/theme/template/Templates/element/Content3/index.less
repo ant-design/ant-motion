@@ -1,0 +1,37 @@
+@import '../../../../static/custom.less';
+
+@content: content3;
+.@{content}-wrapper {
+  width: 100%;
+  background: #fff;
+  .@{content} {
+    width: 100%;
+    max-width: 1200px;
+    height: 100%;
+    margin: auto;
+    position: relative;
+    & > h1, & > p {
+      position: relative;
+      top: 10%;
+      text-align: center;
+    }
+    & h1 {
+      font-size: 32px;
+      font-weight: normal;
+      color: #404040;
+    }
+    & p {
+      font-size: 12px;
+      margin: 20px auto;
+    }
+    &-video {
+      border-radius: 6px;
+      overflow: hidden;
+      width: 90%;
+      position: relative;
+      top: 20%;
+      margin: auto;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, .2);
+    }
+  }
+}

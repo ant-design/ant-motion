@@ -27,6 +27,30 @@
     margin-top: 20px;
     & > .item {
       transition: transform .3s @ease-out;
+      &[disabled] {
+
+        pointer-events: none;
+        overflow: hidden;
+        & .disabled-test {
+          position: absolute;
+          top: -13px;
+          left: -38px;
+          background: @primary-color;
+          color: @template-text-color-light;
+          z-index: 50;
+          height: 50px;
+          line-height: 80px;
+          transform: rotate(-45deg);
+          width: 100px;
+          text-align: center;
+          filter: grayscale(0%);
+          font-size: 12px;
+          box-shadow: 0 3px 5px rgba(0, 0, 0, .2);
+        }
+        & * {
+          filter: grayscale(100%);
+        }
+      }
       & > a {
         display: block;
         padding: 0 10px;
@@ -112,7 +136,7 @@
       margin-left: 10px;
     }
   }
-  &-checkbox-wrapper{
+  &-checkbox-wrapper {
     margin-top: 20px;
   }
 }

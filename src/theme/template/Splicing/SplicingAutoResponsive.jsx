@@ -104,7 +104,9 @@ class AutoResponsiveDemo extends React.Component {
       key={i}
       className="item"
       style={{ width: item.width, height: item.height }}
+      disabled={item.disabled}
     >
+      {item.disabled ? <span className="disabled-test">敬请期待</span> : null}
       <TweenOneGroup
         component="a"
         style={{ width: item.width, height: item.height }}
