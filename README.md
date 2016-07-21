@@ -4,7 +4,7 @@
 [node-url]: http://nodejs.org/download/
 
 <p align="center">
-  <a href="http://moition.and.design">
+  <a href="http://motion.and.design">
     <img src="https://os.alipayobjects.com/rmsportal/tdjazOmUHhUKXxZ.svg" width="600" />
   </a>
 </p>
