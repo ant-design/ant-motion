@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import QueueAnim from 'rc-queue-anim';
 import TweenOne from 'rc-tween-one';
+import DocumentTitle from 'react-document-title';
 import '../../static/style.js';
 
 let NProgress = {
@@ -62,28 +63,33 @@ class Home extends React.Component {
 
   render() {
     NProgress.done();
-    return (<div style={{ height: 'calc(100% - 199px)' }} className={`banner ${this.props.className}`.trim()}>
-      <div style={this.state.style}>
-        <TweenOne component="video" animation={{ opacity: 1, delay: 300, duration: 1000 }}
-          autoPlay width="100%" style={{ opacity: 0 }}
-        >
-          <source src="https://os.alipayobjects.com/rmsportal/vmZjVCXfxETfcgb.mp4 " type="video/mp4" />
-          <img src="https://t.alipayobjects.com/images/T18V8mXfhdXXXXXXXX.jpg" width="100%" />
-        </TweenOne>
+    return (<DocumentTitle title="Ant Motion - 高效的动效设计解决方案">
+      <div
+        style={{ height: 'calc(100% - 199px)' }}
+        className={`banner ${this.props.className}`.trim()}
+      >
+        <div style={this.state.style}>
+          <TweenOne component="video" animation={{ opacity: 1, delay: 300, duration: 500 }}
+            autoPlay width="100%" style={{ opacity: 0 }}
+          >
+            <source src="https://os.alipayobjects.com/rmsportal/vmZjVCXfxETfcgb.mp4 " type="video/mp4" />
+            <img src="https://t.alipayobjects.com/images/T18V8mXfhdXXXXXXXX.jpg" width="100%" />
+          </TweenOne>
+        </div>
+        <QueueAnim className="banner-text" type="bottom" duration={500}>
+          <h1 key="h1">Ant Motion</h1>
+          <span key="span">设计者的动效翻译器</span>
+          <Link to="/components/tween-one" key="comp">动效组件</Link>
+          <Link to="/cases/splicing" key="cases">首页拼接</Link>
+          <p key="github-btn">
+            <iframe
+              src={`https://ghbtns.com/github-btn.html?user=ant-motion&repo=ant-motion&type=star&count=true`}
+              frameBorder="0" scrolling="0" width="98px" height="20px"
+            />
+          </p>
+        </QueueAnim>
       </div>
-      <QueueAnim className="banner-text" type="bottom" duration={500} delay={800}>
-        <h1 key="h1">Ant Motion</h1>
-        <span key="span">设计者的动效翻译器</span>
-        <Link to="/components/tween-one" key="comp">动效组件</Link>
-        <Link to="/cases/splicing" key="cases">首页拼接</Link>
-        <p key="github-btn">
-          <iframe
-            src={`https://ghbtns.com/github-btn.html?user=ant-motion&repo=ant-motion&type=star&count=true`}
-            frameBorder="0" scrolling="0" width="98px" height="20px"
-          />
-        </p>
-      </QueueAnim>
-    </div>);
+    </DocumentTitle>);
   }
 }
 
