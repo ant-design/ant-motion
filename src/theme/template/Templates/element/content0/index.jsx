@@ -15,7 +15,7 @@ class Content extends React.Component {
   };
 
   static defaultProps = {
-    className: 'content0',
+    className: 'Content0',
     dataSource: {
       block1: {
         img: 'https://zos.alipayobjects.com/rmsportal/nLzbeGQLPyBJoli.png',
