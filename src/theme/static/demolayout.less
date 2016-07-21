@@ -1,0 +1,147 @@
+@import './custom';
+
+@demo: demo-layout;
+.@{demo} {
+  margin: 1em auto;
+  position: relative;
+  width: 100%;
+  &-wrapper {
+    display: inline-block;
+    width: 100%;
+    margin: 0 0 12px 0;
+    &:last-child {
+      margin: 0 0 -3px 0;
+    }
+    & > ul {
+      padding: 0 5px;
+      display: inline-block;
+      &:last-child {
+        padding: 0 0 0 10px;
+      }
+      &:first-child {
+        padding: 0 10px 0 0;
+      }
+      &:only-child {
+        padding: 0;
+      }
+      & > li {
+        .page-pro();
+        margin: 0 0 15px 0;
+        &:last-child {
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+
+@code: code-box;
+.@{code} {
+  transition: opacity .3s @ease-out .3s, transform .3s @ease-out, box-shadow .3s @ease-out !important;
+  &-demo {
+    padding: 20px;
+    border-bottom: 1px solid @line-color;
+    position: relative;
+  }
+  &-shape {
+    position: relative;
+    margin: 40px auto;
+    width: 50px;
+    height: 50px;
+    border-radius: 4px;
+    background: @primary-color;
+  }
+  &-meta {
+    cursor: pointer;
+    padding: 20px;
+    position: relative;
+    word-break: break-word;
+    & > h1 {
+      font-size: 18px;
+      margin: 0 auto 5px;
+      font-weight: lighter;
+    }
+    &-content {
+      font-size: 12px;
+      padding-right: 40px;
+      word-break: break-word;
+    }
+
+    &-icon {
+      position: absolute;
+      right: 15px;
+      bottom: 15px;
+      cursor: pointer;
+      width: 26px;
+      height: 26px;
+      border-radius: 13px;
+      font-size: 16px;
+      line-height: 28px;
+      text-align: center;
+      transition: transform .3s @ease-out;
+      color: @line-deep-color;
+      opacity: .5;
+      &:before {
+        content: "\E667";
+        display: block;
+        font-family: "anticon" !important;
+      }
+    }
+  }
+
+  & .demo-bezier-shape {
+    width: 5px;
+    height: 5px;
+    background: #7569FF;
+    position: absolute;
+    top: 0;
+  }
+
+  & > div > .code {
+    display: none;
+  }
+
+  &-highlight {
+    overflow: auto;
+    & pre {
+      display: block;
+      padding: 0 !important;
+      margin: 0 !important;
+      border-radius: 0;
+      background: #f5f2f0;
+      max-height: 200px;
+      & code {
+        display: block;
+        padding: 1em;
+        border-radius: 0;
+        width: 100%;
+        background: none;
+        &.css {
+          border-top: 1px dashed #999;
+        }
+      }
+    }
+  }
+  &.open {
+    opacity: 0;
+    transition: opacity .3s @ease-out, transform .3s @ease-out, box-shadow .3s @ease-out !important;
+  }
+}
+
+.demo-buttons, .buttons {
+  text-align: center;
+  margin: 0 auto;
+  & button {
+    margin: 0 2px;
+    &:last-child {
+      margin-right: 0;
+    }
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}
+
+.ant-modal-body .code-box-meta{
+  padding: 0;
+}

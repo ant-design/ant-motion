@@ -1,0 +1,16 @@
+@import '../../../static/custom.less';
+
+.motion-overlay {
+  z-index: 9999;
+  position: absolute;
+  cursor: pointer;
+  pointer-events: none;
+  border: 1px dashed @primary-color;
+  & p {
+    background-color: @primary-color;
+    color: #fff;
+    float: left;
+    padding: 5px 10px;
+  }
+}
+

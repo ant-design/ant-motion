@@ -1,0 +1,49 @@
+@import 'custom';
+.banner {
+  position: relative;
+  overflow: hidden;
+  min-height: 680px;
+  &-text {
+    position: absolute;
+    top: 45%;
+    left: 10%;
+    text-align: left;
+    color: #fff;
+    & h1 {
+      font-size: 46px;
+      letter-spacing: 3px;
+      font-weight: normal;
+      text-align: right;
+    }
+    & > span {
+      display: block;
+      font-size: 16px;
+      font-weight: lighter;
+      margin: 5px 5px 10px 0;
+      text-align: right;
+    }
+    & > a {
+      margin: 10px 7px;
+      font-size: 14px;
+      background: @primary-color;
+      color: #fff;
+      width: 120px;
+      padding: 6px 10px;
+      border-radius: 6px;
+      transition: box-shadow .3s @ease-out, border .3s @ease-out, background .3s @ease-out;
+      display: inline-block;
+      text-align: center;
+      line-height: 21px;
+      font-weight: normal;
+      &:hover {
+        box-shadow: 0 0 10px #8C82FF;
+        border-color: #8C82FF;
+        background: fade(@primary-color, 85);
+      }
+    }
+    & > p{
+      margin-top: 10px;
+      text-align: right;
+    }
+  }
+}

@@ -14,23 +14,23 @@
 - 集合 react-component 里的动效组件与页面动效的示例。
 
 ## 链接
-#### [动效语言](http://motion.ant.design/#/language/)
+#### [动效语言](http://motion.ant.design/language/time)
 
 #### 动效组件
 
-[rc-tween-one 单元素动效执行组件](http://motion.ant.design/#/components/tween-one)
+[rc-tween-one 单元素动效执行组件](http://motion.ant.design/components/tween-one)
 
-[rc-animate 样式进出场组件](http://motion.ant.design/#/components/animate)
+[rc-animate 样式进出场组件](http://motion.ant.design/components/animate)
 
-[rc-queue-anim 队列进出场组件](http://motion.ant.design/#/components/queue-anim)
+[rc-queue-anim 队列进出场组件](http://motion.ant.design/components/queue-anim)
 
-[rc-scroll-anim 随滚动执行效果组件](http://motion.ant.design/#/components/scroll-anim)
+[rc-scroll-anim 随滚动执行效果组件](http://motion.ant.design/components/scroll-anim)
 
-[rc-banner-anim banner 切换效果组件](http://motion.ant.design/#/components/scroll-anim)
+[rc-banner-anim banner 切换效果组件](http://motion.ant.design/components/banner-anim)
 
 #### 示例展示
 
-[首页动画样式展示](http://motion.ant.design/#/cases/home)
+[首页动画样式展示](http://motion.ant.design/cases/splicing)
 
 ## Develop
 
@@ -40,5 +40,5 @@
 npm start
 ```
 
-访问 http://127.0.0.1:8989 。
+访问 http://127.0.0.1:8111 。
 

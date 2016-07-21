@@ -19,5 +19,6 @@ Thumbs.db
 node_modules
 dist
 psd
+old
 _site
 old

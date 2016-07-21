@@ -1,0 +1,25 @@
+@import '../../../static/custom.less';
+
+@content: templates-list;
+.@{content}-wrapper {
+  position: fixed;
+  z-index: 9998;
+  top: 50%;
+  right: 20px;
+  width: 8px;
+}
+
+.@{content} {
+  width: 8px;
+  height: 8px;
+  background: @primary-color;
+  border-radius: 6px;
+  float: left;
+  margin: 4px auto;
+  opacity: .5;
+  cursor: pointer;
+  transition: opacity .3s;
+  &.active{
+    opacity: 1;
+  }
+}
