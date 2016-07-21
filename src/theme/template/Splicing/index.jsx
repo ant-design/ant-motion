@@ -101,8 +101,8 @@ class Splicing extends React.Component {
       }
       const imgArr = item.data.map(imgData => {
         const _imgData = imgData;
-        _imgData.width = 300;
-        _imgData.height = 182;
+        _imgData.width = 290;
+        _imgData.height = 176;
         return _imgData
       });
       const onClick = this.onChildClick.bind(this, key);
