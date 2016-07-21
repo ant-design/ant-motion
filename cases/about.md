@@ -4,7 +4,6 @@ chinese: 关于实践
 english: About
 ---
 
-
 这是以 Ant Motion 的 React 组件遵从 Ant Design 的视觉规范来完成的 demo 页面，可灵活又快速的配置出你想要的首页模板。
 
 这里主要提供了单元素示例与配置完后的整页示例。
@@ -12,6 +11,7 @@ english: About
 **主要解决视觉设计师前期制作页面后，把需要的动效加在自已的页面加上，能够与程序员很好的沟通。**
 
 ### 单元素示例分为：
+
 - 导航的样式选择
 - banner的样式选择
 - 详细内容说明的样式选择
@@ -30,7 +30,7 @@ english: About
 
 <br />
 
-```__react
+````jsx
 import { Steps } from 'antd';
 const Step = Steps.Step;
 
@@ -70,13 +70,10 @@ const steps = [
 ].map((s, i) => <Step key={i} status={s.status} title={s.title} description={s.description}/>);
 
 ReactDOM.render(<Steps current={1}>{steps}</Steps>, mountNode);
-```
+````
 
 <style>
-.ant-steps{
+.ant-steps {
   max-width: 900px;
 }
 </style>
-
-<br />
-
