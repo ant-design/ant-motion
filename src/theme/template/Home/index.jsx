@@ -24,6 +24,7 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
+    NProgress.done();
     if (window.addEventListener) {
       window.addEventListener('resize', this.onWindowResized);
     } else {
@@ -62,9 +63,7 @@ class Home extends React.Component {
   }
 
   render() {
-    NProgress.done();
-    return (<DocumentTitle title="Ant Motion - 高效的动效设计解决方案">
-      <div
+    return (<div
         style={{ height: 'calc(100% - 199px)' }}
         className={`banner ${this.props.className}`.trim()}
       >
@@ -88,8 +87,9 @@ class Home extends React.Component {
             />
           </p>
         </QueueAnim>
+        <DocumentTitle title="Ant Motion - 高效的动效设计解决方案" />
       </div>
-    </DocumentTitle>);
+    );
   }
 }
 

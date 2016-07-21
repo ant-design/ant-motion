@@ -17,7 +17,7 @@ english: About
 - 详细内容说明的样式选择
 - 页尾的样式
 
-> 如本页提供的页面不符合你的需求，可按照你的需求查找到相似的布局再作修改。[单无素代码地址](https://github.com/ant-motion/ant-motion/tree/master/template/element)
+> 如本页提供的页面不符合你的需求，可按照你的需求查找到相似的布局再作修改。[单无素代码地址](https://github.com/ant-motion/ant-motion/tree/master/src/theme/template/Templates/element)
 
 ## 何时使用
 
