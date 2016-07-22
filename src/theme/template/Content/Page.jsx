@@ -49,12 +49,12 @@ class Page extends React.Component {
   }
 
   render() {
-    const className = `page`;
     const props = this.props;
+    const className = props.className;
     const pathNames = props.pathname.split('/');
     const moduleData = this.getModuleData(props.pageData);
     const list = this.getMenuItems(moduleData[pathNames[0]], pathNames);
-    return <div className={`${className} ${this.props.className}`.trim()}>
+    return <div className={className}>
       <div className={`${className}-wrapper`}>
         <aside>
           <QueueAnim type={['right', 'left']} duration={450} ease="easeInOutQuad">
@@ -82,5 +82,7 @@ Page.propTypes = {
   pathname: PropTypes.string,
 };
 
-Page.defaultProps = {};
+Page.defaultProps = {
+  className: 'page'
+};
 export default Page;

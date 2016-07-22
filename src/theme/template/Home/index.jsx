@@ -65,7 +65,7 @@ class Home extends React.Component {
   render() {
     return (<div
         style={{ height: 'calc(100% - 199px)' }}
-        className={`banner ${this.props.className}`.trim()}
+        className="banner"
       >
         <div style={this.state.style}>
           <TweenOne component="video" animation={{ opacity: 1, delay: 300, duration: 500 }}
