@@ -30,10 +30,9 @@ english: About
 
 <br />
 
-````jsx
+```__react
 import { Steps } from 'antd';
 const Step = Steps.Step;
-
 const steps = [
   {
     title: '布局选择',
@@ -58,7 +57,8 @@ const steps = [
   {
     title: '生成页面',
     description: '编辑完成后点击下方导航里的生成页面',
-  }
+    status: 'process',
+  },
   {
     title: '拷贝链接',
     status: 'process',
@@ -68,9 +68,8 @@ const steps = [
     status: 'process',
   },
 ].map((s, i) => <Step key={i} status={s.status} title={s.title} description={s.description}/>);
-
 ReactDOM.render(<Steps current={1}>{steps}</Steps>, mountNode);
-````
+```
 
 <style>
 .ant-steps {

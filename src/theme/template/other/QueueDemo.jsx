@@ -1,5 +1,6 @@
 import React from 'react';
 import QueueAnim from 'rc-queue-anim';
+import './queueDemo.less';
 class Demo extends React.Component {
   constructor() {
     super(...arguments);
