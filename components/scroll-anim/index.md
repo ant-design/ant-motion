@@ -33,15 +33,15 @@ $ npm install rc-scroll-anim --save
 ```jsx
 import ScrollAnim from 'rc-scroll-anim';
 const ScrollOverPack = ScrollAnim.OverPack;
-ReactDOM.render((<ScrollOverPack>
-  <QueueAnim key='queueAnim' hideProps={{ child: null }}>
+ReactDOM.render((<ScrollOverPack hideProps={{ tweenOne: { reverse: true }}}>
+  <QueueAnim key='queueAnim'>
     <div key='a'>依次进入</div>
     <div key='b'>依次进入</div>
     <div key='b'>依次进入</div>
   </QueueAnim>
-  <TweenOne key='tweenOne' vars={{ x:100 }} hideProps={{ reverse: true }}>单元素动画</TweenOne>
+  <TweenOne key='tweenOne' vars={{ x:100 }} >单元素动画</TweenOne>
   <Animate key='rc-animate' transitionName="fade"
-    transitionAppear hideProps={{ child: null }}>
+    transitionAppear>
     rc-animate示例
   </Animate>
 </ScrollOverPack>), mountNode);
@@ -81,11 +81,13 @@ scrollScreen.unMount();
 ### OverPack 说明
 |   参数   |    类型    |   默认  |  说明   |
 |---------|------------|---------|--------|
+| component | string | div | 组件标签 |
 | playScale |  number / array  |  `0.5` | 要在屏幕哪个区域开始播放， 0.5 为屏幕中间, 如果为 array 时 replay 为 true, [bottomEnter, topLeave] enter为进入是的播放点， topLeave 为出屏的比例(当前显示屏的上面一屏)的百分点。topLeave 必须大于等于 bottomEnter。 |
 | always  | boolean | true | 重复播放，如为 false 将只进入一遍，不再触发出场效果 |
 | scrollName | string | null | 需要定位的名称，parallax的 location 或 link 的 location, 都需要以此元素做定位 |
 | replay  |  boolean | false | 每次显示当前时是否都要动画, `false` 为只下往上滚时才有动画 |
-| component | string | div | 组件标签 |
+| onChange | func    | null  | 变更回调; callback({ mode, scrollName }); mode 为 `enter` 或 `leave` 两种状态 |
+| hideProps | object | null  | v0.3.0 将 children 里的 hideProps 迁到这里，将 children 里通过切换 children 来做动画的做为默认(原来的：{ children: null })。</br>如果是 `rc-tween-one` 通过倒放来切换动画(Group为前一种方法), 需要在此设置： { userKey: { reverse: true }} userKey 为你在标签上的 key。 |
 
 ### Parallax 说明
 |   参数   |    类型    |   默认  |  说明   |
