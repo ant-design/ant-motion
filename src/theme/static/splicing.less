@@ -58,30 +58,28 @@
         text-align: center;
         font-size: 0px;
         position: relative;
+        overflow: hidden;
         .page-pro();
         transition: box-shadow .3s @ease-out, transform .3s @ease-out;
         & .item-text {
           position: absolute;
           overflow: hidden;
           width: 100%;
-          bottom: 0;
+          bottom: -30px;
           margin-left: -10px;
-          & p {
-            font-size: 12px;
-            line-height: 0px;
-            color: #fff;
-            opacity: 0;
-            border-radius: 0 0 6px 6px;
-            background: fade(@primary-color, 65);
-            transition: opacity .5s @ease-out, line-height .3s @ease-out;
-          }
+          border-radius: 0 0 6px 6px;
+          background: fade(@primary-color, 65);
+          line-height: 30px;
+          font-size: 12px;
+          color: #fff;
+          opacity: 0;
+          transition: opacity .5s @ease-out, bottom .3s @ease-out;
         }
 
         &:hover {
-          & p {
-            visibility: inherit;
-            line-height: 32px;
-            opacity: 1;
+          & .item-text {
+            bottom: 0;
+            opacity: 1 !important;
           }
         }
         & img {
