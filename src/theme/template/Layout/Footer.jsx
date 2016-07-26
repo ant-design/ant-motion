@@ -31,7 +31,8 @@ class Footer extends React.Component {
           </a>
         </li>
         <li>
-          <h2>©2016 蚂蚁金服体验技术部出品</h2>
+          <p>©2016 蚂蚁金服体验技术部出品</p>
+          <div>Powered by <a href="https://github.com/benjycui/bisheng">BiSheng</a></div>
         </li>
       </ul>
     </TweenOne>);
