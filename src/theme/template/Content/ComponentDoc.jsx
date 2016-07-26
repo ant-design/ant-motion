@@ -5,17 +5,13 @@ import { getChildren } from 'jsonml.js/lib/utils';
 import * as utils from '../utils';
 import DocumentTitle from 'react-document-title';
 import DemoLayout, { Item } from './DemoLayout';
-let NProgress = {
-  done: () => {
-  }
-};
+
 class ComponentDoc extends React.Component {
   shouldComponentUpdate() {
     return false;
   }
 
   render() {
-    NProgress.done();
     const props = this.props;
     const { pageData } = props;
     const demosToChild = Object.keys(pageData.demo).map(key => pageData.demo[key])
@@ -78,9 +74,3 @@ ComponentDoc.propTypes = {
 
 ComponentDoc.defaultProps = {};
 export default ComponentDoc;
-
-export function collect(nextProps, c, callback, progress) {
-  NProgress = progress;
-  ComponentDoc.defaultProps = Object.assign({}, ComponentDoc.defaultProps, nextProps);
-  callback(null, ComponentDoc);
-}

@@ -5,10 +5,7 @@ import TweenOne from 'rc-tween-one';
 import DocumentTitle from 'react-document-title';
 import '../../static/style.js';
 
-let NProgress = {
-  done: () => {
-  }
-};
+
 class Home extends React.Component {
   constructor() {
     super(...arguments);
@@ -24,7 +21,6 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-    NProgress.done();
     if (window.addEventListener) {
       window.addEventListener('resize', this.onWindowResized);
     } else {
@@ -94,9 +90,3 @@ class Home extends React.Component {
 }
 
 export default Home;
-
-export function collect(nextProps, c, callback, progress) {
-  NProgress = progress;
-  Home.defaultProps = Object.assign({}, Home.defaultProps, nextProps);
-  callback(null, Home);
-}

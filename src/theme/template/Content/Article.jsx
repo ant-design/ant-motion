@@ -4,11 +4,6 @@ import { getChildren } from 'jsonml.js/lib/utils';
 import * as utils from '../utils';
 import DocumentTitle from 'react-document-title';
 
-let NProgress = {
-  done: () => {
-  }
-};
-
 class Article extends React.Component {
   shouldComponentUpdate() {
     return false;
@@ -19,7 +14,6 @@ class Article extends React.Component {
   }
 
   render() {
-    NProgress.done();
     const props = this.props;
     const pageData = props.pageData;
     const { meta, content, toc } = pageData;
@@ -57,8 +51,3 @@ Article.propTypes = {
 Article.defaultProps = {};
 export default Article;
 
-export function collect(nextProps, c, callback, progress) {
-  NProgress = progress;
-  Article.defaultProps = Object.assign({}, Article.defaultProps, nextProps);
-  callback(null, Article);
-}

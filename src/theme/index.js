@@ -4,34 +4,18 @@ module.exports = {
   home: '/',
   routes: [
     {
-      template: './template/Layout/index',
-      props: { ignoreScrollBehavior: true },
-      children: [
-        { route: '/', dataPath: '/', template: './template/Home/index' },
-        {
-          route: '/components/:contentName',
-          dataPath: '/components/:contentName',
-          template: ComponentDoc,
-        },
-        { route: '/cases/about', dataPath: '/cases/about', template: Article },
-        { route: '/cases/help', dataPath: '/cases/help', template: Article },
-        { route: '/cases/full', dataPath: '/cases/full', template: Article },
-        {
-          route: '/cases/splicing',
-          dataPath: '/cases/splicing',
-          template: './template/Splicing/index',
-        },
-        {
-          route: '/language/:contentName',
-          dataPath: '/language/:contentName',
-          template: Article,
-        },
+      path: '/',
+      component: './template/Layout/index',
+      indexRoute: { component: './template/Home/index' },
+      childRoutes: [
+        { path: '/components/:contentName', component: ComponentDoc },
+        { path: '/cases/about', component: Article },
+        { path: '/cases/help', component: Article },
+        { path: '/cases/full', component: Article },
+        { path: '/cases/splicing', component: './template/Splicing/index' },
+        { path: '/language/:contentName', component: Article },
       ],
     },
-    {
-      route: '/templates/',
-      dataPath: '/templates/',
-      template: './template/Templates/index',
-    },
+    { path: '/templates/', component: './template/Templates/index' },
   ],
 };

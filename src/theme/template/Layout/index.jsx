@@ -10,7 +10,7 @@ class Layout extends React.Component {
 
   render() {
     const path = this.props.routes[1].path;
-    let pathKey = path.split('/')[1];
+    let pathKey = path && path.split('/')[1];
     const indexOr404 = path === '*' ? '404' : 'index';
     const key = pathKey ? 'page' : indexOr404;
     const children = key === 'index' || path === '*' ?
@@ -35,7 +35,7 @@ class Layout extends React.Component {
 
 export default Layout;
 
-export function collect(nextProps, c, callback) {
+/*export function collect(nextProps, c, callback) {
   Layout.defaultProps = Object.assign({}, Layout.defaultProps, nextProps);
   callback(null, Layout);
-}
+}*/

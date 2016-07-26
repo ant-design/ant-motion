@@ -11,7 +11,7 @@
   },
   "devDependencies": {
     "react-copy-to-clipboard": "~4.2.0",
-    "bisheng": "0.8.0-beta.2",
+    "bisheng": "~0.9.0",
     "bisheng-plugin-description": "^0.1.0",
     "bisheng-plugin-react": "^0.1.0",
     "bisheng-plugin-toc": "0.2.0",
