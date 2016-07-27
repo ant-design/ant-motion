@@ -3,7 +3,7 @@ import React, { PropTypes } from 'react';
 import { Input, Button, Icon } from 'antd';
 import './text.less';
 
-import { getURLData } from '../utils';
+import { ping, getURLData } from '../utils';
 
 class TextController extends React.Component {
   constructor() {
@@ -13,6 +13,24 @@ class TextController extends React.Component {
     [
       'getTextContent',
     ].forEach((method) => this[method] = this[method].bind(this));
+  }
+
+  componentDidUpdate() {
+    const links = Array.apply(null, document.querySelectorAll('.internal-link'));
+    if (links.length === 0) {
+      return;
+    }
+    const checkImgUrl = 'http://alipay-rmsdeploy-dev-image.oss-cn-hangzhou-zmf.aliyuncs.com' +
+      '/rmsportal/JdVaTbZzPxEldUi.png';
+    this.pingTimer = ping(checkImgUrl, status => {
+      if (status === 'responded') {
+        links.forEach(link => (link.style.display = 'initial'));
+      }
+    });
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.pingTimer);
   }
 
   clickMake = () => {
@@ -69,7 +87,7 @@ class TextController extends React.Component {
             {_data.remark ? <span className="remark">{_data.remark}</span> : null}
             {key.match(/(img|logo)/i) ?
             <a href="http://site.alipay.net/xingmin.zhu/toast/"
-              target="_blank" className="upload"
+              target="_blank" className="upload internal-link"
             >
               上传图片
             </a> : null}

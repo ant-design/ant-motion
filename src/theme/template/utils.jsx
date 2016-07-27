@@ -29,17 +29,3 @@ export function getMenuItems(data) {
   return menuItems;
 }
 
-export function ping(url, callback) {
-  const img = new Image();
-  let done;
-  const finish = (status) => {
-    if (!done) {
-      done = true;
-      img.src = '';
-      callback(status);
-    }
-  };
-  img.onload = () => finish('responded');
-  img.onerror = () => finish('error');
-  img.src = url;
-}
