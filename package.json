@@ -38,7 +38,7 @@
     "start": "bisheng start",
     "deploy": "bisheng gh-pages",
     "pre-deploy": "mkdir -p _site && cp CNAME _site",
-    "just-deploy": "tnpm run pre-deploy && NODE_ENV=NOTHING bisheng gh-pages -c ./bisheng.config.js",
+    "just-deploy": "tnpm run pre-deploy && bisheng gh-pages -c ./bisheng.config.js",
     "lint": "eslint ./src",
     "eslint-fix": "eslint --fix ./src",
     "test": "echo \"Error: no test specified\" && exit 1"

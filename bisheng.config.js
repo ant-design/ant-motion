@@ -15,5 +15,11 @@ module.exports = {
     'bisheng-plugin-antd',
     //'./src/bisheng-plugin-antm',
   ],
+  webpackConfig(config) {
+    config.resolve.alias = {
+      'react-router': 'react-router/umd/ReactRouter',
+    };
+    return config;
+  },
   port: 8111,
 };
