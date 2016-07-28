@@ -5,9 +5,9 @@
     "babel-eslint": "^6.1.2",
     "rc-animate": "~2.3.0",
     "rc-banner-anim": "~0.2.11",
-    "rc-queue-anim": "~0.11.12",
+    "rc-queue-anim": "~0.12.0",
     "rc-scroll-anim": "~0.3.0",
-    "rc-tween-one": "~0.6.23"
+    "rc-tween-one": "~0.7.0"
   },
   "devDependencies": {
     "react-copy-to-clipboard": "~4.2.0",

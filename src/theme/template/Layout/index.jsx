@@ -35,7 +35,3 @@ class Layout extends React.Component {
 
 export default Layout;
 
-/*export function collect(nextProps, c, callback) {
-  Layout.defaultProps = Object.assign({}, Layout.defaultProps, nextProps);
-  callback(null, Layout);
-}*/
