@@ -35,8 +35,6 @@ export function mergeURLDataToConfig(data, config) {
   return data;
 }
 
-
-
 export function ping(url, callback) {
   const img = new Image();
   let done;

@@ -1,6 +1,6 @@
 const component = require('./index.jsx');
 const templateStr = require('!raw!./index.jsx');
-const less = require("!raw!./index.less");
+const less = require('!raw!./index.less');
 export default {
   src: 'https://zos.alipayobjects.com/rmsportal/chnhazooyzrjWSv.jpg',
   component,
