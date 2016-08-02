@@ -78,7 +78,7 @@ class Home extends React.Component {
           <Link to="/cases/splicing" key="cases">首页拼接</Link>
           <p key="github-btn">
             <iframe
-              src={`https://ghbtns.com/github-btn.html?user=ant-motion&repo=ant-motion&type=star&count=true`}
+              src={`https://ghbtns.com/github-btn.html?user=ant-design&repo=ant-motion&type=star&count=true`}
               frameBorder="0" scrolling="0" width="98px" height="20px"
             />
           </p>
