@@ -51,6 +51,9 @@ Banner.propTypes = {
 
 Banner.defaultProps = {
   className: 'banner0',
+  style: {
+    height: '100%',
+  },
   dataSource: {
     block1: {
       logo: 'https://zos.alipayobjects.com/rmsportal/glzXQktozLMgGtE.png',

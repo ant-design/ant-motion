@@ -16,6 +16,9 @@ class Content extends React.Component {
 
   static defaultProps = {
     className: 'content2',
+    style: {
+      height: '100%',
+    },
     dataSource: {
       title: {
         title: '蚂蚁金融云提供专业的服务',

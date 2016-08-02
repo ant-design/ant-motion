@@ -1,7 +1,11 @@
 const component = require('./index.jsx');
+const templateStr = require('!raw!./index.jsx');
+const less = require('!raw!./index.less');
 export default {
   src: 'https://zos.alipayobjects.com/rmsportal/PEXAhbheOHVTyfM.jpg',
   component,
+  templateStr,
+  less,
   text: '带信息或链接的尾页',
   dataSource: [
     {
@@ -92,10 +96,10 @@ export default {
         content: {
           name: '链接Icon',
           remark: '与下面的链接地址相对应。',
-          value: `https://zos.alipayobjects.com/rmsportal/IiCDSwhqYwQHLeU.svg\n
-          https://zos.alipayobjects.com/rmsportal/AXtqVjTullNabao.svg\n
-          https://zos.alipayobjects.com/rmsportal/fhJykUTtceAhYFz.svg\n
-          https://zos.alipayobjects.com/rmsportal/IDZTVybHbaKmoEA.svg`,
+          value: `https://zos.alipayobjects.com/rmsportal/IiCDSwhqYwQHLeU.svg
+https://zos.alipayobjects.com/rmsportal/AXtqVjTullNabao.svg
+https://zos.alipayobjects.com/rmsportal/fhJykUTtceAhYFz.svg
+https://zos.alipayobjects.com/rmsportal/IDZTVybHbaKmoEA.svg`,
         },
         contentLink: {
           name: '链接地址',

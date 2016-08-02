@@ -16,6 +16,9 @@ class Content extends React.Component {
 
   static defaultProps = {
     className: 'content0',
+    style: {
+      height: '50%',
+    },
     dataSource: {
       block1: {
         img: 'https://zos.alipayobjects.com/rmsportal/nLzbeGQLPyBJoli.png',

@@ -13,6 +13,9 @@ class Footer extends React.Component {
 
   static defaultProps = {
     className: 'footer0',
+    style: {
+      height: 80,
+    },
     dataSource: {
       copyright: {
         content: 'Copyright © 2016 The Project by <a href="#">Ant Motion</a>. All Rights Reserved',

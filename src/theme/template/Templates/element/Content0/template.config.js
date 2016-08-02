@@ -1,7 +1,11 @@
 const component = require('./index.jsx');
+const templateStr = require('!raw!./index.jsx');
+const less = require('!raw!./index.less');
 export default {
   src: 'https://zos.alipayobjects.com/rmsportal/CXrFvvZqkMwMHZo.jpg',
   component,
+  templateStr,
+  less,
   text: '产品的特性介绍模块(图左)',
   dataSource: [
     {

@@ -171,19 +171,16 @@ export default class Templates extends React.Component {
     // 判断其它里的；
     other.map(item => {
       switch (item) {
-        case 'fixed':
-        {
+        case 'fixed': {
           return;
         }
-        case 'point':
-        {
-          const Point = require('./Point');
+        case 'point': {
+          const Point = require('./other/Point');
           this.listPoint = true;
           children.push(<Point key="list" data={data} ref="list" />);
           break;
         }
-        case 'full':
-        {
+        case 'full': {
           this.scrollScreen = true;
           break;
         }
@@ -193,6 +190,7 @@ export default class Templates extends React.Component {
   };
 
   onMaskClose = () => {
+    $('html').attr('style', '');
     this.setState({
       showMask: false,
       currentKey: null,
@@ -236,7 +234,7 @@ export default class Templates extends React.Component {
     return (<div className="templates-wrapper">
       {children}
       {!mode ? [overlayChildren, textChildren, maskChildren] : null}
-      <NavController key="nav" />
+      <NavController key="nav" config={this.config}/>
     </div>);
   }
 }

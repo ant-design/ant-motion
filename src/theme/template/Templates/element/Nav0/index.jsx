@@ -10,6 +10,7 @@ class Header extends React.Component {
     const props = { ...this.props };
     delete props.dataSource;
     delete props.name;
+
     return (<TweenOne
       component="header"
       animation={{ opacity: 0, type: 'from' }}
@@ -24,7 +25,7 @@ class Header extends React.Component {
         animation={{ x: 30, type: 'from', ease: 'easeOutQuad' }}
       >
         <Menu mode="horizontal" defaultSelectedKeys={["a"]}
-          style={{ lineHeight: `${this.props.style.height - 2}px` }}>
+          style={{ lineHeight: `${parseFloat(this.props.style.height) - 2}px` }}>
           <Item key="a">{menu1}</Item>
           <Item key="b">{menu2}</Item>
           <Item key="c">{menu3}</Item>
@@ -44,6 +45,9 @@ Header.propTypes = {
 
 Header.defaultProps = {
   className: 'header0',
+  style: {
+    height: 64,
+  },
   dataSource: {
     block1: {
       logo: 'https://os.alipayobjects.com/rmsportal/mlcYmsRilwraoAe.svg',

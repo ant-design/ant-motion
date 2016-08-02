@@ -5,6 +5,7 @@ import CopyToClipboard from 'react-copy-to-clipboard';
 import scrollEvent from 'rc-scroll-anim/lib/EventDispatcher';
 import { currentScrollTop } from 'rc-scroll-anim/lib/util';
 import { getURLData } from '../utils';
+import saveJsZip from './saveJsZip';
 import './Nav.less';
 const confirm = Modal.confirm;
 const $ = window.$;
@@ -37,7 +38,7 @@ class NavController extends React.Component {
     this.setState({ defaultValue });
   }
 
-  componentWillUnmount(){
+  componentWillUnmount() {
     scrollEvent.removeEventListener('scroll', this.scrollEvent);
   }
 
@@ -142,7 +143,7 @@ class NavController extends React.Component {
   render() {
     const className = 'tool-nav';
     return (
-      <TweenOne animation={{ y: 64, type: 'from' }} {...this.props}>
+      <TweenOne animation={{ y: 64, type: 'from' }} className={this.props.className}>
         <TweenOne animation={{ y: this.state.show ? 0 : 64 }}
           className={`${className}-bar`}
         >
@@ -163,7 +164,8 @@ class NavController extends React.Component {
                 {!this.state.mode ? '编辑模式' : '预览模式'}
               </Button>
             </li>
-            <li><Button type="primary" onClick={this.makePageURL}>生成页面</Button></li>
+            <li><Button type="primary" onClick={this.makePageURL}>生成预览</Button></li>
+            <li><Button type="primary" onClick={() => {saveJsZip(this.props.config)}}>保存代码</Button></li>
           </ul>
         </TweenOne>
         <div className={`${className}-icon`}
@@ -177,6 +179,7 @@ class NavController extends React.Component {
 }
 NavController.propTypes = {
   className: PropTypes.string,
+  config: PropTypes.object,
 };
 
 NavController.defaultProps = {

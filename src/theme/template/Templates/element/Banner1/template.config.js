@@ -1,7 +1,11 @@
 const component = require('./index.jsx');
+const templateStr = require('!raw!./index.jsx');
+const less = require("!raw!./index.less");
 export default {
   src: 'https://zos.alipayobjects.com/rmsportal/chnhazooyzrjWSv.jpg',
   component,
+  templateStr,
+  less,
   text: '多张需要显示的背景图的产品主页的首屏',
   dataSource: [
     {

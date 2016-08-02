@@ -14,6 +14,9 @@ class Footer extends React.Component {
 
   static defaultProps = {
     className: 'footer1',
+    style: {
+      height: 400,
+    },
     dataSource: {
       logo: {
         logo: 'https://zos.alipayobjects.com/rmsportal/qqaimmXZVSwAhpL.svg',
@@ -36,9 +39,9 @@ class Footer extends React.Component {
       },
       block4: {
         title: '关注',
-        content: `https://zos.alipayobjects.com/rmsportal/IiCDSwhqYwQHLeU.svg\n
-          https://zos.alipayobjects.com/rmsportal/AXtqVjTullNabao.svg\n
-          https://zos.alipayobjects.com/rmsportal/fhJykUTtceAhYFz.svg\n
+        content: `https://zos.alipayobjects.com/rmsportal/IiCDSwhqYwQHLeU.svg
+          https://zos.alipayobjects.com/rmsportal/AXtqVjTullNabao.svg
+          https://zos.alipayobjects.com/rmsportal/fhJykUTtceAhYFz.svg
           https://zos.alipayobjects.com/rmsportal/IDZTVybHbaKmoEA.svg`,
         contentLink: '#\n#\n#\n#',
       },

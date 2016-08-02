@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'rc-scroll-anim';
-require('./assets/point.less');
+require('../assets/point.less');
 
 export default class Point extends React.Component{
   static contextTypes = {

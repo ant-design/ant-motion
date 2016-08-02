@@ -17,6 +17,9 @@ class Content extends React.Component {
 
   static defaultProps = {
     className: 'content3',
+    style: {
+      height: '100%',
+    },
     dataSource: {
       block1: {
         video: 'https://os.alipayobjects.com/rmsportal/EejaUGsyExkXyXr.mp4',

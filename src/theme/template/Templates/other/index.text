@@ -1,0 +1,20 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { scrollScreen } from 'rc-scroll-anim';
+import './less/common.less';
+$import
+$props
+
+export default class Home extends React.Component {
+  componentDidMount() {
+  }
+
+  render() {
+    $children
+    return (
+      <div className="templates-wrapper">
+        {children}
+      </div>
+    );
+  }
+}

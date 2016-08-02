@@ -45,7 +45,7 @@ class Header extends React.Component {
         animation={{ x: 30, delay: 100, type: 'from', ease: 'easeOutQuad' }}
       >
         <Menu mode="horizontal" defaultSelectedKeys={["a"]}
-          style={{ lineHeight: `${this.props.style.height - 2}px` }}
+          style={{ lineHeight: `${parseFloat(this.props.style.height) - 2}px` }}
         >
           <Item key="a">{menu1}</Item>
           <Item key="b">{menu2}</Item>
@@ -66,6 +66,9 @@ Header.propTypes = {
 
 Header.defaultProps = {
   className: 'header1',
+  style: {
+    height: 64,
+  },
   dataSource: {
     block1: {
       logo: 'https://os.alipayobjects.com/rmsportal/mlcYmsRilwraoAe.svg',
