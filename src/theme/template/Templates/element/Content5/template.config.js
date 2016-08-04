@@ -36,7 +36,7 @@ export default {
           name: '图片地址',
           value: 'https://zos.alipayobjects.com/rmsportal/VHGOVdYyBwuyqCx.png',
         },
-      }
+      },
     },
     {
       key: 'block1',
