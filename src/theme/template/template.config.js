@@ -7,6 +7,7 @@ const Content1 = require('./Templates/element/Content1/template.config.js');
 const Content2 = require('./Templates/element/Content2/template.config.js');
 const Content3 = require('./Templates/element/Content3/template.config.js');
 const Content4 = require('./Templates/element/Content4/template.config.js');
+const Content5 = require('./Templates/element/Content5/template.config.js');
 const Footer0 = require('./Templates/element/Footer0/template.config.js');
 const Footer1 = require('./Templates/element/Footer1/template.config.js');
 
@@ -38,11 +39,7 @@ export default {
       Content2,
       Content3,
       Content4,
-      {
-        disabled: true,
-        src: 'https://zos.alipayobjects.com/rmsportal/yNbeUIWcDNZFKTY.jpg',
-        text: '产品的一个功能模块有多个特性介绍点',
-      },
+      Content5,
       { disabled: true, src: 'https://zos.alipayobjects.com/rmsportal/CfSeDOXHJzJuPbz.jpg' },
       { disabled: true, src: 'https://zos.alipayobjects.com/rmsportal/MnbozfSRmOwdxvH.jpg' },
       { disabled: true, src: 'https://zos.alipayobjects.com/rmsportal/cMigmCVGBaJkuYG.jpg' },

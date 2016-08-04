@@ -66,18 +66,6 @@ Header.propTypes = {
 
 Header.defaultProps = {
   className: 'header1',
-  style: {
-    height: 64,
-  },
-  dataSource: {
-    block1: {
-      logo: 'https://os.alipayobjects.com/rmsportal/mlcYmsRilwraoAe.svg',
-      menu1: '导航一',
-      menu2: '导航二',
-      menu3: '导航三',
-      menu4: '导航四',
-    }
-  },
 };
 
 export default Header;

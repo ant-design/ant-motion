@@ -17,16 +17,6 @@ class Content extends React.Component {
 
   static defaultProps = {
     className: 'content3',
-    style: {
-      height: '100%',
-    },
-    dataSource: {
-      block1: {
-        video: 'https://os.alipayobjects.com/rmsportal/EejaUGsyExkXyXr.mp4',
-        title: '蚂蚁金融云提供专业的服务',
-        content: '科技想象力，金融创造力',
-      },
-    },
   };
 
 

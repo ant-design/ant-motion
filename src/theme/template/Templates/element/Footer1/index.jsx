@@ -14,42 +14,6 @@ class Footer extends React.Component {
 
   static defaultProps = {
     className: 'footer1',
-    style: {
-      height: 400,
-    },
-    dataSource: {
-      logo: {
-        logo: 'https://zos.alipayobjects.com/rmsportal/qqaimmXZVSwAhpL.svg',
-        content: 'A efficient motion design solutions',
-      },
-      block1: {
-        title: '产品',
-        content: '产品更新记录\nAPI文档\n快速入门\n参考指南',
-        contentLink: '#\n#\n#\n#',
-      },
-      block2: {
-        title: '关于',
-        content: 'FAQ\n联系我们',
-        contentLink: '#\n#',
-      },
-      block3: {
-        title: '资源',
-        content: 'Ant Design\nAnt Design Mobile\nAnt Cool\nAntD Library',
-        contentLink: '#\n#\n#\n#',
-      },
-      block4: {
-        title: '关注',
-        content: `https://zos.alipayobjects.com/rmsportal/IiCDSwhqYwQHLeU.svg
-          https://zos.alipayobjects.com/rmsportal/AXtqVjTullNabao.svg
-          https://zos.alipayobjects.com/rmsportal/fhJykUTtceAhYFz.svg
-          https://zos.alipayobjects.com/rmsportal/IDZTVybHbaKmoEA.svg`,
-        contentLink: '#\n#\n#\n#',
-      },
-      copyright: {
-        content: 'Copyright © 2016 The Project by <a href="#">Ant Motion</a>.' +
-        ' All Rights Reserved',
-      },
-    },
   };
 
   getLiChildren = () => {

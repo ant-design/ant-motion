@@ -130,7 +130,7 @@ const setChildrenToIndex = () => {
 
 export default function saveJsZip(config) {
   const pageData = getURLData('t').split(',');
-  const otherData = getURLData('o').split(',');
+  const otherData = (getURLData('o') || '').split(',');
   let isNav;
   pageData.forEach(key => {
     const keys = key.split('_');

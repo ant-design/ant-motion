@@ -16,17 +16,6 @@ class Content extends React.Component {
 
   static defaultProps = {
     className: 'content0',
-    style: {
-      height: '50%',
-    },
-    dataSource: {
-      block1: {
-        img: 'https://zos.alipayobjects.com/rmsportal/nLzbeGQLPyBJoli.png',
-        title: '企业资源管理',
-        content: '云资源集中编排、弹性伸缩、持续发布和部署，高可用及容灾。' +
-        '云资源集中编排、弹性伸缩、持续发布和部署，高可用及容灾。',
-      },
-    },
   };
 
 

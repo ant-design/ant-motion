@@ -61,7 +61,7 @@ React.render(<TweenOneGroup>
 | repeat  | number   | 0    | 重复次数，-1 为无限重复播放 |
 | repeatDelay | number | 0 | 每次重复揪放开始时延时 |
 | yoyo   | boolean | false | 重复时执行返回动画 |
-| ease   | string | `easeInOutQuad` | 缓动参数 |
+| ease   | string | `easeInOutQuad` | 缓动参数. [参数名称参考](http://easings.net/zh-cn) |
 | bezier | object | null | 贝赛尔曲线动画  |
 
 > `animation` 等于 `array` 时为时间轴动画

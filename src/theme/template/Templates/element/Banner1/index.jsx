@@ -63,29 +63,6 @@ Banner.propTypes = {
 
 Banner.defaultProps = {
   className: 'banner1',
-  style: {
-    height: '100%',
-  },
-  dataSource: {
-    block1: {
-      logo: 'https://zos.alipayobjects.com/rmsportal/HqnZZjBjWRbjyMr.png',
-      content: '一个高效的页面动画解决方案',
-      button: 'Learn More',
-      bgImg: 'https://zos.alipayobjects.com/rmsportal/hzPBTkqtFpLlWCi.jpg',
-    },
-    block2: {
-      logo: 'https://zos.alipayobjects.com/rmsportal/HqnZZjBjWRbjyMr.png',
-      content: '一个高效的页面动画解决方案',
-      button: 'Learn More',
-      bgImg: 'https://zos.alipayobjects.com/rmsportal/xHxWkcvaIcuAdQl.jpg',
-    },
-    block3: {
-      logo: 'https://zos.alipayobjects.com/rmsportal/glzXQktozLMgGtE.png',
-      content: '一个高效的页面动画解决方案',
-      button: 'Learn More',
-      bgImg: 'https://zos.alipayobjects.com/rmsportal/gGlUMYGEIvjDOOw.jpg',
-    },
-  },
 };
 
 export default Banner;

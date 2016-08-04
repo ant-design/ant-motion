@@ -15,15 +15,6 @@ class Content extends React.Component {
 
   static defaultProps = {
     className: 'content4',
-    style: {
-      height: '100%',
-    },
-    dataSource: {
-      title: {
-        title: '客户案例',
-        content: '在这里用一段话介绍服务的案例情况',
-      },
-    },
   };
 
   getChildrenToRender = (data) => {
