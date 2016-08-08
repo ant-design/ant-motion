@@ -69,8 +69,8 @@
   var w = 100, h = 113, r = 18,
     wx = w / 2, wy = h / 2 - r, angle = 45, liArray = [], xyArray = [];
   for (var i = 0; i < 74; i++) {
-    const t = $(('<li/>')).appendTo($('#ant-motion-load ul'));
-    liArray.push(t);
+    var li = $(('<li/>')).appendTo($('#ant-motion-load ul'));
+    liArray.push(li);
     var _left = 110, _top = 110, _x, _y;
     if (i < 25) {
       _left = -wx;
@@ -94,10 +94,10 @@
       r = 14;
     }
     xyArray.push({ x: _left, y: _top });
-    t.css({ left: _left, top: _top, width: r, height: r });
+    li.css({ left: _left, top: _top, width: r, height: r });
   }
 
-  const load = $('#ant-motion-load');
+  var load = $('#ant-motion-load');
 
   function animationStart() {
     if (!load || load.css('opacity') === '0') {
@@ -122,7 +122,7 @@
           return;
         }
         liArray.forEach(function (item, i) {
-          const data = xyArray[i];
+          var data = xyArray[i];
           item.css({
             left: data.x, top: data.y, transform: 'scale(1)',
             transitionDelay: (i === xyArray.length - 1 ? 1 : i) * .005 + 's',
