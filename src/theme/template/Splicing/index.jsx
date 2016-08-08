@@ -113,6 +113,7 @@ class Splicing extends React.Component {
           leave={{ opacity: 0, duration: 300 }}
         >
           {item.name}
+          <span>({item.checkbox ? '多选' : '单选'})</span>
           {this.state.templateOptData[key] && this.state.templateOptData[key].length ?
           <div key="opt" className={`${this.props.className}-tag-wrapper`}>
             当前选择：

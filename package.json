@@ -6,7 +6,7 @@
     "rc-banner-anim": "~0.2.11",
     "rc-queue-anim": "~0.12.0",
     "rc-scroll-anim": "~0.3.0",
-    "rc-tween-one": "~0.7.0"
+    "rc-tween-one": "~0.7.2"
   },
   "devDependencies": {
     "antd": "~1.7.0",

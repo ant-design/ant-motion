@@ -12,6 +12,9 @@
   & h2 {
     font-size: 22px;
     font-weight: normal;
+    & > span {
+      font-size: 14px;
+    }
   }
   &-tag-wrapper {
     display: inline-block;
@@ -35,7 +38,7 @@
           position: absolute;
           top: -13px;
           left: -38px;
-          background:@template-text-color;
+          background: @template-text-color;
           color: @template-text-color-light;
           z-index: 50;
           height: 50px;
@@ -138,5 +141,3 @@
     margin-top: 20px;
   }
 }
-
-

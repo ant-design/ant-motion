@@ -41,7 +41,7 @@ class Home extends React.Component {
     this.clientHeight = window.innerHeight ||
       document.documentElement.clientHeight ||
       document.body.clientHeight;
-    let height = this.clientHeight - 199;
+    let height = this.clientHeight - 219;
     const _h = this.clientHeight - 64 < 680 ? 680 : this.clientHeight - 64;
     height = height < 680 ? _h : height;
     const style = {
@@ -60,7 +60,7 @@ class Home extends React.Component {
 
   render() {
     return (<div
-        style={{ height: 'calc(100% - 199px)' }}
+        style={{ height: 'calc(100% - 219px)' }}
         className="banner"
       >
         <div style={this.state.style}>
