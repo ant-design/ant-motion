@@ -12,7 +12,8 @@ export default {
       key: 'height',
       the: 'style',
       name: '区块高度',
-      value: 80,
+      value: '80px',
+      remark: '请填写上单位 "px" 或 "%" ',
     },
     {
       key: 'copyright',

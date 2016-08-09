@@ -51,7 +51,7 @@ function mergeChildren(prev, next) {
 }
 
 
-export default class ImgSort extends React.Component {
+export default class ListSort extends React.Component {
   static contextTypes = {
     component: React.PropTypes.any,
     components: React.PropTypes.array,
@@ -273,7 +273,7 @@ export default class ImgSort extends React.Component {
 
   sortArray = (_array, nextNum, num) => {
     const current = _array[num];
-    const array = _array;
+    const array = _array.map(item => item);
     array.splice(num, 1);
     array.splice(nextNum, 0, current);
     return array;

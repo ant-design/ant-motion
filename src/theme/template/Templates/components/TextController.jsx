@@ -118,6 +118,7 @@ class TextController extends React.Component {
     return (<li key={i}>
       <h4>
         {data.name}
+        {data.remark ? <span className="remark">{data.remark}</span> : null}
       </h4>
       <div className="data-table-mask">
         {child}

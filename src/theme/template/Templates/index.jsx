@@ -74,7 +74,11 @@ export default class Templates extends React.Component {
       }
     });
     if (this.navAttrHeight && !attrHeightBool) {
-      style.height = `calc(100% - ${this.navAttrHeight}px)`;
+      if (style.height.match(/[%|em]/g)) {
+        style.height = `calc(${style.height} - ${parseFloat(this.navAttrHeight)}px)`;
+      } else {
+        style.height = `${parseFloat(style.height) - parseFloat(this.navAttrHeight)}px`
+      }
       this.navAttrHeight = null;
     }
     const dataSource = {};
@@ -171,16 +175,19 @@ export default class Templates extends React.Component {
     // 判断其它里的；
     other.map(item => {
       switch (item) {
-        case 'fixed': {
+        case 'fixed':
+        {
           return;
         }
-        case 'point': {
+        case 'point':
+        {
           const Point = require('./other/Point');
           this.listPoint = true;
           children.push(<Point key="list" data={data} ref="list" />);
           break;
         }
-        case 'full': {
+        case 'full':
+        {
           this.scrollScreen = true;
           break;
         }
@@ -229,12 +236,12 @@ export default class Templates extends React.Component {
       component=""
       key="mask"
     >
-      {showMask ? <Mask key="mask" top={overlay.top} height={overlay.height} onClick={this.onMaskClose}/>: null}
+      {showMask ? <Mask key="mask" top={overlay.top} height={overlay.height} onClick={this.onMaskClose} />: null}
     </TweenOneGroup>);
     return (<div className="templates-wrapper">
       {children}
       {!mode ? [overlayChildren, textChildren, maskChildren] : null}
-      <NavController key="nav" config={this.config}/>
+      <NavController key="nav" config={this.config} />
     </div>);
   }
 }

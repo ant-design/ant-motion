@@ -9,7 +9,7 @@ import './index.less';
 class Banner extends React.Component {
   render() {
     const { block1 } = this.props.dataSource;
-    const { logo, content, button, bgImg } = block1;
+    const { top, logo, title, content, button, bgImg } = block1;
     const props = { ...this.props };
     delete props.dataSource;
     delete props.name;
@@ -24,10 +24,15 @@ class Banner extends React.Component {
         }}
         hideProps={{ icon: { reverse: true } }}
       >
-        <QueueAnim type={['bottom', 'top']} delay={200} className={`${this.props.className}-title`}
+        <QueueAnim
+          type={['bottom', 'top']}
+          delay={200}
+          className={`${this.props.className}-title`}
           key="text"
+          style={{ top }}
         >
-          <span className="logo" key="logo"><img width="100%" src={logo} /></span>
+          {logo ? <span className="logo" key="logo"><img width="100%" src={logo} /></span> : null}
+          {title ? <h1 key="h1">{title}</h1> : null}
           <p key="content">{content}</p>
           <Button type="ghost" key="button">{button}</Button>
         </QueueAnim>

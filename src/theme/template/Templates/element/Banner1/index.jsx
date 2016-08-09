@@ -20,7 +20,8 @@ class Banner extends React.Component {
         <QueueAnim type={['bottom','top']} delay={200} className={`${this.props.className}-title`}
           key="text"
         >
-          <span className="logo" key="logo"><img width="100%" src={item.logo} /></span>
+          {item.logo ? <span className="logo" key="logo"><img width="100%" src={item.logo} /></span> : null}
+          {item.title ? <h1 key="h1">{item.title}</h1> : null}
           <p key="content">{item.content}</p>
           <Button type="ghost" key="button">{item.button}</Button>
         </QueueAnim>
