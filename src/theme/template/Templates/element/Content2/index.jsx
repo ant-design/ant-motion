@@ -3,6 +3,7 @@ import Button from 'antd/lib/button';
 import QueueAnim from 'rc-queue-anim';
 import TweenOne from 'rc-tween-one';
 import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
+import '../../assets/content.less';
 import './index.less';
 
 class Content extends React.Component {
@@ -48,10 +49,10 @@ class Content extends React.Component {
     delete props.name;
     const titleAnim = { y: '+=30', opacity: 0, type: 'from' };
     return (
-      <div {...props} className={`${props.className}-wrapper`}>
+      <div {...props} className="content-template-wrapper">
         <OverPack
           scrollName={this.props.name}
-          className={props.className}
+          className={`content-template ${props.className}`}
           hideProps={{ h1: { reverse: true }, p: { reverse: true } }}
         >
           <TweenOne key="h1" animation={titleAnim} component="h1">

@@ -8,6 +8,7 @@ const Content2 = require('./Templates/element/Content2/template.config.js');
 const Content3 = require('./Templates/element/Content3/template.config.js');
 const Content4 = require('./Templates/element/Content4/template.config.js');
 const Content5 = require('./Templates/element/Content5/template.config.js');
+const Content6 = require('./Templates/element/Content6/template.config.js');
 const Footer0 = require('./Templates/element/Footer0/template.config.js');
 const Footer1 = require('./Templates/element/Footer1/template.config.js');
 
@@ -40,7 +41,7 @@ export default {
       Content3,
       Content4,
       Content5,
-      { disabled: true, src: 'https://zos.alipayobjects.com/rmsportal/CfSeDOXHJzJuPbz.jpg' },
+      Content6,
       { disabled: true, src: 'https://zos.alipayobjects.com/rmsportal/MnbozfSRmOwdxvH.jpg' },
       { disabled: true, src: 'https://zos.alipayobjects.com/rmsportal/cMigmCVGBaJkuYG.jpg' },
       { disabled: true, src: 'https://zos.alipayobjects.com/rmsportal/VKeYAOSRQVtMccj.jpg' },

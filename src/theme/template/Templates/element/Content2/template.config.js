@@ -12,7 +12,7 @@ export default {
       key: 'height',
       the: 'style',
       name: '区块高度',
-      value: '101%',
+      value: '100%',
     },
     {
       key: 'title',

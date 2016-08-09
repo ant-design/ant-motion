@@ -1,0 +1,52 @@
+@import '../../../../static/custom.less';
+
+@content: content6;
+.@{content} {
+  & > h1, & > p {
+    text-align: center;
+    position: relative;
+    top: 15%;
+  }
+  &-tag {
+    & i {
+      width: 14px;
+      height: 14px;
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 5px;
+    }
+  }
+  .ant-tabs-bar{
+    width: 40%;
+    margin: auto;
+  }
+  .ant-tabs {
+    .ant-tabs-nav {
+      float: none;
+      text-align: center;
+    }
+  }
+  &-tabs{
+    position: relative;
+    top:15%;
+  }
+  &-text, &-img{
+    width: 50%;
+    display: inline-block;
+  }
+  &-text{
+    padding: 10%;
+    vertical-align: top;
+    & h3{
+      margin: 10px auto;
+    }
+    & p{
+      margin-bottom: 30px;
+    }
+  }
+  &-img{
+    vertical-align: top;
+    padding: 5%;
+  }
+}
+

@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import Button from 'antd/lib/button';
 import TweenOne, { TweenOneGroup } from 'rc-tween-one';
 import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
+import '../../assets/content.less';
 import './index.less';
 
 class Content extends React.Component {
@@ -43,10 +44,10 @@ class Content extends React.Component {
     delete props.dataSource;
     delete props.name;
     return (
-      <div {...props} className={`${props.className}-wrapper`}>
+      <div {...props} className="content-template-wrapper">
         <OverPack
           scrollName={this.props.name}
-          className={props.className}
+          className={`content-template ${props.className}`}
           hideProps={{ h1: { reverse: true }, p: { reverse: true } }}
         >
           <TweenOne
