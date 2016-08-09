@@ -34,7 +34,7 @@ export default {
       value: {
         tag: {
           name: '标签',
-          value: 'PHONE'
+          value: 'PHONE',
         },
         icon: {
           name: 'icon',
@@ -62,7 +62,7 @@ export default {
       value: {
         tag: {
           name: '标签',
-          value: 'TABLET'
+          value: 'TABLET',
         },
         icon: {
           name: 'icon',
@@ -90,7 +90,7 @@ export default {
       value: {
         tag: {
           name: '标签',
-          value: 'DESKTOP'
+          value: 'DESKTOP',
         },
         icon: {
           name: 'icon',
