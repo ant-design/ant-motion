@@ -69,7 +69,7 @@
   var w = 100, h = 113, r = 18,
     wx = w / 2, wy = h / 2 - r, angle = 45, liArray = [], xyArray = [];
   for (var i = 0; i < 74; i++) {
-    var li = $(('<li/>')).appendTo($('#ant-motion-load ul'));
+    var li = $('<li/>').appendTo($('#ant-motion-load ul'));
     liArray.push(li);
     var _left = 110, _top = 110, _x, _y;
     if (i < 25) {
