@@ -3,7 +3,7 @@
   "version": "1.1.0",
   "dependencies": {
     "rc-animate": "~2.3.0",
-    "rc-banner-anim": "~0.2.11",
+    "rc-banner-anim": "~0.3.0",
     "rc-queue-anim": "~0.12.0",
     "rc-scroll-anim": "~0.3.0",
     "rc-tween-one": "~0.8.0"

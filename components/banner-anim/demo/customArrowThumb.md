@@ -11,6 +11,7 @@ import BannerAnim from 'rc-banner-anim';
 import TweenOne, { TweenOneGroup } from 'rc-tween-one';
 import 'rc-banner-anim/assets/index.css';
 const { Element, Arrow, Thumb } = BannerAnim;
+const BgElement = Element.BgElement;
 class Demo extends React.Component {
   constructor() {
     super(...arguments);
@@ -101,15 +102,31 @@ class Demo extends React.Component {
       <BannerAnim onChange={this.onChange} onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave} prefixCls="custom-arrow-thumb">
         <Element key="aaa"
           prefixCls="banner-user-elem"
-          img={this.imgArray[0]}
         >
+          <BgElement
+            key="bg"
+            className="bg"
+            style={{
+              backgroundImage: `url(${this.imgArray[0]})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+            }}
+          />
           <TweenOne className="banner-user-title" animation={{ y: 30, opacity: 0, type: 'from' }}>Ant Motion Demo</TweenOne>
           <TweenOne className="banner-user-text" animation={{ y: 30, opacity: 0, type: 'from', delay: 100 }}>Image source from the network Demo, please upload pictures to replace.Image source </TweenOne>
         </Element>
         <Element key="bbb"
           prefixCls="banner-user-elem"
-          img={this.imgArray[1]}
         >
+          <BgElement
+            key="bg"
+            className="bg"
+            style={{
+              backgroundImage: `url(${this.imgArray[1]})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+            }}
+          />
           <TweenOne className="banner-user-title" animation={{ y: 30, opacity: 0, type: 'from' }}>Ant Motion Demo</TweenOne>
           <TweenOne className="banner-user-text" animation={{ y: 30, opacity: 0, type: 'from', delay: 100 }}>Image source from the network Demo, please upload pictures to replace.Image source </TweenOne>
         </Element>

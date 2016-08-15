@@ -48,9 +48,9 @@ ReactDOM.render(<BannerAnim>
 | autoPlay |      boolean    |      `false`  | 自动播放 |
 | autoPlaySpeed |  number    |    5000       | 自动播放的时间 |
 | onChange |     func        |    -          |  幻灯片变换时调用，返回 onChange(`before` 或 `after`, 当前显示的位置) |
-| bgParallaxAll |  object    |   null        |  同 `Element` 里的 `bgParallax`, 这个设置后所有的子级都跟滚动条做视差 |
 | prefixCls |    string      |   -           |  自定义样式 |
 | children |  react.component|   -           | `Element`(必须), `Arrow`, `Thumb` |
+| component | string         |      `div`    | 组件标签  |
 
 ### Element 
 
@@ -60,20 +60,26 @@ ReactDOM.render(<BannerAnim>
 |----------|-----------------|--------------|-----------------------|
 | key      |     string      |      -       |  必须                 |
 | prefixCls |     string      |   -           |  自定义样式 |
-| bg      |     string      |    null      |  图片或视频的地址          |
-| bgType  |      string     |    `img`     |  设置 bg 的属性是视频或图片，如果是视频，格式: `video/mp4`    |
-| bgParallax |  object      |   null       |  如: { y: [0, 300] }, 数组里的第一个参数为滚动条在顶部时 bg 的位置，第二个为当前 banner 到顶部并看不见了的时候的位置 |
-| bgPrefixCls | string      |   -          | bg 的自定义样式 |
 | followParallax | object   |  null        | 跟随鼠标上下或左右晃动效果 |
+| component | string         |      `div`    | 组件标签  |
 
 #### followParallax is object
 |参数        |类型             |默认     |详细             |
 |----------|-----------------|--------------|-----------------------|
 | delay    |   number        |  null        | 必须，在单个区块进入后延迟开启鼠标效果，比如子级是 tween-one 时，需要等 tween-one 的动画结束后再执行鼠标效果，不然两者会冲突 |
-| data     | array           |  null        | 数组里的内容: { key: string, scale: number, type: array or string, bgPosition: string }; key: 子级的 key, 注：banner bg 的 key 是 `bgElem`, scale: 晃动时的值，banner 的宽或高的一半的比例，如 banner 的宽是 400， scale 为 0.2, 为 400 / 2 * 0.2 那区域值为 -40 -- 40, type: style 里的样式 或 `x` `y`, bgPosition: 初始背景图片的坐标，只在 type 为 backgroundPosition 时生效，默认为 50%, 详细查看 鼠标跟随例子 |
+| data     | array           |  null        | 数组里的内容: { key: string, value: number, type: array or string, bgPosition: string }; key: 子级的 key, 注：banner bg 的 key 是 `bgElem`; value: 晃动时的值，如果值为 20, 那左右晃动的值为：最左边 -20, 最右边 20; type: style 里的样式 或 `x` `y`; bgPosition: 初始背景图片的坐标，只在 type 为 backgroundPosition 时生效，默认为 50%, 详细查看 鼠标跟随例子 |
 | ease | string        | null         | 如果是 `true`, 缓动效果是 `easeInOutQuad`, 鼠标移动时, 元素是否加入缓动效果。  |
 | minMove | number     | null        | 区域为 0 - 1, easeInOutQuad(startMousePosition, minMove, 1, currentMousePosition); 在有缓动时，鼠标移动时，最小移动的值，如果为 0，鼠标移动时不会移动，移动结束后触发动画， 最大值为 1。 |
 
+### Element.BgElement
+
+|参数        |类型             |默认     |详细             |
+|----------|-----------------|--------------|-----------------------|
+| key      |     string      |      -       |  必须                 |
+| className |     string      |   -           |  样式 |
+| scrollParallax | object   |  null        | { y: 100 }, 向下滚动时, 元素出顶部的到达值。 |
+| videoResize | boolean         |      `true`    | 如果子级元素为 video 时，自动响应窗口大小。  |
+| component | string         |      `div`    | 组件标签  |
 
 ### Arrow or Thumb
 

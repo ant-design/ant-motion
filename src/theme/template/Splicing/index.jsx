@@ -1,6 +1,7 @@
 import React from 'react';
 import webData from './../template.config.js';
 import SplicingAutoResponsive from './SplicingAutoResponsive';
+import DocumentTitle from 'react-document-title';
 import { TweenOneGroup } from 'rc-tween-one';
 import Tag from 'antd/lib/tag';
 import Button from 'antd/lib/button';
@@ -141,7 +142,10 @@ class Splicing extends React.Component {
     const link = encodeURIComponent(`t=${this.state.templateIds.join(',')}${
        this.state.checkboxIds.length ? `&o=${this.state.checkboxIds.join(',')}`: ''
       }`.trim());
-    return (<div className={`${this.props.className}-wrapper`}>
+    return (<DocumentTitle
+      title="自由搭配页面 - Ant Motion"
+      className={`${this.props.className}-wrapper`}
+    >
       {childrenToRender}
       <div className="bottom-btn">
         <Button type="primary" size="large" onClick={this.onCompleteClick}>选择完成</Button>
@@ -169,7 +173,7 @@ class Splicing extends React.Component {
           </div>
         </Modal>
       </div>
-    </div>)
+    </DocumentTitle>)
   }
 }
 export default Splicing;
