@@ -145,7 +145,7 @@ export default class ListSort extends React.Component {
     });
     const animation = this.children.map((item, ii) => {
       if (i === ii) {
-        return { scale: 1, boxShadow: '0 10px 10px rgba(0,0,0,0.15)' };
+        return { scale: 1.2, boxShadow: '0 10px 10px rgba(0,0,0,0.15)' };
       }
     });
     this.index = i;
