@@ -41,6 +41,7 @@
   ],
   "scripts": {
     "start": "bisheng start",
+    "site": "bisheng build -c ./bisheng.config.js",
     "deploy": "bisheng gh-pages",
     "pre-deploy": "mkdir -p _site && cp CNAME _site",
     "just-deploy": "tnpm run pre-deploy && bisheng gh-pages -c ./bisheng.config.js",
