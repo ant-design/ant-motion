@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Ant Motion - 高效的动效设计解决方案</title>
+  <link rel="stylesheet" type="text/css" href="/templates.css" />
+  <link rel="icon" href="https://os.alipayobjects.com/rmsportal/wsZosWqLAPRrORK.png" type="image/x-icon">
+  <link rel="shortcut icon" href="https://os.alipayobjects.com/rmsportal/wsZosWqLAPRrORK.png" type="image/x-icon">
+  <!--[if lt IE 10]>
+  <script
+    src="https://as.alipayobjects.com/g/component/??console-polyfill/0.2.2/index.js,es5-shim/4.1.14/es5-shim.min.js,es5-shim/4.1.14/es5-sham.min.js,html5shiv/3.7.2/html5shiv.min.js,media-match/2.0.2/media.match.min.js"></script>
+  <![endif]-->
+  <script src="https://a.alipayobjects.com/??bluebird/2.9.30/bluebird.js,jquery/jquery/1.11.1/jquery.js"></script>
+  <style>
+    #ant-motion-load {
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      -webkit-filter: url("#goo");
+      filter: url("#goo");
+      opacity: 0;
+      transition: opacity .5s;
+    }
+
+    #ant-motion-load ul {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+
+    }
+
+    #ant-motion-load ul li {
+      width: 18px;
+      height: 18px;
+      border-radius: 100%;
+      background: #6556E2;
+      position: absolute;
+      transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      left: 0;
+      top: 0;
+      transform: scale(1);
+    }
+
+    #react-content:empty + #ant-motion-load {
+      opacity: 1;
+    }
+
+
+  </style>
+</head>
+<body>
+<div id="react-content"></div>
+<div id="ant-motion-load">
+  <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+    <defs>
+      <filter id="goo">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur" />
+        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7"
+          result="goo" />
+        <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+      </filter>
+    </defs>
+  </svg>
+  <ul />
+</div>
+<script>
+  var w = 100, h = 113, r = 18,
+    wx = w / 2, wy = h / 2 - r, angle = 45, liArray = [], xyArray = [];
+  for (var i = 0; i < 74; i++) {
+    var li = $('<li/>').appendTo($('#ant-motion-load ul'));
+    liArray.push(li);
+    var _left = 110, _top = 110, _x, _y;
+    if (i < 25) {
+      _left = -wx;
+      _top = wy - r / 5 * i;
+    } else if (i < 41) {
+      angle = 45 * Math.PI / 180;
+      _left = -wx + (i - 24) * (r / 5) * Math.cos(angle);
+      _top = wy - r / 5 * 24 + (i - 24) * (r / 5) * Math.sin(angle);
+    } else if (i < 57) {
+      _x = -wx + 16 * (r / 5) * Math.cos(45 * Math.PI / 180);
+      _y = wy - r / 5 * 24 + 16 * (r / 5) * Math.sin(45 * Math.PI / 180);
+      angle = -45 * Math.PI / 180;
+      _left = _x + (i - 40) * (r / 5) * Math.cos(angle);
+      _top = _y + (i - 40) * (r / 5) * Math.sin(angle);
+    } else if (i < 73) {
+      _left = _x + 16 * (r / 5) * Math.cos(-45 * Math.PI / 180);
+      _top = ( wy - r / 5 * 24) + r / 5 * (i - 56);
+    } else {
+      _left = -25;
+      _top = 10;
+      r = 14;
+    }
+    xyArray.push({ x: _left, y: _top });
+    li.css({ left: _left, top: _top, width: r, height: r });
+  }
+
+  var load = $('#ant-motion-load');
+
+  function animationStart() {
+    if (!load || load.css('opacity') === '0') {
+      load.remove();
+      return;
+    }
+    setTimeout(function () {
+      if (load.css('opacity') === '0') {
+        load.remove();
+        return;
+      }
+      liArray.forEach(function (item, i) {
+        item.css({
+          left: 0, top: 0, transform: 'scale(0)',
+          transitionDelay: (i === xyArray.length - 1 ? 1 : i) * .005 + 's',
+          transitionTimingFunction: 'cubic-bezier(0.68, -0.55, 0.265, 1.55)',
+        });
+      });
+      setTimeout(function () {
+        if (load.css('opacity') === '0') {
+          load.remove();
+          return;
+        }
+        liArray.forEach(function (item, i) {
+          var data = xyArray[i];
+          item.css({
+            left: data.x, top: data.y, transform: 'scale(1)',
+            transitionDelay: (i === xyArray.length - 1 ? 1 : i) * .005 + 's',
+            transitionTimingFunction: 'cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+          });
+        });
+        setTimeout(animationStart, 1300);
+      }, 1300);
+    }, 100);
+  }
+  animationStart();
+</script>
+</body>
+<script src="/common.js"></script>
+<script src="/templates.js"></script>
+</html>
