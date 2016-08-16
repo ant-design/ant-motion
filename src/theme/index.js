@@ -16,6 +16,5 @@ module.exports = {
         { path: '/language/:contentName', component: Article },
       ],
     },
-    { path: '/templates/', component: './template/Templates/index' },
   ],
 };

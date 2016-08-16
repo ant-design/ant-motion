@@ -48,10 +48,6 @@ class Splicing extends React.Component {
     this.setState({ templateOptData });
   };
 
-  onOk = () => {
-    window.scrollTo(0, 0);
-  };
-
   getOptTags = (key) => (this.state.templateOptData[key] || []).map(item =>
     <Tag key={item.key} closable afterClose={this.onClose.bind(this, item, key)}>
       {`${key}_${item.vars}`}
@@ -140,10 +136,10 @@ class Splicing extends React.Component {
   render() {
     const childrenToRender = this.getDataToChildren();
     const link = encodeURIComponent(`t=${this.state.templateIds.join(',')}${
-       this.state.checkboxIds.length ? `&o=${this.state.checkboxIds.join(',')}`: ''
+      this.state.checkboxIds.length ? `&o=${this.state.checkboxIds.join(',')}` : ''
       }`.trim());
     return (<div className={`${this.props.className}-wrapper`}>
-      <DocumentTitle title="自由搭配页面 - Ant Motion"/>
+      <DocumentTitle title="自由搭配页面 - Ant Motion" />
       {childrenToRender}
       <div className="bottom-btn">
         <Button type="primary" size="large" onClick={this.onCompleteClick}>选择完成</Button>
@@ -161,12 +157,13 @@ class Splicing extends React.Component {
             {this.state.optImgChild}
           </ListSort>
           <div className={`${this.props.className}-modal-button-wrapper`}>
-            <Link
-              to={`/templates/#${link}`}
-              onClick={this.onOk}
+            <a
+              href={`/templates/#${link}`}
+              target="_black"
+              onClick={this.onCancel}
             >
               <Button type="primary">确定</Button>
-            </Link>
+            </a>
             <Button onClick={this.onCancel}>重选</Button>
           </div>
         </Modal>
