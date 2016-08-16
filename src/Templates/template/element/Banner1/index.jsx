@@ -8,15 +8,24 @@ import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
 import './index.less';
 import 'rc-banner-anim/assets/index.css';
 
+const BgElement = Element.BgElement;
 class Banner extends React.Component {
   render() {
     const children = Object.keys(this.props.dataSource).map((key, i) => {
       const item = this.props.dataSource[key];
       return (<Element
-        bg={item.bgImg}
         key={i}
         prefixCls="banner-user-elem"
       >
+        <BgElement
+          className="bg"
+          key="bg"
+          style={{
+            backgroundImage: `url(${item.bgImg})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        />
         <QueueAnim type={['bottom','top']} delay={200} className={`${this.props.className}-title`}
           key="text"
         >

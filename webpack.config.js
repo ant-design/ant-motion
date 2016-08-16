@@ -4,7 +4,6 @@ const path = require('path');
 const glob = require('glob');
 
 module.exports = function (webpackConfig) {
-  console.log(webpackConfig,121221)
   webpackConfig.babel.plugins.push('transform-runtime');
 
   // Load src/entries/*.js as entry automatically.
