@@ -1,50 +1,429 @@
 @import 'custom';
-.banner {
+
+.home-wrapper {
   position: relative;
-  overflow: hidden;
-  min-height: 680px;
-  &-text {
-    position: absolute;
-    top: 45%;
-    left: 10%;
-    text-align: left;
-    color: #fff;
-    & h1 {
-      font-size: 46px;
-      letter-spacing: 3px;
-      font-weight: normal;
-      text-align: right;
+  .vh {
+    height: 100vh;
+    min-height: 650px;
+  }
+  & p{
+    font-weight: lighter;
+  }
+  .banner {
+    margin-top: -64px;
+    background: #35aef8;
+    background: -moz-linear-gradient(-45deg, #35aef8 0%, #7681ff 76%, #7681ff 76%);
+    background: -webkit-linear-gradient(-45deg, #35aef8 0%, #7681ff 76%, #7681ff 76%);
+    background: linear-gradient(135deg, #35aef8 0%, #7681ff 76%, #7681ff 76%);
+    overflow: hidden;
+    &-anim, &-bg {
+      height: 100%;
     }
-    & > span {
-      display: block;
-      font-size: 16px;
-      font-weight: lighter;
-      margin: 5px 5px 10px 0;
-      text-align: right;
+    &-mask, &-bg-bottom {
+      position: absolute;
+      bottom: 0;
+      left: 0;
     }
-    & > a {
-      margin: 10px 7px;
-      font-size: 14px;
-      background: @primary-color;
-      color: #fff;
-      width: 120px;
-      padding: 6px 10px;
-      border-radius: 6px;
-      transition: box-shadow .45s @ease-out, border .45s @ease-out, background .45s @ease-out;
-      display: inline-block;
-      text-align: center;
-      line-height: 21px;
-      font-weight: normal;
-      &:hover {
-        box-shadow: 0 0 10px #8C82FF;
-        border-color: #8C82FF;
-        color:#fff;
-        background: fade(@primary-color, 85);
+
+    &-bg-left {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    &-bg-right {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+    }
+
+    &-bg-center {
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+    }
+
+    .annular {
+      stroke: #4271D4;
+      stroke-width: 3;
+      fill: transparent;
+    }
+
+    &-title {
+      position: absolute;
+      top: 0;
+      left: 10%;
+      bottom: 0;
+      margin: auto 0;
+      width: 476px;
+      height: 400px;
+      z-index: 1;
+      & h2 {
+        margin-left: 20px;
+        margin-top: -20px;
+      }
+      & p {
+        font-size: 20px;
+        margin: 10px 20px;
+        color: #fff;
+      }
+      &-button {
+        padding: 10px 30px;
+        border-radius: 40px;
+        background: #4B72C1;
+        font-size: 14px;
+        margin-left: 20px;
+        border: none;
+        box-shadow: 0 0 0 transparent;
+        transition: box-shadow .3s @ease-in-out, transform .3s @ease-in-out;
+        & i {
+          width: 16px;
+          margin-right: 10px;
+          background: url(https://zos.alipayobjects.com/rmsportal/dgqoflLasHqTmNM.svg) center no-repeat/contain;
+          height: 16px;
+          display: inline-block;
+          vertical-align: sub;
+          text-transform: none;
+          text-rendering: optimizeLegibility;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+          line-height: 1;
+        }
+
+        &:hover {
+          box-shadow: 0 2px 5px #1B2C4E;
+          transform: translateY(-5px);
+        }
+        /*&:active {
+          transform: translateY(-4px);
+          box-shadow: 0 2px 3px #1B2C4E;
+        }*/
       }
     }
-    & > p{
-      margin-top: 10px;
-      text-align: right;
+    &-mouse {
+      width: 28px;
+      height: 42px;
+      border-radius: 14px;
+      border: 2px solid #fff;
+      bottom: 180px;
+      left: 0;
+      right: 0;
+      margin: auto;
+      position: relative;
+      & .mouse-bar {
+        width: 4px;
+        height: 12px;
+        border-radius: 2px;
+        background: #fff;
+        margin: 5px auto auto;
+      }
     }
   }
+  .home-content {
+    width: 100%;
+    max-width: 960px;
+    margin: auto;
+    text-align: center;
+    & h1 {
+      font-weight: normal;
+      font-size: 26px;
+      color: @title-color-dark;
+    }
+    & h2 {
+      font-weight: normal;
+      font-size: 20px;
+    }
+    & .home-button a {
+      width: 140px;
+      height: 42px;
+      line-height: 42px;
+
+      border-radius: 21px;
+      margin-top: 10px;
+      display: inline-block;
+      font-size: 14px;
+      box-shadow: 0 0 0 transparent;
+      background: transparent;
+      transition: box-shadow .3s @ease-in-out, transform .3s @ease-in-out, background .3s @ease-in-out;
+    }
+    & .page-text {
+      margin-top: 5%;
+      & p {
+        color: @text-color-home;
+        font-size: 16px;
+        line-height: 32px;
+        padding: 0 10%;
+        margin: 10px auto;
+      }
+    }
+
+    & .white-text {
+      max-width: 960px;
+      margin-left: auto;
+      margin-right: auto;
+      & h1, & h2, & p, & a {
+        color: @text-color-light;
+      }
+      & p {
+        padding: 0 15%;
+        margin: 10px auto;
+        line-height: 32px;
+      }
+      & a {
+        border: 1px solid @text-color-light;
+        &:hover {
+          box-shadow: 0 2px 5px fade(#fff, 75);
+          transform: translateY(-3px);
+          background: fade(@text-color-light, 10);
+        }
+      }
+    }
+
+  }
+  .page1 {
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+    &-text {
+      margin-top: 80px;
+      & p {
+        position: absolute;
+        margin: auto;
+        font-size: 16px;
+        line-height: 24px;
+        padding: 0 10%;
+        color: @text-color-home;
+        top: 150px;
+      }
+      & .icon {
+        color: @text-color-home;
+        font-size: 20px;
+        position: absolute;
+        bottom: 100px;
+        width: 100%;
+        & .anticon-double-right {
+          transform: rotate(90deg);
+        }
+      }
+    }
+  }
+  .page2 {
+    width: 100%;
+    max-width: 100% !important;
+    background: url(https://zos.alipayobjects.com/rmsportal/WzZuPAYyhuIACJQ.jpg) center fixed;
+    background-size: cover;
+    overflow: hidden;
+    .code-wrapper {
+      width: 100%;
+      max-width: 940px;
+      margin: 5% auto 0;
+      border-radius: 8px;
+      overflow: hidden;
+      height: 55%;
+      box-shadow: 0 4px 40px #124867;
+      .code {
+        height: 100%;
+        position: relative;
+        .code-top {
+          width: 100%;
+          height: 28px;
+          background: #F1F1F1;
+          text-align: left;
+          line-height: 28px;
+          & i {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 1px solid;
+            margin-left: 10px;
+            &:first-child {
+              background: #FF6158;
+              border-color: #D94940;
+            }
+            &:nth-child(2) {
+              background: #FFBD2E;
+              border-color: #D69E23;
+            }
+            &:last-child {
+              background: #29CB41;
+              border-color: #1DAD2C;
+            }
+          }
+        }
+        .code-left, .code-right {
+          width: 50%;
+          display: inline-block;
+          height: calc(~"100% - 28px");
+          overflow: hidden;
+          position: relative;
+        }
+        .code-left {
+          background: #171817;
+          & pre {
+            height: calc(~"100% - 28px");
+            background: transparent !important;
+            margin: 0 !important;
+            text-shadow: none !important;
+            & code {
+              background: transparent;
+              color: #E5F6FF;
+              text-shadow: none !important;
+              & .token.operator {
+                background: transparent;
+              }
+            }
+          }
+          &-bar {
+            width: 100%;
+            height: 26px;
+            background: #141414;
+            border: 1px solid #000;
+            text-align: left;
+            line-height: 26px;
+            &-logo {
+              margin-left: 15px;
+              filter: grayscale(1) brightness(2);
+              opacity: 0.5;
+              & img {
+                margin-right: 8px;
+                vertical-align: middle;
+              }
+            }
+          }
+        }
+        .code-right {
+          background: #fff;
+          padding: 40px;
+        }
+      }
+    }
+    & .page2-text {
+      margin: 40px auto 0;
+    }
+  }
+  .page3 {
+    height: 1200px;
+    padding-top: 1px;
+    position: relative;
+
+    .home-anim-demo {
+      position: absolute;
+      float: left;
+      width: 100%;
+      top: 220px;
+      & ul li {
+        float: left;
+        width: 30%;
+        background: @page-bg-color;
+        height: 360px;
+        box-shadow: 0 10px 16px fade(#000, 10);
+        border-radius: 6px;
+        overflow: hidden;
+        margin-bottom: 60px;
+        &:nth-child(3n+2) {
+          margin: 0 5%;
+        }
+        & a {
+          color: #999;
+          display: block;
+          height: 100%;
+          & .home-anim-demo-img {
+            overflow: hidden;
+            height: 197px;
+          }
+          & h2 {
+            color: #666;
+            margin: 15px auto;
+          }
+          & .home-anim-demo-text {
+            padding: 0 10%;
+            & p {
+              line-height: 18px;
+              font-size: 12px;
+            }
+          }
+        }
+        // .page-pro();
+        transition: transform .3s @ease-out, box-shadow .3s @ease-out;
+        &:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 12px 18px fade(#000, 15);
+        }
+      }
+    }
+    .home-button {
+      position: absolute;
+      width: 100%;
+      bottom: 100px;
+      a {
+        border: 1px solid @primary-color;
+        &:hover {
+          box-shadow: 0 2px 5px fade(@primary-color, 75);
+          transform: translateY(-3px);
+        }
+      }
+
+    }
+  }
+
+  .page4 {
+    width: 100%;
+    max-width: 100% !important;
+    background: url(https://zos.alipayobjects.com/rmsportal/FpMVzYJSfpqgrVl.jpg) center fixed;
+    overflow: hidden;
+    position: relative;
+    & .page-text {
+      & p {
+        padding: 0 5%;
+      }
+    }
+    & .video-button {
+      width: 80px;
+      height: 80px;
+      border-radius: 40px;
+      background: #fff;
+      font-size: 30px;
+      line-height: 80px;
+      margin: auto;
+      position: absolute;
+      top: 40%;
+      left: 0;
+      right: 0;
+      box-shadow: 0 5px 20px #5391CA;
+      text-indent: 2px;
+      color: @primary-color;
+    }
+    .depict {
+      position: absolute;
+      top: 65%;
+      left: 0;
+      right: 0;
+      max-width: 960px;
+      width: 100%;
+      margin: auto;
+      &-list {
+        width: 30%;
+        float: left;
+        &:nth-child(2) {
+          margin: auto 5%;
+        }
+        & i {
+          width: 30px;
+          margin: auto;
+          display: block;
+        }
+        & p{
+          font-size: 19px;
+          font-weight: lighter;
+          padding: 0 5%;
+        }
+      }
+    }
+  }
+
 }
+

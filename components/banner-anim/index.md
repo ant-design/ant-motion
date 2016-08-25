@@ -75,7 +75,7 @@ ReactDOM.render(<BannerAnim>
 
 |参数        |类型             |默认     |详细             |
 |----------|-----------------|--------------|-----------------------|
-| key      |     string      |      -       |  必须                 |
+| id      |     string      |      -       |  必须( 0.4.0 以后不再用 key, 直接用id，可控制子级 )   |
 | className |     string      |   -           |  样式 |
 | scrollParallax | object   |  null        | { y: 100 }, 向下滚动时, 元素出顶部的到达值。 |
 | videoResize | boolean         |      `true`    | 如果子级元素为 video 时，自动响应窗口大小。  |

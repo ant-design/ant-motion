@@ -12,32 +12,26 @@ class Article extends React.Component {
   constructor() {
     super(...arguments);
   }
+  componentDidMount(){
+  }
 
   render() {
     const props = this.props;
     const pageData = props.pageData;
     const { meta, content, toc } = pageData;
     const { title, subtitle, chinese, english } = meta;
-
     return (<DocumentTitle title={`${title || chinese || english} - Ant Motion`}>
       <article className="markdown">
         <h1>
           {title || english}
-          {
-            (!subtitle && !chinese) ? null :
-            <span className="subtitle">{subtitle || chinese}</span>
-            }
+          {(!subtitle && !chinese) ? null :
+            <i>{subtitle || chinese}</i>}
         </h1>
-        {
-          !toc || toc.length <=1 ? null :
-          <section className="toc">{props.utils.toReactComponent(toc)}</section>
-          }
-        {
-          !content ? null :
+        {!toc || toc.length <=1 ? null :
+          <section className="toc">{props.utils.toReactComponent(toc)}</section>}
+        {!content ? null :
             props.utils.toReactComponent(['section', { className: 'markdown' }]
-              .concat(getChildren(content)))
-          }
-
+              .concat(getChildren(content)))}
       </article>
     </DocumentTitle>);
   }

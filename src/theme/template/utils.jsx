@@ -29,3 +29,12 @@ export function getMenuItems(data) {
   return menuItems;
 }
 
+export function dataToArray(vars) {
+  if (!vars && vars !== 0) {
+    return [];
+  }
+  if (Array.isArray(vars)) {
+    return vars;
+  }
+  return [vars];
+}

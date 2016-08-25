@@ -3,16 +3,17 @@
   "version": "1.1.0",
   "dependencies": {
     "rc-animate": "~2.3.0",
-    "rc-banner-anim": "~0.3.0",
+    "rc-banner-anim": "~0.4.0",
     "rc-queue-anim": "~0.12.0",
     "rc-scroll-anim": "~0.3.0",
     "rc-tween-one": "~0.8.0"
   },
   "devDependencies": {
-    "antd": "~1.7.0",
+    "antd": "~1.10.0",
     "autoresponsive-react": "1.1.x",
     "babel-eslint": "^6.1.2",
     "babel-plugin-antd": "0.4.x",
+    "prismjs": "^1.5.1",
     "bisheng": "~0.11.0",
     "bisheng-plugin-antd": "~0.1.0",
     "bisheng-plugin-description": "^0.1.0",

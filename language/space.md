@@ -1,6 +1,6 @@
 ---
-order: 1
-chinese: 大气空间
+order: 2
+chinese: 层级空间
 english: Space
 ---
 
@@ -14,16 +14,16 @@ english: Space
 
 ## 空间示意图
 
-<img src="https://os.alipayobjects.com/rmsportal/PyplJuqwiGbBcnm.jpg" width="100%" class="content-img"/>
+<img src="https://zos.alipayobjects.com/rmsportal/wjBQyXjKSMqJJlf.png" width="100%" class="content-img"/>
 
 ## 层级与时间
 
 以下时间为示例，组件动画时间按比例递增。
 
-<img src="https://os.alipayobjects.com/rmsportal/ysDJkrAfhPWWFZH.png" width="100%" class="content-img"/>
+<img src="https://zos.alipayobjects.com/rmsportal/bVutyJfjzrRzFaV.jpg" width="100%" class="content-img"/>
 
 ## banner 视差示意图
 
 如果 banner 里加入跟随鼠标移动,加入空间层次，有效的给每层元素不同的参数，摸拟现实的视差效果。
 
-<img src="https://os.alipayobjects.com/rmsportal/toYrPymhuHeZSWv.jpg" width="100%" class="content-img"/>
+<img src="https://zos.alipayobjects.com/rmsportal/IIelDRtkjpRAuvX.png" width="100%" class="content-img"/>

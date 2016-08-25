@@ -31,31 +31,34 @@ class EaseExplain extends React.Component {
 
   render() {
     const lineWidth = 40 * (((this.props.leftHide && 1) || 0) + ((this.props.rightHide && 1) || 0));
-    return (<div className={this.props.className}
-      onMouseEnter={this.mouseOver}
-      onMouseLeave={this.mouseOut}
-    >
-      <h3>{this.props.title}</h3>
-      <div className="demo-wrapper">
-        {this.props.leftHide ? null : <div className="circle-dashed" style={{ left: 0 }}></div>}
-        <TweenOne className="circle"
-          animation={this.state.animation}
-          style={this.state.circleStyle}
-          paused={this.state.paused}
-        />
-        <div className="east">
-          <i className="line" style={{
+    return (
+      <div className={`${this.props.className}-wrapper`}>
+        <h3>{this.props.title}</h3>
+        <div className={this.props.className}
+          onMouseEnter={this.mouseOver}
+          onMouseLeave={this.mouseOut}
+        >
+          <div className="demo-wrapper">
+            {this.props.leftHide ? null : <div className="circle-dashed" style={{ left: 0 }}></div>}
+            <TweenOne className="circle"
+              animation={this.state.animation}
+              style={this.state.circleStyle}
+              paused={this.state.paused}
+            />
+            <div className="east">
+              <i className="line" style={{
             width: 330 + lineWidth, left: 60 - ((this.props.leftHide && 40) || 0),
           }}
-          />
-          <i className="arrow" style={{ right: 60 - ((this.props.rightHide && 40) || 0) }} />
+              />
+              <i className="arrow" style={{ right: 60 - ((this.props.rightHide && 40) || 0) }} />
+            </div>
+            {this.props.rightHide ? null : <div className="circle-dashed"></div>}
+          </div>
+          <p className="text-center">
+            {this.props.children}
+          </p>
         </div>
-        {this.props.rightHide ? null : <div className="circle-dashed"></div>}
-      </div>
-      <p className="text-center">
-        {this.props.children}
-      </p>
-    </div>);
+      </div>);
   }
 }
 EaseExplain.propTypes = {
@@ -69,6 +72,6 @@ EaseExplain.propTypes = {
 };
 
 EaseExplain.defaultProps = {
-  className: 'content-wrapper',
+  className: 'content',
 };
 export default EaseExplain;

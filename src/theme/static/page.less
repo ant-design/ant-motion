@@ -4,30 +4,33 @@
 .@{content} {
   width: 100%;
   overflow: hidden;
-  &-content {
-    position: relative;
+  position: relative;
+  &.tween-one-leaving{
+    margin-top: 64px;
   }
   &-wrapper {
-    width: 92%;
-    background: @page-bg-color;
-    margin: 24px auto;
-    padding: 24px 0 0;
-    overflow: hidden;
+    width: 100%;
     border-radius: 6px;
+    max-width: 960px;
+    min-height: 800px;
+    margin: 60px auto 0;
     position: relative;
-    & > aside {
-      width: 100%;
-      transform: translateX(1px);
-      position: relative;
-      height: 40px;
+    & .list-wrapper {
+      width: 110px;
+      position: absolute;
       z-index: 1;
-      & > div > ul {
-        text-align: center;
+      float: left;
+      height: 100%;
+      border-right: 1px solid @line-color;
+      & .list > ul {
         & > li {
           overflow: hidden;
           position: relative;
           z-index: 1;
-          display: inline-block;
+          & h2{
+            font-size: 16px;
+            margin-bottom: 10px;
+          }
           & i {
             margin-left: 6px;
             opacity: .67;
@@ -47,29 +50,29 @@
           }
         }
         & a {
-          line-height: 40px;
-          height: 40px;
+          line-height: 30px;
+          height: 30px;
           display: block;
-          padding: 0 20px;
           font-size: 14px;
           color: @text-color;
-          border-bottom: 1px solid @line-color;
-          transition: color .3s @ease-out, border .3s @ease-out;
+          transition: color .3s @ease-out;
           &:hover {
             color: @primary-color;
-            border-color: @primary-color;
           }
         }
         &.active a {
           color: @primary-color;
-          border-color: @primary-color;
         }
       }
     }
     & > section {
-      margin: 24px 40px 40px;
       position: relative;
-      min-height: 800px;
+      width: 100%;
+      padding-left: 150px;
+      padding-bottom: 60px;
+      & .page-content{
+        position: relative;
+      }
     }
   }
 }

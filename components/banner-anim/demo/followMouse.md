@@ -21,14 +21,15 @@ class Demo extends React.Component {
           followParallax={{
             delay: 1000,
             data: [
-              { key: 'bg', value: 20, bgPosition: '50%', type: ['backgroundPositionX'] },
-              { key: 'title', value: 50, type: 'x' },
-              { key: 'content', value: -30, type: 'x' },
+              { id: 'bg', value: 20, bgPosition: '50%', type: ['backgroundPositionX'] },
+              { id: 'title', value: 50, type: 'x' },
+              { id: 'content', value: -30, type: 'x' },
             ],
           }}
         >
           <BgElement
             key="bg"
+            id="bg"
             className="bg"
             style={{
               backgroundImage: 'url(https://os.alipayobjects.com/rmsportal/IhCNTqPpLeTNnwr.jpg)',
@@ -36,8 +37,12 @@ class Demo extends React.Component {
               backgroundPosition: 'center',
             }}
           />
-          <TweenOne key='title' className="banner-user-title" animation={{ y: 30, opacity: 0, type: 'from' }}>Ant Motion Demo</TweenOne>
-          <TweenOne key='content' className="banner-user-text" animation={{ y: 30, opacity: 0, type: 'from', delay: 100 }}>Image source from the network Demo, please upload pictures to replace.Image source </TweenOne>
+          <TweenOne id="title" className="banner-user-title" animation={{ y: 30, opacity: 0, type: 'from' }}>
+            Ant Motion Demo
+          </TweenOne>
+          <TweenOne id="content" className="banner-user-text" animation={{ y: 30, opacity: 0, type: 'from', delay: 100 }}>
+            Image source from the network Demo, please upload pictures to replace.Image source 
+          </TweenOne>
         </Element>
         <Element key="bbb"
           prefixCls="banner-user-elem"

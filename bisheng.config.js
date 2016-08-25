@@ -4,9 +4,10 @@ module.exports = {
     './cases',
     './language',
     './components',
+    './getting',
+    './templates',
   ],
   output: './_site',
-
   entry: {
     index: {
       theme: './src/theme',

@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-import TweenOne from 'rc-tween-one';
 import QueueAnim from 'rc-queue-anim';
 
 class Footer extends React.Component {
@@ -8,10 +7,8 @@ class Footer extends React.Component {
   }
 
   render() {
-    return (<TweenOne component="footer" className={this.props.className}
-      animation={{ type: 'from', y: '+=30', opacity: 0, duration: 800 }}
-    >
-      <QueueAnim component="ul" type="bottom" delay={800}>
+    return (<footer className={this.props.className}>
+      <QueueAnim component="ul" type="bottom" delay={300}>
         <QueueAnim component="li" type="bottom" key="0">
           <h2 key="h2">GitHub</h2>
           <div key="git">
@@ -43,7 +40,7 @@ class Footer extends React.Component {
           <div key="1">Powered by <a href="https://github.com/benjycui/bisheng">BiSheng</a></div>
         </QueueAnim>
       </QueueAnim>
-    </TweenOne>);
+    </footer>);
   }
 }
 Footer.propTypes = {

@@ -1,8 +1,6 @@
 @import 'ant-d';
 
-
 html, body {
-  background: #000;
   font-family: "PingFang SC", "Helvetica Neue", Helvetica, "Hiragino Sans GB", "Microsoft YaHei", "\5FAE\8F6F\96C5\9ED1", Arial, sans-serif;
 }
 
@@ -18,20 +16,28 @@ a {
   transition: color .3s @ease-out;
 }
 
+p {
+  font-size: 14px;
+}
+
 @header: header;
-.@{header}, @{header} {
+.@{header} {
   height: 64px;
-  background: rgba(216, 216, 216, .15);
   overflow: hidden;
   position: relative;
   z-index: 999;
+  background: @nav-color;
+  transition: background .5s @ease-in-out;
   &-logo {
     display: inline-block;
-    margin: 15px 0 0 4%;
-    height: 33px;
+    margin: 17px 0 0 4%;
+    height: 30px;
     & img {
-      vertical-align: top;
-      display: block;
+      vertical-align: middle;
+      display: inline-block;
+      &:last-child {
+        margin-left: 15px;
+      }
     }
     & a {
       display: block;
@@ -54,34 +60,29 @@ a {
           height: 100%;
           font-size: 14px;
           display: block;
-          color: #fff;
-          transition: color .3s @ease-out;
+          color: @nav-link-color;
+          transition: color .3s @ease-in-out;
           &:hover, &.active {
-            color: @primary-color;
+            color: @nav-link-active-color;
           }
           &[disabled] {
-            color: @disabled-color;
+            color: @nav-link-active-color;
           }
         }
       }
     }
-  }
-  &-bar {
-    width: 100px;
-    height: 3px;
-    background: @primary-color;
-    position: absolute;
-    bottom: 0;
   }
 }
 
 @footer: footer;
 .@{footer} {
   height: 155px;
-  background: rgba(216, 216, 216, .15);
+  background: @footer-bg-color;
   overflow: hidden;
   position: relative;
   z-index: 998;
+  border-top: 1px solid @line-color;
+  transition: background .3s @ease-in-out, border .3s @ease-in-out;
   & ul {
     margin: 0 2%;
     & li {
@@ -92,13 +93,11 @@ a {
       & h2 {
         font-size: 14px;
         line-height: 30px;
-        font-weight: lighter;
-        color: #eee;
+        color: @title-color;
       }
       & a {
-        color: #ccc;
-        font-weight: lighter;
-        transition: color .3s @ease-out;
+        color: @footer-link-color;
+        transition: color .3s @ease-in-out;
         &:hover {
           color: @primary-color;
         }
@@ -107,13 +106,24 @@ a {
   }
 }
 
-.content-wrapper {
-  overflow: unset;
-  display: inline;
-}
+.home {
+  .@{header} {
+    background: transparent;
+    /*width: 100%;
+    position: absolute;*/
 
-#react-content, #react-root {
-  height: 100%
+    & a {
+      filter: grayscale(1) brightness(2);
+      color: @nav-link-active-color;
+    }
+  }
+  .@{footer} {
+    background: @nav-color;
+    border-top-color: transparent;
+    & h2 {
+      color: #999
+    }
+  }
 }
 
 #page-404 {
@@ -131,6 +141,10 @@ a {
 .content-wrapper > .tween-one-leaving, .queue-anim-leaving {
   position: absolute !important;
   width: 100%;
+}
+.home .queue-anim-leaving{
+  position: relative !important;
+  width: auto;
 }
 
 .video {
@@ -171,13 +185,13 @@ a {
   & .peg {
     box-shadow: 0 0 10px @primary-color, 0 0 5px @primary-color;
   }
-  & .spinner-icon{
+  & .spinner-icon {
     border-top-color: @primary-color;
     border-left-color: @primary-color;
   }
 }
 
-.templates-wrapper{
+.templates-wrapper {
   display: inline;
   overflow: unset;
   user-select: none;
