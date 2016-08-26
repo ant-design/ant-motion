@@ -6,7 +6,7 @@ import Icon from 'antd/lib/icon';
 
 export default class Page1 extends React.Component {
   render(){
-    return (<OverPack className="home-content page1" playScale={0.25}>
+    return (<OverPack scrollName="page1" className="home-content page1" playScale={0.25}>
       <QueueAnim type="bottom" key="text" className="page1-text" leaveReverse>
         <h1 key="h1">基于 React 的动画解决方案</h1>
         <p key="p">

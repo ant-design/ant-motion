@@ -6,8 +6,28 @@
     height: 100vh;
     min-height: 650px;
   }
-  & p{
+  & p {
     font-weight: lighter;
+  }
+  .nav-wrapper {
+    position: fixed;
+    right: 20px;
+    width: 10px;
+    z-index: 10;
+    top: 50%;
+    margin-top: -40px;
+    & > div {
+      width: 8px;
+      height: 8px;
+      border-radius: 5px;
+      background: fade(#000, 30);
+      margin-bottom: 8px;
+      cursor: pointer;
+      transition: background .45s @ease-out;
+      &.active{
+        background:#000;
+      }
+    }
   }
   .banner {
     margin-top: -64px;
@@ -416,7 +436,7 @@
           margin: auto;
           display: block;
         }
-        & p{
+        & p {
           font-size: 19px;
           font-weight: lighter;
           padding: 0 5%;

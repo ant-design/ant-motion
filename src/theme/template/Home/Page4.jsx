@@ -18,6 +18,7 @@ export default class Page4 extends React.Component {
       className="home-content page4 vh"
       playScale={0.8}
       hideProps={{ video: { reverse: true } }}
+      scrollName="page4"
     >
       <QueueAnim
         key="text"

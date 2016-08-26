@@ -3,6 +3,7 @@ import TweenOne from 'rc-tween-one';
 import QueueAnim from 'rc-queue-anim';
 import BannerAnim from 'rc-banner-anim';
 import Button from 'antd/lib/button';
+import ScrollElement from 'rc-scroll-anim/lib/ScrollElement';
 import SvgMorphPlugin from 'rc-tween-one/lib/plugin/SvgMorphPlugin';
 TweenOne.plugins.push(SvgMorphPlugin);
 
@@ -19,7 +20,7 @@ export default class Banner extends React.Component {
   };
 
   render() {
-    return (<div className={`${this.props.className} vh`}>
+    return (<ScrollElement scrollName="banner" className={`${this.props.className} vh`}>
       <BannerAnim>
         <Element key="a"
           followParallax={{
@@ -263,7 +264,7 @@ export default class Banner extends React.Component {
           </svg>
         </Element>
       </BannerAnim>
-    </div>);
+    </ScrollElement>);
   }
 }
 

@@ -24,6 +24,7 @@ export default class Page2 extends React.Component {
       playScale={0.8}
       className="home-content page2 vh"
       hideProps={{ code: { reverse: true } }}
+      scrollName="page2"
     >
       <TweenOne
         className="code-wrapper"
