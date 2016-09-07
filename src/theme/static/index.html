@@ -38,9 +38,7 @@
       border-radius: 100%;
       background: #019BF0;
       position: absolute;
-      transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      left: 0;
-      top: 0;
+      transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       transform: scale(1);
     }
 
@@ -68,7 +66,7 @@
 </div>
 <script>
   var w = 100, h = 113, r = 18,
-    wx = w / 2, wy = h / 2 - r, angle = 45, liArray = [], xyArray = [];
+    wx = w / 2, wy = h / 2 - r, angle = 45, liArray = [];
   for (var i = 0; i < 74; i++) {
     var li = $('<li/>').appendTo($('#ant-motion-load ul'));
     liArray.push(li);
@@ -94,7 +92,6 @@
       _top = 10;
       r = 14;
     }
-    xyArray.push({ x: _left, y: _top });
     li.css({ left: _left, top: _top, width: r, height: r });
   }
 
@@ -112,8 +109,8 @@
       }
       liArray.forEach(function (item, i) {
         item.css({
-          left: 0, top: 0, transform: 'scale(0)',
-          transitionDelay: (i === xyArray.length - 1 ? 1 : i) * .005 + 's',
+          transform: 'scale(0)',
+          transitionDelay: (i === liArray.length - 1 ? 10 : i) * .007 + 's',
           transitionTimingFunction: 'cubic-bezier(0.68, -0.55, 0.265, 1.55)',
         });
       });
@@ -123,10 +120,9 @@
           return;
         }
         liArray.forEach(function (item, i) {
-          var data = xyArray[i];
           item.css({
-            left: data.x, top: data.y, transform: 'scale(1)',
-            transitionDelay: (i === xyArray.length - 1 ? 1 : i) * .005 + 's',
+            transform: 'scale(1)',
+            transitionDelay: (i === liArray.length - 1 ? 10 : i) * .007 + 's',
             transitionTimingFunction: 'cubic-bezier(0.175, 0.885, 0.32, 1.275)',
           });
         });

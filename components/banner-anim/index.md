@@ -8,6 +8,36 @@ vertical: true
 
 通过简单的配置, 就能让你的 banner 动起来。
 
+<style>
+.code-box-wrapper .code-box-demo{
+  padding: 0;
+}
+.banner-user{
+  height: 220px;
+}
+.banner-user-elem{
+  text-align: center;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.banner-user-elem .banner-user-title{
+  font-size: 32px;
+  top: 40%;
+}
+.banner-user-elem .banner-user-text{
+  top: 40%;
+}
+.banner-anim-elem .bg{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+</style>
+
 ---
 
 ## 何时使用
