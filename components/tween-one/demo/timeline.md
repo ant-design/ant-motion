@@ -1,6 +1,5 @@
 ---
 order: 4
-cols: 4
 title: 时间轴效果
 mouseEnter: true
 ---
@@ -53,7 +52,7 @@ class Demo extends React.Component {
         paused={this.props.paused}
         onChange={this.onChange}
         moment={this.state.moment}
-        style={{ transform: 'scale(1)', position: 'relative' }}
+        style={{ transform: 'scale(1)' }}
         className="code-box-shape"
       />
     );

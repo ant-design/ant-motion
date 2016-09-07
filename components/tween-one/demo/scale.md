@@ -1,6 +1,5 @@
 ---
 order: 1
-cols: 4
 title: 缩放效果
 mouseEnter: true
 ---

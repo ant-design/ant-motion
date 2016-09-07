@@ -1,6 +1,5 @@
 ---
 order: 6
-cols: 4
 title: svg 线性动画
 ---
 
@@ -35,14 +34,14 @@ class Demo extends React.Component {
 
   render() {
     return (
-      <div style={{ textAlign: 'center' }}>
+      <div style={{ textAlign: 'center', marginTop: 40 }}>
         <Button type="primary" onClick={this.onClick.bind(this)}>点击切换</Button>
         <svg width="200" height="84" version="1.2"
           style={{ display: 'block', margin: 'auto' }}
         >
           <TweenOne
             animation={{ SVGDraw: this.state.tweenData, duration: 1000 }}
-            style={{ fill: 'none', strokeWidth: 10, stroke: '#6556E2' }}
+            style={{ fill: 'none', strokeWidth: 10, stroke: '#019BF0' }}
             component="path"
             d="M10,10c65,50,115,50,180,0"
           />

@@ -20,12 +20,12 @@
       width: 8px;
       height: 8px;
       border-radius: 5px;
-      background: fade(#000, 30);
+      background: fade(@title-bg-color, 30);
       margin-bottom: 8px;
       cursor: pointer;
       transition: background .45s @ease-out;
       &.active{
-        background:#000;
+        background: @title-bg-color;
       }
     }
   }
@@ -36,6 +36,7 @@
     background: -webkit-linear-gradient(-45deg, #35aef8 0%, #7681ff 76%, #7681ff 76%);
     background: linear-gradient(135deg, #35aef8 0%, #7681ff 76%, #7681ff 76%);
     overflow: hidden;
+    width: 100%;
     &-anim, &-bg {
       height: 100%;
     }
@@ -75,10 +76,11 @@
     &-title {
       position: absolute;
       top: 0;
-      left: 10%;
+      left: 0;
+      right: 0;
       bottom: 0;
-      margin: auto 0;
-      width: 476px;
+      margin: auto;
+      width: 960px;
       height: 400px;
       z-index: 1;
       & h2 {
@@ -280,6 +282,7 @@
           height: calc(~"100% - 28px");
           overflow: hidden;
           position: relative;
+          vertical-align: top;
         }
         .code-left {
           background: #171817;

@@ -1,6 +1,5 @@
 ---
 order: 6
-cols: 4
 title: svg 形变动画
 mouseEnter: true
 ---
@@ -36,13 +35,13 @@ class Demo extends React.Component {
 
   render() {
     return (
-      <div style={{ textAlign: 'center' }}>
+      <div style={{ textAlign: 'center', marginTop: 40 }}>
         <svg width="200" height="130" version="1.2"
           style={{ display: 'block', margin: 'auto' }}
         >
           <TweenOne
             animation={{ d: 'M60,10L60,90L140,90L140,10Z', yoyo: true, repeat: -1, duration: 1000 }}
-            style={{ fill: '#6556E2'}}
+            style={{ fill: '#019BF0'}}
             paused={this.props.paused}
             component="path"
             d="M60,50 a40,40 0 1,0 80,0a40,40 0 1,0 -80,0z"

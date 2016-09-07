@@ -5,23 +5,22 @@
 */
 
 pre code {
- display: block;
- background: white;
- color: #666;
- line-height: 1.7;
- padding: 10px 15px;
- border-radius: 6px;
- font-size: 13px;
- white-space: pre;
- font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  display: block;
+  background: white;
+  color: #8A8A8A;
+  line-height: 1.7;
+  padding: 10px 15px;
+  border-radius: 6px;
+  font-size: 13px;
+  white-space: pre;
+  font-family: "PingFang SC", "Helvetica Neue", Helvetica, "Hiragino Sans GB", Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
 }
 
 code[class*="language-"],
 pre[class*="language-"] {
   color: black;
-  background: none;
   text-shadow: 0 1px white;
-  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  font-family: "PingFang SC", "Helvetica Neue", Helvetica, "Hiragino Sans GB", Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
   direction: ltr;
   text-align: left;
   white-space: pre;
@@ -39,8 +38,6 @@ pre[class*="language-"] {
   -ms-hyphens: none;
   hyphens: none;
 }
-
-
 
 pre[class*="language-"]::-moz-selection,
 pre[class*="language-"] ::-moz-selection,
@@ -61,7 +58,7 @@ code[class*="language-"] ::selection {
 @media print {
   code[class*="language-"],
   pre[class*="language-"] {
-      text-shadow: none;
+    text-shadow: none;
   }
 }
 
@@ -74,7 +71,7 @@ pre[class*="language-"] {
 
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
-  background: #f5f2f0;
+  // background: #f5f2f0;
 }
 
 /* Inline code */
@@ -106,7 +103,7 @@ pre[class*="language-"] {
 .token.constant,
 .token.symbol,
 .token.deleted {
-  color: #BB0606;
+  color: #FF4848;
 }
 
 .token.selector,
@@ -115,7 +112,7 @@ pre[class*="language-"] {
 .token.char,
 .token.builtin,
 .token.inserted {
-  color: #690;
+  color: #6FCAA7;
 }
 
 .token.operator,
@@ -123,18 +120,18 @@ pre[class*="language-"] {
 .token.url,
 .language-css .token.string,
 .style .token.string {
-  color: #a67f59;
+  color: #DAA232;
   background: hsla(0, 0%, 100%, .5);
 }
 
 .token.atrule,
 .token.attr-value,
 .token.keyword {
-  color: #07a;
+  color: #00ADF3;
 }
 
 .token.function {
-  color: #DD4A68;
+  color: #F06351;
 }
 
 .token.regex,
@@ -147,6 +144,7 @@ pre[class*="language-"] {
 .token.bold {
   font-weight: bold;
 }
+
 .token.italic {
   font-style: italic;
 }

@@ -22,31 +22,30 @@ class Header extends React.Component {
       </li>);
       return _item;
     });
-    return (<TweenOne
-      className={this.props.className}
-      animation={{ opacity: 1 }}
-      style={{ opacity: 0 }}
-      component="header"
+    return (<header
+      className={`${this.props.className}-wrapper`}
     >
-      <TweenOne className={`${this.props.className}-logo`}
-        animation={{ x: '0', opacity: 1, duration: 800 }}
-        style={{ transform: 'translateX(-30px)', opacity: 0 }}
-      >
-        <Link to="/" key="logo">
-          <img height="30" src="https://zos.alipayobjects.com/rmsportal/TOXWfHIUGHvZIyb.svg" />
-          <img height="16" src="https://zos.alipayobjects.com/rmsportal/glnFNVQMvQinmUr.svg" />
-        </Link>
-      </TweenOne>
-      <TweenOne component="nav"
-        className={`${this.props.className}-nav`}
-        animation={{ x: '0', opacity: 1, duration: 800 }}
-        style={{ transform: 'translateX(30px)', opacity: 0 }}
-      >
-        <ul>
-          {navToRender}
-        </ul>
-      </TweenOne>
-    </TweenOne>);
+      <div className={this.props.className}>
+        <TweenOne className={`${this.props.className}-logo`}
+          animation={{ x: '0', opacity: 1, duration: 800 }}
+          style={{ transform: 'translateX(-30px)', opacity: 0 }}
+        >
+          <Link to="/" key="logo">
+            <img height="30" src="https://zos.alipayobjects.com/rmsportal/TOXWfHIUGHvZIyb.svg" />
+            <img height="16" src="https://zos.alipayobjects.com/rmsportal/glnFNVQMvQinmUr.svg" />
+          </Link>
+        </TweenOne>
+        <TweenOne component="nav"
+          className={`${this.props.className}-nav`}
+          animation={{ x: '0', opacity: 1, duration: 800 }}
+          style={{ transform: 'translateX(30px)', opacity: 0 }}
+        >
+          <ul>
+            {navToRender}
+          </ul>
+        </TweenOne>
+      </div>
+    </header>);
   }
 }
 const objectOrArray = React.PropTypes.oneOfType([PropTypes.string, PropTypes.array]);

@@ -3,9 +3,21 @@ category: Components
 chinese: 页面滚动动画
 order: 3
 english: ScrollAnim
+vertical: true
 ---
 
 通过简单的配置，对页面里的元素添加随滚动条滚动的动画。
+
+<style>
+.code-box-demo .queue-anim-leaving{
+  position: relative !important;
+}
+.queue-anim-demo{
+  float: left;
+  margin: 0 5px 0 0;
+}
+</style>
+
 
 ---
 
@@ -150,12 +162,3 @@ scrollScreen.unMount();
 #### unMount
 - 功能: 清除一屏滚动效果
 
-<style>
-.code-box-demo .queue-anim-leaving{
-  position: relative !important;
-}
-.queue-anim-demo{
-  float: left;
-  margin: 0 5px 0 0;
-}
-</style>

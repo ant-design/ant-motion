@@ -1,7 +1,6 @@
 ---
 order: 1
 title: 进场和离场
-cols: 2
 ---
 
 同时支持进场和离场动画。
@@ -23,28 +22,25 @@ const Test = React.createClass({
   },
   render() {
     return (
-      <div>
+      <div className="queue-demo">
         <p className="buttons">
           <Button type="primary" onClick={this.onClick}>切换</Button>
         </p>
         <QueueAnim className="demo-content">
           {this.state.show ? [
-            <div className="demo-kp" key="a">
+            <div className="demo-thead" key="a">
+              <ul>
+                <li />
+                <li />
+                <li />
+              </ul>
+            </div>,
+            <div className="demo-tbody" key="b">
               <ul>
                 <li></li>
                 <li></li>
                 <li></li>
               </ul>
-            </div>,
-            <div className="demo-listBox" key="b">
-              <div className="demo-list">
-                <div className="title"></div>
-                <ul>
-                  <li></li>
-                  <li></li>
-                  <li></li>
-                </ul>
-              </div>
             </div>
           ] : null}
         </QueueAnim>

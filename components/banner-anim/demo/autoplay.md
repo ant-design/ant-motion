@@ -1,7 +1,6 @@
 ---
 order: 1
 title: 自动播放
-cols: 1
 ---
 
 自动播放示例。
@@ -14,7 +13,7 @@ const BgElement = Element.BgElement;
 class Demo extends React.Component {
   render(){
     return (
-      <BannerAnim prefixCls="banner-user" autoPlay>
+      <BannerAnim prefixCls="banner-user">
         <Element 
           prefixCls="banner-user-elem"
           key="0" 

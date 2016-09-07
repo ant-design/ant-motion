@@ -1,6 +1,6 @@
 ---
 order: 0
-title: 默认
+title: 简单的例子
 ---
 
 同时支持进场和离场动画。
@@ -32,7 +32,7 @@ class Test extends React.Component{
   
   render(){
     return (
-      <div>
+      <div className="code-box-demo-wrapper">
         <p className="buttons">
           <Button type="primary" onClick={this.onClick}>切换</Button>
         </p>

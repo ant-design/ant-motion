@@ -22,7 +22,7 @@ english: Space
 
 <img src="https://zos.alipayobjects.com/rmsportal/bVutyJfjzrRzFaV.jpg" width="100%" class="content-img"/>
 
-## banner 视差示意图
+## banner视差示意图
 
 如果 banner 里加入跟随鼠标移动,加入空间层次，有效的给每层元素不同的参数，摸拟现实的视差效果。
 

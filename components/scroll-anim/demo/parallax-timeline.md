@@ -1,6 +1,5 @@
 ---
 order: 2
-cols: 1
 title: parallax 的时间轴动画
 ---
 

@@ -1,7 +1,6 @@
 ---
 order: 3
 title: 添加与删除
-cols: 2
 ---
 
 场景里有增加或删除条目时也会触发动画。
@@ -44,21 +43,25 @@ const Test = React.createClass({
   },
   render() {
     return (
-      <div>
+      <div className="queue-demo">
         <p className="buttons">
           <Button type="primary" onClick={this.onClick}>切换</Button>
           <Button onClick={this.onAdd} style={{ marginLeft: 10 }}>添加</Button>
           <Button onClick={this.onRemove} style={{ marginLeft: 10 }}>删除</Button>
         </p>
         <div className="demo-content">
-            <div className="demo-listBox" key="b">
-              <div className="demo-list">
-                <div className="title"></div>
-                <QueueAnim component="ul" type={['right', 'left']}>
-                  {this.state.show ? this.state.items : null}
-                </QueueAnim>
-              </div>
-            </div>
+          <div className="demo-thead" key="a">
+            <ul>
+              <li />
+              <li />
+              <li />
+            </ul>
+          </div>
+          <div className="demo-tbody" key="b">
+            <QueueAnim component="ul" type={['right', 'left']} leaveReverse>
+              {this.state.show ? this.state.items : null}
+            </QueueAnim>
+          </div>
         </div>
       </div>
     );

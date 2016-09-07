@@ -125,9 +125,9 @@ export default class Banner extends React.Component {
                 component="path"
                 fill="rgba(255,255,255,.05)"
                 stroke="rgba(255,255,255,.1)"
-                d="M200,800C380,880,380,540,480,340C530,200,500,200,500,100L520,800Z"
+                d="M0,800C400,680,400,580,450,350C480,200,480,200,500,160L500,800Z"
                 animation={{
-                  d: 'M200,800S380,880,480,340Q530,-100,520,380L520,800Z',
+                  d: 'M0,800C400,680,300,550,420,350C480,260,480,260,500,180L500,800Z',
                   duration: 20000,
                   repeat: -1,
                   yoyo: true,
@@ -137,11 +137,11 @@ export default class Banner extends React.Component {
               <TweenOne
                 attr="attr"
                 component="path"
-                fill="rgba(255,255,255,.05)"
+                fill="rgba(255,255,255,.03)"
                 stroke="rgba(255,255,255,.1)"
-                d="M300,800C400,500,500,600,500,300L500,800Z"
+                d="M100,800C400,700,300,400,500,200L500,800Z"
                 animation={{
-                  d: 'M300,800Q305,600,500,300L500,800Z',
+                  d: 'M100,800C200,750,380,800,500,100L500,800Z',
                   duration: 20000,
                   repeat: -1,
                   yoyo: true,
@@ -252,10 +252,10 @@ export default class Banner extends React.Component {
               fill="#FFF"
               d="M0,150 C100,100, 150,115, 300,120 C390,125,500,130,600,80 L600,150 L0,150"
               animation={{
-                d: 'M0,80 C100,130,210,125,300,120C450,115,500,100,600,150L600,150L0,150Z',
+                d: 'M0,140 C120,95, 150,110, 300,125 C390,135,500,135,600,90 L600,150 L0,150Z',
                 repeat: -1,
                 yoyo: true,
-                duration: 30000,
+                duration: 10000,
                 ease: 'easeInOutSine',
               }}
               attr="attr"

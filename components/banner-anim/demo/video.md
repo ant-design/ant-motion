@@ -2,7 +2,6 @@
 order: 3
 title: video背景
 hidden: true
-cols: 1
 ---
 
 用 video 作为背景时。

@@ -1,6 +1,5 @@
 ---
 order: 3
-cols: 4
 title: 模糊效果
 mouseEnter: true
 ---

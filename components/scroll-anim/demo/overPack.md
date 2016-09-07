@@ -1,6 +1,5 @@
 ---
 order: 3
-cols: 1
 title: OverPack 例子
 ---
 

@@ -18,10 +18,9 @@ class ComponentDoc extends React.Component {
       .filter(item => !item.meta.hidden)
       .sort((a, b) => a.meta.order - b.meta.order)
       .map((item, i) => {
-        const col = Math.round(24 / (item.meta.cols || 4));
         const content = props.utils.toReactComponent(['div'].concat(item.content));
         const Comp = item.preview;
-        return (<Item col={col} title={item.meta.title} content={content}
+        return (<Item vertical={item.meta.vertical} title={item.meta.title} content={content}
           code={props.utils.toReactComponent(item.highlightedCode)}
           styleCode={item.highlightedStyle ?
             props.utils.toReactComponent(item.highlightedStyle ) : null
@@ -34,15 +33,8 @@ class ComponentDoc extends React.Component {
           {Comp(React,ReactDOM)}
         </Item>)
       });
-    const { meta, api, content, description } = pageData.index;
+    const { meta, description } = pageData.index;
     const { title, subtitle, chinese, english } = meta;
-    const apiChildren = (api || []).map((_child, i) => {
-      const child = _child;
-      if (child[0] === 'h2' && child[1] === 'API') {
-        child[1] = 'API 说明'
-      }
-      return child;
-    });
     return (<DocumentTitle title={`${subtitle || chinese || ''} ${title || english} - Ant Motion`}>
       <article className="markdown">
         <h1>{title || english}
@@ -53,13 +45,9 @@ class ComponentDoc extends React.Component {
           />
         </h1>
         {description ? props.utils.toReactComponent(description) : null}
-        <i className="dotted-line" />
-        <DemoLayout>
+        <DemoLayout vertical={meta.vertical}>
           {demosToChild}
         </DemoLayout>
-        <i className="dotted-line" />
-        {props.utils.toReactComponent(content)}
-        {props.utils.toReactComponent(apiChildren)}
       </article>
     </DocumentTitle>)
   }

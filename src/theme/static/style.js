@@ -5,4 +5,5 @@ import './home.less';
 import './page.less';
 import './markdown.less';
 import './demolayout.less';
+import './demo.less';
 import './splicing.less';

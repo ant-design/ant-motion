@@ -1,7 +1,6 @@
 ---
 order: 0
-title: 默认
-cols: 2
+title: 简单的例子
 ---
 
 最简单的进场例子。
@@ -10,25 +9,11 @@ cols: 2
 import QueueAnim from 'rc-queue-anim';
 
 ReactDOM.render(
-  <QueueAnim delay={500}>
+  <QueueAnim delay={1000} className="queue-simple">
     <div key="a">依次进场</div>
     <div key="b">依次进场</div>
     <div key="c">依次进场</div>
     <div key="d">依次进场</div>
-    <div key="e">依次进场</div>
-    <div key="f">依次进场</div>
   </QueueAnim>
 , mountNode);
-````
-
-````css
-.code-box-demo > div {
-  overflow: hidden;
-}
-
-.code-box-demo .buttons {
-  text-align: center;
-  margin: 0 auto;
-  margin-bottom: 20px;
-}
 ````

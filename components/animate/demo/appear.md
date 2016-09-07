@@ -27,7 +27,7 @@ class Test extends React.Component{
   
   render(){
     return (
-      <div>
+      <div className="code-box-demo-wrapper">
         <p className="buttons">
           <Button type="primary" onClick={this.onClick}>切换</Button>
         </p>

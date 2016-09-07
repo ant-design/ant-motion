@@ -3,6 +3,7 @@ category: Components
 order: 4
 chinese: Banner动画
 english: BannerAnim
+vertical: true
 ---
 
 通过简单的配置, 就能让你的 banner 动起来。

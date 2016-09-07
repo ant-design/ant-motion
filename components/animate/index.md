@@ -1,7 +1,6 @@
 ---
 category: Components
 order: 1
-cols: 3
 chinese: Css样式动画
 english: Animate
 ---
