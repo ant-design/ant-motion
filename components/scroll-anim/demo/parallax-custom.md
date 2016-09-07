@@ -12,7 +12,7 @@ import { Parallax } from 'rc-scroll-anim';
 class Demo extends React.Component {
   render() {
     return (
-      <div style={{ overflow: 'hidden' }}>
+      <div>
         <Parallax
           animation={{ x: 0, opacity: 1, playScale: [0.5, 0.8] }}
           style={{ transform: 'translateX(-100px)', opacity: 0 }}

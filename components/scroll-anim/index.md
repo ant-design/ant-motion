@@ -9,12 +9,12 @@ vertical: true
 通过简单的配置，对页面里的元素添加随滚动条滚动的动画。
 
 <style>
-.code-box-demo .queue-anim-leaving{
-  position: relative !important;
-}
 .queue-anim-demo{
   float: left;
-  margin: 0 5px 0 0;
+  margin: 0 5px 0 0!important;
+}
+.code-box-shape{
+  position: relative !important;
 }
 </style>
 
