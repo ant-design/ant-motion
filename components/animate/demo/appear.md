@@ -44,9 +44,3 @@ class Test extends React.Component{
 }
 ReactDOM.render(<Test />, mountNode);
 ```
-
-```css
-#components-component-demo-appear .fade-appear {
-  animation-duration: 5s;
-}
-```
