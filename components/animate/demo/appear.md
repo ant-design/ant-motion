@@ -35,7 +35,8 @@ class Test extends React.Component{
           transitionName="fade"
           transitionAppear
         >
-          {this.state.show ? <div key="1" className="code-box-shape" /> : null}
+          {this.state.show ? 
+            <div key="1" className="code-box-shape" /> : null}
         </Animate>
       </div>
     );
