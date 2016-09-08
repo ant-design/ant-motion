@@ -6,7 +6,7 @@ english: BannerAnim
 vertical: true
 ---
 
-通过简单的配置, 就能让你的 banner 动起来。
+通过简单的配置, 就能让你的 banner 动起来。 具体参数请参见 [API](/api/banner-anim)
 
 ## 何时使用
 
@@ -46,7 +46,7 @@ vertical: true
 
 ## 怎么使用
 ### 安装
-```
+```bash
 $ npm install rc-banner-anim --save
 ```
 ### 使用

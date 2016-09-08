@@ -7,7 +7,7 @@ english: QueueAnim
 vertical: true
 ---
 
-通过简单的配置对一组元素添加串行的进场动画效果。
+通过简单的配置对一组元素添加串行的进场动画效果。具体参数请参见 [API](/api/queue-anim)
 
 ## 何时使用
 
@@ -21,7 +21,7 @@ vertical: true
 
 ## 怎么使用
 ### 安装
-```
+```bash
 $ npm install rc-queue-anim --save
 ```
 ### 使用

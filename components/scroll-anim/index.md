@@ -6,7 +6,7 @@ english: ScrollAnim
 vertical: true
 ---
 
-通过简单的配置，对页面里的元素添加随滚动条滚动的动画。
+通过简单的配置，对页面里的元素添加随滚动条滚动的动画。具体参数请参见 [API](/api/scroll-anim)
 
 ## 何时使用
 
@@ -29,7 +29,7 @@ vertical: true
 
 ## 怎么使用
 ### 安装
-```
+```bash
 $ npm install rc-scroll-anim --save
 ```
 ### 本组件提供

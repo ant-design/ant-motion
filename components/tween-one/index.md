@@ -17,7 +17,7 @@ english: TweenOne
 
 ### 安装
 
-```js
+```bash
 $ npm install rc-tween-one --save
 ```
 ### 使用

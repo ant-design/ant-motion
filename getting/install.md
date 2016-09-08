@@ -17,7 +17,7 @@ english: Ant Motion
 
 动效组件为选择性安装， 所以我们将所需的组件逐一安装， 请参考 component 里的安装。
 
-```
+```bash
 $ npm install rc-queue-anim
 ```
 
