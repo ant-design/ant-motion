@@ -139,6 +139,18 @@ class Splicing extends React.Component {
       this.state.checkboxIds.length ? `&o=${this.state.checkboxIds.join(',')}` : ''
       }`.trim());
     return (<div className={`${this.props.className}-wrapper`}>
+      <h3 style={{
+          background: '#f7f7f7',
+          marginBottom: 20,
+          padding: 10,
+          borderRadius: 6,
+        }}
+      >
+        模块正在优化，如有错误或建议请与&nbsp;
+        <a href="https://github.com/ant-design/ant-motion/issues" target="_blank">
+           Issues
+        </a> 里提交
+      </h3>
       <DocumentTitle title="自由搭配页面 - Ant Motion" />
       {childrenToRender}
       <div className="bottom-btn">
