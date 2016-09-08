@@ -10,7 +10,7 @@ export default {
       {
         src: 'https://zos.alipayobjects.com/rmsportal/UTHsfGMNXXbpEoL.jpg',
         text: '带用户型',
-      }
+      },
     ],
   },
   banner: {
