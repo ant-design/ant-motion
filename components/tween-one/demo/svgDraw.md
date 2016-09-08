@@ -35,7 +35,9 @@ class Demo extends React.Component {
   render() {
     return (
       <div style={{ textAlign: 'center', marginTop: 40 }}>
-        <Button type="primary" onClick={this.onClick.bind(this)}>点击切换</Button>
+        <Button type="primary" onClick={this.onClick.bind(this)}>
+          点击切换
+        </Button>
         <svg width="200" height="84" version="1.2"
           style={{ display: 'block', margin: 'auto' }}
         >

@@ -48,10 +48,11 @@ class Page extends React.Component {
       .sort((a, b) => a.meta.order - b.meta.order);
     return children.map((item, i) => {
       const meta = item.meta;
-      const link = meta.filename.replace(/(\/index)|(.md)/g, '');
+      let link = meta.filename.replace(/(\/index)|(.md)/g, '');
       const path = Array.isArray(pathNames) ? pathNames.join('/') : pathNames.replace('#', '');
       const className = path === link || path === meta.id || (!path && i === 0) ? 'active' : '';
-
+      // api 页面，链接把 components 转成 api
+      link = this.props.pathname.match('api') ? link.replace('components', 'api') : link;
       let linkToChildren = link.split('/')[1] === pathNames[1] ?
         (<a>
           {isNav ? meta.english : null}
@@ -83,16 +84,22 @@ class Page extends React.Component {
     const hash = props.hash;
     const isComponent = pathNames[0] === 'components';
     let moduleData = this.getModuleData(props.pageData);
-    const navToRender = isComponent ? this.getMenuItems(moduleData[pathNames[0]], pathNames, false, true) : null;
+    // Ａpi页面, 地址转成 components;
+    pathNames[0] = pathNames[0] === 'api' ? 'components' : pathNames[0];
+    const navToRender = isComponent ?
+      this.getMenuItems(moduleData[pathNames[0]], pathNames, false, true) : null;
     moduleData = isComponent ?
       this.getModuleData(props.pageData[pathNames[0]][pathNames[1]]) :
       moduleData;
 
     const listToRender = moduleData && this.getMenuItems(isComponent ?
         moduleData.demo : moduleData[pathNames[0]], isComponent ? hash : pathNames, isComponent);
-    const children = pathNames[0] === 'exhibition' ?
-      React.cloneElement(props.children, { pageData: props.pageData }) : props.children;
-    const listKey = pathNames[0] === 'components' ? props.pathname : pathNames[0];
+    const pageData = props.pathname.match('api') ?
+      props.pageData.components[pathNames[1]].index : props.pageData;
+    const children = pathNames[0] === 'exhibition' || props.pathname.match('api') ?
+      React.cloneElement(props.children, { pageData }) : props.children;
+    const listKey = pathNames[0] === 'components' && !props.pathname.match('api') ?
+      props.pathname : pathNames[0];
     return <div className={className}>
       <TweenOneGroup
         enter={{ height: 0, type: 'from', ease: 'easeInOutCubic' }}

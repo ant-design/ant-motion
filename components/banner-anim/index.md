@@ -8,6 +8,10 @@ vertical: true
 
 通过简单的配置, 就能让你的 banner 动起来。
 
+## 何时使用
+
+- 在首页里的首屏展示信息时，需要将 banner 里的元素做动效时。
+
 <style>
 .code-box-wrapper .code-box-demo{
   padding: 0;
@@ -39,11 +43,6 @@ vertical: true
 </style>
 
 ---
-
-## 何时使用
-
-- 在首页里的首屏展示信息时，需要将 banner 里的元素做动效时。
-
 
 ## 怎么使用
 ### 安装

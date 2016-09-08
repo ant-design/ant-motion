@@ -21,7 +21,7 @@ class Article extends React.Component {
   render() {
     const props = this.props;
     const pageData = props.pageData;
-    const { meta, content, toc } = pageData;
+    const { meta, content, toc, api } = pageData;
     const { title, subtitle, chinese, english } = meta;
     const tocItem = props.utils.toReactComponent(toc);
     const tocChildren = utils.toArrayChildren(tocItem.props.children).map(item => {
@@ -42,6 +42,7 @@ class Article extends React.Component {
         {!content ? null :
           props.utils.toReactComponent(['section', { className: 'markdown' }]
             .concat(getChildren(content)))}
+        {api ? props.utils.toReactComponent(api) : null}
       </article>
     </DocumentTitle>);
   }

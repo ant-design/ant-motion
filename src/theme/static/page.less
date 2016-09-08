@@ -21,10 +21,7 @@
         float: left;
         height: 120px;
         text-align: center;
-        border-bottom: 2px solid transparent;
-        transition: border .3s @ease-in-out;
         &[disabled] {
-          pointer-events: none;
           cursor: not-allowed;
           & * {
             pointer-events: none;
@@ -35,19 +32,28 @@
           color: @title-color;
           display: block;
           height: 100%;
-          transition: color .3s @ease-in-out;
           padding-top: 30px;
+          border-bottom: 2px solid transparent;
+          transition: border .3s @ease-in-out, color .3s @ease-in-out;
           & span {
             display: block;
             color: fade(@nav-link-color, 75);
             transition: color .3s @ease-in-out;
           }
-        }
-        &.active, &:hover {
-          border-bottom-color: @primary-color;
-          & a{
+          &:hover {
             color: @nav-link-active-color;
-            & span{
+            border-bottom-color: @primary-color;
+            & span {
+              color: fade(@nav-link-active-color, 55);
+            }
+
+          }
+        }
+        &.active {
+          & a {
+            color: @nav-link-active-color;
+            border-bottom-color: @primary-color;
+            & span {
               color: fade(@nav-link-active-color, 55);
             }
           }

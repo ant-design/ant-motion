@@ -77,7 +77,13 @@ class Demo extends React.Component {
           style={{ margin: '40px 20px' }}
         />
         <div className="demo-buttons"
-          style={{ position: 'absolute', width: 292, left: '50%', marginLeft: -146, bottom: 25 }}
+          style={{ 
+            position: 'absolute', 
+            width: 292, 
+            left: '50%', 
+            marginLeft: -146, 
+            bottom: 25 
+          }}
         >
           <Button type="primary" onClick={this.onClick}>play</Button>
           <Button type="primary" onClick={this.onPause}>pause</Button>

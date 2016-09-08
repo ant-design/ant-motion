@@ -40,7 +40,12 @@ class Demo extends React.Component {
           style={{ display: 'block', margin: 'auto' }}
         >
           <TweenOne
-            animation={{ d: 'M60,10L60,90L140,90L140,10Z', yoyo: true, repeat: -1, duration: 1000 }}
+            animation={{ 
+              d: 'M60,10L60,90L140,90L140,10Z', 
+              yoyo: true, 
+              repeat: -1, 
+              duration: 1000 
+            }}
             style={{ fill: '#019BF0'}}
             paused={this.props.paused}
             component="path"
