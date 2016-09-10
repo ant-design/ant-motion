@@ -10,7 +10,6 @@ hidden: true
 import BannerAnim, { Element } from 'rc-banner-anim';
 import TweenOne from 'rc-tween-one';
 import 'rc-banner-anim/assets/index.css';
-const { Element } = BannerAnim;
 class Demo extends React.Component {
   render() {
     return (

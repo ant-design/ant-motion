@@ -1,6 +1,7 @@
 ---
 order: 0
 english: Ant Motion
+chinese: 快速安装
 ---
 
 我们的动画组件适用于 React 应用，确保您的项目基于 React 或 [Ant Design](http://ant.design/)。

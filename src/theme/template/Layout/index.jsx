@@ -24,11 +24,10 @@ class Layout extends React.Component {
     const path = this.props.location.pathname;
     let pathKey = path && path.split('/')[0];
     const key = !pathKey ? 'index' : 'page';
-    const children = !pathKey ?
+    const children = !pathKey || pathKey === 'exhibition' ?
       React.cloneElement(this.props.children, {
-        key: key,
-        ref: key,
-      }) : (<Page key={key} ref={key}
+        key: pathKey ? path : key,
+      }) : (<Page key={key}
       pathname={this.props.location.pathname}
       pageData={this.props.pageData}
       hash={this.props.location.hash}
@@ -39,7 +38,7 @@ class Layout extends React.Component {
       <Header activeKey={pathKey} />
       <TweenOne.TweenOneGroup className="content-wrapper"
         onEnd={this.onChange}
-        enter={{ type: 'from', opacity: 0, ease: 'easeOutQuart'}}
+        enter={{ type: 'from', opacity: 0, ease: 'easeOutQuart' }}
         leave={{ opacity:0, ease: 'easeInOutQuart' }}
         ref='content'
       >

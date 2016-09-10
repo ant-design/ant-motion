@@ -5,9 +5,6 @@ import TweenOne from 'rc-tween-one';
 
 import { Link } from 'react-router';
 
-/*import Row from 'antd/lib/row';
- import Col from 'antd/lib/col';*/
-
 export default class Page3 extends React.Component {
   static contextTypes = {
     pageData: React.PropTypes.object,
@@ -26,20 +23,23 @@ export default class Page3 extends React.Component {
   }
 
   render() {
-    const templates = this.props.pageData.templates;
-    let demoToChildren = Object.keys(templates).filter((key, i) => i < 6).map(key => {
-      const item = templates[key].index;
-      const img = item.meta.image;
-      const title = item.meta.chinese;
-      const content = this.props.utils.toReactComponent(item.description);
-      return <li key={key}>
-        <Link to={`exhibition/${key}`}>
-          <div className="home-anim-demo-img"><img src={img} width="100%" /></div>
-          <h2>{title}</h2>
-          <div className="home-anim-demo-text">{content}</div>
-        </Link>
-      </li>
-    });
+    const exhibition = this.props.pageData.exhibition.demo;
+    let demoToChildren = Object.keys(exhibition)
+      .map(key => exhibition[key])
+      .sort((a, b) => a.meta.order - b.meta.order)
+      .filter((key, i) => i < 6).map(item => {
+        const img = item.meta.image;
+        const link = item.meta.filename.replace(/(\/index)|(.md)/g, '');
+        const title = item.meta.chinese || item.meta.english;
+        const content = this.props.utils.toReactComponent(item.description);
+        return <li key={link}>
+          <Link to={link}>
+            <div className="home-anim-demo-img"><img src={img} width="100%" /></div>
+            <h2>{title}</h2>
+            <div className="home-anim-demo-text">{content}</div>
+          </Link>
+        </li>
+      });
 
     return (<OverPack
       className="home-content page3"
@@ -74,7 +74,7 @@ export default class Page3 extends React.Component {
         animation={{ delay: 300, ...this.props.tweenAnim }}
         className="home-button"
       >
-        <Link to="/exhibition">更多动画</Link>
+        <Link to="/exhibition/">更多动画</Link>
       </TweenOne>
     </OverPack>);
   }

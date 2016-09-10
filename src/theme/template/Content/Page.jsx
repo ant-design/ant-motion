@@ -96,7 +96,7 @@ class Page extends React.Component {
         moduleData.demo : moduleData[pathNames[0]], isComponent ? hash : pathNames, isComponent);
     const pageData = props.pathname.match('api') ?
       props.pageData.components[pathNames[1]].index : props.pageData;
-    const children = pathNames[0] === 'exhibition' || props.pathname.match('api') ?
+    const children = props.pathname.match('api') ?
       React.cloneElement(props.children, { pageData }) : props.children;
     const listKey = pathNames[0] === 'components' && !props.pathname.match('api') ?
       props.pathname : pathNames[0];
@@ -117,9 +117,19 @@ class Page extends React.Component {
         leave={{ top: -30, opacity: 0 }}
         className={`${className}-wrapper`}
       >
-        {listToRender && <Affix offsetTop={60} key="list" className="list-wrapper">
-          <QueueAnim type={['bottom', 'top']} duration={450} ease="easeInOutQuad" ref="list" className="list">
-            <h2 key={`${pathNames[0]}-title`}>{title[pathNames[0]]}</h2>
+        {listToRender &&
+        <Affix offsetTop={60} key="list" className="list-wrapper">
+          <QueueAnim type={['bottom', 'top']}
+            duration={450}
+            ease="easeInOutQuad"
+            ref="list"
+            className="list"
+          >
+            <h2 key={`${props.pathname.split('/')[0]}-title`}>
+              {isComponent ?
+                '范例' :
+                title[pathNames[0]]}
+            </h2>
             <QueueAnim
               component="ul"
               key={listKey}

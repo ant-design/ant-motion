@@ -1,6 +1,7 @@
 const Article = './template/Content/Article';
 const ComponentDoc = './template/Content/ComponentDoc';
 const Exhibition = './template/Exhibition/index';
+const Details = './template/Exhibition/Details';
 module.exports = {
   home: '/',
   routes: [
@@ -10,6 +11,7 @@ module.exports = {
       indexRoute: { component: './template/Home/index' },
       childRoutes: [
         { path: '/exhibition/', component: Exhibition },
+        { path: '/exhibition/demo/:contentName', component: Details },
         { path: '/getting/:contentName', component: Article },
         { path: '/components/:contentName', component: ComponentDoc },
         { path: '/language/:contentName', component: Article },

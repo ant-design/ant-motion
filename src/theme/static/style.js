@@ -7,3 +7,4 @@ import './markdown.less';
 import './demolayout.less';
 import './demo.less';
 import './splicing.less';
+import './exhibition.less';

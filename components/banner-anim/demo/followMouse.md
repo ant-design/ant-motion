@@ -9,7 +9,6 @@ title: 随鼠标摆动
 import BannerAnim, { Element } from 'rc-banner-anim';
 import TweenOne from 'rc-tween-one';
 import 'rc-banner-anim/assets/index.css';
-const { Element } = BannerAnim;
 const BgElement = Element.BgElement;
 class Demo extends React.Component {
   render() {

@@ -1,13 +1,13 @@
 @import "./custom";
 
 @content: page;
+.home .page.tween-one-leaving {
+  margin-top: 64px;
+}
 .@{content} {
   width: 100%;
   overflow: hidden;
   position: relative;
-  &.tween-one-leaving {
-    margin-top: 64px;
-  }
   &-nav {
     background: @nav-color;
     overflow: hidden;
@@ -63,7 +63,7 @@
     }
   }
   &-wrapper {
-    width: 100%;
+    width: 95%;
     border-radius: 6px;
     max-width: 960px;
     min-height: 800px;

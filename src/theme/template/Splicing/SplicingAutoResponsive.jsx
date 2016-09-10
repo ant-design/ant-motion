@@ -20,6 +20,7 @@ class AutoResponsiveDemo extends React.Component {
   }
 
   componentDidMount() {
+    this.onWindowResized();
     if (window.addEventListener) {
       window.addEventListener('resize', this.onWindowResized);
     } else {

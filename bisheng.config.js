@@ -5,7 +5,7 @@ module.exports = {
     './language',
     './components',
     './getting',
-    './templates',
+    './exhibition',
   ],
   output: './_site',
   entry: {

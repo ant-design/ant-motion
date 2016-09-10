@@ -17,7 +17,7 @@ class Footer extends React.Component {
           <div key="0">
             <a target="_blank" href="https://github.com/ant-design/antd-init">antd-init</a> - 脚手架
           </div>
-          <div key="1"><a target="_blank" href="http://ant-tool.github.io/">ant-too</a> - 开发工具</div>
+          <div key="1"><a target="_blank" href="http://ant-tool.github.io/">ant-tool</a> - 开发工具</div>
         </QueueAnim>
         <QueueAnim component="li" type="bottom" key="1">
           <h2 key="h2">相关站点</h2>
