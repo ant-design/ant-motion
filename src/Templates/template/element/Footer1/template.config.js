@@ -1,6 +1,7 @@
-const component = require('./index.jsx');
-const templateStr = require('!raw!./index.jsx');
+const component = require('./index');
+const templateStr = require('!raw!./index');
 const less = require('!raw!./index.less');
+
 export default {
   component,
   templateStr,

@@ -1,16 +1,16 @@
-const Nav0 = require('./template/element/Nav0/template.config.js');
-const Nav1 = require('./template/element/Nav1/template.config.js');
-const Banner0 = require('./template/element/Banner0/template.config.js');
-const Banner1 = require('./template/element/Banner1/template.config.js');
-const Content0 = require('./template/element/Content0/template.config.js');
-const Content1 = require('./template/element/Content1/template.config.js');
-const Content2 = require('./template/element/Content2/template.config.js');
-const Content3 = require('./template/element/Content3/template.config.js');
-const Content4 = require('./template/element/Content4/template.config.js');
-const Content5 = require('./template/element/Content5/template.config.js');
-const Content6 = require('./template/element/Content6/template.config.js');
-const Footer0 = require('./template/element/Footer0/template.config.js');
-const Footer1 = require('./template/element/Footer1/template.config.js');
+const Nav0 = require('./template/element/Nav0/template.config');
+const Nav1 = require('./template/element/Nav1/template.config');
+const Banner0 = require('./template/element/Banner0/template.config');
+const Banner1 = require('./template/element/Banner1/template.config');
+const Content0 = require('./template/element/Content0/template.config');
+const Content1 = require('./template/element/Content1/template.config');
+const Content2 = require('./template/element/Content2/template.config');
+const Content3 = require('./template/element/Content3/template.config');
+const Content4 = require('./template/element/Content4/template.config');
+const Content5 = require('./template/element/Content5/template.config');
+const Content6 = require('./template/element/Content6/template.config');
+const Footer0 = require('./template/element/Footer0/template.config');
+const Footer1 = require('./template/element/Footer1/template.config');
 
 export default {
   nav: {

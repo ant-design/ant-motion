@@ -1,5 +1,5 @@
 export function getURLData(name, url) {
-  const myUrl = decodeURIComponent(url || location.hash || '').replace('#', '');
+  const myUrl = decodeURIComponent(url || window.location.hash || '').replace('#', '');
   const reg = new RegExp(`(^|&)${name}=([^&]*)(&|$)`, 'i');
   const r = myUrl.match(reg);
   return r ? r[2] : null;
@@ -36,7 +36,7 @@ export function mergeURLDataToConfig(data, config) {
 }
 
 export function ping(url, callback) {
-  const img = new Image();
+  const img = new window.Image();
   let done;
   const finish = (status) => {
     if (!done) {

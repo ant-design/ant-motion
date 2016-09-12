@@ -14,16 +14,22 @@
        loader.test = /\.less$/;
      }
    });
- 2）或以此格式重新编写 less.
+ 2) 直接在每个生成的 less 里加上 如：
+   :global {
+     video {
+       display: block;
+     }
+   }
+ 3）或以此格式重新编写 less.
 
-4. 安装依赖, package.json 里的 devDependencies 加下以下：
+4. 安装依赖, package.json 里的 dependencies 加下以下：
 "antd": "~1.7.0",
 "rc-queue-anim": "~0.12.0",
 "rc-scroll-anim": "~0.3.0",
 "rc-tween-one": "~0.7.0",
 "rc-banner-anim": "~0.2.11", // 如果用的是多屏滑动型的 banner，加上这条。
 
-5. 顶级 dom 的 id 为 react-content 或自行加上 height: 100%;
+5. 顶级 dom 的 id 为 react-content 或自行加上 height: 100% 或 100vh;
 
 6. 将当前文件删除。
 
