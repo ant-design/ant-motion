@@ -39,17 +39,17 @@ class ListDemo extends React.Component {
         },
         {
           img: 'https://zos.alipayobjects.com/rmsportal/EMQSSlFQtGYEnWx.png',
-          text: 'Senior Product Designer',
+          text: 'Senior Animator',
           key: 1,
         },
         {
           img: 'https://zos.alipayobjects.com/rmsportal/OCuGZXfRioLyhKF.png',
-          text: 'Senior Product Designer',
+          text: 'Visual Designer',
           key: 2,
         },
         {
           img: 'https://zos.alipayobjects.com/rmsportal/agzYYwzggpOjqge.png',
-          text: 'Senior Product Designer',
+          text: 'Computer Engineer',
           key: 3,
         },
       ],

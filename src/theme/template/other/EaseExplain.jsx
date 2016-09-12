@@ -2,6 +2,21 @@ import React, { PropTypes } from 'react';
 import TweenOne from 'rc-tween-one';
 
 class EaseExplain extends React.Component {
+  static contextTypes = {
+    className: PropTypes.string,
+    leftHide: PropTypes.bool,
+    rightHide: PropTypes.bool,
+    title: PropTypes.string,
+    circleStyle: PropTypes.object,
+    animation: PropTypes.object,
+    children: PropTypes.any,
+  };
+
+  static defaultProps = {
+    className: 'content',
+  };
+
+
   constructor() {
     super(...arguments);
     this.state = {
@@ -61,17 +76,4 @@ class EaseExplain extends React.Component {
       </div>);
   }
 }
-EaseExplain.propTypes = {
-  className: PropTypes.string,
-  leftHide: PropTypes.bool,
-  rightHide: PropTypes.bool,
-  title: PropTypes.string,
-  circleStyle: PropTypes.object,
-  animation: PropTypes.object,
-  children: PropTypes.any,
-};
-
-EaseExplain.defaultProps = {
-  className: 'content',
-};
 export default EaseExplain;
