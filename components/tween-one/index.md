@@ -51,8 +51,6 @@ React.render(<TweenOneGroup>
 
 ### animation
 
-> `transform` 需要设定初始值，必需在 `style` 里设定
-
 |   参数   |    类型    |   默认  |  说明   |
 |---------|------------|---------|--------|
 | type    |  string    |  `to`   | 播放类型，`to` 为正常播放， `from` 反向播放 |

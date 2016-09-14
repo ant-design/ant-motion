@@ -146,10 +146,10 @@ class Splicing extends React.Component {
           borderRadius: 6,
         }}
       >
-        模块正在优化，如有错误或建议请与&nbsp;
+        模块正在优化，如有错误、建议或想参于共建这模块的请与&nbsp;
         <a href="https://github.com/ant-design/ant-motion/issues" target="_blank">
            Issues
-        </a> 里提交
+        </a> 里联系我
       </h3>
       <DocumentTitle title="自由搭配页面 - Ant Motion" />
       {childrenToRender}

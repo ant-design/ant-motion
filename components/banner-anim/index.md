@@ -12,6 +12,8 @@ vertical: true
 
 - 在首页里的首屏展示信息时，需要将 banner 里的元素做动效时。
 
+> [查看更多 demo](http://react-component.github.io/banner-anim/)
+
 <style>
 .code-box-wrapper .code-box-demo{
   padding: 0;
@@ -61,16 +63,25 @@ ReactDOM.render(<BannerAnim>
   </Element>
 </BannerAnim>, mountNode);
 ```
-> [查看更多 demo](http://react-component.github.io/banner-anim/)
+
 
 ## API
 
 ### BannerAnim
 
+> ref 来控制跳转: `<BannerAnim ref="banner"/>`
+
+> 上一个: this.refs.banner.prev();
+
+> 下一个: this.refs.banner.next();
+
+> 跳转:  this.refs.banner.slickGoTo(number); number 从 0 开始;
+
 |参数        |类型             |默认     |详细             |
 |----------|-----------------|--------------|-----------------------|
 |   type   |  string / array | All animType | 提供: `across`, `vertical`, `acrossOverlay`, `verticalOverlay`, `gridBar`, `grid`; `grid` 和 `gridBar` 单个块状动画时间是 `duration`; 可自行添加动画效果，如 `const animType = BannerAnim.animType; animType.xxx=function(elem, type, direction, animData, elemOffset){return react.Component}` elem: react.Component 当前进出场的元素, type: `enter` 或 `leave`, direction: `next` 或 `prev`, animData: 回调之类的，带上就行了, elemOffset: 当前元素是宽高  |
 | duration |      number     |      450     | 动画过场时间  |
+| delay    |      number     |       0      |   过场的延时  |
 | ease     |      string     | `easeInOutQuad` | 缓动            |
 | initShow |      number     |    0         |  开始显示          |
 | arrow    |      boolean    |      `true`    |  默认箭头，如果 `Arrow` 在 children 里，此项无效 |
@@ -80,6 +91,8 @@ ReactDOM.render(<BannerAnim>
 | onChange |     func        |    -          |  幻灯片变换时调用，返回 onChange(`before` 或 `after`, 当前显示的位置) |
 | prefixCls |    string      |   -           |  自定义样式 |
 | children |  react.component|   -           | `Element`(必须), `Arrow`, `Thumb` |
+| sync      |   boolean      |   false       | 传递到 Element. |  
+| dragPlay  |   boolean      |   true        | 在 banner 上拖动播放下一个或上一个。默认开启 |
 | component | string         |      `div`    | 组件标签  |
 
 ### Element 
@@ -89,6 +102,8 @@ ReactDOM.render(<BannerAnim>
 |参数        |类型             |默认     |详细             |
 |----------|-----------------|--------------|-----------------------|
 | key      |     string      |      -       |  必须                 |
+| hideProps | object / boolean |  false   | 子级出场时切换的参数，同 [scrollAnim](/api/scroll-anim) 里的 hideProps | 
+| sync      |   boolean      |   false       | 子级动画进入与滚动同步。默认 false 为滚动完成后再做子级动画 |  
 | prefixCls |     string      |   -           |  自定义样式 |
 | followParallax | object   |  null        | 跟随鼠标上下或左右晃动效果 |
 | component | string         |      `div`    | 组件标签  |

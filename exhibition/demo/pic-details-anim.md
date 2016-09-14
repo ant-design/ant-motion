@@ -1,5 +1,5 @@
 ---
-order: 2
+order: 3
 chinese: 图片详细切换
 english: PicDetailsAnim
 image: https://zos.alipayobjects.com/rmsportal/GFVAdQAMKyNphmU.png
