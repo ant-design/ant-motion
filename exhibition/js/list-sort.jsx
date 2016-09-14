@@ -1,18 +1,5 @@
----
-order: 2
-chinese: 列表交换位置
-english: ListSort
-image: https://zos.alipayobjects.com/rmsportal/UZklLXfsKMNfnQV.jpg
----
-
-页面里的 List 拖动来重新排列顺序。
-
----
-
-ListSort 组件地址： [地址](https://github.com/ant-design/ant-motion/blob/master/src/theme/template/Splicing/ListSort.jsx)
-
-```jsx
-
+import React from 'react';
+import './list-sort.css';
 import ListSort from '../../src/theme/template/Splicing/ListSort';
 import Icon from 'antd/lib/icon';
 
@@ -34,7 +21,7 @@ const dataArray = [
     title: 'Computer Engineer', text: 'Computer Engineer'
   },
 ];
-class ListSortDemo extends React.Component {
+export default class ListSortDemo extends React.Component {
   static contextTypes = {
     className: React.PropTypes.string,
   };
@@ -69,64 +56,3 @@ class ListSortDemo extends React.Component {
     </div>)
   }
 }
-
-ReactDOM.render(
-  <ListSortDemo />
-, mountNode);
-```
-
-```css
-.list-sort-demo-wrapper {
-  position: relative;
-  background: #E15FFF;
-  overflow: hidden;
-  height: 385px;
-}
-
-.list-sort-demo {
-  margin: 40px auto;
-  width: 350px;
-  cursor: url('http://gtms02.alicdn.com/tps/i2/T1_PMSFLBaXXcu5FDa-20-20.png') 10 10,pointer!important;
-  position: relative;
-  height: 305px;
-}
-.list-sort-demo > div{
-  overflow: hidden;
-}
-
-.list-sort-demo-list {
-  background: #fff;
-  border-radius: 6px;
-  margin: 5px auto;
-  padding: 10px;
-  height: 70px;
-  transition:  box-shadow .5s, transform .5s;
-}
-
-.list-sort-demo-list.list-drag-selected{
-  box-shadow: 0 8px 20px #AF288E;
-  transform: scale(1.1) !important;
-}
-
-.list-sort-demo-icon {
-  width: 20%;
-  display: inline-block;
-  text-align: center;
-  font-size: 24px;
-  line-height: 50px;
-  vertical-align: top;
-}
-.list-sort-demo-text{
-  width: 80%;
-  display: inline-block;
-}
-
-.list-sort-demo-text h1 {
-  font-size: 18px;
-}
-
-.list-sort-demo-text p{
-  font-size: 12px;
-}
-
-```
