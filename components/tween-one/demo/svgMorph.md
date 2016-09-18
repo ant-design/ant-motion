@@ -13,25 +13,7 @@ import {Button} from 'antd';
 import SvgMorphPlugin from 'rc-tween-one/lib/plugin/SvgMorphPlugin';
 TweenOne.plugins.push(SvgMorphPlugin);
 
-const dataStartArr = ['30 150', '50% 50%', '30% 200', '20 30%', 0, '100%'];
-let i = 0;
 class Demo extends React.Component {
-
-  constructor() {
-    super(...arguments);
-    this.state = {
-      tweenData: '100%',
-    };
-  }
-  
-  onClick() {
-    const tweenData = dataStartArr[i];
-    this.setState({
-      tweenData,
-    });
-    i++;
-    i = i >= dataStartArr.length ? 0 : i;
-  }
 
   render() {
     return (
