@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-import { Link } from 'react-router';
 import QueueAnim from 'rc-queue-anim';
 import TweenOne from 'rc-tween-one';
 import DocumentTitle from 'react-document-title';
