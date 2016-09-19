@@ -4,7 +4,6 @@ module.exports = {
     './cases',
     './language',
     './components',
-    './getting',
     './exhibition',
   ],
   output: './_site',
