@@ -9,7 +9,6 @@ import message from 'antd/lib/message';
 import Modal from 'antd/lib/modal';
 import Checkbox from 'antd/lib/checkbox';
 import ListSort from './ListSort';
-import { Link } from 'react-router';
 const CheckboxGroup = Checkbox.Group;
 
 class Splicing extends React.Component {
