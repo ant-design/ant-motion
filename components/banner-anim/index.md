@@ -102,8 +102,8 @@ ReactDOM.render(<BannerAnim>
 |参数        |类型             |默认     |详细             |
 |----------|-----------------|--------------|-----------------------|
 | key      |     string      |      -       |  必须                 |
-| hideProps | object / boolean |  false   | 子级出场时切换的参数，同 [scrollAnim](/api/scroll-anim) 里的 hideProps | 
-| sync      |   boolean      |   false       | 子级动画进入与滚动同步。默认 false 为滚动完成后再做子级动画 |  
+| hideProps | object / boolean |  false   | 子级出场时切换的参数，同 [scrollAnim](/api/scroll-anim) 里的 hideProps， false 为出场不做出场效果。 | 
+| sync      |   boolean      |   false       | 子级动画进入与滑动动画是否同步。默认 false 为滑动完成后再做子级动画 |  
 | prefixCls |     string      |   -           |  自定义样式 |
 | followParallax | object   |  null        | 跟随鼠标上下或左右晃动效果 |
 | component | string         |      `div`    | 组件标签  |
@@ -113,7 +113,7 @@ ReactDOM.render(<BannerAnim>
 |----------|-----------------|--------------|-----------------------|
 | delay    |   number        |  null        | 必须，在单个区块进入后延迟开启鼠标效果，比如子级是 tween-one 时，需要等 tween-one 的动画结束后再执行鼠标效果，不然两者会冲突 |
 | data     | array           |  null        | 数组里的内容: { key: string, value: number, type: array or string, bgPosition: string }; key: 子级的 key, 注：banner bg 的 key 是 `bgElem`; value: 晃动时的值，如果值为 20, 那左右晃动的值为：最左边 -20, 最右边 20; type: style 里的样式 或 `x` `y`; bgPosition: 初始背景图片的坐标，只在 type 为 backgroundPosition 时生效，默认为 50%, 详细查看 鼠标跟随例子 |
-| ease | string        | null         | 如果是 `true`, 缓动效果是 `easeInOutQuad`, 鼠标移动时, 元素是否加入缓动效果。  |
+| ease | string        | `easeInOutQuad`         |  鼠标移动时, 元素缓动效果。[参数名称参考](http://easings.net/zh-cn)  |
 | minMove | number     | null        | 区域为 0 - 1, easeInOutQuad(startMousePosition, minMove, 1, currentMousePosition); 在有缓动时，鼠标移动时，最小移动的值，如果为 0，鼠标移动时不会移动，移动结束后触发动画， 最大值为 1。 |
 
 ### Element.BgElement
