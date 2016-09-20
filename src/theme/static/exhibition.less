@@ -1,0 +1,57 @@
+@import 'custom';
+
+@css: exhibition-list;
+.@{css} {
+  & > li {
+    width: 45%;
+    display: inline-block;
+    text-align: center;
+    margin-bottom: 40px;
+    &:nth-child(2n) {
+      margin-left: 10%;
+    }
+    & a, & a img {
+      display: block;
+    }
+    & h3 {
+      line-height: 42px;
+      color: @title-color-exhibition;
+      background: @page-bg-color;
+    }
+    .page-pro();
+    border: none;
+    border-radius: 0;
+  }
+}
+
+@details: exhibition-details;
+.@{details} {
+  margin-bottom: 60px;
+  &-demo{
+    margin-bottom: 40px;
+  }
+  &-replay-button{
+    float: right;
+    margin: -85px 10px;
+    width: 32px;
+    height: 32px;
+    background: #ffffff;
+    border-radius: 100%;
+    box-shadow: 0 5px 20px fade(#000, 15);
+    position: relative;
+    & a{
+      background: url("https://zos.alipayobjects.com/rmsportal/XInKafGVjnFqZcM.svg") no-repeat center;
+      width: 20px;
+      height: 20px;
+      display: block;
+      margin: 6px auto;
+    }
+  }
+  & > pre{
+    max-height: 600px;
+    overflow: auto;
+  }
+  & h3{
+    margin: 1em 0 .6em 0;
+  }
+}

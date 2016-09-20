@@ -1,6 +1,5 @@
 ---
 order: 0
-cols: 4
 title: 位移效果
 mouseEnter: true
 ---

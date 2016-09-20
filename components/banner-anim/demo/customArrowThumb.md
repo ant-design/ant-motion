@@ -1,7 +1,6 @@
 ---
 order: 2
 title: 自定义左右箭头与缩略图
-cols: 1
 ---
 
 可定制自已所示的箭头。
@@ -16,8 +15,8 @@ class Demo extends React.Component {
   constructor() {
     super(...arguments);
     this.imgArray = [
-      'https://os.alipayobjects.com/rmsportal/IhCNTqPpLeTNnwr.jpg',
-      'https://os.alipayobjects.com/rmsportal/uaQVvDrCwryVlbb.jpg',
+      'https://zos.alipayobjects.com/rmsportal/hzPBTkqtFpLlWCi.jpg',
+      'https://zos.alipayobjects.com/rmsportal/gGlUMYGEIvjDOOw.jpg',
     ];
     this.state = {
       intShow: 0,
@@ -99,7 +98,12 @@ class Demo extends React.Component {
           <span key={i}><i style={{ backgroundImage: `url(${img})` }} /></span>
         );
     return (
-      <BannerAnim onChange={this.onChange} onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave} prefixCls="custom-arrow-thumb">
+      <BannerAnim 
+        onChange={this.onChange} 
+        onMouseEnter={this.onMouseEnter} 
+        onMouseLeave={this.onMouseLeave} 
+        prefixCls="custom-arrow-thumb"
+      >
         <Element key="aaa"
           prefixCls="banner-user-elem"
         >
@@ -112,8 +116,15 @@ class Demo extends React.Component {
               backgroundPosition: 'center',
             }}
           />
-          <TweenOne className="banner-user-title" animation={{ y: 30, opacity: 0, type: 'from' }}>Ant Motion Demo</TweenOne>
-          <TweenOne className="banner-user-text" animation={{ y: 30, opacity: 0, type: 'from', delay: 100 }}>Image source from the network Demo, please upload pictures to replace.Image source </TweenOne>
+          <TweenOne className="banner-user-title" animation={{ y: 30, opacity: 0, type: 'from' }}>
+            Ant Motion Banner
+          </TweenOne>
+          <TweenOne 
+            className="banner-user-text" 
+            animation={{ y: 30, opacity: 0, type: 'from', delay: 100 }}
+          >
+            The Fast Way Use Animation In React
+            </TweenOne>
         </Element>
         <Element key="bbb"
           prefixCls="banner-user-elem"
@@ -127,8 +138,15 @@ class Demo extends React.Component {
               backgroundPosition: 'center',
             }}
           />
-          <TweenOne className="banner-user-title" animation={{ y: 30, opacity: 0, type: 'from' }}>Ant Motion Demo</TweenOne>
-          <TweenOne className="banner-user-text" animation={{ y: 30, opacity: 0, type: 'from', delay: 100 }}>Image source from the network Demo, please upload pictures to replace.Image source </TweenOne>
+          <TweenOne className="banner-user-title" animation={{ y: 30, opacity: 0, type: 'from' }}>
+            Ant Motion Banner
+          </TweenOne>
+          <TweenOne 
+            className="banner-user-text" 
+            animation={{ y: 30, opacity: 0, type: 'from', delay: 100 }}
+          >
+            The Fast Way Use Animation In React
+          </TweenOne>
         </Element>
         <Arrow arrowType="prev" key="prev" prefixCls="user-arrow" component={TweenOne}
           onMouseEnter={this.prevEnter}
@@ -136,7 +154,12 @@ class Demo extends React.Component {
           animation={{ left: this.state.prevEnter ? 0 : -120 }}
         >
           <div className="arrow"></div>
-          <TweenOneGroup enter={{ opacity: 0, type: 'from' }} leave={{ opacity: 0 }} appear={false} className="img-wrapper" component="ul">
+          <TweenOneGroup 
+            enter={{ opacity: 0, type: 'from' }} 
+            leave={{ opacity: 0 }} 
+            appear={false} 
+            className="img-wrapper" component="ul"
+          >
             <li style={{ backgroundImage: `url(${this.imgArray[intArray[0]]})`}} key={intArray[0]} />
           </TweenOneGroup>
         </Arrow>
@@ -146,7 +169,13 @@ class Demo extends React.Component {
           animation={{ right: this.state.nextEnter ? 0 : -120 }}
         >
           <div className="arrow"></div>
-          <TweenOneGroup enter={{ opacity: 0, type: 'from' }} leave={{ opacity: 0 }} appear={false} className="img-wrapper" component="ul">
+          <TweenOneGroup 
+            enter={{ opacity: 0, type: 'from' }} 
+            leave={{ opacity: 0 }} 
+            appear={false} 
+            className="img-wrapper" 
+            component="ul"
+          >
             <li style={{ backgroundImage: `url(${this.imgArray[intArray[1]]})`}} key={intArray[1]} />
           </TweenOneGroup>
         </Arrow>
@@ -166,7 +195,7 @@ ReactDOM.render(
 
 ````css
 .custom-arrow-thumb{
-  height: 400px;
+  height: 220px;
 }
 .custom-arrow-thumb .user-arrow {
   top: 50%;
@@ -239,12 +268,12 @@ ReactDOM.render(
 .custom-arrow-thumb .user-thumb {
   overflow: hidden;
   background: rgba(255, 255, 255, 0.15);
-  height: 70px;
+  height: 40px;
 }
 .custom-arrow-thumb .user-thumb > span {
-  width: 80px;
-  height: 60px;
-  margin: 5px 5px;
+  width: 50px;
+  height: 30px;
+  margin: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
   -webkit-transition: background .3s;
           transition: background .3s;
@@ -255,9 +284,9 @@ ReactDOM.render(
 }
 .custom-arrow-thumb .user-thumb > span i {
   display: block;
-  width: 70px;
-  height: 50px;
-  margin: 5px;
+  width: 46px;
+  height: 26px;
+  margin: 2px;
   background-size: cover;
   background-position: center;
 }

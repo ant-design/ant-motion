@@ -1,7 +1,6 @@
 ---
 order: 5
 title: 随鼠标摆动
-cols: 1
 ---
 
 跟随鼠标左右摆动。
@@ -10,7 +9,6 @@ cols: 1
 import BannerAnim, { Element } from 'rc-banner-anim';
 import TweenOne from 'rc-tween-one';
 import 'rc-banner-anim/assets/index.css';
-const { Element } = BannerAnim;
 const BgElement = Element.BgElement;
 class Demo extends React.Component {
   render() {
@@ -21,9 +19,9 @@ class Demo extends React.Component {
           followParallax={{
             delay: 1000,
             data: [
-              { key: 'bg', value: 20, bgPosition: '50%', type: ['backgroundPositionX'] },
-              { key: 'title', value: 50, type: 'x' },
-              { key: 'content', value: -30, type: 'x' },
+              { id: 'bg', value: 20, bgPosition: '50%', type: ['backgroundPositionX'] },
+              { id: 'title', value: 50, type: 'x' },
+              { id: 'content', value: -30, type: 'x' },
             ],
           }}
         >
@@ -31,13 +29,22 @@ class Demo extends React.Component {
             key="bg"
             className="bg"
             style={{
-              backgroundImage: 'url(https://os.alipayobjects.com/rmsportal/IhCNTqPpLeTNnwr.jpg)',
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
+              background: '#364D79',
             }}
+            id="bg"
           />
-          <TweenOne key='title' className="banner-user-title" animation={{ y: 30, opacity: 0, type: 'from' }}>Ant Motion Demo</TweenOne>
-          <TweenOne key='content' className="banner-user-text" animation={{ y: 30, opacity: 0, type: 'from', delay: 100 }}>Image source from the network Demo, please upload pictures to replace.Image source </TweenOne>
+          <TweenOne className="banner-user-title" 
+            animation={{ y: 30, opacity: 0, type: 'from' }}
+            id="title"
+          >
+            Ant Motion Banner
+          </TweenOne>
+          <TweenOne className="banner-user-text" 
+            animation={{ y: 30, opacity: 0, type: 'from', delay: 100 }}
+            id="content"
+          >
+            The Fast Way Use Animation In React
+          </TweenOne>
         </Element>
         <Element key="bbb"
           prefixCls="banner-user-elem"
@@ -46,13 +53,17 @@ class Demo extends React.Component {
             key="bg"
             className="bg"
             style={{
-              backgroundImage: 'url(https://os.alipayobjects.com/rmsportal/uaQVvDrCwryVlbb.jpg)',
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
+              background: '#64CBCC',
             }}
           />
-          <TweenOne className="banner-user-title" animation={{ y: 30, opacity: 0, type: 'from' }}>Ant Motion Demo</TweenOne>
-          <TweenOne className="banner-user-text" animation={{ y: 30, opacity: 0, type: 'from', delay: 100 }}>Image source from the network Demo, please upload pictures to replace.Image source </TweenOne>
+          <TweenOne className="banner-user-title" animation={{ y: 30, opacity: 0, type: 'from' }}>
+            Ant Motion Banner
+          </TweenOne>
+          <TweenOne className="banner-user-text" 
+            animation={{ y: 30, opacity: 0, type: 'from', delay: 100 }}
+          >
+            The Fast Way Use Animation In React
+          </TweenOne>
         </Element>
       </BannerAnim>
     );

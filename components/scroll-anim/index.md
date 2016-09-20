@@ -3,20 +3,33 @@ category: Components
 chinese: 页面滚动动画
 order: 3
 english: ScrollAnim
+vertical: true
 ---
 
-通过简单的配置，对页面里的元素添加随滚动条滚动的动画。
-
----
+通过简单的配置，对页面里的元素添加随滚动条滚动的动画。具体参数请参见 [API](/api/scroll-anim)
 
 ## 何时使用
 
 - 在页面里，滚动到每个小区块时需要播放动画时，增加页面的灵动。
 - 随滚动条增加视差感时。
 
+<style>
+.queue-anim-demo{
+  float: left;
+  margin: 0 5px 0 0!important;
+}
+.code-box-shape{
+  position: relative !important;
+}
+</style>
+
+
+---
+
+
 ## 怎么使用
 ### 安装
-```
+```bash
 $ npm install rc-scroll-anim --save
 ```
 ### 本组件提供
@@ -150,12 +163,3 @@ scrollScreen.unMount();
 #### unMount
 - 功能: 清除一屏滚动效果
 
-<style>
-.code-box-demo .queue-anim-leaving{
-  position: relative !important;
-}
-.queue-anim-demo{
-  float: left;
-  margin: 0 5px 0 0;
-}
-</style>

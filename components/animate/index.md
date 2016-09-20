@@ -1,26 +1,23 @@
 ---
 category: Components
 order: 1
-cols: 3
 chinese: Css样式动画
 english: Animate
 ---
 
-
-
-对单个元素根据状态进行动画显示隐藏，需结合 css 或其它第三方动画类一起使用；
-
----
+对单个元素根据状态进行动画显示隐藏，需结合 css 或其它第三方动画类一起使用；具体参数请参见 [API](/api/animate)
 
 ## 何时使用
 
 - 对单个元素状态切换时进行动画显示隐藏；
 
+---
+
 ## 怎么使用
 
 ### 安装
 
-```
+```bash
 $ npm install rc-animate --save
 ```
 

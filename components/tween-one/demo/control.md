@@ -1,6 +1,5 @@
 ---
 order: 5
-cols: 4
 title: 变更动画参数
 mouseEnter: true
 ---
@@ -70,15 +69,21 @@ class Demo extends React.Component {
     return (
       <div>
         <TweenOne
-          animation={{ left: '85%', duration: 2000 }}
+          animation={{ left: '70%', duration: 2000 }}
           paused={this.state.paused}
           reverse={this.state.reverse}
           moment={this.state.moment}
           className="code-box-shape"
-          style={{ margin: '40px 0' }}
+          style={{ margin: '40px 20px' }}
         />
         <div className="demo-buttons"
-          style={{ position: 'absolute', width: 292, left: '50%', marginLeft: -146, bottom: 15 }}
+          style={{ 
+            position: 'absolute', 
+            width: 292, 
+            left: '50%', 
+            marginLeft: -146, 
+            bottom: 25 
+          }}
         >
           <Button type="primary" onClick={this.onClick}>play</Button>
           <Button type="primary" onClick={this.onPause}>pause</Button>

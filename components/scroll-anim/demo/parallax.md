@@ -1,6 +1,5 @@
 ---
 order: 0
-cols: 1
 title: Parallax 示例
 ---
 
@@ -13,7 +12,7 @@ import { Parallax } from 'rc-scroll-anim';
 class Demo extends React.Component {
   render() {
     return (
-      <div style={{ overflow: 'hidden' }}>
+      <div >
         <Parallax
           animation={{ x: 0 }}
           style={{ transform: 'translateX(-100px)', margin: '10px auto' }}

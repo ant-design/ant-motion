@@ -1,0 +1,141 @@
+@import "./custom";
+
+@content: page;
+.home .page.tween-one-leaving {
+  margin-top: 64px;
+}
+.@{content} {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  &-nav {
+    background: @nav-color;
+    overflow: hidden;
+    height: 120px;
+    position: relative;
+    & ul {
+      max-width: 960px;
+      margin: auto;
+      position: relative;
+      & li {
+        float: left;
+        height: 120px;
+        text-align: center;
+        &[disabled] {
+          cursor: not-allowed;
+          & * {
+            pointer-events: none;
+            color: fade(@nav-link-color, 55);
+          }
+        }
+        & a {
+          color: @title-color;
+          display: block;
+          height: 100%;
+          padding-top: 30px;
+          border-bottom: 2px solid transparent;
+          transition: border .3s @ease-in-out, color .3s @ease-in-out;
+          & span {
+            display: block;
+            color: fade(@nav-link-color, 75);
+            transition: color .3s @ease-in-out;
+          }
+          &:hover {
+            color: @nav-link-active-color;
+            border-bottom-color: @primary-color;
+            & span {
+              color: fade(@nav-link-active-color, 55);
+            }
+
+          }
+        }
+        &.active {
+          & a {
+            color: @nav-link-active-color;
+            border-bottom-color: @primary-color;
+            & span {
+              color: fade(@nav-link-active-color, 55);
+            }
+          }
+        }
+
+      }
+    }
+  }
+  &-wrapper {
+    width: 95%;
+    border-radius: 6px;
+    max-width: 960px;
+    min-height: 800px;
+    margin: 60px auto 0;
+    position: relative;
+    & .list-wrapper {
+      width: 110px;
+      position: absolute;
+      z-index: 1;
+      float: left;
+      height: 100%;
+      border-right: 1px solid @line-color;
+
+      & .list {
+        & h2 {
+          font-size: 16px;
+          margin-bottom: 10px;
+          position: absolute;
+        }
+        & ul {
+          top: 30px;
+          position: absolute;
+          & > li {
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+            & i {
+              margin-left: 6px;
+              opacity: .67;
+              font-style: normal;
+              font-size: 12px;
+            }
+            & > div > ul {
+              margin-left: 16px;
+            }
+          }
+        }
+      }
+
+      & li {
+        &[disabled] {
+          cursor: not-allowed;
+          & * {
+            pointer-events: none;
+            color: @list-disabled-color;
+          }
+        }
+        & a {
+          line-height: 30px;
+          height: 30px;
+          display: block;
+          font-size: 14px;
+          color: @text-color;
+          transition: color .3s @ease-out;
+          &:hover {
+            color: @primary-color;
+          }
+        }
+        &.active a {
+          color: @primary-color;
+        }
+      }
+    }
+    & > section {
+      position: relative;
+      width: 100%;
+      padding-left: 150px;
+      padding-bottom: 60px;
+      & .page-content {
+        position: relative;
+      }
+    }
+  }
+}
+

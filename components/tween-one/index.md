@@ -5,19 +5,19 @@ order: 0
 english: TweenOne
 ---
 
-这是个对单个元素标签做动效的组件，可以执行所有样式动画，包括3d，模糊等效果，还可以完成贝塞尔曲线动画。
-
----
+这是个对单个元素标签做动效的组件，可以执行所有样式动画，包括 transform3d，模糊等效果，还可以完成贝塞尔曲线动画，具体参数请参见 [API](/api/tween-one)
 
 ## 何时使用
 
 - 在单个元素需要过渡到另外一点时使用
 
+---
+
 ## 怎么使用
 
 ### 安装
 
-```js
+```bash
 $ npm install rc-tween-one --save
 ```
 ### 使用
@@ -50,8 +50,6 @@ React.render(<TweenOneGroup>
 | component | React.Element/String  | `div` | 需要替换的标签 |
 
 ### animation
-
-> `transform` 需要设定初始值，必需在 `style` 里设定
 
 |   参数   |    类型    |   默认  |  说明   |
 |---------|------------|---------|--------|

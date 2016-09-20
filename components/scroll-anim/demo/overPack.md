@@ -1,11 +1,9 @@
 ---
 order: 3
-cols: 1
 title: OverPack 例子
 ---
 
 设置了在屏幕下方 50％ 时开始播放动画，子级可支持 `rc-queue-anim` `rc-animate` `rc-tween-one`
-
 
 ```jsx
 import { OverPack } from 'rc-scroll-anim';

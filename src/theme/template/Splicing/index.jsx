@@ -9,7 +9,6 @@ import message from 'antd/lib/message';
 import Modal from 'antd/lib/modal';
 import Checkbox from 'antd/lib/checkbox';
 import ListSort from './ListSort';
-import { Link } from 'react-router';
 const CheckboxGroup = Checkbox.Group;
 
 class Splicing extends React.Component {
@@ -46,10 +45,6 @@ class Splicing extends React.Component {
     const templateOptData = this.state.templateOptData;
     templateOptData[key] = templateOptData[key].filter(_item => item.key !== _item.key);
     this.setState({ templateOptData });
-  };
-
-  onOk = () => {
-    window.scrollTo(0, 0);
   };
 
   getOptTags = (key) => (this.state.templateOptData[key] || []).map(item =>
@@ -102,8 +97,8 @@ class Splicing extends React.Component {
       }
       const imgArr = item.data.map(imgData => {
         const _imgData = imgData;
-        _imgData.width = 290;
-        _imgData.height = 176;
+        _imgData.width = 250;
+        _imgData.height = 152;
         return _imgData
       });
       const onClick = this.onChildClick.bind(this, key);
@@ -140,10 +135,22 @@ class Splicing extends React.Component {
   render() {
     const childrenToRender = this.getDataToChildren();
     const link = encodeURIComponent(`t=${this.state.templateIds.join(',')}${
-       this.state.checkboxIds.length ? `&o=${this.state.checkboxIds.join(',')}`: ''
+      this.state.checkboxIds.length ? `&o=${this.state.checkboxIds.join(',')}` : ''
       }`.trim());
     return (<div className={`${this.props.className}-wrapper`}>
-      <DocumentTitle title="自由搭配页面 - Ant Motion"/>
+      <h3 style={{
+          background: '#f7f7f7',
+          marginBottom: 20,
+          padding: 10,
+          borderRadius: 6,
+        }}
+      >
+        模块正在优化，如有错误、建议或想参于共建这模块的请与&nbsp;
+        <a href="https://github.com/ant-design/ant-motion/issues" target="_blank">
+           Issues
+        </a> 里联系我
+      </h3>
+      <DocumentTitle title="自由搭配页面 - Ant Motion" />
       {childrenToRender}
       <div className="bottom-btn">
         <Button type="primary" size="large" onClick={this.onCompleteClick}>选择完成</Button>
@@ -161,12 +168,13 @@ class Splicing extends React.Component {
             {this.state.optImgChild}
           </ListSort>
           <div className={`${this.props.className}-modal-button-wrapper`}>
-            <Link
-              to={`/templates/#${link}`}
-              onClick={this.onOk}
+            <a
+              href={`/templates/#${link}`}
+              target="_black"
+              onClick={this.onCancel}
             >
               <Button type="primary">确定</Button>
-            </Link>
+            </a>
             <Button onClick={this.onCancel}>重选</Button>
           </div>
         </Modal>

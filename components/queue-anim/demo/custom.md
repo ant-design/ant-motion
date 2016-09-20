@@ -1,7 +1,6 @@
 ---
 order: 4
 title: 自定义动画进出场
-cols: 2
 ---
 
 通过 `animConfig` 来自定义动画进出场。
@@ -23,7 +22,7 @@ const Test = React.createClass({
   },
   render() {
     return (
-      <div>
+      <div className="queue-demo">
         <p className="buttons">
           <Button type="primary" onClick={this.onClick}>切换</Button>
         </p>
@@ -33,22 +32,19 @@ const Test = React.createClass({
             { opacity: [1, 0], translateY: [0, -50] }
           ]}>
           {this.state.show ? [
-            <div className="demo-kp" key="a">
+            <div className="demo-thead" key="a">
+              <ul>
+                <li />
+                <li />
+                <li />
+              </ul>
+            </div>,
+            <div className="demo-tbody" key="b">
               <ul>
                 <li></li>
                 <li></li>
                 <li></li>
               </ul>
-            </div>,
-            <div className="demo-listBox" key="b">
-              <div className="demo-list">
-                <div className="title"></div>
-                <ul>
-                  <li></li>
-                  <li></li>
-                  <li></li>
-                </ul>
-              </div>
             </div>
           ] : null}
         </QueueAnim>

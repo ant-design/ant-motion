@@ -1,0 +1,132 @@
+---
+order: 2
+chinese: 列表交换位置
+english: ListSort
+image: https://zos.alipayobjects.com/rmsportal/UZklLXfsKMNfnQV.jpg
+---
+
+页面里的 List 拖动来重新排列顺序。
+
+---
+
+ListSort 组件地址： [地址](https://github.com/ant-design/ant-motion/blob/master/src/theme/template/Splicing/ListSort.jsx)
+
+```jsx
+
+import ListSort from '../../src/theme/template/Splicing/ListSort';
+import Icon from 'antd/lib/icon';
+
+const dataArray = [
+  {
+    icon: 'question-circle-o', color: '#FF5500',
+    title: 'Senior Product Designer', text: 'Senior Product Designer',
+  },
+  {
+    icon: 'plus-circle-o', color: '#5FC296',
+    title: 'Senior Animator', text: 'Senior Animator',
+  },
+  {
+    icon: 'check-circle-o', color: '#2DB7F5',
+    title: 'Visual Designer', text: 'Visual Designer'
+  },
+  {
+    icon: 'cross-circle-o', color: '#FFAA00',
+    title: 'Computer Engineer', text: 'Computer Engineer'
+  },
+];
+class ListSortDemo extends React.Component {
+  static contextTypes = {
+    className: React.PropTypes.string,
+  };
+
+  static defaultProps = {
+    className: 'list-sort-demo',
+  };
+
+  render() {
+    const childrenToRender = dataArray.map((item, i) => {
+      const { icon, color, title, text } = item;
+      return (
+        <div key={i} className={`${this.props.className}-list`}>
+          <div className={`${this.props.className}-icon`}>
+            <Icon type={icon} style={{ color }}/>
+          </div>
+          <div  className={`${this.props.className}-text`}>
+            <h1>{title}</h1>
+            <p>{text}</p>
+          </div>
+        </div>
+      );
+    });
+    return (<div className={`${this.props.className}-wrapper`}>
+      <div className={this.props.className}>
+        <ListSort dragClassName="list-drag-selected"
+          appearAnim={{ animConfig: { marginTop: [5, 30], opacity: [1, 0] } }}
+        >
+          {childrenToRender}
+        </ListSort>
+      </div>
+    </div>)
+  }
+}
+
+ReactDOM.render(
+  <ListSortDemo />
+, mountNode);
+```
+
+```css
+.list-sort-demo-wrapper {
+  position: relative;
+  background: #E15FFF;
+  overflow: hidden;
+  height: 385px;
+}
+
+.list-sort-demo {
+  margin: 40px auto;
+  width: 350px;
+  cursor: url('http://gtms02.alicdn.com/tps/i2/T1_PMSFLBaXXcu5FDa-20-20.png') 10 10,pointer!important;
+  position: relative;
+  height: 305px;
+}
+.list-sort-demo > div{
+  overflow: hidden;
+}
+
+.list-sort-demo-list {
+  background: #fff;
+  border-radius: 6px;
+  margin: 5px auto;
+  padding: 10px;
+  height: 70px;
+  transition:  box-shadow .5s, transform .5s;
+}
+
+.list-sort-demo-list.list-drag-selected{
+  box-shadow: 0 8px 20px #AF288E;
+  transform: scale(1.1) !important;
+}
+
+.list-sort-demo-icon {
+  width: 20%;
+  display: inline-block;
+  text-align: center;
+  font-size: 24px;
+  line-height: 50px;
+  vertical-align: top;
+}
+.list-sort-demo-text{
+  width: 80%;
+  display: inline-block;
+}
+
+.list-sort-demo-text h1 {
+  font-size: 18px;
+}
+
+.list-sort-demo-text p{
+  font-size: 12px;
+}
+
+```

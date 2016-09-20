@@ -1,7 +1,6 @@
 @import 'ant-d';
 
 html, body {
-  background: #000;
   font-family: "PingFang SC", "Helvetica Neue", Helvetica, "Hiragino Sans GB", "Microsoft YaHei", "\5FAE\8F6F\96C5\9ED1", Arial, sans-serif;
 }
 
@@ -17,72 +16,84 @@ a {
   transition: color .3s @ease-out;
 }
 
+p {
+  font-size: 14px;
+}
+
+h1, h2, h3, h4 {
+  color: @title-color
+}
+
 @header: header;
-.@{header}, @{header} {
+.@{header}-wrapper {
   height: 64px;
-  background: rgba(216, 216, 216, .15);
   overflow: hidden;
   position: relative;
   z-index: 999;
-  &-logo {
-    display: inline-block;
-    margin: 15px 0 0 4%;
-    height: 33px;
-    & img {
-      vertical-align: top;
-      display: block;
+  background: @nav-color;
+  transition: background .5s @ease-in-out;
+  .@{header} {
+    width: 95%;
+    max-width: 960px;
+    margin: auto;
+    &-logo {
+      display: inline-block;
+      margin: 17px 0;
+      height: 30px;
+      & img {
+        vertical-align: middle;
+        display: inline-block;
+        &:last-child {
+          margin-left: 15px;
+        }
+      }
+      & a {
+        display: block;
+      }
     }
-    & a {
-      display: block;
-    }
-  }
-  &-nav {
-    float: right;
-    margin-right: 4%;
-    line-height: 64px;
-    position: relative;
-    & ul {
-      overflow: hidden;
+    &-nav {
+      float: right;
+      line-height: 64px;
       position: relative;
-      & li {
-        float: left;
-        text-align: center;
-        width: 100px;
-        & a {
-          width: 100%;
-          height: 100%;
-          font-size: 14px;
-          display: block;
-          color: #fff;
-          transition: color .3s @ease-out;
-          &:hover, &.active {
-            color: @primary-color;
-          }
-          &[disabled] {
-            color: @disabled-color;
+      & ul {
+        overflow: hidden;
+        position: relative;
+        & li {
+          float: left;
+          margin-left: 40px;
+          & a {
+            width: 100%;
+            height: 100%;
+            font-size: 14px;
+            display: block;
+            color: @nav-link-color;
+            transition: color .3s @ease-in-out;
+            &:hover, &.active {
+              color: @nav-link-active-color;
+            }
+            &[disabled] {
+              color: @nav-link-active-color;
+            }
           }
         }
       }
     }
-  }
-  &-bar {
-    width: 100px;
-    height: 3px;
-    background: @primary-color;
-    position: absolute;
-    bottom: 0;
   }
 }
 
 @footer: footer;
 .@{footer} {
   height: 155px;
-  background: rgba(216, 216, 216, .15);
+  background: @footer-bg-color;
   overflow: hidden;
   position: relative;
   z-index: 998;
+  border-top: 1px solid @line-color;
+  transition: background .3s @ease-in-out, border .3s @ease-in-out;
   & ul {
-    margin: 0 2%;
+    max-width: 960px;
+    width: 100%;
+    margin: 0 auto;
     & li {
       float: left;
       padding: 15px 2%;
@@ -91,13 +102,11 @@ a {
       & h2 {
         font-size: 14px;
         line-height: 30px;
-        font-weight: lighter;
-        color: #eee;
+        color: @title-color;
       }
       & a {
-        color: #ccc;
-        font-weight: lighter;
-        transition: color .3s @ease-out;
+        color: @footer-link-color;
+        transition: color .3s @ease-in-out;
         &:hover {
           color: @primary-color;
         }
@@ -106,13 +115,25 @@ a {
   }
 }
 
-.content-wrapper {
-  overflow: unset;
-  display: inline;
-}
-
-#react-content, #react-root {
-  height: 100%
+.home {
+  .@{header}-wrapper {
+    background: transparent;
+    /*width: 100%;
+    position: absolute;*/
+    .@{header} {
+      & a {
+        filter: grayscale(1) brightness(2);
+        color: @nav-link-active-color;
+      }
+    }
+  }
+  .@{footer} {
+    background: @nav-color;
+    border-top-color: transparent;
+    & h2 {
+      color: #999
+    }
+  }
 }
 
 #page-404 {
@@ -127,9 +148,14 @@ a {
   }
 }
 
-.content-wrapper > .tween-one-leaving, .queue-anim-leaving {
+.content-wrapper > .tween-one-leaving, .page-content > .tween-one-leaving, .queue-anim-leaving {
   position: absolute !important;
   width: 100%;
+}
+
+.home .queue-anim-leaving {
+  position: relative !important;
+  width: auto;
 }
 
 .video {
@@ -170,13 +196,13 @@ a {
   & .peg {
     box-shadow: 0 0 10px @primary-color, 0 0 5px @primary-color;
   }
-  & .spinner-icon{
+  & .spinner-icon {
     border-top-color: @primary-color;
     border-left-color: @primary-color;
   }
 }
 
-.templates-wrapper{
+.templates-wrapper {
   display: inline;
   overflow: unset;
   user-select: none;

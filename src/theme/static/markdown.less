@@ -5,6 +5,9 @@ section.markdown {
 }
 
 .markdown section, .markdown {
+  .text-center {
+    text-align: center;
+  }
   & .toc {
     font-size: 14px;
     margin: 20px 0;
@@ -35,7 +38,7 @@ section.markdown {
     font-size: 28px;
     color: @title-color;
     margin: 0 auto 10px;
-    & > i {
+    & > .subtitle, & > i {
       font-style: normal;
       margin: 0 5px;
       font-size: 20px;
@@ -67,16 +70,15 @@ section.markdown {
   }
   & code {
     margin: 0 3px;
-    background: #f7f7f7;
     border-radius: 3px;
-    color: #888;
     font-size: .8rem;
     border: 1px solid #e9e9e9;
+    background: #F7F7F7;
   }
   & pre {
     margin: 1em 0;
-    background: #f7f7f7;
     border-radius: 6px;
+    border: 1px solid @line-color;
     & code {
       background: transparent;
       margin: 0;
@@ -85,6 +87,20 @@ section.markdown {
       line-height: 1.5;
       font-size: 13px;
       white-space: pre;
+    }
+    &::-webkit-scrollbar {
+      width: 7px;
+      height: 7px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: @scrollbar-color;
+      border-radius: 7px;
+    }
+    &::-webkit-scrollbar-corner,
+    &::-webkit-scrollbar-track-piece,
+    &::-webkit-scrollbar-button,
+    &::-webkit-scrollbar-track  {
+      display: none;
     }
   }
   & .bold {
@@ -112,51 +128,46 @@ section.markdown {
       opacity: 1;
     }
   }
-  & .dotted-line {
-    height: 1px;
-    border-top: 1px dashed @line-color;
-    display: block;
-  }
   & .content-wrapper {
-    width: 96%;
-    margin: 20px auto auto;
-    padding: 20px;
-    overflow: auto;
-    display: block;
-    .page-pro();
     & h3 {
       font-weight: normal;
-      margin: auto;
       font-size: 14px;
+      margin: 20px auto;
     }
-    & .demo-wrapper {
-      width: 450px;
-      margin: 40px auto 10px;
-      height: 61px;
-      position: relative;
-      overflow: hidden;
-      & .east {
-        & .line {
-          width: 330px;
-          height: 1px;
-          background: @line-deep-color;
-          display: block;
-          position: absolute;
-          left: 60px;
-          top: 30px;
-        }
-        & .arrow {
-          width: 10px;
-          height: 10px;
-          display: block;
-          position: absolute;
-          right: 60px;
-          top: 26px;
-          border-right: solid;
-          border-top: solid;
-          border-width: 1px;
-          border-color: @line-deep-color;
-          transform: rotate(45deg);
+    .content {
+      padding: 20px;
+      overflow: auto;
+      display: block;
+      .page-pro();
+      & .demo-wrapper {
+        width: 450px;
+        margin: 20px auto;
+        height: 61px;
+        position: relative;
+        overflow: hidden;
+        & .east {
+          & .line {
+            width: 330px;
+            height: 1px;
+            background: @line-deep-color;
+            display: block;
+            position: absolute;
+            left: 60px;
+            top: 30px;
+          }
+          & .arrow {
+            width: 10px;
+            height: 10px;
+            display: block;
+            position: absolute;
+            right: 60px;
+            top: 26px;
+            border-right: solid;
+            border-top: solid;
+            border-width: 1px;
+            border-color: @line-deep-color;
+            transform: rotate(45deg);
+          }
         }
       }
     }
@@ -165,28 +176,24 @@ section.markdown {
     color: @primary-color;
   }
 
-  & .page-wrapper {
-    margin: 20px 0;
-    max-width: 800px;
-    position: relative;
-  }
-
   & .circle, & .circle-dashed {
     width: 40px;
     height: 40px;
     position: absolute;
-    background: rgba(232, 223, 250, .7);
+    background: fade(@primary-color, 15);
     border-radius: 20px;
     border: 1px solid @primary-color;
     top: 10px;
   }
   & .circle {
     z-index: 1;
+    background: @primary-color;
   }
   .circle-dashed {
     border-style: dashed;
     right: 0;
   }
+
   & > table {
     border-collapse: collapse;
     border-spacing: 0;

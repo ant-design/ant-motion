@@ -4,10 +4,19 @@ module.exports = {
     './cases',
     './language',
     './components',
+    './exhibition',
   ],
   output: './_site',
-  theme: './src/theme',
-  htmlTemplate: './index.html',
+  entry: {
+    index: {
+      theme: './src/theme',
+      htmlTemplate: './src/theme/static/index.html',
+    },
+    templates: {
+      theme: './src/templates',
+      htmlTemplate: './src/templates/static/index.html',
+    },
+  },
   plugins: [
     'bisheng-plugin-description',
     'bisheng-plugin-toc?maxDepth=2',

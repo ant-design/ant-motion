@@ -27,7 +27,7 @@ class Test extends React.Component{
   
   render(){
     return (
-      <div>
+      <div className="code-box-demo-wrapper">
         <p className="buttons">
           <Button type="primary" onClick={this.onClick}>切换</Button>
         </p>
@@ -35,17 +35,12 @@ class Test extends React.Component{
           transitionName="fade"
           transitionAppear
         >
-          {this.state.show ? <div key="1" className="code-box-shape" /> : null}
+          {this.state.show ? 
+            <div key="1" className="code-box-shape" /> : null}
         </Animate>
       </div>
     );
   }
 }
 ReactDOM.render(<Test />, mountNode);
-```
-
-```css
-#components-component-demo-appear .fade-appear {
-  animation-duration: 5s;
-}
 ```

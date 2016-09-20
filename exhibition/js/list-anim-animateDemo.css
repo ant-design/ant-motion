@@ -1,0 +1,152 @@
+.queue-demo-wrapper {
+  position: relative;
+  background: #7AE2FD;
+  overflow: hidden;
+  height: 340px;
+
+}
+
+.queue-demo {
+  max-width: 300px;
+  width: 90%;
+  height: 340px;
+  margin: auto;
+  background: #fff;
+  box-shadow: 0 5px 20px rgba(83, 145, 202, 0.8);
+  cursor: url('http://gtms02.alicdn.com/tps/i2/T1_PMSFLBaXXcu5FDa-20-20.png') 10 10,pointer!important;
+}
+
+.queue-demo-header {
+  height: 60px;
+  border-top: 10px solid #265783;
+  background: #29659B;
+  line-height: 50px;
+  color: #fff;
+}
+
+.queue-demo-header i {
+  width: 15px;
+  height: 2px;
+  background: #fff;
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  margin-left: 10px;
+  top: -2px;
+}
+
+.queue-demo-header i:before, .queue-demo-header i:after {
+  display: block;
+  content: '';
+  background: #fff;
+  width: 15px;
+  height: 2px;
+  position: absolute;
+}
+
+.queue-demo-header i:before {
+  top: -4px;
+}
+
+.queue-demo-header i:after {
+  top: 4px;
+}
+
+.queue-demo-header span {
+  margin-left: 20px;
+  font-size: 14px;
+}
+
+.queue-demo ul {
+  overflow: hidden;
+}
+
+.queue-demo ul li {
+  list-style: none;
+  overflow: hidden;
+  height: 70px;
+  line-height: 70px;
+  border-bottom: 1px solid #efefef;
+  /*cursor: move;
+  cursor: grab;
+  cursor: -webkit-grab;*/
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  position: relative;
+}
+
+.queue-demo-img, .queue-demo ul li p {
+  display: inline-block;
+}
+
+.queue-demo ul li.queue-anim-leaving {
+  position: relative !important;
+}
+
+.queue-demo-img {
+  margin: 0 20px;
+}
+
+.queue-demo-delete {
+  width: 60px;
+  background: #FF4058;
+  text-align: center;
+  font-size: 16px;
+  height: 67px;
+  position: absolute;
+  right: 0;
+  top: 1px;
+}
+
+.queue-demo-delete a {
+  color: #fff;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.queue-demo-content {
+  background: #fff;
+  position: relative;
+}
+
+/* animate 样式*/
+.list-slide-enter, .list-slide-close-enter,.list-slide-close-leave {
+  animation-duration: .3s;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation-play-state: paused
+}
+
+.list-slide-leave {
+  animation-duration: .3s;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation-play-state: paused;
+}
+
+.list-slide-enter.list-slide-enter-active {
+  animation-name: slideOpen;
+  animation-play-state: running;
+}
+
+.list-slide-leave.list-slide-leave-active,
+.list-slide-close-enter.list-slide-close-enter-active,
+.list-slide-close-leave.list-slide-close-leave-active
+{
+  animation-name: slideClose;
+  animation-play-state: running;
+}
+
+@keyframes slideOpen {
+  to {
+    transform: translateX(-60px);
+  }
+}
+
+@keyframes slideClose {
+  to {
+    transform: translateX(0px);
+  }
+}
