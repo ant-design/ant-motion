@@ -5,6 +5,7 @@ import BannerAnim from 'rc-banner-anim';
 import Button from 'antd/lib/button';
 import ScrollElement from 'rc-scroll-anim/lib/ScrollElement';
 import SvgMorphPlugin from 'rc-tween-one/lib/plugin/SvgMorphPlugin';
+import { Link } from 'react-router';
 TweenOne.plugins.push(SvgMorphPlugin);
 
 const Element = BannerAnim.Element;
@@ -233,8 +234,10 @@ export default class Banner extends React.Component {
             <p key="p">The react animation solution</p>
             <div key="button">
               <Button type="primary" className={`${this.props.className}-title-button`}>
-                <i />
-                立即了解
+                <Link to="/language/basic">
+                  <i />
+                  立即了解
+                </Link>
               </Button>
             </div>
           </QueueAnim>
