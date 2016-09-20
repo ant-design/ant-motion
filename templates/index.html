@@ -4,9 +4,10 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Ant Motion - 高效的动效设计解决方案</title>
-  <link rel="stylesheet" type="text/css" href="/index.css" />
-  <link rel="icon" href="https://os.alipayobjects.com/rmsportal/wsZosWqLAPRrORK.png" type="image/x-icon">
-  <link rel="shortcut icon" href="https://os.alipayobjects.com/rmsportal/wsZosWqLAPRrORK.png" type="image/x-icon">
+  <link rel="stylesheet" type="text/css" href="/templates.css" />
+  <link rel="stylesheet" type="text/css" href="/common.css" />
+  <link rel="icon" href="https://zos.alipayobjects.com/rmsportal/HzvPfCGNCtvGrdk.png" type="image/x-icon">
+  <link rel="shortcut icon" href="https://zos.alipayobjects.com/rmsportal/HzvPfCGNCtvGrdk.png" type="image/x-icon">
   <!--[if lt IE 10]>
   <script
     src="https://as.alipayobjects.com/g/component/??console-polyfill/0.2.2/index.js,es5-shim/4.1.14/es5-shim.min.js,es5-shim/4.1.14/es5-sham.min.js,html5shiv/3.7.2/html5shiv.min.js,media-match/2.0.2/media.match.min.js"></script>
@@ -35,9 +36,9 @@
       width: 18px;
       height: 18px;
       border-radius: 100%;
-      background: #6556E2;
+      background: #019BF0;
       position: absolute;
-      transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       left: 0;
       top: 0;
       transform: scale(1);
@@ -67,7 +68,7 @@
 </div>
 <script>
   var w = 100, h = 113, r = 18,
-    wx = w / 2, wy = h / 2 - r, angle = 45, liArray = [], xyArray = [];
+    wx = w / 2, wy = h / 2 - r, angle = 45, liArray = [];
   for (var i = 0; i < 74; i++) {
     var li = $('<li/>').appendTo($('#ant-motion-load ul'));
     liArray.push(li);
@@ -93,7 +94,6 @@
       _top = 10;
       r = 14;
     }
-    xyArray.push({ x: _left, y: _top });
     li.css({ left: _left, top: _top, width: r, height: r });
   }
 
@@ -111,8 +111,8 @@
       }
       liArray.forEach(function (item, i) {
         item.css({
-          left: 0, top: 0, transform: 'scale(0)',
-          transitionDelay: (i === xyArray.length - 1 ? 1 : i) * .005 + 's',
+          transform: 'scale(0)',
+          transitionDelay: (i === liArray.length - 1 ? 10 : i) * .007 + 's',
           transitionTimingFunction: 'cubic-bezier(0.68, -0.55, 0.265, 1.55)',
         });
       });
@@ -122,10 +122,9 @@
           return;
         }
         liArray.forEach(function (item, i) {
-          var data = xyArray[i];
           item.css({
-            left: data.x, top: data.y, transform: 'scale(1)',
-            transitionDelay: (i === xyArray.length - 1 ? 1 : i) * .005 + 's',
+            transform: 'scale(1)',
+            transitionDelay: (i === liArray.length - 1 ? 10 : i) * .007 + 's',
             transitionTimingFunction: 'cubic-bezier(0.175, 0.885, 0.32, 1.275)',
           });
         });
@@ -135,7 +134,28 @@
   }
   animationStart();
 </script>
+<script>
+  // Enable Google Analytics
+  if (!location.port) {
+    /* eslint-disable */
+    (function (i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+      a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-83857924-1', 'auto');
+    ga('send', 'pageview');
+    /* eslint-enable */
+  }
+</script>
 </body>
 <script src="/common.js"></script>
-<script src="/index.js"></script>
+<script src="/templates.js"></script>
 </html>
