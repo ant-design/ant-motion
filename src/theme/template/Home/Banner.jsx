@@ -239,6 +239,12 @@ export default class Banner extends React.Component {
                   立即了解
                 </Link>
               </Button>
+              <span className={`${this.props.className}-title-git-button`}>
+                <iframe
+                  src={`https://ghbtns.com/github-btn.html?user=ant-design&repo=ant-motion&type=star&count=true`}
+                  frameBorder="0" scrolling="0" width="98px" height="20px"
+                />
+              </span>
             </div>
           </QueueAnim>
           <TweenOne
