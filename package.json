@@ -1,6 +1,6 @@
 {
   "name": "antd-motion",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "dependencies": {
     "rc-animate": "~2.3.0",
     "rc-banner-anim": "~0.5.0",
