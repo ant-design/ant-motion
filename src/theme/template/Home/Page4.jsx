@@ -26,7 +26,7 @@ export default class Page4 extends React.Component {
         type="bottom"
         leaveReverse
       >
-        <h1 key="h1">自由搭配模版(模块正在忧化中)</h1>
+        <h1 key="h1">自由搭配模版(模块正在优化中)</h1>
         <p key="p">
           这是以 Ant Motion 的 React 组件遵从 Ant Design 的视觉规范来完成的 demo 页面，可灵活又快速的配置出你想要的首页模板。
           这里主要提供了单元素示例与配置完后的整页示例。
