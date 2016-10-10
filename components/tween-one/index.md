@@ -90,7 +90,7 @@ svg 线性动画，需要引入滤境
 import SvgDrawPlugin from 'rc-tween-one/lib/plugin/SvgDrawPlugin';
 TweenOne.plugins.push(SvgDrawPlugin);
 ```
-`{ SVGDraw: 30 }` or `{ SVGDraw: 'start end' }` start and end values can be %;
+`{ SVGDraw: 30 }` or `{ SVGDraw: 'start end' }` 值可以为 `%`；
 
 ### SvgMorphPlugin
 
