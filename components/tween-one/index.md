@@ -65,6 +65,13 @@ React.render(<TweenOneGroup>
 > `animation` 等于 `array` 时为时间轴动画
  
 #### bezier 
+
+需要引入滤境
+
+```jsx
+import BezierPlugin from 'rc-tween-one/lib/plugin/BezierPlugin';
+TweenOne.plugins.push(BezierPlugin);
+```
 |   参数   |    类型    |   默认  |  说明   |
 |---------|------------|---------|--------|
 | type   | string | `soft` | 类型 `thru` `soft` `quadratic` `cubic` |
