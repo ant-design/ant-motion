@@ -31,7 +31,7 @@ class Header extends React.Component {
           style={{ transform: 'translateX(-30px)', opacity: 0 }}
         >
           <Link to="/" key="logo">
-            <img height="30" src="https://zos.alipayobjects.com/rmsportal/TOXWfHIUGHvZIyb.svg" />
+            <img height="24" src="https://zos.alipayobjects.com/rmsportal/BkGCuPnqDxlrmJZ.svg" />
             <img height="14" src="https://zos.alipayobjects.com/rmsportal/iJIEsJuRSPbZgJK.svg" />
           </Link>
         </TweenOne>
