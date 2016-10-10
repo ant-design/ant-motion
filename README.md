@@ -1,44 +1,55 @@
 # Ant Motion [![node version][node-image]][node-url]
-
 [node-image]: https://img.shields.io/badge/node.js-%3E=_0.10-green.svg?style=flat-square
 [node-url]: http://nodejs.org/download/
 
+The react animation solution
+
+
+## 什么是 Ant Motion ？
 <p align="center">
   <a href="http://motion.and.design">
-    <img src="https://os.alipayobjects.com/rmsportal/tdjazOmUHhUKXxZ.svg" width="600" />
+    <img src="https://zos.alipayobjects.com/rmsportal/nblZhUBttSOJnnf.svg"/>
   </a>
 </p>
 
-#### 一个高效的页面动效解决方案。
+使用 Ant Motion 能够快速在 React 框架中使用动画。
+我们提供了单项，组合动画，以及整套解决方案
+## Ant Motion 能做什么 ？
+xxx
 
-- 集合 react-component 里的动效组件与页面动效的示例。
+## 动效语言
+Ant Motion 在界面里主要是来加强体验舒适度、描述层级关系、增加界面活力、反馈与意向等功能性的动效。[详情查看](http://motion.ant.design/language/basic)
 
-## 链接
-#### [动效语言](http://motion.ant.design/language/time)
+## 动效组件
+#### [rc-tween-one 单元素动效执行组件](http://motion.ant.design/components/tween-one)
+这是个对单个元素标签做动效的组件，可以执行所有样式动画，包括 transform3d，模糊等效果，还可以完成贝塞尔曲线动画，具体参数请参见  [API](http://motion.ant.design/api/tween-one)
 
-#### 动效组件
 
-[rc-tween-one 单元素动效执行组件](http://motion.ant.design/components/tween-one)
+#### [rc-animate 样式进出场组件](http://motion.ant.design/components/animate)
+对单个元素根据状态进行动画显示隐藏，需结合 css 或其它第三方动画类一起使用；具体参数请参见 [API](http://motion.ant.design/api/animate)
 
-[rc-animate 样式进出场组件](http://motion.ant.design/components/animate)
+#### [rc-queue-anim 队列进出场组件](http://motion.ant.design/components/queue-anim)
+通过简单的配置对一组元素添加串行的进场动画效果。具体参数请参见 [API](http://motion.ant.design/api/queue-anim)
 
-[rc-queue-anim 队列进出场组件](http://motion.ant.design/components/queue-anim)
+#### [rc-scroll-anim 随滚动执行效果组件](http://motion.ant.design/components/scroll-anim)
+通过简单的配置，对页面里的元素添加随滚动条滚动的动画。具体参数请参见  [API](http://motion.ant.design/api/scroll-anim)
 
-[rc-scroll-anim 随滚动执行效果组件](http://motion.ant.design/components/scroll-anim)
+####  [rc-banner-anim banner 切换效果组件](http://motion.ant.design/components/banner-anim)
+通过简单的配置, 就能让你的 banner 动起来。 具体参数请参见  [API](http://motion.ant.design/api/banner-anim)
 
-[rc-banner-anim banner 切换效果组件](http://motion.ant.design/components/banner-anim)
-
-#### 示例展示
-
-[首页动画样式展示](http://motion.ant.design/cases/splicing)
 
 ## Develop
 
-本地调试：
+#### 安装
+
+```
+npm install
+```
+#### 启动：
 
 ```
 npm start
 ```
 
-访问 http://127.0.0.1:8111 。
+访问  http://127.0.0.1:8111 。
 
