@@ -78,7 +78,7 @@ ReactDOM.render(
 ```css
 .list-sort-demo-wrapper {
   position: relative;
-  background: #E15FFF;
+  background: #e6e6e6;
   overflow: hidden;
   height: 385px;
 }
@@ -104,7 +104,7 @@ ReactDOM.render(
 }
 
 .list-sort-demo-list.list-drag-selected{
-  box-shadow: 0 8px 20px #AF288E;
+  box-shadow: 0 8px 20px #E6E6E6;
   transform: scale(1.1) !important;
 }
 

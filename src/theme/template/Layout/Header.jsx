@@ -32,7 +32,7 @@ class Header extends React.Component {
         >
           <Link to="/" key="logo">
             <img height="30" src="https://zos.alipayobjects.com/rmsportal/TOXWfHIUGHvZIyb.svg" />
-            <img height="16" src="https://zos.alipayobjects.com/rmsportal/glnFNVQMvQinmUr.svg" />
+            <img height="14" src="https://zos.alipayobjects.com/rmsportal/iJIEsJuRSPbZgJK.svg" />
           </Link>
         </TweenOne>
         <TweenOne component="nav"
@@ -43,6 +43,12 @@ class Header extends React.Component {
           <ul>
             {navToRender}
           </ul>
+          <span>
+          <iframe 
+            src={`https://ghbtns.com/github-btn.html?user=ant-design&repo=ant-motion&type=star&count=true`}
+            frameBorder="0" scrolling="0" width="98px" height="20px"
+          />
+          </span>
         </TweenOne>
       </div>
     </header>);

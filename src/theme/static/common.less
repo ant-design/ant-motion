@@ -31,6 +31,7 @@ h1, h2, h3, h4 {
   position: relative;
   z-index: 999;
   background: @nav-color;
+  box-shadow: 0px 1px 0px 0px rgba(140,140,140,0.06);
   transition: background .5s @ease-in-out;
   .@{header} {
     width: 95%;
@@ -56,6 +57,7 @@ h1, h2, h3, h4 {
       line-height: 64px;
       position: relative;
       & ul {
+        display: inline-block;
         overflow: hidden;
         position: relative;
         & li {
@@ -76,6 +78,10 @@ h1, h2, h3, h4 {
             }
           }
         }
+      }
+      & span {
+        float: right;
+        margin: 6px 0 0 32px;
       }
     }
   }
@@ -147,7 +153,9 @@ h1, h2, h3, h4 {
     font-size: 200px;
   }
 }
-
+.content-wrapper {
+  background-color: #F6F7F8;
+}
 .content-wrapper > .tween-one-leaving, .page-content > .tween-one-leaving, .queue-anim-leaving {
   position: absolute !important;
   width: 100%;

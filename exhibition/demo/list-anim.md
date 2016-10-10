@@ -195,7 +195,7 @@ ReactDOM.render(
 ````css
 .queue-demo-wrapper {
   position: relative;
-  background: #7AE2FD;
+  background: #29659B;
   overflow: hidden;
   height: 340px;
 }
@@ -206,7 +206,7 @@ ReactDOM.render(
   height: 340px;
   margin: auto;
   background: #fff;
-  box-shadow: 0 5px 20px rgba(83, 145, 202, 0.8);
+  box-shadow: 0 5px 20px rgba(66, 86, 105, 0.8);
   cursor: url('http://gtms02.alicdn.com/tps/i2/T1_PMSFLBaXXcu5FDa-20-20.png') 10 10,pointer!important;
 }
 
