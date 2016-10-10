@@ -36,8 +36,7 @@ export default class Page2 extends React.Component {
       <QueueAnim className="page2-text white-text" key="text" type="bottom" leaveReverse delay={100}>
         <h2 key="h1">AntMotion 让动效更简单</h2>
         <p key="p">
-          你需要的潜力来设计一些全新的东西，成帧器是一个设计工具，
-          使用代码做任何事情可能，先锋新模式和突破性的设计,先锋新模式和突破性的设计
+          只需要一段简单的代码就可以实现动画效果，可以更好的提高你的工作效率。
         </p>
         <div key="a" className="home-button"><Link to="/getting/install">快速上手</Link></div>
       </QueueAnim>

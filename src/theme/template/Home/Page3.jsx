@@ -56,8 +56,7 @@ export default class Page3 extends React.Component {
       >
         <h1 key="h1">使用我们的动效</h1>
         <p key="p">
-          你需要的潜力来设计一些全新的东西，成帧器是一个设计工具，使用代码做任何事情可能，先锋新模式和突破性的设计。
-          寻找最佳的解决方案，而不仅仅是预期之一。
+          我们提供一些以 Ant Motion 组件为基础的动画效果代码片段，你可以直接复制使用或作参考。
         </p>
       </QueueAnim>
       <TweenOne
