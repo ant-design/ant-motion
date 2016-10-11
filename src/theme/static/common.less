@@ -13,7 +13,7 @@ video {
 }
 
 a {
-  transition: color .3s @ease-out;
+  transition: color @animate-duration @ease-out;
 }
 
 p {
@@ -31,8 +31,8 @@ h1, h2, h3, h4 {
   position: relative;
   z-index: 999;
   background: @nav-color;
-  box-shadow: 0px 1px 0px 0px rgba(140,140,140,0.06);
-  transition: background .5s @ease-in-out;
+  border-bottom: 1px solid @line-color;
+  transition: background @animate-duration @ease-in-out, border @animate-duration @ease-in-out;
   .@{header} {
     width: 95%;
     max-width: 960px;
@@ -69,7 +69,7 @@ h1, h2, h3, h4 {
             font-size: 14px;
             display: block;
             color: @nav-link-color;
-            transition: color .3s @ease-in-out;
+            transition: color @animate-duration @ease-in-out;
             &:hover, &.active {
               color: @nav-link-active-color;
             }
@@ -95,7 +95,7 @@ h1, h2, h3, h4 {
   position: relative;
   z-index: 998;
   border-top: 1px solid @line-color;
-  transition: background .3s @ease-in-out, border .3s @ease-in-out;
+  transition: background @animate-duration @ease-in-out, border @animate-duration @ease-in-out;
   & ul {
     max-width: 960px;
     width: 100%;
@@ -112,7 +112,7 @@ h1, h2, h3, h4 {
       }
       & a {
         color: @footer-link-color;
-        transition: color .3s @ease-in-out;
+        transition: color @animate-duration @ease-in-out;
         &:hover {
           color: @primary-color;
         }
@@ -124,22 +124,18 @@ h1, h2, h3, h4 {
 .home {
   .@{header}-wrapper {
     background: transparent;
-    /*width: 100%;
-    position: absolute;*/
-    .@{header} {
-      & a {
-        filter: grayscale(1) brightness(2);
-        color: @nav-link-active-color;
-      }
-    }
+    border-color: transparent;
   }
-  .@{footer} {
+  & .content-wrapper{
+    background: transparent;
+  }
+  /*.@{footer} {
     background: @nav-color;
     border-top-color: transparent;
     & h2 {
       color: #999
     }
-  }
+  }*/
 }
 
 #page-404 {
@@ -155,6 +151,7 @@ h1, h2, h3, h4 {
 }
 .content-wrapper {
   background-color: #F6F7F8;
+  transition: background @animate-duration @ease-out;
 }
 .content-wrapper > .tween-one-leaving, .page-content > .tween-one-leaving, .queue-anim-leaving {
   position: absolute !important;

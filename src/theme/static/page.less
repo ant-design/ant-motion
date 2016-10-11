@@ -1,9 +1,6 @@
 @import "./custom";
 
 @content: page;
-.home .page.tween-one-leaving {
-  margin-top: 64px;
-}
 .@{content} {
   width: 100%;
   overflow: hidden;
@@ -35,12 +32,12 @@
           padding-top: 30px;
           font-size: 14px;
           border-bottom: 2px solid transparent;
-          transition: border .3s @ease-in-out, color .3s @ease-in-out;
+          transition: border @animate-duration @ease-in-out, color @animate-duration @ease-in-out;
           & span {
             display: block;
             font-size: 12px;
             color: fade(@nav-link-color, 75);
-            transition: color .3s @ease-in-out;
+            transition: color @animate-duration @ease-in-out;
           }
           &:hover {
             color: @nav-link-active-color;
@@ -119,7 +116,7 @@
           display: block;
           font-size: 14px;
           color: @text-color;
-          transition: color .3s @ease-out;
+          transition: color @animate-duration @ease-out;
           &:hover {
             color: @primary-color;
           }

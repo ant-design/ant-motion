@@ -23,89 +23,51 @@
       background: fade(@title-bg-color, 30);
       margin-bottom: 8px;
       cursor: pointer;
-      transition: background .45s @ease-out;
+      transition: background @animate-duration @ease-out;
       &.active {
         background: @title-bg-color;
       }
     }
   }
   .banner {
-    margin-top: -64px;
-    background: #35aef8;
-    background: -moz-linear-gradient(-45deg, #35aef8 0%, #7681ff 76%, #7681ff 76%);
-    background: -webkit-linear-gradient(-45deg, #35aef8 0%, #7681ff 76%, #7681ff 76%);
-    background: linear-gradient(135deg, #35aef8 0%, #7681ff 76%, #7681ff 76%);
     overflow: hidden;
-    width: 100%;
-    &-anim, &-bg {
-      height: 100%;
-    }
-    &-mask, &-bg-bottom {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-    }
-
-    &-bg-left {
+    position: relative;
+    width: 95%;
+    max-width: 960px;
+    margin: auto;
+    height: calc(~"100vh - 64px");
+    &-text {
+      width: 50%;
+      height: 300px;
       position: absolute;
       top: 0;
-      left: 0;
-    }
-
-    &-bg-right {
-      position: absolute;
-      right: 0;
-      bottom: 0;
-    }
-
-    &-bg-center {
-      position: absolute;
-      left: 0;
-      top: 0;
-      right: 0;
       bottom: 0;
       margin: auto;
-    }
-
-    .annular {
-      stroke: #4271D4;
-      stroke-width: 3;
-      fill: transparent;
-    }
-
-    &-title {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      margin: auto;
-      width: 960px;
-      height: 400px;
       z-index: 1;
-      & h2 {
-        margin-left: 20px;
-        margin-top: -20px;
+      & h1 {
+        font-size: 38px;
+      }
+      & h1, & h3 {
+        font-weight: lighter;
       }
       & p {
-        font-size: 20px;
-        margin: 10px 20px;
-        color: #fff;
+        margin: 16px 0 40px;
+        line-height: 24px;
       }
       &-button {
-        padding: 10px 30px;
+        padding: 8px 16px;
         border-radius: 40px;
-        background: #4B72C1;
         font-size: 14px;
-        margin-left: 20px;
-        border: none;
-        box-shadow: 0 0 0 transparent;
-        transition: box-shadow .3s @ease-in-out, transform .3s @ease-in-out;
+        border: 1px solid @title-color;
+        transition: background @animate-duration @ease-out, color @animate-duration @ease-out;
+        color: @title-color;
+        display: inline-block;
         & i {
           width: 16px;
-          margin-right: 10px;
+          margin-left: 10px;
           background: url(https://zos.alipayobjects.com/rmsportal/dgqoflLasHqTmNM.svg) center no-repeat;
           background-size: contain;
+          filter: brightness(0);
           height: 16px;
           display: inline-block;
           vertical-align: sub;
@@ -114,38 +76,43 @@
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;
           line-height: 1;
+          transition: filter @animate-duration @ease-out;
         }
 
         &:hover {
-          box-shadow: 0 2px 5px #1B2C4E;
-          transform: translateY(-5px);
+          background: @title-color;
+          color: @text-color-light;
+          & i {
+            filter: brightness(1);
+          }
         }
-        /*&:active {
-          transform: translateY(-4px);
-          box-shadow: 0 2px 3px #1B2C4E;
-        }*/
       }
-      &-git-button {
-        vertical-align: middle;
-        margin-left: 10px;
-        display: inline-block;
-      }
+    }
+    &-demo {
+      position: absolute;
+      right: 30px;
+      width: 430px;
+      height: 415px;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      background: #000;
     }
     &-mouse {
       width: 28px;
       height: 42px;
       border-radius: 14px;
-      border: 2px solid #fff;
-      bottom: 180px;
+      border: 2px solid @title-color;
+      bottom: 30px;
       left: 0;
       right: 0;
       margin: auto;
-      position: relative;
+      position: absolute;
       & .mouse-bar {
         width: 4px;
         height: 12px;
         border-radius: 2px;
-        background: #fff;
+        background: @title-color;
         margin: 5px auto auto;
       }
     }
@@ -175,7 +142,7 @@
       font-size: 14px;
       box-shadow: 0 0 0 transparent;
       background: transparent;
-      transition: box-shadow .3s @ease-in-out, transform .3s @ease-in-out, background .3s @ease-in-out;
+      transition: box-shadow @animate-duration @ease-in-out, transform @animate-duration @ease-in-out, background @animate-duration @ease-in-out;
     }
     & .page-text {
       margin-top: 5%;
@@ -379,7 +346,7 @@
           }
         }
         // .page-pro();
-        transition: transform .3s @ease-out, box-shadow .3s @ease-out;
+        transition: transform @animate-duration @ease-out, box-shadow @animate-duration @ease-out;
         &:hover {
           transform: translateY(-5px);
           box-shadow: 0 12px 18px fade(#000, 15);
