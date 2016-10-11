@@ -25,21 +25,21 @@
           cursor: not-allowed;
           & * {
             pointer-events: none;
-            color: fade(@nav-link-color, 55);
+            color: fade(@nav-link-color, 16);
           }
         }
         & a {
           color: @title-color;
           display: block;
           height: 100%;
-          padding-top: 30px;
+          padding-top: 36px;
           font-size: 14px;
           border-bottom: 2px solid transparent;
           transition: border .3s @ease-in-out, color .3s @ease-in-out;
           & span {
             display: block;
             font-size: 12px;
-            color: fade(@nav-link-color, 75);
+            color: @title-color;
             transition: color .3s @ease-in-out;
           }
           &:hover {
@@ -67,12 +67,12 @@
   &-wrapper {
     width: 95%;
     border-radius: 6px;
-    max-width: 960px;
+    max-width: 1024px;
     min-height: 800px;
     margin: 60px auto 0;
     position: relative;
     & .list-wrapper {
-      width: 110px;
+      width: 150px;
       position: absolute;
       z-index: 1;
       float: left;
@@ -132,7 +132,7 @@
     & > section {
       position: relative;
       width: 100%;
-      padding-left: 150px;
+      padding-left: 200px;
       padding-bottom: 60px;
       & .page-content {
         position: relative;

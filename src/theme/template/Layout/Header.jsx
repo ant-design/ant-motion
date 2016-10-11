@@ -32,7 +32,7 @@ class Header extends React.Component {
         >
           <Link to="/" key="logo">
             <img height="24" src="https://zos.alipayobjects.com/rmsportal/BkGCuPnqDxlrmJZ.svg" />
-            <img height="14" src="https://zos.alipayobjects.com/rmsportal/iJIEsJuRSPbZgJK.svg" />
+            <img height="14" src="https://zos.alipayobjects.com/rmsportal/bNfCyCcgnyTgRmz.svg" />
           </Link>
         </TweenOne>
         <TweenOne component="nav"
