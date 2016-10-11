@@ -18,6 +18,8 @@ a {
 
 p {
   font-size: 14px;
+  color: #6b6b6b;
+  letter-spacing: 1px;
 }
 
 h1, h2, h3, h4 {
@@ -26,20 +28,21 @@ h1, h2, h3, h4 {
 
 @header: header;
 .@{header}-wrapper {
-  height: 64px;
+  height: 60px;
+  overflow: hidden;
   position: relative;
   z-index: 999;
   background: @nav-color;
-  // border-bottom: 1px solid @line-color;
+  box-shadow: 0px 1px 0px 0px rgba(150, 150, 150, 0.28);
   transition: background .3s @ease-out, border @animate-duration @ease-out;
   .@{header} {
     width: 95%;
-    max-width: 960px;
+    max-width: 1024px;
     margin: auto;
     transition: transform @animate-duration @ease-out;
     &-logo {
       display: inline-block;
-      margin: 17px 0;
+      margin: 16px 0;
       height: 30px;
       & img {
         vertical-align: middle;
@@ -54,8 +57,7 @@ h1, h2, h3, h4 {
     }
     &-nav {
       float: right;
-      line-height: 64px;
-      height: 64px;
+      line-height: 60px;
       position: relative;
       & ul {
         display: inline-block;
@@ -63,14 +65,16 @@ h1, h2, h3, h4 {
         position: relative;
         & li {
           float: left;
-          margin-left: 40px;
+          margin-left: 60px;
           & a {
             width: 100%;
             height: 100%;
             font-size: 14px;
             display: block;
             color: @nav-link-color;
+            letter-spacing: 0.5px;
             transition: color @animate-duration @ease-out;
+
             &:hover, &.active {
               color: @nav-link-active-color;
             }
@@ -158,6 +162,9 @@ h1, h2, h3, h4 {
   }
 }
 
+.content-wrapper {
+  background-color: #fff;
+}
 .content-wrapper > .tween-one-leaving, .page-content > .tween-one-leaving, .queue-anim-leaving {
   position: absolute !important;
   width: 100%;
