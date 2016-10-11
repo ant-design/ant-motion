@@ -8,7 +8,6 @@ import Banner from './Banner';
 import Page1 from './Page1';
 import Page2 from './Page2';
 import Page3 from './Page3';
-import Page4 from './Page4';
 
 class Home extends React.Component {
   constructor() {
@@ -23,15 +22,13 @@ class Home extends React.Component {
           <div className="nav-wrapper">
             <ScrollLink location="banner" showHeightActive={['100%', '30%']}/>
             <ScrollLink location="page1" showHeightActive="30%"/>
-            <ScrollLink location="page2" showHeightActive="30%"/>
-            <ScrollLink location="page3" showHeightActive="30%"/>
-            <ScrollLink location="page4" showHeightActive="30%"/>
+            <ScrollLink location="page2" showHeightActive={["30%", "70%"]}/>
+            <ScrollLink location="page3" showHeightActive="70%"/>
           </div>
           <Banner />
-          <Page1 />
+          <Page1 pageData={this.props.pageData} utils={this.props.utils} tweenAnim={this.tweenAnim} />
           <Page2 pageData={this.props.pageData} utils={this.props.utils} tweenAnim={this.tweenAnim} />
-          <Page3 pageData={this.props.pageData} utils={this.props.utils} tweenAnim={this.tweenAnim} />
-          <Page4 tweenAnim={this.tweenAnim} />
+          <Page3 tweenAnim={this.tweenAnim} />
         </div>
       </DocumentTitle>
     );

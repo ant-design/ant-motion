@@ -26,8 +26,7 @@ class Header extends React.Component {
     >
       <div className={this.props.className}>
         <TweenOne className={`${this.props.className}-logo`}
-          animation={{ x: '0', opacity: 1, duration: 800 }}
-          style={{ transform: 'translateX(-30px)', opacity: 0 }}
+          animation={{opacity: 0, type: 'from' }}
         >
           <Link to="/" key="logo">
             <img height="24" src="https://zos.alipayobjects.com/rmsportal/TOXWfHIUGHvZIyb.svg" />
@@ -36,8 +35,7 @@ class Header extends React.Component {
         </TweenOne>
         <TweenOne component="nav"
           className={`${this.props.className}-nav`}
-          animation={{ x: '0', opacity: 1, duration: 800 }}
-          style={{ transform: 'translateX(30px)', opacity: 0 }}
+          animation={{opacity: 0, type: 'from' }}
         >
           <ul>
             {navToRender}

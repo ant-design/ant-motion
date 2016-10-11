@@ -1,14 +1,11 @@
 import React from 'react';
 import TweenOne from 'rc-tween-one';
 import QueueAnim from 'rc-queue-anim';
-import BannerAnim from 'rc-banner-anim';
 import ScrollElement from 'rc-scroll-anim/lib/ScrollElement';
 import SvgMorphPlugin from 'rc-tween-one/lib/plugin/SvgMorphPlugin';
 import { Link } from 'react-router';
 TweenOne.plugins.push(SvgMorphPlugin);
 
-const Element = BannerAnim.Element;
-const BgElement = Element.BgElement;
 
 export default class Banner extends React.Component {
   static contextTypes = {
@@ -27,7 +24,7 @@ export default class Banner extends React.Component {
             <feGaussianBlur in="SourceGraphic" stdDeviation="5" />
           </filter>
         </defs>
-        <g id="banner6">
+        <g>
           <TweenOne
             component="circle"
             fill="rgba(161,174,245,.2)"
@@ -35,10 +32,10 @@ export default class Banner extends React.Component {
             cx="350"
             cy="350"
             style={{ filter: 'url(#Blur)' }}
-            animation={{ y: 20, repeat: -1, duration: 3000, yoyo: true }}
+            animation={{ y: 30, repeat: -1, duration: 3000, yoyo: true }}
           />
         </g>
-        <g id="banner7">
+        <g>
           <TweenOne
             component="circle"
             fill="rgba(120,172,254,.15)"
@@ -46,23 +43,28 @@ export default class Banner extends React.Component {
             cx="500"
             cy="420"
             style={{ filter: 'url(#Blur)' }}
-            animation={{ y: -20, repeat: -1, duration: 3000, yoyo: true }}
+            animation={{ y: -30, repeat: -1, duration: 3000, yoyo: true }}
           />
         </g>
       </svg>
       <div className={this.props.className}>
-        <div className={`${this.props.className}-text`}>
-          <h1>Motion Design</h1>
-          <h3>The react animation solution</h3>
-          <p>使用 Ant Motion 能够快速在 React 框架中使用动画。<br />
-            我们提供了单项，组合动画，以及整套解决方案</p>
-          <div>
+        <QueueAnim type="bottom"
+          className={`${this.props.className}-text`}
+          delay={300}
+        >
+          <h1 key="h1">Motion Design</h1>
+          <h3 key="h3">The react animation solution</h3>
+          <p key="p">
+            使用 Ant Motion 能够快速在 React 框架中使用动画。<br />
+            我们提供了单项，组合动画，以及整套解决方案
+          </p>
+          <div key="button">
             <Link to="/language/basic" className={`${this.props.className}-text-button`}>
               立即了解
               <i />
             </Link>
           </div>
-        </div>
+        </QueueAnim>
         <div className={`${this.props.className}-demo`}>
         </div>
         <TweenOne
