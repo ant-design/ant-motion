@@ -37,7 +37,7 @@ export default class Page3 extends React.Component {
           key="a"
           className="home-button"
         >
-          <Link to="/a/">快速上手</Link>
+          <Link to="/api/tween-one">快速上手</Link>
         </div>
       </QueueAnim>
     </OverPack>);

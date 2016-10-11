@@ -40,7 +40,7 @@ export default class Page1 extends React.Component {
         <CoderDemo className="code" pageData={this.props.pageData} utils={this.props.utils}/>
       </TweenOne>
       <TweenOne key="a" className="home-button" animation={{ ...this.props.tweenAnim, delay: 300}}>
-        <Link to="/getting/install">了解更多</Link>
+        <Link to="/components/tween-one">了解更多</Link>
       </TweenOne>
     </OverPack>)
   }
