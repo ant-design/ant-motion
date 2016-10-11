@@ -29,91 +29,105 @@
       }
     }
   }
-  .banner {
-    overflow: hidden;
+  .banner-wrapper {
+    margin-top: -64px;
+    background: #35aef8;
+    background: -moz-linear-gradient(-45deg, #35aef8 0%, #7681ff 76%, #7681ff 76%);
+    background: -webkit-linear-gradient(-45deg, #35aef8 0%, #7681ff 76%, #7681ff 76%);
+    background: linear-gradient(135deg, #35aef8 0%, #7681ff 76%, #7681ff 76%);
     position: relative;
-    width: 95%;
-    max-width: 960px;
-    margin: auto;
-    height: calc(~"100vh - 64px");
-    &-text {
-      width: 50%;
-      height: 300px;
-      position: absolute;
-      top: 0;
-      bottom: 0;
+    & .banner {
+      position: relative;
+      width: 95%;
+      max-width: 960px;
       margin: auto;
-      z-index: 1;
-      & h1 {
-        font-size: 38px;
+      height: 100vh;
+      &-bg-center {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
       }
-      & h1, & h3 {
-        font-weight: lighter;
-      }
-      & p {
-        margin: 16px 0 40px;
-        line-height: 24px;
-      }
-      &-button {
-        padding: 8px 16px;
-        border-radius: 40px;
-        font-size: 14px;
-        border: 1px solid @title-color;
-        transition: background @animate-duration @ease-out, color @animate-duration @ease-out;
-        color: @title-color;
-        display: inline-block;
-        & i {
-          width: 16px;
-          margin-left: 10px;
-          background: url(https://zos.alipayobjects.com/rmsportal/dgqoflLasHqTmNM.svg) center no-repeat;
-          background-size: contain;
-          filter: brightness(0);
-          height: 16px;
-          display: inline-block;
-          vertical-align: sub;
-          text-transform: none;
-          text-rendering: optimizeLegibility;
-          -webkit-font-smoothing: antialiased;
-          -moz-osx-font-smoothing: grayscale;
-          line-height: 1;
-          transition: filter @animate-duration @ease-out;
+      &-text {
+        width: 50%;
+        height: 300px;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        z-index: 1;
+        & h1 {
+          font-size: 38px;
         }
-
-        &:hover {
-          background: @title-color;
+        & h1, & h3 {
+          font-weight: lighter;
+          color: @text-color-light
+        }
+        & p {
+          margin: 16px 0 40px;
+          line-height: 24px;
           color: @text-color-light;
+        }
+        &-button {
+          padding: 8px 16px;
+          border-radius: 40px;
+          font-size: 14px;
+          border: 1px solid @text-color-light;
+          transition: background @animate-duration @ease-out, box-shadow @animate-duration @ease-out;
+          color: @text-color-light;
+          display: inline-block;
           & i {
+            width: 16px;
+            margin-left: 10px;
+            background: url(https://zos.alipayobjects.com/rmsportal/dgqoflLasHqTmNM.svg) center no-repeat;
+            background-size: contain;
             filter: brightness(1);
+            height: 16px;
+            display: inline-block;
+            vertical-align: sub;
+            text-transform: none;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            line-height: 1;
+            transition: filter @animate-duration @ease-out;
+          }
+
+          &:hover {
+            background: fade(@text-color-light, 15);
+            box-shadow: 0 0px 6px fade(@text-color-light, 35);
           }
         }
       }
-    }
-    &-demo {
-      position: absolute;
-      right: 30px;
-      width: 430px;
-      height: 415px;
-      top: 0;
-      bottom: 0;
-      margin: auto;
-      background: #000;
-    }
-    &-mouse {
-      width: 28px;
-      height: 42px;
-      border-radius: 14px;
-      border: 2px solid @title-color;
-      bottom: 30px;
-      left: 0;
-      right: 0;
-      margin: auto;
-      position: absolute;
-      & .mouse-bar {
-        width: 4px;
-        height: 12px;
-        border-radius: 2px;
-        background: @title-color;
-        margin: 5px auto auto;
+      &-demo {
+        position: absolute;
+        right: 30px;
+        width: 430px;
+        height: 415px;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        background: #000;
+      }
+      &-mouse {
+        width: 28px;
+        height: 42px;
+        border-radius: 14px;
+        border: 2px solid @text-color-light;
+        bottom: 30px;
+        left: 0;
+        right: 0;
+        margin: auto;
+        position: absolute;
+        & .mouse-bar {
+          width: 4px;
+          height: 12px;
+          border-radius: 2px;
+          background: @text-color-light;
+          margin: 5px auto auto;
+        }
       }
     }
   }

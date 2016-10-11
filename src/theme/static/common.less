@@ -27,16 +27,16 @@ h1, h2, h3, h4 {
 @header: header;
 .@{header}-wrapper {
   height: 64px;
-  overflow: hidden;
   position: relative;
   z-index: 999;
   background: @nav-color;
-  border-bottom: 1px solid @line-color;
-  transition: background @animate-duration @ease-in-out, border @animate-duration @ease-in-out;
+  // border-bottom: 1px solid @line-color;
+  transition: background .3s @ease-out, border @animate-duration @ease-out;
   .@{header} {
     width: 95%;
     max-width: 960px;
     margin: auto;
+    transition: transform @animate-duration @ease-out;
     &-logo {
       display: inline-block;
       margin: 17px 0;
@@ -55,6 +55,7 @@ h1, h2, h3, h4 {
     &-nav {
       float: right;
       line-height: 64px;
+      height: 64px;
       position: relative;
       & ul {
         display: inline-block;
@@ -69,7 +70,7 @@ h1, h2, h3, h4 {
             font-size: 14px;
             display: block;
             color: @nav-link-color;
-            transition: color @animate-duration @ease-in-out;
+            transition: color @animate-duration @ease-out;
             &:hover, &.active {
               color: @nav-link-active-color;
             }
@@ -95,7 +96,7 @@ h1, h2, h3, h4 {
   position: relative;
   z-index: 998;
   border-top: 1px solid @line-color;
-  transition: background @animate-duration @ease-in-out, border @animate-duration @ease-in-out;
+  transition: background @animate-duration @ease-out, border @animate-duration @ease-out;
   & ul {
     max-width: 960px;
     width: 100%;
@@ -112,7 +113,7 @@ h1, h2, h3, h4 {
       }
       & a {
         color: @footer-link-color;
-        transition: color @animate-duration @ease-in-out;
+        transition: color @animate-duration @ease-out;
         &:hover {
           color: @primary-color;
         }
@@ -125,6 +126,13 @@ h1, h2, h3, h4 {
   .@{header}-wrapper {
     background: transparent;
     border-color: transparent;
+    .@{header} {
+      transform: translateY(50%);
+      & a {
+        filter: grayscale(1) brightness(3);
+        color: @nav-link-active-color;
+      }
+    }
   }
   & .content-wrapper{
     background: transparent;
@@ -149,10 +157,7 @@ h1, h2, h3, h4 {
     font-size: 200px;
   }
 }
-.content-wrapper {
-  background-color: #F6F7F8;
-  transition: background @animate-duration @ease-out;
-}
+
 .content-wrapper > .tween-one-leaving, .page-content > .tween-one-leaving, .queue-anim-leaving {
   position: absolute !important;
   width: 100%;

@@ -1,6 +1,9 @@
 @import "./custom";
 
 @content: page;
+.home .page.tween-one-leaving {
+  margin-top: 64px;
+}
 .@{content} {
   width: 100%;
   overflow: hidden;
@@ -8,7 +11,7 @@
   &-nav {
     background: @nav-color;
     overflow: hidden;
-    height: 120px;
+    height: 72px;
     position: relative;
     & ul {
       max-width: 960px;
@@ -16,7 +19,7 @@
       position: relative;
       & li {
         float: left;
-        height: 120px;
+        height: 72px;
         text-align: center;
         &[disabled] {
           cursor: not-allowed;
@@ -32,12 +35,12 @@
           padding-top: 30px;
           font-size: 14px;
           border-bottom: 2px solid transparent;
-          transition: border @animate-duration @ease-in-out, color @animate-duration @ease-in-out;
+          transition: border @animate-duration @ease-out, color @animate-duration @ease-out;
           & span {
             display: block;
             font-size: 12px;
             color: fade(@nav-link-color, 75);
-            transition: color @animate-duration @ease-in-out;
+            transition: color @animate-duration @ease-out;
           }
           &:hover {
             color: @nav-link-active-color;
