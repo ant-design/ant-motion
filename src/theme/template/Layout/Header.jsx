@@ -10,9 +10,8 @@ class Header extends React.Component {
   }
 
   render() {
-    const navToRender = navArr.map((item, i) => {
+    const navToRender = navArr.map((item) => {
       let className = this.props.activeKey === item.key ? 'active' : '';
-      className = className === '' && !this.props.activeKey && i === 0 ? 'active' : className;
       const _item = (<li key={item.key}>
         <Link to={item.href} className={className}
           disabled={item.disabled}
@@ -44,7 +43,7 @@ class Header extends React.Component {
             {navToRender}
           </ul>
           <span>
-          <iframe 
+          <iframe
             src={`https://ghbtns.com/github-btn.html?user=ant-design&repo=ant-motion&type=star&count=true`}
             frameBorder="0" scrolling="0" width="98px" height="20px"
           />

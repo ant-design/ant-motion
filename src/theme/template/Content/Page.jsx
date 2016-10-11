@@ -55,12 +55,10 @@ class Page extends React.Component {
       link = this.props.pathname.match('api') ? link.replace('components', 'api') : link;
       let linkToChildren = link.split('/')[1] === pathNames[1] ?
         (<a>
-          {isNav ? meta.english : null}
-          {<span>{meta.chinese || meta.english}</span>}
+          {isNav ? meta.chinese : <span>{meta.chinese || meta.english}</span>}
         </a>) :
         (<Link to={link}>
-          {isNav ? meta.english : null}
-          {<span>{meta.chinese || meta.english}</span>}
+          {isNav ? meta.chinese : <span>{meta.chinese || meta.english}</span>}
         </Link>);
       linkToChildren = isComponent ?
         <a href={`#${meta.id}`} onClick={(e) => scrollClick(this.tickerId, e)}>
