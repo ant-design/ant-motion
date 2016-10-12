@@ -58,8 +58,8 @@ class Item extends React.Component {
       height: this.state.styleHeight
     } : this.state.styleHeight && { height: 220 } || {};
     const iconAnimate = this.state.codeHeight && this.state.codeOpen ? {
-      rotate: 180
-    } : this.state.codeHeight && { rotate: 0 } || {};
+      rotate: 180, y: -2,
+    } : this.state.codeHeight && { rotate: 0, y: 0 } || {};
     return (<li
       className={`${this.props.className}-wrapper ${this.props.vertical ? 'vertical' : ''}`.trim()}
       id={this.props.id}
