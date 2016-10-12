@@ -16,8 +16,9 @@
     font-weight: 400;
   }
   .@{code} {
-    .page-pro();
-    transition: opacity @animate-duration @ease-out, transform @animate-duration @ease-out, box-shadow @animate-duration @ease-out !important;
+    // .page-pro();
+    // transition: opacity @animate-duration @ease-out, transform @animate-duration @ease-out, box-shadow @animate-duration @ease-out !important;
+    border: 1px solid @line-color;
     overflow: hidden;
     margin: 30px auto;
     min-height: 220px;
@@ -41,11 +42,11 @@
         border-radius: 0;
         overflow: auto;
         border: none;
+        height: 100%;
         &.css {
           border-top: 1px solid @line-color;
         }
         & code {
-          height: 220px;
           display: block;
           padding: 1em;
           border-radius: 0;
@@ -53,6 +54,16 @@
           background: none;
         }
       }
+    }
+
+    &-bar {
+      height: 14px;
+      border-top: 1px solid @line-color;
+      background: @bg-color;
+      position: relative;
+      text-align: center;
+      line-height: 14px;
+      cursor: pointer;
     }
 
   }

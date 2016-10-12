@@ -4,6 +4,7 @@
 .home .page.tween-one-leaving {
   margin-top: 64px;
 }
+
 .@{content} {
   width: 100%;
   overflow: hidden;
@@ -78,8 +79,6 @@
       z-index: 1;
       float: left;
       height: 100%;
-      border-right: 1px solid @line-color;
-
       & .list {
         & h2 {
           font-size: 16px;
@@ -135,6 +134,15 @@
       width: 100%;
       padding-left: 200px;
       padding-bottom: 60px;
+      &:before {
+        content: '';
+        display: block;
+        width: 1px;
+        height: 100%;
+        position: absolute;
+        left: 150px;
+        background: @line-color;
+      }
       & .page-content {
         position: relative;
       }

@@ -29,7 +29,7 @@ class Header extends React.Component {
           animation={{opacity: 0, type: 'from' }}
         >
           <Link to="/" key="logo">
-            <img height="24" src="https://zos.alipayobjects.com/rmsportal/BkGCuPnqDxlrmJZ.svg" />
+            <img height="24" src="https://zos.alipayobjects.com/rmsportal/TOXWfHIUGHvZIyb.svg" />
             <img height="14" src="https://zos.alipayobjects.com/rmsportal/bNfCyCcgnyTgRmz.svg" />
           </Link>
         </TweenOne>
