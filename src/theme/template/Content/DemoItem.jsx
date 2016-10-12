@@ -97,7 +97,7 @@ class Item extends React.Component {
         </div>
         <div className={`${this.props.className}-bar`} onClick={this.codeSwitch}>
           <TweenOne animation={iconAnimate}>
-            <Icon type="up" />
+            <Icon type="down" />
           </TweenOne>
         </div>
       </div>
