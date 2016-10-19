@@ -1,11 +1,11 @@
 import React from 'react';
 import TweenOne from 'rc-tween-one';
 import QueueAnim from 'rc-queue-anim';
+import Demo from './Demo';
 import ScrollElement from 'rc-scroll-anim/lib/ScrollElement';
 import SvgMorphPlugin from 'rc-tween-one/lib/plugin/SvgMorphPlugin';
 import { Link } from 'react-router';
 TweenOne.plugins.push(SvgMorphPlugin);
-
 
 export default class Banner extends React.Component {
   static contextTypes = {
@@ -48,6 +48,9 @@ export default class Banner extends React.Component {
         </g>
       </svg>
       <div className={this.props.className}>
+        <div className={`${this.props.className}-demo`}>
+          <Demo />
+        </div>
         <QueueAnim type="bottom"
           className={`${this.props.className}-text`}
           delay={300}
@@ -65,8 +68,6 @@ export default class Banner extends React.Component {
             </Link>
           </div>
         </QueueAnim>
-        <div className={`${this.props.className}-demo`}>
-        </div>
         <TweenOne
           className={`${this.props.className}-mouse`}
           animation={{ opacity: 0, type: 'from', delay: 400 }}
