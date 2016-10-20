@@ -1,21 +1,18 @@
 import React, { PropTypes } from 'react';
-import ReactDom from 'react-dom';
-import TweenOne, { TweenOneGroup } from 'rc-tween-one';
-import { getChildren } from 'jsonml.js/lib/utils';
-import Promise from 'bluebird';
+import { TweenOneGroup } from 'rc-tween-one';
 import QueueAnim from 'rc-queue-anim';
 import { Link } from 'react-router';
 import Affix from 'antd/lib/affix';
 import nav from '../Layout/nav';
-import { currentScrollTop, scrollClick } from '../utils';
+import { scrollClick } from '../utils';
 
 const title = {};
-nav.forEach(item => {
+nav.forEach((item) => {
   title[item.key] = item.name;
 });
 class Page extends React.Component {
-  constructor() {
-    super(...arguments);
+  constructor(props) {
+    super(props);
     this.state = {
       affixAnim: {},
     };
@@ -24,9 +21,9 @@ class Page extends React.Component {
 
   getModuleData = (pageData) => {
     const moduleData = {};
-    Object.keys(pageData).forEach(key => {
-      const children = Object.keys(pageData[key]).map(_key =>
-        pageData[key][_key].index || pageData[key][_key]
+    Object.keys(pageData).forEach((key) => {
+      const children = Object.keys(pageData[key]).map(cKey =>
+        pageData[key][cKey].index || pageData[key][cKey]
       );
       moduleData[key] = children;
     });
@@ -35,14 +32,14 @@ class Page extends React.Component {
 
   getMenuItems(moduleData, pathNames, isComponent, isNav) {
     if (!moduleData) {
-      return;
+      return null;
     }
     const splicingListArr = [];
     if (pathNames[0] === 'cases') {
       // { meta: { filename: 'cases/full', english: 'Full', chinese: '完整模板选择', order: 2 } }
       splicingListArr.push(
         { meta: { filename: 'cases/splicing', english: 'Splicing', chinese: '自由搭配模板', order: 1 } }
-      )
+      );
     }
     const children = moduleData.concat(splicingListArr).filter(item => !item.meta.hidden)
       .sort((a, b) => a.meta.order - b.meta.order);
@@ -61,23 +58,24 @@ class Page extends React.Component {
           {isNav ? meta.chinese : <span>{meta.chinese || meta.english}</span>}
         </Link>);
       linkToChildren = isComponent ?
-        <a href={`#${meta.id}`} onClick={(e) => scrollClick(this.tickerId, e)}>
+        <a href={`#${meta.id}`} onClick={(e) => { scrollClick(this.tickerId, e); }}>
           {meta.title}
         </a> : linkToChildren;
       return (<li
         key={meta.english || meta.chinese || meta.id}
         className={className}
         disabled={meta.disabled}
-        style={isNav ? { width: `${100 / children.length}%`} : null}
+        style={isNav ? { width: `${100 / children.length}%` } : null}
       >
         {linkToChildren}
-      </li>)
+      </li>);
     });
   }
 
   render() {
     const props = this.props;
-    const className = props.className;
+    // eslint
+    const className = this.props.className;
     const pathNames = props.pathname.split('/');
     const hash = props.hash;
     const isComponent = pathNames[0] === 'components';
@@ -98,7 +96,7 @@ class Page extends React.Component {
       React.cloneElement(props.children, { pageData }) : props.children;
     const listKey = pathNames[0] === 'components' && !props.pathname.match('api') ?
       props.pathname : pathNames[0];
-    return <div className={className}>
+    return (<div className={className}>
       <TweenOneGroup
         enter={{ height: 0, type: 'from', ease: 'easeInOutCubic' }}
         leave={{ height: 0, ease: 'easeInOutCubic' }}
@@ -116,31 +114,29 @@ class Page extends React.Component {
         className={`${className}-wrapper`}
       >
         {listToRender &&
-        <Affix offsetTop={60} key="list" className="list-wrapper">
-          <QueueAnim type={['bottom', 'top']}
-            duration={450}
-            ease="easeInOutQuad"
-            ref="list"
-            className="list"
-          >
-            <h2 key={`${props.pathname.split('/')[0]}-title`}>
-              {isComponent ?
-                '范例' :
-                title[pathNames[0]]}
-            </h2>
+          (<Affix offsetTop={60} key="list" className="list-wrapper">
             <QueueAnim
-              component="ul"
-              key={listKey}
-              type="bottom"
-              duration={300}
-              interval={50}
+              type={['bottom', 'top']}
+              duration={450}
               ease="easeInOutQuad"
-              leaveReverse
+              className="list"
             >
-              {listToRender}
+              <h2 key={`${props.pathname.split('/')[0]}-title`}>
+                {isComponent ? '范例' : title[pathNames[0]]}
+              </h2>
+              <QueueAnim
+                component="ul"
+                key={listKey}
+                type="bottom"
+                duration={300}
+                interval={50}
+                ease="easeInOutQuad"
+                leaveReverse
+              >
+                {listToRender}
+              </QueueAnim>
             </QueueAnim>
-          </QueueAnim>
-        </Affix>}
+          </Affix>)}
         <section key="content">
           <TweenOneGroup
             enter={{ y: 30, type: 'from', opacity: 0 }}
@@ -152,16 +148,15 @@ class Page extends React.Component {
           </TweenOneGroup>
         </section>
       </TweenOneGroup>
-    </div>
+    </div>);
   }
 }
 Page.propTypes = {
   className: PropTypes.string,
   pathname: PropTypes.string,
-  hash: PropTypes.string,
 };
 
 Page.defaultProps = {
-  className: 'page'
+  className: 'page',
 };
 export default Page;

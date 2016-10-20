@@ -1,6 +1,4 @@
 import React, { PropTypes } from 'react';
-import QueueAnim from 'rc-queue-anim';
-import TweenOne from 'rc-tween-one';
 import DocumentTitle from 'react-document-title';
 import ScrollLink from 'rc-scroll-anim/lib/ScrollLink';
 
@@ -10,8 +8,13 @@ import Page2 from './Page2';
 import Page3 from './Page3';
 
 class Home extends React.Component {
-  constructor() {
-    super(...arguments);
+  static propTypes = {
+    pageData: PropTypes.object,
+    utils: PropTypes.object,
+  };
+
+  constructor(props) {
+    super(props);
     this.tweenAnim = { y: 30, opacity: 0, type: 'from', ease: 'easeOutQuad' };
   }
 
@@ -20,14 +23,18 @@ class Home extends React.Component {
       <DocumentTitle title="Ant Motion - 高效的动效设计解决方案">
         <div className="home-wrapper">
           <div className="nav-wrapper">
-            <ScrollLink location="banner" showHeightActive={['100%', '30%']}/>
-            <ScrollLink location="page1" showHeightActive="30%"/>
-            <ScrollLink location="page2" showHeightActive={["30%", "70%"]}/>
-            <ScrollLink location="page3" showHeightActive="70%"/>
+            <ScrollLink location="banner" showHeightActive={['100%', '30%']} />
+            <ScrollLink location="page1" showHeightActive="30%" />
+            <ScrollLink location="page2" showHeightActive={['30%', '70%']} />
+            <ScrollLink location="page3" showHeightActive="70%" />
           </div>
           <Banner />
-          <Page1 pageData={this.props.pageData} utils={this.props.utils} tweenAnim={this.tweenAnim} />
-          <Page2 pageData={this.props.pageData} utils={this.props.utils} tweenAnim={this.tweenAnim} />
+          <Page1
+            pageData={this.props.pageData} utils={this.props.utils} tweenAnim={this.tweenAnim}
+          />
+          <Page2
+            pageData={this.props.pageData} utils={this.props.utils} tweenAnim={this.tweenAnim}
+          />
           <Page3 tweenAnim={this.tweenAnim} />
         </div>
       </DocumentTitle>

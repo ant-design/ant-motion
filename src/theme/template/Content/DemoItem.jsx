@@ -1,12 +1,11 @@
 import React, { PropTypes } from 'react';
 import ReactDOM from 'react-dom';
-import TweenOne, { TweenOneGroup } from 'rc-tween-one';
-import Modal from 'antd/lib/modal';
+import TweenOne from 'rc-tween-one';
 import Icon from 'antd/lib/icon';
 
 class Item extends React.Component {
-  constructor() {
-    super(...arguments);
+  constructor(props) {
+    super(props);
     this.state = {
       paused: true,
       codeOpen: false,
@@ -16,8 +15,12 @@ class Item extends React.Component {
   }
 
   componentDidMount() {
-    const codeDom = ReactDOM.findDOMNode(this.refs.code);
-    const styleDom = ReactDOM.findDOMNode(this.refs.style);
+    this.setDomHeight();
+  }
+
+  setDomHeight = () => {
+    const codeDom = ReactDOM.findDOMNode(this.code);
+    const styleDom = ReactDOM.findDOMNode(this.style);
     this.setState({
       codeHeight: codeDom.offsetHeight,
       styleHeight: styleDom && styleDom.offsetHeight,
@@ -52,10 +55,10 @@ class Item extends React.Component {
       children = React.cloneElement(this.props.children, childProps);
     }
     const animate = this.state.codeHeight && this.state.codeOpen ? {
-      height: this.state.codeHeight
+      height: this.state.codeHeight,
     } : this.state.codeHeight && { height: 220 } || {};
     const styleAnimate = this.state.styleHeight && this.state.codeOpen ? {
-      height: this.state.styleHeight
+      height: this.state.styleHeight,
     } : this.state.styleHeight && { height: 220 } || {};
     const iconAnimate = this.state.codeHeight && this.state.codeOpen ? {
       rotate: 180, y: -2,
@@ -67,26 +70,29 @@ class Item extends React.Component {
       <h2>{this.props.title}</h2>
       <div className={`${this.props.className}-content`}>{this.props.content}</div>
       <div className={this.props.className}>
-        <div className={`${this.props.className}-demo`}
+        <div
+          className={`${this.props.className}-demo`}
           onMouseEnter={this.props.mouseEnter ? this.mouseEnter : null}
           onMouseLeave={this.props.mouseEnter ? this.mouseLeave : null}
         >
           {children}
-          {!!this.props._style ?
-          <style dangerouslySetInnerHTML={{ __html: this.props._style }} /> : null}
+          {this.props.cStyle ?
+            <style dangerouslySetInnerHTML={{ __html: this.props.cStyle }} /> : null}
         </div>
         <div className={`${this.props.className}-code`}>
-          <TweenOne className={`${this.props.className}-code-only`}
+          <TweenOne
+            className={`${this.props.className}-code-only`}
             style={{ height: this.state.codeHeight ? 220 : null }}
-            ref="code"
+            ref={(c) => { this.code = c; }}
             animation={animate}
           >
             {this.props.code}
           </TweenOne>
           {this.props.styleCode ?
-            (<TweenOne className={`${this.props.className}-code-only`}
+            (<TweenOne
+              className={`${this.props.className}-code-only`}
               style={{ height: this.state.codeHeight ? 220 : null }}
-              ref="style"
+              ref={(c) => { this.style = c; }}
               animation={styleAnimate}
             >
               <pre className="css">
@@ -112,9 +118,10 @@ Item.propTypes = {
   content: PropTypes.any,
   vertical: PropTypes.bool,
   styleCode: PropTypes.string,
-  _style: PropTypes.string,
+  cStyle: PropTypes.string,
   mouseEnter: PropTypes.bool,
   id: PropTypes.string,
+  code: PropTypes.any,
 };
 
 Item.defaultProps = {

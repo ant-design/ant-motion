@@ -1,5 +1,4 @@
-import React, { PropTypes } from 'react';
-import Button from 'antd/lib/button';
+import React from 'react';
 import TweenOne, { TweenOneGroup } from 'rc-tween-one';
 import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
 import '../../../static/content.less';
@@ -7,10 +6,8 @@ import './index.less';
 
 class Content extends React.Component {
 
-  static contextTypes = {
-    className: React.PropTypes.string,
+  static propTypes = {
     name: React.PropTypes.string,
-    style: React.PropTypes.object,
     dataSource: React.PropTypes.object,
   };
 
@@ -18,18 +15,16 @@ class Content extends React.Component {
     className: 'content4',
   };
 
-  getChildrenToRender = (data) => {
-    return Object.keys(data).filter(key => key.match('block')).map((key, i) => {
+  getChildrenToRender = data =>
+    Object.keys(data).filter(key => key.match('block')).map((key) => {
       const item = data[key];
-      const delay = i % 4 * 100 + Math.floor(i / 4) * 100 + 300;
       return (<li key={key}>
         <div className="content-wrapper">
           <span><img src={item.img} height="100%" /></span>
           <p>{item.content}</p>
         </div>
-      </li>)
+      </li>);
     });
-  };
 
   getEnterAnim = (e) => {
     const index = e.index;
@@ -39,7 +34,7 @@ class Content extends React.Component {
 
   render() {
     const props = { ...this.props };
-    const { title, content } = props.dataSource.title;
+    const { title, content } = this.props.dataSource.title;
     const childrenToRender = this.getChildrenToRender(props.dataSource);
     delete props.dataSource;
     delete props.name;

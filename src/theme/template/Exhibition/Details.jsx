@@ -1,30 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TweenOne from 'rc-tween-one';
-import { getChildren } from 'jsonml.js/lib/utils';
 import DocumentTitle from 'react-document-title';
-import { currentScrollTop } from '../utils';
 import ticker from 'rc-tween-one/lib/ticker';
 import easingTypes from 'tween-functions';
+import { currentScrollTop } from '../utils';
 
 export default class Details extends React.Component {
-  shouldComponentUpdate() {
-    return this.state.replay;
-  }
-
-  static contextTypes = {
+  static propTypes = {
     className: React.PropTypes.string,
+    pageData: React.PropTypes.object,
   };
 
   static defaultProps = {
     className: 'exhibition-details',
   };
 
-  constructor() {
-    super(...arguments);
+  constructor(props) {
+    super(props);
     this.state = {
-      replay: false
-    }
+      replay: false,
+    };
   }
 
   componentDidMount() {
@@ -43,6 +39,10 @@ export default class Details extends React.Component {
     }
   }
 
+  shouldComponentUpdate() {
+    return this.state.replay;
+  }
+
   onClick = () => {
     this.setState({
       replay: true,
@@ -55,7 +55,9 @@ export default class Details extends React.Component {
 
   render() {
     const props = this.props;
-    const { pageData, className } = props;
+    // const { pageData, className } = props;
+    const pageData = this.props.pageData;
+    const className = this.props.className;
     const { meta, content, description,
       style, preview, highlightedCode, highlightedStyle } = pageData;
     const { title, subtitle, chinese, english } = meta;
@@ -63,14 +65,15 @@ export default class Details extends React.Component {
       <div className="page">
         <TweenOne animation={{ y: 30, opacity: 0, type: 'from' }} className="page-wrapper">
           <article className={`markdown ${className}`}>
-            <div className={`${className}-demo`}>{!this.state.replay && preview(React,ReactDOM)}</div>
+            <div className={`${className}-demo`}>
+              {!this.state.replay && preview(React, ReactDOM)}
+            </div>
             <div className={`${className}-replay-button`}>
               <a onClick={this.onClick} />
             </div>
             <h1>
               {title || english}
-              {(!subtitle && !chinese) ? null :
-              <i>{subtitle || chinese}</i>}
+              {(!subtitle && !chinese) ? null : (<i>{subtitle || chinese}</i>)}
             </h1>
             {props.utils.toReactComponent(description)}
             {!!content.length && props.utils.toReactComponent(['section'].concat(content))}
@@ -79,12 +82,12 @@ export default class Details extends React.Component {
             <h3>jsx</h3>
             {!!highlightedCode.length && props.utils.toReactComponent(highlightedCode)}
             {highlightedStyle && <h3>css</h3>}
-            {highlightedStyle && <pre className="css">
-            <code dangerouslySetInnerHTML={{ __html: highlightedStyle }} />
-          </pre>}
+            {highlightedStyle && (<pre className="css">
+              <code dangerouslySetInnerHTML={{ __html: highlightedStyle }} />
+            </pre>)}
           </article>
         </TweenOne>
       </div>
-    </DocumentTitle>)
+    </DocumentTitle>);
   }
 }

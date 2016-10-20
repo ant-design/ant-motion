@@ -2,12 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import TweenOne from 'rc-tween-one';
 import ticker from 'rc-tween-one/lib/ticker';
-import { currentScrollTop } from '../utils';
 import SvgDrawPlugin from 'rc-tween-one/lib/plugin/SvgDrawPlugin';
+import { currentScrollTop } from '../utils';
+
 TweenOne.plugins.push(SvgDrawPlugin);
 
 export default class Demo extends React.Component {
-  static contextTypes = {
+  static propTypes = {
     image: React.PropTypes.string,
   };
 
@@ -15,11 +16,12 @@ export default class Demo extends React.Component {
     image: 'https://zos.alipayobjects.com/rmsportal/fbbUPUkdhvXwRYp.png',
   };
 
-  constructor() {
-    super(...arguments);
+  constructor(props) {
+    super(props);
     this.state = {};
     this.interval = null;
     this.gather = true;
+    this.intervalTime = 8000;
   }
 
   componentDidMount() {
@@ -31,23 +33,20 @@ export default class Demo extends React.Component {
     this.interval = null;
   }
 
-  createPointData = () => {
-    const w = 265;
-    const h = 290;
-    const canvas = document.getElementById('canvas');
-    const ctx = canvas.getContext("2d");
-    ctx.clearRect(0, 0, w, h);
-    canvas.width = w;
-    canvas.height = h;
-    const img = new Image();
-    img.onload = () => {
-      ctx.drawImage(img, 0, 0);
-      const data = ctx.getImageData(0, 0, w, h).data;
-      this.setDataToDom(data, w, h);
-      this.dom.removeChild(canvas);
-    };
-    img.crossOrigin = 'anonymous';
-    img.src = this.props.image;
+  onMouseEnter = () => {
+    // !this.gather && this.updateTweenData();
+    if (!this.gather) {
+      this.updateTweenData();
+    }
+    this.componentWillUnmount();
+  };
+
+  onMouseLeave = () => {
+    // this.gather && this.updateTweenData();
+    if (this.gather) {
+      this.updateTweenData();
+    }
+    this.interval = ticker.interval(this.updateTweenData, this.intervalTime);
   };
 
   setDataToDom(data, w, h) {
@@ -67,7 +66,8 @@ export default class Demo extends React.Component {
       const b = Math.random() * 0.5 + 0.15;
       children.push(
         <TweenOne className="point-wrapper" key={i} style={{ left: item.x, top: item.y }}>
-          <TweenOne className="point"
+          <TweenOne
+            className="point"
             style={{
               width: r,
               height: r,
@@ -75,12 +75,13 @@ export default class Demo extends React.Component {
               backgroundColor: `rgb(${Math.round(Math.random() * 95 + 160)},255,255)`,
             }}
             animation={{
-              y: (Math.random()*2-1) * 10 || 5,
-              x: (Math.random()*2-1) * 5 || 2.5,
-              delay: Math.random()*500,
+              y: (Math.random() * 2 - 1) * 10 || 5,
+              x: (Math.random() * 2 - 1) * 5 || 2.5,
+              delay: Math.random() * 1000,
               repeat: -1,
               duration: 3000,
-              yoyo: true
+              yoyo: true,
+              ease: 'easeInOutQuad',
             }}
           />
         </TweenOne>
@@ -88,21 +89,15 @@ export default class Demo extends React.Component {
     });
     this.pointArray.push({ x: 75, y: 180 });
     children.push(
-      <TweenOne className="point-wrapper" key={children.length}
+      <TweenOne
+        className="point-wrapper" key={children.length}
         style={{
           left: 75,
           top: 180,
         }}
-        animation={{
-          y: (Math.random()*2-1) * 10 || 5,
-          x: (Math.random()*2-1) * 5 || 2.5,
-          delay: Math.random()*500,
-          repeat: -1,
-          duration: 3000,
-          yoyo: true
-        }}
       >
-        <TweenOne className="point"
+        <TweenOne
+          className="point"
           style={{
             width: 40,
             height: 40,
@@ -111,6 +106,15 @@ export default class Demo extends React.Component {
             backgroundColor: `rgb(${Math.round(Math.random() * 95 + 160)},255,255)`,
             opacity: Math.random() * 0.5 + 0.2,
           }}
+          animation={{
+            y: (Math.random() * 2 - 1) * 10 || 5,
+            x: (Math.random() * 2 - 1) * 5 || 2.5,
+            delay: Math.random() * 1000,
+            repeat: -1,
+            duration: 3000,
+            yoyo: true,
+            ease: 'easeInOutQuad',
+          }}
         />
       </TweenOne>
     );
@@ -118,8 +122,27 @@ export default class Demo extends React.Component {
       children,
       boxAnim: { opacity: 0, type: 'from', duration: 800 },
     }, () => {
-      this.interval = ticker.interval(this.updateTweenData, 10000);
+      this.interval = ticker.interval(this.updateTweenData, this.intervalTime);
     });
+  }
+
+  createPointData = () => {
+    const w = 265;
+    const h = 290;
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, w, h);
+    canvas.width = w;
+    canvas.height = h;
+    const img = new Image();
+    img.onload = () => {
+      ctx.drawImage(img, 0, 0);
+      const data = ctx.getImageData(0, 0, w, h).data;
+      this.setDataToDom(data, w, h);
+      this.dom.removeChild(canvas);
+    };
+    img.crossOrigin = 'anonymous';
+    img.src = this.props.image;
   };
 
   gatherData = () => {
@@ -133,7 +156,7 @@ export default class Demo extends React.Component {
           delay: Math.random() * 500,
           duration: 800,
           ease: 'easeInOutQuint',
-        }
+        },
       })
     );
     this.setState({ children });
@@ -152,7 +175,7 @@ export default class Demo extends React.Component {
           scale: Math.random() * 2.5,
           duration: Math.random() * 500 + 500,
           ease: 'easeInOutQuint',
-        }
+        },
       })
     );
 
@@ -163,19 +186,9 @@ export default class Demo extends React.Component {
 
   updateTweenData = () => {
     this.dom = ReactDOM.findDOMNode(this);
-    this.sideBox = ReactDOM.findDOMNode(this.refs.sideBox);
+    this.sideBox = ReactDOM.findDOMNode(this.sideBoxComp);
     ((this.gather && this.disperseData) || this.gatherData)();
     this.gather = !this.gather;
-  };
-
-  onMouseEnter = () => {
-    !this.gather && this.updateTweenData();
-    this.componentWillUnmount();
-  };
-
-  onMouseLeave = () => {
-    this.gather && this.updateTweenData();
-    this.interval = ticker.interval(this.updateTweenData, 10000);
   };
 
   render() {
@@ -189,8 +202,10 @@ export default class Demo extends React.Component {
         <defs>
           <filter id="goo">
             <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur" />
-            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7"
-              result="goo" />
+            <feColorMatrix
+              in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7"
+              result="goo"
+            />
             <feComposite in="SourceGraphic" in2="goo" operator="atop" />
           </filter>
         </defs>
@@ -226,7 +241,8 @@ export default class Demo extends React.Component {
             { SVGDraw: 0, type: 'from', duration: 200, ease: 'easeOutQuart' },
           ]}
         />
-        <TweenOne component="circle" r="20" fill="#fff" cx="95" cy="200"
+        <TweenOne
+          component="circle" r="20" fill="#fff" cx="95" cy="200"
           animation={{
             delay: 900,
             r: 60,
@@ -234,7 +250,7 @@ export default class Demo extends React.Component {
             duration: 300,
             type: 'from',
             attr: 'attr',
-            ease: 'easeOutBack'
+            ease: 'easeOutBack',
           }}
         />
       </TweenOne>
@@ -244,10 +260,10 @@ export default class Demo extends React.Component {
         className="right-side blur"
         onMouseEnter={this.onMouseEnter}
         onMouseLeave={this.onMouseLeave}
-        ref="sideBox"
+        ref={(c) => { this.sideBoxComp = c; }}
       >
         {this.state.children}
       </TweenOne>
-    </div>)
+    </div>);
   }
 }

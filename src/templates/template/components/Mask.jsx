@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import './Mask.less';
+
 const $ = window.$;
 class Mask extends React.Component {
   getChildrenToRender = () => {
@@ -14,19 +15,19 @@ class Mask extends React.Component {
             top: 0,
             left: 0,
           }}
-        ></div>,
+        />,
         <div
           key="2"
           style={{
             height: docHeight - top - height,
             top: top + height,
           }}
-        ></div>,
+        />,
       ];
     }
     return (<div
       style={{ height: docHeight - height, top: height }}
-    ></div>);
+    />);
   };
 
   render() {

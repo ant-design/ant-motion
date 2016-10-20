@@ -1,5 +1,4 @@
-import React, { PropTypes } from 'react';
-import Button from 'antd/lib/button';
+import React from 'react';
 import TweenOne from 'rc-tween-one';
 import QueueAnim from 'rc-queue-anim';
 import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
@@ -8,10 +7,8 @@ import './index.less';
 
 class Content extends React.Component {
 
-  static contextTypes = {
-    className: React.PropTypes.string,
+  static propTypes = {
     name: React.PropTypes.string,
-    style: React.PropTypes.object,
     dataSource: React.PropTypes.object,
   };
 
@@ -19,20 +16,20 @@ class Content extends React.Component {
     className: 'content5',
   };
 
-  getBlockChildren = (data) => {
-    return Object.keys(data).filter(key => key.match('block')).map((key, i) => {
+  getBlockChildren = data =>
+    Object.keys(data).filter(key => key.match('block')).map((key) => {
       const item = data[key];
       return (<li key={key}>
-        <span><img src={item.img} width="100%"/></span>
+        <span><img src={item.img} width="100%" /></span>
         <h2>{item.title}</h2>
         <p>{item.content}</p>
-      </li>)
+      </li>);
     });
-  };
+
 
   render() {
     const props = { ...this.props };
-    const { title, img } = props.dataSource;
+    const { title, img } = this.props.dataSource;
     const ulChildren = this.getBlockChildren(props.dataSource);
     delete props.dataSource;
     delete props.name;

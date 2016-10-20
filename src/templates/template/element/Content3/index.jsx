@@ -1,6 +1,4 @@
-import React, { PropTypes } from 'react';
-import Button from 'antd/lib/button';
-import QueueAnim from 'rc-queue-anim';
+import React from 'react';
 import TweenOne from 'rc-tween-one';
 import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
 import VideoPlay from 'react-sublime-video';
@@ -9,10 +7,8 @@ import './index.less';
 
 class Content extends React.Component {
 
-  static contextTypes = {
-    className: React.PropTypes.string,
+  static propTypes = {
     name: React.PropTypes.string,
-    style: React.PropTypes.object,
     dataSource: React.PropTypes.object,
   };
 
@@ -23,7 +19,7 @@ class Content extends React.Component {
 
   render() {
     const props = { ...this.props };
-    const { video, title, content } = props.dataSource.block1;
+    const { video, title, content } = this.props.dataSource.block1;
     delete props.dataSource;
     delete props.name;
     return (
@@ -51,10 +47,10 @@ class Content extends React.Component {
           </TweenOne>
           <TweenOne
             key="video"
-            animation={{  y: '+=30', opacity: 0, type: 'from', delay: 300 }}
+            animation={{ y: '+=30', opacity: 0, type: 'from', delay: 300 }}
             className={`${props.className}-video`}
           >
-            <VideoPlay loop src={video} width="100%"/>
+            <VideoPlay loop src={video} width="100%" />
           </TweenOne>
         </OverPack>
       </div>

@@ -4,9 +4,9 @@ import QueueAnim from 'rc-queue-anim';
 import TweenOne from 'rc-tween-one';
 import BannerAnim, { Element } from 'rc-banner-anim';
 import Icon from 'antd/lib/icon';
+import 'rc-banner-anim/assets/index.css';
 import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
 import './index.less';
-import 'rc-banner-anim/assets/index.css';
 
 const BgElement = Element.BgElement;
 class Banner extends React.Component {
@@ -26,15 +26,16 @@ class Banner extends React.Component {
             backgroundPosition: 'center',
           }}
         />
-        <QueueAnim type={['bottom','top']} delay={200} className={`${this.props.className}-title`}
-          key="text"
+        <QueueAnim
+          type={['bottom', 'top']} delay={200}
+          className={`${this.props.className}-title`} key="text"
         >
           {item.logo ? <span className="logo" key="logo"><img width="100%" src={item.logo} /></span> : null}
           {item.title ? <h1 key="h1">{item.title}</h1> : null}
           <p key="content">{item.content}</p>
           <Button type="ghost" key="button">{item.button}</Button>
         </QueueAnim>
-      </Element>)
+      </Element>);
     });
     const props = { ...this.props };
     delete props.name;
@@ -43,7 +44,7 @@ class Banner extends React.Component {
       <OverPack
         scrollName={this.props.name}
         {...props}
-        hideProps={{ icon: { reverse: true }, banner: { reverse: true }} }
+        hideProps={{ icon: { reverse: true }, banner: { reverse: true } }}
       >
         <TweenOne
           key="banner"
@@ -52,7 +53,8 @@ class Banner extends React.Component {
         >
           {children}
         </TweenOne>
-        <TweenOne animation={{ y: '-=20', yoyo: true, repeat: -1, duration: 1000 }}
+        <TweenOne
+          animation={{ y: '-=20', yoyo: true, repeat: -1, duration: 1000 }}
           className={`${this.props.className}-icon`}
           style={{ bottom: 40 }}
           key="icon"
@@ -67,7 +69,6 @@ class Banner extends React.Component {
 Banner.propTypes = {
   className: PropTypes.string,
   name: PropTypes.string,
-  style: PropTypes.object,
   dataSource: PropTypes.object,
 };
 

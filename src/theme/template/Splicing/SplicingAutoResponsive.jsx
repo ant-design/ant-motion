@@ -3,20 +3,18 @@ import ReactDOM from 'react-dom';
 import AutoResponsive from 'autoresponsive-react';
 import Icon from 'antd/lib/icon';
 import { TweenOneGroup } from 'rc-tween-one';
+
 const noop = () => {
 };
 let keyNum = 0;
 class AutoResponsiveDemo extends React.Component {
-  constructor() {
-    super(...arguments);
+  constructor(props) {
+    super(props);
     this.state = {
       containerWidth: null,
       imgLoad: {},
       optIndex: this.props.optIndex,
     };
-    [
-      'onWindowResized',
-    ].forEach((method) => this[method] = this[method].bind(this));
   }
 
   componentDidMount() {
@@ -42,9 +40,27 @@ class AutoResponsiveDemo extends React.Component {
     }
   }
 
-  onWindowResized() {
+  onWindowResized = () => {
     this.setState({
-      containerWidth: ReactDOM.findDOMNode(this.refs.container).clientWidth,
+      containerWidth: ReactDOM.findDOMNode(this.container).clientWidth,
+    });
+  }
+
+  onClick(i) {
+    let optIndex = this.state.optIndex;
+    if (this.props.checkbox) {
+      optIndex.push({ vars: i, key: keyNum });
+      keyNum += 1;
+    } else {
+      const inArray = optIndex.map(item => item.vars === i && item).filter(item => item)[0];
+      optIndex = [];
+      if (!inArray) {
+        optIndex.push({ vars: i, key: keyNum });
+        keyNum += 1;
+      }
+    }
+    this.setState({ optIndex }, () => {
+      this.props.onClick(this.state.optIndex);
     });
   }
 
@@ -56,29 +72,6 @@ class AutoResponsiveDemo extends React.Component {
       transitionDuration: '.3',
     };
   }
-
-  onClick(i) {
-    let optIndex = this.state.optIndex;
-    if (this.props.checkbox) {
-      optIndex.push({ vars: i, key: keyNum });
-      keyNum++;
-    } else {
-      const inArray = optIndex.map(item => {
-        if (item.vars === i) {
-          return item;
-        }
-      }).filter(item => item)[0];
-      optIndex = [];
-      if (!inArray) {
-        optIndex.push({ vars: i, key: keyNum });
-        keyNum++;
-      }
-    }
-    this.setState({ optIndex }, () => {
-      this.props.onClick(this.state.optIndex);
-    });
-  }
-
 
   getImgChild = (item, i) => {
     const imgLoad = this.state.imgLoad;
@@ -96,11 +89,9 @@ class AutoResponsiveDemo extends React.Component {
       }
     }
     const onClick = this.onClick.bind(this, i);
-    const isOptIndex = this.state.optIndex.map(item => {
-      if (item.vars === i) {
-        return true;
-      }
-    }).filter(item => item)[0];
+    const isOptIndex = this.state.optIndex.map(_item =>
+      _item.vars === i
+    ).filter(_item => _item)[0];
     return (<div
       key={i}
       className="item"
@@ -115,7 +106,7 @@ class AutoResponsiveDemo extends React.Component {
         enter={{ scale: 0, type: 'from', opacity: 0, ease: 'easeOutBack', duration: 300 }}
         leave={{ scale: 0, opacity: 0, ease: 'easeInBack', duration: 300 }}
       >
-        {isLoad ? <img src={item.src} width="100%"/>: <Icon type="loading" key="load"/>}
+        {isLoad ? <img src={item.src} width="100%" /> : <Icon type="loading" key="load" />}
         <div className="item-text" key="text">{item.text}</div>
         {isOptIndex ? <Icon className="check" type="check-circle" key="check" /> : null}
       </TweenOneGroup>
@@ -123,13 +114,16 @@ class AutoResponsiveDemo extends React.Component {
   };
 
   render() {
-    return (<AutoResponsive ref="container" {...this.getAutoResProps()} {...this.props}>
+    return (<AutoResponsive
+      ref={(c) => { this.container = c; }}
+      {...this.getAutoResProps()}
+      {...this.props}
+    >
       {this.props.imgArr.map(this.getImgChild)}
     </AutoResponsive>);
   }
 }
 AutoResponsiveDemo.propTypes = {
-  className: PropTypes.string,
   imgArr: PropTypes.array,
   onClick: PropTypes.func,
   checkbox: PropTypes.bool,

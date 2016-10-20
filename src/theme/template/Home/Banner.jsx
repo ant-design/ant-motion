@@ -1,14 +1,15 @@
 import React from 'react';
 import TweenOne from 'rc-tween-one';
 import QueueAnim from 'rc-queue-anim';
-import Demo from './Demo';
 import ScrollElement from 'rc-scroll-anim/lib/ScrollElement';
 import SvgMorphPlugin from 'rc-tween-one/lib/plugin/SvgMorphPlugin';
 import { Link } from 'react-router';
+import Demo from './Demo';
+
 TweenOne.plugins.push(SvgMorphPlugin);
 
 export default class Banner extends React.Component {
-  static contextTypes = {
+  static propTypes = {
     className: React.PropTypes.string,
   };
 
@@ -51,7 +52,8 @@ export default class Banner extends React.Component {
         <div className={`${this.props.className}-demo`}>
           <Demo />
         </div>
-        <QueueAnim type="bottom"
+        <QueueAnim
+          type="bottom"
           className={`${this.props.className}-text`}
           delay={300}
         >

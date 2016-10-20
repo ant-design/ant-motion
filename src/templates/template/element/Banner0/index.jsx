@@ -14,7 +14,8 @@ class Banner extends React.Component {
     delete props.dataSource;
     delete props.name;
     return (
-      <OverPack replay
+      <OverPack
+        replay
         scrollName={this.props.name}
         playScale={[0.3, 0.1]}
         {...props}
@@ -36,7 +37,8 @@ class Banner extends React.Component {
           <p key="content">{content}</p>
           <Button type="ghost" key="button">{button}</Button>
         </QueueAnim>
-        <TweenOne animation={{ y: '-=20', yoyo: true, repeat: -1, duration: 1000 }}
+        <TweenOne
+          animation={{ y: '-=20', yoyo: true, repeat: -1, duration: 1000 }}
           className={`${this.props.className}-icon`}
           key="icon"
         >
@@ -50,7 +52,6 @@ class Banner extends React.Component {
 Banner.propTypes = {
   className: PropTypes.string,
   name: PropTypes.string,
-  style: PropTypes.object,
   dataSource: PropTypes.object,
 };
 
