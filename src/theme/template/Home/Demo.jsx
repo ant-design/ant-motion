@@ -26,6 +26,7 @@ export default class Demo extends React.Component {
 
   componentDidMount() {
     this.dom = ReactDOM.findDOMNode(this);
+    ticker.timeout(this.createPointData, 1200)
   }
 
   componentWillUnmount() {
@@ -51,7 +52,7 @@ export default class Demo extends React.Component {
 
   setDataToDom(data, w, h) {
     this.pointArray = [];
-    const number = Math.round(w / 15);
+    const number = Math.round(w / 11);
     for (let i = 0; i < w; i += number) {
       for (let j = 0; j < h; j += number) {
         if (data[((i + j * w) * 4) + 3] > 150) {
@@ -62,8 +63,8 @@ export default class Demo extends React.Component {
 
     const children = [];
     this.pointArray.forEach((item, i) => {
-      const r = Math.random() * 20 + 10;
-      const b = Math.random() * 0.5 + 0.15;
+      const r = Math.random() * 20 + 15;
+      const b = Math.random() * 0.5 + 0.05;
       children.push(
         <TweenOne className="point-wrapper" key={i} style={{ left: item.x, top: item.y }}>
           <TweenOne
@@ -101,8 +102,6 @@ export default class Demo extends React.Component {
           style={{
             width: 40,
             height: 40,
-            left: 75,
-            top: 180,
             backgroundColor: `rgb(${Math.round(Math.random() * 95 + 160)},255,255)`,
             opacity: Math.random() * 0.5 + 0.2,
           }}
@@ -118,6 +117,7 @@ export default class Demo extends React.Component {
         />
       </TweenOne>
     );
+    console.log(children.length)
     this.setState({
       children,
       boxAnim: { opacity: 0, type: 'from', duration: 800 },
@@ -171,8 +171,8 @@ export default class Demo extends React.Component {
         animation: {
           x: Math.random() * document.body.clientWidth - sideRect.left - item.props.style.left,
           y: Math.random() * rect.height - sideTop - item.props.style.top,
-          opacity: Math.random() * 0.5,
-          scale: Math.random() * 2.5,
+          opacity: Math.random() * 0.5 - 0.1,
+          scale: Math.random() * 2.5 - 0.1,
           duration: Math.random() * 500 + 500,
           ease: 'easeInOutQuint',
         },
@@ -196,7 +196,7 @@ export default class Demo extends React.Component {
       <canvas id="canvas" />
       <TweenOne
         component="svg"
-        animation={{ opacity: 0, delay: 1200, duration: 800, onStart: this.createPointData }}
+        animation={{ opacity: 0, delay: 1200, duration: 800 }}
         className="right-side"
       >
         <defs>
