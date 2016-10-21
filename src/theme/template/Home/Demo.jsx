@@ -21,12 +21,12 @@ export default class Demo extends React.Component {
     this.state = {};
     this.interval = null;
     this.gather = true;
-    this.intervalTime = 8000;
+    this.intervalTime = 9000;
   }
 
   componentDidMount() {
     this.dom = ReactDOM.findDOMNode(this);
-    ticker.timeout(this.createPointData, 1200)
+    ticker.timeout(this.createPointData, 1400)
   }
 
   componentWillUnmount() {
@@ -52,7 +52,7 @@ export default class Demo extends React.Component {
 
   setDataToDom(data, w, h) {
     this.pointArray = [];
-    const number = Math.round(w / 11);
+    const number = Math.round(w / 13);
     for (let i = 0; i < w; i += number) {
       for (let j = 0; j < h; j += number) {
         if (data[((i + j * w) * 4) + 3] > 150) {
@@ -63,8 +63,8 @@ export default class Demo extends React.Component {
 
     const children = [];
     this.pointArray.forEach((item, i) => {
-      const r = Math.random() * 20 + 15;
-      const b = Math.random() * 0.5 + 0.05;
+      const r = Math.random() * 18 + 12;
+      const b = Math.random() * 0.4 + 0.1;
       children.push(
         <TweenOne className="point-wrapper" key={i} style={{ left: item.x, top: item.y }}>
           <TweenOne
@@ -117,7 +117,6 @@ export default class Demo extends React.Component {
         />
       </TweenOne>
     );
-    console.log(children.length)
     this.setState({
       children,
       boxAnim: { opacity: 0, type: 'from', duration: 800 },
@@ -172,7 +171,7 @@ export default class Demo extends React.Component {
           x: Math.random() * document.body.clientWidth - sideRect.left - item.props.style.left,
           y: Math.random() * rect.height - sideTop - item.props.style.top,
           opacity: Math.random() * 0.5 - 0.1,
-          scale: Math.random() * 2.5 - 0.1,
+          scale: Math.random() * 2.5,
           duration: Math.random() * 500 + 500,
           ease: 'easeInOutQuint',
         },
@@ -196,61 +195,51 @@ export default class Demo extends React.Component {
       <canvas id="canvas" />
       <TweenOne
         component="svg"
-        animation={{ opacity: 0, delay: 1200, duration: 800 }}
+        animation={{ opacity: 0, delay: 1400, duration: 800 }}
         className="right-side"
       >
-        <defs>
-          <filter id="goo">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur" />
-            <feColorMatrix
-              in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7"
-              result="goo"
-            />
-            <feComposite in="SourceGraphic" in2="goo" operator="atop" />
-          </filter>
-        </defs>
         <TweenOne
           d="M30,265L30,25"
           component="path"
           animation={[
             { opacity: 0, type: 'from', delay: 300, duration: 0 },
-            { SVGDraw: 0, type: 'from', duration: 200, ease: 'easeInQuart' },
+            { SVGDraw: 0, type: 'from', duration: 300, ease: 'easeInQuart' },
           ]}
         />
         <TweenOne
           d="M30,25L137,135"
           component="path"
           animation={[
-            { opacity: 0, type: 'from', delay: 500, duration: 0 },
-            { SVGDraw: 0, type: 'from', duration: 150, ease: 'linear' },
+            { opacity: 0, type: 'from', delay: 600, duration: 0 },
+            { SVGDraw: 0, type: 'from', duration: 250, ease: 'linear' },
           ]}
         />
         <TweenOne
           d="M137,135L245,25"
           component="path"
           animation={[
-            { opacity: 0, type: 'from', delay: 650, duration: 0 },
-            { SVGDraw: 0, type: 'from', duration: 150, ease: 'linear' },
+            { opacity: 0, type: 'from', delay: 850, duration: 0 },
+            { SVGDraw: 0, type: 'from', duration: 250, ease: 'linear' },
           ]}
         />
         <TweenOne
           d="M245,25L245,190"
           component="path"
           animation={[
-            { opacity: 0, type: 'from', delay: 800, duration: 0 },
-            { SVGDraw: 0, type: 'from', duration: 200, ease: 'easeOutQuart' },
+            { opacity: 0, type: 'from', delay: 1100, duration: 0 },
+            { SVGDraw: 0, type: 'from', duration: 300, ease: 'easeOutQuart' },
           ]}
         />
         <TweenOne
           component="circle" r="20" fill="#fff" cx="95" cy="200"
           animation={{
-            delay: 900,
-            r: 60,
+            delay: 1300,
+            r: 0,
             opacity: 0,
             duration: 300,
             type: 'from',
             attr: 'attr',
-            ease: 'easeOutBack',
+            ease: 'easeOutQuart',
           }}
         />
       </TweenOne>

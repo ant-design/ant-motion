@@ -20,33 +20,22 @@ export default class Banner extends React.Component {
   render() {
     return (<ScrollElement scrollName="banner" className={`${this.props.className}-wrapper`}>
       <svg className={`${this.props.className}-bg-center`} width="100%" viewBox="0 0 1200 800">
-        <defs>
-          <filter id="Blur">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="5" />
-          </filter>
-        </defs>
-        <g>
-          <TweenOne
-            component="circle"
-            fill="rgba(161,174,245,.2)"
-            r="130"
-            cx="350"
-            cy="350"
-            style={{ filter: 'url(#Blur)' }}
-            animation={{ y: 30, repeat: -1, duration: 3000, yoyo: true }}
-          />
-        </g>
-        <g>
-          <TweenOne
-            component="circle"
-            fill="rgba(120,172,254,.15)"
-            r="80"
-            cx="500"
-            cy="420"
-            style={{ filter: 'url(#Blur)' }}
-            animation={{ y: -30, repeat: -1, duration: 3000, yoyo: true }}
-          />
-        </g>
+        <TweenOne
+          component="circle"
+          fill="rgba(161,174,245,.15)"
+          r="130"
+          cx="350"
+          cy="350"
+          animation={{ y: 30, x: -10, repeat: -1, duration: 3000, yoyo: true }}
+        />
+        <TweenOne
+          component="circle"
+          fill="rgba(120,172,254,.1)"
+          r="80"
+          cx="500"
+          cy="420"
+          animation={{ y: -30, x: 10, repeat: -1, duration: 3000, yoyo: true }}
+        />
       </svg>
       <div className={this.props.className}>
         <div className={`${this.props.className}-demo`}>
