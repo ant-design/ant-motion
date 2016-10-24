@@ -6,16 +6,13 @@ The react animation solution
 
 
 ## 什么是 Ant Motion ？
-<p align="center">
-  <a href="http://motion.and.design">
-    <img width="200" src="https://zos.alipayobjects.com/rmsportal/TOXWfHIUGHvZIyb.svg"/>
-  </a>
-</p>
 
-使用 Ant Motion 能够快速在 React 框架中使用动画。
-我们提供了单项，组合动画，以及整套解决方案
+Ant Motion 是 Ant Design 中提炼出来的动效语言。他不仅仅是动效语言，同时也是一套 React 框架动效解决方案，可以帮助开发者，更容易的在项目中使用动效。
+我们提供了单项，组合动画，以及整套解决方案。
+
 
 ## Ant Motion 能做什么 ？
+
 通过 React 标签，以简单的配置即可完成想要的动画，可以快速的实现不同组合的动画效果，更好的提高你的工作效率。
 
 ## 动效 Demo 
@@ -31,7 +28,6 @@ Ant Motion 在界面里主要是来加强体验舒适度、描述层级关系、
 ## 动效组件
 #### [rc-tween-one 单元素动效执行组件](http://motion.ant.design/components/tween-one)
 这是个对单个元素标签做动效的组件，可以执行所有样式动画，包括 transform3d，模糊等效果，还可以完成贝塞尔曲线动画，具体参数请参见  [API](http://motion.ant.design/api/tween-one)
-
 
 #### [rc-animate 样式进出场组件](http://motion.ant.design/components/animate)
 对单个元素根据状态进行动画显示隐藏，需结合 css 或其它第三方动画类一起使用；具体参数请参见 [API](http://motion.ant.design/api/animate)
