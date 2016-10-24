@@ -19,12 +19,19 @@ class CodeDemo extends React.Component {
       code: this.props.utils
         .toReactComponent(this.components['queue-anim'].demo.simple.highlightedCode),
       component: this.components['queue-anim'].demo.simple.preview(React, ReactDom),
+      replay: false,
     };
   }
 
-  componentDidMount() {
-    // 动画再做；
-  }
+  onClick = () => {
+    this.setState({
+      replay: true,
+    }, () => {
+      this.setState({
+        replay: false,
+      });
+    });
+  };
 
   render() {
     return (<div className={this.props.className}>
@@ -43,7 +50,10 @@ class CodeDemo extends React.Component {
         </div>
       </div>
       <div className={`${this.props.className}-right`}>
-        {this.state.component}
+        {this.state.replay ? null : this.state.component}
+        <div className="replay-button">
+          <i onClick={this.onClick}/>
+        </div>
       </div>
     </div>);
   }

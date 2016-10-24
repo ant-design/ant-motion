@@ -4,7 +4,6 @@
   "dependencies": {
     "antd": "~1.10.0",
     "autoresponsive-react": "1.1.x",
-    "bluebird": "^3.4.0",
     "jsonml-to-react-component": "^0.2.2",
     "jsonml.js": "^0.1.0",
     "jszip": "^3.0.0",
@@ -26,14 +25,15 @@
     "file-saver": "^1.3.2"
   },
   "devDependencies": {
+    "bluebird": "^3.4.0",
     "babel-eslint": "^6.1.2",
     "babel-plugin-antd": "0.4.x",
     "prismjs": "^1.5.1",
-    "bisheng": "~0.11.0",
-    "bisheng-plugin-antd": "~0.1.0",
-    "bisheng-plugin-description": "^0.1.0",
+    "bisheng": "^0.13.0",
+    "bisheng-plugin-antd": "~0.3.0",
+    "bisheng-plugin-description": "^0.1.1",
     "bisheng-plugin-react": "^0.2.0",
-    "bisheng-plugin-toc": "0.2.0",
+    "bisheng-plugin-toc": "^0.3.0",
     "dora-plugin-upload": "^0.3.1",
     "eslint": "^3.0.1",
     "eslint-config-airbnb": "latest",

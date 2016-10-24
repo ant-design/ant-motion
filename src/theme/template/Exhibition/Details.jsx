@@ -68,8 +68,8 @@ export default class Details extends React.Component {
             <div className={`${className}-demo`}>
               {!this.state.replay && preview(React, ReactDOM)}
             </div>
-            <div className={`${className}-replay-button`}>
-              <a onClick={this.onClick} />
+            <div className="replay-button">
+              <i onClick={this.onClick} />
             </div>
             <h1>
               {title || english}

@@ -218,3 +218,27 @@ h1, h2, h3, h4 {
   overflow: unset;
   user-select: none;
 }
+
+.replay-button{
+  width: 32px;
+  height: 32px;
+  background: #ffffff;
+  border-radius: 100%;
+  box-shadow: 0 5px 20px fade(#000, 15);
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  transition: transform .45s @ease-out, box-shadow .45s @ease-out;
+  cursor: pointer;
+  & i{
+    background: url("https://zos.alipayobjects.com/rmsportal/XInKafGVjnFqZcM.svg") no-repeat center;
+    width: 20px;
+    height: 20px;
+    display: block;
+    margin: 6px auto;
+  }
+  &:active, &:visited{
+    transform: translateY(2px);
+    box-shadow: 0 3px 15px fade(#000, 15);
+  }
+}

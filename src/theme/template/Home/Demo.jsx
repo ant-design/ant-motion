@@ -52,7 +52,7 @@ export default class Demo extends React.Component {
 
   setDataToDom(data, w, h) {
     this.pointArray = [];
-    const number = Math.round(w / 13);
+    const number = Math.round(w / 11);
     for (let i = 0; i < w; i += number) {
       for (let j = 0; j < h; j += number) {
         if (data[((i + j * w) * 4) + 3] > 150) {
@@ -170,8 +170,8 @@ export default class Demo extends React.Component {
         animation: {
           x: Math.random() * document.body.clientWidth - sideRect.left - item.props.style.left,
           y: Math.random() * rect.height - sideTop - item.props.style.top,
-          opacity: Math.random() * 0.5 - 0.1,
-          scale: Math.random() * 2.5,
+          opacity: Math.random() * 0.4 + 0.1,
+          scale: Math.random() * 2.4 + 0.1,
           duration: Math.random() * 500 + 500,
           ease: 'easeInOutQuint',
         },
