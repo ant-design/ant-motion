@@ -52,7 +52,7 @@ class CodeDemo extends React.Component {
       <div className={`${this.props.className}-right`}>
         {this.state.replay ? null : this.state.component}
         <div className="replay-button">
-          <i onClick={this.onClick}/>
+          <i onClick={this.onClick} />
         </div>
       </div>
     </div>);

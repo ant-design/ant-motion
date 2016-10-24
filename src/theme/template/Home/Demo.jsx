@@ -26,7 +26,7 @@ export default class Demo extends React.Component {
 
   componentDidMount() {
     this.dom = ReactDOM.findDOMNode(this);
-    ticker.timeout(this.createPointData, 1400)
+    ticker.timeout(this.createPointData, 1400);
   }
 
   componentWillUnmount() {
