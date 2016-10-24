@@ -45,6 +45,14 @@ Ant Motion 在界面里主要是来加强体验舒适度、描述层级关系、
 ####  [rc-banner-anim banner 切换效果组件](http://motion.ant.design/components/banner-anim)
 通过简单的配置, 就能让你的 banner 动起来。 具体参数请参见  [API](http://motion.ant.design/api/banner-anim)
 
+## 首页的解决方案
+
+这是以 Ant Motion 的 React 组件遵从 Ant Design 的视觉规范来完成的 demo 页面，可灵活又快速的配置出你想要的首页模板。
+
+主要提供了单元素示例与配置完后的整页示例。
+
+[>> 查看详细](http://motion.ant.design/cases/about);
+
 
 ## Develop
 
