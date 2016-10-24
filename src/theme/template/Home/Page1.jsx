@@ -10,13 +10,17 @@ export default class Page1 extends React.Component {
     pageData: React.PropTypes.object,
     utils: React.PropTypes.object,
     tweenAnim: React.PropTypes.object,
+    onButtonClick: React.PropTypes.func,
   };
 
   static defaultProps = {
     pageData: {},
     utils: {},
     tweenAnim: {},
+    onButtonClick: () => {
+    },
   };
+
   render() {
     return (<OverPack
       playScale={0.8}
@@ -40,7 +44,7 @@ export default class Page1 extends React.Component {
       <TweenOne
         key="a" className="home-button" animation={{ ...this.props.tweenAnim, delay: 300 }}
       >
-        <Link to="/components/tween-one">了解更多</Link>
+        <Link to="/components/tween-one" onClick={this.props.onButtonClick}>了解更多</Link>
       </TweenOne>
     </OverPack>);
   }

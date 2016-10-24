@@ -5,12 +5,13 @@ import QueueAnim from 'rc-queue-anim';
 import { Link } from 'react-router';
 
 export default class Page3 extends React.Component {
-  static contextTypes = {
-    tweenAnim: React.PropTypes.object,
+  static propTypes = {
+    onButtonClick: React.PropTypes.func,
   };
 
   static defaultProps = {
-    tweenAnim: {},
+    onButtonClick: () => {
+    },
   };
 
   render() {
@@ -35,7 +36,7 @@ export default class Page3 extends React.Component {
           key="a"
           className="home-button"
         >
-          <Link to="/api/tween-one">快速上手</Link>
+          <Link to="/api/tween-one" onClick={this.props.onButtonClick}>快速上手</Link>
         </div>
       </QueueAnim>
     </OverPack>);

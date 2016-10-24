@@ -2,9 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import TweenOne from 'rc-tween-one';
 import DocumentTitle from 'react-document-title';
-import ticker from 'rc-tween-one/lib/ticker';
-import easingTypes from 'tween-functions';
-import { currentScrollTop } from '../utils';
 
 export default class Details extends React.Component {
   static propTypes = {
@@ -21,22 +18,6 @@ export default class Details extends React.Component {
     this.state = {
       replay: false,
     };
-  }
-
-  componentDidMount() {
-    const scrollTop = currentScrollTop();
-    if (scrollTop) {
-      const tickerId = `scrollToTop-${Date.now()}`;
-      const startFrame = ticker.frame;
-      ticker.wake(tickerId, () => {
-        const moment = (ticker.frame - startFrame) * ticker.perFrame;
-        const ratio = easingTypes.easeInOutCubic(moment, scrollTop, 0, 450);
-        window.scrollTo(window.scrollX, ratio);
-        if (moment >= 450) {
-          ticker.clear(tickerId);
-        }
-      });
-    }
   }
 
   shouldComponentUpdate() {

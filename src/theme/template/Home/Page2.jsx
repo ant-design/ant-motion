@@ -10,12 +10,15 @@ export default class Page2 extends React.Component {
     pageData: React.PropTypes.object,
     utils: React.PropTypes.object,
     tweenAnim: React.PropTypes.object,
+    onButtonClick: React.PropTypes.func,
   };
 
   static defaultProps = {
     pageData: {},
     utils: {},
     tweenAnim: {},
+    onButtonClick: () => {
+    },
   };
 
   render() {
@@ -30,7 +33,7 @@ export default class Page2 extends React.Component {
         const title = item.meta.chinese || item.meta.english;
         const content = this.props.utils.toReactComponent(item.description);
         return (<li key={link}>
-          <Link to={link}>
+          <Link to={link} onClick={this.props.onButtonClick}>
             <div className="home-anim-demo-img"><img src={img} width="100%" /></div>
             <h2>{title}</h2>
             <div className="home-anim-demo-text">{content}</div>
@@ -71,7 +74,7 @@ export default class Page2 extends React.Component {
         animation={{ delay: 300, ...this.props.tweenAnim }}
         className="home-button"
       >
-        <Link to="/exhibition/">更多动画</Link>
+        <Link to="/exhibition/" onClick={this.props.onButtonClick}>更多动画</Link>
       </TweenOne>
     </OverPack>);
   }
