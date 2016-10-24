@@ -41,7 +41,7 @@ class Home extends React.Component {
 
   render() {
     return (
-      <DocumentTitle title="Ant Motion - 高效的动效设计解决方案">
+      <DocumentTitle title="Ant Motion - 一个 React 的动效设计解决方案">
         <div className="home-wrapper">
           <div className="nav-wrapper">
             <ScrollLink location="banner" showHeightActive={['100%', '30%']} />
