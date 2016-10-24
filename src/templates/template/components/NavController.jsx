@@ -7,27 +7,17 @@ import { currentScrollTop } from 'rc-scroll-anim/lib/util';
 import { getURLData } from '../utils';
 import saveJsZip from './saveJsZip';
 import './Nav.less';
+
 const confirm = Modal.confirm;
 const $ = window.$;
 
 class NavController extends React.Component {
-  constructor() {
-    super(...arguments);
+  constructor(props) {
+    super(props);
     this.state = {
       show: !getURLData('mode'),
       mode: !getURLData('mode'),
     };
-    [
-      'iconClick',
-      'resetData',
-      'switchMode',
-      'makePageURL',
-      'removeUrlData',
-      'scrollEvent',
-      'onCopy',
-      'urlBack',
-      'urlForward',
-    ].forEach((method) => this[method] = this[method].bind(this));
     this.scrollTop = currentScrollTop();
     this.scrollName = 'stop';
     scrollEvent.addEventListener('scroll', this.scrollEvent);
@@ -42,7 +32,11 @@ class NavController extends React.Component {
     scrollEvent.removeEventListener('scroll', this.scrollEvent);
   }
 
-  scrollEvent() {
+  onCopy = () => {
+    message.success('拷贝成功，现在可以去分享你定制的页面了！');
+  }
+
+  scrollEvent = () => {
     const scrollTop = currentScrollTop();
     let scrollName = 'stop';
     if (scrollTop > this.scrollTop + 30) {
@@ -66,26 +60,26 @@ class NavController extends React.Component {
     }
   }
 
-  removeUrlData(name) {
+  removeUrlData = (name) => {
     const url = decodeURIComponent(location.hash || '').replace('#', '');
     const reg = new RegExp(`(^|&)${name}=([^&]*)(&|$)`, 'i');
     return url.replace(reg, '');
   }
 
-  resetData() {
+  resetData = () => {
     const otherUrl = this.removeUrlData('c');
     location.reload();
     location.hash = `#${encodeURIComponent(otherUrl)}`;
   }
 
-  iconClick() {
+  iconClick = () => {
     const show = !this.state.show;
     this.setState({
       show,
     });
   }
 
-  _shorten(url, cb) {
+  shorten = (url, cb) => {
     // 调用 dwz.cn 服务, 使用中转服务器发请求
     const apiUrl = 'http://motion.applinzi.com/';
     const encodedUrl = encodeURIComponent(url);
@@ -94,7 +88,7 @@ class NavController extends React.Component {
 
     $.ajax({
       url: reqUrl,
-      success: data => {
+      success: (data) => {
         if (data.tinyurl && cb) {
           cb(data.tinyurl);
         }
@@ -102,14 +96,10 @@ class NavController extends React.Component {
     });
   }
 
-  onCopy() {
-    message.success('拷贝成功，现在可以去分享你定制的页面了！');
-  }
-
-  makePageURL() {
+  makePageURL = () => {
     const dataHref = location.hash;
     const sign = dataHref ? '&' : '#';
-    this._shorten(`${location.href}${sign}make=true`, shortenUrl => {
+    this.shorten(`${location.href}${sign}make=true`, (shortenUrl) => {
       confirm({
         title: '你烘焙的动效页面已经出锅！请享用~',
         content: shortenUrl,
@@ -121,7 +111,7 @@ class NavController extends React.Component {
     });
   }
 
-  switchMode() {
+  switchMode = () => {
     const mode = !getURLData('mode');
     const otherUrl = this.removeUrlData('mode');
     location.hash = otherUrl ? `#${encodeURIComponent(otherUrl)}${mode ? `&mode=${mode}` : ''}`
@@ -132,11 +122,11 @@ class NavController extends React.Component {
     });
   }
 
-  urlBack() {
+  urlBack = () => {
     history.back();
   }
 
-  urlForward() {
+  urlForward = () => {
     history.forward();
   }
 
@@ -144,7 +134,8 @@ class NavController extends React.Component {
     const className = 'tool-nav';
     return (
       <TweenOne animation={{ y: 64, type: 'from' }} className={this.props.className}>
-        <TweenOne animation={{ y: this.state.show ? 0 : 64 }}
+        <TweenOne
+          animation={{ y: this.state.show ? 0 : 64 }}
           className={`${className}-bar`}
         >
           <ul className="undo-redo-bar">
@@ -165,10 +156,11 @@ class NavController extends React.Component {
               </Button>
             </li>
             <li><Button type="primary" onClick={this.makePageURL}>生成预览</Button></li>
-            <li><Button type="primary" onClick={() => {saveJsZip(this.props.config)}}>保存代码</Button></li>
+            <li><Button type="primary" onClick={() => { saveJsZip(this.props.config); }}>保存代码</Button></li>
           </ul>
         </TweenOne>
-        <div className={`${className}-icon`}
+        <div
+          className={`${className}-icon`}
           onClick={this.iconClick}
         >
           <Icon type="caret-down" className={this.state.show ? '' : 'up'} />

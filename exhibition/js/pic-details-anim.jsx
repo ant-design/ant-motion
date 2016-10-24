@@ -3,6 +3,7 @@ import QueueAnim from 'rc-queue-anim';
 import TweenOne, { TweenOneGroup } from 'rc-tween-one';
 import Icon from 'antd/lib/icon';
 import './pic-details-anim.css';
+
 const textData = {
   content: 'Taiwan called motorcycle, motor bike [1] or a motorcycle,' +
   ' the motorcycle referred to in the mainland, Hong Kong and Southeast' +
@@ -23,11 +24,9 @@ let dataArray = [
   { image: 'https://zos.alipayobjects.com/rmsportal/QqWQKvgLSJaYbpr.png' },
   { image: 'https://zos.alipayobjects.com/rmsportal/pTfNdthdsUpLPLJ.png' },
 ];
-dataArray = dataArray.map(item => {
-  return { ...item, ...textData }
-});
+dataArray = dataArray.map(item => ({ ...item, ...textData }));
 export default class PicDetailsDemo extends React.Component {
-  static contextTypes = {
+  static propTypes = {
     className: React.PropTypes.string,
   };
 
@@ -35,8 +34,8 @@ export default class PicDetailsDemo extends React.Component {
     className: 'pic-details-demo',
   };
 
-  constructor() {
-    super(...arguments);
+  constructor(props) {
+    super(props);
     this.state = {
       picOpen: {},
     };
@@ -44,8 +43,8 @@ export default class PicDetailsDemo extends React.Component {
 
   onImgClick = (e, i) => {
     const picOpen = this.state.picOpen;
-    Object.keys(picOpen).forEach(key => {
-      if(key !== i && picOpen[key]){
+    Object.keys(picOpen).forEach((key) => {
+      if (key !== i && picOpen[key]) {
         picOpen[key] = false;
       }
     });
@@ -95,29 +94,28 @@ export default class PicDetailsDemo extends React.Component {
       let imgTop = isTop ? imgBoxHeight : 0;
       imgTop = isEnter ? imgTop : 0;
 
-      let liStyle = isEnter ? { width: '100%', height: 175, zIndex: 1 } : null;
-      let liAnimation = isOpen ?
-      { boxShadow: '0 2px 8px rgba(140, 140, 140, .35)' } :
-      { boxShadow: '0 0px 0px rgba(140, 140, 140, 0)' };
+      const liStyle = isEnter ? { width: '100%', height: 175, zIndex: 1 } : null;
+      const liAnimation = isOpen ?
+        ({ boxShadow: '0 2px 8px rgba(140, 140, 140, .35)' }) :
+        ({ boxShadow: '0 0px 0px rgba(140, 140, 140, 0)' });
       let aAnimation = isEnter ?
-      {
-        delay: 400,
-        ease: 'easeInOutCubic',
-        width: imgWidth,
-        height: imgHeight,
-        onComplete: this.onTweenEnd.bind(this, i),
-        left: imgBoxWidth * (i % 4),
-        top: isTop ? imgBoxHeight : 0,
-      } : null;
+        ({
+          delay: 400,
+          ease: 'easeInOutCubic',
+          width: imgWidth,
+          height: imgHeight,
+          onComplete: this.onTweenEnd.bind(this, i),
+          left: imgBoxWidth * (i % 4),
+          top: isTop ? imgBoxHeight : 0,
+        }) : null;
       aAnimation = isOpen ?
-      {
-        ease: 'easeInOutCubic',
-        left: isRight ? imgBoxWidth * 2 - 10 : 0,
-        width: '50%',
-        height: 175,
-        top: 0,
-      } :
-        aAnimation;
+        ({
+          ease: 'easeInOutCubic',
+          left: isRight ? (imgBoxWidth * 2) - 10 : 0,
+          width: '50%',
+          height: 175,
+          top: 0,
+        }) : aAnimation;
 
       // 位置 js 控制；
       return (<TweenOne
@@ -133,7 +131,7 @@ export default class PicDetailsDemo extends React.Component {
       >
         <TweenOne
           component="a"
-          onClick={(e) => this.onImgClick(e, i)}
+          onClick={e => this.onImgClick(e, i)}
           style={{
             left: imgLeft,
             top: imgTop,
@@ -158,12 +156,12 @@ export default class PicDetailsDemo extends React.Component {
             }}
           >
             <h1>{title}</h1>
-            <Icon type="cross" onClick={(e) => this.onClose(e, i)} />
+            <Icon type="cross" onClick={e => this.onClose(e, i)} />
             <em />
             <p>{content}</p>
           </div>}
         </TweenOneGroup>
-      </TweenOne>)
+      </TweenOne>);
     });
   };
 
@@ -195,6 +193,6 @@ export default class PicDetailsDemo extends React.Component {
           </QueueAnim>
         </div>
       </div>
-    </div>)
+    </div>);
   }
 }

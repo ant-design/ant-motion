@@ -1,13 +1,11 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import TweenOne from 'rc-tween-one';
 import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
 import './index.less';
 
 class Footer extends React.Component {
-  static contextTypes = {
-    className: React.PropTypes.string,
+  static propTypes = {
     name: React.PropTypes.string,
-    style: React.PropTypes.object,
     dataSource: React.PropTypes.object,
   };
 
@@ -30,7 +28,7 @@ class Footer extends React.Component {
         animation={{ y: '+=30', opacity: 0, type: 'from' }}
         key="footer"
       >
-        <p dangerouslySetInnerHTML={{ __html: content }}></p>
+        <p dangerouslySetInnerHTML={{ __html: content }} />
       </TweenOne>
     </OverPack>);
   }

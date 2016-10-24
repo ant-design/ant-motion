@@ -2,31 +2,39 @@ import React from 'react';
 import ReactDom from 'react-dom';
 
 class CodeDemo extends React.Component {
-  static contextTypes = {
+  static propTypes = {
     className: React.PropTypes.string,
     pageData: React.PropTypes.object,
+    utils: React.PropTypes.any,
   };
 
   static defaultProps = {
     className: 'code',
   };
 
-  constructor() {
-    super(...arguments);
+  constructor(props) {
+    super(props);
     this.components = this.props.pageData.components;
     this.state = {
       code: this.props.utils
         .toReactComponent(this.components['queue-anim'].demo.simple.highlightedCode),
-      component: this.components['queue-anim'].demo.simple.preview(React, ReactDom)
+      component: this.components['queue-anim'].demo.simple.preview(React, ReactDom),
+      replay: false,
     };
   }
 
-  componentDidMount() {
-    // 动画再做；
-  }
+  onClick = () => {
+    this.setState({
+      replay: true,
+    }, () => {
+      this.setState({
+        replay: false,
+      });
+    });
+  };
 
   render() {
-    return <div className={this.props.className}>
+    return (<div className={this.props.className}>
       <div className={`${this.props.className}-top`}>
         <i />
         <i />
@@ -42,9 +50,12 @@ class CodeDemo extends React.Component {
         </div>
       </div>
       <div className={`${this.props.className}-right`}>
-        {this.state.component}
+        {this.state.replay ? null : this.state.component}
+        <div className="replay-button">
+          <i onClick={this.onClick} />
+        </div>
       </div>
-    </div>;
+    </div>);
   }
 }
 

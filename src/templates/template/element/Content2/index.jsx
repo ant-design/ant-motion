@@ -1,5 +1,4 @@
-import React, { PropTypes } from 'react';
-import Button from 'antd/lib/button';
+import React from 'react';
 import QueueAnim from 'rc-queue-anim';
 import TweenOne from 'rc-tween-one';
 import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
@@ -8,10 +7,8 @@ import './index.less';
 
 class Content extends React.Component {
 
-  static contextTypes = {
-    className: React.PropTypes.string,
+  static propTypes = {
     name: React.PropTypes.string,
-    style: React.PropTypes.object,
     dataSource: React.PropTypes.object,
   };
 
@@ -19,22 +16,20 @@ class Content extends React.Component {
     className: 'content2',
   };
 
-  getDelay = (e) => {
-    return e.index % 3 * 100 + Math.floor(e.index / 3) * 100 + 200;
-  };
+  getDelay = e => e.index % 3 * 100 + Math.floor(e.index / 3) * 100 + 200;
 
   render() {
     const props = { ...this.props };
-    const { title, content } = props.dataSource.title;
+    const { title, content } = this.props.dataSource.title;
     const children = Object.keys(props.dataSource).filter(key => key.match('block'))
       .map((key, i) => {
         const item = props.dataSource[key];
         return (<li
           key={i}
-          style={{ left: `${i%3 * 33.33}%`, top: `${Math.floor(i / 3) * 200}px`}}
+          style={{ left: `${i % 3 * 33.33}%`, top: `${Math.floor(i / 3) * 200}px` }}
         >
           <TweenOne
-            animation={{x: '-=10', opacity: 0, type: 'from'}}
+            animation={{ x: '-=10', opacity: 0, type: 'from' }}
             className="img" key="img"
           >
             <img src={item.iconImg} width="100%" />
@@ -43,7 +38,7 @@ class Content extends React.Component {
             <h1 key="h1">{item.title}</h1>
             <p key="p">{item.content}</p>
           </QueueAnim>
-        </li>)
+        </li>);
       });
     delete props.dataSource;
     delete props.name;

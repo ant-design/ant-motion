@@ -27,9 +27,9 @@ function findChildInChildrenByKey(children, key) {
 }
 
 function mergeChildren(prev, next) {
-  let ret = [];
+  const ret = [];
   // 保存更改后的顺序，新增的在新增时的位置插入。
-  prev.forEach(c => {
+  prev.forEach((c) => {
     if (!c) {
       return;
     }
@@ -53,11 +53,11 @@ function mergeChildren(prev, next) {
 
 
 export default class ListSort extends React.Component {
-  static contextTypes = {
+  static propTypes = {
     component: React.PropTypes.any,
-    components: React.PropTypes.array,
+    children: React.PropTypes.any,
     animType: React.PropTypes.string,
-    onChange: React.PropTypes.bool,
+    onChange: React.PropTypes.any,
     dragClassName: React.PropTypes.string,
     appearAnim: React.PropTypes.object,
   };
@@ -70,13 +70,13 @@ export default class ListSort extends React.Component {
     },
   };
 
-  constructor() {
-    super(...arguments);
+  constructor(props) {
+    super(props);
     this.state = {
       children: this.props.children,
       style: {},
       childStyle: [],
-      animation: []
+      animation: [],
     };
     this.index = null;
     this.swapIndex = null;
@@ -134,12 +134,12 @@ export default class ListSort extends React.Component {
     this.children = Array.prototype.slice.call(this.dom.children);
     this.childStyle = [];
     const childStyle = this.children.map((item, ii) => {
-      const _item = this.children[ii + 1];
+      const cItem = this.children[ii + 1];
       let marginHeight;
       let marginWidth;
-      if (_item) {
-        marginHeight = _item.offsetTop - item.offsetTop - item.clientHeight;
-        marginWidth = _item.offsetLeft - item.offsetLeft - item.clientWidth;
+      if (cItem) {
+        marginHeight = cItem.offsetTop - item.offsetTop - item.clientHeight;
+        marginWidth = cItem.offsetLeft - item.offsetLeft - item.clientWidth;
       } else {
         const parentHeight = item.parentNode.clientHeight -
           parseFloat(getComputedStyle(item.parentNode).getPropertyValue('padding-bottom'));
@@ -162,12 +162,10 @@ export default class ListSort extends React.Component {
       this.childStyle.push({ ...d });
       return d;
     });
-    const animation = this.children.map((item, ii) => {
-      if (i === ii) {
-        return !this.props.dragClassName ?
-        { scale: 1.2, boxShadow: '0 10px 10px rgba(0,0,0,0.15)' } : null;
-      }
-    });
+    const animation = this.children.map((item, ii) =>
+      i === ii && (!this.props.dragClassName ?
+      { scale: 1.2, boxShadow: '0 10px 10px rgba(0,0,0,0.15)' } : null) || null
+    );
     this.index = i;
     this.swapIndex = i;
     this.mouseXY = {
@@ -185,7 +183,7 @@ export default class ListSort extends React.Component {
       style,
       childStyle,
       animation,
-    })
+    });
   };
 
   onMouseUp = () => {
@@ -201,18 +199,19 @@ export default class ListSort extends React.Component {
           if (this.swapIndex > this.index) {
             const start = this.index + 1;
             const end = this.swapIndex + 1;
-            this.childStyle.slice(start, end).forEach(_item =>
-              height += _item.height + _item.marginHeight
-            );
+            this.childStyle.slice(start, end).forEach((_item) => {
+              height += _item.height + _item.marginHeight;
+            });
             animate.top = height + this.childStyle[this.index].top;
           } else {
             animate.top = this.childStyle[this.swapIndex].top;
           }
         }
-        const dragScale = !this.props.dragClassName && {
+        const dragScale = !this.props.dragClassName &&
+          ({
             scale: 1,
             boxShadow: '0 0px 0px rgba(0,0,0,0)',
-          };
+          });
         return {
           ...dragScale,
           ...animate,
@@ -232,7 +231,7 @@ export default class ListSort extends React.Component {
                 this.props.onChange(children);
               }
             });
-          }
+          },
         };
       }
       return item;
@@ -250,7 +249,7 @@ export default class ListSort extends React.Component {
     }
     this.mouseXY.x = e.touches === undefined ? e.clientX : e.touches[0].clientX;
     this.mouseXY.y = e.touches === undefined ? e.clientY : e.touches[0].clientY;
-    let childStyle = this.state.childStyle;
+    const childStyle = this.state.childStyle;
     let animation = this.state.animation;
 
 
@@ -267,9 +266,9 @@ export default class ListSort extends React.Component {
 
       const top = childStyle[this.index].top;
       this.childStyle.forEach((item, i) => {
-        const _top = item.top;
-        const _height = item.height + item.marginHeight;
-        if (top > _top && top < _top + _height) {
+        const cTop = item.top;
+        const cHeight = item.height + item.marginHeight;
+        if (top > cTop && top < cTop + cHeight) {
           this.swapIndex = i;
         }
       });
@@ -281,37 +280,28 @@ export default class ListSort extends React.Component {
             const start = this.index + 1;
             const end = i;
             height = 0;
-            this.childStyle.slice(start, end).forEach(_item =>
-              height += _item.height + _item.marginHeight
-            );
-            return { top: this.childStyle[this.index].top + height }
+            this.childStyle.slice(start, end).forEach((_item) => {
+              height += _item.height + _item.marginHeight;
+            });
+            return { top: this.childStyle[this.index].top + height };
           } else if ((i > this.swapIndex || this.swapIndex === this.index) && i !== this.index) {
             return { top: this.childStyle[i].top };
           }
         } else if (this.index > this.swapIndex) {
           if (i < this.index && i >= this.swapIndex && this.swapIndex !== this.index) {
             height = this.childStyle[this.index].height + this.childStyle[this.index].marginHeight;
-            return { top: this.childStyle[i].top + height }
+            return { top: this.childStyle[i].top + height };
           } else if ((i < this.swapIndex || this.swapIndex === this.index) && i !== this.index) {
             return { top: this.childStyle[i].top };
           }
-        } else {
-          if (i !== this.index) {
-            return { top: this.childStyle[i].top };
-          }
         }
-        return item
+        if (i !== this.index) {
+          return { top: this.childStyle[i].top };
+        }
+        return item;
       });
     }
     this.setState({ childStyle, animation });
-  };
-
-  sortArray = (_array, nextNum, num) => {
-    const current = _array[num];
-    const array = _array.map(item => item);
-    array.splice(num, 1);
-    array.splice(nextNum, 0, current);
-    return array;
   };
 
   getChildren = (item, i) => {
@@ -327,7 +317,15 @@ export default class ListSort extends React.Component {
         animation: this.state.animation[i],
         component: item.type,
       }
-    )
+    );
+  };
+
+  sortArray = (_array, nextNum, num) => {
+    const current = _array[num];
+    const array = _array.map(item => item);
+    array.splice(num, 1);
+    array.splice(nextNum, 0, current);
+    return array;
   };
 
   render() {
@@ -336,8 +334,9 @@ export default class ListSort extends React.Component {
     ['component', 'components', 'animType', 'dragClassName', 'appearAnim'].forEach(key => delete props[key]);
     if (this.props.appearAnim) {
       return React.createElement(QueueAnim, {
-        ...props, ...this.props.appearAnim,
-        style: { ...this.state.style, }
+        ...props,
+        ...this.props.appearAnim,
+        style: { ...this.state.style },
       }, childrenToRender);
     }
     return React.createElement(this.props.component, {

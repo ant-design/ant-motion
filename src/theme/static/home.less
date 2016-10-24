@@ -23,242 +23,170 @@
       background: fade(@title-bg-color, 30);
       margin-bottom: 8px;
       cursor: pointer;
-      transition: background .45s @ease-out;
+      transition: background @animate-duration @ease-out;
       &.active {
         background: @title-bg-color;
       }
     }
   }
-  .banner {
+  .banner-wrapper {
     margin-top: -64px;
     background: #35aef8;
     background: -moz-linear-gradient(-45deg, #35aef8 0%, #7681ff 76%, #7681ff 76%);
     background: -webkit-linear-gradient(-45deg, #35aef8 0%, #7681ff 76%, #7681ff 76%);
     background: linear-gradient(135deg, #35aef8 0%, #7681ff 76%, #7681ff 76%);
-    overflow: hidden;
-    width: 100%;
-    &-anim, &-bg {
-      height: 100%;
-    }
-    &-mask, &-bg-bottom {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-    }
-
-    &-bg-left {
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
-
-    &-bg-right {
-      position: absolute;
-      right: 0;
-      bottom: 0;
-    }
-
-    &-bg-center {
-      position: absolute;
-      left: 0;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      margin: auto;
-    }
-
-    .annular {
-      stroke: #4271D4;
-      stroke-width: 3;
-      fill: transparent;
-    }
-
-    &-title {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      margin: auto;
-      width: 960px;
-      height: 400px;
-      z-index: 1;
-      & h2 {
-        margin-left: 20px;
-        margin-top: -20px;
-      }
-      & p {
-        font-size: 20px;
-        margin: 10px 20px;
-        color: #fff;
-      }
-      &-button {
-        padding: 10px 30px;
-        border-radius: 40px;
-        background: #4B72C1;
-        font-size: 14px;
-        margin-left: 20px;
-        border: none;
-        box-shadow: 0 0 0 transparent;
-        transition: box-shadow .3s @ease-in-out, transform .3s @ease-in-out;
-        & i {
-          width: 16px;
-          margin-right: 10px;
-          background: url(https://zos.alipayobjects.com/rmsportal/dgqoflLasHqTmNM.svg) center no-repeat;
-          background-size: contain;
-          height: 16px;
-          display: inline-block;
-          vertical-align: sub;
-          text-transform: none;
-          text-rendering: optimizeLegibility;
-          -webkit-font-smoothing: antialiased;
-          -moz-osx-font-smoothing: grayscale;
-          line-height: 1;
-        }
-
-        &:hover {
-          box-shadow: 0 2px 5px #1B2C4E;
-          transform: translateY(-5px);
-        }
-        /*&:active {
-          transform: translateY(-4px);
-          box-shadow: 0 2px 3px #1B2C4E;
-        }*/
-      }
-      &-git-button {
-        vertical-align: middle;
-        margin-left: 10px;
-        display: inline-block;
-      }
-    }
-    &-mouse {
-      width: 28px;
-      height: 42px;
-      border-radius: 14px;
-      border: 2px solid #fff;
-      bottom: 180px;
-      left: 0;
-      right: 0;
-      margin: auto;
+    position: relative;
+    & .banner {
       position: relative;
-      & .mouse-bar {
-        width: 4px;
-        height: 12px;
-        border-radius: 2px;
-        background: #fff;
-        margin: 5px auto auto;
+      width: 95%;
+      max-width: 1024px;
+      margin: auto;
+      height: 100vh;
+      &-bg-center {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+      }
+      &-text {
+        width: 50%;
+        height: 300px;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        z-index: 1;
+        & h1 {
+          font-size: 38px;
+        }
+        & h1, & h3 {
+          font-weight: lighter;
+          color: @text-color-light
+        }
+        & p {
+          margin: 16px 0 40px;
+          line-height: 24px;
+          color: @text-color-light;
+        }
+        &-button {
+          padding: 8px 16px;
+          border-radius: 40px;
+          font-size: 14px;
+          border: 1px solid @text-color-light;
+          transition: background @animate-duration @ease-out, box-shadow @animate-duration @ease-out;
+          color: @text-color-light;
+          display: inline-block;
+          & i {
+            width: 16px;
+            margin-left: 10px;
+            background: url(https://zos.alipayobjects.com/rmsportal/dgqoflLasHqTmNM.svg) center no-repeat;
+            background-size: contain;
+            filter: brightness(1);
+            height: 16px;
+            display: inline-block;
+            vertical-align: sub;
+            text-transform: none;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            line-height: 1;
+            transition: filter @animate-duration @ease-out;
+          }
+
+          &:hover {
+            background: fade(@text-color-light, 15);
+            box-shadow: 0 0px 6px fade(@text-color-light, 35);
+          }
+        }
+      }
+      &-demo {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+      &-mouse {
+        width: 28px;
+        height: 42px;
+        border-radius: 14px;
+        border: 2px solid @text-color-light;
+        bottom: 60px;
+        left: 0;
+        right: 0;
+        margin: auto;
+        position: absolute;
+        & .mouse-bar {
+          width: 4px;
+          height: 12px;
+          border-radius: 2px;
+          background: @text-color-light;
+          margin: 5px auto auto;
+        }
       }
     }
   }
   .home-content {
     width: 100%;
-    max-width: 960px;
+    max-width: 1024px;
     margin: auto;
     text-align: center;
     & h1 {
-      font-weight: normal;
-      font-size: 26px;
-      color: @title-color-dark;
+      font-weight: lighter;
+      font-size: 36px;
+      color: @text-color-dark;
     }
     & h2 {
       font-weight: normal;
       font-size: 20px;
     }
+    & p {
+      margin: 10px auto;
+    }
     & .home-button a {
-      width: 140px;
-      height: 42px;
-      line-height: 42px;
-
+      border: 1px solid @text-color-dark;
+      color: @text-color-dark;
       border-radius: 21px;
-      margin-top: 10px;
+      padding: 8px 24px;
       display: inline-block;
       font-size: 14px;
       box-shadow: 0 0 0 transparent;
       background: transparent;
-      transition: box-shadow .3s @ease-in-out, transform .3s @ease-in-out, background .3s @ease-in-out;
+      transition: box-shadow @animate-duration @ease-out, color @animate-duration @ease-out, background @animate-duration @ease-out;
+      &:hover {
+        color: @text-color-light;
+        background: @text-color-dark;
+      }
     }
     & .page-text {
-      margin-top: 5%;
-      & p {
-        color: @text-color-home;
-        font-size: 16px;
-        line-height: 32px;
-        padding: 0 10%;
-        margin: 10px auto;
-      }
+      margin: 40px auto 0;
     }
-
-    & .white-text {
-      max-width: 960px;
-      margin-left: auto;
-      margin-right: auto;
-      & h1, & h2, & p, & a {
-        color: @text-color-light;
-      }
-      & p {
-        padding: 0 15%;
-        margin: 10px auto;
-        line-height: 32px;
-      }
-      & a {
-        border: 1px solid @text-color-light;
-        &:hover {
-          box-shadow: 0 2px 5px fade(#fff, 75);
-          transform: translateY(-3px);
-          background: fade(@text-color-light, 10);
-        }
-      }
-    }
-
   }
   .page1 {
-    height: 400px;
-    position: relative;
-    overflow: hidden;
-    &-text {
-      margin-top: 80px;
-      & p {
-        position: absolute;
-        margin: auto;
-        font-size: 16px;
-        line-height: 24px;
-        padding: 0 10%;
-        color: @text-color-home;
-        top: 150px;
-      }
-      & .icon {
-        color: @text-color-home;
-        font-size: 20px;
-        position: absolute;
-        bottom: 100px;
-        width: 100%;
-        & .anticon-double-right {
-          transform: rotate(90deg);
-        }
-      }
-    }
-  }
-  .page2 {
     width: 100%;
     max-width: 100% !important;
-    background: url(https://zos.alipayobjects.com/rmsportal/WzZuPAYyhuIACJQ.jpg) center fixed;
-    background-size: cover;
+    background: @bg-color;
+    position: relative;
     overflow: hidden;
     .code-wrapper {
       width: 95%;
       max-width: 940px;
-      margin: 5% auto 0;
+      margin: auto;
       border-radius: 8px;
       overflow: hidden;
+      position: absolute;
+      top: 22%;
+      left: 0;
+      right: 0;
       height: 55%;
-      box-shadow: 0 4px 40px #124867;
+      box-shadow: 0 5px 20px fade(#B9B9B9, 50);
       .code {
         height: 100%;
         position: relative;
         .code-top {
           width: 100%;
           height: 28px;
-          background: #F1F1F1;
+          background: @bg-color;
           text-align: left;
           line-height: 28px;
           & i {
@@ -291,7 +219,7 @@
           vertical-align: top;
         }
         .code-left {
-          background: #171817;
+          background: #fff;
           & pre {
             height: calc(~"100% - 28px");
             background: transparent !important;
@@ -299,7 +227,6 @@
             text-shadow: none !important;
             & code {
               background: transparent;
-              color: #E5F6FF;
               text-shadow: none !important;
               & .token.operator {
                 background: transparent;
@@ -309,13 +236,13 @@
           &-bar {
             width: 100%;
             height: 26px;
-            background: #141414;
-            border: 1px solid #000;
             text-align: left;
             line-height: 26px;
+            border-top: 1px solid @line-color;
+            background: #fff;
             &-logo {
               margin-left: 15px;
-              filter: grayscale(1) brightness(2);
+              filter: brightness(0);
               opacity: 0.5;
               & img {
                 margin-right: 8px;
@@ -325,16 +252,19 @@
           }
         }
         .code-right {
-          background: #fff;
+          background: #F3FBFF;
           padding: 40px;
+          border-left: 1px solid @line-color;
         }
       }
     }
-    & .page2-text {
-      margin: 40px auto 0;
+    & .home-button {
+      position: absolute;
+      bottom: 10%;
+      width: 100%;
     }
   }
-  .page3 {
+  .page2 {
     height: 1200px;
     padding-top: 1px;
     position: relative;
@@ -379,7 +309,7 @@
           }
         }
         // .page-pro();
-        transition: transform .3s @ease-out, box-shadow .3s @ease-out;
+        transition: transform @animate-duration @ease-out, box-shadow @animate-duration @ease-out;
         &:hover {
           transform: translateY(-5px);
           box-shadow: 0 12px 18px fade(#000, 15);
@@ -390,69 +320,20 @@
       position: absolute;
       width: 100%;
       bottom: 100px;
-      a {
-        border: 1px solid @primary-color;
-        &:hover {
-          box-shadow: 0 2px 5px fade(@primary-color, 75);
-          transform: translateY(-3px);
-        }
-      }
-
     }
   }
 
-  .page4 {
+  .page3 {
+    height: 340px;
+    background: @bg-color;
     width: 100%;
     max-width: 100% !important;
-    background: url(https://zos.alipayobjects.com/rmsportal/FpMVzYJSfpqgrVl.jpg) center fixed;
     overflow: hidden;
-    position: relative;
     & .page-text {
-      & p {
-        padding: 0 5%;
-      }
+      margin: 80px auto;
     }
-    & .video-button {
-      width: 80px;
-      height: 80px;
-      border-radius: 40px;
-      background: #fff;
-      font-size: 30px;
-      line-height: 80px;
-      margin: auto;
-      position: absolute;
-      top: 40%;
-      left: 0;
-      right: 0;
-      box-shadow: 0 5px 20px #5391CA;
-      text-indent: 2px;
-      color: @primary-color;
-    }
-    .depict {
-      position: absolute;
-      top: 65%;
-      left: 0;
-      right: 0;
-      max-width: 960px;
-      width: 100%;
-      margin: auto;
-      &-list {
-        width: 30%;
-        float: left;
-        &:nth-child(2) {
-          margin: auto 5%;
-        }
-        & i {
-          width: 30px;
-          margin: auto;
-          display: block;
-        }
-        & p {
-          font-size: 19px;
-          font-weight: lighter;
-          padding: 0 5%;
-        }
-      }
+    & .home-button{
+      margin-top: 30px;
     }
   }
 

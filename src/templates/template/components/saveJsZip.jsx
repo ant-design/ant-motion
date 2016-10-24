@@ -1,6 +1,6 @@
-import { getURLData } from '../utils';
 import JSZip from 'jszip';
 import { saveAs } from 'file-saver';
+import { getURLData } from '../utils';
 import less from '../../static/lessToString';
 import otherComp from '../other/otherToString';
 
@@ -18,21 +18,21 @@ let contentTrue = false;
 
 const getValueToString = (vars) => {
   const t = {};
-  Object.keys(vars).forEach(key => {
+  Object.keys(vars).forEach((key) => {
     t[key] = vars[key].value;
   });
-  return JSON.stringify(t, null).replace(/"/g, "'").replace(/'([^']+?)':/g, '$1:')
+  return JSON.stringify(t, null)
+    .replace(/"/g, "'")
+    .replace(/'([^']+?)':/g, '$1:')
     .replace(/,/g, `,
-        `).replace('{', `{
-        `).replace('}', `,
-      }`)
+        `)
+    .replace('{', `{
+        `)
+    .replace('}', `,
+      }`);
 };
 
-const toUpperCase = (string) => {
-  return string.replace(/\b(\w)|\s(\w)/g, function (m) {
-    return m.toUpperCase();
-  })
-};
+const toUpperCase = string => string.replace(/\b(\w)|\s(\w)/g, m => m.toUpperCase());
 
 const dataSourceToString = (key, item) => {
   const itemKey = item.key;
@@ -81,7 +81,7 @@ const setScrollScreen = () => {
 
 const jsToZip = () => {
   const zip = new JSZip();
-  Object.keys(templateStrObj.JS).forEach(key => {
+  Object.keys(templateStrObj.JS).forEach((key) => {
     const keys = key.split('_');
     if (keys[0] === 'nav' || keys[0] === 'footer') {
       zip.file(`${toUpperCase(keys[0])}.jsx`, templateStrObj.JS[key]);
@@ -89,18 +89,18 @@ const jsToZip = () => {
       zip.file(`${toUpperCase(keys[0])}${keys[1]}.jsx`, templateStrObj.JS[key]);
     }
   });
-  Object.keys(templateStrObj.OTHER).forEach(key => {
+  Object.keys(templateStrObj.OTHER).forEach((key) => {
     if (key === 'documentation') {
       zip.file(`${key}.text`, templateStrObj.OTHER[key]);
-      return
+      return;
     }
     zip.file(`${key === 'index' ? key : toUpperCase(key)}.jsx`, templateStrObj.OTHER[key]);
   });
-  Object.keys(templateStrObj.LESS).forEach(key => {
+  Object.keys(templateStrObj.LESS).forEach((key) => {
     const keys = key.split('_');
     zip.file(`less/${keys[0]}${keys[1]}.less`, templateStrObj.LESS[key]);
   });
-  Object.keys(less).forEach(key => {
+  Object.keys(less).forEach((key) => {
     if (!contentTrue && key === 'content') {
       return;
     }
@@ -108,7 +108,7 @@ const jsToZip = () => {
   });
   zip.generateAsync({ type: 'blob' }).then((content) => {
     saveAs(content, 'Home.zip');
-  })
+  });
 };
 
 const setChildrenToIndex = () => {
@@ -147,7 +147,7 @@ export default function saveJsZip(config) {
   const otherData = (getURLData('o') || '').split(',');
   let isNav;
   contentTrue = false;
-  pageData.forEach(key => {
+  pageData.forEach((key) => {
     const keys = key.split('_');
     if (keys[0] === 'content') {
       contentTrue = true;
@@ -170,27 +170,24 @@ export default function saveJsZip(config) {
   }`;
     if (isNav && otherData.indexOf('fixed') >= 0) {
       templateStrObj.PROPS[key] = templateStrObj.PROPS[key].replace('&style&', `position: 'fixed',
-      &style&`)
+      &style&`);
     }
     dataSource.forEach(dataSourceToString.bind(this, key));
     templateStrObj.PROPS[key] = templateStrObj.PROPS[key]
       .replace(/(.*)(\&style\&|\&data\&)(.*)\n/g, '');
   });
-  otherData.forEach(key => {
+  otherData.forEach((key) => {
     switch (key) {
-      case 'point':
-      {
+      case 'point': {
         templateStrObj.OTHER[key] = otherComp[key];
         setMountPotion();
         break;
       }
-      case 'full':
-      {
+      case 'full': {
         setScrollScreen();
         break;
       }
-      default:
-      {
+      default: {
         break;
       }
     }

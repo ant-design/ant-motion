@@ -1,19 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import webData from '../template.config.js';
 import { TweenOneGroup } from 'rc-tween-one';
 import { scrollScreen } from 'rc-scroll-anim';
+import webData from '../template.config';
 import OverLay from './components/OverLay';
 import Mask from './components/Mask';
 import NavController from './components/NavController';
 import TextController from './components/TextController';
 import { getURLData, mergeURLDataToConfig } from './utils';
-import '../static/common.less'
+import '../static/common.less';
+
+const Point = require('./other/Point');
 
 export default class Templates extends React.Component {
+  static propTypes = {
+    location: React.PropTypes.any,
+  };
 
-  constructor() {
-    super(...arguments);
+  constructor(props) {
+    super(props);
     this.navAttrHeight = null;
     this.scrollScreen = false;
     this.listPoint = false;
@@ -29,6 +34,7 @@ export default class Templates extends React.Component {
       enterKey: null,
       currentKey: null,
     };
+    this.myRef = {};
   }
 
   componentDidMount() {
@@ -37,20 +43,20 @@ export default class Templates extends React.Component {
       scrollScreen.init({ docHeight });
     }
     if (this.listPoint) {
-      const list = ReactDOM.findDOMNode(this.refs.list);
+      const list = ReactDOM.findDOMNode(this.listComp);
       const listHeight = list.getBoundingClientRect().height;
-      list.style = `margin-top: -${listHeight / 2}px`
+      list.style = `margin-top: -${listHeight / 2}px`;
     }
-    /*$(document).bind('mousemove', (e) => {
-      console.log(e)
-    })*/
+    /* $(document).bind('mousemove', (e) => {
+     console.log(e)
+     })*/
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps() {
     if (this.state.showMask) {
       // maskChild 的位置需要把数据 set 后再去获取。。。所以用 setState 的 callback;
       this.setState({}, () => {
-        const dom = $(ReactDOM.findDOMNode(this.refs[this.state.currentKey]));
+        const dom = $(ReactDOM.findDOMNode(this.myRef[this.state.currentKey]));
         this.setState({
           overlay: {
             top: dom.offset().top,
@@ -63,40 +69,7 @@ export default class Templates extends React.Component {
     }
   }
 
-  getChildrenProps = (data, attrHeightBool) => {
-    if (!data) {
-      return {};
-    }
-    const styleArray = data.filter(item => item.the === 'style');
-    const contentArray = data.filter(item => !(item.the === 'style'));
-    const style = {};
-    styleArray.forEach(item => {
-      style[item.key] = item.value;
-      // 判断导航下一屏的高度；
-      if (item.key === 'height' && attrHeightBool) {
-        this.navAttrHeight = item.value;
-      }
-    });
-    if (this.navAttrHeight && !attrHeightBool) {
-      if (style.height.match(/[%|em]/g)) {
-        style.height = `calc(${style.height} - ${parseFloat(this.navAttrHeight)}px)`;
-      } else {
-        style.height = `${parseFloat(style.height) - parseFloat(this.navAttrHeight)}px`
-      }
-      this.navAttrHeight = null;
-    }
-    const dataSource = {};
-    contentArray.forEach(item => {
-      dataSource[item.key] = {};
-      Object.keys(item.value).forEach(key => {
-        dataSource[item.key][key] = item.value[key].value;
-      });
-    });
-    return { style, dataSource };
-  };
-
   onMouseEnter = (key, e) => {
-
     if (!this.state.currentKey) {
       const dom = $(e.currentTarget);
       this.setState({
@@ -151,6 +124,14 @@ export default class Templates extends React.Component {
     });
   };
 
+  onMaskClose = () => {
+    $('html').attr('style', '');
+    this.setState({
+      showMask: false,
+      currentKey: null,
+    });
+  };
+
   getTemplatesToChildren = () => {
     let isNav;
     const data = (getURLData('t', this.props.location.hash) || '').split(',');
@@ -163,7 +144,7 @@ export default class Templates extends React.Component {
       isNav = dataArr[0] === 'nav';
       const Component = varsData.component;
       if (!Component) {
-        return;
+        return null;
       }
       const props = this.getChildrenProps(varsData.dataSource,
         isNav && !(other.indexOf('fixed') >= 0));
@@ -174,25 +155,25 @@ export default class Templates extends React.Component {
       props.onMouseEnter = this.onMouseEnter.bind(this, item);
       props.onMouseLeave = this.onMouseLeave.bind(this, item);
       props.onDoubleClick = this.onDoubleClick.bind(this, item);
-      return React.createElement(Component, { key: i, name: item, ref: item, ...props });
+      return React.createElement(Component,
+        { key: i, name: item, ref: (c) => { this.myRef[item] = c; }, ...props });
     });
     // 判断其它里的；
-    other.map(item => {
+    other.forEach((item) => {
       switch (item) {
-        case 'fixed':
-        {
-          return;
-        }
-        case 'point':
-        {
-          const Point = require('./other/Point');
-          this.listPoint = true;
-          children.push(<Point key="list" data={data} ref="list" />);
+        case 'fixed': {
           break;
         }
-        case 'full':
-        {
+        case 'point': {
+          this.listPoint = true;
+          children.push(<Point key="list" data={data} ref={(c) => { this.listComp = c; }} />);
+          break;
+        }
+        case 'full': {
           this.scrollScreen = true;
+          break;
+        }
+        default: {
           break;
         }
       }
@@ -200,12 +181,36 @@ export default class Templates extends React.Component {
     return children;
   };
 
-  onMaskClose = () => {
-    $('html').attr('style', '');
-    this.setState({
-      showMask: false,
-      currentKey: null,
+  getChildrenProps = (data, attrHeightBool) => {
+    if (!data) {
+      return {};
+    }
+    const styleArray = data.filter(item => item.the === 'style');
+    const contentArray = data.filter(item => !(item.the === 'style'));
+    const style = {};
+    styleArray.forEach((item) => {
+      style[item.key] = item.value;
+      // 判断导航下一屏的高度；
+      if (item.key === 'height' && attrHeightBool) {
+        this.navAttrHeight = item.value;
+      }
     });
+    if (this.navAttrHeight && !attrHeightBool) {
+      if (style.height.match(/[%|em]/g)) {
+        style.height = `calc(${style.height} - ${parseFloat(this.navAttrHeight)}px)`;
+      } else {
+        style.height = `${parseFloat(style.height) - parseFloat(this.navAttrHeight)}px`;
+      }
+      this.navAttrHeight = null;
+    }
+    const dataSource = {};
+    contentArray.forEach((item) => {
+      dataSource[item.key] = {};
+      Object.keys(item.value).forEach((key) => {
+        dataSource[item.key][key] = item.value[key].value;
+      });
+    });
+    return { style, dataSource };
   };
 
   render() {
@@ -216,7 +221,7 @@ export default class Templates extends React.Component {
     if (make) {
       return (<div className="templates-wrapper">
         {children}
-      </div>)
+      </div>);
     }
     let data;
     let key;
@@ -227,20 +232,22 @@ export default class Templates extends React.Component {
     }
     const overlayChildren = !showMask && enterKey ?
       <OverLay {...overlay} key="overlay">{this.state.enterKey}</OverLay> : null;
-    const textChildren = (<TweenOneGroup component=""
+    const textChildren = (<TweenOneGroup
+      component=""
       enter={{ opacity: 0, scale: 0, type: 'from', ease: 'easeOutBack' }}
       leave={{ opacity: 0, scale: 0, ease: 'easeInBack' }}
       key="text"
     >
-      {showMask ? <TextController childKey={key} config={this.configURL} data={data} key="text" /> : null}
+      {showMask ?
+        (<TextController childKey={key} config={this.configURL} data={data} key="text" />) : null}
     </TweenOneGroup>);
     const maskChildren = (<TweenOneGroup
       enter={{ opacity: 0, type: 'from' }}
-      leave={{ opacity:0 }}
+      leave={{ opacity: 0 }}
       component=""
       key="mask"
     >
-      {showMask ? <Mask key="mask" top={overlay.top} height={overlay.height} onClick={this.onMaskClose} />: null}
+      {showMask ? <Mask key="mask" top={overlay.top} height={overlay.height} onClick={this.onMaskClose} /> : null}
     </TweenOneGroup>);
     return (<div className="templates-wrapper">
       {children}

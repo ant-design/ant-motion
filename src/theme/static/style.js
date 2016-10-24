@@ -8,3 +8,4 @@ import './demolayout.less';
 import './demo.less';
 import './splicing.less';
 import './exhibition.less';
+import './logo-demo.less';

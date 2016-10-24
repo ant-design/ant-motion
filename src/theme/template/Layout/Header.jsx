@@ -4,45 +4,53 @@ import TweenOne from 'rc-tween-one';
 
 // const navArr = require('./list').nav;
 const navArr = require('./nav');
+
 class Header extends React.Component {
-  constructor() {
-    super(...arguments);
-  }
+  static propTypes = {
+    className: PropTypes.string,
+  };
 
   render() {
-    const navToRender = navArr.map((item, i) => {
-      let className = this.props.activeKey === item.key ? 'active' : '';
-      className = className === '' && !this.props.activeKey && i === 0 ? 'active' : className;
-      const _item = (<li key={item.key}>
-        <Link to={item.href} className={className}
+    const navToRender = navArr.map((item) => {
+      const className = this.props.activeKey === item.key ? 'active' : '';
+      const cItem = (<li key={item.key}>
+        <Link
+          to={item.href}
+          className={className}
           disabled={item.disabled}
         >
           {item.name}
         </Link>
       </li>);
-      return _item;
+      return cItem;
     });
     return (<header
       className={`${this.props.className}-wrapper`}
     >
       <div className={this.props.className}>
-        <TweenOne className={`${this.props.className}-logo`}
-          animation={{ x: '0', opacity: 1, duration: 800 }}
-          style={{ transform: 'translateX(-30px)', opacity: 0 }}
+        <TweenOne
+          className={`${this.props.className}-logo`}
+          animation={{ opacity: 0, type: 'from' }}
         >
           <Link to="/" key="logo">
-            <img height="30" src="https://zos.alipayobjects.com/rmsportal/TOXWfHIUGHvZIyb.svg" />
-            <img height="16" src="https://zos.alipayobjects.com/rmsportal/glnFNVQMvQinmUr.svg" />
+            <img height="24" src="https://zos.alipayobjects.com/rmsportal/TOXWfHIUGHvZIyb.svg" />
+            <img height="14" src="https://zos.alipayobjects.com/rmsportal/bNfCyCcgnyTgRmz.svg" />
           </Link>
         </TweenOne>
-        <TweenOne component="nav"
+        <TweenOne
+          component="nav"
           className={`${this.props.className}-nav`}
-          animation={{ x: '0', opacity: 1, duration: 800 }}
-          style={{ transform: 'translateX(30px)', opacity: 0 }}
+          animation={{ opacity: 0, type: 'from' }}
         >
           <ul>
             {navToRender}
           </ul>
+          <span>
+            <iframe
+              src="https://ghbtns.com/github-btn.html?user=ant-design&repo=ant-motion&type=star&count=true"
+              frameBorder="0" scrolling="0" width="98px" height="20px"
+            />
+          </span>
         </TweenOne>
       </div>
     </header>);

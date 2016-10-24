@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import TweenOne from 'rc-tween-one';
 import Menu from 'antd/lib/menu';
 import './index.less';
+
 const Item = Menu.Item;
 
 class Header extends React.Component {
@@ -16,16 +17,20 @@ class Header extends React.Component {
       animation={{ opacity: 0, type: 'from' }}
       {...props}
     >
-      <TweenOne className={`${this.props.className}-logo`}
+      <TweenOne
+        className={`${this.props.className}-logo`}
         animation={{ x: -30, type: 'from', ease: 'easeOutQuad' }}
       >
         <img height="33" src={logo} />
       </TweenOne>
-      <TweenOne className={`${this.props.className}-nav`}
+      <TweenOne
+        className={`${this.props.className}-nav`}
         animation={{ x: 30, type: 'from', ease: 'easeOutQuad' }}
       >
-        <Menu mode="horizontal" defaultSelectedKeys={["a"]}
-          style={{ lineHeight: `${parseFloat(this.props.style.height) - 2}px` }}>
+        <Menu
+          mode="horizontal" defaultSelectedKeys={['a']}
+          style={{ lineHeight: `${parseFloat(this.props.style.height) - 2}px` }}
+        >
           <Item key="a">{menu1}</Item>
           <Item key="b">{menu2}</Item>
           <Item key="c">{menu3}</Item>
@@ -39,7 +44,6 @@ class Header extends React.Component {
 Header.propTypes = {
   style: PropTypes.object,
   className: PropTypes.string,
-  name: PropTypes.string,
   dataSource: PropTypes.object,
 };
 

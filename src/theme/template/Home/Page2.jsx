@@ -3,43 +3,79 @@ import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
 import QueueAnim from 'rc-queue-anim';
 import TweenOne from 'rc-tween-one';
 
-import CoderDemo from './CodeDemo';
-
 import { Link } from 'react-router';
 
 export default class Page2 extends React.Component {
-  static contextTypes = {
+  static propTypes = {
     pageData: React.PropTypes.object,
     utils: React.PropTypes.object,
     tweenAnim: React.PropTypes.object,
+    onButtonClick: React.PropTypes.func,
   };
 
   static defaultProps = {
     pageData: {},
     utils: {},
     tweenAnim: {},
+    onButtonClick: () => {
+    },
   };
+
   render() {
+    const exhibition = this.props.pageData.exhibition.demo;
+    const demoToChildren = Object.keys(exhibition)
+      .map(key => exhibition[key])
+      .sort((a, b) => a.meta.order - b.meta.order)
+      .filter((key, i) => i < 6)
+      .map((item) => {
+        const img = item.meta.image;
+        const link = item.meta.filename.replace(/(\/index)|(.md)/g, '');
+        const title = item.meta.chinese || item.meta.english;
+        const content = this.props.utils.toReactComponent(item.description);
+        return (<li key={link}>
+          <Link to={link} onClick={this.props.onButtonClick}>
+            <div className="home-anim-demo-img"><img src={img} width="100%" /></div>
+            <h2>{title}</h2>
+            <div className="home-anim-demo-text">{content}</div>
+          </Link>
+        </li>);
+      });
+
     return (<OverPack
+      className="home-content page2"
+      hideProps={{ img: { reverse: true }, a: { reverse: true } }}
       playScale={0.8}
-      className="home-content page2 vh"
-      hideProps={{ code: { reverse: true } }}
       scrollName="page2"
     >
-      <TweenOne
-        className="code-wrapper"
-        animation={this.props.tweenAnim}
-        key="code"
+      <QueueAnim
+        className="page-text"
+        key="text"
+        type="bottom"
+        leaveReverse
+        delay={[0, 100]}
       >
-        <CoderDemo className="code" pageData={this.props.pageData} utils={this.props.utils}/>
-      </TweenOne>
-      <QueueAnim className="page2-text white-text" key="text" type="bottom" leaveReverse delay={100}>
-        <h2 key="h1">AntMotion 让动效更简单</h2>
+        <h1 key="h1">动效展示</h1>
         <p key="p">
-          只需要一段简单的代码就可以实现动画效果，可以更好的提高你的工作效率。
+          通过 Ant Motion ，可以快速的实现不同组合的动画效果。<br />
+          配合不同交互模式，可以直接运用到你的项目当中。
         </p>
-        <div key="a" className="home-button"><Link to="/getting/install">快速上手</Link></div>
       </QueueAnim>
-    </OverPack>)
+      <TweenOne
+        animation={{ delay: 200, ...this.props.tweenAnim }}
+        key="img"
+        className="home-anim-demo"
+      >
+        <ul>
+          {demoToChildren}
+        </ul>
+      </TweenOne>
+      <TweenOne
+        key="a"
+        animation={{ delay: 300, ...this.props.tweenAnim }}
+        className="home-button"
+      >
+        <Link to="/exhibition/" onClick={this.props.onButtonClick}>更多动画</Link>
+      </TweenOne>
+    </OverPack>);
   }
 }

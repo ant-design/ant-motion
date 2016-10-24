@@ -16,7 +16,7 @@ const mergeURLDataChild = (configData, dataItem, key) => {
     }
     myItem.value[childKey].value = config[childKey];
   };
-  dataItem.forEach(item => {
+  dataItem.forEach((item) => {
     if (item.key === key) {
       Object.keys(configData[key]).forEach(mergeChild.bind(this, configData[key], item));
     }
@@ -26,7 +26,7 @@ export function mergeURLDataToConfig(data, config) {
   if (!config) {
     return data;
   }
-  Object.keys(config).forEach(key => {
+  Object.keys(config).forEach((key) => {
     const name = key.replace(/[^a-z]/g, '');
     const id = key.replace(/[a-z]/g, '');
     const dataItem = data[name].data[id].dataSource;

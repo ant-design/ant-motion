@@ -1,5 +1,4 @@
-import React, { PropTypes } from 'react';
-import Button from 'antd/lib/button';
+import React from 'react';
 import QueueAnim from 'rc-queue-anim';
 import TweenOne from 'rc-tween-one';
 import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
@@ -8,10 +7,8 @@ import './index.less';
 
 class Content extends React.Component {
 
-  static contextTypes = {
-    className: React.PropTypes.string,
+  static propTypes = {
     name: React.PropTypes.string,
-    style: React.PropTypes.object,
     dataSource: React.PropTypes.object,
   };
 
@@ -22,7 +19,7 @@ class Content extends React.Component {
 
   render() {
     const props = { ...this.props };
-    const { img, title, content } = props.dataSource.block1;
+    const { img, title, content } = this.props.dataSource.block1;
     delete props.dataSource;
     delete props.name;
     return (

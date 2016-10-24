@@ -130,6 +130,7 @@ scrollScreen.unMount();
 | active | string | `active` | 选中时的样式 |
 | showHeightActive | sting / number / array | 0 |如设定了值，滚动到距顶部还有指定值的时添加 `active` <br />`link` 标签被附于 `active` 值; 在出场时是还有指定值时 <br/>`link` 标签移除 `active` 值; 如果为Array时，第一个为进场，第二个为出场 |
 | toShowHeight | boolean | false | 点击时是否滚动到 `showHeightActive` 的值上 |
+| offsetTop    | number  | 0     | 到达元素距顶部位置 |
 | onFocus | function | - | 选中时的回调, 返回参数 { target, to } |
 | onBlur | function | - |失去焦点时回调, 返回参数 { target, to } |
 | component |string | div | 同上 |

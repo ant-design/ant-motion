@@ -4,8 +4,9 @@ import DocumentTitle from 'react-document-title';
 import { Link } from 'react-router';
 
 export default class Exhibition extends React.Component {
-  static contextTypes = {
+  static propTypes = {
     className: React.PropTypes.string,
+    pageData: React.PropTypes.object,
   };
 
   static defaultProps = {
@@ -16,18 +17,18 @@ export default class Exhibition extends React.Component {
     const demo = this.props.pageData.demo;
     const listChildren = Object.keys(demo).map(key => demo[key])
       .sort((a, b) => a.meta.order - b.meta.order)
-      .map(item => {
+      .map((item) => {
         const img = item.meta.image;
         const link = item.meta.filename.replace(/(\/index)|(.md)/g, '');
         const title = item.meta.chinese || item.meta.english;
-        return <li key={link}>
+        return (<li key={link}>
           <Link to={link}>
             <img src={img} width="100%" />
           </Link>
           <h3>{title}</h3>
-        </li>
+        </li>);
       });
-    return <div className="page">
+    return (<div className="page">
       <div className="page-wrapper">
         <TweenOne
           className={this.props.className}
@@ -37,7 +38,7 @@ export default class Exhibition extends React.Component {
           {listChildren}
         </TweenOne>
       </div>
-      <DocumentTitle title={`动效展示 - Ant Motion`} />
-    </div>
+      <DocumentTitle title="动效展示 - Ant Motion" />
+    </div>);
   }
 }

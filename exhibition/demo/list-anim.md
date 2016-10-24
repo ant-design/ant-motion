@@ -16,9 +16,9 @@ image: https://zos.alipayobjects.com/rmsportal/wqXXfNZobCkgEcp.png
 ````jsx
 import QueueAnim from 'rc-queue-anim';
 import TweenOne from 'rc-tween-one';
-import Button from 'antd/lib/button';
+
 class ListDemo extends React.Component {
-  static contextTypes = {
+  static propTypes = {
     className: React.PropTypes.string,
   };
 
@@ -26,8 +26,8 @@ class ListDemo extends React.Component {
     className: 'queue-demo',
   };
 
-  constructor() {
-    super(...arguments);
+  constructor(props) {
+    super(props);
     this.openIndex = null;
     this.position = {};
     this.state = {
@@ -85,18 +85,18 @@ class ListDemo extends React.Component {
     dataArray.splice(i, 1);
     delete this.state.style[this.openIndex];
     this.openIndex = null;
-    this.setState({ dataArray })
+    this.setState({ dataArray });
   };
 
   onTouchStart = (e, i) => {
     if (this.openIndex || this.openIndex === 0) {
       const animation = this.state.animation;
       animation[this.openIndex] = { x: 0, ease: 'easeOutBack' };
-      this.setState({ animation }, ()=> {
+      this.setState({ animation }, () => {
         delete this.state.style[this.openIndex];
       });
       this.openIndex = null;
-      return
+      return;
     }
     this.index = i;
     this.mouseXY = {
@@ -118,7 +118,7 @@ class ListDemo extends React.Component {
     delete this.mouseXY;
     delete this.position[this.index];
     this.index = null;
-    this.setState({ animation })
+    this.setState({ animation });
   };
 
   onTouchMove = (e) => {
@@ -127,8 +127,8 @@ class ListDemo extends React.Component {
     }
     const currentX = e.touches === undefined ? e.clientX : e.touches[0].clientX;
     let x = currentX - this.mouseXY.startX;
-    x = x > 10 ? 10 + (x - 10) * .2 : x;
-    x = x < -60 ? -60 + (x + 60) * .2 : x;
+    x = x > 10 ? 10 + (x - 10) * 0.2 : x;
+    x = x < -60 ? -60 + (x + 60) * 0.2 : x;
     this.position[this.index] = x;
     const style = this.state.style;
     style[this.index] = { transform: `translateX(${x}px)` };
@@ -137,7 +137,7 @@ class ListDemo extends React.Component {
   };
 
   render() {
-    const liChildren = this.state.dataArray.map((item, i) => {
+    const liChildren = this.state.dataArray.map((item) => {
       const { img, text, key } = item;
       return (<li
         key={key}
@@ -145,29 +145,29 @@ class ListDemo extends React.Component {
         onTouchMove={this.onTouchMove}
       >
         <div className={`${this.props.className}-delete`}>
-          <a onClick={(e) => this.onDelete(e)}>删除</a>
+          <a onClick={e => this.onDelete(e)}>删除</a>
         </div>
         <TweenOne
           className={`${this.props.className}-content`}
-          onTouchStart={(e) => this.onTouchStart(e, key)}
-          onMouseDown={(e) => this.onTouchStart(e, key)}
+          onTouchStart={e => this.onTouchStart(e, key)}
+          onMouseDown={e => this.onTouchStart(e, key)}
           onTouchEnd={this.onTouchEnd}
           onMouseUp={this.onTouchEnd}
           animation={this.state.animation[key]}
           style={this.state.style[key]}
         >
           <div className={`${this.props.className}-img`}>
-            <img src={img} width="44" height="44" onDragStart={(e) => e.preventDefault()}/>
+            <img src={img} width="44" height="44" onDragStart={e => e.preventDefault()} />
           </div>
           <p>{text}</p>
         </TweenOne>
-      </li>)
+      </li>);
     });
     return (<div>
       <div className={`${this.props.className}-wrapper`}>
         <div className={this.props.className}>
           <div className={`${this.props.className}-header`}>
-            <i></i>
+            <i />
             <span>Ant Motion</span>
           </div>
           <QueueAnim
@@ -195,7 +195,7 @@ ReactDOM.render(
 ````css
 .queue-demo-wrapper {
   position: relative;
-  background: #7AE2FD;
+  background: #29659B;
   overflow: hidden;
   height: 340px;
 }
@@ -206,7 +206,7 @@ ReactDOM.render(
   height: 340px;
   margin: auto;
   background: #fff;
-  box-shadow: 0 5px 20px rgba(83, 145, 202, 0.8);
+  box-shadow: 0 5px 20px rgba(66, 86, 105, 0.8);
   cursor: url('http://gtms02.alicdn.com/tps/i2/T1_PMSFLBaXXcu5FDa-20-20.png') 10 10,pointer!important;
 }
 

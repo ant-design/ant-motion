@@ -2,21 +2,17 @@ import React, { PropTypes } from 'react';
 import Item from './DemoItem';
 
 class DemoLayout extends React.Component {
-  constructor() {
-    super(...arguments);
-  }
-
-  renderChildren() {
-    return React.Children.map(this.props.children, (item, i) => {
+  renderChildren = () =>
+    React.Children.map(this.props.children, (item) => {
       if (item.type === Item) {
         const vertical = item.props.vertical;
         if (typeof vertical === 'boolean') {
           return item;
         }
-        return React.cloneElement(item, { vertical: this.props.vertical })
+        return React.cloneElement(item, { vertical: this.props.vertical });
       }
+      return null;
     });
-  }
 
   render() {
     const props = { ...this.props };

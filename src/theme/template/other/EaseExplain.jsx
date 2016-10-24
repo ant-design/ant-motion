@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import TweenOne from 'rc-tween-one';
 
 class EaseExplain extends React.Component {
-  static contextTypes = {
+  static propTypes = {
     className: PropTypes.string,
     leftHide: PropTypes.bool,
     rightHide: PropTypes.bool,
@@ -17,27 +17,23 @@ class EaseExplain extends React.Component {
   };
 
 
-  constructor() {
-    super(...arguments);
+  constructor(props) {
+    super(props);
     this.state = {
       animation: this.props.animation,
       circleStyle: this.props.circleStyle,
       paused: true,
     };
-    [
-      'mouseOver',
-      'mouseOut',
-    ].forEach((method) => this[method] = this[method].bind(this));
   }
 
-  mouseOver() {
+  mouseOver = () => {
     const paused = false;
     this.setState({
       paused,
     });
   }
 
-  mouseOut() {
+  mouseOut = () => {
     const paused = true;
     this.setState({
       paused,
@@ -49,25 +45,30 @@ class EaseExplain extends React.Component {
     return (
       <div className={`${this.props.className}-wrapper`}>
         <h3>{this.props.title}</h3>
-        <div className={this.props.className}
+        <div
+          className={this.props.className}
           onMouseEnter={this.mouseOver}
           onMouseLeave={this.mouseOut}
         >
           <div className="demo-wrapper">
-            {this.props.leftHide ? null : <div className="circle-dashed" style={{ left: 0 }}></div>}
-            <TweenOne className="circle"
+            {this.props.leftHide ? null : <div className="circle-dashed" style={{ left: 0 }} />}
+            <TweenOne
+              className="circle"
               animation={this.state.animation}
               style={this.state.circleStyle}
               paused={this.state.paused}
             />
             <div className="east">
-              <i className="line" style={{
-            width: 330 + lineWidth, left: 60 - ((this.props.leftHide && 40) || 0),
-          }}
+              <i
+                className="line"
+                style={{
+                  width: 330 + lineWidth,
+                  left: 60 - ((this.props.leftHide && 40) || 0),
+                }}
               />
               <i className="arrow" style={{ right: 60 - ((this.props.rightHide && 40) || 0) }} />
             </div>
-            {this.props.rightHide ? null : <div className="circle-dashed"></div>}
+            {this.props.rightHide ? null : <div className="circle-dashed" />}
           </div>
           <p className="text-center">
             {this.props.children}

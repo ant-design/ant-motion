@@ -1,8 +1,8 @@
 import React from 'react';
 import QueueAnim from 'rc-queue-anim';
 import Animate from 'rc-animate';
-import Button from 'antd/lib/button';
 import './list-anim-animateDemo.css';
+
 class Todo extends React.Component {
   static contextTypes = {
     visible: React.PropTypes.bool,
@@ -14,8 +14,9 @@ class Todo extends React.Component {
     return React.createElement('div', props);
   }
 }
-export default class ListDemo extends React.Component {
-  static contextTypes = {
+
+export default class ListDemoAnimate extends React.Component {
+  static propTypes = {
     className: React.PropTypes.string,
   };
 
@@ -23,8 +24,8 @@ export default class ListDemo extends React.Component {
     className: 'queue-demo',
   };
 
-  constructor() {
-    super(...arguments);
+  constructor(props) {
+    super(props);
     this.openIndex = null;
     this.position = {};
     this.state = {
@@ -76,26 +77,24 @@ export default class ListDemo extends React.Component {
   }
 
   onDelete = () => {
-
     const dataArray = this.state.dataArray;
     const deleteData = dataArray.filter(item => item.key === this.openIndex)[0];
     const i = dataArray.indexOf(deleteData);
     dataArray.splice(i, 1);
     delete this.state.style[this.openIndex];
     this.openIndex = null;
-    this.setState({ dataArray })
+    this.setState({ dataArray });
   };
 
   onTouchStart = (e, i) => {
-
     if (this.openIndex || this.openIndex === 0) {
       const openVisible = this.state.openVisible;
       openVisible[this.openIndex] = false;
-      this.setState({ openVisible }, ()=> {
+      this.setState({ openVisible }, () => {
         delete this.state.style[this.openIndex];
       });
       this.openIndex = null;
-      return
+      return;
     }
     this.index = i;
     this.mouseXY = {
@@ -122,7 +121,7 @@ export default class ListDemo extends React.Component {
         this.state.openVisible[this.index] = false;
       }
       this.index = null;
-    })
+    });
   };
 
   onTouchMove = (e) => {
@@ -132,8 +131,8 @@ export default class ListDemo extends React.Component {
     const currentX = e.touches === undefined ? e.clientX : e.touches[0].clientX;
     let x = currentX - this.mouseXY.startX;
     // animate 状态不变刷新不了动画. 往右拉去掉.
-    x = x > 10 ? 10 + (x - 10) * .2 : x;
-    x = x < -60 ? -60 + (x + 60) * .2 : x;
+    x = x > 10 ? 10 + (x - 10) * 0.2 : x;
+    x = x < -60 ? -60 + (x + 60) * 0.2 : x;
     this.position[this.index] = x;
     const style = this.state.style;
     style[this.index] = { transform: `translateX(${x}px)` };
@@ -142,12 +141,12 @@ export default class ListDemo extends React.Component {
 
   animateEnd = (key, visible) => {
     const style = this.state.style;
-    style[key] = { transform: `translateX(${visible ? -60 : 0}px)` }
+    style[key] = { transform: `translateX(${visible ? -60 : 0}px)` };
     this.setState({ style });
   };
 
   render() {
-    const liChildren = this.state.dataArray.map((item, i) => {
+    const liChildren = this.state.dataArray.map((item) => {
       const { img, text, key } = item;
       const visible = this.state.openVisible[key];
       // 用 animate 把进场作为打开样式, to : -60, 出场做为关闭样式, to: 0;
@@ -158,7 +157,7 @@ export default class ListDemo extends React.Component {
         onTouchMove={this.onTouchMove}
       >
         <div className={`${this.props.className}-delete`}>
-          <a onClick={(e) => this.onDelete(e)}>删除</a>
+          <a onClick={e => this.onDelete(e)}>删除</a>
         </div>
         <Animate
           showProp="visible"
@@ -167,26 +166,26 @@ export default class ListDemo extends React.Component {
         >
           <Todo
             className={`${this.props.className}-content`}
-            onTouchStart={(e) => this.onTouchStart(e, key)}
-            onMouseDown={(e) => this.onTouchStart(e, key)}
+            onTouchStart={e => this.onTouchStart(e, key)}
+            onMouseDown={e => this.onTouchStart(e, key)}
             onTouchEnd={this.onTouchEnd}
             onMouseUp={this.onTouchEnd}
             style={this.state.style[key]}
             visible={visible}
           >
             <div className={`${this.props.className}-img`}>
-              <img src={img} width="44" height="44" onDragStart={(e) => e.preventDefault()}/>
+              <img src={img} width="44" height="44" onDragStart={e => e.preventDefault()} />
             </div>
             <p>{text}</p>
           </Todo>
         </Animate>
-      </li>)
+      </li>);
     });
     return (<div>
       <div className={`${this.props.className}-wrapper`}>
         <div className={this.props.className}>
           <div className={`${this.props.className}-header`}>
-            <i></i>
+            <i />
             <span>Ant Motion</span>
           </div>
           <QueueAnim
