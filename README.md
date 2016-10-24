@@ -8,14 +8,22 @@ The react animation solution
 ## 什么是 Ant Motion ？
 <p align="center">
   <a href="http://motion.and.design">
-    <img src="https://zos.alipayobjects.com/rmsportal/nblZhUBttSOJnnf.svg"/>
+    <img width="200" src="https://zos.alipayobjects.com/rmsportal/TOXWfHIUGHvZIyb.svg"/>
   </a>
 </p>
 
 使用 Ant Motion 能够快速在 React 框架中使用动画。
 我们提供了单项，组合动画，以及整套解决方案
+
 ## Ant Motion 能做什么 ？
-xxx
+通过 React 标签，以简单的配置即可完成想要的动画，可以快速的实现不同组合的动画效果，更好的提高你的工作效率。
+
+## 动效 Demo 
+#### [列表的增删间的动画](http://motion.ant.design/exhibition/demo/list-anim);
+#### [详细说明的切换动效](http://motion.ant.design/exhibition/demo/detail-switch);
+#### [列表交换位置的动效](http://motion.ant.design/exhibition/demo/list-sort);
+#### [图片详细缩略间的切换动效](http://motion.ant.design/exhibition/demo/pic-details-anim);
+[>> 查看更多](http://motion.ant.design/exhibition/);
 
 ## 动效语言
 Ant Motion 在界面里主要是来加强体验舒适度、描述层级关系、增加界面活力、反馈与意向等功能性的动效。[详情查看](http://motion.ant.design/language/basic)
