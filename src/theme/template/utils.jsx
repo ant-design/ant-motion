@@ -2,6 +2,8 @@ import React from 'react';
 import ticker from 'rc-tween-one/lib/ticker';
 import easingTypes from 'tween-functions';
 
+const cWindow = window || {};
+
 export function toArrayChildren(children) {
   const ret = [];
   React.Children.forEach(children, (c) => {
@@ -10,6 +12,7 @@ export function toArrayChildren(children) {
   return ret;
 }
 
+/*
 export function collectDocs(docs) {
   const docsList = Object.keys(docs)
     .map(key => docs[key])
@@ -48,14 +51,13 @@ export function dataToArray(vars) {
   }
   return [vars];
 }
+*/
 
 export function currentScrollTop() {
   return window.pageYOffset || document.body.scrollTop || document.documentElement.scrollTop;
 }
 
-export function scrollClick(tickerId, e) {
-  const scrollTop = currentScrollTop();
-  const startFrame = ticker.frame;
+export function scrollClick(e) {
   const id = e.currentTarget.getAttribute('href');
   const element = document.querySelector(id);
   let toTop;
@@ -66,12 +68,21 @@ export function scrollClick(tickerId, e) {
   } else {
     return;
   }
-  ticker.wake(tickerId, () => {
-    const moment = (ticker.frame - startFrame) * ticker.perFrame;
-    const ratio = easingTypes.easeInOutCubic(moment, scrollTop, toTop, 450);
-    window.scrollTo(window.scrollX, ratio);
-    if (moment >= 450) {
-      ticker.clear(tickerId);
-    }
-  });
+  scrollTo(toTop);
 }
+
+export function scrollTo(number) {
+  const scrollTop = currentScrollTop();
+  if (scrollTop !== number) {
+    const tickerId = `scrollToTop-${Date.now()}`;
+    const startFrame = ticker.frame;
+    ticker.wake(tickerId, () => {
+      const moment = (ticker.frame - startFrame) * ticker.perFrame;
+      const ratio = easingTypes.easeInOutCubic(moment, scrollTop, number, 450);
+      cWindow.scrollTo(cWindow.scrollX, ratio);
+      if (moment >= 450) {
+        ticker.clear(tickerId);
+      }
+    });
+  }
+};

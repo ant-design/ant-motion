@@ -16,7 +16,6 @@ class Page extends React.Component {
     this.state = {
       affixAnim: {},
     };
-    this.tickerId = `scrollTo${Date.now()}`;
   }
 
   getModuleData = (pageData) => {
@@ -58,7 +57,7 @@ class Page extends React.Component {
           {isNav ? meta.chinese : <span>{meta.chinese || meta.english}</span>}
         </Link>);
       linkToChildren = isComponent ?
-        <a href={`#${meta.id}`} onClick={(e) => { scrollClick(this.tickerId, e); }}>
+        <a href={`#${meta.id}`} onClick={scrollClick}>
           {meta.title}
         </a> : linkToChildren;
       return (<li
