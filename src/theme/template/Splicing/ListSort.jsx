@@ -83,6 +83,7 @@ export default class ListSort extends React.Component {
     this.mouseXY = null;
     this.childStyle = [];
     this.children = [];
+    this.isAnimation = false;
   }
 
   componentDidMount() {
@@ -123,6 +124,9 @@ export default class ListSort extends React.Component {
   }
 
   onMouseDown = (i, e) => {
+    if (this.isAnimation) {
+      return;
+    }
     const rect = this.dom.getBoundingClientRect();
     const style = {
       height: `${rect.height}px`,
@@ -179,6 +183,7 @@ export default class ListSort extends React.Component {
       this.listDom.className = `${this.listDom.className
         .replace(this.props.dragClassName, '').trim()} ${this.props.dragClassName}`;
     }
+    this.isAnimation = true;
     this.setState({
       style,
       childStyle,
@@ -227,6 +232,7 @@ export default class ListSort extends React.Component {
               children,
               animation: [],
             }, () => {
+              this.isAnimation = false;
               if (callbackBool) {
                 this.props.onChange(children);
               }
