@@ -51,7 +51,7 @@
     "start": "bisheng start",
     "site": "bisheng build -c ./bisheng.config.js",
     "deploy": "bisheng gh-pages",
-    "pre-deploy": "mkdir -p _site && cp CNAME _site",
+    "pre-deploy": "mkdir -p _site",
     "just-deploy": "npm run pre-deploy && bisheng gh-pages -c ./bisheng.config.js",
     "lint": "eslint ./src ./exhibition --ext '.js,.jsx'",
     "demolint": "RUN_ENV=DEMO eslint components/*/demo/*.md --ext '.md'",
