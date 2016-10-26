@@ -57,20 +57,6 @@ export function currentScrollTop() {
   return window.pageYOffset || document.body.scrollTop || document.documentElement.scrollTop;
 }
 
-export function scrollClick(e) {
-  const id = e.currentTarget.getAttribute('href');
-  const element = document.querySelector(id);
-  let toTop;
-  if (element) {
-    toTop = element.getBoundingClientRect().top;
-    const docTop = document.documentElement.getBoundingClientRect().top;
-    toTop = Math.round(toTop) - Math.round(docTop);
-  } else {
-    return;
-  }
-  scrollTo(toTop);
-}
-
 export function scrollTo(number) {
   const scrollTop = currentScrollTop();
   if (scrollTop !== number) {
@@ -85,4 +71,19 @@ export function scrollTo(number) {
       }
     });
   }
-};
+}
+
+
+export function scrollClick(e) {
+  const id = e.currentTarget.getAttribute('href');
+  const element = document.querySelector(id);
+  let toTop;
+  if (element) {
+    toTop = element.getBoundingClientRect().top;
+    const docTop = document.documentElement.getBoundingClientRect().top;
+    toTop = Math.round(toTop) - Math.round(docTop);
+  } else {
+    return;
+  }
+  scrollTo(toTop);
+}

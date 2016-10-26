@@ -1,8 +1,6 @@
 import React, { PropTypes } from 'react';
 import DocumentTitle from 'react-document-title';
 import ScrollLink from 'rc-scroll-anim/lib/ScrollLink';
-import ticker from 'rc-tween-one/lib/ticker';
-import easingTypes from 'tween-functions';
 import { scrollTo } from '../utils';
 
 import Banner from './Banner';
