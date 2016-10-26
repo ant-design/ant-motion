@@ -51,6 +51,7 @@ function mergeChildren(prev, next) {
   return ret;
 }
 
+const cWindow = window || {};
 
 export default class ListSort extends React.Component {
   static propTypes = {
@@ -83,22 +84,22 @@ export default class ListSort extends React.Component {
     this.mouseXY = null;
     this.childStyle = [];
     this.children = [];
-    this.isAnimation = false;
+    this.isDrage = false;
   }
 
   componentDidMount() {
     this.dom = ReactDOM.findDOMNode(this);
 
-    if (window.addEventListener) {
-      window.addEventListener('mousemove', this.onMouseMove);
-      window.addEventListener('touchmove', this.onMouseMove);
-      window.addEventListener('mouseup', this.onMouseUp);
-      window.addEventListener('touchend', this.onMouseUp);
+    if (cWindow.addEventListener) {
+      cWindow.addEventListener('mousemove', this.onMouseMove);
+      cWindow.addEventListener('touchmove', this.onMouseMove);
+      cWindow.addEventListener('mouseup', this.onMouseUp);
+      cWindow.addEventListener('touchend', this.onMouseUp);
     } else {
-      window.attachEvent('onmousemove', this.onMouseMove);
-      window.attachEvent('ontouchmove', this.onMouseMove);
-      window.attachEvent('onmouseup', this.onMouseUp);
-      window.attachEvent('ontouchend', this.onMouseUp);
+      cWindow.attachEvent('onmousemove', this.onMouseMove);
+      cWindow.attachEvent('ontouchmove', this.onMouseMove);
+      cWindow.attachEvent('onmouseup', this.onMouseUp);
+      cWindow.attachEvent('ontouchend', this.onMouseUp);
     }
   }
 
@@ -110,21 +111,21 @@ export default class ListSort extends React.Component {
   }
 
   componentWillUnmount() {
-    if (window.addEventListener) {
-      window.removeEventListener('mousemove', this.onMouseMove);
-      window.removeEventListener('touchmove', this.onMouseMove);
-      window.removeEventListener('mouseup', this.onMouseUp);
-      window.removeEventListener('touchend', this.onMouseUp);
+    if (cWindow.addEventListener) {
+      cWindow.removeEventListener('mousemove', this.onMouseMove);
+      cWindow.removeEventListener('touchmove', this.onMouseMove);
+      cWindow.removeEventListener('mouseup', this.onMouseUp);
+      cWindow.removeEventListener('touchend', this.onMouseUp);
     } else {
-      window.detachEvent('onmousemove', this.onMouseMove);
-      window.detachEvent('ontouchmove', this.onMouseMove);
-      window.detachEvent('onmouseup', this.onMouseUp);
-      window.detachEvent('ontouchend', this.onMouseUp);
+      cWindow.detachEvent('onmousemove', this.onMouseMove);
+      cWindow.detachEvent('ontouchmove', this.onMouseMove);
+      cWindow.detachEvent('onmouseup', this.onMouseUp);
+      cWindow.detachEvent('ontouchend', this.onMouseUp);
     }
   }
 
   onMouseDown = (i, e) => {
-    if (this.isAnimation) {
+    if (this.isDrage) {
       return;
     }
     const rect = this.dom.getBoundingClientRect();
@@ -183,7 +184,7 @@ export default class ListSort extends React.Component {
       this.listDom.className = `${this.listDom.className
         .replace(this.props.dragClassName, '').trim()} ${this.props.dragClassName}`;
     }
-    this.isAnimation = true;
+    this.isDrage = true;
     this.setState({
       style,
       childStyle,
@@ -232,7 +233,7 @@ export default class ListSort extends React.Component {
               children,
               animation: [],
             }, () => {
-              this.isAnimation = false;
+              this.isDrage = false;
               if (callbackBool) {
                 this.props.onChange(children);
               }
