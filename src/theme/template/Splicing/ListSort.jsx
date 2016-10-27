@@ -51,8 +51,6 @@ function mergeChildren(prev, next) {
   return ret;
 }
 
-const cWindow = window || {};
-
 export default class ListSort extends React.Component {
   static propTypes = {
     component: React.PropTypes.any,
@@ -90,16 +88,16 @@ export default class ListSort extends React.Component {
   componentDidMount() {
     this.dom = ReactDOM.findDOMNode(this);
 
-    if (cWindow.addEventListener) {
-      cWindow.addEventListener('mousemove', this.onMouseMove);
-      cWindow.addEventListener('touchmove', this.onMouseMove);
-      cWindow.addEventListener('mouseup', this.onMouseUp);
-      cWindow.addEventListener('touchend', this.onMouseUp);
+    if (window.addEventListener) {
+      window.addEventListener('mousemove', this.onMouseMove);
+      window.addEventListener('touchmove', this.onMouseMove);
+      window.addEventListener('mouseup', this.onMouseUp);
+      window.addEventListener('touchend', this.onMouseUp);
     } else {
-      cWindow.attachEvent('onmousemove', this.onMouseMove);
-      cWindow.attachEvent('ontouchmove', this.onMouseMove);
-      cWindow.attachEvent('onmouseup', this.onMouseUp);
-      cWindow.attachEvent('ontouchend', this.onMouseUp);
+      window.attachEvent('onmousemove', this.onMouseMove);
+      window.attachEvent('ontouchmove', this.onMouseMove);
+      window.attachEvent('onmouseup', this.onMouseUp);
+      window.attachEvent('ontouchend', this.onMouseUp);
     }
   }
 
@@ -111,16 +109,16 @@ export default class ListSort extends React.Component {
   }
 
   componentWillUnmount() {
-    if (cWindow.addEventListener) {
-      cWindow.removeEventListener('mousemove', this.onMouseMove);
-      cWindow.removeEventListener('touchmove', this.onMouseMove);
-      cWindow.removeEventListener('mouseup', this.onMouseUp);
-      cWindow.removeEventListener('touchend', this.onMouseUp);
+    if (window.addEventListener) {
+      window.removeEventListener('mousemove', this.onMouseMove);
+      window.removeEventListener('touchmove', this.onMouseMove);
+      window.removeEventListener('mouseup', this.onMouseUp);
+      window.removeEventListener('touchend', this.onMouseUp);
     } else {
-      cWindow.detachEvent('onmousemove', this.onMouseMove);
-      cWindow.detachEvent('ontouchmove', this.onMouseMove);
-      cWindow.detachEvent('onmouseup', this.onMouseUp);
-      cWindow.detachEvent('ontouchend', this.onMouseUp);
+      window.detachEvent('onmousemove', this.onMouseMove);
+      window.detachEvent('ontouchmove', this.onMouseMove);
+      window.detachEvent('onmouseup', this.onMouseUp);
+      window.detachEvent('ontouchend', this.onMouseUp);
     }
   }
 

@@ -10,7 +10,6 @@ const title = {};
 nav.forEach((item) => {
   title[item.key] = item.name;
 });
-const cWindow = window || {};
 
 class Page extends React.Component {
   constructor(props) {
@@ -32,10 +31,10 @@ class Page extends React.Component {
     const pathNames = props.pathname.split('/');
     const isComponent = pathNames[0] === 'components';
     if (isComponent) {
-      if (cWindow.addEventListener) {
-        cWindow.addEventListener('scroll', this.onScroll);
+      if (window.addEventListener) {
+        window.addEventListener('scroll', this.onScroll);
       } else {
-        cWindow.attachEvent('onscroll', this.onScroll);
+        window.attachEvent('onscroll', this.onScroll);
       }
     } else {
       this.componentWillUnmount();
@@ -44,10 +43,10 @@ class Page extends React.Component {
 
   componentWillUnmount() {
     this.hash = null;
-    if (cWindow.addEventListener) {
-      cWindow.removeEventListener('scroll', this.onScroll);
+    if (window.addEventListener) {
+      window.removeEventListener('scroll', this.onScroll);
     } else {
-      cWindow.detachEvent('onscroll', this.onScroll);
+      window.detachEvent('onscroll', this.onScroll);
     }
   }
 

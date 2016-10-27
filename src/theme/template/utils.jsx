@@ -2,8 +2,6 @@ import React from 'react';
 import ticker from 'rc-tween-one/lib/ticker';
 import easingTypes from 'tween-functions';
 
-const cWindow = window || {};
-
 export function toArrayChildren(children) {
   const ret = [];
   React.Children.forEach(children, (c) => {
@@ -65,7 +63,7 @@ export function scrollTo(number) {
     ticker.wake(tickerId, () => {
       const moment = (ticker.frame - startFrame) * ticker.perFrame;
       const ratio = easingTypes.easeInOutCubic(moment, scrollTop, number, 450);
-      cWindow.scrollTo(cWindow.scrollX, ratio);
+      window.scrollTo(window.scrollX, ratio);
       if (moment >= 450) {
         ticker.clear(tickerId);
       }
@@ -82,8 +80,6 @@ export function scrollClick(e) {
     toTop = element.getBoundingClientRect().top;
     const docTop = document.documentElement.getBoundingClientRect().top;
     toTop = Math.round(toTop) - Math.round(docTop);
-  } else {
-    return;
+    scrollTo(toTop);
   }
-  scrollTo(toTop);
 }

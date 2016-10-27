@@ -3,17 +3,15 @@ import ReactDOM from 'react-dom';
 import DocumentTitle from 'react-document-title';
 import DemoLayout, { Item } from './DemoLayout';
 
-const cWindow = window || {};
-const cDocument = document || {};
 class ComponentDoc extends React.Component {
   componentDidMount() {
     const props = this.props;
     const { location } = props;
     this.hash = location.hash;
-    if (cWindow.addEventListener) {
-      cWindow.addEventListener('scroll', this.onScroll);
+    if (window.addEventListener) {
+      window.addEventListener('scroll', this.onScroll);
     } else {
-      cWindow.attachEvent('onscroll', this.onScroll);
+      window.attachEvent('onscroll', this.onScroll);
     }
   }
 
@@ -22,16 +20,16 @@ class ComponentDoc extends React.Component {
   }
 
   componentWillUnmount() {
-    if (cWindow.addEventListener) {
-      cWindow.removeEventListener('scroll', this.onScroll);
+    if (window.addEventListener) {
+      window.removeEventListener('scroll', this.onScroll);
     } else {
-      cWindow.detachEvent('onscroll', this.onScroll);
+      window.detachEvent('onscroll', this.onScroll);
     }
   }
 
   onScroll = () => {
     const tops = this.demoIds.map((item) => {
-      const dom = cDocument.getElementById(item);
+      const dom = document.getElementById(item);
       let top = dom.getBoundingClientRect().top;
       if (top < 0) {
         top = -top;
