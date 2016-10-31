@@ -16,8 +16,6 @@ a {
   transition: color @animate-duration @ease-out;
 }
 
-
-
 h1, h2, h3, h4 {
   color: @title-color
 }
@@ -133,7 +131,7 @@ h1, h2, h3, h4 {
       }
     }
   }
-  & .content-wrapper{
+  & .content-wrapper {
     background: transparent;
   }
   /*.@{footer} {
@@ -143,6 +141,11 @@ h1, h2, h3, h4 {
       color: #999
     }
   }*/
+}
+
+#react-content {
+  width: 100%;
+  overflow: hidden;
 }
 
 #page-404 {
@@ -159,6 +162,7 @@ h1, h2, h3, h4 {
 .content-wrapper {
   background-color: #fff;
 }
+
 .content-wrapper > .tween-one-leaving, .page-content > .tween-one-leaving, .queue-anim-leaving {
   position: absolute !important;
   width: 100%;
@@ -219,7 +223,7 @@ h1, h2, h3, h4 {
   user-select: none;
 }
 
-.replay-button{
+.replay-button {
   width: 32px;
   height: 32px;
   background: #ffffff;
@@ -230,14 +234,14 @@ h1, h2, h3, h4 {
   right: 20px;
   transition: transform .45s @ease-out, box-shadow .45s @ease-out;
   cursor: pointer;
-  & i{
+  & i {
     background: url("https://zos.alipayobjects.com/rmsportal/XInKafGVjnFqZcM.svg") no-repeat center;
     width: 20px;
     height: 20px;
     display: block;
     margin: 6px auto;
   }
-  &:active, &:visited{
+  &:active, &:visited {
     transform: translateY(2px);
     box-shadow: 0 3px 15px fade(#000, 15);
   }

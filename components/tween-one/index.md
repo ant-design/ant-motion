@@ -111,5 +111,6 @@ TweenOne.plugins.push(SvgMorphPlugin);
 | leave   | object / array / func | { x: 30, opacity: 0 } | 出场时的数据，同上 |
 | onEnd   | func       | -       | 每个动画结束后回调 |
 | animatingClassName | array | `['tween-one-entering', 'tween-one-leaving']` | 进出场的样式，如果是组件形式，需把 className 带到你的组件里 |
+| resetStyleBool | boolean | true | 每次动画时是否强制重置样式 |
 | component | React.Element/String | div | 需要替换的标签 |
 

@@ -1,8 +1,8 @@
 ---
-order: 3
+order: 0
 chinese: 图片详细切换
 english: PicDetailsAnim
-image: https://zos.alipayobjects.com/rmsportal/GFVAdQAMKyNphmU.png
+image: https://zos.alipayobjects.com/rmsportal/RJoNICBzRCkOsMv.png
 ---
 
 从图片缩略图到详细说明的一个过场效果。。
@@ -217,14 +217,14 @@ ReactDOM.render(
 /* 外壳样式 */
 .pic-details-demo-wrapper {
   position: relative;
-  background: #EF4E41;
+  background: #DEEDCC;
   overflow: hidden;
   height: 500px;
 }
 
 .pic-details-demo {
   margin: 40px auto;
-  box-shadow: 0 10px 40px #AB423A;
+  box-shadow: 0 10px 40px #C7D7B5;
   width: 60%;
   min-width: 550px;
   height: 420px;

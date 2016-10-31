@@ -20,7 +20,7 @@ class Demo extends React.Component {
   render() {
     return (
       <TweenOne
-        animation={{ r: 360, repeat: -1, duration: 1000 }}
+        animation={{ rotate: 360, repeat: -1, duration: 1000 }}
         paused={this.props.paused}
         className="code-box-shape"
       />

@@ -10,13 +10,53 @@ const title = {};
 nav.forEach((item) => {
   title[item.key] = item.name;
 });
+
 class Page extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       affixAnim: {},
+      isHash: false,
     };
-    this.tickerId = `scrollTo${Date.now()}`;
+  }
+
+  componentDidMount() {
+    this.componentDidUpdate();
+  }
+
+  componentDidUpdate() {
+    this.hash = null;
+    this.state.isHash = false;
+    const props = this.props;
+    const pathNames = props.pathname.split('/');
+    const isComponent = pathNames[0] === 'components';
+    if (isComponent) {
+      if (window.addEventListener) {
+        window.addEventListener('scroll', this.onScroll);
+      } else {
+        window.attachEvent('onscroll', this.onScroll);
+      }
+    } else {
+      this.componentWillUnmount();
+    }
+  }
+
+  componentWillUnmount() {
+    this.hash = null;
+    if (window.addEventListener) {
+      window.removeEventListener('scroll', this.onScroll);
+    } else {
+      window.detachEvent('onscroll', this.onScroll);
+    }
+  }
+
+  onScroll = () => {
+    if (this.hash !== window.location.hash) {
+      this.hash = window.location.hash;
+      this.setState({
+        isHash: true,
+      });
+    }
   }
 
   getModuleData = (pageData) => {
@@ -47,7 +87,9 @@ class Page extends React.Component {
       const meta = item.meta;
       let link = meta.filename.replace(/(\/index)|(.md)/g, '');
       const path = Array.isArray(pathNames) ? pathNames.join('/') : pathNames.replace('#', '');
-      const className = path === link || path === meta.id || (!path && i === 0) ? 'active' : '';
+      const hash = this.state.isHash && this.hash.replace('#', '');
+      const className = hash === meta.id || path === link ||
+      (!hash && ((!path && i === 0) || path === meta.id)) ? 'active' : '';
       // api 页面，链接把 components 转成 api
       link = this.props.pathname.match('api') ? link.replace('components', 'api') : link;
       let linkToChildren = link.split('/')[1] === pathNames[1] ?
@@ -58,7 +100,7 @@ class Page extends React.Component {
           {isNav ? meta.chinese : <span>{meta.chinese || meta.english}</span>}
         </Link>);
       linkToChildren = isComponent ?
-        <a href={`#${meta.id}`} onClick={(e) => { scrollClick(this.tickerId, e); }}>
+        <a href={`#${meta.id}`} onClick={this.scrollClick}>
           {meta.title}
         </a> : linkToChildren;
       return (<li
@@ -71,6 +113,11 @@ class Page extends React.Component {
       </li>);
     });
   }
+
+  scrollClick = (e) => {
+    e.preventDefault();
+    scrollClick(e);
+  };
 
   render() {
     const props = this.props;

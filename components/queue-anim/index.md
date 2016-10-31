@@ -48,6 +48,7 @@ ReactDOM.render(<QueueAnim>
 | ease       | string / array | `easeOutQuart` | 动画的缓动函数,[查看详细](http://julian.com/research/velocity/#easing) |
 | animatingClassName | array | `['queue-anim-entering', 'queue-anim-leaving']` | 进出场动画进行中的类名 |
 | component  | string | `div` | QueueAnim 替换的标签名 |
+| onEnd      | func   | null  | 动画结束后回调， callback({ key, type }); type 为 `enter` 或 `leave` |
 
 > 当以上数据类型为 Array 时，`['left', 'top']` 第一个为进场动画属性, 第二个为离场属性。
 

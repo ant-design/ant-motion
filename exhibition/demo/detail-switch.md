@@ -1,5 +1,5 @@
 ---
-order: 1
+order: 2
 chinese: 详细说明切换
 english: detailSwitch
 image: https://zos.alipayobjects.com/rmsportal/cvLbMZkjkNvqbVF.png

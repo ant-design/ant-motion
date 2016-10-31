@@ -4,11 +4,6 @@ import DocumentTitle from 'react-document-title';
 import * as utils from '../utils';
 
 class Article extends React.Component {
-  constructor(props) {
-    super(props);
-    this.tickerId = `scrollTo${Date.now()}`;
-  }
-
   shouldComponentUpdate() {
     return false;
   }
@@ -22,9 +17,7 @@ class Article extends React.Component {
     const tocChildren = utils.toArrayChildren(tocItem.props.children).map((item) => {
       const itemChildren = utils.toArrayChildren(item.props.children).map(cItem =>
         React.cloneElement(cItem, {
-          onClick: () => {
-            utils.scrollClick(this.tickerId);
-          },
+          onClick: utils.scrollClick,
         })
       );
       return React.cloneElement(item, item.props, itemChildren);

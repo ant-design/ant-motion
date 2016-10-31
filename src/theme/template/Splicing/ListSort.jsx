@@ -51,7 +51,6 @@ function mergeChildren(prev, next) {
   return ret;
 }
 
-
 export default class ListSort extends React.Component {
   static propTypes = {
     component: React.PropTypes.any,
@@ -83,7 +82,7 @@ export default class ListSort extends React.Component {
     this.mouseXY = null;
     this.childStyle = [];
     this.children = [];
-    this.isAnimation = false;
+    this.isDrage = false;
   }
 
   componentDidMount() {
@@ -124,7 +123,7 @@ export default class ListSort extends React.Component {
   }
 
   onMouseDown = (i, e) => {
-    if (this.isAnimation) {
+    if (this.isDrage) {
       return;
     }
     const rect = this.dom.getBoundingClientRect();
@@ -183,7 +182,7 @@ export default class ListSort extends React.Component {
       this.listDom.className = `${this.listDom.className
         .replace(this.props.dragClassName, '').trim()} ${this.props.dragClassName}`;
     }
-    this.isAnimation = true;
+    this.isDrage = true;
     this.setState({
       style,
       childStyle,
@@ -232,7 +231,7 @@ export default class ListSort extends React.Component {
               children,
               animation: [],
             }, () => {
-              this.isAnimation = false;
+              this.isDrage = false;
               if (callbackBool) {
                 this.props.onChange(children);
               }
