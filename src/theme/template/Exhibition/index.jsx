@@ -16,7 +16,7 @@ export default class Exhibition extends React.Component {
   render() {
     const demo = this.props.pageData.demo;
     const listChildren = Object.keys(demo).map(key => demo[key])
-      .sort((a, b) => a.meta.order - b.meta.order)
+      .sort((a, b) => b.meta.order - a.meta.order)
       .map((item) => {
         const img = item.meta.image;
         const link = item.meta.filename.replace(/(\/index)|(.md)/g, '');

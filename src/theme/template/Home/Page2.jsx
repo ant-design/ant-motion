@@ -25,7 +25,7 @@ export default class Page2 extends React.Component {
     const exhibition = this.props.pageData.exhibition.demo;
     const demoToChildren = Object.keys(exhibition)
       .map(key => exhibition[key])
-      .sort((a, b) => a.meta.order - b.meta.order)
+      .sort((a, b) => b.meta.order - a.meta.order)
       .filter((key, i) => i < 6)
       .map((item) => {
         const img = item.meta.image;

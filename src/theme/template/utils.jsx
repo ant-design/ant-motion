@@ -73,8 +73,8 @@ export function scrollTo(number) {
 
 
 export function scrollClick(e) {
-  const id = e.currentTarget.getAttribute('href');
-  const element = document.querySelector(id);
+  const id = e.currentTarget.getAttribute('href').split('#')[1];
+  const element = document.getElementById(id);
   let toTop;
   if (element) {
     toTop = element.getBoundingClientRect().top;

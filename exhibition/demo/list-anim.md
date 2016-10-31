@@ -1,8 +1,8 @@
 ---
-order: 0
+order: 3
 chinese: 列表动画
 english: ListAnim
-image: https://zos.alipayobjects.com/rmsportal/wqXXfNZobCkgEcp.png
+image: https://zos.alipayobjects.com/rmsportal/ivfCWzEWHsTPWMW.png
 ---
 
 在页面里，当我们想对区块内容进行动画时，需要解决元素的先后顺序与基本动画的属性。
@@ -195,7 +195,7 @@ ReactDOM.render(
 ````css
 .queue-demo-wrapper {
   position: relative;
-  background: #29659B;
+  background: #CCE9F9;
   overflow: hidden;
   height: 340px;
 }

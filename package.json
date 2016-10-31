@@ -14,7 +14,7 @@
     "rc-banner-anim": "~0.5.0",
     "rc-queue-anim": "~0.12.0",
     "rc-scroll-anim": "~0.4.0",
-    "rc-tween-one": "~0.9.0",
+    "rc-tween-one": "~0.10.0",
     "react": "15.x",
     "react-copy-to-clipboard": "~4.2.0",
     "react-document-title": "^2.0.1",

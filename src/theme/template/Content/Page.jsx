@@ -51,8 +51,8 @@ class Page extends React.Component {
   }
 
   onScroll = () => {
-    if (this.hash !== cWindow.location.hash) {
-      this.hash = cWindow.location.hash;
+    if (this.hash !== window.location.hash) {
+      this.hash = window.location.hash;
       this.setState({
         isHash: true,
       });

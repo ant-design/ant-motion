@@ -1,8 +1,8 @@
 ---
-order: 2
+order: 1
 chinese: 列表交换位置
 english: ListSort
-image: https://zos.alipayobjects.com/rmsportal/UZklLXfsKMNfnQV.jpg
+image: https://zos.alipayobjects.com/rmsportal/BgYxbsXLrUfkkRT.png
 ---
 
 页面里的 List 拖动来重新排列顺序。
