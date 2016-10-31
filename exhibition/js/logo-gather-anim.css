@@ -1,0 +1,47 @@
+.logo-gather-demo-edit-wrapper{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: #f1f1f1;
+  padding: 0 5%;
+  line-height: 45px;
+}
+.logo-gather-demo-edit-wrapper ul{
+  display: block;
+  width: 100%;
+  height: 46px;
+}
+.logo-gather-demo-edit-wrapper ul li:first-child{
+  margin-left: 0;
+}
+.logo-gather-demo-edit-wrapper ul li{
+  float: left;
+  vertical-align: middle;
+  margin: 0 5px;
+}
+
+.logo-gather-demo-wrapper{
+  position: relative;
+  background: #019BF0;
+  overflow: hidden;
+  height: 500px;
+}
+.logo-gather-demo-wrapper .point-wrapper {
+  position: absolute;
+}
+.logo-gather-demo-wrapper .point {
+  border-radius: 100%;
+}
+.logo-gather-demo-wrapper .right-side {
+  width: 300px;
+  height: 360px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+}
+.logo-gather-demo-wrapper .right-side * {
+  pointer-events: none;
+}
