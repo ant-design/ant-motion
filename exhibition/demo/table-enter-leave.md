@@ -11,7 +11,7 @@ image: https://zos.alipayobjects.com/rmsportal/wJDizWNyyxVhULT.png
 
 点击 Add 按钮为添加，Delete 为删除。
 
-由于接近视频演示需要变动高度，所以此示例破坏了 table 的布局，如查不想破坏表格的布局可以把 height 的动画去掉或可查看 [animate的实现方法](http://react-component.github.io/table/examples/animation.html)
+由于接近视频演示需要变动高度，所以此示例破坏了 table 的布局，如不想破坏表格的布局可以把 height 的动画去掉或可查看 [animate的实现方法](http://react-component.github.io/table/examples/animation.html)
 
 此效果为设计语言里的对象增加与对象删除的实现。[查看视频演示](/language/interact)
 
