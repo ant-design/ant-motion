@@ -9,7 +9,12 @@ image: https://zos.alipayobjects.com/rmsportal/YsRZqQwpiAVgWrX.png
 
 ---
 
-首页 logo 动画的实现代码
+首页 logo 动画的实现代码, 提供三个logo的样式， 还可自已添加 logo，如果需定制个性化的东西，请在 LogoGather 里修改。
+
+图片默认尺寸为 300 * 300;
+
+图片取点像素为控制点的个数，以图片宽度除以像素点来决定点的个数, 默认为 20, 每行每排为15个取点。
+
 
 ```jsx
 import TweenOne, { TweenOneGroup } from 'rc-tween-one';
