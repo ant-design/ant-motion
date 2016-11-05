@@ -45,7 +45,7 @@ export default class Templates extends React.Component {
     if (this.listPoint) {
       const list = ReactDOM.findDOMNode(this.listComp);
       const listHeight = list.getBoundingClientRect().height;
-      list.style = `margin-top: -${listHeight / 2}px`;
+      list.style.marginTop = `-${listHeight / 2}px`;
     }
     /* $(document).bind('mousemove', (e) => {
      console.log(e)
