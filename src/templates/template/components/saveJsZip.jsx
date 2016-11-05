@@ -68,7 +68,7 @@ const setMountPotion = () => {
     // 点的位置居中
     const list = ReactDOM.findDOMNode(this.refs.list);
     const listHeight = list.getBoundingClientRect().height;
-    list.style = \`margin-top: -\$\{listHeight / 2\}px\`;`);
+    list.style.marginTop = \` -\$\{listHeight / 2\}px\`;`);
 };
 
 const setScrollScreen = () => {
