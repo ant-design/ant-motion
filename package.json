@@ -1,5 +1,5 @@
 {
-  "name": "antd-motion",
+  "name": "ant-motion",
   "version": "1.3.1",
   "dependencies": {
     "antd": "~2.2.1",
@@ -35,10 +35,10 @@
     "bisheng-plugin-react": "^0.2.0",
     "bisheng-plugin-toc": "^0.3.0",
     "dora-plugin-upload": "^0.3.1",
-    "eslint": "^3.0.1",
+    "eslint": "^3.8.0",
     "eslint-config-airbnb": "latest",
     "eslint-plugin-babel": "^3.0.0",
-    "eslint-plugin-import": "^1.6.1",
+    "eslint-plugin-import": "^2.0.1",
     "eslint-plugin-jsx-a11y": "^2.0.1",
     "eslint-plugin-markdown": "*",
     "eslint-plugin-react": "^6.1.2",

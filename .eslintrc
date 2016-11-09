@@ -14,7 +14,9 @@
     "react/no-danger": 0,
     "react/jsx-no-target-blank": 0,
     "jsx-a11y/anchor-has-content": 0,
-    "no-useless-escape": 0
+    "no-useless-escape": 0,
+    "import/no-webpack-loader-syntax": 0,
+    "comma-dangle": ["error", "always-multiline"]
     // "no-unused-expressions": 0
   }
 }
