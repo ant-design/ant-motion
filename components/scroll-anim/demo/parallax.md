@@ -24,7 +24,7 @@ class Demo extends React.Component {
           className="code-box-shape"
         />
         <Parallax
-          animation={{ r: 360 }}
+          animation={{ rotate: 360 }}
           style={{ margin: '10px auto' }}
           className="code-box-shape"
         />
