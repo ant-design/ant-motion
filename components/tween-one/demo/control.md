@@ -13,30 +13,25 @@ import {Button} from 'antd';
 
 class Demo extends React.Component {
 
-  constructor() {
-    super(...arguments);
+  constructor(props) {
+    super(props);
     this.moment = null;
+    this.animation = { left: '70%', duration: 2000 };
     this.state = {
       moment: null,
       paused: true,
       reverse: false,
     };
-    [
-      'onClick',
-      'onPause',
-      'onReverse',
-      'onRestart',
-    ].forEach((method) => this[method] = this[method].bind(this));
   }
 
-  onPause() {
+  onPause = () => {
     this.setState({
       paused: true,
       moment: null,
     });
   }
 
-  onReverse() {
+  onReverse = () => {
     this.setState({
       paused: false,
       reverse: true,
@@ -44,7 +39,7 @@ class Demo extends React.Component {
     });
   }
 
-  onRestart() {
+  onRestart = () => {
     this.setState({
       paused: false,
       reverse: false,
@@ -56,7 +51,7 @@ class Demo extends React.Component {
     });
   }
 
-  onClick() {
+  onClick = () => {
     this.setState({
       paused: false,
       reverse: false,
@@ -69,7 +64,7 @@ class Demo extends React.Component {
     return (
       <div>
         <TweenOne
-          animation={{ left: '70%', duration: 2000 }}
+          animation={this.animation}
           paused={this.state.paused}
           reverse={this.state.reverse}
           moment={this.state.moment}

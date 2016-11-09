@@ -12,18 +12,24 @@ import TweenOne from 'rc-tween-one';
 
 class Demo extends React.Component {
 
-  constructor() {
-    super(...arguments);
+  constructor(props) {
+    super(props);
     this.moment = null;
+    this.animation = [
+      { left: '-40%' },
+      { left: '40%' },
+      { top: '30px' },
+      { scale: 0.7 },
+      { scale: 1 },
+      { top: 0 },
+      { left: '0%' },
+    ];
     this.state = {
       moment: null,
     };
-    [
-      'onChange',
-    ].forEach((method) => this[method] = this[method].bind(this));
   }
 
-  onChange(e) {
+  onChange = (e) => {
     if (e.mode === 'onComplete' && e.index === 6) {
       setTimeout(() => {
         this.setState({
@@ -40,15 +46,7 @@ class Demo extends React.Component {
   render() {
     return (
       <TweenOne
-        animation={[
-          { left: '-40%' },
-          { left: '40%' },
-          { top: '30px' },
-          { scale: 0.7 },
-          { scale: 1 },
-          { top: 0 },
-          { left: '0%' },
-        ]}
+        animation={this.animation}
         paused={this.props.paused}
         onChange={this.onChange}
         moment={this.state.moment}

@@ -13,14 +13,15 @@ import TweenOne from 'rc-tween-one';
 
 class Demo extends React.Component {
 
-  constructor() {
-    super(...arguments);
+  constructor(props) {
+    super(props);
+    this.animation = { rotate: 360, repeat: -1, duration: 1000 };
   }
 
   render() {
     return (
       <TweenOne
-        animation={{ rotate: 360, repeat: -1, duration: 1000 }}
+        animation={this.animation}
         paused={this.props.paused}
         className="code-box-shape"
       />

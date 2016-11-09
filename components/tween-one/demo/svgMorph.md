@@ -15,6 +15,18 @@ TweenOne.plugins.push(SvgMorphPlugin);
 
 class Demo extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.animation = {
+      d: 'M60,10L60,90L140,90L140,10Z',
+      yoyo: true, 
+      repeat: -1, 
+      duration: 1000,
+    };
+    this.state = {
+      tweenData: '100%',
+    };
+  }
   render() {
     return (
       <div style={{ textAlign: 'center', marginTop: 40 }}>
@@ -22,12 +34,7 @@ class Demo extends React.Component {
           style={{ display: 'block', margin: 'auto' }}
         >
           <TweenOne
-            animation={{ 
-              d: 'M60,10L60,90L140,90L140,10Z', 
-              yoyo: true, 
-              repeat: -1, 
-              duration: 1000 
-            }}
+            animation={this.animation}
             style={{ fill: '#019BF0'}}
             paused={this.props.paused}
             component="path"

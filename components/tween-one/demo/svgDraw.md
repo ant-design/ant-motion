@@ -16,8 +16,8 @@ const dataStartArr = ['30 150', '50% 50%', '30% 200', '20 30%', 0, '100%'];
 let i = 0;
 class Demo extends React.Component {
 
-  constructor() {
-    super(...arguments);
+  constructor(props) {
+    super(props);
     this.state = {
       tweenData: '100%',
     };

@@ -12,14 +12,15 @@ import TweenOne from 'rc-tween-one';
 
 class Demo extends React.Component {
 
-  constructor() {
-    super(...arguments);
+  constructor(props) {
+    super(props);
+    this.animation = { scale: 0, yoyo: true, repeat: -1, duration: 1000 };
   }
 
   render() {
     return (
       <TweenOne
-        animation={{ scale: 0, yoyo: true, repeat: -1, duration: 1000 }}
+        animation={this.animation}
         paused={this.props.paused}
         style={{ transform: 'scale(1)' }}
         className="code-box-shape"

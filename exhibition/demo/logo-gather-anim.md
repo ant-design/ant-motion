@@ -326,7 +326,7 @@ class Edit extends React.Component {
           <li><Button type="primary" onClick={this.onClick}>更新</Button></li>
         </ul>
         <div style={{ lineHeight: '32px' }}>
-          注：图片尺寸为正方形的PNG或SVG，请确保图片开启跨域；像数点的数值越大则点越少，为流畅最小值为15
+          注：图片尺寸为正方形的PNG或SVG，请确保图片地址已开启跨域；像数点的数值越大则点越少，为流畅最小值为15
         </div>
       </div>
     </div>);

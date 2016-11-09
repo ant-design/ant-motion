@@ -1,11 +1,11 @@
 ---
-order: 8
+order: 10
 title: 曲线动画
 mouseEnter: true
 vertical: true
 ---
 
-贝赛尔曲线动画。
+贝赛尔曲线动画。功能重复，即将去除，请使用 PathPlugin;
 
 
 ```jsx
@@ -15,29 +15,28 @@ import BezierPlugin from 'rc-tween-one/lib/plugin/BezierPlugin';
 TweenOne.plugins.push(BezierPlugin);
 class Demo extends React.Component {
 
-  constructor() {
-    super(...arguments);
+  constructor(props) {
+    super();
+    this.animation = {
+      bezier: {
+        type: 'soft',
+        autoRotate: true,
+        vars: [
+          { x: 150, y: 150 },
+          { x: 300, y: 0 },
+          { x: 450, y: 150 },
+          { x: 600, y: 0 },
+        ],
+      },
+      duration: 5000,
+    };
   }
 
   render() {
     return (
       <div style={{ position: 'relative', height: 200, width: 650, margin: '40px auto' }}>
         <TweenOne
-          animation={{
-            bezier: {
-              type: 'soft',
-              autoRotate: true,
-              vars: [
-                { x: 150, y: 150 },
-                { x: 300, y: 0 },
-                { x: 450, y: 150 },
-                { x: 600, y: 0 },
-              ],
-              yoyo: true,
-              repeat: -1,
-            },
-            duration: 5000,
-          }}
+          animation={this.animation}
           style={{ margin: 0 }}
           className="code-box-shape"
           paused={this.props.paused}
