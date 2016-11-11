@@ -26,7 +26,7 @@ export default class Page1 extends React.Component {
       playScale={0.8}
       className="home-content page1 vh"
       hideProps={{ code: { reverse: true } }}
-      scrollName="page1"
+      id="page1"
     >
       <QueueAnim className="page-text" key="text" type="bottom" leaveReverse delay={100}>
         <h1 key="h1">AntMotion 让动效更简单</h1>

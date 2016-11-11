@@ -18,7 +18,7 @@ export default class Banner extends React.Component {
   };
 
   render() {
-    return (<ScrollElement scrollName="banner" className={`${this.props.className}-wrapper`}>
+    return (<ScrollElement id="banner" className={`${this.props.className}-wrapper`}>
       <svg className={`${this.props.className}-bg-center`} width="100%" viewBox="0 0 1200 800">
         <TweenOne
           component="circle"

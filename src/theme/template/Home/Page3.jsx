@@ -19,7 +19,7 @@ export default class Page3 extends React.Component {
       className="home-content page3"
       playScale={0.3}
       hideProps={{ video: { reverse: true } }}
-      scrollName="page3"
+      id="page3"
     >
       <QueueAnim
         key="text"

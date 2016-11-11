@@ -45,7 +45,7 @@ export default class Page2 extends React.Component {
       className="home-content page2"
       hideProps={{ img: { reverse: true }, a: { reverse: true } }}
       playScale={0.8}
-      scrollName="page2"
+      id="page2"
     >
       <QueueAnim
         className="page-text"

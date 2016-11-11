@@ -29,10 +29,10 @@ class Home extends React.Component {
       <DocumentTitle title="Ant Motion - 一个 React 的动效设计解决方案">
         <div className="home-wrapper">
           <div className="nav-wrapper">
-            <ScrollLink location="banner" showHeightActive={['100%', '30%']} />
-            <ScrollLink location="page1" showHeightActive="30%" />
-            <ScrollLink location="page2" showHeightActive={['30%', '70%']} />
-            <ScrollLink location="page3" showHeightActive="70%" />
+            <ScrollLink to="banner" showHeightActive={['100%', '30%']} />
+            <ScrollLink to="page1" showHeightActive="30%" />
+            <ScrollLink to="page2" showHeightActive={['30%', '70%']} />
+            <ScrollLink to="page3" showHeightActive="70%" />
           </div>
           <Banner />
           <Page1

@@ -23,6 +23,7 @@ vertical: true
 }
 </style>
 
+[更多 Demo](http://react-component.github.io/scroll-anim/) 
 
 ---
 
@@ -72,11 +73,11 @@ React.render((<ScrollParallax vars={{x:100}}>Parallax示例</ScrollParallax>), m
 import { Link, Element } from 'rc-scroll-anim';
 React.render(<div>
   <div className="nav">
-    <Link className="nav-list" location="page0">nav0</Link>
-    <Link className="nav-list" location="page1">nav1</Link>
+    <Link className="nav-list" to="page0">nav0</Link>
+    <Link className="nav-list" to="page1">nav1</Link>
   </div>
-  <Element className="pack-page" scrollName="page0">示例</Element>
-  <Element className="pack-page" scrollName="page1">示例</Element>
+  <Element className="pack-page" id="page0">示例</Element>
+  <Element className="pack-page" id="page1">示例</Element>
 </div>, mountNode);
 ```
 
@@ -91,15 +92,23 @@ scrollScreen.unMount();
 > Link 例子等更多例子 [查看更多 demo](http://react-component.github.io/scroll-anim/)
 
 ## API
-### OverPack 说明
+
+## Element 说明
+
 |   参数   |    类型    |   默认  |  说明   |
 |---------|------------|---------|--------|
-| component | string | div | 组件标签 |
+| id | string         | null    | 定位需要的 id，`parallax` 的 `location` 或 `link` 的 `to`, 都需要以此元素做定位 |
+| component | string         |  div  | 组件标签            |
 | playScale |  number / array  |  `0.5` | 要在屏幕哪个区域开始播放， 0.5 为屏幕中间, 如果为 array 时 replay 为 true, [bottom-enter, top-leave] enter为进入是的播放点， topLeave 为出屏的比例(当前显示屏的上面一屏)的百分点。topLeave 必须大于等于 bottomEnter。 |
-| always  | boolean | true | 重复播放，如为 false 将只进入一遍，不再触发出场效果 |
-| scrollName | string | null | 需要定位的名称，parallax的 location 或 link 的 location, 都需要以此元素做定位 |
-| replay  |  boolean | false | 每次显示当前时是否都要动画, `false` 为只下往上滚时才有动画 |
 | onChange | func    | null  | 变更回调; callback({ mode, scrollName }); mode 为 `enter` 或 `leave` 两种状态 |
+
+
+### OverPack 说明
+> `OverPack` 继承 `Element`, `component`,`playScale`, `onChange` 参考 `Element`
+|   参数   |    类型    |   默认  |  说明   |
+|---------|------------|---------|--------|
+| always  | boolean | true | 重复播放，如为 false 将只进入一遍，不再触发出场效果 |
+| replay  |  boolean | false | 每次显示当前时是否都要动画, `false` 为只上往下滚时才有动画 |
 | hideProps | object | null  | v0.3.0 将 children 里的 hideProps 迁到这里，将 children 里通过切换 children 来做动画的做为默认(原来的：{ children: null })。</br>如果是 `rc-tween-one` 通过倒放来切换动画(Group为前一种方法), 需要在此设置： { userKey: { reverse: true }} userKey 为你在标签上的 key。 |
 
 ## Parallax 说明
@@ -117,30 +126,27 @@ scrollScreen.unMount();
 | playScale | array | `[0, 1]` | 播放的区域段，第一个为开始的窗口百分比，第二个为结束的窗口百分比，当第一个数为0时，将从窗口底部开始播放;<br /> timeline 时, 将默认加上前面的播放比例, 如: <br />`[{ playScale: [0, 0.2] }, { playScale: [0, 0.8] }]`, 后面的0.8值相当于1, 在屏幕顶部结束 |
 | ease    | string  | `easeInQutQuad` | 动画缓动参数 |
 | onUpdate | function | - | 更新时回调, 返回 ease 的百分比 |
-| onStart | function | - | 开始时回调 `playScale[0]`  |
-| onComplete | function | - | 到达回调 `playScale[1]` |
+| onStart | function | - | 上往下滚动开始时回调 `playScale[0]`  |
+| onComplete | function | - | 上往下滚动到达回调 `playScale[1]` |
+| onStartBack | function | - | 从下往上滚动底部开始时回调 `playScale[1]`  |
+| onCompleteBack | function | - | 从下往上滚动到达顶部回调 `playScale[0]` |
 
 ## Link 说明
 
 |   参数   |    类型    |   默认  |  说明   |
 |---------|------------|---------|--------|
-| location | string | null | 必需; 指定元素到达顶部; `Element` `Parallax` `OverPack`的 scrollName 值, 元素必需是唯一 |
+| to | string | null | 必需; 指定元素到达顶部; `Element` `Parallax` `OverPack`的 scrollName 值, 元素必需是唯一 |
+| toHash | boolean  | true  | 默认将 `to` 里的值添加到 url 链接; |
 | duration | number | 450 | 滚动动画的时间 |
 | ease |  string | `easeInQutQuad` | 动画缓动参数 |
 | active | string | `active` | 选中时的样式 |
-| showHeightActive | sting / number / array | 0 |如设定了值，滚动到距顶部还有指定值的时添加 `active` <br />`link` 标签被附于 `active` 值; 在出场时是还有指定值时 <br/>`link` 标签移除 `active` 值; 如果为Array时，第一个为进场，第二个为出场 |
+| showHeightActive | sting / number / array | `50%` | 滚动到距顶部还有`50%`的时, `link` 标签被选中同时附于 `active` 值; <br/> 在出场时是还有 `50%` 时 `link` 标签移除 `active` 值; 如果为Array时，第一个为进场，第二个为出场 |
 | toShowHeight | boolean | false | 点击时是否滚动到 `showHeightActive` 的值上 |
 | offsetTop    | number  | 0     | 到达元素距顶部位置 |
 | onFocus | function | - | 选中时的回调, 返回参数 { target, to } |
 | onBlur | function | - |失去焦点时回调, 返回参数 { target, to } |
+| onAsynchronousAddEvent | func | -  | 异步添加 `scroll` 事件接口, callback(func); [详细参考](http://react-component.github.io/scroll-anim/examples/linkAsynchronous.html)
 | component |string | div | 同上 |
-
-## Element 说明
-
-|   参数   |    类型    |   默认  |  说明   |
-|---------|------------|---------|--------|
-| scrollName | string         | null    | 需要定位的名称，`parallax` 的 location 或 `link` 的 location, 都需要以此元素做定位 |
-| component | string         |  div  | 同上            |
 
 ## scrollScreen 说明
 
