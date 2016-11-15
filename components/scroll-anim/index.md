@@ -104,7 +104,9 @@ scrollScreen.unMount();
 
 
 ### OverPack 说明
+
 > `OverPack` 继承 `Element`, `component`,`playScale`, `onChange` 参考 `Element`
+
 |   参数   |    类型    |   默认  |  说明   |
 |---------|------------|---------|--------|
 | always  | boolean | true | 重复播放，如为 false 将只进入一遍，不再触发出场效果 |

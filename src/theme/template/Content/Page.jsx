@@ -100,9 +100,9 @@ class Page extends React.Component {
           {isNav ? meta.chinese : <span>{meta.chinese || meta.english}</span>}
         </Link>);
       linkToChildren = isComponent ?
-        <a href={`#${meta.id}`} onClick={this.scrollClick}>
+        (<a href={`#${meta.id}`} onClick={this.scrollClick}>
           {meta.title}
-        </a> : linkToChildren;
+        </a>) : linkToChildren;
       return (<li
         key={meta.english || meta.chinese || meta.id}
         className={className}

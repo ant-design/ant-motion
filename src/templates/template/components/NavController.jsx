@@ -81,7 +81,7 @@ class NavController extends React.Component {
 
   shorten = (url, cb) => {
     // 调用 dwz.cn 服务, 使用中转服务器发请求
-    const apiUrl = 'http://motion.applinzi.com/';
+    const apiUrl = '//motion.applinzi.com/';
     const encodedUrl = encodeURIComponent(url);
 
     const reqUrl = `${apiUrl}?url=${encodedUrl}`;
