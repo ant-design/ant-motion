@@ -7,15 +7,22 @@ import Tooltip from 'antd/lib/tooltip';
 import message from 'antd/lib/message';
 import CopyToClipboard from 'react-copy-to-clipboard';
 import scrollEvent from 'rc-scroll-anim/lib/EventDispatcher';
-import { currentScrollTop } from 'rc-scroll-anim/lib/util';
+import { currentScrollTop } from '../../../theme/template/utils';
 import { getURLData } from '../utils';
-import saveJsZip from './saveJsZip';
-import './Nav.less';
 
 const confirm = Modal.confirm;
 const $ = window.$;
 
 class NavController extends React.Component {
+  static propTypes = {
+    className: PropTypes.string,
+    config: PropTypes.object,
+  };
+
+  static defaultProps = {
+    className: 'edit-nav',
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -135,12 +142,11 @@ class NavController extends React.Component {
   }
 
   render() {
-    const className = 'tool-nav';
     return (
-      <TweenOne animation={{ y: 64, type: 'from' }} className={this.props.className}>
+      <div className={this.props.className}>
         <TweenOne
-          animation={{ y: this.state.show ? 0 : 64 }}
-          className={`${className}-bar`}
+          animation={{ y: this.state.show ? 0 : -64 }}
+          className={`${this.props.className}-bar`}
         >
           <ul className="undo-redo-bar">
             <Tooltip title="Undo">
@@ -164,21 +170,13 @@ class NavController extends React.Component {
           </ul>
         </TweenOne>
         <div
-          className={`${className}-icon`}
+          className={`${this.props.className}-icon`}
           onClick={this.iconClick}
         >
           <Icon type="caret-down" className={this.state.show ? '' : 'up'} />
         </div>
-      </TweenOne>
+      </div>
     );
   }
 }
-NavController.propTypes = {
-  className: PropTypes.string,
-  config: PropTypes.object,
-};
-
-NavController.defaultProps = {
-  className: 'tool-nav',
-};
 export default NavController;

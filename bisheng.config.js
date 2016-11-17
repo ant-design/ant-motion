@@ -12,6 +12,10 @@ module.exports = {
       theme: './src/theme',
       htmlTemplate: './src/theme/static/index.html',
     },
+    edit: {
+      theme: './src/edit',
+      htmlTemplate: './src/edit/static/index.html',
+    },
     templates: {
       theme: './src/templates',
       htmlTemplate: './src/templates/static/index.html',

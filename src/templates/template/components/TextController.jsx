@@ -1,6 +1,8 @@
 import React, { PropTypes } from 'react';
 // import Animate from 'rc-animate';
-import { Input, Button, Icon } from 'antd';
+import Input from 'antd/lib/input';
+import Button from 'antd/lib/button';
+import Icon from 'antd/lib/icon';
 import './text.less';
 
 import { ping, getURLData } from '../utils';
