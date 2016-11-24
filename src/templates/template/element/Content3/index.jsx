@@ -1,7 +1,7 @@
 import React from 'react';
+import QueueAnim from 'rc-queue-anim';
 import TweenOne from 'rc-tween-one';
 import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
-import VideoPlay from 'react-sublime-video';
 import '../../../static/content.less';
 import './index.less';
 
@@ -13,13 +13,13 @@ class Content extends React.Component {
   };
 
   static defaultProps = {
-    className: 'content3',
+    className: 'content1',
   };
 
 
   render() {
     const props = { ...this.props };
-    const { video, title, content } = this.props.dataSource.block1;
+    const { img, title, content } = this.props.dataSource.block1;
     delete props.dataSource;
     delete props.name;
     return (
@@ -27,30 +27,24 @@ class Content extends React.Component {
         <OverPack
           scrollName={this.props.name}
           className={`content-template ${props.className}`}
-          hideProps={{ h1: { reverse: true }, p: { reverse: true }, video: { reverse: true } }}
+          hideProps={{ img: { reverse: true } }}
         >
-          <TweenOne
-            animation={{ y: '+=30', opacity: 0, type: 'from' }}
-            component="h1"
-            key="h1"
-            reverseDelay={300}
+          <QueueAnim
+            type="left"
+            className={`${props.className}-text`}
+            key="text"
+            leaveReverse
+            ease={['easeOutCubic', 'easeInCubic']}
           >
-            {title}
-          </TweenOne>
+            <h1 key="h1">{title}</h1>
+            <p key="p">{content}</p>
+          </QueueAnim>
           <TweenOne
-            animation={{ y: '+=30', opacity: 0, type: 'from', delay: 200 }}
-            component="p"
-            key="p"
-            reverseDelay={200}
+            key="img"
+            animation={{ x: '+=30', opacity: 0, type: 'from' }}
+            className={`${props.className}-img`}
           >
-            {content}
-          </TweenOne>
-          <TweenOne
-            key="video"
-            animation={{ y: '+=30', opacity: 0, type: 'from', delay: 300 }}
-            className={`${props.className}-video`}
-          >
-            <VideoPlay loop src={video} width="100%" />
+            <img height="100%" src={img} />
           </TweenOne>
         </OverPack>
       </div>

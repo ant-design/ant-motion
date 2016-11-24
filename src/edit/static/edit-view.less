@@ -1,0 +1,61 @@
+@import 'custom';
+
+@editView: edit-view;
+.@{editView} {
+  color: fade(@text-color-light, 45);
+  h3 {
+    color: @text-color-light;
+    position: relative;
+    span {
+      background: @edit-bar-color;
+      position: relative;
+      z-index: 1;
+      padding-right: 15px;
+    }
+    &:after {
+      content: '';
+      display: block;
+      height: 1px;
+      background: @edit-line-color;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      margin: auto;
+    }
+  }
+  ul li {
+    margin: 10px auto;
+    & > span {
+      width: 35%;
+      vertical-align: top;
+      height: 28px;
+      line-height: 28px;
+      display: inline-block;
+      & i {
+        margin-left: 5px;
+        color: fade(@text-color-light, 75);
+      }
+    }
+    p {
+      width: 65%;
+      padding-left: 10px;
+      display: inline-block;
+      position: relative;
+      em {
+        width: calc(~"50% - 3px");
+        display: inline-block;
+        margin: 0 6px 6px 0;
+        &:nth-child(2n) {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+  .button-wrapper{
+    padding-left: calc(~"35% + 10px");
+    padding-top: 15px;
+    border-top: 1px solid @edit-line-color;
+    margin-top: 15px;
+  }
+}

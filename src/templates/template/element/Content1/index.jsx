@@ -1,56 +1,79 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
+import Button from 'antd/lib/button';
 import QueueAnim from 'rc-queue-anim';
 import TweenOne from 'rc-tween-one';
+import BannerAnim, { Element } from 'rc-banner-anim';
+import Icon from 'antd/lib/icon';
+import 'rc-banner-anim/assets/index.css';
 import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
-import '../../../static/content.less';
 import './index.less';
 
-class Content extends React.Component {
-
-  static propTypes = {
-    name: React.PropTypes.string,
-    dataSource: React.PropTypes.object,
-  };
-
-  static defaultProps = {
-    className: 'content1',
-  };
-
-
+const BgElement = Element.BgElement;
+class Banner extends React.Component {
   render() {
-    const props = { ...this.props };
-    const { img, title, content } = this.props.dataSource.block1;
-    delete props.dataSource;
-    delete props.name;
-    return (
-      <div {...props} className="content-template-wrapper">
-        <OverPack
-          scrollName={this.props.name}
-          className={`content-template ${props.className}`}
-          hideProps={{ img: { reverse: true } }}
+    const children = Object.keys(this.props.dataSource).map((key, i) => {
+      const item = this.props.dataSource[key];
+      return (<Element
+        key={i}
+        prefixCls="banner-user-elem"
+      >
+        <BgElement
+          className="bg"
+          key="bg"
+          style={{
+            backgroundImage: `url(${item.bgImg})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        />
+        <QueueAnim
+          type={['bottom', 'top']} delay={200}
+          className={`${this.props.className}-title`} key="text"
         >
-          <QueueAnim
-            type="left"
-            className={`${props.className}-text`}
-            key="text"
-            leaveReverse
-            ease={['easeOutCubic', 'easeInCubic']}
-          >
-            <h1 key="h1">{title}</h1>
-            <p key="p">{content}</p>
-          </QueueAnim>
-          <TweenOne
-            key="img"
-            animation={{ x: '+=30', opacity: 0, type: 'from' }}
-            className={`${props.className}-img`}
-          >
-            <img height="100%" src={img} />
-          </TweenOne>
-        </OverPack>
-      </div>
+          {item.logo ? <span className="logo" key="logo"><img width="100%" src={item.logo} /></span> : null}
+          {item.title ? <h1 key="h1">{item.title}</h1> : null}
+          <p key="content">{item.content}</p>
+          <Button type="ghost" key="button">{item.button}</Button>
+        </QueueAnim>
+      </Element>);
+    });
+    const props = { ...this.props };
+    delete props.name;
+    delete props.dataSource;
+    return (
+      <OverPack
+        scrollName={this.props.name}
+        {...props}
+        hideProps={{ icon: { reverse: true }, banner: { reverse: true } }}
+      >
+        <TweenOne
+          key="banner"
+          animation={{ opacity: 0, type: 'from' }}
+          component={BannerAnim}
+        >
+          {children}
+        </TweenOne>
+        <TweenOne
+          animation={{ y: '-=20', yoyo: true, repeat: -1, duration: 1000 }}
+          className={`${this.props.className}-icon`}
+          style={{ bottom: 40 }}
+          key="icon"
+        >
+          <Icon type="down" />
+        </TweenOne>
+      </OverPack>
     );
   }
 }
 
+Banner.propTypes = {
+  className: PropTypes.string,
+  name: PropTypes.string,
+  dataSource: PropTypes.object,
+};
 
-export default Content;
+Banner.defaultProps = {
+  className: 'banner1',
+};
+
+export default Banner;

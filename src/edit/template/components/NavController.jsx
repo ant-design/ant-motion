@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-import TweenOne from 'rc-tween-one';
 import Button from 'antd/lib/button';
 import Icon from 'antd/lib/icon';
 import Modal from 'antd/lib/modal';
@@ -8,7 +7,6 @@ import message from 'antd/lib/message';
 import CopyToClipboard from 'react-copy-to-clipboard';
 import scrollEvent from 'rc-scroll-anim/lib/EventDispatcher';
 import { currentScrollTop } from '../../../theme/template/utils';
-import { getURLData } from '../utils';
 
 const confirm = Modal.confirm;
 const $ = window.$;
@@ -26,8 +24,6 @@ class NavController extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      show: !getURLData('mode'),
-      mode: !getURLData('mode'),
     };
     this.scrollTop = currentScrollTop();
     this.scrollName = 'stop';
@@ -122,17 +118,6 @@ class NavController extends React.Component {
     });
   }
 
-  switchMode = () => {
-    const mode = !getURLData('mode');
-    const otherUrl = this.removeUrlData('mode');
-    location.hash = otherUrl ? `#${encodeURIComponent(otherUrl)}${mode ? `&mode=${mode}` : ''}`
-      : `${mode ? `#mode=${mode}` : ''}`;
-    this.setState({
-      show: !mode,
-      mode: !mode,
-    });
-  }
-
   urlBack = () => {
     history.back();
   }
@@ -144,8 +129,7 @@ class NavController extends React.Component {
   render() {
     return (
       <div className={this.props.className}>
-        <TweenOne
-          animation={{ y: this.state.show ? 0 : -64 }}
+        <div
           className={`${this.props.className}-bar`}
         >
           <ul className="undo-redo-bar">
@@ -162,18 +146,12 @@ class NavController extends React.Component {
             <li><a onClick={this.resetData}>重置参数</a></li>
             <li>
               <Button type="primary" onClick={this.switchMode}>
-                {!this.state.mode ? '编辑模式' : '预览模式'}
+                生成编辑链接
               </Button>
             </li>
-            <li><Button type="primary" onClick={this.makePageURL}>生成预览</Button></li>
+            <li><Button type="primary" onClick={this.makePageURL}>生成预览链接</Button></li>
             <li><Button type="primary" onClick={() => { saveJsZip(this.props.config); }}>保存代码</Button></li>
           </ul>
-        </TweenOne>
-        <div
-          className={`${this.props.className}-icon`}
-          onClick={this.iconClick}
-        >
-          <Icon type="caret-down" className={this.state.show ? '' : 'up'} />
         </div>
       </div>
     );

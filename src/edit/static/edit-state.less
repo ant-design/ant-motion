@@ -1,0 +1,21 @@
+@import "common";
+.edit-state{
+  width: calc(~"100% - 320px");
+  height: 100%;
+  position: absolute;
+  pointer-events: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  .enter-box{
+    border: 1px dotted fade(@line-deep-color, 65);
+    position: absolute;
+    color: @primary-color;
+  }
+  .layout{
+    border: 1px solid @primary-color;
+    position: absolute;
+  }
+}
+

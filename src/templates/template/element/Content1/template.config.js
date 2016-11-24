@@ -11,26 +11,109 @@ export default {
       key: 'height',
       the: 'style',
       name: '区块高度',
-      value: '50%',
+      value: '100%',
+      calc: true, // 如果是在导航后第一个区块，是否减去导航高度
       remark: '请填写上单位 "px" 或 "%" ',
     },
     {
       key: 'block1',
-      name: '内容区域',
+      name: '第一屏',
       value: {
-        img: {
-          name: '图片',
-          value: 'https://zos.alipayobjects.com/rmsportal/tvQTfCupGUFKSfQ.png',
-          remark: '尺寸参考:268*290',
+        top: {
+          name: '距离顶部位置',
+          value: '25%',
+          remark: '请填写上单位 "px" 或 "%" ',
+        },
+        logo: {
+          name: 'logo图片',
+          value: 'https://zos.alipayobjects.com/rmsportal/HqnZZjBjWRbjyMr.png',
+          remark: '尺寸参考:320*254',
         },
         title: {
           name: '标题',
-          value: '分布式中间件',
+          value: '',
+          remark: '标题或 logo 填写一个就足够了',
         },
         content: {
-          name: '详细说明',
-          value: '金融级联机交易处理中间件，大规模分布式计算机，数万笔/秒级并发能力，严格保证交易数据统一性。' +
-          '金融级联机交易处理中间件，大规模分布式计算机，数万笔/秒级并发能力，严格保证交易数据统一性。',
+          name: '广告语',
+          value: '一个高效的页面动画解决方案',
+        },
+        button: {
+          name: '按钮文案',
+          value: 'Learn More',
+        },
+        bgImg: {
+          name: '背景图片',
+          value: 'https://zos.alipayobjects.com/rmsportal/hzPBTkqtFpLlWCi.jpg',
+          remark: '尺寸参考:1920*1080',
+        },
+      },
+    },
+    {
+      key: 'block2',
+      name: '第二屏',
+      value: {
+        top: {
+          name: '距离顶部位置',
+          value: '25%',
+          remark: '请填写上单位 "px" 或 "%" ',
+        },
+        logo: {
+          name: 'logo图片',
+          value: 'https://zos.alipayobjects.com/rmsportal/HqnZZjBjWRbjyMr.png',
+          remark: '尺寸参考:320*254',
+        },
+        title: {
+          name: '标题',
+          value: '',
+          remark: '标题或 logo 填写一个就足够了',
+        },
+        content: {
+          name: '广告语',
+          value: '一个高效的页面动画解决方案',
+        },
+        button: {
+          name: '按钮文案',
+          value: 'Learn More',
+        },
+        bgImg: {
+          name: '背景图片',
+          value: 'https://zos.alipayobjects.com/rmsportal/xHxWkcvaIcuAdQl.jpg',
+          remark: '尺寸参考:1920*1080',
+        },
+      },
+    },
+    {
+      key: 'block3',
+      name: '第三屏',
+      value: {
+        top: {
+          name: '距离顶部位置',
+          value: '25%',
+          remark: '请填写上单位 "px" 或 "%" ',
+        },
+        logo: {
+          name: 'logo图片',
+          value: 'https://zos.alipayobjects.com/rmsportal/glzXQktozLMgGtE.png',
+          remark: '尺寸参考:320*254',
+        },
+        title: {
+          name: '标题',
+          value: '',
+          remark: '标题或 logo 填写一个就足够了',
+        },
+        content: {
+          name: '广告语',
+          value: '一个高效的页面动画解决方案',
+        },
+        button: {
+          name: '按钮文案',
+          value: 'Learn More',
+        },
+        bgImg: {
+          name: '背景图片',
+          value: 'https://zos.alipayobjects.com/rmsportal/gGlUMYGEIvjDOOw.jpg',
+          remark: '尺寸参考:1920*1080',
         },
       },
     },

@@ -1,0 +1,92 @@
+export default {
+  nav: {
+    name: '导航选择',
+    order: 0,
+    remark: '导航仅可选择一项',
+    data: [
+      {
+        src: 'https://zos.alipayobjects.com/rmsportal/ZjfIAdkDVlpnilf.jpg',
+        text: '普通型导航',
+      },
+      {
+        src: 'https://zos.alipayobjects.com/rmsportal/UTHsfGMNXXbpEoL.jpg',
+        text: '带用户型导航',
+      },
+    ],
+  },
+  content: {
+    name: '内容选择',
+    checkbox: true,
+    order: 2,
+    remark: '可添加多项',
+    data: [
+      {
+        src: 'https://zos.alipayobjects.com/rmsportal/gyseCGEPqWjQpYF.jpg',
+        text: '单张背景图Banner',
+      },
+      {
+        src: 'https://zos.alipayobjects.com/rmsportal/chnhazooyzrjWSv.jpg',
+        text: '多张背景图Banner',
+      },
+      {
+        src: 'https://zos.alipayobjects.com/rmsportal/CXrFvvZqkMwMHZo.jpg',
+        text: '产品特性介绍1',
+      },
+      {
+        src: 'https://zos.alipayobjects.com/rmsportal/WxCxyIKjMdCUUSJ.jpg',
+        text: '产品特性介绍2',
+      },
+      {
+        src: 'https://zos.alipayobjects.com/rmsportal/pUFfIJXizTljrgZ.jpg',
+        text: '多个功能点介绍',
+      },
+      {
+        src: 'https://zos.alipayobjects.com/rmsportal/ndmJrWwkQloTtKg.jpg',
+        text: 'video页面展示',
+      },
+      {
+        src: 'https://zos.alipayobjects.com/rmsportal/sgTBpfjKcsXWDtq.jpg',
+        text: '案例介绍页面',
+      },
+      {
+        src: 'https://zos.alipayobjects.com/rmsportal/yNbeUIWcDNZFKTY.jpg',
+        text: '单个模块介绍',
+      },
+      {
+        src: 'https://zos.alipayobjects.com/rmsportal/CfSeDOXHJzJuPbz.jpg',
+        text: '多个模块介绍',
+      },
+      { disabled: true, src: 'https://zos.alipayobjects.com/rmsportal/MnbozfSRmOwdxvH.jpg' },
+      { disabled: true, src: 'https://zos.alipayobjects.com/rmsportal/cMigmCVGBaJkuYG.jpg' },
+      { disabled: true, src: 'https://zos.alipayobjects.com/rmsportal/VKeYAOSRQVtMccj.jpg' },
+      { disabled: true, src: 'https://zos.alipayobjects.com/rmsportal/TAvpiZHalFQVewZ.jpg' },
+    ],
+  },
+  footer: {
+    name: '页尾选择',
+    order: 3,
+    remark: '页尾仅可选择一项',
+    data: [
+      {
+        src: 'https://zos.alipayobjects.com/rmsportal/aJutnIvTFWkEAWj.jpg',
+        text: '简单型页尾',
+        id: 'footer',
+      },
+      {
+        src: 'https://zos.alipayobjects.com/rmsportal/PEXAhbheOHVTyfM.jpg',
+        text: '带信息尾页',
+        id: 'footer',
+      },
+    ],
+  },
+  other: {
+    name: '其它功能选择',
+    order: 4,
+    other: true,
+    data: [
+      { label: '悬浮导航', value: 'fixed' },
+      { label: '侧边小点（页面里的分屏锚点滚动）', value: 'point' },
+      { label: '整屏滚动', value: 'full' },
+    ],
+  },
+};

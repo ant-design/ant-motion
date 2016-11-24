@@ -1,5 +1,9 @@
 import './common.less';
-import './nav.less';
-import './controls.less';
-import '../../theme/static/ant-d.less';
+import './navbar.less';
+import './edit-controls.less';
+import './edit-view.less';
+import './list-view.less';
+import './preview.less';
+import './edit-state.less';
+import './ant-d.less';
 

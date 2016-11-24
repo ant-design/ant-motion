@@ -4,38 +4,47 @@ import QueueAnim from 'rc-queue-anim';
 import TweenOne from 'rc-tween-one';
 import Icon from 'antd/lib/icon';
 import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
-import './index.less';
+&less&
 
 class Banner extends React.Component {
   render() {
-    const { block1 } = this.props.dataSource;
-    const { top, logo, title, content, button, bgImg } = block1;
-    const props = { ...this.props };
-    delete props.dataSource;
-    delete props.name;
     return (
       <OverPack
         replay
-        scrollName={this.props.name}
         playScale={[0.3, 0.1]}
         {...props}
         style={{
-          backgroundImage: `url(${bgImg})`,
-          ...props.style,
+          &banner0-style&
         }}
         hideProps={{ icon: { reverse: true } }}
       >
         <QueueAnim
           type={['bottom', 'top']}
           delay={200}
-          className={`${this.props.className}-title`}
+          className={`${this.props.className}-wrapper`}
           key="text"
-          style={{ top }}
+          id={`${this.props.id}-wrapper`}
+          style={{ &banner0_wrapper-style& }}
         >
-          {logo ? <span className="logo" key="logo"><img width="100%" src={logo} /></span> : null}
-          {title ? <h1 key="h1">{title}</h1> : null}
-          <p key="content">{content}</p>
-          <Button type="ghost" key="button">{button}</Button>
+          <span
+            className="title"
+            key="title"
+            id={`${this.props.id}-title`}
+            style={{
+              &banner0_title-style&
+            }}
+          >
+            &banner0_title-children&
+          </span>
+          <p key="content"
+            id={`${this.props.id}-content`}
+            style={{ &banner0_content-style& }}
+          >
+            &banner0_content-children&
+          </p>
+          <Button type="ghost" key="button" id={`${this.props.id}-button`}>
+            &banner0_button-children&
+          </Button>
         </QueueAnim>
         <TweenOne
           animation={{ y: '-=20', yoyo: true, repeat: -1, duration: 1000 }}
@@ -51,12 +60,11 @@ class Banner extends React.Component {
 
 Banner.propTypes = {
   className: PropTypes.string,
-  name: PropTypes.string,
-  dataSource: PropTypes.object,
+  id: PropTypes.string,
 };
 
 Banner.defaultProps = {
-  className: 'banner0',
+  className: 'content0',
 };
 
 export default Banner;

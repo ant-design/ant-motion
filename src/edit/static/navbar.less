@@ -1,4 +1,3 @@
-@import '../../theme/static/custom.less';
 @import 'custom';
 .edit-nav {
   width: 100%;
@@ -15,7 +14,7 @@
     box-shadow: 0 5px 5px @edit-shadow-color;
     & .undo-redo-bar {
       float: left;
-      margin-left: 4%;
+      margin-left: 16px;
       color: @text-color-light;
       & li {
         width: 64px;
@@ -38,7 +37,7 @@
     }
     ul {
       float: right;
-      margin-right: 4%;
+      margin-right: 16px;
       & li {
         float: left;
         padding: 0 10px;
@@ -52,29 +51,6 @@
             color: @edit-disabled-color;
           }
         }
-      }
-    }
-  }
-  &-icon {
-    width: 100px;
-    height: 15px;
-    background: @primary-color;
-    color: @text-color-light;
-    border-radius: 0 0 6px 6px;
-    text-align: center;
-    font-size: 12px;
-    position: absolute;
-    left: 50%;
-    top: 0;
-    margin-left: -50px;
-    box-shadow: 0 0 5px @edit-bar-color;
-    cursor: pointer;
-    i {
-      transition: transform .3s @ease-in-out;
-      transform-origin: 50% 5px;
-      transform: scale(.6);
-      &.up {
-        transform: rotate(180deg) scale(.6);
       }
     }
   }

@@ -11,24 +11,26 @@ export default {
       key: 'height',
       the: 'style',
       name: '区块高度',
-      value: '100%',
+      value: '50%',
       remark: '请填写上单位 "px" 或 "%" ',
     },
     {
       key: 'block1',
       name: '内容区域',
       value: {
-        video: {
-          name: '视频',
-          value: 'https://os.alipayobjects.com/rmsportal/EejaUGsyExkXyXr.mp4',
+        img: {
+          name: '图片',
+          value: 'https://zos.alipayobjects.com/rmsportal/tvQTfCupGUFKSfQ.png',
+          remark: '尺寸参考:268*290',
         },
         title: {
           name: '标题',
-          value: '蚂蚁金融云提供专业的服务',
+          value: '分布式中间件',
         },
         content: {
-          name: '说明',
-          value: '科技想象力，金融创造力',
+          name: '详细说明',
+          value: '金融级联机交易处理中间件，大规模分布式计算机，数万笔/秒级并发能力，严格保证交易数据统一性。' +
+          '金融级联机交易处理中间件，大规模分布式计算机，数万笔/秒级并发能力，严格保证交易数据统一性。',
         },
       },
     },

@@ -1,5 +1,6 @@
 import React from 'react';
-import TweenOne, { TweenOneGroup } from 'rc-tween-one';
+import QueueAnim from 'rc-queue-anim';
+import TweenOne from 'rc-tween-one';
 import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
 import '../../../static/content.less';
 import './index.less';
@@ -12,32 +13,36 @@ class Content extends React.Component {
   };
 
   static defaultProps = {
-    className: 'content4',
+    className: 'content2',
   };
 
-  getChildrenToRender = data =>
-    Object.keys(data).filter(key => key.match('block')).map((key) => {
-      const item = data[key];
-      return (<li key={key}>
-        <div className="content-wrapper">
-          <span><img src={item.img} height="100%" /></span>
-          <p>{item.content}</p>
-        </div>
-      </li>);
-    });
-
-  getEnterAnim = (e) => {
-    const index = e.index;
-    const delay = index % 4 * 100 + Math.floor(index / 4) * 100 + 300;
-    return { y: '+=30', opacity: 0, type: 'from', delay };
-  };
+  getDelay = e => e.index % 3 * 100 + Math.floor(e.index / 3) * 100 + 200;
 
   render() {
     const props = { ...this.props };
     const { title, content } = this.props.dataSource.title;
-    const childrenToRender = this.getChildrenToRender(props.dataSource);
+    const children = Object.keys(props.dataSource).filter(key => key.match('block'))
+      .map((key, i) => {
+        const item = props.dataSource[key];
+        return (<li
+          key={i}
+          style={{ left: `${i % 3 * 33.33}%`, top: `${Math.floor(i / 3) * 200}px` }}
+        >
+          <TweenOne
+            animation={{ x: '-=10', opacity: 0, type: 'from' }}
+            className="img" key="img"
+          >
+            <img src={item.iconImg} width="100%" />
+          </TweenOne>
+          <QueueAnim delay={100} leaveReverse key="text" className="text">
+            <h1 key="h1">{item.title}</h1>
+            <p key="p">{item.content}</p>
+          </QueueAnim>
+        </li>);
+      });
     delete props.dataSource;
     delete props.name;
+    const titleAnim = { y: '+=30', opacity: 0, type: 'from' };
     return (
       <div {...props} className="content-template-wrapper">
         <OverPack
@@ -45,31 +50,22 @@ class Content extends React.Component {
           className={`content-template ${props.className}`}
           hideProps={{ h1: { reverse: true }, p: { reverse: true } }}
         >
-          <TweenOne
-            animation={{ y: '+=30', opacity: 0, type: 'from' }}
-            component="h1"
-            key="h1"
-            reverseDelay={300}
-          >
+          <TweenOne key="h1" animation={titleAnim} component="h1">
             {title}
           </TweenOne>
-          <TweenOne
-            animation={{ y: '+=30', opacity: 0, type: 'from', delay: 200 }}
-            component="p"
-            key="p"
-            reverseDelay={200}
-          >
+          <TweenOne key="p" animation={titleAnim} component="p">
             {content}
           </TweenOne>
-          <TweenOneGroup
-            className={`${props.className}-img-wrapper`}
-            component="ul"
+          <QueueAnim
             key="ul"
-            enter={this.getEnterAnim}
-            leave={{ y: '+=30', opacity: 0 }}
+            component="ul"
+            leaveReverse
+            type="bottom"
+            interval={0}
+            delay={this.getDelay}
           >
-            {childrenToRender}
-          </TweenOneGroup>
+            {children}
+          </QueueAnim>
         </OverPack>
       </div>
     );
