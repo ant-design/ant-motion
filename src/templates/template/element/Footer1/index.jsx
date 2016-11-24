@@ -45,7 +45,7 @@ class Footer extends React.Component {
     delete props.dataSource;
     delete props.name;
     return (<OverPack
-      scrollName={this.props.name}
+      id={this.props.name}
       {...props}
       playScale={0.2}
       hideProps={{ copyright: { reverse: true } }}

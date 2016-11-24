@@ -16,7 +16,7 @@ class Banner extends React.Component {
     return (
       <OverPack
         replay
-        scrollName={this.props.name}
+        id={this.props.name}
         playScale={[0.3, 0.1]}
         {...props}
         style={{

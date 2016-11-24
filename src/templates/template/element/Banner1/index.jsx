@@ -42,7 +42,7 @@ class Banner extends React.Component {
     delete props.dataSource;
     return (
       <OverPack
-        scrollName={this.props.name}
+        id={this.props.name}
         {...props}
         hideProps={{ icon: { reverse: true }, banner: { reverse: true } }}
       >

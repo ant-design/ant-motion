@@ -19,7 +19,7 @@ export default class Point extends React.Component {
       if (item.match('nav') || item.match('footer')) {
         return null;
       }
-      return (<Link key={item} className={this.props.className} location={item} />);
+      return (<Link key={item} className={this.props.className} to={item} toHash={false} />);
     }).filter(item => item);
     return (<div className={`${this.props.className}-wrapper`} style={this.props.style}>
       {children}

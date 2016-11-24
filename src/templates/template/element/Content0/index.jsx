@@ -25,7 +25,7 @@ class Content extends React.Component {
     return (
       <div {...props} className="content-template-wrapper">
         <OverPack
-          scrollName={this.props.name}
+          id={this.props.name}
           className={`content-template ${props.className}`}
           hideProps={{ img: { reverse: true } }}
         >
