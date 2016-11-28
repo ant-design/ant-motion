@@ -3,24 +3,34 @@
 .edit-wrapper {
   width: 100%;
   position: relative;
-  overflow: hidden;
   height: calc(~"100vh - 64px");
   margin-top: 64px;
+  * {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
 }
 
 @ant-tabs: ant-tabs;
 .edit-controls {
   width: 320px;
   height: 100%;
-  overflow: hidden;
   float: right;
   padding: 16px 0 0;
   background: @edit-bar-color;
+  position: relative;
+  z-index: 10;
   .@{ant-tabs} {
     height: 100%;
     &-bar {
       border-color: @edit-line-color;
-      margin: 0 16px 16px;
+      margin: 0 0 16px;
+      padding: 0 16px;
+      position: relative;
+      z-index:11;
+      background: @edit-bar-color;
     }
 
     &-nav {

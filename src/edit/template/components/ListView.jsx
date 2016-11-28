@@ -4,6 +4,7 @@ import Modal from 'antd/lib/modal';
 import Checkbox from 'antd/lib/checkbox';
 import InputNumber from 'antd/lib/input-number';
 import { TweenOneGroup } from 'rc-tween-one';
+import ListSort from './ListSort';
 import webData from './../template.config';
 
 export default class ListView extends React.Component {
@@ -26,14 +27,17 @@ export default class ListView extends React.Component {
       data: [].concat(this.props.urlData.t).filter(item => item), // 记录 list 里的数据;
       templateOptData: [].concat(this.props.urlData.t).filter(item => item), // 记录弹出框后的编辑数据;
       modalOpen: false,
+      tweenEnd: true,
     };
   }
 
   onModalOk = () => {
     this.props.setUrlData({ t: this.state.templateOptData });
+    const tweenEnd = this.state.data.join('') === this.state.templateOptData.join('');
     this.setState({
       data: this.state.templateOptData,
       modalOpen: false,
+      tweenEnd,
     });
   };
 
@@ -41,6 +45,16 @@ export default class ListView extends React.Component {
     this.setState({
       templateOptData: this.state.data,
       modalOpen: false,
+      tweenEnd: true,
+    });
+  }
+
+  onListSortChange = (children) => {
+    const data = children.map(item => item.key);
+    this.props.setUrlData({ t: data }, true);
+    this.setState({
+      data,
+      templateOptData: data,
     });
   }
 
@@ -129,45 +143,95 @@ export default class ListView extends React.Component {
     </div>);
   });
 
+  getChildrenToTag = (children) => {
+    if (this.state.tweenEnd && !this.state.oneRemove) {
+      return (<ListSort
+        component="ul"
+        dragClassName={`${this.props.className}-drag-selected`}
+        onChange={this.onListSortChange}
+      >
+        {children}
+      </ListSort>);
+    }
+    return (<TweenOneGroup
+      component="ul"
+      enter={{
+        height: 0,
+        opacity: 0,
+        type: 'from',
+        paddingTop: 0,
+        paddingBottom: 0,
+        marginBottom: 0,
+      }}
+      leave={{ height: 0, opacity: 0, paddingTop: 0, paddingBottom: 0, marginBottom: 0 }}
+      appear={false}
+      onEnd={this.tweenOneEnd}
+    >
+      {children}
+    </TweenOneGroup>);
+  }
+
+  tweenOneEnd = () => {
+    this.setState({
+      tweenEnd: true,
+    });
+  }
+
+  removeOneClick = (key) => {
+    const data = this.state.data;
+    data.splice(data.indexOf(key), 1);
+    this.props.setUrlData({ t: data }, true);
+    this.setState({
+      data,
+      templateOptData: data,
+    });
+  }
+
   addClick = () => {
-    this.setState({ modalOpen: true });
+    this.setState({ modalOpen: true, tweenEnd: false, oneRemove: false });
   };
 
   remClick = () => {
-
+    this.setState({ tweenEnd: true, oneRemove: !this.state.oneRemove });
   };
-
 
   render() {
     const listData = this.props.listData;
     const children = this.state.data.filter(item => item).map((key) => {
       const keys = key.split('_');
       const data = listData[keys[0]].data[keys[1]];
-      return (<li key={key}>
+      return (<li key={key} className={this.state.oneRemove && 'close-wrapper'}>
+        <TweenOneGroup
+          className="close"
+          enter={{ scale: 1.5, opacity: 0, type: 'from' }}
+          leave={{ scale: 0, opacity: 0 }}
+        >
+          {this.state.oneRemove && <span
+            key="close"
+            onClick={() => { this.removeOneClick(key); }}
+          >
+            <Icon type="close" />
+          </span>}
+        </TweenOneGroup>
         <div><img src={data.src} width="100%" /></div>
         <div>{data.text}</div>
       </li>);
     });
+    const childrenToRender = this.getChildrenToTag(children);
     const modalChildren = this.getModalChildren();
     return (<div className={this.props.className}>
-      <TweenOneGroup
-        component="ul"
-        enter={{
-          height: 0,
-          opacity: 0,
-          type: 'from',
-          paddingTop: 0,
-          paddingBottom: 0,
-          marginBottom: 0,
-        }}
-        leave={{ height: 0, opacity: 0, paddingTop: 0, paddingBottom: 0, marginBottom: 0 }}
-        appear={false}
-      >
-        {children}
-      </TweenOneGroup>
+      {childrenToRender}
       <div className="handle">
         <div onClick={this.addClick}><Icon type="plus" /></div>
-        <div onClick={this.remClick}><Icon type="minus" /></div>
+        <TweenOneGroup
+          onClick={this.remClick}
+          enter={{ scale: 1.5, opacity: 0, type: 'from' }}
+          leave={{ scale: 0, opacity: 0 }}
+          appear={false}
+        >
+          {this.state.oneRemove ? <Icon type="close" key="close" /> :
+            (<Icon type="minus" key="minus" />)}
+        </TweenOneGroup>
         <Modal
           visible={this.state.modalOpen}
           title={<h2>请选择模板</h2>}

@@ -1,6 +1,6 @@
 import React from 'react';
 import Icon from 'antd/lib/icon';
-import ListSort from '../../src/theme/template/Splicing/ListSort';
+import ListSort from '../../src/edit/template/components/ListSort';
 import './list-sort.css';
 
 const dataArray = [

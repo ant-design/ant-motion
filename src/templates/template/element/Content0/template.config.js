@@ -22,13 +22,7 @@ export default {
         height: {
           name: '区块高度',
           value: '100vh',
-          calc: true, // 如果是在导航后第一个区块，是否减去导航高度
-          remark: '请填写上单位 "px" 或 "vh"',
-        },
-        textAlign: {
-          name: '文字元素居中',
-          value: 'center',
-          remark: '子级居中对齐',
+          remark: '请填写上单位 "px" 或 "vh", 如果在第一屏且没加 fixed 功能, 一屏为 calc(100vh - 64px)',
         },
       },
     },
@@ -36,8 +30,7 @@ export default {
       style: {
         width: {
           value: '550px',
-          name: '宽度',
-          remark: '内容区块的宽度',
+          name: '内容宽度',
         },
         top: {
           value: '20%',
@@ -61,18 +54,18 @@ export default {
       style: {
         width: {
           value: '350px',
-          name: '宽度',
+          name: '当前宽度',
         },
         padding: {
           value: '0 0 0 30px',
-          name: 'padding 位置',
-          remark: '为调整图片位置; 第一行为上右, 第二行为下左',
+          name: 'padding',
+          remark: '为调整图片位置; 第一行为上右, 第二行为下左; 必须加单位',
           length: 4,
         },
         margin: {
           value: 'auto',
-          name: 'margin 位置',
-          remark: '为调整图片位置; 第一行为上右, 第二行为下左',
+          name: 'margin',
+          remark: '为调整图片位置; 第一行为上右, 第二行为下左; 必须加单位',
           length: 4,
         },
         fontSize: {
@@ -80,10 +73,15 @@ export default {
           name: '文字大小',
           remark: '如是图片不需要设置',
         },
+        color: {
+          value: '#ffffff',
+          name: '文字颜色',
+          remark: '如是图片不需要设置',
+        },
       },
       children: {
         value: 'https://zos.alipayobjects.com/rmsportal/HqnZZjBjWRbjyMr.png',
-        name: '图片或标题',
+        name: '图片标题',
         remark: '如果不是图片结尾将自动转换成标题',
       },
     },
@@ -104,6 +102,20 @@ export default {
       },
     },
     content0_button: {
+      style: {
+        color: {
+          value: '#ffffff',
+          name: '文字颜色',
+        },
+        backgroundColor: {
+          value: 'transparent',
+          name: '按钮颜色',
+        },
+        borderColor: {
+          value: '#fff',
+          name: '描边颜色',
+        },
+      },
       children: {
         value: 'Learn More',
         name: '按钮文字',

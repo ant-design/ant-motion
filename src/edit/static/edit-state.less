@@ -1,13 +1,17 @@
 @import "common";
-.edit-state{
+.edit-state-wrapper{
   width: calc(~"100% - 320px");
   height: 100%;
   position: absolute;
   pointer-events: none;
+  overflow: auto;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  .edit-state{
+    position: absolute;
+  }
   .enter-box{
     border: 1px dotted fade(@line-deep-color, 65);
     position: absolute;

@@ -13,14 +13,14 @@ class Banner extends React.Component {
     const names = props.id.split('_');
     const name = `${names[0]}${names[1]}`;
     delete props.dataSource;
+    const isImg = dataSource[`${name}_title`].children
+      .match(/\.(gif|jpg|jpeg|png|JPG|PNG|GIF|JPEG)$/);
     return (
       <OverPack
         replay
         playScale={[0.3, 0.1]}
         {...props}
-        style={{
-          ...(dataSource[name].style || {}),
-        }}
+        style={dataSource[name].style || {}}
         hideProps={{ icon: { reverse: true } }}
       >
         <QueueAnim
@@ -29,20 +29,22 @@ class Banner extends React.Component {
           className={`${this.props.className}-wrapper`}
           key="text"
           id={`${this.props.id}-wrapper`}
-          style={{ ...(dataSource[`${name}_wrapper`].style || {}) }}
+          style={dataSource[`${name}_wrapper`].style || {}}
         >
           <span
             className="title"
             key="title"
             id={`${this.props.id}-title`}
-            style={{ ...(dataSource[`${name}_title`].style || {}) }}
+            style={dataSource[`${name}_title`].style || {}}
           >
-            <img width="100%" src={dataSource[`${name}_title`].children} />
+            {isImg ?
+              (<img width="100%" src={dataSource[`${name}_title`].children} />) :
+              dataSource[`${name}_title`].children}
           </span>
           <p
             key="content"
             id={`${this.props.id}-content`}
-            style={{ ...(dataSource[`${name}_content`].style || {}) }}
+            style={dataSource[`${name}_content`].style || {}}
           >
             {dataSource[`${name}_content`].children}
           </p>

@@ -7,15 +7,17 @@ const Item = Menu.Item;
 
 class Header extends React.Component {
   render() {
-    const { logo, menu1, menu2, menu3, menu4 } = this.props.dataSource.block1;
+    const dataSource = this.props.dataSource;
     const props = { ...this.props };
     delete props.dataSource;
-    delete props.name;
+    const names = props.id.split('_');
+    const name = `${names[0]}${names[1]}`;
 
     return (<TweenOne
       component="header"
       animation={{ opacity: 0, type: 'from' }}
       {...props}
+      style={dataSource[name].style || {}}
     >
       <TweenOne
         className={`${this.props.className}-logo`}

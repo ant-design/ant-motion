@@ -4,6 +4,9 @@ import Tooltip from 'antd/lib/tooltip';
 import Button from 'antd/lib/button';
 import Input from 'antd/lib/input';
 
+
+import InputGroup from './InputGroup';
+
 import webData from '../../../templates/template.config';
 import { mergeURLDataToDefault } from '../../../templates/template/utils';
 
@@ -12,36 +15,41 @@ export default class EditView extends React.Component {
     className: PropTypes.string,
     editId: PropTypes.string,
     urlData: PropTypes.object,
+    setUrlData: PropTypes.func,
   };
 
   static defaultProps = {
     className: 'edit-view',
+    setUrlData: () => {
+    },
   };
 
   constructor(props) {
     super(props);
     this.config = {};
-    this.state = {
-      data: this.props.urlData.c || {},
-    };
   }
 
   getLi = (data, key, typeKey) => {
     const changeValue = this.changeValue.bind(this, key, typeKey);
     let inputItem = (<Input
-      placeholder={data.value}
+      defaultValue={data.value}
       type="textarea"
       autosize
       onChange={changeValue}
+      key={data.value}
+      size="small"
     />);
     if (data.length) {
       const values = data.value.split(/\s+/);
-      inputItem = [];
+      const children = [];
+      inputItem = (<InputGroup onChange={changeValue} key={data.value} >
+        {children}
+      </InputGroup>);
       for (let i = 0; i < data.length; i += 1) {
         const value = values[i] || values[i - 2] || values[0];
-        inputItem.push(<em key={i}>
-          <Input placeholder={value} onChange={changeValue} />
-        </em>);
+        children.push(
+          <Input key={i} defaultValue={value} size="small" />
+        );
       }
     }
 
@@ -50,9 +58,9 @@ export default class EditView extends React.Component {
         {data.name}
         {data.remark && <Tooltip title={data.remark}><Icon type="question-circle-o" /></Tooltip>}
       </span>
-      <p>
+      <div>
         {inputItem}
-      </p>
+      </div>
     </li>);
   }
 
@@ -72,7 +80,9 @@ export default class EditView extends React.Component {
     childId = `${ids[0]}${ids[1]}${childId}`;
     const id = this.props.editId.split('-')[0];
     const currentData = webData[dataId];
-    const defaultData = mergeURLDataToDefault(this.state.data[id], currentData);
+    const sData = this.props.urlData.c || {};
+    const data = sData[id];
+    const defaultData = mergeURLDataToDefault(data, currentData);
     return Object.keys(defaultData[childId]).map((key) => {
       let name;
       switch (key) {
@@ -86,7 +96,6 @@ export default class EditView extends React.Component {
           name = key;
           break;
       }
-      console.log(key);
       return (<div key={key}>
         <h3><span>{name}</span></h3>
         <ul>{this.getEditChild(defaultData[childId][key], key)}</ul>
@@ -95,16 +104,26 @@ export default class EditView extends React.Component {
   }
 
   changeValue = (key, typeKey, e) => {
-    console.log(key, e);
-    const value = e.target.value;
+    const value = e.target ? e.target.value : e.join(' ');
     const ids = this.props.editId.split('-');
     const id = ids[0];
-    this.config[id] = value;
-    console.log(this.props.editId);
+    const a = this.config[id] = this.config[id] || {};
+    const bIds = ids[0].split('_');
+    let childId = ids[1] || '';
+    childId = childId ? `_${childId}` : '';
+    childId = `${bIds[0]}${bIds[1]}${childId}`;
+    const b = a[childId] = a[childId] || {};
+    if (key) {
+      const c = b[typeKey] = b[typeKey] || {};
+      c[key] = value;
+    } else {
+      b[typeKey] = value;
+    }
   }
 
   clickMake = () => {
-
+    const obj = { c: this.config };
+    this.props.setUrlData(obj);
   }
 
   render() {

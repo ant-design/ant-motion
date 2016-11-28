@@ -26,10 +26,10 @@
   }
   ul li {
     margin: 10px auto;
-    & > span {
-      width: 35%;
+    > span {
+      width: 28%;
       vertical-align: top;
-      height: 28px;
+      height: 22px;
       line-height: 28px;
       display: inline-block;
       & i {
@@ -37,22 +37,25 @@
         color: fade(@text-color-light, 75);
       }
     }
-    p {
-      width: 65%;
+    > div {
+      width: 72%;
       padding-left: 10px;
       display: inline-block;
       position: relative;
-      em {
-        width: calc(~"50% - 3px");
-        display: inline-block;
-        margin: 0 6px 6px 0;
-        &:nth-child(2n) {
-          margin-right: 0;
+      .edit-input-group {
+        width: 100%;
+        > span {
+          width: calc(~"50% - 3px");
+          display: inline-block;
+          margin: 0 6px 6px 0;
+          &:nth-child(2n) {
+            margin-right: 0;
+          }
         }
       }
     }
   }
-  .button-wrapper{
+  .button-wrapper {
     padding-left: calc(~"35% + 10px");
     padding-top: 15px;
     border-top: 1px solid @edit-line-color;

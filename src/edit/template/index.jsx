@@ -15,45 +15,46 @@ class Edit extends React.Component {
     super(props);
     const urlData = this.getUrlData();
     this.state = {
-      selectDom: null,
+      selectRect: null,
+      enterRect: null,
       enterDom: null,
-      clickDom: null,
       urlData,
       urlHash: this.getHash(urlData),
       tabsKey: '1',
       editId: null,
+      iframeHeight: null,
+      scrollTop: 0,
     };
   }
 
   componentDidMount() {
     $('#preview').load(() => {
-      $('#preview').contents().find('body #react-content').mousemove((e) => {
-        const dom = this.getByIdDom(e.target);
-        if (dom !== this.state.enterDom) {
-          if (this.state.enterDom) {
-            this.state.enterDom.removeEventListener('click', this.onClick);
+      this.setState({
+        iframeHeight: $('#preview').contents().height(),
+      }, () => {
+        $('#preview').contents().find('body #react-content').mousemove((e) => {
+          const dom = this.getByIdDom(e.target);
+          if (dom !== this.state.enterDom) {
+            if (this.state.enterDom) {
+              $(this.state.enterDom).unbind('click', this.onClick);
+            }
+            dom.style.cursor = 'pointer';
+            const jDom = $(dom);
+            const rect = this.getRect(jDom);
+            jDom.click('click', this.onClick);
+            this.setState({ enterDom: dom, enterRect: rect });
           }
-          dom.style.cursor = 'pointer';
-          dom.addEventListener('click', this.onClick);
-          this.setState({ enterDom: dom });
-        }
-      });
-      $('#preview').contents().find('body #react-content').mouseleave(() => {
-        if (this.state.enterDom) {
-          this.state.enterDom.removeEventListener('click', this.onClick);
-        }
-        this.setState({ enterDom: null });
+        });
+        $('#preview').contents().find('body #react-content').mouseleave(() => {
+          if (this.state.enterDom) {
+            $(this.state.enterDom).unbind('click', this.onClick);
+          }
+          this.setState({ enterRect: null });
+        });
+        $('#preview').contents().scroll(this.onScroll);
+        $(window).resize(this.onResize);
       });
     });
-  }
-
-  onClick = (e) => {
-    // e.preventDefault();
-    e.stopPropagation();
-    const dom = e.currentTarget;
-    const editId = dom.id;
-
-    this.setState({ selectDom: dom, tabsKey: '2', editId });
   }
 
   onChangeTabs = (key) => {
@@ -62,7 +63,43 @@ class Edit extends React.Component {
     });
   }
 
-  setUrlData = (obj) => {
+  onClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const dom = e.currentTarget;
+    const editId = dom.id;
+    // const selectRect = dom.getBoundingClientRect();
+    const rect = this.getRect($(dom));
+    this.setState({ selectRect: rect, tabsKey: '2', editId });
+  }
+
+  onResize = () => {
+    if (this.state.editId) {
+      const dom = $('#preview').contents().find(`#${this.state.editId}`);
+      if (dom.length) {
+        const rect = this.getRect(dom);
+        this.setState({ selectRect: rect });
+      } else {
+        this.selectHide = true;
+      }
+    }
+  };
+
+  onScroll = (e) => {
+    const scrollTop = e.target.body.scrollTop || e.target.documentElement.scrollTop;
+    const setState = { scrollTop };
+    if (this.selectHide) {
+      const dom = $('#preview').contents().find(`#${this.state.editId}`);
+      if (dom.length) {
+        this.selectHide = false;
+        const rect = this.getRect(dom);
+        setState.selectRect = rect;
+      }
+    }
+    this.setState(setState);
+  };
+
+  setUrlData = (obj, reload) => {
     const urlData = this.state.urlData;
     Object.keys(obj).forEach((key) => {
       urlData[key] = obj[key];
@@ -72,8 +109,28 @@ class Edit extends React.Component {
     this.setState({
       urlHash,
       urlData,
+    }, () => {
+      // 更改 url 后, 更新 selectRect;
+      if (!reload) {
+        const dom = $('#preview').contents().find(`#${this.state.editId}`);
+        if (dom.length) {
+          const selectRect = this.getRect(dom);
+          this.setState({
+            selectRect,
+          });
+        }
+      } else {
+        this.reloadIFrame();
+      }
     });
   };
+
+  getRect = dom => ({
+    width: dom.outerWidth(),
+    height: dom.outerHeight(),
+    top: dom.offset().top,
+    left: dom.offset().left,
+  });
 
   getHash = (urlData) => {
     let urlHash = '';
@@ -111,6 +168,11 @@ class Edit extends React.Component {
     return item.parentNode && this.getByIdDom(item.parentNode);
   };
 
+  reloadIFrame = () => {
+    $('#preview')[0].contentWindow.location.reload();
+    this.setState({ selectRect: null, editId: null });
+  }
+
   render() {
     return (<div>
       <NavController />
@@ -126,9 +188,13 @@ class Edit extends React.Component {
           <iframe id="preview" src={`/templates/${this.state.urlHash}`} />
         </div>
         <EditStateController
-          enterDom={this.state.enterDom}
-          selectDom={this.state.selectDom}
-        />
+          enterRect={this.state.enterRect}
+          selectRect={this.state.selectRect}
+          scrollTop={this.state.scrollTop}
+          height={this.state.iframeHeight}
+        >
+          {this.state.enterDom && this.state.enterDom.id}
+        </EditStateController>
       </div>
     </div>);
   }

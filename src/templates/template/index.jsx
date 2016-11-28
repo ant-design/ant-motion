@@ -14,7 +14,6 @@ export default class Templates extends React.Component {
 
   constructor(props) {
     super(props);
-    this.navAttrHeight = null;
     this.scrollScreen = false;
     this.listPoint = false;
     this.state = {
@@ -71,7 +70,7 @@ export default class Templates extends React.Component {
     const other = otherData.split(',');
     const configURL = JSON.parse(getURLData('c') || '{}');
     // this.config = mergeURLDataToConfig(webData, this.configURL);
-    const children = data.map((item, i) => {
+    const children = data.map((item) => {
       const dataArr = item.split('_');
       let dataId = `${dataArr[0]}${dataArr[1]}`;
       dataId = `${dataId.charAt(0).toUpperCase()}${dataId.slice(1, dataId.length)}`;
@@ -91,7 +90,7 @@ export default class Templates extends React.Component {
       }
       return React.createElement(Component,
         {
-          key: i,
+          key: item,
           id: item,
           ref: (c) => {
             this.myRef[item] = c;

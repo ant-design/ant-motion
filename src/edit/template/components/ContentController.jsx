@@ -42,7 +42,11 @@ export default class ContentController extends React.Component {
             />
           </TabPane>
           <TabPane tab={<i><img src={imgUrl[1]} /></i>} key="2">
-            <EditView editId={this.props.editId} urlData={this.props.urlData} />
+            <EditView
+              editId={this.props.editId}
+              urlData={this.props.urlData}
+              setUrlData={this.props.setUrlData}
+            />
           </TabPane>
           <TabPane tab={<i><img src={imgUrl[2]} /></i>} key="3">
             Content of Tab 3
