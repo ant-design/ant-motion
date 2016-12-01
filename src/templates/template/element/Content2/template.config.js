@@ -106,9 +106,9 @@ export default {
           value: '#666',
           name: '文字颜色',
         },
-        margin: {
+        padding: {
           value: '0 30% 0 0',
-          name: 'margin',
+          name: 'padding',
           length: 4,
           remark: '为调整区块位置; 第一行为上右, 第二行为下左; 必须加单位',
         },

@@ -23,8 +23,7 @@ class NavController extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-    };
+    this.state = {};
     this.scrollTop = currentScrollTop();
     this.scrollName = 'stop';
     scrollEvent.addEventListener('scroll', this.scrollEvent);
@@ -86,6 +85,21 @@ class NavController extends React.Component {
     });
   }
 
+  openLook = () => {
+    Modal.warning({
+      title: '注意事项',
+      content: (<ul>
+        <li>
+          1. 在编辑时是数值必须带上单位，如 "px", "vh", "%";
+        </li>
+        <li>
+          2. 多行参数顺序为 "左上 右上 左下 右下"
+        </li>
+      </ul>),
+      width: 550,
+    });
+  };
+
   shorten = (url, cb) => {
     // 调用 dwz.cn 服务, 使用中转服务器发请求
     const apiUrl = '//motion.applinzi.com/';
@@ -124,12 +138,12 @@ class NavController extends React.Component {
         <div
           className={`${this.props.className}-bar`}
         >
-          <div className={`${this.props.className}-remark`}>
+          <a className={`${this.props.className}-remark`} onClick={this.openLook}>
             <Icon type="exclamation-circle-o" />
             <span>
-              注：本站里的编辑如果是数值，必须带上单位，如 "px", "vh", "%"。
+              注意事项
             </span>
-          </div>
+          </a>
           <ul>
             <li><a href="../">返回主站</a></li>
             <li><a href="/cases/help" disabled>查看教程</a></li>

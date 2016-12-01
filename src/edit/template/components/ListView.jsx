@@ -117,7 +117,6 @@ export default class ListView extends React.Component {
     }
     const imgChildren = item.data.map((cItem, i) => {
       const onChange = this.onChange.bind(this, key, i, item.checkbox);
-      const checked = this.state.templateOptData.indexOf(`${key}_${i}`) >= 0;
       const value = this.state.templateOptData.filter(aItem => aItem.match(`${key}_${i}`)).length;
       return (<li key={i} disabled={cItem.disabled}>
         {cItem.disabled && <span className="disabled-test"><p>敬请期待</p></span>}
@@ -126,7 +125,7 @@ export default class ListView extends React.Component {
         <div className="select-wrapper">
           {item.checkbox ?
             (<InputNumber size="small" min={0} onChange={onChange} defaultValue={value} />)
-            : (<Checkbox onChange={onChange} checked={checked} />)}
+            : (<Checkbox onChange={onChange} checked={!!value} />)}
         </div>
       </li>);
     });

@@ -55,6 +55,10 @@ export default {
           value: '24px',
           name: '文字行高',
         },
+        maxWidth: {
+          value: '600px',
+          name: '最大宽度',
+        },
       },
       children: {
         value: '基于阿里云强大的基础资源',

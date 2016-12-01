@@ -9,11 +9,13 @@
     text-align: center;
   }
   &-img-wrapper {
-    border-radius: 6px;
     width: 98%;
-    position: relative;
+    position: absolute;
     top: 20%;
     margin: auto;
+    left: 0;
+    right: 0;
+
     & li {
       width: 25%;
       padding: 1%;
@@ -39,18 +41,16 @@
         & p {
           position: absolute;
           width: 100%;
-          background: transparent;
+          background: fade(@primary-color, 75);
           left: 0;
           bottom: -30px;
-          height: 30px;
           line-height: 30px;
           color: #fff;
           transition: bottom .3s @ease-out, background .3s @ease-out;
         }
         &:hover {
           & p {
-            bottom: 0;
-            background: fade(@primary-color, 75);
+            bottom: 0 !important;
           }
         }
       }

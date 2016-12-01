@@ -38,7 +38,8 @@ export default {
         boxShadow: {
           value: '0 2px 6px rgba(0,0,0,0.2)',
           name: '区块阴影',
-          remark: '参数从左到右: x y blur color, 参数之间都需要空格;',
+          remark: '参数: x y blur color;',
+          length: 4,
         },
         borderRadius: {
           value: '6px',
@@ -83,6 +84,10 @@ export default {
         lineHeight: {
           value: '24px',
           name: '文字行高',
+        },
+        maxWidth: {
+          value: '600px',
+          name: '最大宽度',
         },
       },
       children: {

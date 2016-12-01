@@ -29,6 +29,19 @@ export default class EditView extends React.Component {
     this.config = {};
   }
 
+  /* shouldComponentUpdate() {
+    return this.re;
+  }*/
+
+  /* componentWillReceiveProps(nextProps) {
+    if (this.props.editId !== nextProps.editId) {
+      this.config = {};
+      this.re = true;
+    } else {
+      this.re = false;
+    }
+  }*/
+
   getLi = (data, key, typeKey, parentKey) => {
     if (typeof data !== 'object') {
       return null;
@@ -212,17 +225,16 @@ export default class EditView extends React.Component {
     if (Array.isArray(editId)) {
       // 子级带样式的， editId 为父级的 keys;
       b = this.createChildrenObject(a, [childId].concat(editId));
-      b[typeKey] = value;
     } else {
       childId = editId || childId;
       b = a[childId] = a[childId] || {};
-      if (key) {
-        // 子级不带样式直接转换；
-        const c = b[typeKey] = b[typeKey] || {};
-        c[key] = value;
-      } else {
-        b[typeKey] = value;
-      }
+    }
+    if (key) {
+      // 子级不带样式直接转换；
+      const c = b[typeKey] = b[typeKey] || {};
+      c[key] = value;
+    } else {
+      b[typeKey] = value;
     }
   }
 

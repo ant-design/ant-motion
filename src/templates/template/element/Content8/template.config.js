@@ -6,111 +6,241 @@ export default {
   component,
   templateStr,
   less,
-  dataSource: [
-    {
-      key: 'height',
-      the: 'style',
-      name: '区块高度',
-      value: '100%',
-      remark: '请填写上单位 "px" 或 "%" ',
-    },
-    {
-      key: 'title',
-      name: '标题',
-      value: {
-        title: {
-          name: '标题',
-          value: '蚂蚁金融云提供专业的服务',
+  dataSource: {
+    content8: {
+      style: {
+        height: {
+          value: '100vh',
+          name: '区块高度',
         },
-        content: {
-          name: '说明',
-          value: '科技想象力，金融创造力',
+        background: {
+          name: '背景调整',
+          value: '#fff',
+          remark: '当前属性为 background; 可添加图片，图片需加上 url("");',
         },
       },
     },
-    {
-      key: 'block0',
-      name: 'PHONE',
-      value: {
+    content8_title: {
+      style: {
+        fontSize: {
+          value: '32px',
+          name: '文字大小',
+        },
+        color: {
+          value: '#404040',
+          name: '文字颜色',
+        },
+        lineHeight: {
+          value: '48px',
+          name: '文字行高',
+        },
+      },
+      children: {
+        name: '标题文案',
+        value: '蚂蚁金融云提供专业的服务',
+      },
+    },
+    content8_content: {
+      style: {
+        fontSize: {
+          value: '12px',
+          name: '文字大小',
+        },
+        color: {
+          value: '#666',
+          name: '文字颜色',
+        },
+        lineHeight: {
+          value: '24px',
+          name: '文字行高',
+        },
+        maxWidth: {
+          value: '600px',
+          name: '最大宽度',
+        },
+      },
+      children: {
+        name: '详细说明',
+        value: '科技想象力，金融创造力',
+      },
+    },
+    content8_block0: {
+      children: {
         tag: {
-          name: '标签',
-          value: 'PHONE',
+          name: '标签编辑',
+          children: {
+            name: '标签文字',
+            value: 'PHONE',
+          },
         },
         icon: {
-          name: 'icon',
-          value: 'https://zos.alipayobjects.com/rmsportal/XnzcslQvRoBHMHd.svg',
-        },
-        contentTitle: {
-          name: '内容标题',
-          value: '技术\n融合\n开放',
+          name: '标签icon',
+          children: {
+            name: 'icon地址',
+            value: 'https://zos.alipayobjects.com/rmsportal/XnzcslQvRoBHMHd.svg',
+          },
         },
         content: {
-          name: '内容',
-          value: '丰富的技术组件，简单组装即可快速搭建金融级应用，丰富的技术组件，简单组装即可快速搭建金融级应用。\n' +
-          '解放业务及技术生产力，推动金融服务底层创新，推动金融服务底层创新。解放业务及技术生产力，推动金融服务底层创新。\n' +
-          '符合金融及要求的安全可靠、高可用、高性能的服务能力，符合金融及要求的安全可靠、高可用、高性能的服务能力。',
+          name: '文字区块',
+          style: {
+            width: {
+              value: '50%',
+              name: '区块宽度',
+            },
+            padding: {
+              value: '10%',
+              name: 'padding',
+              length: 4,
+            },
+          },
+          children: {
+            name: '详细内容',
+            value: `<h3>技术</h3>
+丰富的技术组件，简单组装即可快速搭建金融级应用，丰富的技术组件，简单组装即可快速搭建金融级应用。
+<h3>融合</h3>
+解放业务及技术生产力，推动金融服务底层创新，推动金融服务底层创新。解放业务及技术生产力，推动金融服务底层创新。
+<h3>开放</h3>
+符合金融及要求的安全可靠、高可用、高性能的服务能力，符合金融及要求的安全可靠、高可用、高性能的服务能力。`,
+          },
         },
         img: {
-          name: '图片',
-          value: 'https://zos.alipayobjects.com/rmsportal/xBrUaDROgtFBRRL.png',
+          name: '内容图片',
+          style: {
+            width: {
+              value: '50%',
+              name: '区块宽度',
+            },
+            padding: {
+              value: '5%',
+              name: 'padding',
+              length: 4,
+            },
+          },
+          children: {
+            name: '图片地址',
+            value: 'https://zos.alipayobjects.com/rmsportal/xBrUaDROgtFBRRL.png',
+          },
         },
       },
     },
-    {
-      key: 'block1',
-      name: 'TABLET',
-      value: {
+    content8_block1: {
+      children: {
         tag: {
-          name: '标签',
-          value: 'TABLET',
+          name: '标签编辑',
+          children: {
+            name: '标签文字',
+            value: 'TABLET',
+          },
         },
         icon: {
-          name: 'icon',
-          value: 'https://zos.alipayobjects.com/rmsportal/XnzcslQvRoBHMHd.svg',
-        },
-        contentTitle: {
-          name: '内容标题',
-          value: '技术\n融合\n开放',
+          name: '标签icon',
+          children: {
+            name: 'icon地址',
+            value: 'https://zos.alipayobjects.com/rmsportal/XnzcslQvRoBHMHd.svg',
+          },
         },
         content: {
-          name: '内容',
-          value: '丰富的技术组件，简单组装即可快速搭建金融级应用，丰富的技术组件，简单组装即可快速搭建金融级应用。\n' +
-          '解放业务及技术生产力，推动金融服务底层创新，推动金融服务底层创新。解放业务及技术生产力，推动金融服务底层创新。\n' +
-          '符合金融及要求的安全可靠、高可用、高性能的服务能力，符合金融及要求的安全可靠、高可用、高性能的服务能力。',
+          name: '文字区块',
+          style: {
+            width: {
+              value: '50%',
+              name: '区块宽度',
+            },
+            padding: {
+              value: '10%',
+              name: 'padding',
+              length: 4,
+            },
+          },
+          children: {
+            name: '详细内容',
+            value: `<h3>技术</h3>
+丰富的技术组件，简单组装即可快速搭建金融级应用，丰富的技术组件，简单组装即可快速搭建金融级应用。
+<h3>融合</h3>
+解放业务及技术生产力，推动金融服务底层创新，推动金融服务底层创新。解放业务及技术生产力，推动金融服务底层创新。
+<h3>开放</h3>
+符合金融及要求的安全可靠、高可用、高性能的服务能力，符合金融及要求的安全可靠、高可用、高性能的服务能力。`,
+          },
         },
         img: {
-          name: '图片',
-          value: 'https://zos.alipayobjects.com/rmsportal/xBrUaDROgtFBRRL.png',
+          name: '内容图片',
+          style: {
+            width: {
+              value: '50%',
+              name: '区块宽度',
+            },
+            padding: {
+              value: '5%',
+              name: 'padding',
+              length: 4,
+            },
+          },
+          children: {
+            name: '图片地址',
+            value: 'https://zos.alipayobjects.com/rmsportal/xBrUaDROgtFBRRL.png',
+          },
         },
       },
     },
-    {
-      key: 'block2',
-      name: 'DESKTOP',
-      value: {
+    content8_block2: {
+      children: {
         tag: {
-          name: '标签',
-          value: 'DESKTOP',
+          name: '标签编辑',
+          children: {
+            name: '标签文字',
+            value: 'DESKTOP',
+          },
         },
         icon: {
-          name: 'icon',
-          value: 'https://zos.alipayobjects.com/rmsportal/XnzcslQvRoBHMHd.svg',
-        },
-        contentTitle: {
-          name: '内容标题',
-          value: '技术\n融合\n开放',
+          name: '标签icon',
+          children: {
+            name: 'icon地址',
+            value: 'https://zos.alipayobjects.com/rmsportal/XnzcslQvRoBHMHd.svg',
+          },
         },
         content: {
-          name: '内容',
-          value: '丰富的技术组件，简单组装即可快速搭建金融级应用，丰富的技术组件，简单组装即可快速搭建金融级应用。\n' +
-          '解放业务及技术生产力，推动金融服务底层创新，推动金融服务底层创新。解放业务及技术生产力，推动金融服务底层创新。\n' +
-          '符合金融及要求的安全可靠、高可用、高性能的服务能力，符合金融及要求的安全可靠、高可用、高性能的服务能力。',
+          name: '文字区块',
+          style: {
+            width: {
+              value: '50%',
+              name: '区块宽度',
+            },
+            padding: {
+              value: '10%',
+              name: 'padding',
+              length: 4,
+            },
+          },
+          children: {
+            name: '详细内容',
+            value: `<h3>技术</h3>
+丰富的技术组件，简单组装即可快速搭建金融级应用，丰富的技术组件，简单组装即可快速搭建金融级应用。
+<h3>融合</h3>
+解放业务及技术生产力，推动金融服务底层创新，推动金融服务底层创新。解放业务及技术生产力，推动金融服务底层创新。
+<h3>开放</h3>
+符合金融及要求的安全可靠、高可用、高性能的服务能力，符合金融及要求的安全可靠、高可用、高性能的服务能力。`,
+          },
         },
         img: {
-          name: '图片',
-          value: 'https://zos.alipayobjects.com/rmsportal/xBrUaDROgtFBRRL.png',
+          name: '内容图片',
+          style: {
+            width: {
+              value: '50%',
+              name: '区块宽度',
+            },
+            padding: {
+              value: '5%',
+              name: 'padding',
+              length: 4,
+            },
+          },
+          children: {
+            name: '图片地址',
+            value: 'https://zos.alipayobjects.com/rmsportal/xBrUaDROgtFBRRL.png',
+          },
         },
       },
     },
-  ],
+  },
 };
+
