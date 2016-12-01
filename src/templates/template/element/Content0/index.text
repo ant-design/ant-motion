@@ -13,9 +13,7 @@ class Banner extends React.Component {
         replay
         playScale={[0.3, 0.1]}
         {...props}
-        style={{
-          &banner0-style&
-        }}
+        style={&banner0-style&}
         hideProps={{ icon: { reverse: true } }}
       >
         <QueueAnim
@@ -23,26 +21,21 @@ class Banner extends React.Component {
           delay={200}
           className={`${this.props.className}-wrapper`}
           key="text"
-          id={`${this.props.id}-wrapper`}
-          style={{ &banner0_wrapper-style& }}
+          style={&banner0_wrapper-style&}
         >
           <span
             className="title"
             key="title"
-            id={`${this.props.id}-title`}
-            style={{
-              &banner0_title-style&
-            }}
+            style={&banner0_title-style&}
           >
             &banner0_title-children&
           </span>
           <p key="content"
-            id={`${this.props.id}-content`}
-            style={{ &banner0_content-style& }}
+            style={&banner0_content-style&}
           >
             &banner0_content-children&
           </p>
-          <Button type="ghost" key="button" id={`${this.props.id}-button`}>
+          <Button type="ghost" key="button">
             &banner0_button-children&
           </Button>
         </QueueAnim>
@@ -60,7 +53,6 @@ class Banner extends React.Component {
 
 Banner.propTypes = {
   className: PropTypes.string,
-  id: PropTypes.string,
 };
 
 Banner.defaultProps = {

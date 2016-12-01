@@ -41,7 +41,7 @@ class Edit extends React.Component {
             dom.style.cursor = 'pointer';
             const jDom = $(dom);
             const rect = this.getRect(jDom);
-            jDom.click('click', this.onClick);
+            jDom.click(this.onClick);
             this.setState({ enterDom: dom, enterRect: rect });
           }
         });
@@ -49,7 +49,7 @@ class Edit extends React.Component {
           if (this.state.enterDom) {
             $(this.state.enterDom).unbind('click', this.onClick);
           }
-          this.setState({ enterRect: null });
+          this.setState({ enterDom: null, enterRect: null });
         });
         $('#preview').contents().scroll(this.onScroll);
         $(window).resize(this.onResize);

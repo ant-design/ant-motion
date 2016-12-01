@@ -1,55 +1,112 @@
 @import 'custom';
 
 @editView: edit-view;
-.@{editView} {
+.@{editView}-wrapper {
   color: fade(@text-color-light, 45);
-  h3 {
-    color: @text-color-light;
+  position: relative;
+  .@{editView} {
     position: relative;
-    span {
-      background: @edit-bar-color;
-      position: relative;
-      z-index: 1;
-      padding-right: 15px;
-    }
-    &:after {
-      content: '';
-      display: block;
-      height: 1px;
-      background: @edit-line-color;
+    padding: 1px 0; // 切换时用
+    &.tween-one-leaving {
       position: absolute;
-      top: 0;
-      bottom: 0;
       width: 100%;
-      margin: auto;
+      top: 0;
     }
-  }
-  ul li {
-    margin: 10px auto;
-    > span {
-      width: 28%;
-      vertical-align: top;
-      height: 22px;
-      line-height: 28px;
-      display: inline-block;
-      & i {
-        margin-left: 5px;
-        color: fade(@text-color-light, 75);
+    &-module-wrapper {
+      margin-bottom: 20px;
+      &.children-wrapper {
+        width: 100%;
+        margin-bottom: 10px;
+        > h3 {
+          margin-top: 0;
+          > span {
+            font-size: 12px;
+          }
+        }
+        &:last-child {
+          margin-bottom: 0;
+        }
       }
     }
-    > div {
-      width: 72%;
-      padding-left: 10px;
-      display: inline-block;
+    h1, h2, h3 {
+      color: @text-color-light;
       position: relative;
-      .edit-input-group {
+      font-weight: normal;
+    }
+    h1 {
+      font-size: 18px;
+      line-height: 52px;
+      background: fade(@edit-line-color, 30);
+      border-top: 1px solid @edit-line-color;
+      width: 104%;
+      margin-left: -2%;
+      padding-left: 2%;
+      span {
+        font-size: 12px;
+        margin-left: 10px;
+      }
+    }
+    h2 {
+      font-size: 14px;
+      line-height: 32px;
+      margin-bottom: 10px;
+      border-top: 1px solid @edit-line-color;
+      width: 104%;
+      margin-left: -2%;
+      padding-left: 2%;
+      background: fade(@edit-line-color, 15);
+    }
+    h3 {
+      font-size: 14px;
+      margin: 10px auto;
+      span {
+        background: @edit-bar-color;
+        position: relative;
+        z-index: 1;
+        padding-right: 15px;
+      }
+      &:after {
+        content: '';
+        display: block;
+        height: 1px;
+        background: @edit-line-color;
+        position: absolute;
+        top: 0;
+        bottom: 0;
         width: 100%;
-        > span {
-          width: calc(~"50% - 3px");
-          display: inline-block;
-          margin: 0 6px 6px 0;
-          &:nth-child(2n) {
-            margin-right: 0;
+        margin: auto;
+      }
+    }
+    ul li {
+      margin: 10px auto;
+      > span {
+        width: 28%;
+        vertical-align: top;
+        height: 22px;
+        line-height: 28px;
+        display: inline-block;
+        & i {
+          margin-left: 5px;
+          color: fade(@text-color-light, 75);
+        }
+      }
+      > div {
+        width: 72%;
+        padding-left: 10px;
+        display: inline-block;
+        position: relative;
+        .edit-input-group {
+          width: 100%;
+          > span {
+            width: calc(~"50% - 3px");
+            display: inline-block;
+            margin: 0 6px 6px 0;
+            &:nth-child(2n) {
+              margin-right: 0;
+            }
+            &:nth-child(n+2) {
+              margin-bottom: 0;
+            }
           }
         }
       }
@@ -59,6 +116,6 @@
     padding-left: calc(~"35% + 10px");
     padding-top: 15px;
     border-top: 1px solid @edit-line-color;
-    margin-top: 15px;
+    margin-bottom: 15px;
   }
 }

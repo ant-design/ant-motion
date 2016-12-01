@@ -220,7 +220,7 @@ export default class ListView extends React.Component {
     const childrenToRender = this.getChildrenToTag(children);
     const modalChildren = this.getModalChildren();
     return (<div className={this.props.className}>
-      {childrenToRender}
+      {children.length ? childrenToRender : <span>请添加你的模块</span>}
       <div className="handle">
         <div onClick={this.addClick}><Icon type="plus" /></div>
         <TweenOneGroup

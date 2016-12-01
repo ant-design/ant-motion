@@ -124,6 +124,9 @@ export default class Templates extends React.Component {
   setProps = (_data, key) => {
     const item = _data[key];
     const data = _data;
+    if (typeof item !== 'object') {
+      return;
+    }
     if ('value' in item) {
       if (key === 'backgroundImage') {
         data[key] = `url(${item.value})`;

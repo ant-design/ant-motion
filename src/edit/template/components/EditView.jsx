@@ -3,7 +3,7 @@ import Icon from 'antd/lib/icon';
 import Tooltip from 'antd/lib/tooltip';
 import Button from 'antd/lib/button';
 import Input from 'antd/lib/input';
-
+import { TweenOneGroup } from 'rc-tween-one';
 
 import InputGroup from './InputGroup';
 
@@ -29,8 +29,18 @@ export default class EditView extends React.Component {
     this.config = {};
   }
 
-  getLi = (data, key, typeKey) => {
-    const changeValue = this.changeValue.bind(this, key, typeKey);
+  getLi = (data, key, typeKey, parentKey) => {
+    if (typeof data !== 'object') {
+      return null;
+    }
+    if (!('value' in data)) {
+      const parentKeys = parentKey || [];
+      parentKeys.push(typeKey, key);
+      return (<li key={key}>
+        {this.getChildren(data, parentKeys, true)}
+      </li>);
+    }
+    const changeValue = this.changeValue.bind(this, key, typeKey, parentKey);
     let inputItem = (<Input
       defaultValue={data.value}
       type="textarea"
@@ -42,7 +52,7 @@ export default class EditView extends React.Component {
     if (data.length) {
       const values = data.value.split(/\s+/);
       const children = [];
-      inputItem = (<InputGroup onChange={changeValue} key={data.value} >
+      inputItem = (<InputGroup onChange={changeValue} key={data.value}>
         {children}
       </InputGroup>);
       for (let i = 0; i < data.length; i += 1) {
@@ -53,7 +63,7 @@ export default class EditView extends React.Component {
       }
     }
 
-    return (<li key={key || 'a'}>
+    return (<li key={key || Date.now()}>
       <span>
         {data.name}
         {data.remark && <Tooltip title={data.remark}><Icon type="question-circle-o" /></Tooltip>}
@@ -64,11 +74,14 @@ export default class EditView extends React.Component {
     </li>);
   }
 
-  getEditChild = (data, typeKey) => {
-    if ('value' in data) {
-      return this.getLi(data, null, typeKey);
+  getEditChild = (data, typeKey, parentKey) => {
+    if (typeof data !== 'object') {
+      return null;
     }
-    return Object.keys(data).map(key => this.getLi(data[key], key, typeKey));
+    if ('value' in data) {
+      return this.getLi(data, null, typeKey, parentKey);
+    }
+    return Object.keys(data).map(key => this.getLi(data[key], key, typeKey, parentKey));
   }
 
   getDataToEditChildren = () => {
@@ -83,7 +96,14 @@ export default class EditView extends React.Component {
     const sData = this.props.urlData.c || {};
     const data = sData[id];
     const defaultData = mergeURLDataToDefault(data, currentData);
-    return Object.keys(defaultData[childId]).map((key) => {
+    if (defaultData.all) {
+      return this.getAllData(defaultData, childId);
+    }
+    return this.getChildren(defaultData[childId]);
+  }
+
+  getChildren = (data, parentKey, childrenLi) =>
+    Object.keys(data).map((key) => {
       let name;
       switch (key) {
         case 'style':
@@ -93,17 +113,93 @@ export default class EditView extends React.Component {
           name = '内容编辑';
           break;
         default:
-          name = key;
-          break;
+          return <h2 key={key}>{data.name}</h2>;
       }
-      return (<div key={key}>
-        <h3><span>{name}</span></h3>
-        <ul>{this.getEditChild(defaultData[childId][key], key)}</ul>
+      return (<div
+        key={key}
+        className={`${this.props.className}-module-wrapper ${
+          childrenLi && 'children-wrapper' || ''}`}
+      >
+        {(data[key].value || key === 'style'
+          || data[key][Object.keys(data[key])[0]].value)
+          && <h3><span>{name}</span></h3>}
+        <ul>{this.getEditChild(data[key], key, parentKey)}</ul>
+      </div>);
+    });
+
+  getAllData = (defaultData, childId) => {
+    const dataLength = Math.max.apply({}, Object.keys(defaultData)
+      .map(item => parseFloat((item.split('_')[1] || '0').replace(/[^0-9]/g, ''))));
+    const children = [];
+    let tObj;
+    const setObjData = (i) => {
+      Object.keys(defaultData).forEach((key) => {
+        const num = parseFloat((key.split('_')[1] || '').replace(/[^0-9]/g, ''));
+        if (num === i - 1) {
+          tObj[key] = defaultData[key];
+        }
+      });
+    };
+    for (let i = 0; i <= dataLength + 1; i += 1) {
+      if (i === 0) {
+        tObj = { name: '整个区块', remark: '信息过多，请仔细阅读标题。' };
+        tObj[childId] = defaultData[childId];
+      } else {
+        let name = '一';
+        switch (i) {
+          case 1:
+            name = '一';
+            break;
+          case 2:
+            name = '二';
+            break;
+          default:
+            name = '三';
+        }
+        tObj = { name: `第${name}屏` };
+        setObjData(i);
+      }
+      children.push(tObj);
+    }
+    return children.map((item) => {
+      const childrenList = Object.keys(item).map((key) => {
+        if (typeof item[key] === 'string') {
+          return null;
+        }
+        return (<div key={key}>
+          {this.getChildren(item[key], key)}
+        </div>);
+      }).filter(a => a);
+      return (<div key={item.name}>
+        <h1>
+          {item.name}
+          {item.remark && <span>{item.remark}</span>}
+        </h1>
+        {childrenList}
       </div>);
     });
   }
 
-  changeValue = (key, typeKey, e) => {
+  createChildrenObject = (object, keys) => {
+    const obj = object;
+    let t = {};
+    keys.forEach((key, i) => {
+      if (i) {
+        t = t[key] = t[key] || {};
+      } else {
+        t = obj[key] = obj[key] || {};
+      }
+    });
+    return t;
+  };
+
+  changeValue = (key, typeKey, editId, e) => {
+    /*
+     * children 里三种形式:
+     * children: { value: '1', name: '1' };
+     * children: { menu0: { value: '1', name: '1' }}; 子级不带样式;
+     * children: { icon: { style: {}, children: { value: '1', name: '1' } }}; 子级带样式；
+     */
     const value = e.target ? e.target.value : e.join(' ');
     const ids = this.props.editId.split('-');
     const id = ids[0];
@@ -112,12 +208,21 @@ export default class EditView extends React.Component {
     let childId = ids[1] || '';
     childId = childId ? `_${childId}` : '';
     childId = `${bIds[0]}${bIds[1]}${childId}`;
-    const b = a[childId] = a[childId] || {};
-    if (key) {
-      const c = b[typeKey] = b[typeKey] || {};
-      c[key] = value;
-    } else {
+    let b;
+    if (Array.isArray(editId)) {
+      // 子级带样式的， editId 为父级的 keys;
+      b = this.createChildrenObject(a, [childId].concat(editId));
       b[typeKey] = value;
+    } else {
+      childId = editId || childId;
+      b = a[childId] = a[childId] || {};
+      if (key) {
+        // 子级不带样式直接转换；
+        const c = b[typeKey] = b[typeKey] || {};
+        c[key] = value;
+      } else {
+        b[typeKey] = value;
+      }
     }
   }
 
@@ -130,18 +235,25 @@ export default class EditView extends React.Component {
     if (!this.props.editId) {
       return <div>请选择要编辑的区域</div>;
     }
-
     const children = this.getDataToEditChildren();
-    return (<div className={this.props.className}>
-      {children}
-      <div className="button-wrapper">
-        <Button
-          type="primary"
-          onClick={this.clickMake}
-        >
-          保存
-        </Button>
+    // input 用的是响应式， 动画不可以做height；
+    return (<TweenOneGroup
+      className={`${this.props.className}-wrapper`}
+      enter={{ x: 30, opacity: 0, type: 'from' }}
+      leave={{ x: -30, opacity: 0 }}
+      appear={false}
+    >
+      <div key={this.props.editId} className={this.props.className}>
+        {children}
+        <div className="button-wrapper">
+          <Button
+            type="primary"
+            onClick={this.clickMake}
+          >
+            保存
+          </Button>
+        </div>
       </div>
-    </div>);
+    </TweenOneGroup>);
   }
 }

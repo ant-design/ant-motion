@@ -6,22 +6,23 @@ import BannerAnim, { Element } from 'rc-banner-anim';
 import Icon from 'antd/lib/icon';
 import 'rc-banner-anim/assets/index.css';
 import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
-import './index.less';
+&less&
 
 const BgElement = Element.BgElement;
+const bannerData = [
+  {
+    content1_bg: {
+      style: &content1_bg0-style&
+    },
+
+  },
+]
 class Banner extends React.Component {
   render() {
-    const dataSource = this.props.dataSource;
-    const props = { ...this.props };
-    const names = props.id.split('_');
-    const name = `${names[0]}${names[1]}`;
-    delete props.dataSource;
-
     const children = [0, 1].map((i) => {
       const isImg = dataSource[`${name}_title${i}`].children
         .match(/\.(gif|jpg|jpeg|png|JPG|PNG|GIF|JPEG)$/);
       return (<Element
-
         key={i}
         prefixCls="banner-user-elem"
       >
@@ -60,7 +61,7 @@ class Banner extends React.Component {
         <OverPack
           {...props}
           hideProps={{ icon: { reverse: true }, banner: { reverse: true } }}
-          style={dataSource[name].style}
+          style={&content1-style&}
         >
           <BannerAnim
             key="banner"
@@ -83,7 +84,6 @@ class Banner extends React.Component {
 
 Banner.propTypes = {
   className: PropTypes.string,
-  dataSource: PropTypes.object,
 };
 
 Banner.defaultProps = {

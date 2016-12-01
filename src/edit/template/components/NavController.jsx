@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import Button from 'antd/lib/button';
 import Icon from 'antd/lib/icon';
 import Modal from 'antd/lib/modal';
-import Tooltip from 'antd/lib/tooltip';
+// import Tooltip from 'antd/lib/tooltip';
 import message from 'antd/lib/message';
 import CopyToClipboard from 'react-copy-to-clipboard';
 import scrollEvent from 'rc-scroll-anim/lib/EventDispatcher';
@@ -118,28 +118,18 @@ class NavController extends React.Component {
     });
   }
 
-  urlBack = () => {
-    history.back();
-  }
-
-  urlForward = () => {
-    history.forward();
-  }
-
   render() {
     return (
       <div className={this.props.className}>
         <div
           className={`${this.props.className}-bar`}
         >
-          <ul className="undo-redo-bar">
-            <Tooltip title="Undo">
-              <li onClick={this.urlBack}><Icon type="left" /></li>
-            </Tooltip>
-            <Tooltip title="Redo">
-              <li onClick={this.urlForward}><Icon type="right" /></li>
-            </Tooltip>
-          </ul>
+          <div className={`${this.props.className}-remark`}>
+            <Icon type="exclamation-circle-o" />
+            <span>
+              注：本站里的编辑如果是数值，必须带上单位，如 "px", "vh", "%"。
+            </span>
+          </div>
           <ul>
             <li><a href="../">返回主站</a></li>
             <li><a href="/cases/help" disabled>查看教程</a></li>

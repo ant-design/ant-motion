@@ -16,13 +16,13 @@ export default {
         },
         backgroundAttachment: {
           value: 'fixed',
-          name: '背景锁定',
-          remark: '背景不随滚动条滚动',
+          name: '背景位置',
+          remark: '参数为： "relative", "absolute", "fixed"; "fixed" 为背景随滚动条滚动',
         },
         height: {
           name: '区块高度',
           value: '100vh',
-          remark: '请填写上单位 "px" 或 "vh", 如果在第一屏且没加 fixed 功能, 一屏为 calc(100vh - 64px)',
+          remark: '请填写上单位 "px" 或 "vh", 如果在第一屏且导航没加 fixed, 一屏为 calc(100vh - 64px)',
         },
       },
     },
@@ -31,6 +31,7 @@ export default {
         width: {
           value: '550px',
           name: '内容宽度',
+          remark: '请填写上单位 "px" 或 "%" ',
         },
         top: {
           value: '20%',
@@ -44,7 +45,7 @@ export default {
         },
         margin: {
           value: '0 0 0 -275px',
-          name: '边框距离',
+          name: 'margin',
           remark: '宽为550px, -275px 为居中',
           length: 4,
         },
@@ -55,6 +56,7 @@ export default {
         width: {
           value: '350px',
           name: '当前宽度',
+          remark: '请填写上单位 "px" 或 "%" ',
         },
         padding: {
           value: '0 0 0 30px',
@@ -71,12 +73,12 @@ export default {
         fontSize: {
           value: '40px',
           name: '文字大小',
-          remark: '如是图片不需要设置',
+          remark: '如是图片不需要设置, 请填写上单位 "px" 或 "%" ',
         },
         color: {
           value: '#ffffff',
           name: '文字颜色',
-          remark: '如是图片不需要设置',
+          remark: '如是图片不需要设置, 请填写上单位 "px" 或 "%" ',
         },
       },
       children: {
@@ -90,10 +92,12 @@ export default {
         fontSize: {
           value: '14px',
           name: '文字大小',
+          remark: '请填写上单位 "px" 或 "%" ',
         },
         color: {
           value: '#ffffff',
           name: '文字颜色',
+          remark: '格式为：#000000 或 rgba(0,0,0,1)',
         },
       },
       children: {
@@ -106,14 +110,17 @@ export default {
         color: {
           value: '#ffffff',
           name: '文字颜色',
+          remark: '格式为：#000000 或 rgba(0,0,0,1)',
         },
         backgroundColor: {
           value: 'transparent',
           name: '按钮颜色',
+          remark: '格式为：#000000 或 rgba(0,0,0,1)',
         },
         borderColor: {
           value: '#fff',
           name: '描边颜色',
+          remark: '格式为：#000000 或 rgba(0,0,0,1)',
         },
       },
       children: {

@@ -8,33 +8,20 @@
   & *{
     pointer-events: auto;
   }
+  &-remark{
+    line-height: 64px;
+    color: @edit-disabled-color;
+    margin-left: 16px;
+    display: inline-block;
+    & i{
+      margin-right: 10px;
+      color: #FAC450
+    }
+  }
   &-bar {
     height: 64px;
     background: @edit-bar-color;
     box-shadow: 0 5px 5px @edit-shadow-color;
-    & .undo-redo-bar {
-      float: left;
-      margin-left: 16px;
-      color: @text-color-light;
-      & li {
-        width: 64px;
-        text-align: center;
-        border-left: 1px solid @edit-line-color;
-        cursor: pointer;
-        transition: background .3s @ease-in-out;
-        &:nth-child(2) {
-          border-right: 1px solid @edit-line-color;
-        }
-        &[disabled] {
-          color: #666;
-          pointer-events: none;
-          cursor: not-allowed;
-        }
-        &:hover {
-          background: fade(#fff, 15);
-        }
-      }
-    }
     ul {
       float: right;
       margin-right: 16px;
