@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import Tabs from 'antd/lib/tabs';
 import ListView from './ListView';
 import EditView from './EditView';
-
+import OtherView from './OtherView';
 // import templateData from '../../../templates/template.config';
 import templateListData from '../template.config';
 
@@ -49,7 +49,10 @@ export default class ContentController extends React.Component {
             />
           </TabPane>
           <TabPane tab={<i><img src={imgUrl[2]} /></i>} key="3">
-            Content of Tab 3
+            <OtherView
+              setUrlData={this.props.setUrlData}
+              urlData={this.props.urlData}
+            />
           </TabPane>
         </Tabs>
       </div>

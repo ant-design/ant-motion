@@ -82,11 +82,9 @@ export default {
   other: {
     name: '其它功能选择',
     order: 4,
-    other: true,
     data: [
-      { label: '悬浮导航', value: 'fixed' },
-      { label: '侧边小点（页面里的分屏锚点滚动）', value: 'point' },
-      { label: '整屏滚动', value: 'full' },
+      { src: '', label: '侧边小点（页面里的分屏锚点滚动）', value: 'point' },
+      { src: '', label: '整屏滚动', value: 'full' },
     ],
   },
 };

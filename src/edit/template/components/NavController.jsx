@@ -138,23 +138,20 @@ class NavController extends React.Component {
         <div
           className={`${this.props.className}-bar`}
         >
-          <a className={`${this.props.className}-remark`} onClick={this.openLook}>
-            <Icon type="exclamation-circle-o" />
-            <span>
-              注意事项
-            </span>
-          </a>
           <ul>
+            <li><a onClick={this.openLook} className={`${this.props.className}-remark`}>
+              <Icon type="exclamation-circle-o" />
+              注意事项</a>
+            </li>
             <li><a href="../">返回主站</a></li>
-            <li><a href="/cases/help" disabled>查看教程</a></li>
             <li><a onClick={this.resetData}>重置参数</a></li>
             <li>
               <Button type="primary" onClick={this.switchMode}>
-                生成编辑链接
+                保存当前编辑
               </Button>
             </li>
             <li><Button type="primary" onClick={this.makePageURL}>生成预览链接</Button></li>
-            <li><Button type="primary" onClick={() => { saveJsZip(this.props.config); }}>保存代码</Button></li>
+            <li><Button type="primary" onClick={() => { saveJsZip(this.props.config); }}>生成代码</Button></li>
           </ul>
         </div>
       </div>
