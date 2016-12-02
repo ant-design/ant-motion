@@ -128,7 +128,7 @@ const setChildrenToIndex = () => {
     childStr += `      <${compStr}${keys[1]} key="${key}" name="${key}" {...props[${i}]} />,\n`;
   });
   if ('point' in templateStrObj.OTHER) {
-    importStr += `import Point from './Point';\n`;
+    importStr += 'import Point from \'./Point\';\n';
     const dataStr = `['${Object.keys(templateStrObj.JS)}']`.replace(/,/g, '\', \'');
     childStr += `      <Point key="list" ref="list" data={${dataStr}} />,\n`;
   }
