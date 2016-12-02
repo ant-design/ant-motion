@@ -20,7 +20,6 @@ import Table from 'antd/lib/table';
 import QueueAnim from 'rc-queue-anim';
 import { TweenOneGroup } from 'rc-tween-one';
 import Button from 'antd/lib/button';
-
 import 'antd/lib/table/style/index.less';
 import 'antd/lib/spin/style/index.less';
 import 'antd/lib/pagination/style/index.less';
@@ -44,7 +43,8 @@ class TableEnterLeave extends React.Component {
         title: 'Action',
         dataIndex: '',
         key: 'x',
-        render: (text, record) => (<span className={`${this.props.className}-delete`} onClick={e => this.onDelete(record.key, e)}>
+        render: (text, record) => (
+          <span className={`${this.props.className}-delete`} onClick={e => this.onDelete(record.key, e)}>
           Delete
         </span>),
       },
@@ -92,6 +92,8 @@ class TableEnterLeave extends React.Component {
         address: 'London No. 1 Lake Park',
       },
     ];
+    this.currentPage = 1;
+    this.newPage = 1;
     this.state = {
       data: this.data,
     };
@@ -122,55 +124,26 @@ class TableEnterLeave extends React.Component {
     this.setState({ data });
   }
 
-  getBodyWrapper = body =>
-    (<TweenOneGroup
-      component="tbody" className={body.props.className}
+  getBodyWrapper = (body) => {
+    // 切换分页去除动画;
+    if (this.currentPage !== this.newPage) {
+      this.currentPage = this.newPage;
+      return body;
+    }
+    return (<TweenOneGroup
+      component="tbody"
+      className={body.props.className}
       enter={this.enterAnim}
       leave={this.leaveAnim}
       appear={false}
     >
       {body.props.children}
     </TweenOneGroup>);
-
-
-  pageChange = () => {
-    this.enterAnim = [
-      { opacity: 0, duration: 0 },
-      {
-        height: 0,
-        duration: 100,
-        type: 'from',
-        delay: 250,
-        ease: 'easeOutQuad',
-        onComplete: this.onEnd,
-      },
-      { opacity: 1, duration: 250, onComplete: this.reAnim },
-    ];
-    this.leaveAnim = [
-      { duration: 250, opacity: 0 },
-      { height: 0, duration: 100, ease: 'easeOutQuad' },
-    ];
-  };
-
-  reAnim = () => {
-    this.enterAnim = [
-      { opacity: 0, duration: 0, x: 30, backgroundColor: '#fffeee' },
-      {
-        height: 0,
-        duration: 200,
-        type: 'from',
-        delay: 250,
-        ease: 'easeOutQuad',
-        onComplete: this.onEnd,
-      },
-      { opacity: 1, x: 0, duration: 250, ease: 'easeOutQuad' },
-      { delay: 1000, backgroundColor: '#fff' },
-    ];
-    this.leaveAnim = [
-      { duration: 250, opacity: 0 },
-      { height: 0, duration: 200, ease: 'easeOutQuad' },
-    ];
   }
+
+  pageChange = (pagination) => {
+    this.newPage = pagination.current;
+  };
 
   render() {
     return (<div>
