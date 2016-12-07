@@ -30,32 +30,17 @@ export default class Templates extends React.Component {
     this.myRef = {};
   }
 
-  componentDidMount() {
+  componentDidUpdate() {
     if (this.scrollScreen) {
       const docHeight = ReactDOM.findDOMNode(this).getBoundingClientRect().height;
       scrollScreen.init({ docHeight });
+    } else {
+      scrollScreen.unMount();
     }
     if (this.listPoint) {
       const list = ReactDOM.findDOMNode(this.listComp);
       const listHeight = list.getBoundingClientRect().height;
       list.style.marginTop = `-${listHeight / 2}px`;
-    }
-  }
-
-  componentWillReceiveProps() {
-    if (this.state.showMask) {
-      // maskChild 的位置需要把数据 set 后再去获取。。。所以用 setState 的 callback;
-      this.setState({}, () => {
-        const dom = $(ReactDOM.findDOMNode(this.myRef[this.state.currentKey]));
-        this.setState({
-          overlay: {
-            top: dom.offset().top,
-            left: dom.offset().left,
-            width: dom.outerWidth(),
-            height: dom.outerHeight(),
-          },
-        });
-      });
     }
   }
 
@@ -69,7 +54,6 @@ export default class Templates extends React.Component {
     const data = tData.split(',');
     const other = otherData.split(',');
     const configURL = JSON.parse(getURLData('c') || '{}');
-    // this.config = mergeURLDataToConfig(webData, this.configURL);
     const children = data.map((item) => {
       const dataArr = item.split('_');
       let dataId = `${dataArr[0]}${dataArr[1]}`;
@@ -98,24 +82,27 @@ export default class Templates extends React.Component {
           dataSource,
         });
     });
+
+    this.listPoint = false;
+    this.scrollScreen = false;
     // 判断其它里的；
     other.forEach((item) => {
       switch (item) {
-        case 'fixed': {
-          break;
-        }
-        case 'point': {
-          this.listPoint = true;
-          children.push(<Point key="list" data={data} ref={(c) => { this.listComp = c; }} />);
-          break;
-        }
-        case 'full': {
-          this.scrollScreen = true;
-          break;
-        }
-        default: {
-          break;
-        }
+        case 'point':
+          {
+            this.listPoint = true;
+            children.push(<Point key="list" data={data} ref={(c) => { this.listComp = c; }} />);
+            break;
+          }
+        case 'full':
+          {
+            this.scrollScreen = true;
+            break;
+          }
+        default:
+          {
+            break;
+          }
       }
     });
     return children;

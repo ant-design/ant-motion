@@ -44,3 +44,13 @@ export function ping(url, callback) {
   img.onerror = () => finish('error');
   img.src = url;
 }
+
+
+export function getRect(dom) {
+  return {
+    width: dom.outerWidth(),
+    height: dom.outerHeight(),
+    top: dom.offset().top,
+    left: dom.offset().left,
+  };
+}

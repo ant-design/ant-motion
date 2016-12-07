@@ -3,7 +3,7 @@ import NavController from './components/NavController';
 import ContentController from './components/ContentController';
 import EditStateController from './components/EditStateController';
 
-import { getURLData } from '../../templates/template/utils';
+import { getURLData, getRect } from '../../templates/template/utils';
 
 import '../static/style';
 
@@ -34,13 +34,16 @@ class Edit extends React.Component {
       }, () => {
         $('#preview').contents().find('body #react-content').mousemove((e) => {
           const dom = this.getByIdDom(e.target);
+          if (dom.id === 'react-content') {
+            return;
+          }
           if (dom !== this.state.enterDom) {
             if (this.state.enterDom) {
               $(this.state.enterDom).unbind('click', this.onClick);
             }
             dom.style.cursor = 'pointer';
             const jDom = $(dom);
-            const rect = this.getRect(jDom);
+            const rect = getRect(jDom);
             jDom.click(this.onClick);
             this.setState({ enterDom: dom, enterRect: rect });
           }
@@ -69,7 +72,7 @@ class Edit extends React.Component {
     const dom = e.currentTarget;
     const editId = dom.id;
     // const selectRect = dom.getBoundingClientRect();
-    const rect = this.getRect($(dom));
+    const rect = getRect($(dom));
     this.setState({ selectRect: rect, tabsKey: '2', editId });
   }
 
@@ -77,7 +80,7 @@ class Edit extends React.Component {
     if (this.state.editId) {
       const dom = $('#preview').contents().find(`#${this.state.editId}`);
       if (dom.length) {
-        const rect = this.getRect(dom);
+        const rect = getRect(dom);
         this.setState({ selectRect: rect });
       } else {
         this.selectHide = true;
@@ -92,7 +95,7 @@ class Edit extends React.Component {
       const dom = $('#preview').contents().find(`#${this.state.editId}`);
       if (dom.length) {
         this.selectHide = false;
-        const rect = this.getRect(dom);
+        const rect = getRect(dom);
         setState.selectRect = rect;
       }
     }
@@ -114,7 +117,7 @@ class Edit extends React.Component {
       if (!reload) {
         const dom = $('#preview').contents().find(`#${this.state.editId}`);
         if (dom.length) {
-          const selectRect = this.getRect(dom);
+          const selectRect = getRect(dom);
           this.setState({
             selectRect,
           });
@@ -124,13 +127,6 @@ class Edit extends React.Component {
       }
     });
   };
-
-  getRect = dom => ({
-    width: dom.outerWidth(),
-    height: dom.outerHeight(),
-    top: dom.offset().top,
-    left: dom.offset().left,
-  });
 
   getHash = (urlData) => {
     let urlHash = '';
@@ -169,13 +165,16 @@ class Edit extends React.Component {
   };
 
   reloadIFrame = () => {
-    $('#preview')[0].contentWindow.location.reload();
+    clearTimeout(this.setTime);
+    this.setTime = setTimeout(() => {
+      $('#preview')[0].contentWindow.location.reload();
+    }, 400);
     this.setState({ selectRect: null, editId: null });
   }
 
   render() {
     return (<div>
-      <NavController />
+      <NavController urlHash={this.state.urlHash} urlData={this.state.urlData} />
       <div className="edit-wrapper">
         <ContentController
           setUrlData={this.setUrlData}

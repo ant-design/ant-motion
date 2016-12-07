@@ -39,17 +39,20 @@
   }
   &-title {
     display: inline-block;
-    position: absolute !important;
+    position: relative;
     top: 25%;
-    margin-left: -275px;
+    left: 0;
+    right: 0;
+    margin: auto;
     font-size: 14px;
     color: @template-text-color-light;
     width: 550px;
     & .logo {
       width: 350px;
-      padding-left: 30px;
+      left: 30px;
       margin: auto;
-      display: block;
+      display: inline-block;
+      position: relative;
     }
     & p {
       margin-bottom: 20px;

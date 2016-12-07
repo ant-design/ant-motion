@@ -13,18 +13,19 @@ export default {
           value: '64px',
           name: '区块高度',
         },
-        background: {
-          value: 'reba(51, 51, 51, 0.95)',
-          name: '背景编辑',
-          remark: '颜色或图片，图片请加上 url("");',
+        backgroundColor: {
+          value: 'rgba(51, 51, 51, 0.95)',
+          name: '背景颜色',
         },
         boxShadow: {
           value: '0 5px 8px rgba(0,0,0,0.15)',
           name: '区块阴影',
           remark: '参数从左到右: x y blur color, 参数之间都需要空格;',
+          length: 4,
         },
         position: {
-          value: 'relative',
+          value: 'relative', // 方便第一屏不用设 calc，直接用 absolute;
+          select: ['relative', 'absolute', 'fixed'],
           name: '导航位置',
           remark: '参数为： "relative", "absolute", "fixed"; "fixed" 为始终浮在窗口；',
         },
@@ -84,12 +85,10 @@ export default {
         color: {
           value: '#fff',
           name: '字体颜色',
-          remark: '格式为：#000000 或 rgba(0,0,0,1)',
         },
         backgroundColor: {
           value: 'transparent',
           name: '背景颜色',
-          remark: '格式为：#000000 或 rgba(0,0,0,1)',
         },
         lineHeight: {
           value: '62px',

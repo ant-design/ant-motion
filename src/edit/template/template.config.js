@@ -83,7 +83,7 @@ export default {
     name: '其它功能选择',
     order: 4,
     data: [
-      { src: '', label: '侧边小点（页面里的分屏锚点滚动）', value: 'point' },
+      { src: '', label: '分屏锚点圆点', value: 'point' },
       { src: '', label: '整屏滚动', value: 'full' },
     ],
   },

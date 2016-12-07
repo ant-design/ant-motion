@@ -9,6 +9,10 @@ export default {
   dataSource: {
     content0: {
       style: {
+        backgroundColor: {
+          value: '#fff',
+          name: '背景颜色',
+        },
         backgroundImage: {
           value: 'https://zos.alipayobjects.com/rmsportal/gGlUMYGEIvjDOOw.jpg',
           remark: '尺寸参考:1920*1080',
@@ -17,12 +21,31 @@ export default {
         backgroundAttachment: {
           value: 'fixed',
           name: '背景位置',
+          select: ['relative', 'absolute', 'fixed'],
           remark: '参数为： "relative", "absolute", "fixed"; "fixed" 为背景随滚动条滚动',
+        },
+        backgroundSize: {
+          value: 'cover',
+          name: '背景大小',
+          select: ['contain', 'cover', 'inherit'],
+          remark: 'css 里的参数，"contain", "cover"等参数',
+        },
+        backgroundPosition: {
+          value: 'center',
+          name: '背景对齐',
+          select: ['center', 'top', 'left', 'bottom', 'right',
+            'left top', 'left bottom', 'right top', 'right bottom'],
+          remark: '参数有: left right center bottom top; 如需配置两个，请以空格格开',
         },
         height: {
           name: '区块高度',
           value: '100vh',
-          remark: '请填写上单位 "px" 或 "vh", 如果在第一屏且导航没加 fixed, 一屏为 calc(100vh - 64px)',
+          remark: '请填写上单位 "px" 或 "vh", 如果在第一屏且导航位置为 relative, 一屏为 calc(100vh - 64px)',
+        },
+        textAlign: {
+          name: '内容对齐',
+          value: 'center',
+          select: ['center', 'left', 'right'],
         },
       },
     },
@@ -39,15 +62,17 @@ export default {
           remark: '请填写上单位 "px" 或 "%" ',
         },
         left: {
-          value: '50%',
+          value: '0',
           name: '距左边位置',
-          remark: '请填写上单位 "px" 或 "%" ',
+        },
+        right: {
+          value: '0',
+          name: '距右边位置',
         },
         margin: {
-          value: '0 0 0 -275px',
+          value: 'auto',
+          select: ['auto', 'inherit'],
           name: 'margin',
-          remark: '宽为550px, -275px 为居中',
-          length: 4,
         },
       },
     },
@@ -58,17 +83,9 @@ export default {
           name: '当前宽度',
           remark: '请填写上单位 "px" 或 "%" ',
         },
-        padding: {
-          value: '0 0 0 30px',
-          name: 'padding',
-          remark: '为调整图片位置; 第一行为上右, 第二行为下左; 必须加单位',
-          length: 4,
-        },
-        margin: {
-          value: 'auto',
-          name: 'margin',
-          remark: '为调整图片位置; 第一行为上右, 第二行为下左; 必须加单位',
-          length: 4,
+        left: {
+          value: '30px',
+          name: '距左边位置',
         },
         fontSize: {
           value: '40px',
@@ -78,7 +95,7 @@ export default {
         color: {
           value: '#ffffff',
           name: '文字颜色',
-          remark: '如是图片不需要设置, 请填写上单位 "px" 或 "%" ',
+          remark: '如是图片不需要设置',
         },
       },
       children: {
@@ -97,7 +114,11 @@ export default {
         color: {
           value: '#ffffff',
           name: '文字颜色',
-          remark: '格式为：#000000 或 rgba(0,0,0,1)',
+        },
+        textAlign: {
+          name: '文字对齐',
+          value: 'center',
+          select: ['center', 'left', 'right'],
         },
       },
       children: {
@@ -110,17 +131,14 @@ export default {
         color: {
           value: '#ffffff',
           name: '文字颜色',
-          remark: '格式为：#000000 或 rgba(0,0,0,1)',
         },
         backgroundColor: {
           value: 'transparent',
           name: '按钮颜色',
-          remark: '格式为：#000000 或 rgba(0,0,0,1)',
         },
         borderColor: {
           value: '#fff',
           name: '描边颜色',
-          remark: '格式为：#000000 或 rgba(0,0,0,1)',
         },
       },
       children: {

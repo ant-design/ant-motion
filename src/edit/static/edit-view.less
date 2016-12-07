@@ -5,7 +5,6 @@
   color: fade(@text-color-light, 45);
   position: relative;
   .@{editView} {
-    position: relative;
     padding: 1px 0; // 切换时用
     &.tween-one-leaving {
       position: absolute;
@@ -83,7 +82,7 @@
         width: 28%;
         vertical-align: top;
         height: 22px;
-        line-height: 28px;
+        line-height: 22px;
         display: inline-block;
         & i {
           margin-left: 5px;
@@ -97,7 +96,7 @@
         position: relative;
         .edit-input-group {
           width: 100%;
-          > span {
+          > input {
             width: calc(~"50% - 3px");
             display: inline-block;
             margin: 0 6px 6px 0;
@@ -111,11 +110,34 @@
         }
       }
     }
+
   }
+
   .button-wrapper {
     padding-left: calc(~"35% + 10px");
     padding-top: 15px;
     border-top: 1px solid @edit-line-color;
     margin-bottom: 15px;
   }
+  .ant-select {
+    width: 100%;
+  }
+
+  ul li.ant-select-search{
+    margin: auto;
+    .ant-select-search__field__wrap{
+      padding-left: 0;
+    }
+  }
+}
+
+.@{editView}-color-wrapper {
+  position: absolute;
+  right: 16px;
+  z-index: 100;
+  outline: 0;
+}
+
+.@{editView}-color {
+  transform-origin: top;
 }

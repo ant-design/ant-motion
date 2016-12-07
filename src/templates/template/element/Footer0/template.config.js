@@ -16,6 +16,7 @@ export default {
         background: {
           name: '背景调整',
           value: '#333',
+          blend: true,
           remark: '当前属性为 background; 可添加图片，图片需加上 url("");',
         },
       },

@@ -32,8 +32,9 @@ export default class ListView extends React.Component {
   }
 
   onModalOk = () => {
-    this.props.setUrlData({ t: this.state.templateOptData });
-    const tweenEnd = this.state.data.join('') === this.state.templateOptData.join('');
+    this.props.setUrlData({ t: this.state.templateOptData }, true);
+    const tweenEnd = !this.state.data.length ||
+      this.state.data.join('') === this.state.templateOptData.join('');
     this.setState({
       data: this.state.templateOptData,
       modalOpen: false,
@@ -124,7 +125,7 @@ export default class ListView extends React.Component {
         <div className="text-wrapper">{cItem.text}</div>
         <div className="select-wrapper">
           {item.checkbox ?
-            (<InputNumber size="small" min={0} onChange={onChange} defaultValue={value} />)
+            (<InputNumber size="small" min={0} onChange={onChange} value={value} />)
             : (<Checkbox onChange={onChange} checked={!!value} />)}
         </div>
       </li>);
@@ -187,7 +188,11 @@ export default class ListView extends React.Component {
   }
 
   addClick = () => {
-    this.setState({ modalOpen: true, tweenEnd: false, oneRemove: false });
+    this.setState({
+      modalOpen: true,
+      tweenEnd: false,
+      oneRemove: false,
+    });
   };
 
   remClick = () => {
@@ -219,18 +224,12 @@ export default class ListView extends React.Component {
     const childrenToRender = this.getChildrenToTag(children);
     const modalChildren = this.getModalChildren();
     return (<div className={this.props.className}>
-      {children.length ? childrenToRender : <span>请添加你的模块</span>}
       <div className="handle">
-        <div onClick={this.addClick}><Icon type="plus" /></div>
-        <TweenOneGroup
-          onClick={this.remClick}
-          enter={{ scale: 1.5, opacity: 0, type: 'from' }}
-          leave={{ scale: 0, opacity: 0 }}
-          appear={false}
-        >
-          {this.state.oneRemove ? <Icon type="close" key="close" /> :
-            (<Icon type="minus" key="minus" />)}
-        </TweenOneGroup>
+        <div onClick={this.addClick}><Icon type="plus-circle-o" />添加模块</div>
+        <div onClick={this.remClick}>
+          {this.state.oneRemove ? [<Icon type="close-circle-o" key="close" />, '关闭册除'] :
+            ([<Icon type="minus-circle-o" key="minus" />, '删除模块'])}
+        </div>
         <Modal
           visible={this.state.modalOpen}
           title={<h2>请选择模板</h2>}
@@ -240,6 +239,9 @@ export default class ListView extends React.Component {
         >
           {modalChildren}
         </Modal>
+      </div>
+      <div className={`${this.props.className}-content`}>
+        {children.length ? childrenToRender : <span>请添加你的模块</span>}
       </div>
     </div>);
   }
