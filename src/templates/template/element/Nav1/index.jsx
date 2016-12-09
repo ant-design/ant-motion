@@ -13,6 +13,10 @@ class Header extends React.Component {
     delete props.dataSource;
     const names = props.id.split('_');
     const name = `${names[0]}${names[1]}`;
+    const navData = dataSource[`${name}_menu`].children;
+    const navChildren = Object.keys(navData).map(key => (<Item key={key}>
+      {navData[key]}
+    </Item>));
     return (<TweenOne
       component="header"
       animation={{ opacity: 0, type: 'from' }}
@@ -25,7 +29,7 @@ class Header extends React.Component {
         id={`${this.props.id}-logo`}
         style={dataSource[`${name}_logo`].style}
       >
-        <img height="33" src={dataSource[`${name}_logo`].children} />
+        <img width="100%" src={dataSource[`${name}_logo`].children} />
       </TweenOne>
       <TweenOne
         className={`${this.props.className}-user`}
@@ -57,18 +61,7 @@ class Header extends React.Component {
           style={dataSource[`${name}_menu`].style}
           id={`${this.props.id}-menu`}
         >
-          <Item key="a">
-            {dataSource[`${name}_menu`].children.menu1}
-          </Item>
-          <Item key="b">
-            {dataSource[`${name}_menu`].children.menu2}
-          </Item>
-          <Item key="c">
-            {dataSource[`${name}_menu`].children.menu3}
-          </Item>
-          <Item key="d">
-            {dataSource[`${name}_menu`].children.menu4}
-          </Item>
+          {navChildren}
         </Menu>
       </TweenOne>
     </TweenOne>);

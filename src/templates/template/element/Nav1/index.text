@@ -2,29 +2,34 @@ import React, { PropTypes } from 'react';
 import TweenOne from 'rc-tween-one';
 import Menu from 'antd/lib/menu';
 import Icon from 'antd/lib/icon';
-import './index.less';
 
 const Item = Menu.Item;
 
 class Header extends React.Component {
   render() {
+    const navData = &nav1_menu-children&;
+      const navChildren = Object.keys(navData).map((key) => {
+        return (<Item key={key}>
+          {navData[key]}
+        </Item>);
+    });
     return (<TweenOne
       component="header"
       animation={{ opacity: 0, type: 'from' }}
-      {...props}
-      style={&nav1-style&}
+      {...this.props}
+      &nav1-style&
     >
       <TweenOne
         className={`${this.props.className}-logo`}
         animation={{ x: -30, delay: 100, type: 'from', ease: 'easeOutQuad' }}
-        style={&nav1_logo-style&}
+        &nav1_logo-style&
       >
-        <img height="33" src={&nav1_logo-children&} />
+        &nav1_logo-children&
       </TweenOne>
       <TweenOne
         className={`${this.props.className}-user`}
         animation={{ x: 30, delay: 100, opacity: 0, type: 'from', ease: 'easeOutQuad' }}
-        style={&nav1_user-style&}
+        &nav1_user-style&
       >
         <a href="" className="help">
           <Icon type="question-circle-o" />
@@ -47,20 +52,9 @@ class Header extends React.Component {
       >
         <Menu
           mode="horizontal" defaultSelectedKeys={['a']}
-          style={&nav1_menu-style}
+          &nav1_menu-style&
         >
-          <Item key="a">
-            {&nav1_menu-children.menu1&}
-          </Item>
-          <Item key="b">
-            {&nav1_menu-children.menu2&}
-          </Item>
-          <Item key="c">
-            {&nav1_menu-children.menu3$}
-          </Item>
-          <Item key="d">
-            {&nav1_menu-children.menu4&}
-          </Item>
+          {navChildren}
         </Menu>
       </TweenOne>
     </TweenOne>);

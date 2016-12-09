@@ -1,16 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { scrollScreen } from 'rc-scroll-anim';
-import './less/common.less';
-$import
-$props
+
+&import&
+import './less/antMotion_style.less';
 
 export default class Home extends React.Component {
   componentDidMount() {
   }
 
   render() {
-    $children
+    &children&
     return (
       <div className="templates-wrapper">
         {children}

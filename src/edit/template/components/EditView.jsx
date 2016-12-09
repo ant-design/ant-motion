@@ -8,6 +8,7 @@ import Select from 'antd/lib/select';
 import AutoComplete from 'antd/lib/auto-complete';
 import { TweenOneGroup } from 'rc-tween-one';
 import SketchPicker from 'react-color';
+import deepCopy from 'deepcopy';
 import InputGroup from './InputGroup';
 
 import webData from '../../../templates/template.config';
@@ -38,7 +39,6 @@ export default class EditView extends React.Component {
 
   constructor(props) {
     super(props);
-    // this.config = {};
     this.wrapperRect = {
       top: 0,
     };
@@ -47,7 +47,7 @@ export default class EditView extends React.Component {
       rect: {
         top: 0,
       },
-      config: {},
+      config: deepCopy(this.props.urlData.c || {}),
     };
   }
 
@@ -114,14 +114,21 @@ export default class EditView extends React.Component {
       onFocus={inputFocus}
     />);
     if (data.select) {
+      const sChildren = data.select.map((item) => {
+        if (typeof item === 'string') {
+          return (<Option value={item} key={item}>{item}</Option>);
+        }
+        return (<Option value={item.value} key={item.value}>{item.name} {item.value}</Option>);
+      });
       childItem = (<Select size="small" defaultValue={value} key={data.name} onChange={changeValue}>
-        {data.select.map(item => (<Option value={item} key={item}>{item}</Option>))}
+        {sChildren}
       </Select>);
     }
     const av = parseFloat(data.value);
-    if (av || av === 0) {
+    if (typeKey !== 'children' && (av || av === 0)) {
       const cv = parseFloat(value);
-      const dataSource = [`${cv || ''}px`, `${cv || ''}vh`, `${cv || ''}%`];
+      const pv = cv.toString() !== 'NaN' ? cv : '';
+      const dataSource = [`${pv}px`, `${pv}vh`, `${pv}%`];
       childItem = (<AutoComplete
         dataSource={dataSource}
         defaultValue={value}
@@ -146,7 +153,8 @@ export default class EditView extends React.Component {
         );
       }
     }
-    return (<li key={key || Date.now()}>
+    const liProps = key ? { key } : null;
+    return (<li {...liProps}>
       <span>
         {data.name}
         {data.remark && <Tooltip title={data.remark}><Icon type="question-circle-o" /></Tooltip>}
@@ -204,7 +212,8 @@ export default class EditView extends React.Component {
           childrenLi && 'children-wrapper' || ''}`}
       >
         {(data[key].value || key === 'style'
-          || data[key][Object.keys(data[key])[0]].value)
+          || data[key][Object.keys(data[key])[0]].value
+          || data[key].value === '')
           && <h3><span>{name}</span></h3>}
         <ul>{this.getEditChild(data[key], key, parentKey)}</ul>
       </div>);
@@ -315,7 +324,7 @@ export default class EditView extends React.Component {
   }
 
   clickMake = () => {
-    const obj = { c: this.state.config };
+    const obj = { c: deepCopy(this.state.config) };
     this.props.setUrlData(obj);
   }
 
@@ -329,16 +338,15 @@ export default class EditView extends React.Component {
       values = this.isArrayValue.values;
       values[this.isArrayValue.i] = value;
     }
-    // changeValue刷了，，重突;
-    this.state.pickerColor = value;
-    this.changeValue(this.sketchColorKeyObj.key,
-      this.sketchColorKeyObj.typeKey,
-      this.sketchColorKeyObj.parentKey,
-      values
-    );
-    /* this.setState({
-     pickerColor: value,
-     });*/
+    this.setState({
+      pickerColor: value,
+    }, () => {
+      this.changeValue(this.sketchColorKeyObj.key,
+        this.sketchColorKeyObj.typeKey,
+        this.sketchColorKeyObj.parentKey,
+        values
+      );
+    });
   }
 
   inputFocus = (key, typeKey, parentKey, values, i, e) => {

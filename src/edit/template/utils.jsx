@@ -21,6 +21,16 @@ const colorLookup = {
   transparent: 1,
 };
 
+export function dataToArray(vars) {
+  if (!vars && vars !== 0) {
+    return [];
+  }
+  if (Array.isArray(vars)) {
+    return vars;
+  }
+  return [vars];
+}
+
 export function getEditID(editId) {
   const ids = editId.split('-');
   const id = ids[0];

@@ -4,16 +4,15 @@ import QueueAnim from 'rc-queue-anim';
 import TweenOne from 'rc-tween-one';
 import Icon from 'antd/lib/icon';
 import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
-&less&
 
-class Banner extends React.Component {
+class Content extends React.Component {
   render() {
     return (
       <OverPack
         replay
         playScale={[0.3, 0.1]}
-        {...props}
-        style={&banner0-style&}
+        {...this.props}
+        &content0-style&
         hideProps={{ icon: { reverse: true } }}
       >
         <QueueAnim
@@ -21,22 +20,23 @@ class Banner extends React.Component {
           delay={200}
           className={`${this.props.className}-wrapper`}
           key="text"
-          style={&banner0_wrapper-style&}
+          &content0_wrapper-style&
         >
           <span
             className="title"
             key="title"
-            style={&banner0_title-style&}
+            &content0_title-style&
           >
-            &banner0_title-children&
+            &content0_title-children&
           </span>
-          <p key="content"
-            style={&banner0_content-style&}
+          <p
+            key="content"
+            &content0_content-style&
           >
-            &banner0_content-children&
+            &content0_content-children&
           </p>
           <Button type="ghost" key="button">
-            &banner0_button-children&
+            &content0_button-children&
           </Button>
         </QueueAnim>
         <TweenOne
@@ -51,12 +51,12 @@ class Banner extends React.Component {
   }
 }
 
-Banner.propTypes = {
+Content.propTypes = {
   className: PropTypes.string,
 };
 
-Banner.defaultProps = {
-  className: 'content0',
+Content.defaultProps = {
+  className: 'banner0',
 };
 
-export default Banner;
+export default Content;

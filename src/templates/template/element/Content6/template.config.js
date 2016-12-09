@@ -1,6 +1,7 @@
 const component = require('./index');
-const templateStr = require('!raw!./index');
+const templateStr = require('!raw!./index.text');
 const less = require('!raw!./index.less');
+const bgStyle = require('../../bgStyleData');
 
 export default {
   component,
@@ -23,25 +24,7 @@ export default {
           value: '',
           remark: '尺寸参考:1920*1080',
         },
-        backgroundAttachment: {
-          value: 'relative',
-          name: '背景位置',
-          select: ['relative', 'absolute', 'fixed'],
-          remark: '参数为： "relative", "absolute", "fixed"; "fixed" 为背景随滚动条滚动',
-        },
-        backgroundSize: {
-          value: 'cover',
-          name: '背景大小',
-          select: ['contain', 'cover', 'inherit'],
-          remark: 'css 里的参数，"contain", "cover"等参数',
-        },
-        backgroundPosition: {
-          value: 'center',
-          name: '背景对齐',
-          select: ['center', 'top', 'left', 'bottom', 'right',
-            'left top', 'left bottom', 'right top', 'right bottom'],
-          remark: '参数有: left right center bottom top; 如需配置两个，请以空格格开',
-        },
+        ...bgStyle,
       },
     },
     content6_title: {

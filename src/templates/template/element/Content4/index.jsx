@@ -33,7 +33,7 @@ class Content extends React.Component {
       .map((key, i) => {
         const item = dataSource[key];
         const childrenObj = item.children;
-        const styleObj = item.style;
+        const styleObj = item.style || {};
         const id = key.split('_')[1];
         return (<li
           key={i}

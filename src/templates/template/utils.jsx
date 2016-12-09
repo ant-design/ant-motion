@@ -54,3 +54,28 @@ export function getRect(dom) {
     left: dom.offset().left,
   };
 }
+
+function setProps(_data, key) {
+  const item = _data[key];
+  const data = _data;
+  if (typeof item !== 'object') {
+    return;
+  }
+  if ('value' in item) {
+    if (key === 'backgroundImage') {
+      data[key] = `url(${item.value})`;
+    } else {
+      data[key] = item.value;
+    }
+  } else {
+    Object.keys(data[key]).forEach(setProps.bind(this, data[key]));
+  }
+}
+
+export function dataValueReplace(data) {
+  if (!data) {
+    return {};
+  }
+  Object.keys(data).forEach(setProps.bind(this, data));
+  return data;
+}

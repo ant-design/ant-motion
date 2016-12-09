@@ -29,30 +29,28 @@ export default {
           name: '导航位置',
           remark: '参数为： "relative", "absolute", "fixed"; "fixed" 为始终浮在窗口；',
         },
+        top: {
+          value: '0',
+          name: '顶部距离',
+        },
       },
     },
     nav0_logo: {
       style: {
-        top: {
-          value: '50%',
-          name: '顶部距离',
-          remark: '请填写上单位 "px" 或 "%"',
-        },
         left: {
           value: '4%',
           name: '左边距离',
           remark: '请填写上单位 "px" 或 "%"',
         },
-        margin: {
-          value: '-16px 0 0 0',
-          name: 'margin',
-          remark: 'margin 边距',
-          length: 4,
-        },
-        height: {
-          value: '33px',
-          name: '图片高度',
+        width: {
+          value: '150px',
+          name: '图片宽度',
           remark: '请填写上单位 "px" 或 "%"',
+        },
+        lineHeight: {
+          value: '64px',
+          name: '区块行高',
+          remark: '图片垂直居中, 每行的行高',
         },
       },
       children: {

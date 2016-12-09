@@ -6,7 +6,7 @@ import Icon from 'antd/lib/icon';
 import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
 import './index.less';
 
-class Banner extends React.Component {
+class Content extends React.Component {
   render() {
     const dataSource = this.props.dataSource;
     const props = { ...this.props };
@@ -64,14 +64,14 @@ class Banner extends React.Component {
   }
 }
 
-Banner.propTypes = {
+Content.propTypes = {
   className: PropTypes.string,
   id: PropTypes.string,
   dataSource: PropTypes.object,
 };
 
-Banner.defaultProps = {
-  className: 'content0',
+Content.defaultProps = {
+  className: 'banner0',
 };
 
-export default Banner;
+export default Content;

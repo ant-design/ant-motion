@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { scrollScreen } from 'rc-scroll-anim';
 import webData from '../template.config';
-import { getURLData, mergeURLDataToDefault } from './utils';
+import { getURLData, mergeURLDataToDefault, dataValueReplace } from './utils';
 import '../static/common.less';
 
 const Point = require('./other/Point');
@@ -45,7 +45,6 @@ export default class Templates extends React.Component {
   }
 
   getTemplatesToChildren = () => {
-    let isNav;
     const tData = getURLData('t', this.props.location.hash);
     if (!tData) {
       return (<div>请添加你的模块</div>);
@@ -61,17 +60,11 @@ export default class Templates extends React.Component {
       const defaultData = webData[dataId];
       const urlData = configURL[item];
       const nextData = mergeURLDataToDefault(urlData, defaultData);
-      isNav = dataArr[0] === 'nav';
       const Component = defaultData.component;
       if (!Component) {
         return null;
       }
-      const dataSource = this.getChildrenProps(nextData,
-        isNav && !(other.indexOf('fixed') >= 0));
-      if (isNav && other.indexOf('fixed') >= 0) {
-        props.style = props.style || {};
-        props.style.position = 'fixed';
-      }
+      const dataSource = dataValueReplace(nextData);
       return React.createElement(Component,
         {
           key: item,
@@ -106,31 +99,6 @@ export default class Templates extends React.Component {
       }
     });
     return children;
-  };
-
-  setProps = (_data, key) => {
-    const item = _data[key];
-    const data = _data;
-    if (typeof item !== 'object') {
-      return;
-    }
-    if ('value' in item) {
-      if (key === 'backgroundImage') {
-        data[key] = `url(${item.value})`;
-      } else {
-        data[key] = item.value;
-      }
-    } else {
-      Object.keys(data[key]).forEach(this.setProps.bind(this, data[key]));
-    }
-  }
-
-  getChildrenProps = (data) => {
-    if (!data) {
-      return {};
-    }
-    Object.keys(data).forEach(this.setProps.bind(this, data));
-    return data;
   };
 
   render() {
