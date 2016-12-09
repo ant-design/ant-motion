@@ -162,11 +162,14 @@ const setChildrenToIndex = () => {
   }).forEach((key) => {
     const item = jsData[key];
     importStr += `import ${item.name} from './${item.name}';\n`;
-    childStr += `      <${item.name} id="${key}" key="${key}"/>,\n`;
+    childStr += `      <${item.name} id="${item.name}" key="${item.name}"/>,\n`;
   });
   if ('point' in templateStrObj.OTHER) {
     importStr += 'import Point from \'./Point\';\n';
-    const dataStr = `['${Object.keys(templateStrObj.JS)}']`.replace(/,/g, '\', \'');
+    const ids = Object.keys(templateStrObj.JS).map(key => templateStrObj.JS[key].name)
+      .filter(key => !key.match(/Nav|Footer/i));
+    const dataStr = `['${ids}']`.replace(/,/g, '\', \'');
+    childStr += '      // 导航和页尾不进入锚点区，如果需要，自行添加;\n';
     childStr += `      <Point key="list" ref="list" data={${dataStr}} />,\n`;
   }
   childStr += '    ];';

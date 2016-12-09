@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from 'rc-scroll-anim';
 
-require('../../static/point.less');
-
 export default class Point extends React.Component {
   static propTypes = {
     className: React.PropTypes.string,
@@ -19,7 +17,7 @@ export default class Point extends React.Component {
       if (item.match('nav') || item.match('footer')) {
         return null;
       }
-      return (<Link key={item} className={this.props.className} to={item} />);
+      return (<Link key={item} className={this.props.className} to={item} toHash={false} />);
     }).filter(item => item);
     return (<div className={`${this.props.className}-wrapper`} style={this.props.style}>
       {children}
