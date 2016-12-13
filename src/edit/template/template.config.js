@@ -83,8 +83,8 @@ export default {
     name: '其它功能选择',
     order: 4,
     data: [
-      { src: '', label: '分屏锚点圆点', value: 'point' },
-      { src: '', label: '整屏滚动', value: 'full' },
+      { src: 'https://zos.alipayobjects.com/rmsportal/OSQFJjsAgApqJFxdMaFt.jpg', label: '分屏锚点圆点', value: 'point' },
+      { src: 'https://os.alipayobjects.com/rmsportal/pwggipnVeoQkgGwmWilN.mp4', label: '整屏滚动', value: 'full' },
     ],
   },
 };

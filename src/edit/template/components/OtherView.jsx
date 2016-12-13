@@ -41,13 +41,22 @@ export default class OtherView extends React.Component {
   }
 
   getChildrenToRender = () =>
-    webData.other.data.map((item, i) => (<li key={i} onClick={() => { this.onClick(item.value); }}>
-      <p><img src={item.src} width="100%" /></p>
-      <div>
-        <span>{item.label}</span>
-        <Checkbox checked={this.state.checkbox[item.value]} />
-      </div>
-    </li>));
+    webData.other.data.map((item, i) => {
+      const isVideo = item.src.match('.mp4');
+      const toChildren = isVideo ?
+        <video src={item.src} width="100%" loop autoPlay/> :
+        <img src={item.src} width="100%" />;
+
+      return (
+        <li key={i} onClick={() => { this.onClick(item.value); }}>
+          <p>{toChildren}</p>
+          <div>
+            <span>{item.label}</span>
+            <Checkbox checked={this.state.checkbox[item.value]} />
+          </div>
+        </li>
+      );
+    });
 
   render() {
     const childrenToRender = this.getChildrenToRender();
