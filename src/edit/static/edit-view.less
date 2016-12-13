@@ -121,13 +121,23 @@
   }
   .ant-select {
     width: 100%;
+    &-selection {
+      background: transparent !important;
+      color: fade(@text-color-light, 55);
+      border-color: @line-deep-color ;
+    }
   }
 
-  ul li.ant-select-search{
+  ul li.ant-select-search {
     margin: auto;
-    .ant-select-search__field__wrap{
+    .ant-select-search__field__wrap {
       padding-left: 0;
     }
+  }
+  .ant-input {
+    background: transparent !important;
+    color: fade(@text-color-light, 55);
+    border-color: @line-deep-color ;
   }
 }
 

@@ -101,6 +101,7 @@ scrollScreen.unMount();
 | component | string         |  div  | 组件标签            |
 | playScale |  number / array  |  `0.5` | 要在屏幕哪个区域开始播放， 0.5 为屏幕中间, 如果为 array 时 replay 为 true, [bottom-enter, top-leave] enter为进入是的播放点， topLeave 为出屏的比例(当前显示屏的上面一屏)的百分点。topLeave 必须大于等于 bottomEnter。 |
 | onChange | func    | null  | 变更回调; callback({ mode, scrollName }); mode 为 `enter` 或 `leave` 两种状态 |
+| location | string   | null  | 定位到父级元素, 必须为 id； |
 
 
 ### OverPack 说明
