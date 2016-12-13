@@ -90,7 +90,7 @@ export default class EditView extends React.Component {
       return null;
     }
     if (!('value' in data)) {
-      const parentKeys = parentKey || [];
+      const parentKeys = [parentKey];
       parentKeys.push(typeKey, key);
       return (<li key={key}>
         {this.getChildren(data, parentKeys, true)}
@@ -140,7 +140,7 @@ export default class EditView extends React.Component {
     if (data.length) {
       const values = value.split(/\s+/);
       const children = [];
-      childItem = (<InputGroup onChange={changeValue} key={value}>
+      childItem = (<InputGroup onChange={changeValue} key={data.value}>
         {children}
       </InputGroup>);
       for (let i = 0; i < data.length; i += 1) {
@@ -188,7 +188,7 @@ export default class EditView extends React.Component {
     const data = sData[id];
     const defaultData = mergeURLDataToDefault(data, currentData);
     if (defaultData.all) {
-      return this.getAllData(defaultData, childId);
+      return this.getAllData(defaultData);
     }
     return this.getChildren(defaultData[childId]);
   }
@@ -219,58 +219,12 @@ export default class EditView extends React.Component {
       </div>);
     });
 
-  getAllData = (defaultData, childId) => {
-    const dataLength = Math.max.apply({}, Object.keys(defaultData)
-      .map(item => parseFloat((item.split('_')[1] || '0').replace(/[^0-9]/g, ''))));
-    const children = [];
-    let tObj;
-    const setObjData = (i) => {
-      Object.keys(defaultData).forEach((key) => {
-        const num = parseFloat((key.split('_')[1] || '').replace(/[^0-9]/g, ''));
-        if (num === i - 1) {
-          tObj[key] = defaultData[key];
-        }
+  getAllData = defaultData =>
+    Object.keys(defaultData).filter(key => typeof defaultData[key] === 'object')
+      .map((key) => {
+        const item = defaultData[key];
+        return this.getChildren(item, key);
       });
-    };
-    for (let i = 0; i <= dataLength + 1; i += 1) {
-      if (i === 0) {
-        tObj = { name: '整个区块', remark: '信息过多，请仔细阅读标题。' };
-        tObj[childId] = defaultData[childId];
-      } else {
-        let name = '一';
-        switch (i) {
-          case 1:
-            name = '一';
-            break;
-          case 2:
-            name = '二';
-            break;
-          default:
-            name = '三';
-        }
-        tObj = { name: `第${name}屏` };
-        setObjData(i);
-      }
-      children.push(tObj);
-    }
-    return children.map((item) => {
-      const childrenList = Object.keys(item).map((key) => {
-        if (typeof item[key] === 'string') {
-          return null;
-        }
-        return (<div key={key}>
-          {this.getChildren(item[key], key)}
-        </div>);
-      }).filter(a => a);
-      return (<div key={item.name}>
-        <h1>
-          {item.name}
-          {item.remark && <span>{item.remark}</span>}
-        </h1>
-        {childrenList}
-      </div>);
-    });
-  }
 
   getCurrentConfigData = (key, typeKey, editId) => {
     const ids = getEditID(this.props.editId);
@@ -279,7 +233,9 @@ export default class EditView extends React.Component {
     let childId = ids.childId;
     let b;
     if (Array.isArray(editId)) {
-      b = getChildrenObject(a, [childId].concat(editId));
+      const idArray = editId;
+      idArray[0] = idArray[0] || childId;
+      b = getChildrenObject(a, idArray);
     } else {
       childId = editId || childId;
       b = a[childId] || {};
@@ -308,7 +264,10 @@ export default class EditView extends React.Component {
     let b;
     if (Array.isArray(editId)) {
       // 子级带样式的， editId 为父级的 keys;
-      b = createChildrenObject(a, [childId].concat(editId));
+      const idArray = editId;
+      // 获取全部时，数组里第一个是有值的，没值的情况把 childId 替换到第一个；
+      idArray[0] = idArray[0] || childId;
+      b = createChildrenObject(a, idArray);
     } else {
       childId = editId || childId;
       b = a[childId] = a[childId] || {};

@@ -63,7 +63,7 @@ export default class ListView extends React.Component {
     let data = this.state.templateOptData;
     let name;
     if (!checkbox) {
-      name = `${key}_${i}`;
+      name = `${key}_${i}_0`;
       const checked = value.target.checked;
       let beArray = false;
       data = data.map((item) => {

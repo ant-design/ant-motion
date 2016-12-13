@@ -4,6 +4,7 @@ import { scrollScreen } from 'rc-scroll-anim';
 import webData from '../template.config';
 import { getURLData, mergeURLDataToDefault, dataValueReplace } from './utils';
 import '../static/common.less';
+import '../static/point.less';
 
 const Point = require('./other/Point');
 

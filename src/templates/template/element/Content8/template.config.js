@@ -1,5 +1,5 @@
 const component = require('./index');
-const templateStr = require('!raw!./index');
+const templateStr = require('!raw!./index.text');
 const less = require('!raw!./index.less');
 const bgStyle = require('../../bgStyleData');
 
@@ -88,17 +88,6 @@ export default {
         },
         content: {
           name: '文字区块',
-          style: {
-            width: {
-              value: '50%',
-              name: '区块宽度',
-            },
-            padding: {
-              value: '10%',
-              name: 'padding',
-              length: 4,
-            },
-          },
           children: {
             name: '详细内容',
             value: `<h3>技术</h3>
@@ -111,17 +100,6 @@ export default {
         },
         img: {
           name: '内容图片',
-          style: {
-            width: {
-              value: '50%',
-              name: '区块宽度',
-            },
-            padding: {
-              value: '5%',
-              name: 'padding',
-              length: 4,
-            },
-          },
           children: {
             name: '图片地址',
             value: 'https://zos.alipayobjects.com/rmsportal/xBrUaDROgtFBRRL.png',
@@ -147,17 +125,6 @@ export default {
         },
         content: {
           name: '文字区块',
-          style: {
-            width: {
-              value: '50%',
-              name: '区块宽度',
-            },
-            padding: {
-              value: '10%',
-              name: 'padding',
-              length: 4,
-            },
-          },
           children: {
             name: '详细内容',
             value: `<h3>技术</h3>
@@ -170,17 +137,6 @@ export default {
         },
         img: {
           name: '内容图片',
-          style: {
-            width: {
-              value: '50%',
-              name: '区块宽度',
-            },
-            padding: {
-              value: '5%',
-              name: 'padding',
-              length: 4,
-            },
-          },
           children: {
             name: '图片地址',
             value: 'https://zos.alipayobjects.com/rmsportal/xBrUaDROgtFBRRL.png',
@@ -206,17 +162,6 @@ export default {
         },
         content: {
           name: '文字区块',
-          style: {
-            width: {
-              value: '50%',
-              name: '区块宽度',
-            },
-            padding: {
-              value: '10%',
-              name: 'padding',
-              length: 4,
-            },
-          },
           children: {
             name: '详细内容',
             value: `<h3>技术</h3>
@@ -229,17 +174,6 @@ export default {
         },
         img: {
           name: '内容图片',
-          style: {
-            width: {
-              value: '50%',
-              name: '区块宽度',
-            },
-            padding: {
-              value: '5%',
-              name: 'padding',
-              length: 4,
-            },
-          },
           children: {
             name: '图片地址',
             value: 'https://zos.alipayobjects.com/rmsportal/xBrUaDROgtFBRRL.png',

@@ -9,22 +9,28 @@
     overflow: hidden;
     display: inline-block;
     position: relative;
-    & img {
-      height: 60%;
-      max-height: 400px;
+    line-height: 50vh;
+    span{
+      display: inline-block;
       position: absolute;
-      top: 20%;
+      width: 55%;
       left: 10%;
+      img {
+        vertical-align: middle;
+      }
     }
   }
   &-text {
     display: inline-block;
-    width: 60%;
+    width: 55%;
     height: 100%;
     vertical-align: top;
     position: relative;
+    margin-right: 5%;
     & p, & h1 {
       position: relative !important;
+      width: 75%;
+      float: right;
     }
     & h1 {
       top: 35%;

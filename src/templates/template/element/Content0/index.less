@@ -3,6 +3,7 @@
 @banner0: banner0;
 .@{banner0} {
   width: 100%;
+  // 如果在第一屏且导航位置为 relative, 一屏为 height: calc(100vh - 64px);
   height: 100vh;
   position: relative;
   text-align: center;
@@ -10,6 +11,7 @@
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
+  border-color: #666;
   &-wrapper {
     display: inline-block;
     position: absolute;

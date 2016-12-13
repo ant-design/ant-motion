@@ -46,18 +46,16 @@ class Content extends React.Component {
       </li>);
     });
     const titleAnim = { y: '+=30', opacity: 0, type: 'from' };
-    const props = { ...this.props };
-    delete props.id;
     return (
       <div
-        {...props}
+        {...this.props}
         className="content-template-wrapper"
         &content4-style&
       >
         <OverPack
-          className={`content-template ${props.className}`}
+          className={`content-template ${this.props.className}`}
           hideProps={{ h1: { reverse: true }, p: { reverse: true } }}
-          id={this.props.id}
+          location={this.props.id}
         >
           <TweenOne
             key="h1"

@@ -51,6 +51,7 @@ class Content extends React.Component {
         <OverPack
           className={`content-template ${props.className}`}
           hideProps={{ img: { reverse: true } }}
+          location={props.id}
         >
           <QueueAnim
             className={`${props.className}-text`}

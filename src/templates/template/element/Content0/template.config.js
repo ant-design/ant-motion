@@ -3,6 +3,7 @@ const templateStr = require('!raw!./index.text');
 const less = require('!raw!./index.less');
 
 const bgStyle = require('../../bgStyleData');
+const borderStyle = require('../../borderStyleData');
 
 export default {
   component,
@@ -11,8 +12,18 @@ export default {
   dataSource: {
     content0: {
       style: {
+        height: {
+          name: '区块高度',
+          value: '100vh',
+          remark: '请填写上单位 "px" 或 "vh", 如果在第一屏且导航位置为 relative, 一屏为 calc(100vh - 64px)',
+        },
+        textAlign: {
+          name: '内容对齐',
+          value: 'center',
+          select: ['center', 'left', 'right'],
+        },
         backgroundColor: {
-          value: '#fff000',
+          value: '#fff',
           name: '背景颜色',
         },
         backgroundImage: {
@@ -27,16 +38,7 @@ export default {
           select: ['scroll', 'fixed'],
           remark: '参数为： "relative", "absolute", "fixed"; "fixed" 为背景随滚动条滚动',
         },
-        height: {
-          name: '区块高度',
-          value: '100vh',
-          remark: '请填写上单位 "px" 或 "vh", 如果在第一屏且导航位置为 relative, 一屏为 calc(100vh - 64px)',
-        },
-        textAlign: {
-          name: '内容对齐',
-          value: 'center',
-          select: ['center', 'left', 'right'],
-        },
+        ...borderStyle,
       },
     },
     content0_wrapper: {

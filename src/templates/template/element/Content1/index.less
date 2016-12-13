@@ -2,12 +2,10 @@
 @banner1: banner1;
 .@{banner1} {
   width: 100%;
-  height: 100%;
+  // 如果在第一屏且导航位置为 relative, 一屏为 height: calc(100vh - 64px);
+  height: 100vh;
   position: relative;
-  text-align: center;
-  background-size: cover;
-  background-attachment: fixed;
-  background-position: center;
+  border-color: #666;
   .banner-anim{
     height: 100%;
   }
@@ -17,7 +15,6 @@
   }
   .banner-user-elem{
     height: 100%;
-    text-align: center;
     color: #fff;
     position: relative;
     overflow: hidden;
@@ -38,15 +35,16 @@
     top: 40%;
   }
   &-title {
-    display: inline-block;
+    display: block;
     position: relative;
-    top: 25%;
+    top: 20%;
     left: 0;
     right: 0;
     margin: auto;
     font-size: 14px;
     color: @template-text-color-light;
     width: 550px;
+    text-align: center;
     & .logo {
       width: 350px;
       left: 30px;

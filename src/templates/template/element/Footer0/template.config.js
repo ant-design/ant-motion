@@ -1,5 +1,5 @@
 const component = require('./index');
-const templateStr = require('!raw!./index');
+const templateStr = require('!raw!./index.text');
 const less = require('!raw!./index.less');
 
 export default {
@@ -13,11 +13,9 @@ export default {
           value: '80px',
           name: '区块高度',
         },
-        background: {
+        backgroundColor: {
           name: '背景调整',
           value: '#333',
-          blend: true,
-          remark: '当前属性为 background; 可添加图片，图片需加上 url("");',
         },
       },
     },

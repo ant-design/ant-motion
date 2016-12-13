@@ -1,7 +1,8 @@
 const component = require('./index');
-const templateStr = require('!raw!./index');
+const templateStr = require('!raw!./index.text');
 const less = require('!raw!./index.less');
 const bgStyle = require('../../bgStyleData');
+const borderStyle = require('../../borderStyleData');
 
 export default {
   component,
@@ -25,6 +26,7 @@ export default {
           remark: '尺寸参考:1920*1080',
         },
         ...bgStyle,
+        ...borderStyle,
       },
     },
     content2_imgWrapper: {
@@ -33,21 +35,18 @@ export default {
           value: '40%',
           name: '区块宽度',
         },
+        lineHeight: {
+          value: '50vh',
+          name: '区块行高',
+          remark: '控制图片垂直居中元素',
+        },
       },
     },
     content2_img: {
       style: {
-        height: {
-          value: '60%',
-          name: '图片高度',
-        },
-        maxHeight: {
-          value: '400px',
-          name: '最大高度',
-        },
-        top: {
-          value: '20%',
-          name: '顶部距离',
+        width: {
+          value: '55%',
+          name: '图片宽度',
         },
         right: {
           value: '10%',
@@ -76,6 +75,10 @@ export default {
     },
     content2_title: {
       style: {
+        width: {
+          value: '75%',
+          name: '区块宽度',
+        },
         textAlign: {
           value: 'left',
           name: '文字对齐',
@@ -84,12 +87,6 @@ export default {
         color: {
           value: '#404040',
           name: '文字颜色',
-        },
-        margin: {
-          value: '0 30% 0 0',
-          name: 'margin',
-          length: 4,
-          remark: '为调整图块位置; 第一行为上右, 第二行为下左; 必须加单位',
         },
         fontSize: {
           value: '32px',
@@ -103,6 +100,10 @@ export default {
     },
     content2_content: {
       style: {
+        width: {
+          value: '75%',
+          name: '区块宽度',
+        },
         textAlign: {
           value: 'left',
           name: '文字对齐',
@@ -111,12 +112,6 @@ export default {
         color: {
           value: '#666',
           name: '文字颜色',
-        },
-        padding: {
-          value: '0 30% 0 0',
-          name: 'padding',
-          length: 4,
-          remark: '为调整区块位置; 第一行为上右, 第二行为下左; 必须加单位',
         },
         fontSize: {
           value: '12px',

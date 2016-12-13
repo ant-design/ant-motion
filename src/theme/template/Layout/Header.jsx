@@ -13,7 +13,12 @@ class Header extends React.Component {
   render() {
     const navToRender = navArr.map((item) => {
       const className = this.props.activeKey === item.key ? 'active' : '';
-      const cItem = (<li key={item.key}>
+      if (item.open) {
+        return (<li key={item.key}>
+          <a href={item.href} target="_blank">{item.name}</a>
+        </li>);
+      }
+      return (<li key={item.key}>
         <Link
           to={item.href}
           className={className}
@@ -22,7 +27,6 @@ class Header extends React.Component {
           {item.name}
         </Link>
       </li>);
-      return cItem;
     });
     return (<header
       className={`${this.props.className}-wrapper`}

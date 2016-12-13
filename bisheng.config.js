@@ -1,7 +1,6 @@
 const path = require('path');
 module.exports = {
   source: [
-    './cases',
     './language',
     './components',
     './exhibition',

@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import NavController from './components/NavController';
 import ContentController from './components/ContentController';
 import EditStateController from './components/EditStateController';
@@ -23,7 +24,6 @@ class Edit extends React.Component {
       tabsKey: '1',
       editId: null,
       iframeHeight: null,
-      scrollTop: 0,
     };
   }
 
@@ -55,6 +55,7 @@ class Edit extends React.Component {
           this.setState({ enterDom: null, enterRect: null });
         });
         $('#preview').contents().scroll(this.onScroll);
+
         $(window).resize(this.onResize);
       });
     });
@@ -78,28 +79,39 @@ class Edit extends React.Component {
 
   onResize = () => {
     if (this.state.editId) {
-      const dom = $('#preview').contents().find(`#${this.state.editId}`);
+      /* const dom = $('#preview').contents().find(`#${this.state.editId}`);
       if (dom.length) {
         const rect = getRect(dom);
         this.setState({ selectRect: rect });
       } else {
         this.selectHide = true;
-      }
+      }*/
+      // 窗口变动关掉所以操作, 回到选择 tabs;
+      this.setState({
+        editId: null,
+        selectRect: null,
+        tabsKey: '1',
+        iframeHeight: $('#preview').contents().height(),
+      });
+    } else {
+      this.setState({
+        iframeHeight: $('#preview').contents().height(),
+      });
     }
   };
 
   onScroll = (e) => {
     const scrollTop = e.target.body.scrollTop || e.target.documentElement.scrollTop;
-    const setState = { scrollTop };
-    if (this.selectHide) {
+    const editState = ReactDOM.findDOMNode(this.editState);
+    $(editState).scrollTop(scrollTop);
+    /* if (this.selectHide) {
       const dom = $('#preview').contents().find(`#${this.state.editId}`);
       if (dom.length) {
         this.selectHide = false;
         const rect = getRect(dom);
-        setState.selectRect = rect;
+        this.setState({ selectRect: rect });
       }
-    }
-    this.setState(setState);
+    }*/
   };
 
   setUrlData = (obj, reload) => {
@@ -189,8 +201,8 @@ class Edit extends React.Component {
         <EditStateController
           enterRect={this.state.enterRect}
           selectRect={this.state.selectRect}
-          scrollTop={this.state.scrollTop}
           height={this.state.iframeHeight}
+          ref={(c) => { this.editState = c; }}
         >
           {this.state.enterDom && this.state.enterDom.id}
         </EditStateController>

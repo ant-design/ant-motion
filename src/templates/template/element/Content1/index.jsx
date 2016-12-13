@@ -16,41 +16,46 @@ class Banner extends React.Component {
     const names = props.id.split('_');
     const name = `${names[0]}${names[1]}`;
     delete props.dataSource;
-
-    const children = [0, 1].map((i) => {
-      const isImg = dataSource[`${name}_title${i}`].children
+    const childrenData = Object.keys(dataSource)
+      .filter(key => key.match('block')).map(key => dataSource[key]);
+    const childrenToRender = childrenData.map((item, i) => {
+      const children = item.children;
+      const isImg = children.title.children
         .match(/\.(gif|jpg|jpeg|png|JPG|PNG|GIF|JPEG)$/);
       return (<Element
-
         key={i}
         prefixCls="banner-user-elem"
       >
         <BgElement
           className="bg"
           key="bg"
-          style={dataSource[`${name}_bg${i}`].style}
+          style={children.bg.style}
         />
         <QueueAnim
           type={['bottom', 'top']} delay={200}
           className={`${this.props.className}-title`} key="text"
-          style={dataSource[`${name}_wrapper${i}`].style}
+          style={children.wrapper.style}
         >
           <span
             className="logo" key="logo"
-            style={dataSource[`${name}_title${i}`].style}
+            style={children.title.style}
           >
             {isImg ?
-              (<img width="100%" src={dataSource[`${name}_title${i}`].children} />) :
-              dataSource[`${name}_title${i}`].children}
+              (<img width="100%" src={children.title.children} />) :
+              children.title.children}
           </span>
           <p
             key="content"
-            style={dataSource[`${name}_content${i}`].style}
+            style={children.content.style}
           >
-            {dataSource[`${name}_content${i}`].children}
+            {children.content.children}
           </p>
-          <Button type="ghost" key="button">
-            {dataSource[`${name}_button${i}`].children}
+          <Button
+            type="ghost"
+            key="button"
+            style={children.button.style}
+          >
+            {children.button.children}
           </Button>
         </QueueAnim>
       </Element>);
@@ -65,7 +70,7 @@ class Banner extends React.Component {
           <BannerAnim
             key="banner"
           >
-            {children}
+            {childrenToRender}
           </BannerAnim>
           <TweenOne
             animation={{ y: '-=20', yoyo: true, repeat: -1, duration: 1000 }}

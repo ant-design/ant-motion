@@ -2,6 +2,7 @@ const component = require('./index');
 const templateStr = require('!raw!./index.text');
 const less = require('!raw!./index.less');
 const bgStyle = require('../../bgStyleData');
+const borderStyle = require('../../borderStyleData');
 
 export default {
   component,
@@ -25,6 +26,7 @@ export default {
           remark: '尺寸参考:1920*1080',
         },
         ...bgStyle,
+        ...borderStyle,
       },
     },
     content6_title: {
@@ -82,7 +84,7 @@ export default {
           name: '区块宽度',
         },
         padding: {
-          value: '5% 0',
+          value: '20px 0',
           name: 'padding',
           length: 4,
         },
@@ -111,7 +113,7 @@ export default {
               length: 4,
             },
             height: {
-              value: '220px',
+              value: '200px',
               name: '区块高度',
             },
             borderRadius: {
@@ -140,6 +142,7 @@ export default {
             padding: {
               value: '5%',
               name: 'padding',
+              length: 4,
             },
             background: {
               value: '#e9e9e9',
@@ -212,7 +215,7 @@ export default {
               length: 4,
             },
             height: {
-              value: '220px',
+              value: '200px',
               name: '区块高度',
             },
             borderRadius: {
@@ -241,6 +244,7 @@ export default {
             padding: {
               value: '5%',
               name: 'padding',
+              length: 4,
             },
             background: {
               value: '#e9e9e9',
@@ -313,7 +317,7 @@ export default {
               length: 4,
             },
             height: {
-              value: '220px',
+              value: '200px',
               name: '区块高度',
             },
             borderRadius: {
@@ -342,6 +346,7 @@ export default {
             padding: {
               value: '5%',
               name: 'padding',
+              length: 4,
             },
             background: {
               value: '#e9e9e9',
@@ -414,7 +419,7 @@ export default {
               length: 4,
             },
             height: {
-              value: '220px',
+              value: '200px',
               name: '区块高度',
             },
             borderRadius: {
@@ -443,6 +448,7 @@ export default {
             padding: {
               value: '5%',
               name: 'padding',
+              length: 4,
             },
             background: {
               value: '#e9e9e9',
@@ -515,7 +521,7 @@ export default {
               length: 4,
             },
             height: {
-              value: '220px',
+              value: '200px',
               name: '区块高度',
             },
             borderRadius: {
@@ -544,6 +550,7 @@ export default {
             padding: {
               value: '5%',
               name: 'padding',
+              length: 4,
             },
             background: {
               value: '#e9e9e9',
@@ -616,7 +623,7 @@ export default {
               length: 4,
             },
             height: {
-              value: '220px',
+              value: '200px',
               name: '区块高度',
             },
             borderRadius: {
@@ -645,6 +652,7 @@ export default {
             padding: {
               value: '5%',
               name: 'padding',
+              length: 4,
             },
             background: {
               value: '#e9e9e9',
@@ -717,7 +725,7 @@ export default {
               length: 4,
             },
             height: {
-              value: '220px',
+              value: '200px',
               name: '区块高度',
             },
             borderRadius: {
@@ -746,6 +754,7 @@ export default {
             padding: {
               value: '5%',
               name: 'padding',
+              length: 4,
             },
             background: {
               value: '#e9e9e9',
@@ -818,7 +827,7 @@ export default {
               length: 4,
             },
             height: {
-              value: '220px',
+              value: '200px',
               name: '区块高度',
             },
             borderRadius: {
@@ -847,6 +856,7 @@ export default {
             padding: {
               value: '5%',
               name: 'padding',
+              length: 4,
             },
             background: {
               value: '#e9e9e9',

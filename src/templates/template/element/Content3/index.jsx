@@ -16,7 +16,6 @@ class Content extends React.Component {
     className: 'content1',
   };
 
-
   render() {
     const dataSource = this.props.dataSource;
     const props = { ...this.props };
@@ -24,10 +23,15 @@ class Content extends React.Component {
     const name = `${names[0]}${names[1]}`;
     delete props.dataSource;
     return (
-      <div {...props} className="content-template-wrapper" style={dataSource[name].style}>
+      <div
+        {...props}
+        className="content-template-wrapper content-half-wrapper"
+        style={dataSource[name].style}
+      >
         <OverPack
           className={`content-template ${props.className}`}
           hideProps={{ img: { reverse: true } }}
+          location={props.id}
         >
           <QueueAnim
             type="left"
@@ -52,11 +56,12 @@ class Content extends React.Component {
             id={`${this.props.id}-imgWrapper`}
             style={dataSource[`${name}_imgWrapper`].style}
           >
-            <img
-              src={dataSource[`${name}_img`].children}
+            <span
               id={`${this.props.id}-img`}
               style={dataSource[`${name}_img`].style}
-            />
+            >
+              <img src={dataSource[`${name}_img`].children} width="100%" />
+            </span>
           </TweenOne>
         </OverPack>
       </div>

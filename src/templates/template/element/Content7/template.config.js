@@ -2,6 +2,7 @@ const component = require('./index');
 const templateStr = require('!raw!./index');
 const less = require('!raw!./index.less');
 const bgStyle = require('../../bgStyleData');
+const borderStyle = require('../../borderStyleData');
 
 export default {
   component,
@@ -24,6 +25,7 @@ export default {
           remark: '尺寸参考:1920*1080',
         },
         ...bgStyle,
+        ...borderStyle,
       },
     },
     content7_textWrapper: {
@@ -32,10 +34,13 @@ export default {
           value: '35%',
           name: '区块宽度',
         },
-        margin: {
-          value: '15% 5% 0',
-          name: 'margin',
-          length: 4,
+        top: {
+          value: '15%',
+          name: '顶部距离',
+        },
+        left: {
+          value: '5%',
+          name: '左边距离',
         },
       },
     },
@@ -82,13 +87,16 @@ export default {
     content7_img: {
       style: {
         width: {
-          value: '55%',
+          value: '50%',
           name: '图片宽度',
         },
-        margin: {
-          value: '15% 0 0 0',
-          name: 'margin',
-          length: 4,
+        top: {
+          value: '15%',
+          name: '顶部距离',
+        },
+        right: {
+          value: '5%',
+          name: '左边距离',
         },
       },
       children: {

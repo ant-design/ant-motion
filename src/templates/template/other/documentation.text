@@ -2,34 +2,39 @@
 
 1. 导出文件为 react，
 
-2. 将代码拷贝到你的网站的首页文件包里。
+2. 将 Home 文件包直接拷到 routes 文件夹下。
 
-3. 如果用的是 antd 的脚手 antd-init (https://github.com/ant-design/antd-init) 需要注意 less 的.
- 1） 注释掉 webpack.config.js 里的 22 排到 29排：
-   webpackConfig.module.loaders.forEach(function(loader, index) {
+3. 修改 router.js 里的 IndexPage 的路径: import IndexPage from './routes/Home';
+
+4. 如果用的是 antd 的脚手 dva-cli (https://github.com/dvajs/dva-cli) 需要注意加上 /antMotion_style\.less/ 的.
+   // Parse all less files as css module.
+   webpackConfig.module.loaders.forEach(function (loader, index) {
      if (typeof loader.test === 'function' && loader.test.toString().indexOf('\\.less$') > -1) {
-       loader.test = /\.dont\.exist\.file/;
-     }
-     if (loader.test.toString() === '/\\.module\\.less$/') {
+       loader.include = [/node_modules/, /antMotion_style\.less/];
        loader.test = /\.less$/;
      }
-   });
- 2) 直接在每个生成的 less 里加上 如：
-   :global {
-     video {
-       display: block;
+     if (loader.test.toString() === '/\\.module\\.less$/') {
+       loader.exclude = [/node_modules/, /antMotion_style\.less/];
+       loader.test = /\.less$/;
      }
-   }
- 3）或以此格式重新编写 less.
+     if (typeof loader.test === 'function' && loader.test.toString().indexOf('\\.css$') > -1) {
+       loader.include = /node_modules/;
+       loader.test = /\.css$/;
+     }
+     if (loader.test.toString() === '/\\.module\\.css$/') {
+       loader.exclude = /node_modules/;
+       loader.test = /\.css$/;
+     }
+   });
 
-4. 安装依赖, package.json 里的 dependencies 加下以下：
+5. 安装依赖, package.json 里的 dependencies 加下以下：
 "antd": "~1.7.0",
-"rc-queue-anim": "~0.12.0",
-"rc-scroll-anim": "~0.3.0",
-"rc-tween-one": "~0.7.0",
-"rc-banner-anim": "~0.2.11", // 如果用的是多屏滑动型的 banner，加上这条。
+"rc-queue-anim": "~0.12.6",
+"rc-scroll-anim": "~0.6.0",
+"rc-tween-one": "~0.11.11",
+"rc-banner-anim": "~0.5.4", // 如果用的是多屏滑动型的 banner，加上这条。
 
-5. 顶级 dom 的 id 为 react-content 或自行加上 height: 100% 或 100vh;
+以上具体版本按最新的来修改。
 
 6. 将当前文件删除。
 

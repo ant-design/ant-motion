@@ -1,0 +1,100 @@
+import React from 'react';
+import TweenOne from 'rc-tween-one';
+import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
+import Tabs from 'antd/lib/tabs';
+import 'antd/lib/tabs/style';
+
+const TabPane = Tabs.TabPane;
+
+class Content extends React.Component {
+
+  static propTypes = {
+    className: React.PropTypes.string,
+    id: React.PropTypes.string,
+    dataSource: React.PropTypes.object,
+  };
+
+  static defaultProps = {
+    className: 'content6',
+  };
+
+  getBlockChildren = (item, i) =>
+    (<TabPane
+      key={i}
+      tab={(
+        <span
+          className={`${this.props.className}-tag`}
+        >
+          <i><img src={item.children.icon.children} width="100%" /></i>
+          {item.children.tag.children}
+        </span>)}
+    >
+      <TweenOne
+        animation={{ x: -30, delay: 300, opacity: 0, type: 'from' }}
+        className={`${this.props.className}-text`}
+        style={item.children.content.style}
+        dangerouslySetInnerHTML={{ __html: item.children.content.children }}
+      />
+      <TweenOne
+        animation={{ x: 30, delay: 400, opacity: 0, type: 'from' }}
+        className={`${this.props.className}-img`}
+        style={item.children.img.style}
+      >
+        <img src={item.children.img.children} width="100%" />
+      </TweenOne>
+    </TabPane>);
+
+  render() {
+    const dataSource = [
+      &content8_block0&,
+      &content8_block1&,
+      &content8_block2&,
+    ]
+    const tabsChildren = dataSource.map(this.getBlockChildren);
+    return (
+      <div
+        {...this.props}
+        className={`content-template-wrapper ${this.props.className}-wrapper`}
+        &content8-style&
+      >
+        <OverPack
+          className={`content-template ${this.props.className}`}
+          hideProps={{ h1: { reverse: true }, p: { reverse: true } }}
+          location={this.props.id}
+        >
+          <TweenOne
+            animation={{ y: '+=30', opacity: 0, type: 'from' }}
+            component="h1"
+            key="h1"
+            reverseDelay={200}
+            &content8_title-style&
+          >
+            &content8_title-children&
+          </TweenOne>
+          <TweenOne
+            animation={{ y: '+=30', opacity: 0, type: 'from', delay: 100 }}
+            component="p"
+            key="p"
+            reverseDelay={100}
+            &content8_content-style&
+          >
+            &content8_content-children&
+          </TweenOne>
+          <TweenOne.TweenOneGroup
+            key="tabs"
+            enter={{ y: 30, opacity: 0, delay: 200, type: 'from' }}
+            leave={{ y: 30, opacity: 0 }}
+            className={`${this.props.className}-tabs`}
+          >
+            <Tabs key="tabs">
+              {tabsChildren}
+            </Tabs>
+          </TweenOne.TweenOneGroup>
+        </OverPack>
+      </div>
+    );
+  }
+}
+
+
+export default Content;

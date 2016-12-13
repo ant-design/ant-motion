@@ -64,12 +64,16 @@ class Content extends React.Component {
     const name = `${names[0]}${names[1]}`;
     delete props.dataSource;
     const tabsChildren = this.getBlockChildren(dataSource);
-
     return (
-      <div {...props} className="content-template-wrapper" style={dataSource[name].style}>
+      <div
+        {...props}
+        className={`content-template-wrapper ${this.props.className}-wrapper`}
+        style={dataSource[name].style}
+      >
         <OverPack
           className={`content-template ${props.className}`}
           hideProps={{ h1: { reverse: true }, p: { reverse: true } }}
+          location={this.props.id}
         >
           <TweenOne
             animation={{ y: '+=30', opacity: 0, type: 'from' }}

@@ -5,7 +5,7 @@
   & > h1, & > p {
     text-align: center;
     position: relative;
-    top: 15%;
+    top: 10%;
   }
   &-tag {
     & i {
@@ -28,15 +28,16 @@
   }
   &-tabs{
     position: relative;
-    top:15%;
+    top:12%;
   }
   &-text, &-img{
-    width: 50%;
+    width: 35%;
     display: inline-block;
+    position: relative;
   }
   &-text{
-    padding: 10%;
-    vertical-align: top;
+    left: 10%;
+    padding-top: 20px;
     & h3{
       margin: 10px auto;
     }
@@ -46,7 +47,11 @@
   }
   &-img{
     vertical-align: top;
-    padding: 5%;
+    float: right;
+    right: 10%;
+  }
+  .ant-tabs-tabpane{
+    margin-top: 40px;
   }
 }
 

@@ -73,10 +73,13 @@ const replaceData = (urlData, _configData, key) => {
     delete configData[key];
   }
 };
-const imgToTag = (data, key) => {
+const imgAndStyleToTag = (data, key) => {
   const item = data[key];
   if (typeof item.children === 'string' && item.children.match(isImg)) {
     item.children = `<img width="100%" src="${item.children}" />`;
+  }
+  if (item.style) {
+    item.style = `style={${getValueToString(item.style)}}`;
   }
 };
 
@@ -111,9 +114,9 @@ const setUrlDataToTemplateStr = (cData, pageData) => {
     // const wData = mergeURLDataToDefault(cData[key], item);
     const wData = dataValueReplace(item.dataSource);
     // 遍历子级
-    Object.keys(wData).forEach(replaceData.bind(this, cData[key], wData));
+    Object.keys(wData).forEach(replaceData.bind(this, cData && cData[key], wData));
     // 把一级下的 img 换成标签；
-    Object.keys(wData).forEach(imgToTag.bind(this, wData));
+    Object.keys(wData).forEach(imgAndStyleToTag.bind(this, wData));
     const value = templateStrObj.JS[key].value;
     const replaceDataArray = value.match(/\&.*\&/ig).filter(cKey => cKey.replace(/\&/g, ''));
     templateStrObj.JS[key].value = replaceValue(value, replaceDataArray, wData);

@@ -1,7 +1,8 @@
 const component = require('./index');
-const templateStr = require('!raw!./index');
+const templateStr = require('!raw!./index.text');
 const less = require('!raw!./index.less');
 const bgStyle = require('../../bgStyleData');
+const borderStyle = require('../../borderStyleData');
 
 export default {
   component,
@@ -25,6 +26,7 @@ export default {
           remark: '尺寸参考:1920*1080',
         },
         ...bgStyle,
+        ...borderStyle,
       },
     },
     content5_video: {

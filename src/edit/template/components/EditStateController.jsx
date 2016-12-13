@@ -6,7 +6,6 @@ export default class EditStateController extends React.Component {
     children: PropTypes.any,
     enterRect: PropTypes.object,
     selectRect: PropTypes.object,
-    scrollTop: PropTypes.number,
     height: PropTypes.number,
   };
 
@@ -19,7 +18,7 @@ export default class EditStateController extends React.Component {
     const selectRect = this.props.selectRect;
     return (<div className={`${this.props.className}-wrapper`}>
       <div
-        style={{ height: this.props.height, top: -this.props.scrollTop }}
+        style={{ height: this.props.height }}
         className={this.props.className}
       >
         {enterRect &&

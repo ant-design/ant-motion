@@ -78,6 +78,8 @@ class NavController extends React.Component {
       success: (data) => {
         if (data.tinyurl && cb) {
           cb(data.tinyurl);
+        } else {
+          message.error('生成链接失败,请稍候~');
         }
       },
     });
@@ -102,7 +104,15 @@ class NavController extends React.Component {
   }
   makePageURLEdit = () => {
     const url = `${location.origin}${location.pathname}${this.props.urlHash}`;
+    window.location.hash = this.props.urlHash;
     this.makePageURL(url, <p>当前编辑已保存, 如要再编辑<br />访问以下链接：</p>);
+  }
+
+  saveCode = () => {
+    if (!location.port && window.ga) {
+      window.ga('send', 'event', 'button', 'click', 'download');
+    }
+    saveJsZip(this.props.urlData);
   }
 
   render() {
@@ -124,7 +134,7 @@ class NavController extends React.Component {
               </Button>
             </li>
             <li><Button type="primary" onClick={this.makePageURLPreview}>生成预览链接</Button></li>
-            <li><Button type="primary" onClick={() => { saveJsZip(this.props.urlData); }}>生成代码</Button></li>
+            <li><Button type="primary" onClick={this.saveCode}>生成代码</Button></li>
           </ul>
         </div>
       </div>
