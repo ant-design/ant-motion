@@ -1,0 +1,72 @@
+import React, { PropTypes } from 'react';
+import TweenOne from 'rc-tween-one';
+import Menu from 'antd/lib/menu';
+import Icon from 'antd/lib/icon';
+
+const Item = Menu.Item;
+
+class Header extends React.Component {
+  render() {
+    const navData = &nav1_menu-children&;
+      const navChildren = Object.keys(navData).map((key) => {
+        return (<Item key={key}>
+          {navData[key]}
+        </Item>);
+    });
+    return (<TweenOne
+      component="header"
+      animation={{ opacity: 0, type: 'from' }}
+      {...this.props}
+      &nav1-style&
+    >
+      <TweenOne
+        className={`${this.props.className}-logo`}
+        animation={{ x: -30, delay: 100, type: 'from', ease: 'easeOutQuad' }}
+        &nav1_logo-style&
+      >
+        &nav1_logo-children&
+      </TweenOne>
+      <TweenOne
+        className={`${this.props.className}-user`}
+        animation={{ x: 30, delay: 100, opacity: 0, type: 'from', ease: 'easeOutQuad' }}
+        &nav1_user-style&
+      >
+        <a href="" className="help">
+          <Icon type="question-circle-o" />
+          <span>帮助</span>
+        </a>
+        <a href="" className="user">
+          <span className="img">
+            <img
+              src="https://zos.alipayobjects.com/rmsportal/iXsgowFDTJtGpZM.png"
+              width="30"
+              height="30"
+            />
+          </span>
+          <span>用户名</span>
+        </a>
+      </TweenOne>
+      <TweenOne
+        className={`${this.props.className}-nav`}
+        animation={{ x: 30, delay: 100, type: 'from', ease: 'easeOutQuad' }}
+      >
+        <Menu
+          mode="horizontal" defaultSelectedKeys={['a']}
+          &nav1_menu-style&
+        >
+          {navChildren}
+        </Menu>
+      </TweenOne>
+    </TweenOne>);
+  }
+}
+
+Header.propTypes = {
+  className: PropTypes.string,
+};
+
+Header.defaultProps = {
+  className: 'header1',
+};
+
+export default Header;

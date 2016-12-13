@@ -1,3 +1,5 @@
+import deepCopy from 'deepcopy';
+
 export function getURLData(name, url) {
   const myUrl = decodeURIComponent(url || window.location.hash || '').replace('#', '');
   const reg = new RegExp(`(^|&)${name}=([^&]*)(&|$)`, 'i');
@@ -5,32 +7,25 @@ export function getURLData(name, url) {
   return r ? r[2] : null;
 }
 
-// 合并到 template里的数据
-const mergeURLDataChild = (configData, dataItem, key) => {
-  const mergeChild = (config, item, childKey) => {
-    const myItem = item;
-    if (myItem.the === 'style') {
-      const uint = config.replace(/[^a-z|%]/g, '');
-      myItem.value = `${parseFloat(config)}${(uint || 'px')}`;
-      return;
-    }
-    myItem.value[childKey].value = config[childKey];
-  };
-  dataItem.forEach((item) => {
-    if (item.key === key) {
-      Object.keys(configData[key]).forEach(mergeChild.bind(this, configData[key], item));
-    }
-  });
-};
-export function mergeURLDataToConfig(data, config) {
-  if (!config) {
-    return data;
+function mergeURLDataChild(_data, newData, key) {
+  const data = _data;
+  if (typeof newData[key] === 'object') {
+    Object.keys(newData[key]).forEach(mergeURLDataChild.bind(this, data[key], newData[key]));
+  } else {
+    data[key].value = newData[key];
   }
-  Object.keys(config).forEach((key) => {
-    const name = key.replace(/[^a-z]/g, '');
-    const id = key.replace(/[a-z]/g, '');
-    const dataItem = data[name].data[id].dataSource;
-    Object.keys(config[key]).forEach(mergeURLDataChild.bind(this, config[key], dataItem));
+}
+
+export function mergeURLDataToDefault(urlData, defaultData) {
+  if (!urlData) {
+    return deepCopy(defaultData.dataSource);
+  }
+  const data = deepCopy(defaultData.dataSource);
+  Object.keys(data).forEach((key) => {
+    const newData = urlData[key];
+    if (newData) {
+      Object.keys(newData).forEach(mergeURLDataChild.bind(this, data[key], newData));
+    }
   });
   return data;
 }
@@ -48,4 +43,39 @@ export function ping(url, callback) {
   img.onload = () => finish('responded');
   img.onerror = () => finish('error');
   img.src = url;
+}
+
+
+export function getRect(dom) {
+  return {
+    width: dom.outerWidth(),
+    height: dom.outerHeight(),
+    top: dom.offset().top,
+    left: dom.offset().left,
+  };
+}
+
+function setProps(_data, key) {
+  const item = _data[key];
+  const data = _data;
+  if (typeof item !== 'object') {
+    return;
+  }
+  if ('value' in item) {
+    if (key === 'backgroundImage') {
+      data[key] = `url(${item.value})`;
+    } else {
+      data[key] = item.value;
+    }
+  } else {
+    Object.keys(data[key]).forEach(setProps.bind(this, data[key]));
+  }
+}
+
+export function dataValueReplace(data) {
+  if (!data) {
+    return {};
+  }
+  Object.keys(data).forEach(setProps.bind(this, data));
+  return data;
 }

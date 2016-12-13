@@ -1,56 +1,67 @@
 import React from 'react';
+import QueueAnim from 'rc-queue-anim';
 import TweenOne from 'rc-tween-one';
 import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
-import VideoPlay from 'react-sublime-video';
 import '../../../static/content.less';
 import './index.less';
 
 class Content extends React.Component {
 
   static propTypes = {
-    name: React.PropTypes.string,
+    id: React.PropTypes.string,
     dataSource: React.PropTypes.object,
   };
 
   static defaultProps = {
-    className: 'content3',
+    className: 'content1',
   };
 
-
   render() {
+    const dataSource = this.props.dataSource;
     const props = { ...this.props };
-    const { video, title, content } = this.props.dataSource.block1;
+    const names = props.id.split('_');
+    const name = `${names[0]}${names[1]}`;
     delete props.dataSource;
-    delete props.name;
     return (
-      <div {...props} className="content-template-wrapper">
+      <div
+        {...props}
+        className="content-template-wrapper content-half-wrapper"
+        style={dataSource[name].style}
+      >
         <OverPack
-          id={this.props.name}
           className={`content-template ${props.className}`}
-          hideProps={{ h1: { reverse: true }, p: { reverse: true }, video: { reverse: true } }}
+          hideProps={{ img: { reverse: true } }}
+          location={props.id}
         >
-          <TweenOne
-            animation={{ y: '+=30', opacity: 0, type: 'from' }}
-            component="h1"
-            key="h1"
-            reverseDelay={300}
+          <QueueAnim
+            type="left"
+            className={`${props.className}-text`}
+            key="text"
+            leaveReverse
+            ease={['easeOutCubic', 'easeInCubic']}
+            style={dataSource[`${name}_textWrapper`].style}
+            id={`${this.props.id}-textWrapper`}
           >
-            {title}
-          </TweenOne>
+            <h1 key="h1" id={`${this.props.id}-title`} style={dataSource[`${name}_title`].style}>
+              {dataSource[`${name}_title`].children}
+            </h1>
+            <p key="p" id={`${this.props.id}-content`} style={dataSource[`${name}_content`].style}>
+              {dataSource[`${name}_content`].children}
+            </p>
+          </QueueAnim>
           <TweenOne
-            animation={{ y: '+=30', opacity: 0, type: 'from', delay: 200 }}
-            component="p"
-            key="p"
-            reverseDelay={200}
+            key="img"
+            animation={{ x: '+=30', opacity: 0, type: 'from' }}
+            className={`${props.className}-img`}
+            id={`${this.props.id}-imgWrapper`}
+            style={dataSource[`${name}_imgWrapper`].style}
           >
-            {content}
-          </TweenOne>
-          <TweenOne
-            key="video"
-            animation={{ y: '+=30', opacity: 0, type: 'from', delay: 300 }}
-            className={`${props.className}-video`}
-          >
-            <VideoPlay loop src={video} width="100%" />
+            <span
+              id={`${this.props.id}-img`}
+              style={dataSource[`${name}_img`].style}
+            >
+              <img src={dataSource[`${name}_img`].children} width="100%" />
+            </span>
           </TweenOne>
         </OverPack>
       </div>

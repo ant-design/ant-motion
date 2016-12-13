@@ -1,0 +1,86 @@
+import React from 'react';
+import TweenOne from 'rc-tween-one';
+import QueueAnim from 'rc-queue-anim';
+import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
+
+class Content extends React.Component {
+
+  static propTypes = {
+    id: React.PropTypes.string,
+    className: React.PropTypes.string,
+  };
+
+  static defaultProps = {
+    className: 'content5',
+  };
+
+  getBlockChildren = (item, i) =>
+    (<li
+      key={i}
+      style={item.style}
+    >
+      <span style={item.children.img.style}>
+        <img src={item.children.img.children} width="100%" />
+      </span>
+      <h2 style={item.children.title.style}>{item.children.title.children}</h2>
+      <p style={item.children.content.style}>{item.children.content.children}</p>
+    </li>);
+
+
+  render() {
+    const dataSource = [
+      &content7_block0&,
+      &content7_block1&,
+      &content7_block2&,
+    ];
+    const ulChildren = dataSource.map(this.getBlockChildren);
+    return (
+      <div
+        {...this.props}
+        className="content-template-wrapper"
+        &content7-style&
+      >
+        <OverPack
+          className={`content-template ${this.props.className}`}
+          hideProps={{ img: { reverse: true } }}
+          location={this.props.id}
+        >
+          <QueueAnim
+            className={`${this.props.className}-text`}
+            key="text"
+            type="left"
+            leaveReverse
+            ease={['easeOutCubic', 'easeInCubic']}
+            &content7_textWrapper-style&
+          >
+            <h1
+              key="h1"
+              &content7_title-style&
+            >
+              &content7_title-children&
+            </h1>
+            <p
+              key="p"
+              &content7_content-style&
+            >
+              &content7_content-children&
+            </p>
+            <QueueAnim component="ul" key="ul" type="left">
+              {ulChildren}
+            </QueueAnim>
+          </QueueAnim>
+          <TweenOne
+            className={`${this.props.className}-img`}
+            key="img"
+            animation={{ x: 30, opacity: 0, type: 'from' }}
+            &content7_img-style&
+          >
+            &content7_img-children&
+          </TweenOne>
+        </OverPack>
+      </div>
+    );
+  }
+}
+
+export default Content;

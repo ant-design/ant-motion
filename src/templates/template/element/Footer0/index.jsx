@@ -5,7 +5,6 @@ import './index.less';
 
 class Footer extends React.Component {
   static propTypes = {
-    name: React.PropTypes.string,
     dataSource: React.PropTypes.object,
   };
 
@@ -14,21 +13,26 @@ class Footer extends React.Component {
   };
 
   render() {
-    const { content } = this.props.dataSource.copyright;
+    const dataSource = this.props.dataSource;
     const props = { ...this.props };
+    const names = props.id.split('_');
+    const name = `${names[0]}${names[1]}`;
     delete props.dataSource;
-    delete props.name;
     return (<OverPack
-      id={this.props.name}
       {...props}
       playScale={0.05}
       hideProps={{ footer: { reverse: true } }}
+      style={dataSource[name].style}
     >
       <TweenOne
         animation={{ y: '+=30', opacity: 0, type: 'from' }}
         key="footer"
       >
-        <p dangerouslySetInnerHTML={{ __html: content }} />
+        <span
+          dangerouslySetInnerHTML={{ __html: dataSource[`${name}_content`].children }}
+          style={dataSource[`${name}_content`].style}
+          id={`${props.id}-content`}
+        />
       </TweenOne>
     </OverPack>);
   }

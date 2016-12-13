@@ -1,67 +1,65 @@
 import React from 'react';
-import TweenOne from 'rc-tween-one';
-import QueueAnim from 'rc-queue-anim';
+import TweenOne, { TweenOneGroup } from 'rc-tween-one';
 import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
-import Tabs from 'antd/lib/tabs';
-import 'antd/lib/tabs/style';
 import '../../../static/content.less';
 import './index.less';
-
-const TabPane = Tabs.TabPane;
 
 class Content extends React.Component {
 
   static propTypes = {
-    className: React.PropTypes.string,
-    name: React.PropTypes.string,
+    id: React.PropTypes.string,
     dataSource: React.PropTypes.object,
   };
 
   static defaultProps = {
-    className: 'content6',
+    className: 'content4',
   };
 
-  getBlockChildren = data =>
-    Object.keys(data).filter(key => key.match('block')).map((key, i) => {
-      const item = data[key];
-      const title = item.contentTitle.split('\n');
-      const content = item.content.split('\n');
-      const children = content.map((str, ii) =>
-        (<div key={ii}>
-          <h3>{title[ii]}</h3>
-          <p>{str}</p>
-        </div>));
-      return (
-        <TabPane
+  getChildrenToRender = data =>
+    Object.keys(data).filter(key => key.match('block'))
+      .sort((a, b) => {
+        const aa = Number(a.replace(/[^0-9]/ig, ''));
+        const bb = Number(b.replace(/[^0-9]/ig, ''));
+        return aa - bb;
+      })
+      .map((key) => {
+        const item = data[key];
+        return (<li
           key={key}
-          tab={(<span className={`${this.props.className}-tag`}>
-            <i><img src={item.icon} width="100%" /></i>
-            {item.tag}
-          </span>)}
+          style={item.style}
+          id={`${this.props.id}-${key.split('_')[1]}`}
         >
-          <QueueAnim delay={300} className={`${this.props.className}-text`} type="left">
-            {children}
-          </QueueAnim>
-          <TweenOne
-            animation={{ x: 30, delay: 400, opacity: 0, type: 'from' }}
-            className={`${this.props.className}-img`}
-          >
-            <img src={item.img} width="100%" />
-          </TweenOne>
-        </TabPane>
-      );
-    });
+          <div className="content-wrapper" style={item.children.wrapper.style}>
+            <span style={item.children.img.style}>
+              <img src={item.children.img.children} height="100%" />
+            </span>
+            <p style={item.children.content.style}>
+              {item.children.content.children}
+            </p>
+          </div>
+        </li>);
+      });
+
+  getEnterAnim = (e) => {
+    const index = e.index;
+    const delay = index % 4 * 100 + Math.floor(index / 4) * 100 + 300;
+    return { y: '+=30', opacity: 0, type: 'from', delay };
+  };
 
   render() {
+    const dataSource = this.props.dataSource;
     const props = { ...this.props };
-    const { title } = this.props.dataSource;
-    const tabsChildren = this.getBlockChildren(props.dataSource);
+    const names = props.id.split('_');
+    const name = `${names[0]}${names[1]}`;
+    const childrenToRender = this.getChildrenToRender(dataSource);
     delete props.dataSource;
-    delete props.name;
     return (
-      <div {...props} className="content-template-wrapper">
+      <div
+        {...props}
+        className="content-template-wrapper content4-wrapper"
+        style={dataSource[name].style}
+      >
         <OverPack
-          id={this.props.name}
           className={`content-template ${props.className}`}
           hideProps={{ h1: { reverse: true }, p: { reverse: true } }}
         >
@@ -69,28 +67,33 @@ class Content extends React.Component {
             animation={{ y: '+=30', opacity: 0, type: 'from' }}
             component="h1"
             key="h1"
-            reverseDelay={200}
+            reverseDelay={300}
+            id={`${props.id}-title`}
+            style={dataSource[`${name}_title`].style}
           >
-            {title.title}
+            {dataSource[`${name}_title`].children}
           </TweenOne>
           <TweenOne
-            animation={{ y: '+=30', opacity: 0, type: 'from', delay: 100 }}
+            animation={{ y: '+=30', opacity: 0, type: 'from', delay: 200 }}
             component="p"
             key="p"
-            reverseDelay={100}
+            reverseDelay={200}
+            id={`${props.id}-content`}
+            style={dataSource[`${name}_content`].style}
           >
-            {title.content}
+            {dataSource[`${name}_content`].children}
           </TweenOne>
-          <TweenOne.TweenOneGroup
-            key="tabs"
-            enter={{ y: 30, opacity: 0, delay: 200, type: 'from' }}
-            leave={{ y: 30, opacity: 0 }}
-            className={`${props.className}-tabs`}
+          <TweenOneGroup
+            className={`${props.className}-img-wrapper`}
+            component="ul"
+            key="ul"
+            enter={this.getEnterAnim}
+            leave={{ y: '+=30', opacity: 0 }}
+            id={`${props.id}-ul`}
+            style={dataSource[`${name}_ul`].style}
           >
-            <Tabs key="tabs">
-              {tabsChildren}
-            </Tabs>
-          </TweenOne.TweenOneGroup>
+            {childrenToRender}
+          </TweenOneGroup>
         </OverPack>
       </div>
     );

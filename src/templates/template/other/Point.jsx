@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from 'rc-scroll-anim';
 
-require('../../static/point.less');
-
 export default class Point extends React.Component {
   static propTypes = {
     className: React.PropTypes.string,

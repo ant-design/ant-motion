@@ -1,20 +1,46 @@
 @import '../../../static/custom.less';
 
-@content: content3;
-.@{content} {
-  & > h1, & > p {
-    position: relative;
-    top: 10%;
-    text-align: center;
-  }
-  &-video {
-    border-radius: 6px;
+@content1: content1;
+
+.@{content1} {
+  &-img {
+    height: 100%;
+    width: 40%;
     overflow: hidden;
-    width: 90%;
-    max-width: 800px;
+    display: inline-block;
     position: relative;
-    top: 20%;
-    margin: auto;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, .2);
+    line-height: 50vh;
+    span{
+      display: inline-block;
+      position: absolute;
+      width: 55%;
+      left: 10%;
+      img {
+        vertical-align: middle;
+      }
+    }
+  }
+  &-text {
+    display: inline-block;
+    width: 55%;
+    height: 100%;
+    vertical-align: top;
+    position: relative;
+    margin-right: 5%;
+    & p, & h1 {
+      position: relative !important;
+      width: 75%;
+      float: right;
+    }
+    & h1 {
+      top: 35%;
+      font-size: 32px;
+      font-weight: normal;
+      color: #404040;
+    }
+    & p {
+      top: 37%;
+    }
   }
 }
+

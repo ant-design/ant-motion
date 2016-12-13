@@ -1,0 +1,48 @@
+import React, { PropTypes } from 'react';
+import TweenOne from 'rc-tween-one';
+import Menu from 'antd/lib/menu';
+
+const Item = Menu.Item;
+
+class Header extends React.Component {
+  render() {
+    const navData = &nav0_menu-children&;
+    const navChildren = Object.keys(navData)
+      .map((key, i) => (<Item key={i}>{navData[key]}</Item>));
+    return (<TweenOne
+      component="header"
+      animation={{ opacity: 0, type: 'from' }}
+      {...this.props}
+      &nav0-style&
+    >
+      <TweenOne
+        className={`${this.props.className}-logo`}
+        animation={{ x: -30, type: 'from', ease: 'easeOutQuad' }}
+        &nav0_logo-style&
+      >
+        &nav0_logo-children&
+      </TweenOne>
+      <TweenOne
+        className={`${this.props.className}-nav`}
+        animation={{ x: 30, type: 'from', ease: 'easeOutQuad' }}
+      >
+        <Menu
+          mode="horizontal" defaultSelectedKeys={['a']}
+          &nav0_menu-style&
+        >
+          {navChildren}
+        </Menu>
+      </TweenOne>
+    </TweenOne>);
+  }
+}
+
+Header.propTypes = {
+  className: PropTypes.string,
+};
+
+Header.defaultProps = {
+  className: 'header0',
+};
+
+export default Header;

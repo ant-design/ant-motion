@@ -8,16 +8,16 @@
   z-index: 970;
   box-shadow: 0 5px 8px fade(#000, 15);
   position: relative;
+  top: 0;
   &-logo {
     display: inline-block;
     position: absolute;
-    top: 50%;
     left: 4%;
-    height: 33px;
-    margin-top: -16px;
+    width: 150px;
+    line-height: 64px;
     & img {
-      vertical-align: top;
-      display: block;
+      vertical-align: middle;
+      display: inline-block;
     }
     & a {
       display: block;
@@ -34,6 +34,7 @@
       background: transparent;
       color: @template-text-color-light;
       line-height: 62px;
+      height: 100%;
       & li {
         float: left;
         text-align: center;

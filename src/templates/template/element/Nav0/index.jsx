@@ -7,21 +7,27 @@ const Item = Menu.Item;
 
 class Header extends React.Component {
   render() {
-    const { logo, menu1, menu2, menu3, menu4 } = this.props.dataSource.block1;
+    const dataSource = this.props.dataSource;
     const props = { ...this.props };
     delete props.dataSource;
-    delete props.name;
-
+    const names = props.id.split('_');
+    const name = `${names[0]}${names[1]}`;
+    const navData = dataSource[`${name}_menu`].children;
+    const navChildren = Object.keys(dataSource[`${name}_menu`].children)
+      .map((key, i) => (<Item key={i}>{navData[key]}</Item>));
     return (<TweenOne
       component="header"
       animation={{ opacity: 0, type: 'from' }}
       {...props}
+      style={dataSource[name].style || {}}
     >
       <TweenOne
         className={`${this.props.className}-logo`}
         animation={{ x: -30, type: 'from', ease: 'easeOutQuad' }}
+        id={`${this.props.id}-logo`}
+        style={dataSource[`${name}_logo`].style || {}}
       >
-        <img height="33" src={logo} />
+        <img width="100%" src={dataSource[`${name}_logo`].children} />
       </TweenOne>
       <TweenOne
         className={`${this.props.className}-nav`}
@@ -29,12 +35,10 @@ class Header extends React.Component {
       >
         <Menu
           mode="horizontal" defaultSelectedKeys={['a']}
-          style={{ lineHeight: `${parseFloat(this.props.style.height) - 2}px` }}
+          style={dataSource[`${name}_menu`].style || {}}
+          id={`${this.props.id}-menu`}
         >
-          <Item key="a">{menu1}</Item>
-          <Item key="b">{menu2}</Item>
-          <Item key="c">{menu3}</Item>
-          <Item key="d">{menu4} </Item>
+          {navChildren}
         </Menu>
       </TweenOne>
     </TweenOne>);
@@ -42,9 +46,9 @@ class Header extends React.Component {
 }
 
 Header.propTypes = {
-  style: PropTypes.object,
   className: PropTypes.string,
   dataSource: PropTypes.object,
+  id: PropTypes.string,
 };
 
 Header.defaultProps = {

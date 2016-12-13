@@ -1,0 +1,93 @@
+import React from 'react';
+import QueueAnim from 'rc-queue-anim';
+import TweenOne from 'rc-tween-one';
+import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
+
+class Content extends React.Component {
+
+  static propTypes = {
+    id: React.PropTypes.string,
+  };
+
+  static defaultProps = {
+    className: 'content2',
+  };
+
+  getDelay = e => e.index % 3 * 100 + Math.floor(e.index / 3) * 100 + 200;
+
+  render() {
+    const blockArray = [
+      &content4_block0&,
+      &content4_block1&,
+      &content4_block2&,
+      &content4_block3&,
+      &content4_block4&,
+      &content4_block5&,
+    ];
+    const children = blockArray.map((item, i) => {
+      const children = item.children;
+      const styleObj = item.style || {};
+      return (<li
+        key={i}
+        style={{ left: `${i % 3 * 33.33}%`, top: `${Math.floor(i / 3) * 200}px`, ...styleObj }}
+      >
+        <TweenOne
+          animation={{ x: '-=10', opacity: 0, type: 'from' }}
+          className="img"
+          key="img"
+          style={children.icon.style}
+        >
+          <img src={children.icon.children} width="100%" />
+        </TweenOne>
+        <QueueAnim delay={100} leaveReverse key="text" className="text">
+          <h1 key="h1" style={children.title.style}>{children.title.children}</h1>
+          <p key="p" style={children.content.style}>{children.content.children}</p>
+        </QueueAnim>
+      </li>);
+    });
+    const titleAnim = { y: '+=30', opacity: 0, type: 'from' };
+    return (
+      <div
+        {...this.props}
+        className="content-template-wrapper"
+        &content4-style&
+      >
+        <OverPack
+          className={`content-template ${this.props.className}`}
+          hideProps={{ h1: { reverse: true }, p: { reverse: true } }}
+          location={this.props.id}
+        >
+          <TweenOne
+            key="h1"
+            animation={titleAnim}
+            component="h1"
+            &content4_title-style&
+          >
+            &content4_title-children&
+          </TweenOne>
+          <TweenOne
+            key="p"
+            animation={titleAnim}
+            component="p"
+            &content4_titleContent-style&
+          >
+            &content4_titleContent-children&
+          </TweenOne>
+          <QueueAnim
+            key="ul"
+            component="ul"
+            leaveReverse
+            type="bottom"
+            interval={0}
+            delay={this.getDelay}
+          >
+            {children}
+          </QueueAnim>
+        </OverPack>
+      </div>
+    );
+  }
+}
+
+
+export default Content;

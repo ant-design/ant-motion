@@ -1,0 +1,50 @@
+@import 'custom';
+html, body {
+  font-family: "PingFang SC", "Helvetica Neue", Helvetica, "Hiragino Sans GB", "Microsoft YaHei", "\5FAE\8F6F\96C5\9ED1", Arial, sans-serif;
+}
+
+video {
+  display: block;
+}
+
+.text-center {
+  text-align: center;
+}
+
+a {
+  transition: color @animate-duration @ease-out;
+}
+
+h1, h2, h3, h4 {
+  color: @title-color
+}
+
+#react-content {
+  width: 100%;
+  overflow: hidden;
+}
+
+#page-404 {
+  min-height: 680px;
+  text-align: center;
+  padding-top: 10%;
+  color: #999;
+  & h1 {
+    text-shadow: -1px -1px 4px #666;
+    font-size: 200px;
+  }
+}
+
+// 修改 nprogress load 色
+#nprogress {
+  & .bar {
+    background: @primary-color;
+  }
+  & .peg {
+    box-shadow: 0 0 10px @primary-color, 0 0 5px @primary-color;
+  }
+  & .spinner-icon {
+    border-top-color: @primary-color;
+    border-left-color: @primary-color;
+  }
+}

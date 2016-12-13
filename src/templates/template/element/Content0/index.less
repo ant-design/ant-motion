@@ -1,41 +1,75 @@
 @import '../../../static/custom.less';
 
-@content: content0;
-.@{content} {
-  &-img {
-    height: 100%;
-    width: 40%;
-    overflow: hidden;
+@banner0: banner0;
+.@{banner0} {
+  width: 100%;
+  // 如果在第一屏且导航位置为 relative, 一屏为 height: calc(100vh - 64px);
+  height: 100vh;
+  position: relative;
+  text-align: center;
+  background-image: url("https://zos.alipayobjects.com/rmsportal/gGlUMYGEIvjDOOw.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  border-color: #666;
+  &-wrapper {
     display: inline-block;
-    position: relative;
-    & img {
-      height: 60%;
-      max-height: 400px;
-      position: absolute;
-      top: 20%;
-      right: 10%;
+    position: absolute;
+    top: 20%;
+    margin: auto;
+    left: 0;
+    right: 0;
+    font-size: 14px;
+    color: @template-text-color-light;
+    width: 550px;
+    .queue-anim-leaving {
+      position: relative !important;
+      width: auto;
+    }
+    .title {
+      width: 350px;
+      left: 30px;
+      margin: auto;
+      display: inline-block;
+      font-size: 40px;
+      position: relative;
+    }
+    h1 {
+      margin: 10px auto;
+    }
+    p {
+      margin-bottom: 20px;
+      word-wrap: break-word;
+    }
+    button {
+      border: 1px solid #fff;
+      color: #fff;
+      background: transparent;
+      box-shadow: 0 0 0 transparent;
+      transition: background .45s @ease-out, box-shadow .45s @ease-out;
+      line-height: 30px;
+      font-size: 16px;
+      span {
+        text-shadow: 0 0 0 rgba(0, 0, 0, 0);
+        transition: text-shadow .45s @ease-out;
+      }
+      &:hover {
+        color: #fff;
+        border-color: #fff;
+        background: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 0 10px rgba(50, 250, 255, 0.75);
+        & span {
+          text-shadow: 1px 1px 3px rgba(0, 0, 0, .35);
+        }
+      }
     }
   }
-  &-text {
-    display: inline-block;
-    width: 60%;
-    height: 100%;
-    vertical-align: top;
-    position: relative;
-    & p, & h1 {
-      padding-left: 10%;
-      padding-right: 30%;
-      position: relative !important;
-    }
-    & h1 {
-      top: 35%;
-      font-size: 32px;
-      font-weight: normal;
-      color: #404040;
-    }
-    & p {
-      top: 37%;
-    }
+  &-icon {
+    bottom: 20px;
+    font-size: 24px;
+    position: absolute;
+    left: 50%;
+    margin-left: -12px;
+    color: @template-text-color-light;
   }
 }
-

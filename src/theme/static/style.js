@@ -1,4 +1,5 @@
 import './ant-d.less';
+import './global.less';
 import './common.less';
 import './highlight.less';
 import './home.less';

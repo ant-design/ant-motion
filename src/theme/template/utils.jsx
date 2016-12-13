@@ -10,47 +10,6 @@ export function toArrayChildren(children) {
   return ret;
 }
 
-/*
-export function collectDocs(docs) {
-  const docsList = Object.keys(docs)
-    .map(key => docs[key])
-    .map(value => (value.index || value));
-  return docsList;
-}
-
-export function getMenuItems(data) {
-  const menuMeta = data.map(item => item.meta);
-  const menuItems = {};
-  menuMeta.sort((a, b) =>
-    parseInt(a.order, 10) - parseInt(b.order, 10)
-  ).forEach((meta) => {
-    const category = meta.category || 'topLevel';
-    if (!menuItems[category]) {
-      menuItems[category] = {};
-    }
-
-    const type = meta.type || 'topLevel';
-    if (!menuItems[category][type]) {
-      menuItems[category][type] = [];
-    }
-
-    menuItems[category][type].push(meta);
-  });
-
-  return menuItems;
-}
-
-export function dataToArray(vars) {
-  if (!vars && vars !== 0) {
-    return [];
-  }
-  if (Array.isArray(vars)) {
-    return vars;
-  }
-  return [vars];
-}
-*/
-
 export function currentScrollTop() {
   return window.pageYOffset || document.body.scrollTop || document.documentElement.scrollTop;
 }

@@ -1,7 +1,6 @@
 const path = require('path');
 module.exports = {
   source: [
-    './cases',
     './language',
     './components',
     './exhibition',
@@ -11,6 +10,10 @@ module.exports = {
     index: {
       theme: './src/theme',
       htmlTemplate: './src/theme/static/index.html',
+    },
+    edit: {
+      theme: './src/edit',
+      htmlTemplate: './src/edit/static/index.html',
     },
     templates: {
       theme: './src/templates',

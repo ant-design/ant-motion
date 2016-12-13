@@ -1,0 +1,79 @@
+@import 'custom';
+
+.edit-wrapper {
+  width: 100%;
+  position: relative;
+  height: calc(~"100vh - 64px");
+  margin-top: 64px;
+  * {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+}
+
+@ant-tabs: ant-tabs;
+.edit-controls {
+  width: 320px;
+  height: 100%;
+  float: right;
+  padding: 16px 0 0;
+  background: @edit-bar-color;
+  position: relative;
+  z-index: 10;
+  .@{ant-tabs} {
+    height: 100%;
+    &-bar {
+      border-color: @edit-line-color;
+      margin: 0 0 16px;
+      padding: 0 16px;
+      position: relative;
+      z-index:11;
+      background: @edit-bar-color;
+    }
+
+    &-nav {
+      width: 100%;
+      .@{ant-tabs}-tab {
+        padding: 8px 0;
+        width: 33.33%;
+        margin-right: 0;
+        text-align: center;
+      }
+    }
+    &-tab {
+      opacity: 0.6;
+      transition: opacity .45s @ease-out;
+      i {
+        width: 15px;
+        height: 15px;
+        display: inline-block;
+        img {
+          width: 100%;
+        }
+      }
+      &.@{ant-tabs}-tab-active {
+        opacity: 1;
+      }
+    }
+    &-ink-bar {
+      background: @text-color-light;
+    }
+    &-content {
+      height: calc(~"100% - 52px");
+
+    }
+    &-tabpane {
+      height: 100%;
+      overflow: auto;
+      padding: 0 16px;
+      position: relative;
+    }
+    &:not(.@{ant-tabs}-vertical) .@{ant-tabs}-tabpane-inactive {
+      height: auto;
+    }
+  }
+}
+
+

@@ -1,0 +1,194 @@
+@import 'custom';
+
+@listView: list-view;
+.@{listView} {
+  height: 100%;
+  padding: 1px;
+  &-content{
+    height: calc(~"100% - 70px");
+    width: calc(~"100% + 32px");
+    margin-left: -16px;
+    padding: 0 16px;
+    overflow: auto;
+    position: relative; // ListSort 必须设定以顶级 div 为相对的位置;
+  }
+  ul {
+    overflow: hidden;
+    img {
+      pointer-events: none;
+    }
+    li {
+      padding: 10px;
+      border-radius: 6px;
+      background: @edit-list-bg;
+      text-align: center;
+      font-size: 14px;
+      color: @edit-list-text-color;
+      margin-bottom: 20px;
+      .page-shadow();
+      cursor: pointer;
+      overflow: hidden;
+      transition:  box-shadow .5s, transform .5s;
+      position: relative;
+      &.close-wrapper{
+        cursor: auto;
+      }
+      .close{
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        cursor: pointer;
+        & > span{
+          width: 25px;
+          height: 25px;
+          background: red;
+          display: block;
+          border-radius: 50%;
+          line-height: 25px;
+          font-size: 18px;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+  &-drag-selected {
+    box-shadow: 0 10px 20px fade(#000, 35) !important;
+    transform: scale(1.05) !important;
+  }
+  & .handle {
+    width: 100%;
+    margin: 10px auto 20px;
+    & > div {
+      display: inline-block;
+      width: 48%;
+      height: 40px;
+      font-size: 14px;
+      line-height: 40px;
+      color: #fff;
+      background: @edit-list-bg;
+      border-radius: 4px;
+      text-align: center;
+      .page-pro();
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 4px 6px @shadow-color;
+      &:last-child {
+        margin-left: 4%;
+      }
+      &:hover {
+        transform: translateY(-2px);
+      }
+      &:active {
+        transform: translateY(1px);
+        box-shadow: 0 0 0 @shadow-color;
+      }
+      i {
+        margin-right: 5px;
+        font-size: 16px;
+        vertical-align: middle;
+      }
+    }
+  }
+}
+
+.@{listView}-modal {
+  h2 {
+    font-size: 18px;
+    margin: 10px 0;
+    p {
+      font-size: 14px;
+      display: inline-block;
+      margin-left: 10px;
+      i {
+        color: #FAC450;
+        margin-right: 5px;
+      }
+    }
+  }
+}
+
+.@{listView}-img-wrapper ul {
+  width: calc(~"100% + 20px");
+  margin-left: -10px;
+  li {
+    padding: 10px;
+    display: inline-block;
+    border: 1px solid @line-color;
+    border-radius: 4px;
+    margin: 10px;
+    vertical-align: top;
+    position: relative;
+    // .page-pro();
+    .img-wrapper {
+      height: 146px;
+      width: 250px;
+      line-height: 146px;
+      text-align: center;
+      font-size: 0;
+      position: relative;
+      overflow: hidden;
+      background: @bg-color;
+      & img {
+        margin: 0;
+        border: 0;
+        padding: 0;
+        vertical-align: middle;
+      }
+    }
+    .text-wrapper {
+      line-height: 24px;
+      height: 24px;
+      margin-top: 5px;
+      display: inline-block;
+    }
+    &[disabled] {
+      pointer-events: none;
+      overflow: hidden;
+      // Retina 下遮不住，在 disabled-test 里加了个 p
+      & .disabled-test {
+        position: absolute;
+        overflow: hidden;
+        z-index: 50;
+        height: 100%;
+        width: 100%;
+        line-height: 80px;
+        font-size: 12px;
+        margin: -10px;
+        border-radius: 4px;
+        & > p {
+          transform: rotate(-45deg);
+          width: 100px;
+          height: 50px;
+          text-align: center;
+          top: -13px;
+          left: -38px;
+          position: relative;
+          background: @template-text-color;
+          color: @template-text-color-light;
+          box-shadow: 0 3px 5px rgba(0, 0, 0, .2);
+        }
+      }
+      & * {
+        filter: grayscale(100%);
+      }
+    }
+    .select-wrapper {
+      float: right;
+      height: 24px;
+      line-height: 24px;
+      margin-top: 5px;
+      .ant-checkbox-inner {
+        width: 20px;
+        height: 20px;
+        &:after {
+          width: 7px;
+          height: 12px;
+          left: 6px
+        }
+      }
+      .ant-input-number {
+        width: 50px;
+      }
+    }
+  }
+}

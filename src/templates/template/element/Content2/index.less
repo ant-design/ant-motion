@@ -1,31 +1,43 @@
 @import '../../../static/custom.less';
 
-@content: content2;
-.@{content} {
-  & > h1, & > p {
-    text-align: center;
+@content0: content0;
+.@{content0} {
+  &-img {
+    height: 100%;
+    width: 40%;
+    overflow: hidden;
+    display: inline-block;
     position: relative;
-    top: 15%;
-  }
-  & > ul {
-    position: relative;
-    top: 20%;
-    & > li {
-      // display: inline-block;
-      width: 33.33%;
-      padding: 6% 5% 0;
-      vertical-align: top;
+    line-height: 50vh;
+    span {
+      display: inline-block;
       position: absolute;
-      & .img {
-        display: inline-block;
-        width: 15%;
-        vertical-align: top;
+      width: 55%;
+      right: 10%;
+      img {
+        vertical-align: middle;
       }
-      & .text {
-        width: 85%;
-        display: inline-block;
-        padding-left: 8%;
-      }
+    }
+  }
+  &-text {
+    display: inline-block;
+    width: 55%;
+    height: 100%;
+    vertical-align: top;
+    position: relative;
+    margin-left: 5%;
+    & p, & h1 {
+      position: relative !important;
+      width: 75%;
+    }
+    & h1 {
+      top: 35%;
+      font-size: 32px;
+      font-weight: normal;
+      color: #404040;
+    }
+    & p {
+      top: 37%;
     }
   }
 }

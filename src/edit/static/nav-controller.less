@@ -1,0 +1,52 @@
+@import 'custom';
+.edit-nav {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 981;
+  pointer-events: none;
+  & *{
+    pointer-events: auto;
+  }
+  &-remark{
+    & i{
+      margin-right: 5px;
+      color: #FAC450
+    }
+  }
+  &-bar {
+    height: 64px;
+    background: @edit-bar-color;
+    box-shadow: 0 5px 5px @edit-shadow-color;
+    ul {
+      float: right;
+      margin-right: 16px;
+      & li {
+        float: left;
+        padding: 0 10px;
+        line-height: 64px;
+        & a {
+          color: @template-text-color-light;
+          &:hover {
+            color: @link-hover-color;
+          }
+          &[disabled] {
+            color: @edit-disabled-color;
+          }
+        }
+      }
+    }
+  }
+}
+
+.purple {
+  color: @primary-color !important;
+}
+
+.ant-modal-container .copy{
+  display: block;
+  width: 60px;
+  height: 30px;
+  margin: -4px -15px -5px -15px;
+  line-height: 30px;
+}

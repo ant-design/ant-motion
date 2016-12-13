@@ -1,56 +1,98 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
+import Button from 'antd/lib/button';
 import QueueAnim from 'rc-queue-anim';
 import TweenOne from 'rc-tween-one';
+import BannerAnim, { Element } from 'rc-banner-anim';
+import Icon from 'antd/lib/icon';
+import 'rc-banner-anim/assets/index.css';
 import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
-import '../../../static/content.less';
 import './index.less';
 
-class Content extends React.Component {
-
-  static propTypes = {
-    name: React.PropTypes.string,
-    dataSource: React.PropTypes.object,
-  };
-
-  static defaultProps = {
-    className: 'content1',
-  };
-
-
+const BgElement = Element.BgElement;
+class Banner extends React.Component {
   render() {
+    const dataSource = this.props.dataSource;
     const props = { ...this.props };
-    const { img, title, content } = this.props.dataSource.block1;
+    const names = props.id.split('_');
+    const name = `${names[0]}${names[1]}`;
     delete props.dataSource;
-    delete props.name;
-    return (
-      <div {...props} className="content-template-wrapper">
-        <OverPack
-          id={this.props.name}
-          className={`content-template ${props.className}`}
-          hideProps={{ img: { reverse: true } }}
+    const childrenData = Object.keys(dataSource)
+      .filter(key => key.match('block')).map(key => dataSource[key]);
+    const childrenToRender = childrenData.map((item, i) => {
+      const children = item.children;
+      const isImg = children.title.children
+        .match(/\.(gif|jpg|jpeg|png|JPG|PNG|GIF|JPEG)$/);
+      return (<Element
+        key={i}
+        prefixCls="banner-user-elem"
+      >
+        <BgElement
+          className="bg"
+          key="bg"
+          style={children.bg.style}
+        />
+        <QueueAnim
+          type={['bottom', 'top']} delay={200}
+          className={`${this.props.className}-title`} key="text"
+          style={children.wrapper.style}
         >
-          <QueueAnim
-            type="left"
-            className={`${props.className}-text`}
-            key="text"
-            leaveReverse
-            ease={['easeOutCubic', 'easeInCubic']}
+          <span
+            className="logo" key="logo"
+            style={children.title.style}
           >
-            <h1 key="h1">{title}</h1>
-            <p key="p">{content}</p>
-          </QueueAnim>
+            {isImg ?
+              (<img width="100%" src={children.title.children} />) :
+              children.title.children}
+          </span>
+          <p
+            key="content"
+            style={children.content.style}
+          >
+            {children.content.children}
+          </p>
+          <Button
+            type="ghost"
+            key="button"
+            style={children.button.style}
+          >
+            {children.button.children}
+          </Button>
+        </QueueAnim>
+      </Element>);
+    });
+    return (
+      <TweenOne animation={{ opacity: 0, type: 'from' }}>
+        <OverPack
+          {...props}
+          hideProps={{ icon: { reverse: true } }}
+          style={dataSource[name].style}
+        >
+          <BannerAnim
+            key="banner"
+          >
+            {childrenToRender}
+          </BannerAnim>
           <TweenOne
-            key="img"
-            animation={{ x: '+=30', opacity: 0, type: 'from' }}
-            className={`${props.className}-img`}
+            animation={{ y: '-=20', yoyo: true, repeat: -1, duration: 1000 }}
+            className={`${this.props.className}-icon`}
+            style={{ bottom: 40 }}
+            key="icon"
           >
-            <img height="100%" src={img} />
+            <Icon type="down" />
           </TweenOne>
         </OverPack>
-      </div>
+      </TweenOne>
     );
   }
 }
 
+Banner.propTypes = {
+  className: PropTypes.string,
+  dataSource: PropTypes.object,
+};
 
-export default Content;
+Banner.defaultProps = {
+  className: 'banner1',
+};
+
+export default Banner;

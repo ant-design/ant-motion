@@ -1,55 +1,77 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
+import Button from 'antd/lib/button';
 import QueueAnim from 'rc-queue-anim';
 import TweenOne from 'rc-tween-one';
+import Icon from 'antd/lib/icon';
 import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
-import '../../../static/content.less';
 import './index.less';
 
 class Content extends React.Component {
-
-  static propTypes = {
-    name: React.PropTypes.string,
-    dataSource: React.PropTypes.object,
-  };
-
-  static defaultProps = {
-    className: 'content0',
-  };
-
-
   render() {
+    const dataSource = this.props.dataSource;
     const props = { ...this.props };
-    const { img, title, content } = this.props.dataSource.block1;
+    const names = props.id.split('_');
+    const name = `${names[0]}${names[1]}`;
     delete props.dataSource;
-    delete props.name;
+    const isImg = dataSource[`${name}_title`].children
+      .match(/\.(gif|jpg|jpeg|png|JPG|PNG|GIF|JPEG)$/);
     return (
-      <div {...props} className="content-template-wrapper">
-        <OverPack
-          id={this.props.name}
-          className={`content-template ${props.className}`}
-          hideProps={{ img: { reverse: true } }}
+      <OverPack
+        replay
+        playScale={[0.3, 0.1]}
+        {...props}
+        style={dataSource[name].style || {}}
+        hideProps={{ icon: { reverse: true } }}
+      >
+        <QueueAnim
+          type={['bottom', 'top']}
+          delay={200}
+          className={`${this.props.className}-wrapper`}
+          key="text"
+          id={`${this.props.id}-wrapper`}
+          style={dataSource[`${name}_wrapper`].style || {}}
         >
-          <TweenOne
-            key="img"
-            animation={{ x: '-=30', opacity: 0, type: 'from' }}
-            className={`${props.className}-img`}
+          <span
+            className="title"
+            key="title"
+            id={`${this.props.id}-title`}
+            style={dataSource[`${name}_title`].style || {}}
           >
-            <img height="100%" src={img} />
-          </TweenOne>
-          <QueueAnim
-            className={`${props.className}-text`}
-            key="text"
-            leaveReverse
-            ease={['easeOutCubic', 'easeInCubic']}
+            {isImg ?
+              (<img width="100%" src={dataSource[`${name}_title`].children} />) :
+              dataSource[`${name}_title`].children}
+          </span>
+          <p
+            key="content"
+            id={`${this.props.id}-content`}
+            style={dataSource[`${name}_content`].style || {}}
           >
-            <h1 key="h1">{title}</h1>
-            <p key="p">{content}</p>
-          </QueueAnim>
-        </OverPack>
-      </div>
+            {dataSource[`${name}_content`].children}
+          </p>
+          <Button type="ghost" key="button" id={`${this.props.id}-button`}>
+            {dataSource[`${name}_button`].children}
+          </Button>
+        </QueueAnim>
+        <TweenOne
+          animation={{ y: '-=20', yoyo: true, repeat: -1, duration: 1000 }}
+          className={`${this.props.className}-icon`}
+          key="icon"
+        >
+          <Icon type="down" />
+        </TweenOne>
+      </OverPack>
     );
   }
 }
 
+Content.propTypes = {
+  className: PropTypes.string,
+  id: PropTypes.string,
+  dataSource: PropTypes.object,
+};
+
+Content.defaultProps = {
+  className: 'banner0',
+};
 
 export default Content;
