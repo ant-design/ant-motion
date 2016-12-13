@@ -31,6 +31,10 @@ export default class Templates extends React.Component {
     this.myRef = {};
   }
 
+  componentDidMount(){
+    this.componentDidUpdate();
+  }
+
   componentDidUpdate() {
     if (this.scrollScreen) {
       const docHeight = ReactDOM.findDOMNode(this).getBoundingClientRect().height;

@@ -42,6 +42,7 @@ export default class EditView extends React.Component {
     this.wrapperRect = {
       top: 0,
     };
+    this.sketchColorKeyObj = {};
     this.state = {
       pickerColor: null,
       rect: {
@@ -57,33 +58,42 @@ export default class EditView extends React.Component {
     }
   }
 
-  getColorChildren = () => (
-    // style 一直在刷新，所以动画会重置;
-    <TweenOneGroup
-      enter={{ opacity: 0, y: '-=10', type: 'from', duration: 300 }}
-      leave={{ opacity: 0, scaleY: 0.8, duration: 300 }}
-      onBlur={this.remIsColor}
-      ref={(c) => {
-        this.sketchColorWrapper = c;
-      }}
-      tabIndex="0"
-      style={{
-        top: (this.state.rect.top - this.wrapperRect.top + 24),
-      }}
-      className={`${this.props.className}-color-wrapper`}
-    >
-      {this.state.pickerColor &&
-      <div
-        key="color"
-        className={`${this.props.className}-color`}
+  getColorChildren = () => {
+    const keyObj = this.sketchColorKeyObj;
+    const parentKey = Array.isArray(keyObj.parentKey) ?
+      keyObj.parentKey.join('') : keyObj.parentKey;
+    let key = parentKey ? `${parentKey}${keyObj.typeKey}${keyObj.key}` :
+      `${keyObj.typeKey}${keyObj.key}`;
+    key = keyObj.key ? key : '';
+    return (
+      <TweenOneGroup
+        enter={{ opacity: 0, y: '-=10', type: 'from', duration: 300 }}
+        leave={{ opacity: 0, scaleY: 0.8, duration: 300 }}
+        // onBlur={this.remIsColor}
+        ref={(c) => {
+          this.sketchColorWrapper = c;
+        }}
+        tabIndex="0"
+        style={{
+          top: (this.state.rect.top - this.wrapperRect.top + 24),
+        }}
+        id="Color"
+        className={`${this.props.className}-color-wrapper`}
+        key={key}
       >
-        <SketchPicker
-          color={this.state.pickerColor}
-          onChange={this.colorHandleChange}
-        />
-      </div>}
-    </TweenOneGroup>
-  );
+        {this.state.pickerColor &&
+        <div
+          key="color"
+          className={`${this.props.className}-color`}
+        >
+          <SketchPicker
+            color={this.state.pickerColor}
+            onChange={this.colorHandleChange}
+          />
+        </div>}
+      </TweenOneGroup>
+    );
+  }
 
   getLi = (data, key, typeKey, parentKey) => {
     if (typeof data !== 'object') {
@@ -100,14 +110,14 @@ export default class EditView extends React.Component {
       this.changeValue(key, typeKey, parentKey, e);
     };
     let inputFocus = !data.blend && ((e) => {
-      this.inputFocus(key, typeKey, parentKey, null, null, e);
-    });
+        this.inputFocus(key, typeKey, parentKey, null, null, e);
+      });
     const v = this.getCurrentConfigData(key, typeKey, parentKey);
     const value = v || v === '' ? v : data.value;
     let childItem = (<Input
       value={value}
-      type={!isColorFuc(value) ? 'textarea' : 'input'}
-      autosize={!isColorFuc(value)}
+      type={!isColorFuc(data.value) ? 'textarea' : 'input'}
+      autosize={!isColorFuc(data.value)}
       onChange={changeValue}
       key={data.name}
       size="small"
@@ -146,8 +156,8 @@ export default class EditView extends React.Component {
       for (let i = 0; i < data.length; i += 1) {
         const cValue = values[i] || values[i - 2] || values[0];
         inputFocus = !data.blend && ((e) => {
-          this.inputFocus(key, typeKey, parentKey, values, i, e);
-        });
+            this.inputFocus(key, typeKey, parentKey, values, i, e);
+          });
         children.push(
           <Input key={i} defaultValue={cValue} size="small" onFocus={inputFocus} />
         );
@@ -315,7 +325,12 @@ export default class EditView extends React.Component {
     this.wrapperRect = getRect($(ReactDOM.findDOMNode(this.wrapperDom)));
     this.isArrayValue = null;
     if (isColorFuc(value)) {
-      ReactDOM.findDOMNode(this.sketchColorWrapper).focus();
+      if (this.inputDom) {
+        this.remIsColor();
+      }
+      this.inputDom = input;
+      this.sketchDom = ReactDOM.findDOMNode(this.sketchColorWrapper); // .focus();
+      $(window).click(this.windowClick);
       this.sketchColorKeyObj = {
         key, typeKey, parentKey,
       };
@@ -327,8 +342,30 @@ export default class EditView extends React.Component {
     }
   }
 
+  windowClick = (e) => {
+    const dom = e.target;
+    console.log(44)
+    if (dom === this.inputDom || this.getParentDom(dom)) {
+      e.preventDefault();
+    } else {
+
+      this.remIsColor();
+    }
+  }
+
+  getParentDom = (dom) => {
+    const parentDom = dom.parentNode;
+    if (this.sketchDom.id === parentDom.id) {
+      return true;
+    } else if (parentDom.parentNode && parentDom.parentNode !== document.body) {
+      return this.getParentDom(parentDom);
+    }
+    return false
+  }
+
   remIsColor = () => {
     if (this.state.pickerColor) {
+      $(window).unbind('click', this.windowClick);
       this.setState({
         pickerColor: null,
       });
