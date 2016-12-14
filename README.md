@@ -52,7 +52,7 @@ Ant Motion 在界面里主要是来加强体验舒适度、描述层级关系、
 
 主要提供了单元素示例与配置完后的整页示例。
 
-[>> 查看详细](http://motion.ant.design/cases/about);
+[>> 查看详细](http://t.cn/RIGA89W);
 
 
 ## Develop
