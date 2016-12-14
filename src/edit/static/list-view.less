@@ -4,6 +4,12 @@
 .@{listView} {
   height: 100%;
   padding: 1px;
+  * {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
   &-content{
     height: calc(~"100% - 70px");
     width: calc(~"100% + 32px");

@@ -144,8 +144,9 @@ const jsToZip = () => {
     indexLessStr += `@import './${key}.less';\n`;
     zip.file(`less/${key}.less`, less[key]);
   });
+  console.log(templateStrObj)
   Object.keys(templateStrObj.LESS).forEach((key) => {
-    zip.file(`less/${key}.less`, templateStrObj.LESS[key]);
+    zip.file(`less/${key}.less`, templateStrObj.LESS[key].value);
     indexLessStr += `@import './${key}.less';\n`;
   });
   zip.file('less/antMotion_style.less', indexLessStr);
@@ -200,7 +201,21 @@ export default function saveJsZip(urlData) {
       contentNum += 1;
     }
     templateStrObj.JS[key] = { i, id, name: caseKey, value: templateStr };
-    templateStrObj.LESS[caseKey.toLowerCase()] = cLess;
+    // 去重复 less;
+    templateStrObj.LESS[caseKey.toLowerCase()] = { id, value: cLess };
+  });
+  // less 去重;
+  const lessIdArray = Object.keys(templateStrObj.LESS).map((key) => {
+    const item = templateStrObj.LESS[key];
+    return item.id;
+  })
+  Object.keys(templateStrObj.LESS).forEach((key, i) => {
+    const item = templateStrObj.LESS[key];
+    const id = item.id;
+    const tArr = lessIdArray.filter((tKey) => tKey === id);
+    if (tArr.length > 1 && lessIdArray.indexOf(id) !== i) {
+      delete templateStrObj.LESS[key];
+    }
   });
   // 更改过的数据替换到JS里；
   setUrlDataToTemplateStr(urlData.c, pageData);
