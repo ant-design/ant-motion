@@ -144,7 +144,6 @@ const jsToZip = () => {
     indexLessStr += `@import './${key}.less';\n`;
     zip.file(`less/${key}.less`, less[key]);
   });
-  console.log(templateStrObj)
   Object.keys(templateStrObj.LESS).forEach((key) => {
     zip.file(`less/${key}.less`, templateStrObj.LESS[key].value);
     indexLessStr += `@import './${key}.less';\n`;
