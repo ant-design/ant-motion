@@ -4,8 +4,8 @@ import Icon from 'antd/lib/icon';
 import Tooltip from 'antd/lib/tooltip';
 import Button from 'antd/lib/button';
 import Input from 'antd/lib/input';
+import InputNumber from 'antd/lib/input-number';
 import Select from 'antd/lib/select';
-import AutoComplete from 'antd/lib/auto-complete';
 import { TweenOneGroup } from 'rc-tween-one';
 import SketchPicker from 'react-color';
 import deepCopy from 'deepcopy';
@@ -136,31 +136,29 @@ export default class EditView extends React.Component {
     }
     const av = parseFloat(data.value);
     if (typeKey !== 'children' && (av || av === 0)) {
-      const cv = parseFloat(value);
-      const pv = cv.toString() !== 'NaN' ? cv : '';
-      const dataSource = [`${pv}px`, `${pv}vh`, `${pv}%`];
-      childItem = (<AutoComplete
-        dataSource={dataSource}
-        defaultValue={value}
-        key={data.name}
-        onChange={changeValue}
-        size="small"
-      />);
+      childItem = this.getInputNumberChildren(value, changeValue, data.value, 'input-group-max', true);
     }
     if (data.length) {
       const values = value.split(/\s+/);
+      const dataValues = data.value.split(/\s+/);
       const children = [];
-      childItem = (<InputGroup onChange={changeValue} key={data.value}>
+      childItem = (<InputGroup onChange={changeValue} key={data.value} className="input-group-max">
         {children}
       </InputGroup>);
       for (let i = 0; i < data.length; i += 1) {
         const cValue = values[i] || values[i - 2] || values[0];
+        const dValue = dataValues[i] || dataValues[i - 2] || dataValues[0];
         inputFocus = !data.blend && ((e) => {
             this.inputFocus(key, typeKey, parentKey, values, i, e);
           });
-        children.push(
-          <Input key={i} defaultValue={cValue} size="small" onFocus={inputFocus} />
-        );
+        const cv = parseFloat(dValue);
+        if (cv || cv === 0) {
+          children.push(this.getInputNumberChildren(cValue, null, i, 'input-group-min'))
+        } else {
+          children.push(
+            <Input key={i} value={cValue} size="small" onFocus={inputFocus} />
+          );
+        }
       }
     }
     const liProps = key ? { key } : null;
@@ -173,6 +171,31 @@ export default class EditView extends React.Component {
         {childItem}
       </div>
     </li>);
+  }
+
+  getInputNumberChildren = (value, changeValue, key, className, isMax) => {
+    const cv = parseFloat(value);
+    return (<InputGroup
+      onChange={changeValue}
+      key={key}
+      className={className}
+      value={value}
+      isMax={isMax}
+    >
+      <InputNumber className={`${className}-number`} key="input" value={cv} size="small" />
+      <Select
+        className={`${className}-select`}
+        size="small"
+        defaultValue={value.replace(/[^a-z|%]/ig, '') || 'px'}
+        key='select'
+      >
+        <Option value="px" key="px">px</Option>
+        <Option value="%" key="%">%</Option>
+        <Option value="em" key="em">em</Option>
+        <Option value="vh" key="vh">vh</Option>
+        <Option value="vw" key="vw">vw</Option>
+      </Select>
+    </InputGroup>);
   }
 
   getEditChild = (data, typeKey, parentKey) => {
@@ -344,11 +367,9 @@ export default class EditView extends React.Component {
 
   windowClick = (e) => {
     const dom = e.target;
-    console.log(44)
     if (dom === this.inputDom || this.getParentDom(dom)) {
       e.preventDefault();
     } else {
-
       this.remIsColor();
     }
   }

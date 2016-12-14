@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import Tabs from 'antd/lib/tabs';
+import Tooltip from 'antd/lib/tooltip';
 import ListView from './ListView';
 import EditView from './EditView';
 import OtherView from './OtherView';
@@ -34,21 +35,21 @@ export default class ContentController extends React.Component {
     return (
       <div className={this.props.className}>
         <Tabs activeKey={this.props.currentKey} onChange={this.props.onChangeTabs}>
-          <TabPane tab={<i><img src={imgUrl[0]} /></i>} key="1">
+          <TabPane tab={<Tooltip title="选择"><i><img src={imgUrl[0]} /></i></Tooltip>} key="1">
             <ListView
               listData={templateListData}
               setUrlData={this.props.setUrlData}
               urlData={this.props.urlData}
             />
           </TabPane>
-          <TabPane tab={<i><img src={imgUrl[1]} /></i>} key="2">
+          <TabPane tab={<Tooltip title="编辑"><i><img src={imgUrl[1]} /></i></Tooltip>} key="2">
             <EditView
               editId={this.props.editId}
               urlData={this.props.urlData}
               setUrlData={this.props.setUrlData}
             />
           </TabPane>
-          <TabPane tab={<i><img src={imgUrl[2]} /></i>} key="3">
+          <TabPane tab={<Tooltip title="功能"><i><img src={imgUrl[2]} /></i></Tooltip>} key="3">
             <OtherView
               setUrlData={this.props.setUrlData}
               urlData={this.props.urlData}

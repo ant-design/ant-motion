@@ -14,13 +14,13 @@ export default {
           name: '区块高度',
         },
         backgroundColor: {
-          value: 'reba(51, 51, 51, 0.95)',
+          value: 'rgba(51, 51, 51, 0.95)',
           name: '背景颜色',
         },
         boxShadow: {
           value: '0 5px 8px rgba(0,0,0,0.15)',
           name: '区块阴影',
-          remark: '参数从左到右: x y blur color, 参数之间都需要空格;',
+          remark: '参数从左上右上左下右下: x y blur color;',
           length: 4,
         },
         position: {

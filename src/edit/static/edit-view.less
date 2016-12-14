@@ -94,20 +94,6 @@
         padding-left: 10px;
         display: inline-block;
         position: relative;
-        .edit-input-group {
-          width: 100%;
-          > input {
-            width: calc(~"50% - 3px");
-            display: inline-block;
-            margin: 0 6px 6px 0;
-            &:nth-child(2n) {
-              margin-right: 0;
-            }
-            &:nth-child(n+2) {
-              margin-bottom: 0;
-            }
-          }
-        }
       }
     }
 
@@ -124,9 +110,44 @@
     &-selection {
       background: transparent !important;
       color: fade(@text-color-light, 55);
-      border-color: @line-deep-color ;
+      border-color: @line-deep-color;
+    }
+    &.small {
+      width: calc(~"50% - 3px");
     }
   }
+  .input-group-max {
+    width: 100%;
+    > * {
+      width: calc(~"50% - 3px");
+      display: inline-block;
+      margin: 0 6px 6px 0;
+      &:nth-child(2n) {
+        margin-right: 0;
+      }
+      &:nth-child(n+2) {
+        margin-bottom: 0;
+      }
+    }
+    .input-group-max-number {
+      width: 60%;
+      margin-right: 6px;
+    }
+    .input-group-max-select {
+      width: calc(~"40% - 6px");
+    }
+    .input-group-min-number{
+      width: 45%;
+      margin-right: 3px;
+    }
+    .input-group-min-select{
+      width: calc(~"55% - 3px");
+    }
+    .input-group-min {
+      width: calc(~"50% - 3px");
+    }
+  }
+
 
   ul li.ant-select-search {
     margin: auto;
@@ -137,7 +158,12 @@
   .ant-input {
     background: transparent !important;
     color: fade(@text-color-light, 55);
-    border-color: @line-deep-color ;
+    border-color: @line-deep-color;
+  }
+  .ant-input-number, .ant-input-number input, .ant-input-number-handler-wrap {
+    background: transparent !important;
+    color: fade(@text-color-light, 55);
+    border-color: @line-deep-color;
   }
 }
 
