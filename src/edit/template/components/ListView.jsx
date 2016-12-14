@@ -236,6 +236,7 @@ export default class ListView extends React.Component {
           width="82%"
           onOk={this.onModalOk}
           onCancel={this.onModalCancel}
+          style={{ top: 24 }}
         >
           {modalChildren}
         </Modal>

@@ -23,7 +23,9 @@ class NavController extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      helpOpen: false,
+    };
   }
 
   componentWillReceiveProps(nextProps) {
@@ -53,13 +55,16 @@ class NavController extends React.Component {
       title: '注意事项',
       content: (<ul>
         <li>
-          1. 在编辑时是数值必须带上单位，如 "px", "vh", "%"; "px" 为像素点, "vh" 屏幕高度的百分比;
+          1. 在编辑时是数值注意旁边的单位，如 "px", "vh", "%"; "px" 为像素点, "vh" 屏幕高度的百分比;
         </li>
         <li>
           2. 多行参数顺序为 "左上 右上 左下 右下"
         </li>
         <li>
-          3. 在导航没设定浮层的情况下，第一屏如果想要100%高度，请设为 <br />calc(100vh - 64px);
+          3. 本站不提供图片上传功能，请自行解决图片上传的问题;
+        </li>
+        <li>
+
         </li>
       </ul>),
       width: 550,
@@ -114,6 +119,11 @@ class NavController extends React.Component {
     }
     saveJsZip(this.props.urlData);
   }
+  openHelp = () => {
+    this.setState({
+      helpOpen: !this.state.helpOpen,
+    });
+  };
 
   render() {
     return (
@@ -128,6 +138,22 @@ class NavController extends React.Component {
             </li>
             <li><a href="../">返回主站</a></li>
             <li><a onClick={this.resetData}>重置参数</a></li>
+            <li>
+              <a onClick={this.openHelp}>查看教程</a>
+              <Modal
+                visible={this.state.helpOpen}
+                title={<h2>视频教程</h2>}
+                width="640"
+                onCancel={this.openHelp}
+                footer={null}
+              >
+                <video
+                  src="https://os.alipayobjects.com/rmsportal/BFGptnwlsYrFEurTBTwe.mp4"
+                  width="100%" controls autoPlay loop
+                />
+              </Modal>
+
+            </li>
             <li>
               <Button type="primary" onClick={this.makePageURLEdit}>
                 保存当前编辑
