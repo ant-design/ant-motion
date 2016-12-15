@@ -143,12 +143,12 @@ class NavController extends React.Component {
               <Modal
                 visible={this.state.helpOpen}
                 title={<h2>视频教程</h2>}
-                width="640"
+                width="800"
                 onCancel={this.openHelp}
                 footer={null}
               >
                 <video
-                  src="https://os.alipayobjects.com/rmsportal/BFGptnwlsYrFEurTBTwe.mp4"
+                  src="https://os.alipayobjects.com/rmsportal/GOsdyUIGZrNPSntOoRpe.mp4"
                   width="100%" controls autoPlay loop
                 />
               </Modal>
