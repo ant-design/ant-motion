@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import Icon from 'antd/lib/icon';
 import Modal from 'antd/lib/modal';
+import Alert from 'antd/lib/alert';
 import Checkbox from 'antd/lib/checkbox';
 import InputNumber from 'antd/lib/input-number';
 import { TweenOneGroup } from 'rc-tween-one';
@@ -241,6 +242,7 @@ export default class ListView extends React.Component {
           {modalChildren}
         </Modal>
       </div>
+      <Alert message="拖动可调整顺序" type="info" showIcon closable/>
       <div className={`${this.props.className}-content`}>
         {children.length ? childrenToRender : <span>请添加你的模块</span>}
       </div>
