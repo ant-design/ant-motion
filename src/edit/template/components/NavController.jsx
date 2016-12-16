@@ -106,11 +106,17 @@ class NavController extends React.Component {
   makePageURLPreview = () => {
     const url = `${location.origin}/templates/${this.props.urlHash}`;
     this.makePageURL(url, '已生成当前预览地址的短链接，赶快去共享你的首页吧~');
+    if (!location.port && window.ga) {
+      window.ga('send', 'event', 'preview', 'click', 'preview');
+    }
     window.open(url);
   }
   makePageURLEdit = () => {
     const url = `${location.origin}${location.pathname}${this.props.urlHash}`;
     window.location.hash = this.props.urlHash;
+    if (!location.port && window.ga) {
+      window.ga('send', 'event', 'edit', 'click', 'edit');
+    }
     this.makePageURL(url, <p>已生成当前编辑的URL, 以方便你下次直接访问：</p>);
   }
 
