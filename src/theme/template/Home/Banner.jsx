@@ -54,7 +54,7 @@ export default class Banner extends React.Component {
           </p>
           <div key="button">
             <Link to="/language/basic" className={`${this.props.className}-text-button`}>
-              立即了解
+              了解更多
               <i />
             </Link>
             <a
@@ -62,7 +62,7 @@ export default class Banner extends React.Component {
               href="/edit#t%3Dnav_0_0%2Ccontent_0_0%2Ccontent_2_0%2Ccontent_3_0%2Ccontent_4_0%2Cfooter_0_0"
               target="_blank"
             >
-              动效模板<i />
+              快速搭建<i />
             </a>
           </div>
         </QueueAnim>
