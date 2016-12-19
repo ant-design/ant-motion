@@ -207,11 +207,11 @@ export default function saveJsZip(urlData) {
   const lessIdArray = Object.keys(templateStrObj.LESS).map((key) => {
     const item = templateStrObj.LESS[key];
     return item.id;
-  })
+  });
   Object.keys(templateStrObj.LESS).forEach((key, i) => {
     const item = templateStrObj.LESS[key];
     const id = item.id;
-    const tArr = lessIdArray.filter((tKey) => tKey === id);
+    const tArr = lessIdArray.filter(tKey => tKey === id);
     if (tArr.length > 1 && lessIdArray.indexOf(id) !== i) {
       delete templateStrObj.LESS[key];
     }

@@ -2,6 +2,7 @@ const component = require('./index');
 const templateStr = require('!raw!./index.text');
 const less = require('!raw!./index.less');
 const style = require('../../utils-style');
+
 const bgStyle = style.bgStyleData;
 const borderStyle = style.borderStyleData;
 const textStyle = style.textStyleData;
@@ -99,7 +100,7 @@ export default {
               value: 'auto',
               name: 'margin',
               length: 4,
-            }
+            },
           },
           children: {
             value: 'https://zos.alipayobjects.com/rmsportal/WBnVOjtIlGWbzyQivuyq.png',
@@ -133,10 +134,10 @@ export default {
           },
           children: {
             value: '支付、结算、核算接入产品效率翻四倍',
-            name: '区块内容'
-          }
+            name: '区块内容',
+          },
         },
-      }
+      },
     },
     content9_block1: {
       name: '外框样式',
@@ -167,7 +168,7 @@ export default {
               value: 'auto',
               name: 'margin',
               length: 4,
-            }
+            },
           },
           children: {
             value: 'https://zos.alipayobjects.com/rmsportal/YPMsLQuCEXtuEkmXTTdk.png',
@@ -201,10 +202,10 @@ export default {
           },
           children: {
             value: '在所有需求配置环节事前风险控制和质量控制能力',
-            name: '区块内容'
-          }
+            name: '区块内容',
+          },
         },
-      }
+      },
     },
     content9_block2: {
       name: '外框样式',
@@ -235,7 +236,7 @@ export default {
               value: 'auto',
               name: 'margin',
               length: 4,
-            }
+            },
           },
           children: {
             value: 'https://zos.alipayobjects.com/rmsportal/EkXWVvAaFJKCzhMmQYiX.png',
@@ -269,10 +270,10 @@ export default {
           },
           children: {
             value: '沉淀产品接入效率和运营小二工作效率数据',
-            name: '区块内容'
-          }
+            name: '区块内容',
+          },
         },
-      }
+      },
     },
   },
 };

@@ -2,6 +2,7 @@ const component = require('./index');
 const templateStr = require('!raw!./index.text');
 const less = require('!raw!./index.less');
 const style = require('../../utils-style');
+
 const bgStyle = style.bgStyleData;
 const borderStyle = style.borderStyleData;
 const textStyle = style.textStyleData;
@@ -94,7 +95,7 @@ export default {
         ...textStyle({
           size: '12px',
           align: 'left',
-        })
+        }),
       },
       children: {
         name: '详细说明',

@@ -110,8 +110,8 @@ export default class EditView extends React.Component {
       this.changeValue(key, typeKey, parentKey, e);
     };
     let inputFocus = !data.blend && ((e) => {
-        this.inputFocus(key, typeKey, parentKey, null, null, e);
-      });
+      this.inputFocus(key, typeKey, parentKey, null, null, e);
+    });
     const v = this.getCurrentConfigData(key, typeKey, parentKey);
     const value = v || v === '' ? v : data.value;
     let childItem = (<Input
@@ -149,11 +149,11 @@ export default class EditView extends React.Component {
         const cValue = values[i] || values[i - 2] || values[0];
         const dValue = dataValues[i] || dataValues[i - 2] || dataValues[0];
         inputFocus = !data.blend && ((e) => {
-            this.inputFocus(key, typeKey, parentKey, values, i, e);
-          });
+          this.inputFocus(key, typeKey, parentKey, values, i, e);
+        });
         const cv = parseFloat(dValue);
         if (cv || cv === 0) {
-          children.push(this.getInputNumberChildren(cValue, null, i, 'input-group-min'))
+          children.push(this.getInputNumberChildren(cValue, null, i, 'input-group-min'));
         } else {
           children.push(
             <Input key={i} value={cValue} size="small" onFocus={inputFocus} />
@@ -187,7 +187,7 @@ export default class EditView extends React.Component {
         className={`${className}-select`}
         size="small"
         defaultValue={value.replace(/[^a-z|%]/ig, '') || 'px'}
-        key='select'
+        key="select"
       >
         <Option value="px" key="px">px</Option>
         <Option value="%" key="%">%</Option>
@@ -278,6 +278,16 @@ export default class EditView extends React.Component {
       return c[key];
     }
     return b[typeKey];
+  }
+
+  getParentDom = (dom) => {
+    const parentDom = dom.parentNode;
+    if (this.sketchDom.id === parentDom.id) {
+      return true;
+    } else if (parentDom.parentNode && parentDom.parentNode !== document.body) {
+      return this.getParentDom(parentDom);
+    }
+    return false;
   }
 
   changeValue = (key, typeKey, editId, e) => {
@@ -372,16 +382,6 @@ export default class EditView extends React.Component {
     } else {
       this.remIsColor();
     }
-  }
-
-  getParentDom = (dom) => {
-    const parentDom = dom.parentNode;
-    if (this.sketchDom.id === parentDom.id) {
-      return true;
-    } else if (parentDom.parentNode && parentDom.parentNode !== document.body) {
-      return this.getParentDom(parentDom);
-    }
-    return false
   }
 
   remIsColor = () => {

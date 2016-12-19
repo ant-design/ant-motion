@@ -44,7 +44,7 @@ export default class OtherView extends React.Component {
     webData.other.data.map((item, i) => {
       const isVideo = item.src.match('.mp4');
       const toChildren = isVideo ?
-        <video src={item.src} width="100%" loop autoPlay/> :
+        <video src={item.src} width="100%" loop autoPlay /> :
         <img src={item.src} width="100%" />;
 
       return (

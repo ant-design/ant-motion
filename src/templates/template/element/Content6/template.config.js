@@ -2,6 +2,7 @@ const component = require('./index');
 const templateStr = require('!raw!./index.text');
 const less = require('!raw!./index.less');
 const style = require('../../utils-style');
+
 const bgStyle = style.bgStyleData;
 const borderStyle = style.borderStyleData;
 const textStyle = style.textStyleData;
@@ -42,7 +43,7 @@ export default {
           value: 'auto',
           name: 'margin',
           length: 4,
-        }
+        },
       },
       children: {
         value: '客户案例',
@@ -52,7 +53,7 @@ export default {
     content6_content: {
       style: {
         ...textStyle({
-          lineHeight: '24px'
+          lineHeight: '24px',
         }),
         maxWidth: {
           value: '600px',
@@ -154,7 +155,7 @@ export default {
             },
             ...textStyle({
               color: '#fff',
-              lineHeight: '30px'
+              lineHeight: '30px',
             }),
             background: {
               value: 'rgba(1, 155,240, 0.75)',
@@ -252,7 +253,7 @@ export default {
             },
             ...textStyle({
               color: '#fff',
-              lineHeight: '30px'
+              lineHeight: '30px',
             }),
             background: {
               value: 'rgba(1, 155,240, 0.75)',
@@ -350,7 +351,7 @@ export default {
             },
             ...textStyle({
               color: '#fff',
-              lineHeight: '30px'
+              lineHeight: '30px',
             }),
             background: {
               value: 'rgba(1, 155,240, 0.75)',
@@ -448,7 +449,7 @@ export default {
             },
             ...textStyle({
               color: '#fff',
-              lineHeight: '30px'
+              lineHeight: '30px',
             }),
             background: {
               value: 'rgba(1, 155,240, 0.75)',
@@ -546,7 +547,7 @@ export default {
             },
             ...textStyle({
               color: '#fff',
-              lineHeight: '30px'
+              lineHeight: '30px',
             }),
             background: {
               value: 'rgba(1, 155,240, 0.75)',
@@ -644,7 +645,7 @@ export default {
             },
             ...textStyle({
               color: '#fff',
-              lineHeight: '30px'
+              lineHeight: '30px',
             }),
             background: {
               value: 'rgba(1, 155,240, 0.75)',
@@ -742,7 +743,7 @@ export default {
             },
             ...textStyle({
               color: '#fff',
-              lineHeight: '30px'
+              lineHeight: '30px',
             }),
             background: {
               value: 'rgba(1, 155,240, 0.75)',
@@ -840,7 +841,7 @@ export default {
             },
             ...textStyle({
               color: '#fff',
-              lineHeight: '30px'
+              lineHeight: '30px',
             }),
             background: {
               value: 'rgba(1, 155,240, 0.75)',

@@ -2,6 +2,7 @@ const component = require('./index');
 const templateStr = require('!raw!./index.text');
 const less = require('!raw!./index.less');
 const style = require('../../utils-style');
+
 const bgStyle = style.bgStyleData;
 const borderStyle = style.borderStyleData;
 const textStyle = style.textStyleData;
@@ -42,7 +43,7 @@ export default {
         ...textStyle({
           size: '32px',
           color: '#404040',
-          lineHeight: '48px'
+          lineHeight: '48px',
         }),
       },
       children: {
@@ -53,7 +54,7 @@ export default {
     content7_content: {
       style: {
         ...textStyle({
-          lineHeight: '24px'
+          lineHeight: '24px',
         }),
       },
       children: {
@@ -112,7 +113,7 @@ export default {
           style: {
             ...textStyle({
               color: '#3e3e3e',
-              size: '14px'
+              size: '14px',
             }),
             margin: {
               value: '0 0 10px 45px',
@@ -173,7 +174,7 @@ export default {
           style: {
             ...textStyle({
               color: '#3e3e3e',
-              size: '14px'
+              size: '14px',
             }),
             margin: {
               value: '0 0 10px 45px',
@@ -234,7 +235,7 @@ export default {
           style: {
             ...textStyle({
               color: '#3e3e3e',
-              size: '14px'
+              size: '14px',
             }),
             margin: {
               value: '0 0 10px 45px',

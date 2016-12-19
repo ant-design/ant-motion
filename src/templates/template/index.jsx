@@ -31,7 +31,7 @@ export default class Templates extends React.Component {
     this.myRef = {};
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.componentDidUpdate();
   }
 

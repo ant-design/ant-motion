@@ -2,6 +2,7 @@ const component = require('./index');
 const templateStr = require('!raw!./index.text');
 const less = require('!raw!./index.less');
 const style = require('../../utils-style');
+
 const bgStyle = style.bgStyleData;
 const borderStyle = style.borderStyleData;
 const textStyle = style.textStyleData;
@@ -72,7 +73,7 @@ export default {
           value: 'auto',
           name: 'margin',
           length: 4,
-        }
+        },
       },
       children: {
         value: '蚂蚁金融云提供专业的服务',

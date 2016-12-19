@@ -2,6 +2,7 @@ const component = require('./index');
 const templateStr = require('!raw!./index.text');
 const less = require('!raw!./index.less');
 const style = require('../../utils-style');
+
 const bgStyle = style.bgStyleData;
 const borderStyle = style.borderStyleData;
 const textStyle = style.textStyleData;
@@ -77,7 +78,7 @@ export default {
           size: '32px',
           color: '#404040',
           align: 'left',
-        })
+        }),
       },
       children: {
         name: '标题名称',
@@ -93,7 +94,7 @@ export default {
         ...textStyle({
           size: '12px',
           align: 'left',
-        })
+        }),
       },
       children: {
         name: '详细说明',

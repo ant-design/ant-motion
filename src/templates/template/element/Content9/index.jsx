@@ -16,7 +16,7 @@ class Content extends React.Component {
     className: 'content7',
   };
 
-  getBlockChildren = (data) =>
+  getBlockChildren = data =>
     Object.keys(data).filter(key => key.match('block'))
       .sort((a, b) => {
         const aa = Number(a.replace(/[^0-9]/ig, ''));
@@ -46,7 +46,7 @@ class Content extends React.Component {
     return (
       <div
         {...props}
-        className={`content-template-wrapper ${this.props.className}-wrapper`}
+        className={`content-template-wrapper ${props.className}-wrapper`}
         style={dataSource[name].style}
       >
         <OverPack

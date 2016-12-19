@@ -63,9 +63,7 @@ class NavController extends React.Component {
         <li>
           3. 本站不提供图片上传功能，请自行解决图片上传的问题;
         </li>
-        <li>
-
-        </li>
+        <li />
       </ul>),
       width: 550,
     });

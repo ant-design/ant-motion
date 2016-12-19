@@ -3,7 +3,7 @@ export function textStyleData(_data) {
   const d = {
     fontSize: {
       value: data.size || '12px',
-      name: '文字大小'
+      name: '文字大小',
     },
     color: {
       value: data.color || '#666',
@@ -12,14 +12,14 @@ export function textStyleData(_data) {
     lineHeight: {
       value: data.lineHeight || '1.5em',
       name: '文字行高',
-    }
+    },
   };
   if (data.align) {
     d.textAlign = {
       value: data.align,
       name: '文字位置',
       select: ['center', 'left', 'right'],
-    }
+    };
   }
   return d;
 }

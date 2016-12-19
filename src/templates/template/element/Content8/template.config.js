@@ -2,6 +2,7 @@ const component = require('./index');
 const templateStr = require('!raw!./index.text');
 const less = require('!raw!./index.less');
 const style = require('../../utils-style');
+
 const bgStyle = style.bgStyleData;
 const borderStyle = style.borderStyleData;
 const textStyle = style.textStyleData;
@@ -41,7 +42,7 @@ export default {
           value: 'auto',
           name: 'margin',
           length: 4,
-        }
+        },
       },
       children: {
         name: '标题文案',

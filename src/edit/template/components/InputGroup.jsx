@@ -22,9 +22,9 @@ export default class InputGroup extends React.Component {
     this.componentWillReceiveProps(props);
   }
 
-  componentWillReceiveProps(nextProps){
+  componentWillReceiveProps(nextProps) {
     this.values = toArrayChildren(nextProps.children)
-      .map(item => ( item.props.defaultValue || item.props.value ));
+      .map(item => (item.props.defaultValue || item.props.value));
   }
 
   onChange = (i, e) => {
@@ -53,6 +53,6 @@ export default class InputGroup extends React.Component {
       };
       return React.cloneElement(item, { ...item.props, onChange });
     });
-    return React.createElement(this.props.component, { ...props, }, children);
+    return React.createElement(this.props.component, { ...props }, children);
   }
 }

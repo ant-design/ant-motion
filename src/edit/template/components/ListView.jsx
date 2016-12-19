@@ -242,7 +242,7 @@ export default class ListView extends React.Component {
           {modalChildren}
         </Modal>
       </div>
-      <Alert message="拖动可调整顺序" type="info" showIcon closable/>
+      <Alert message="拖动可调整顺序" type="info" showIcon closable />
       <div className={`${this.props.className}-content`}>
         {children.length ? childrenToRender : <span>请添加你的模块</span>}
       </div>
