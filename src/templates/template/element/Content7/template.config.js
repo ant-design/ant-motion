@@ -1,8 +1,10 @@
 const component = require('./index');
-const templateStr = require('!raw!./index');
+const templateStr = require('!raw!./index.text');
 const less = require('!raw!./index.less');
-const bgStyle = require('../../bgStyleData');
-const borderStyle = require('../../borderStyleData');
+const style = require('../../utils-style');
+const bgStyle = style.bgStyleData;
+const borderStyle = style.borderStyleData;
+const textStyle = style.textStyleData;
 
 export default {
   component,
@@ -15,17 +17,8 @@ export default {
           value: '100vh',
           name: '区块高度',
         },
-        backgroundColor: {
-          value: '#fff',
-          name: '背景颜色',
-        },
-        backgroundImage: {
-          name: '背景图片',
-          value: '',
-          remark: '尺寸参考:1920*1080',
-        },
-        ...bgStyle,
-        ...borderStyle,
+        ...bgStyle(),
+        ...borderStyle(),
       },
     },
     content7_textWrapper: {
@@ -46,18 +39,11 @@ export default {
     },
     content7_title: {
       style: {
-        fontSize: {
-          value: '32px',
-          name: '文字大小',
-        },
-        color: {
-          value: '#404040',
-          name: '文字颜色',
-        },
-        lineHeight: {
-          value: '48px',
-          name: '文字行高',
-        },
+        ...textStyle({
+          size: '32px',
+          color: '#404040',
+          lineHeight: '48px'
+        }),
       },
       children: {
         value: '蚂蚁金融云提供专业的服务',
@@ -66,18 +52,9 @@ export default {
     },
     content7_content: {
       style: {
-        fontSize: {
-          value: '12px',
-          name: '文字大小',
-        },
-        color: {
-          value: '#666',
-          name: '文字颜色',
-        },
-        lineHeight: {
-          value: '24px',
-          name: '文字行高',
-        },
+        ...textStyle({
+          lineHeight: '24px'
+        }),
       },
       children: {
         value: '基于阿里云计算强大的基础资源',
@@ -133,14 +110,10 @@ export default {
         title: {
           name: '区块标题',
           style: {
-            fontSize: {
-              value: '14px',
-              name: '文字大小',
-            },
-            color: {
-              value: '#3e3e3e',
-              name: '文字颜色',
-            },
+            ...textStyle({
+              color: '#3e3e3e',
+              size: '14px'
+            }),
             margin: {
               value: '0 0 10px 45px',
               name: 'margin',
@@ -155,14 +128,7 @@ export default {
         content: {
           name: '区块内容',
           style: {
-            fontSize: {
-              value: '12px',
-              name: '文字大小',
-            },
-            color: {
-              value: '#666',
-              name: '文字颜色',
-            },
+            ...textStyle(),
             margin: {
               value: '0 0 0 45px',
               name: 'margin',
@@ -205,14 +171,10 @@ export default {
         title: {
           name: '区块标题',
           style: {
-            fontSize: {
-              value: '14px',
-              name: '文字大小',
-            },
-            color: {
-              value: '#3e3e3e',
-              name: '文字颜色',
-            },
+            ...textStyle({
+              color: '#3e3e3e',
+              size: '14px'
+            }),
             margin: {
               value: '0 0 10px 45px',
               name: 'margin',
@@ -227,14 +189,7 @@ export default {
         content: {
           name: '区块内容',
           style: {
-            fontSize: {
-              value: '12px',
-              name: '文字大小',
-            },
-            color: {
-              value: '#666',
-              name: '文字颜色',
-            },
+            ...textStyle(),
             margin: {
               value: '0 0 0 45px',
               name: 'margin',
@@ -277,14 +232,10 @@ export default {
         title: {
           name: '区块标题',
           style: {
-            fontSize: {
-              value: '14px',
-              name: '文字大小',
-            },
-            color: {
-              value: '#3e3e3e',
-              name: '文字颜色',
-            },
+            ...textStyle({
+              color: '#3e3e3e',
+              size: '14px'
+            }),
             margin: {
               value: '0 0 10px 45px',
               name: 'margin',
@@ -299,14 +250,7 @@ export default {
         content: {
           name: '区块内容',
           style: {
-            fontSize: {
-              value: '12px',
-              name: '文字大小',
-            },
-            color: {
-              value: '#666',
-              name: '文字颜色',
-            },
+            ...textStyle(),
             margin: {
               value: '0 0 0 45px',
               name: 'margin',

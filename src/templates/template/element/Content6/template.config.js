@@ -1,8 +1,10 @@
 const component = require('./index');
 const templateStr = require('!raw!./index.text');
 const less = require('!raw!./index.less');
-const bgStyle = require('../../bgStyleData');
-const borderStyle = require('../../borderStyleData');
+const style = require('../../utils-style');
+const bgStyle = style.bgStyleData;
+const borderStyle = style.borderStyleData;
+const textStyle = style.textStyleData;
 
 export default {
   component,
@@ -16,33 +18,31 @@ export default {
           name: '区块高度',
           remark: '请填写上单位 "px" 或 "vh" ',
         },
-        backgroundColor: {
-          value: '#efefef',
-          name: '背景颜色',
-        },
-        backgroundImage: {
-          name: '背景图片',
-          value: '',
-          remark: '尺寸参考:1920*1080',
-        },
-        ...bgStyle,
-        ...borderStyle,
+        ...bgStyle(),
+        ...borderStyle(),
       },
     },
     content6_title: {
       style: {
-        fontSize: {
-          value: '32px',
-          name: '文字大小',
+        width: {
+          value: '100%',
+          name: '区块宽度',
         },
-        color: {
-          value: '#404040',
-          name: '文字颜色',
+        top: {
+          value: '10%',
+          name: '顶部距离',
         },
-        lineHeight: {
-          value: '48px',
-          name: '文字行高',
-        },
+        ...textStyle({
+          size: '32px',
+          color: '#404040',
+          align: 'center',
+          lineHeight: '48px',
+        }),
+        margin: {
+          value: 'auto',
+          name: 'margin',
+          length: 4,
+        }
       },
       children: {
         value: '客户案例',
@@ -51,18 +51,9 @@ export default {
     },
     content6_content: {
       style: {
-        fontSize: {
-          value: '12px',
-          name: '文字大小',
-        },
-        color: {
-          value: '#666',
-          name: '文字颜色',
-        },
-        lineHeight: {
-          value: '24px',
-          name: '文字行高',
-        },
+        ...textStyle({
+          lineHeight: '24px'
+        }),
         maxWidth: {
           value: '600px',
           name: '最大宽度',
@@ -161,14 +152,10 @@ export default {
               value: '100%',
               name: '背景宽度',
             },
-            lineHeight: {
-              value: '30px',
-              name: '文字行高',
-            },
-            color: {
-              value: '#fff',
-              name: '文字颜色',
-            },
+            ...textStyle({
+              color: '#fff',
+              lineHeight: '30px'
+            }),
             background: {
               value: 'rgba(1, 155,240, 0.75)',
               name: '背景颜色',
@@ -263,14 +250,10 @@ export default {
               value: '100%',
               name: '背景宽度',
             },
-            lineHeight: {
-              value: '30px',
-              name: '文字行高',
-            },
-            color: {
-              value: '#fff',
-              name: '文字颜色',
-            },
+            ...textStyle({
+              color: '#fff',
+              lineHeight: '30px'
+            }),
             background: {
               value: 'rgba(1, 155,240, 0.75)',
               name: '背景颜色',
@@ -365,14 +348,10 @@ export default {
               value: '100%',
               name: '背景宽度',
             },
-            lineHeight: {
-              value: '30px',
-              name: '文字行高',
-            },
-            color: {
-              value: '#fff',
-              name: '文字颜色',
-            },
+            ...textStyle({
+              color: '#fff',
+              lineHeight: '30px'
+            }),
             background: {
               value: 'rgba(1, 155,240, 0.75)',
               name: '背景颜色',
@@ -467,14 +446,10 @@ export default {
               value: '100%',
               name: '背景宽度',
             },
-            lineHeight: {
-              value: '30px',
-              name: '文字行高',
-            },
-            color: {
-              value: '#fff',
-              name: '文字颜色',
-            },
+            ...textStyle({
+              color: '#fff',
+              lineHeight: '30px'
+            }),
             background: {
               value: 'rgba(1, 155,240, 0.75)',
               name: '背景颜色',
@@ -569,14 +544,10 @@ export default {
               value: '100%',
               name: '背景宽度',
             },
-            lineHeight: {
-              value: '30px',
-              name: '文字行高',
-            },
-            color: {
-              value: '#fff',
-              name: '文字颜色',
-            },
+            ...textStyle({
+              color: '#fff',
+              lineHeight: '30px'
+            }),
             background: {
               value: 'rgba(1, 155,240, 0.75)',
               name: '背景颜色',
@@ -671,14 +642,10 @@ export default {
               value: '100%',
               name: '背景宽度',
             },
-            lineHeight: {
-              value: '30px',
-              name: '文字行高',
-            },
-            color: {
-              value: '#fff',
-              name: '文字颜色',
-            },
+            ...textStyle({
+              color: '#fff',
+              lineHeight: '30px'
+            }),
             background: {
               value: 'rgba(1, 155,240, 0.75)',
               name: '背景颜色',
@@ -773,14 +740,10 @@ export default {
               value: '100%',
               name: '背景宽度',
             },
-            lineHeight: {
-              value: '30px',
-              name: '文字行高',
-            },
-            color: {
-              value: '#fff',
-              name: '文字颜色',
-            },
+            ...textStyle({
+              color: '#fff',
+              lineHeight: '30px'
+            }),
             background: {
               value: 'rgba(1, 155,240, 0.75)',
               name: '背景颜色',
@@ -875,14 +838,10 @@ export default {
               value: '100%',
               name: '背景宽度',
             },
-            lineHeight: {
-              value: '30px',
-              name: '文字行高',
-            },
-            color: {
-              value: '#fff',
-              name: '文字颜色',
-            },
+            ...textStyle({
+              color: '#fff',
+              lineHeight: '30px'
+            }),
             background: {
               value: 'rgba(1, 155,240, 0.75)',
               name: '背景颜色',

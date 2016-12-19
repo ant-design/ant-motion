@@ -1,8 +1,10 @@
 const component = require('./index');
 const templateStr = require('!raw!./index.text');
 const less = require('!raw!./index.less');
-const bgStyle = require('../../bgStyleData');
-const borderStyle = require('../../borderStyleData');
+
+const style = require('../../utils-style');
+const bgStyle = style.bgStyleData;
+const borderStyle = style.borderStyleData;
 
 export default {
   component,
@@ -18,7 +20,7 @@ export default {
           name: '区块高度',
           remark: '请填写上单位 "px" 或 "vh", 如果在第一屏且导航位置为 relative, 一屏为 calc(100vh - 64px)',
         },
-        ...borderStyle,
+        ...borderStyle(),
       },
     },
     content1_block0: {
@@ -26,16 +28,9 @@ export default {
         bg: {
           name: '第一屏背景',
           style: {
-            backgroundColor: {
-              value: '#fff',
-              name: '背景颜色',
-            },
-            backgroundImage: {
-              name: '背景图片',
-              value: 'https://zos.alipayobjects.com/rmsportal/hzPBTkqtFpLlWCi.jpg',
-              remark: '尺寸参考:1920*1080',
-            },
-            ...bgStyle,
+            ...bgStyle({
+              image: 'https://zos.alipayobjects.com/rmsportal/hzPBTkqtFpLlWCi.jpg',
+            }),
           },
         },
         wrapper: {
@@ -119,6 +114,11 @@ export default {
               value: 'center',
               select: ['center', 'left', 'right'],
             },
+            margin: {
+              name: 'margin',
+              value: '0px 0px 20px 0px',
+              length: 4,
+            },
           },
           children: {
             value: '一个高效的页面动画解决方案',
@@ -153,16 +153,9 @@ export default {
         bg: {
           name: '第二屏背景',
           style: {
-            backgroundColor: {
-              value: '#fff',
-              name: '背景颜色',
-            },
-            backgroundImage: {
-              name: '背景图片',
-              value: 'https://zos.alipayobjects.com/rmsportal/xHxWkcvaIcuAdQl.jpg',
-              remark: '尺寸参考:1920*1080',
-            },
-            ...bgStyle,
+            ...bgStyle({
+              image: 'https://zos.alipayobjects.com/rmsportal/xHxWkcvaIcuAdQl.jpg',
+            }),
           },
         },
         wrapper: {
@@ -240,6 +233,11 @@ export default {
               name: '文字对齐',
               value: 'center',
               select: ['center', 'left', 'right'],
+            },
+            margin: {
+              name: 'margin',
+              value: '0px 0px 20px 0px',
+              length: 4,
             },
           },
           children: {

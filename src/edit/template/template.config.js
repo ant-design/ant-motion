@@ -56,6 +56,10 @@ export default {
         src: 'https://zos.alipayobjects.com/rmsportal/CfSeDOXHJzJuPbz.jpg',
         text: '多个模块介绍',
       },
+      {
+        src: 'https://zos.alipayobjects.com/rmsportal/tFEFnHEpyPhRnFCsKjdR.jpg',
+        text: '产品介绍',
+      },
       { disabled: true, src: 'https://zos.alipayobjects.com/rmsportal/MnbozfSRmOwdxvH.jpg' },
       { disabled: true, src: 'https://zos.alipayobjects.com/rmsportal/cMigmCVGBaJkuYG.jpg' },
       { disabled: true, src: 'https://zos.alipayobjects.com/rmsportal/VKeYAOSRQVtMccj.jpg' },

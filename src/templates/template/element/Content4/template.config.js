@@ -1,8 +1,10 @@
 const component = require('./index');
 const templateStr = require('!raw!./index.text');
 const less = require('!raw!./index.less');
-const bgStyle = require('../../bgStyleData');
-const borderStyle = require('../../borderStyleData');
+const style = require('../../utils-style');
+const bgStyle = style.bgStyleData;
+const borderStyle = style.borderStyleData;
+const textStyle = style.textStyleData;
 
 export default {
   component,
@@ -16,33 +18,31 @@ export default {
           value: '100vh',
           remark: '请填写上单位 "px" 或 "vh", 如果在第一屏且导航没加 fixed, 一屏为 calc(100vh - 64px)',
         },
-        backgroundColor: {
-          value: '#fff',
-          name: '背景颜色',
-        },
-        backgroundImage: {
-          name: '背景图片',
-          value: '',
-          remark: '尺寸参考:1920*1080',
-        },
-        ...bgStyle,
-        ...borderStyle,
+        ...bgStyle(),
+        ...borderStyle(),
       },
     },
     content4_title: {
       style: {
-        fontSize: {
-          value: '32px',
-          name: '文字大小',
+        width: {
+          value: '100%',
+          name: '区块宽度',
         },
-        color: {
-          value: '#404040',
-          name: '文字颜色',
+        top: {
+          value: '15%',
+          name: '顶部距离',
         },
-        lineHeight: {
-          value: '48px',
-          name: '文字行高',
-        },
+        ...textStyle({
+          size: '32px',
+          color: '#404040',
+          align: 'center',
+          lineHeight: '48px',
+        }),
+        margin: {
+          value: 'auto',
+          name: 'margin',
+          length: 4,
+        }
       },
       children: {
         value: '蚂蚁金融云提供专业的服务',
@@ -51,18 +51,9 @@ export default {
     },
     content4_titleContent: {
       style: {
-        fontSize: {
-          value: '12px',
-          name: '文字大小',
-        },
-        color: {
-          value: '#666',
-          name: '文字颜色',
-        },
-        lineHeight: {
-          value: '24px',
-          name: '文字行高',
-        },
+        ...textStyle({
+          lineHeight: '24px',
+        }),
         maxWidth: {
           value: '600px',
           name: '最大宽度',
@@ -100,14 +91,10 @@ export default {
         title: {
           name: '标题区块',
           style: {
-            fontSize: {
-              value: '32px',
-              name: '文字大小',
-            },
-            color: {
-              value: '#404040',
-              name: '文字颜色',
-            },
+            ...textStyle({
+              size: '32px',
+              color: '#404040'
+            }),
           },
           children: {
             value: '企业资源管理',
@@ -117,14 +104,7 @@ export default {
         content: {
           name: '内容区块',
           style: {
-            fontSize: {
-              value: '12px',
-              name: '文字大小',
-            },
-            color: {
-              value: '#666',
-              name: '文字颜色',
-            },
+            ...textStyle(),
           },
           children: {
             value: '云资源集中编排、弹性伸缩、持续发布和部署，高可用及容灾。',
@@ -160,14 +140,10 @@ export default {
         title: {
           name: '标题区块',
           style: {
-            fontSize: {
-              value: '32px',
-              name: '文字大小',
-            },
-            color: {
-              value: '#404040',
-              name: '文字颜色',
-            },
+            ...textStyle({
+              size: '32px',
+              color: '#404040',
+            }),
           },
           children: {
             value: '云安全',
@@ -177,14 +153,7 @@ export default {
         content: {
           name: '内容区块',
           style: {
-            fontSize: {
-              value: '12px',
-              name: '文字大小',
-            },
-            color: {
-              value: '#666',
-              name: '文字颜色',
-            },
+            ...textStyle(),
           },
           children: {
             value: '按金融企业安全要求打造的完整云上安全体系，全方位保障金融应用及数据安全。',
@@ -220,14 +189,10 @@ export default {
         title: {
           name: '标题区块',
           style: {
-            fontSize: {
-              value: '32px',
-              name: '文字大小',
-            },
-            color: {
-              value: '#404040',
-              name: '文字颜色',
-            },
+            ...textStyle({
+              size: '32px',
+              color: '#404040',
+            }),
           },
           children: {
             value: '云监控',
@@ -237,14 +202,7 @@ export default {
         content: {
           name: '内容区块',
           style: {
-            fontSize: {
-              value: '12px',
-              name: '文字大小',
-            },
-            color: {
-              value: '#666',
-              name: '文字颜色',
-            },
+            ...textStyle(),
           },
           children: {
             value: '分布式云环境集中监控，统一资源及应用状态视图，智能分析及故障定位。',
@@ -280,14 +238,10 @@ export default {
         title: {
           name: '标题区块',
           style: {
-            fontSize: {
-              value: '32px',
-              name: '文字大小',
-            },
-            color: {
-              value: '#404040',
-              name: '文字颜色',
-            },
+            ...textStyle({
+              size: '32px',
+              color: '#404040',
+            }),
           },
           children: {
             value: '移动',
@@ -297,14 +251,7 @@ export default {
         content: {
           name: '内容区块',
           style: {
-            fontSize: {
-              value: '12px',
-              name: '文字大小',
-            },
-            color: {
-              value: '#666',
-              name: '文字颜色',
-            },
+            ...textStyle(),
           },
           children: {
             value: '一站式移动金融APP开发及全面监控；丰富可用组件，动态发布和故障热修复。',
@@ -340,14 +287,10 @@ export default {
         title: {
           name: '标题区块',
           style: {
-            fontSize: {
-              value: '32px',
-              name: '文字大小',
-            },
-            color: {
-              value: '#404040',
-              name: '文字颜色',
-            },
+            ...textStyle({
+              size: '32px',
+              color: '#404040',
+            }),
           },
           children: {
             value: '分布式中间件',
@@ -357,14 +300,7 @@ export default {
         content: {
           name: '内容区块',
           style: {
-            fontSize: {
-              value: '12px',
-              name: '文字大小',
-            },
-            color: {
-              value: '#666',
-              name: '文字颜色',
-            },
+            ...textStyle(),
           },
           children: {
             value: '金融级联机交易处理中间件，大规模分布式计算机，数万笔/秒级并发能力，严格保证交易数据统一性。',
@@ -400,14 +336,10 @@ export default {
         title: {
           name: '标题区块',
           style: {
-            fontSize: {
-              value: '32px',
-              name: '文字大小',
-            },
-            color: {
-              value: '#404040',
-              name: '文字颜色',
-            },
+            ...textStyle({
+              size: '32px',
+              color: '#404040',
+            }),
           },
           children: {
             value: '大数据',
@@ -417,14 +349,7 @@ export default {
         content: {
           name: '内容区块',
           style: {
-            fontSize: {
-              value: '12px',
-              name: '文字大小',
-            },
-            color: {
-              value: '#666',
-              name: '文字颜色',
-            },
+            ...textStyle(),
           },
           children: {
             value: '一站式、全周期大数据协同工作平台，PB级数据处理、毫秒级数据分析工具。',

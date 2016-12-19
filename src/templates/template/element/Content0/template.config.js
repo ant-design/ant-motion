@@ -2,8 +2,10 @@ const component = require('./index');
 const templateStr = require('!raw!./index.text');
 const less = require('!raw!./index.less');
 
-const bgStyle = require('../../bgStyleData');
-const borderStyle = require('../../borderStyleData');
+const style = require('../../utils-style');
+const bgStyle = style.bgStyleData;
+const borderStyle = style.borderStyleData;
+const textStyle = style.textStyleData;
 
 export default {
   component,
@@ -22,23 +24,11 @@ export default {
           value: 'center',
           select: ['center', 'left', 'right'],
         },
-        backgroundColor: {
-          value: '#fff',
-          name: '背景颜色',
-        },
-        backgroundImage: {
-          value: 'https://zos.alipayobjects.com/rmsportal/gGlUMYGEIvjDOOw.jpg',
-          remark: '尺寸参考:1920*1080',
-          name: '背景图片',
-        },
-        ...bgStyle,
-        backgroundAttachment: {
-          value: 'fixed',
-          name: '背景固定',
-          select: ['scroll', 'fixed'],
-          remark: '参数为： "relative", "absolute", "fixed"; "fixed" 为背景随滚动条滚动',
-        },
-        ...borderStyle,
+        ...bgStyle({
+          image: 'https://zos.alipayobjects.com/rmsportal/gGlUMYGEIvjDOOw.jpg',
+          attachment: 'fixed',
+        }),
+        ...borderStyle(),
       },
     },
     content0_wrapper: {
@@ -98,19 +88,15 @@ export default {
     },
     content0_content: {
       style: {
-        fontSize: {
-          value: '14px',
-          name: '文字大小',
-          remark: '请填写上单位 "px" 或 "%" ',
-        },
-        color: {
-          value: '#ffffff',
-          name: '文字颜色',
-        },
-        textAlign: {
-          name: '文字对齐',
-          value: 'center',
-          select: ['center', 'left', 'right'],
+        ...textStyle({
+          size: '14px',
+          color: '#fff',
+          align: 'center',
+        }),
+        margin: {
+          name: 'margin',
+          value: '0px 0px 20px 0px',
+          length: 4,
         },
       },
       children: {

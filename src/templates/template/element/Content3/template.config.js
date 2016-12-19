@@ -1,8 +1,10 @@
 const component = require('./index');
 const templateStr = require('!raw!./index.text');
 const less = require('!raw!./index.less');
-const bgStyle = require('../../bgStyleData');
-const borderStyle = require('../../borderStyleData');
+const style = require('../../utils-style');
+const bgStyle = style.bgStyleData;
+const borderStyle = style.borderStyleData;
+const textStyle = style.textStyleData;
 
 export default {
   component,
@@ -15,12 +17,10 @@ export default {
           value: '50vh',
           name: '区块高度',
         },
-        backgroundColor: {
-          value: '#fff',
-          name: '背景颜色',
-        },
-        ...bgStyle,
-        ...borderStyle,
+        ...bgStyle({
+          imageRemark: '图片尺寸参考： 1920*540',
+        }),
+        ...borderStyle(),
       },
     },
     content3_imgWrapper: {
@@ -73,19 +73,11 @@ export default {
           value: '75%',
           name: '区块宽度',
         },
-        textAlign: {
-          value: 'left',
-          name: '文字对齐',
-          select: ['center', 'left', 'right', 'start', 'end'],
-        },
-        color: {
-          value: '#404040',
-          name: '文字颜色',
-        },
-        fontSize: {
-          value: '32px',
-          name: '文字大小',
-        },
+        ...textStyle({
+          size: '32px',
+          color: '#404040',
+          align: 'left',
+        })
       },
       children: {
         name: '标题名称',
@@ -98,19 +90,10 @@ export default {
           value: '75%',
           name: '区块宽度',
         },
-        textAlign: {
-          value: 'left',
-          name: '文字对齐',
-          select: ['center', 'left', 'right', 'start', 'end'],
-        },
-        color: {
-          value: '#666',
-          name: '文字颜色',
-        },
-        fontSize: {
-          value: '12px',
-          name: '文字大小',
-        },
+        ...textStyle({
+          size: '12px',
+          align: 'left',
+        })
       },
       children: {
         name: '详细说明',
