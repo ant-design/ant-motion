@@ -46,6 +46,7 @@ ReactDOM.render(<QueueAnim>
 | interval   | number / array | 100     | 每个动画的间隔时间,以毫秒为单位  |
 | leaveReverse | boolean      | false   | 出场时是否倒放,从最后一个 dom 开始往上播放 |
 | ease       | string / array | `easeOutQuart` | 动画的缓动函数,[查看详细](http://julian.com/research/velocity/#easing) |
+| appear     | boolean        | true    | 开始进入时是否有动画    |
 | animatingClassName | array | `['queue-anim-entering', 'queue-anim-leaving']` | 进出场动画进行中的类名 |
 | component  | string | `div` | QueueAnim 替换的标签名 |
 | onEnd      | func   | null  | 动画结束后回调， callback({ key, type }); type 为 `enter` 或 `leave` |

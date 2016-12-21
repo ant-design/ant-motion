@@ -14,7 +14,7 @@
     "raw-loader": "^0.5.1",
     "rc-animate": "~2.3.0",
     "rc-banner-anim": "~0.5.4",
-    "rc-queue-anim": "~0.12.0",
+    "rc-queue-anim": "~0.13.0",
     "rc-scroll-anim": "~0.6.0",
     "rc-tween-one": "~0.11.10",
     "react": "15.4.x",
