@@ -36,11 +36,10 @@ export default class Templates extends React.Component {
   }
 
   componentDidUpdate() {
+    scrollScreen.unMount();
     if (this.scrollScreen) {
       const docHeight = ReactDOM.findDOMNode(this).getBoundingClientRect().height;
       scrollScreen.init({ docHeight });
-    } else {
-      scrollScreen.unMount();
     }
     if (this.listPoint) {
       const list = ReactDOM.findDOMNode(this.listComp);
