@@ -1,9 +1,5 @@
 import React, { PropTypes } from 'react';
-import Button from 'antd/lib/button';
-import Icon from 'antd/lib/icon';
-import Modal from 'antd/lib/modal';
-// import Tooltip from 'antd/lib/tooltip';
-import message from 'antd/lib/message';
+import { Button, Icon, Modal, message } from 'antd';
 import CopyToClipboard from 'react-copy-to-clipboard';
 import saveJsZip from './saveJsZip';
 

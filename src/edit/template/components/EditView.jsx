@@ -1,11 +1,6 @@
 import React, { PropTypes } from 'react';
 import ReactDOM from 'react-dom';
-import Icon from 'antd/lib/icon';
-import Tooltip from 'antd/lib/tooltip';
-import Button from 'antd/lib/button';
-import Input from 'antd/lib/input';
-import InputNumber from 'antd/lib/input-number';
-import Select from 'antd/lib/select';
+import { Icon, Tooltip, Button, Input, InputNumber, Select } from 'antd';
 import { TweenOneGroup } from 'rc-tween-one';
 import SketchPicker from 'react-color';
 import deepCopy from 'deepcopy';

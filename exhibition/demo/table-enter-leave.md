@@ -16,13 +16,9 @@ image: https://zos.alipayobjects.com/rmsportal/wJDizWNyyxVhULT.png
 此效果为设计语言里的对象增加与对象删除的实现。[查看视频演示](/language/interact)
 
 ```jsx
-import Table from 'antd/lib/table';
+import { Table, Button } from 'antd';
 import QueueAnim from 'rc-queue-anim';
 import { TweenOneGroup } from 'rc-tween-one';
-import Button from 'antd/lib/button';
-import 'antd/lib/table/style/index.less';
-import 'antd/lib/spin/style/index.less';
-import 'antd/lib/pagination/style/index.less';
 
 class TableEnterLeave extends React.Component {
   static propTypes = {

@@ -19,12 +19,7 @@ image: https://zos.alipayobjects.com/rmsportal/YsRZqQwpiAVgWrX.png
 ```jsx
 import TweenOne, { TweenOneGroup } from 'rc-tween-one';
 import ticker from 'rc-tween-one/lib/ticker';
-import Input from 'antd/lib/input';
-import Button from 'antd/lib/button';
-import InputNumber from 'antd/lib/input-number';
-import Radio from 'antd/lib/radio';
-import 'antd/lib/input-number/style/index.less';
-import 'antd/lib/radio/style/index.less';
+import { Input, Button, InputNumber, Radio } from 'antd';
 
 const RadioGroup = Radio.Group;
 

@@ -1,9 +1,8 @@
 import React, { PropTypes } from 'react';
-import Button from 'antd/lib/button';
+import { Button, Icon } from 'antd';
 import QueueAnim from 'rc-queue-anim';
 import TweenOne from 'rc-tween-one';
 import BannerAnim, { Element } from 'rc-banner-anim';
-import Icon from 'antd/lib/icon';
 import 'rc-banner-anim/assets/index.css';
 import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
 import './index.less';

@@ -15,7 +15,7 @@ image: https://zos.alipayobjects.com/rmsportal/cvLbMZkjkNvqbVF.png
 import BannerAnim from 'rc-banner-anim';
 import QueueAnim from 'rc-queue-anim';
 import { TweenOneGroup } from 'rc-tween-one';
-import Icon from 'antd/lib/icon';
+import { Icon } from 'antd';
 
 const Element = BannerAnim.Element;
 

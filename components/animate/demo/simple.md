@@ -7,7 +7,7 @@ title: 简单的例子
 
 ```jsx
 import Animate from 'rc-animate';
-import Button from 'antd/lib/button';
+import { Button } from 'antd';
 const Div = (props) => {
   const childrenProps = { ...props };
   delete childrenProps.show;

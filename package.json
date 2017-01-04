@@ -2,7 +2,7 @@
   "name": "ant-motion",
   "version": "1.4.0",
   "dependencies": {
-    "antd": "~2.5.0",
+    "antd": "~2.6.0",
     "autoresponsive-react": "1.1.x",
     "deepcopy": "^0.6.3",
     "file-saver": "^1.3.2",
@@ -27,16 +27,15 @@
     "tween-functions": "^1.2.0"
   },
   "devDependencies": {
-    "bluebird": "^3.4.0",
-    "pre-commit": "1.x",
     "babel-eslint": "^7.1.1",
     "babel-plugin-antd": "~0.5.1",
-    "prismjs": "^1.5.1",
+    "babel-plugin-import": "^1.1.0",
     "bisheng": "^0.13.0",
     "bisheng-plugin-antd": "~0.3.0",
     "bisheng-plugin-description": "^0.1.1",
     "bisheng-plugin-react": "^0.2.0",
     "bisheng-plugin-toc": "^0.3.0",
+    "bluebird": "^3.4.0",
     "dora-plugin-upload": "^0.3.1",
     "eslint": "^3.8.0",
     "eslint-config-airbnb": "latest",
@@ -45,7 +44,9 @@
     "eslint-plugin-jsx-a11y": "^2.0.1",
     "eslint-plugin-markdown": "*",
     "eslint-plugin-react": "^6.1.2",
-    "eslint-tinker": "^0.4.0"
+    "eslint-tinker": "^0.4.0",
+    "pre-commit": "1.x",
+    "prismjs": "^1.5.1"
   },
   "pre-commit": [
     "lint"
@@ -60,5 +61,6 @@
     "demolint": "RUN_ENV=DEMO eslint components/*/demo/*.md --ext '.md'",
     "eslint-fix": "eslint --fix ./src ./exhibition --ext '.js,.jsx'",
     "test": "echo \"Error: no test specified\" && exit 1"
-  }
+  },
+  "theme": "./theme.js"
 }

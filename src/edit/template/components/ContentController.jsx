@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react';
-import Tabs from 'antd/lib/tabs';
-import Tooltip from 'antd/lib/tooltip';
+import { Tabs, Tooltip } from 'antd';
 import ListView from './ListView';
 import EditView from './EditView';
 import OtherView from './OtherView';

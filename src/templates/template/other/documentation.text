@@ -6,7 +6,7 @@
 
 3. 修改 router.js 里的 IndexPage 的路径: import IndexPage from './routes/Home';
 
-4. 如果用的是 antd 的脚手 dva-cli (https://github.com/dvajs/dva-cli) 需要注意加上 /antMotion_style\.less/ 的.
+4. 如果用的是 antd 的脚手 dva-cli (https://github.com/dvajs/dva-cli) 需要注意在 webpack.config.js 里加上 /antMotion_style\.less/ 的.
    // Parse all less files as css module.
    webpackConfig.module.loaders.forEach(function (loader, index) {
      if (typeof loader.test === 'function' && loader.test.toString().indexOf('\\.less$') > -1) {
@@ -34,7 +34,18 @@
 "rc-tween-one": "~0.11.11",
 "rc-banner-anim": "~0.5.4", // 如果用的是多屏滑动型的 banner，加上这条。
 
-以上具体版本按最新的来修改。
+6. 按需加载 antd, package.json 里的 devDependencies 加上:
+"babel-plugin-import": "^1.1.0",
 
-6. 将当前文件删除。
+5 与 6 的具体版本按最新的来修改。
+
+7. 运用 "babel-plugin-import" 滤境，在 webpack.config.js 里加上;
+  webpackConfig.babel.plugins.push(['import', {
+    libraryName: 'antd',
+    style: true,
+  }]);
+
+8. 配置自定义皮服，参考 https://ant.design/docs/react/customize-theme-cn#1)-package.theme（推荐）;
+
+9. 将当前文件删除。
 

@@ -1,9 +1,5 @@
 import React, { PropTypes } from 'react';
-import Icon from 'antd/lib/icon';
-import Modal from 'antd/lib/modal';
-import Alert from 'antd/lib/alert';
-import Checkbox from 'antd/lib/checkbox';
-import InputNumber from 'antd/lib/input-number';
+import { Icon, Modal, Alert, Checkbox, InputNumber } from 'antd';
 import { TweenOneGroup } from 'rc-tween-one';
 import ListSort from './ListSort';
 import webData from './../template.config';

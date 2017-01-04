@@ -14,7 +14,7 @@ image: https://zos.alipayobjects.com/rmsportal/RJoNICBzRCkOsMv.png
 ```jsx
 import QueueAnim from 'rc-queue-anim';
 import TweenOne, { TweenOneGroup } from 'rc-tween-one';
-import Icon from 'antd/lib/icon';
+import { Icon } from 'antd';
 
 const textData = {
   content: 'Taiwan called motorcycle, motor bike [1] or a motorcycle,' +

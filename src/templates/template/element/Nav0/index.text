@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import TweenOne from 'rc-tween-one';
-import Menu from 'antd/lib/menu';
+import { Menu } from 'antd';
 
 const Item = Menu.Item;
 

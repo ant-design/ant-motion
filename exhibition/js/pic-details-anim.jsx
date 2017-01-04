@@ -1,7 +1,7 @@
 import React from 'react';
 import QueueAnim from 'rc-queue-anim';
 import TweenOne, { TweenOneGroup } from 'rc-tween-one';
-import Icon from 'antd/lib/icon';
+import { Icon } from 'antd';
 import './pic-details-anim.css';
 
 const textData = {

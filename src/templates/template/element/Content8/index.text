@@ -1,8 +1,7 @@
 import React from 'react';
 import TweenOne from 'rc-tween-one';
 import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
-import Tabs from 'antd/lib/tabs';
-import 'antd/lib/tabs/style';
+import { Tabs } from 'antd';
 
 const TabPane = Tabs.TabPane;
 

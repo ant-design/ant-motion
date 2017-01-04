@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import { TweenOneGroup } from 'rc-tween-one';
 import QueueAnim from 'rc-queue-anim';
 import { Link } from 'react-router';
-import Affix from 'antd/lib/affix';
+import { Affix } from 'antd';
 import nav from '../Layout/nav';
 import { scrollClick } from '../utils';
 

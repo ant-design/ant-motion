@@ -12,7 +12,7 @@ image: https://zos.alipayobjects.com/rmsportal/BgYxbsXLrUfkkRT.png
 ListSort 组件地址： [地址](https://github.com/ant-design/ant-motion/blob/master/src/edit/template/components/ListSort.jsx)
 
 ```jsx
-import Icon from 'antd/lib/icon';
+import { Icon } from 'antd';
 import ListSort from '../../src/edit/template/components/ListSort';
 
 const dataArray = [

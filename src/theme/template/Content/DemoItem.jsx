@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import TweenOne from 'rc-tween-one';
-import Icon from 'antd/lib/icon';
+import { Icon } from 'antd';
 
 class Item extends React.Component {
   constructor(props) {

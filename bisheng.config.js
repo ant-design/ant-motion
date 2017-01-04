@@ -1,4 +1,3 @@
-const path = require('path');
 module.exports = {
   source: [
     './language',
@@ -25,9 +24,12 @@ module.exports = {
     'bisheng-plugin-toc?maxDepth=2',
     'bisheng-plugin-react?lang=__react',
     'bisheng-plugin-antd',
-    //'./src/bisheng-plugin-antm',
   ],
   webpackConfig(config) {
+    config.babel.plugins.push(['import', {
+      libraryName: 'antd',
+      style: true,
+    }]);
     config.resolve.alias = {
       'react-router': 'react-router/umd/ReactRouter',
     };

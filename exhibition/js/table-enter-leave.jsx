@@ -1,11 +1,7 @@
 import React from 'react';
-import Table from 'antd/lib/table';
+import { Table, Button } from 'antd';
 import QueueAnim from 'rc-queue-anim';
 import { TweenOneGroup } from 'rc-tween-one';
-import Button from 'antd/lib/button';
-import 'antd/lib/table/style/index.less';
-import 'antd/lib/spin/style/index.less';
-import 'antd/lib/pagination/style/index.less';
 import './table-enter-leave.css';
 
 export default class TableEnterLeave extends React.Component {
