@@ -28,7 +28,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^7.1.1",
-    "babel-plugin-antd": "~0.d5.1",
+    "babel-plugin-antd": "~0.5.1",
     "babel-plugin-import": "^1.1.0",
     "bisheng": "^0.13.0",
     "bisheng-plugin-antd": "~0.3.0",
