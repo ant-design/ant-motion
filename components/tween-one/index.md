@@ -49,6 +49,7 @@ React.render(<TweenOneGroup>
 | moment  | number |  null | 设置当前时间上的时间，设置完后设回 null |
 | onChange | function | null | 全局变动回调 |
 | attr       | string         | `style` | `style` or `attr`, `attr` 为替换标签上的属性(attribute). SvgMorphPlugin 必须为 `attr`.  |
+| willChange | boolean | true |  是否开启 style 里的 will-change， 默认开启，如果 scale 0->1 出现元素模糊，请关掉这项 |
 | component | React.Element/String  | `div` | 需要替换的标签 |
 
 ### animation
@@ -161,5 +162,6 @@ TweenOne.plugins.push(BezierPlugin);
 | onEnd   | func       | -       | 每个动画结束后回调 |
 | animatingClassName | array | `['tween-one-entering', 'tween-one-leaving']` | 进出场的样式，如果是组件形式，需把 className 带到你的组件里 |
 | resetStyleBool | boolean | true | 每次动画时是否强制重置样式 |
+| willChange |  boolean | true   | 开启子级 style 里的 will-change, 传递到子级 |
 | component | React.Element/String | div | 需要替换的标签 |
 

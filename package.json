@@ -16,7 +16,7 @@
     "rc-banner-anim": "~0.5.4",
     "rc-queue-anim": "~0.13.0",
     "rc-scroll-anim": "~0.6.0",
-    "rc-tween-one": "~0.11.10",
+    "rc-tween-one": "~1.0.0",
     "react": "15.4.x",
     "react-color": "^2.9.0",
     "react-copy-to-clipboard": "~4.2.0",
@@ -28,7 +28,6 @@
   },
   "devDependencies": {
     "babel-eslint": "^7.1.1",
-    "babel-plugin-antd": "~0.5.1",
     "babel-plugin-import": "^1.1.0",
     "bisheng": "^0.13.0",
     "bisheng-plugin-antd": "~0.3.0",
