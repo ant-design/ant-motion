@@ -31,7 +31,7 @@
 "antd": "~1.7.0",
 "rc-queue-anim": "~0.12.6",
 "rc-scroll-anim": "~0.6.0",
-"rc-tween-one": "~0.11.11",
+"rc-tween-one": "~1.0.0",
 "rc-banner-anim": "~0.5.4", // 如果用的是多屏滑动型的 banner，加上这条。
 
 6. 按需加载 antd, package.json 里的 devDependencies 加上:
