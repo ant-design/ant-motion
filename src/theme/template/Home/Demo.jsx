@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TweenOne from 'rc-tween-one';
+import TweenOne, { TweenOneGroup } from 'rc-tween-one';
 import ticker from 'rc-tween-one/lib/ticker';
 import SvgDrawPlugin from 'rc-tween-one/lib/plugin/SvgDrawPlugin';
-import { currentScrollTop } from '../utils';
+import { currentScrollTop, enquireScreen } from '../utils';
 
 TweenOne.plugins.push(SvgDrawPlugin);
 
@@ -16,30 +16,50 @@ export default class Demo extends React.Component {
     image: 'https://zos.alipayobjects.com/rmsportal/fbbUPUkdhvXwRYp.png',
   };
 
+
   constructor(props) {
     super(props);
     this.state = {};
     this.interval = null;
     this.gather = true;
     this.intervalTime = 9000;
+    this.width = 265;
+    this.height = 290;
+    this.tickerOut = null;
+    this.scale = 1;
   }
 
   componentDidMount() {
     this.dom = ReactDOM.findDOMNode(this);
-    ticker.timeout(this.createPointData, 1400);
+    this.tickerOut = ticker.timeout(this.createPointData, 1400);
   }
 
   componentWillUnmount() {
-    ticker.clear(this.interval);
-    this.interval = null;
+    this.remInterval();
   }
+
+  onResize = () => {
+    enquireScreen((bool) => {
+      this.scale = bool ? 0.7 : 1;
+      if (!this.tickerOut) {
+        const children = this.resizeData(this.state.children);
+        this.setState({ children }, () => {
+          if (!this.gather) {
+            this.updateTweenData();
+          }
+          ticker.clear(this.interval);
+          this.interval = ticker.interval(this.updateTweenData, this.intervalTime);
+        });
+      }
+    });
+  };
 
   onMouseEnter = () => {
     // !this.gather && this.updateTweenData();
     if (!this.gather) {
       this.updateTweenData();
     }
-    this.componentWillUnmount();
+    this.remInterval();
   };
 
   onMouseLeave = () => {
@@ -56,22 +76,21 @@ export default class Demo extends React.Component {
     for (let i = 0; i < w; i += number) {
       for (let j = 0; j < h; j += number) {
         if (data[((i + j * w) * 4) + 3] > 150) {
-          this.pointArray.push({ x: i, y: j });
+          this.pointArray.push({ x: i, y: j, r: Math.random() * 18 + 12 });
         }
       }
     }
 
-    const children = [];
+    let children = [];
     this.pointArray.forEach((item, i) => {
-      const r = Math.random() * 18 + 12;
       const b = Math.random() * 0.4 + 0.1;
       children.push(
         <TweenOne className="point-wrapper" key={i} style={{ left: item.x, top: item.y }}>
           <TweenOne
             className="point"
             style={{
-              width: r,
-              height: r,
+              width: item.r,
+              height: item.r,
               opacity: b,
               backgroundColor: `rgb(${Math.round(Math.random() * 95 + 160)},255,255)`,
             }}
@@ -88,7 +107,7 @@ export default class Demo extends React.Component {
         </TweenOne>
       );
     });
-    this.pointArray.push({ x: 75, y: 180 });
+    this.pointArray.push({ x: 75, y: 180, r: 40 });
     children.push(
       <TweenOne
         className="point-wrapper" key={children.length}
@@ -117,18 +136,44 @@ export default class Demo extends React.Component {
         />
       </TweenOne>
     );
+    children = this.resizeData(children);
     this.setState({
       children,
-      boxAnim: { opacity: 0, type: 'from', duration: 800 },
+      end: true,
     }, () => {
+      this.onResize();
       this.interval = ticker.interval(this.updateTweenData, this.intervalTime);
     });
   }
 
+  resizeData = children => children.map((item, i) => {
+    const child = item.props.children;
+    const childrenProps = {
+      ...child.props,
+      style: {
+        ...child.props.style,
+        width: this.pointArray[i].r * this.scale,
+        height: this.pointArray[i].r * this.scale,
+      },
+    };
+    const props = {
+      key: i,
+      style: { left: this.pointArray[i].x * this.scale, top: this.pointArray[i].y * this.scale },
+    };
+    return React.cloneElement(item, props, React.cloneElement(child, childrenProps));
+  });
+
+  remInterval = () => {
+    ticker.clear(this.interval);
+    this.interval = null;
+  }
+
   createPointData = () => {
-    const w = 265;
-    const h = 290;
-    const canvas = document.getElementById('canvas');
+    this.tickerOut = null;
+    const w = this.width;
+    const h = this.height;
+    const canvas = document.createElement('canvas');
+    this.dom.appendChild(canvas);
     const ctx = canvas.getContext('2d');
     ctx.clearRect(0, 0, w, h);
     canvas.width = w;
@@ -136,8 +181,8 @@ export default class Demo extends React.Component {
     const img = new Image();
     img.onload = () => {
       ctx.drawImage(img, 0, 0);
-      const data = ctx.getImageData(0, 0, w, h).data;
-      this.setDataToDom(data, w, h);
+      this.imgData = ctx.getImageData(0, 0, w, h).data;
+      this.setDataToDom(this.imgData, w, h);
       this.dom.removeChild(canvas);
     };
     img.crossOrigin = 'anonymous';
@@ -162,8 +207,8 @@ export default class Demo extends React.Component {
   };
 
   disperseData = () => {
-    const rect = this.dom.getBoundingClientRect();
-    const sideRect = this.sideBox.getBoundingClientRect();
+    const rect = document.getElementById('banner').getBoundingClientRect();// this.dom.getBoundingClientRect();
+    const sideRect = document.getElementById('J-Side').getBoundingClientRect();
     const sideTop = sideRect.top + currentScrollTop();
     const children = this.state.children.map(item =>
       React.cloneElement(item, {
@@ -185,74 +230,75 @@ export default class Demo extends React.Component {
 
   updateTweenData = () => {
     this.dom = ReactDOM.findDOMNode(this);
-    this.sideBox = ReactDOM.findDOMNode(this.sideBoxComp);
     ((this.gather && this.disperseData) || this.gatherData)();
     this.gather = !this.gather;
   };
 
   render() {
-    return (<div className="logo-demo">
-      <canvas id="canvas" />
-      <TweenOne
-        component="svg"
-        animation={{ opacity: 0, delay: 1400, duration: 800 }}
-        className="right-side"
-      >
-        <TweenOne
-          d="M30,265L30,25"
-          component="path"
-          animation={[
-            { opacity: 0, type: 'from', delay: 300, duration: 0 },
-            { SVGDraw: 0, type: 'from', duration: 300, ease: 'easeInQuart' },
-          ]}
-        />
-        <TweenOne
-          d="M30,25L137,135"
-          component="path"
-          animation={[
-            { opacity: 0, type: 'from', delay: 600, duration: 0 },
-            { SVGDraw: 0, type: 'from', duration: 250, ease: 'linear' },
-          ]}
-        />
-        <TweenOne
-          d="M137,135L245,25"
-          component="path"
-          animation={[
-            { opacity: 0, type: 'from', delay: 850, duration: 0 },
-            { SVGDraw: 0, type: 'from', duration: 250, ease: 'linear' },
-          ]}
-        />
-        <TweenOne
-          d="M245,25L245,190"
-          component="path"
-          animation={[
-            { opacity: 0, type: 'from', delay: 1100, duration: 0 },
-            { SVGDraw: 0, type: 'from', duration: 300, ease: 'easeOutQuart' },
-          ]}
-        />
-        <TweenOne
-          component="circle" r="20" fill="#fff" cx="95" cy="200"
-          animation={{
-            delay: 1300,
-            r: 0,
-            opacity: 0,
-            duration: 300,
-            type: 'from',
-            attr: 'attr',
-            ease: 'easeOutQuart',
-          }}
-        />
-      </TweenOne>
-
-      <TweenOne
-        animation={this.state.boxAnim}
+    return (<TweenOneGroup
+      enter={{ opacity: 0, type: 'from', duration: 800 }}
+      leave={{ opacity: 0, duration: 800 }}
+      className="logo-demo"
+    >
+      {!this.state.end ? (<div key="line">
+        <svg
+          className="right-side"
+          viewBox="0,0,300,400"
+        >
+          <TweenOne
+            d="M30,265L30,25"
+            component="path"
+            animation={[
+                { opacity: 0, type: 'from', delay: 300, duration: 0 },
+                { SVGDraw: 0, type: 'from', duration: 300, ease: 'easeInQuart' },
+            ]}
+          />
+          <TweenOne
+            d="M30,25L137,135"
+            component="path"
+            animation={[
+                { opacity: 0, type: 'from', delay: 600, duration: 0 },
+                { SVGDraw: 0, type: 'from', duration: 250, ease: 'linear' },
+            ]}
+          />
+          <TweenOne
+            d="M137,135L245,25"
+            component="path"
+            animation={[
+                { opacity: 0, type: 'from', delay: 850, duration: 0 },
+                { SVGDraw: 0, type: 'from', duration: 250, ease: 'linear' },
+            ]}
+          />
+          <TweenOne
+            d="M245,25L245,190"
+            component="path"
+            animation={[
+                { opacity: 0, type: 'from', delay: 1100, duration: 0 },
+                { SVGDraw: 0, type: 'from', duration: 300, ease: 'easeOutQuart' },
+            ]}
+          />
+          <TweenOne
+            component="circle" r="20" fill="#fff" cx="95" cy="200"
+            animation={{
+              delay: 1300,
+              r: 0,
+              opacity: 0,
+              duration: 300,
+              type: 'from',
+              attr: 'attr',
+              ease: 'easeOutQuart',
+            }}
+          />
+        </svg>
+      </div>) : (<div
+        key="box"
         className="right-side blur"
         onMouseEnter={this.onMouseEnter}
         onMouseLeave={this.onMouseLeave}
-        ref={(c) => { this.sideBoxComp = c; }}
+        id="J-Side"
       >
         {this.state.children}
-      </TweenOne>
-    </div>);
+      </div>)}
+    </TweenOneGroup>);
   }
 }

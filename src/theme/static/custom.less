@@ -60,6 +60,8 @@
   border-radius: 6px;
   border: 1px solid @line-color;
   transform: translateY(0px);
+  position: relative;
+  will-change: transform, box-shadow;
   transition: transform .3s @ease-out, box-shadow .3s @ease-out;
   &:hover {
     .page-shadow();

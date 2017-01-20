@@ -114,16 +114,24 @@
         width: 100%;
         height: 100%;
       }
+      &-down-wrapper {
+        position: absolute;
+        bottom: 60px;
+        left: 0;
+        right: 0;
+        color: @text-color-light;
+        font-size: 32px;
+        text-align: center;
+      }
+      &-down {
+        display: none;
+      }
       &-mouse {
         width: 28px;
         height: 42px;
         border-radius: 14px;
         border: 2px solid @text-color-light;
-        bottom: 60px;
-        left: 0;
-        right: 0;
         margin: auto;
-        position: absolute;
         & .mouse-bar {
           width: 4px;
           height: 12px;
@@ -318,6 +326,8 @@
             }
           }
         }
+        position: relative;
+        will-change: transform, box-shadow;
         // .page-pro();
         transition: transform @animate-duration @ease-out, box-shadow @animate-duration @ease-out;
         &:hover {
@@ -349,3 +359,72 @@
 
 }
 
+@media screen and (max-width: 768px) {
+  .home-wrapper {
+    .banner-wrapper .banner-demo, .banner-wrapper .banner-text {
+      position: relative;
+    }
+    .banner-wrapper {
+      .banner-demo {
+        height: 55%;
+      }
+      .banner-text {
+        height: 45%;
+        text-align: center;
+      }
+      .banner-bg-center {
+        top: 35%;
+        left: 20%;
+      }
+      .banner-mouse {
+        display: none;
+      }
+      .banner-down {
+        display: block;
+      }
+    }
+    .logo-demo .right-side {
+      right: 0;
+      left: 0;
+      top: 40%;
+    }
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .home-wrapper {
+    .nav-wrapper {
+      display: none;
+    }
+    .banner-wrapper {
+      .banner-text {
+        width: 100%;
+        p {
+          margin: 10px auto;
+          font-size: 12px;
+        }
+      }
+      .banner-down-wrapper {
+        bottom: 10px;
+        font-size: 24px;
+      }
+      .logo-demo .right-side {
+        width: 210px;
+        height: 280px;
+      }
+    }
+  }
+
+}
+
+@media screen and (max-width: 320px) {
+  .home-wrapper {
+    .banner-wrapper {
+      .banner-text {
+        h1 {
+          font-size: 40px;
+        }
+      }
+    }
+  }
+}

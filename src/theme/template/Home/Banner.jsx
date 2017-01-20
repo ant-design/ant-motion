@@ -4,6 +4,7 @@ import QueueAnim from 'rc-queue-anim';
 import ScrollElement from 'rc-scroll-anim/lib/ScrollElement';
 import SvgMorphPlugin from 'rc-tween-one/lib/plugin/SvgMorphPlugin';
 import { Link } from 'react-router';
+import { Icon } from 'antd';
 import Demo from './Demo';
 
 TweenOne.plugins.push(SvgMorphPlugin);
@@ -67,13 +68,23 @@ export default class Banner extends React.Component {
           </div>
         </QueueAnim>
         <TweenOne
-          className={`${this.props.className}-mouse`}
           animation={{ opacity: 0, type: 'from', delay: 400 }}
+          className={`${this.props.className}-down-wrapper`}
         >
-          <TweenOne
-            className="mouse-bar"
-            animation={{ y: 5, yoyo: true, repeat: -1, duration: 900 }}
-          />
+          <div key="down" className={`${this.props.className}-down`}>
+            <TweenOne animation={{ y: 5, yoyo: true, repeat: -1, duration: 900 }}>
+              <Icon type="down-circle-o" />
+            </TweenOne>
+          </div>
+          <div
+            className={`${this.props.className}-mouse`}
+            key="mouse"
+          >
+            <TweenOne
+              className="mouse-bar"
+              animation={{ y: 5, yoyo: true, repeat: -1, duration: 900 }}
+            />
+          </div>
         </TweenOne>
       </div>
     </ScrollElement>);

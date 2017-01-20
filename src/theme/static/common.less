@@ -16,11 +16,14 @@ html, body {
     width: 95%;
     max-width: 1024px;
     margin: auto;
+    position: relative;
     transition: transform @animate-duration @ease-out;
     &-logo {
       display: inline-block;
       margin: 17px 0;
       height: 30px;
+      position: relative;
+      z-index: 1000;
       & img {
         vertical-align: middle;
         display: inline-block;
@@ -30,9 +33,10 @@ html, body {
       }
       & a {
         display: block;
+        // transition: filter .4s;
       }
     }
-    &-nav {
+    .web-nav {
       float: right;
       line-height: 64px;
       position: relative;
@@ -62,10 +66,14 @@ html, body {
           }
         }
       }
-      & span {
-        float: right;
-        margin: 6px 0 0 32px;
-      }
+    }
+    .phone-nav {
+      display: none;
+    }
+    .git-but {
+      float: right;
+      margin: 6px 0 0 32px;
+      line-height: 64px;
     }
   }
 }
@@ -199,5 +207,103 @@ html, body {
   &:active, &:visited {
     transform: translateY(2px);
     box-shadow: 0 3px 15px fade(#000, 15);
+  }
+}
+
+@media screen and (max-width: 768px) and (min-width: 415px) {
+  .@{header}-wrapper {
+    .web-nav ul li {
+      margin-left: 30px;
+    }
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .home .@{header}-wrapper .@{header} {
+    transform: none;
+  }
+
+  .@{header}-wrapper .@{header} {
+    width: 90%;
+    .web-nav {
+      display: none;
+    }
+    .git-but {
+      margin: 0 0 0 10px;
+      float: none;
+      display: inline-block;
+      transform: translateY(8px);
+    }
+    &.open {
+      .@{header}-logo a {
+        filter: grayscale(1) brightness(3);
+        color: #fff;
+      }
+    }
+    .phone-nav {
+      width: 16px;
+      height: 14px;
+      cursor: pointer;
+      z-index: 1;
+      position: absolute;
+      right: 5px;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      display: block;
+      &-bar {
+        position: relative;
+        z-index: 1000;
+        em {
+          display: block;
+          width: 100%;
+          height: 2px;
+          background: #FFF;
+          margin-top: 4px;
+        }
+        :first-child {
+          margin-top: 0;
+        }
+      }
+      &-text-wrapper {
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        display: block;
+        pointer-events: none;
+        padding-top: 36px;
+        font-size: 18px;
+        background: @nav-color;
+        text-align: left;
+        ul {
+          li {
+            margin: 40px 0 40px 5%;
+            :only-child {
+              margin-left: 37px;
+            }
+            &.queue-anim-leaving {
+              position: relative !important;
+              width: auto;
+            }
+            a {
+              color: #fff;
+            }
+          }
+        }
+      }
+    }
+  }
+
+}
+
+@media screen and (max-width: 320px) {
+  .@{header}-wrapper .@{header} {
+    .git-but {
+      transform: scale(.8) translateY(8px);
+    }
   }
 }

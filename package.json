@@ -5,6 +5,7 @@
     "antd": "~2.6.0",
     "autoresponsive-react": "1.1.x",
     "deepcopy": "^0.6.3",
+    "enquire.js": "^2.1.1",
     "file-saver": "^1.3.2",
     "jsonml-to-react-component": "^0.2.2",
     "jsonml.js": "^0.1.0",
