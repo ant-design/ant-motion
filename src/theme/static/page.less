@@ -1,11 +1,11 @@
 @import "./custom";
 
-@content: page;
+@homePage: page;
 .home .page.tween-one-leaving {
   margin-top: 64px;
 }
 
-.@{content} {
+.@{homePage} {
   width: 100%;
   overflow: hidden;
   position: relative;
@@ -150,3 +150,11 @@
   }
 }
 
+@media screen and (max-width: 414px) {
+  .@{homePage} {
+    &-text {
+      width: 90%;
+      margin: auto;
+    }
+  }
+}

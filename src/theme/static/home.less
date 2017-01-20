@@ -258,6 +258,7 @@
             line-height: 26px;
             border-top: 1px solid #efefef;
             background: #fff;
+            position: relative;
             &-logo {
               margin-left: 15px;
               filter: brightness(0);
@@ -413,6 +414,69 @@
         height: 280px;
       }
     }
+    .home-content {
+      h1 {
+        font-size: 24px;
+      }
+      p {
+        font-size: 12px;
+      }
+    }
+    .page1 {
+      .code-wrapper {
+        width: 90%;
+        .code {
+          .code-left {
+            width: 100%;
+            position: absolute;
+            left: 0;
+            transform: translateY(100%);
+            z-index: 1;
+            transition: transform .45s @ease-in;
+            &.code-open {
+              transition-timing-function: @ease-out;
+              transform: translateY(0);
+            }
+          }
+          .code-right {
+            width: 100%;
+          }
+          &-icon, &-close {
+            position: absolute;
+            width: 32px;
+            height: 32px;
+            line-height: 32px;
+            background: @text-color-light;
+            border-radius: 100%;
+            color: fade(@text-color, 50);
+            box-shadow: 0 5px 20px fade(#000, 15);
+            cursor: pointer;
+            bottom: 20px;
+            left: 20px;
+            font-size: 16px;
+          }
+          &-close {
+            bottom: 40px;
+            right: 20px;
+            left: auto;
+          }
+        }
+      }
+    }
+    .page2 {
+      width: 90%;
+      height: 2700px;
+      .page-text{
+        width: 100%;
+      }
+      .home-anim-demo {
+        top: 160px;
+        ul li {
+          width: 100%;
+          margin: 0 auto 40px !important;
+        }
+      }
+    }
   }
 
 }
@@ -426,5 +490,6 @@
         }
       }
     }
+
   }
 }

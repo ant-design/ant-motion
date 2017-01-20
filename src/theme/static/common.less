@@ -211,7 +211,7 @@ html, body {
 }
 
 @media screen and (max-width: 768px) and (min-width: 415px) {
-  .@{header}-wrapper {
+  .@{header}-wrapper .@{header} {
     .web-nav ul li {
       margin-left: 30px;
     }
@@ -298,6 +298,17 @@ html, body {
     }
   }
 
+  .@{footer}{
+    height: 450px;
+    ul li{
+      width: 100%;
+      padding: 15px 5%;
+      div{
+        display: inline-block;
+        margin: 10px 20px 10px 0;
+      }
+    }
+  }
 }
 
 @media screen and (max-width: 320px) {

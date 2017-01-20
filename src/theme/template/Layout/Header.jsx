@@ -12,12 +12,17 @@ class Header extends React.Component {
     className: PropTypes.string,
   };
 
+  static contextTypes = {
+    router: PropTypes.object.isRequired,
+  };
+
   constructor(props) {
     super(props);
     this.state = {
       isMode: false,
       openAnim: null,
       phoneOpen: false,
+      barAnim: [],
     };
   }
 
@@ -29,15 +34,37 @@ class Header extends React.Component {
     });
   }
 
-  phoneClick = () => {
-    const obj = this.state.phoneOpen ? {
-      phoneOpen: false,
-      openAnim: { opacity: 0, delay: 300, duration: 400 },
-    } : {
-      phoneOpen: true,
-      openAnim: { opacity: 1, duration: 400 },
-    };
-    this.setState(obj);
+  getAnimData = phoneOpen => (phoneOpen ? {
+    phoneOpen: false,
+    openAnim: { opacity: 0, delay: 300, duration: 400 },
+    barAnim: [
+          { rotate: 0, y: 0, duration: 300 },
+          { opacity: 1, duration: 300 },
+          { rotate: 0, y: 0, duration: 300 },
+    ],
+  } : {
+    phoneOpen: true,
+    openAnim: { opacity: 1, duration: 400 },
+    barAnim: [
+          { rotate: 45, y: 6, duration: 300 },
+          { opacity: 0, duration: 300 },
+          { rotate: -45, y: -6, duration: 300 },
+    ],
+  });
+
+  phoneClick = (e, phoneOpen, href, isLogo) => {
+    if (!this.state.isMode || isLogo && !phoneOpen) {
+      return;
+    }
+    if (href) {
+      e.preventDefault();
+      setTimeout(() => {
+        this.context.router.push({
+          pathname: href,
+        });
+      }, 550);
+    }
+    this.setState(this.getAnimData(phoneOpen));
   }
 
   render() {
@@ -53,6 +80,9 @@ class Header extends React.Component {
           to={item.href}
           className={className}
           disabled={item.disabled}
+          onClick={(e) => {
+            this.phoneClick(e, this.state.phoneOpen, item.href);
+          }}
         >
           {item.name}
         </Link>
@@ -66,7 +96,12 @@ class Header extends React.Component {
           className={`${this.props.className}-logo`}
           animation={{ opacity: 0, type: 'from' }}
         >
-          <Link to="/" key="logo">
+          <Link
+            to="/" key="logo"
+            onClick={(e) => {
+              this.phoneClick(e, this.state.phoneOpen, '/', true);
+            }}
+          >
             <img height="24" src="https://zos.alipayobjects.com/rmsportal/TOXWfHIUGHvZIyb.svg" />
             <img height="14" src="https://zos.alipayobjects.com/rmsportal/bNfCyCcgnyTgRmz.svg" />
           </Link>
@@ -80,10 +115,14 @@ class Header extends React.Component {
         {
           this.state.isMode ?
             (<div className="phone-nav">
-              <div className="phone-nav-bar" onClick={this.phoneClick}>
-                <em />
-                <em />
-                <em />
+              <div
+                className="phone-nav-bar" onClick={(e) => {
+                  this.phoneClick(e, this.state.phoneOpen);
+                }}
+              >
+                <TweenOne component="em" animation={this.state.barAnim[0]} />
+                <TweenOne component="em" animation={this.state.barAnim[1]} />
+                <TweenOne component="em" animation={this.state.barAnim[2]} />
               </div>
               <TweenOne
                 className="phone-nav-text-wrapper"
