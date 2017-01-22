@@ -92,7 +92,6 @@ class DetailSwitchDemo extends React.Component {
       showInt = 0;
     }
     this.setState({ showInt, imgAnim });
-    console.log(this.bannerImg)
     this.bannerImg.prev();
     this.bannerText.prev();
   };
@@ -276,5 +275,20 @@ ReactDOM.render(
 .details-switch-demo-wrapper .anticon-right{
   right: 5px;
 }
-
+@media screen and (max-width: 414px) {
+  .details-switch-demo {
+    transform: scale(.6) translateX(12px);
+    transform-origin: left center;
+  }
+}
+@media screen and (max-width: 375px) {
+  .details-switch-demo {
+    transform: scale(.55) translateX(7px);
+  }
+}
+@media screen and (max-width: 320px) {
+  .details-switch-demo {
+    transform: scale(.46) translateX(12px);
+  }
+}
 ```

@@ -19,7 +19,8 @@ image: https://zos.alipayobjects.com/rmsportal/YsRZqQwpiAVgWrX.png
 ```jsx
 import TweenOne, { TweenOneGroup } from 'rc-tween-one';
 import ticker from 'rc-tween-one/lib/ticker';
-import { Input, Button, InputNumber, Radio } from 'antd';
+import { Input, Button, InputNumber, Radio, Icon } from 'antd';
+import enquire from 'enquire.js';
 
 const RadioGroup = Radio.Group;
 
@@ -193,7 +194,9 @@ class LogoGather extends React.Component {
         className="right-side blur"
         onMouseEnter={this.onMouseEnter}
         onMouseLeave={this.onMouseLeave}
-        ref={(c) => { this.sideBoxComp = c; }}
+        ref={(c) => {
+          this.sideBoxComp = c;
+        }}
       >
         {this.state.children}
       </TweenOne>
@@ -212,7 +215,28 @@ class Edit extends React.Component {
       image: this.defaultImage.a,
       pixSize: 20,
       pointSize: 10,
+      isMode: false,
+      show: false,
     };
+  }
+
+  componentDidMount() {
+    this.enquireScreen((isMode) => {
+      this.setState({ isMode });
+    });
+  }
+
+  enquireScreen = (cb) => {
+    /* eslint-disable no-unused-expressions */
+    enquire.register('only screen and (min-width: 320px) and (max-width: 767px)', {
+      match: () => {
+        cb && cb(true);
+      },
+      unmatch: () => {
+        cb && cb();
+      },
+    });
+    /* eslint-enable no-unused-expressions */
   }
 
   onChangeImage = (e) => {
@@ -252,6 +276,12 @@ class Edit extends React.Component {
     this.pointSize = num;
   }
 
+  phoneClick = () => {
+    this.setState({
+      show: !this.state.show,
+    });
+  };
+
   render() {
     return (<div style={{ position: 'relative' }}>
       {!this.state.update && <LogoGather
@@ -259,7 +289,10 @@ class Edit extends React.Component {
         pixSize={this.state.pixSize}
         pointSizeMin={this.state.pointSize}
       />}
-      <div className="logo-gather-demo-edit-wrapper">
+      <div className={`logo-gather-demo-edit-wrapper ${this.state.show ? 'open' : ''}`}>
+        {this.state.isMode && (<div className="edit-button" onClick={this.phoneClick}>
+          <Icon type="down"/>
+        </div>)}
         <ul>
           <li>图片:</li>
           <li >
@@ -282,7 +315,7 @@ class Edit extends React.Component {
                   height="30"
                 />
               </Radio>
-              <Radio key="d" value="d">
+              <Radio key="d" value="d" className={`${this.state.isMode ? 'none' : ''}`}>
                 其它
                 <TweenOneGroup
                   style={{ display: 'inline-block', height: 0 }}
@@ -301,7 +334,7 @@ class Edit extends React.Component {
               </Radio>
             </RadioGroup>
           </li>
-          <li>图片取点像素：</li>
+          <li className={`${this.state.isMode ? 'phone-float-none' : ''}`}>图片取点像素：</li>
           <li>
             <InputNumber
               defaultValue={this.state.pixSize}
@@ -310,7 +343,7 @@ class Edit extends React.Component {
               onChange={this.onChangePix}
             />
           </li>
-          <li>点的宽加随机：</li>
+          <li className={`${this.state.isMode ? 'phone-float-none' : ''}`}>点的宽加随机：</li>
           <li>
             <InputNumber
               defaultValue={this.state.pointSize}
@@ -318,22 +351,23 @@ class Edit extends React.Component {
               onChange={this.onChangePoint}
             />
           </li>
-          <li><Button type="primary" onClick={this.onClick}>更新</Button></li>
+          <li className={`${this.state.isMode ? 'phone-float-none' : ''}`}>
+            <Button type="primary" onClick={this.onClick}>更新</Button>
+          </li>
         </ul>
         <div style={{ lineHeight: '32px' }}>
-          注：图片尺寸为正方形的PNG或SVG，请确保图片地址已开启跨域；像数点的数值越大则点越少，为流畅最小值为15
+          注：图片尺寸为正方形的PNG或SVG，请确保图片开启跨域；像数点的数值越大则点越少，为流畅最小值为15
         </div>
       </div>
     </div>);
   }
 }
-
 ReactDOM.render(
   <Edit />
 , mountNode);
 ```
 ```css
-.logo-gather-demo-edit-wrapper{
+.logo-gather-demo-edit-wrapper {
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -341,32 +375,38 @@ ReactDOM.render(
   padding: 0 5%;
   line-height: 45px;
 }
-.logo-gather-demo-edit-wrapper ul{
+
+.logo-gather-demo-edit-wrapper ul {
   display: block;
   width: 100%;
-  height: 46px;
+  overflow: hidden;
 }
-.logo-gather-demo-edit-wrapper ul li:first-child{
+
+.logo-gather-demo-edit-wrapper ul li:first-child {
   margin-left: 0;
 }
-.logo-gather-demo-edit-wrapper ul li{
+
+.logo-gather-demo-edit-wrapper ul li {
   float: left;
   vertical-align: middle;
   margin: 0 5px;
 }
 
-.logo-gather-demo-wrapper{
+.logo-gather-demo-wrapper {
   position: relative;
   background: #019BF0;
   overflow: hidden;
   height: 500px;
 }
+
 .logo-gather-demo-wrapper .point-wrapper {
   position: absolute;
 }
+
 .logo-gather-demo-wrapper .point {
   border-radius: 100%;
 }
+
 .logo-gather-demo-wrapper .right-side {
   width: 300px;
   height: 360px;
@@ -377,8 +417,65 @@ ReactDOM.render(
   left: 0;
   margin: auto;
 }
+
 .logo-gather-demo-wrapper .right-side * {
   pointer-events: none;
 }
 
+@media screen and (max-width: 414px) {
+  .exhibition-details-demo {
+    overflow: hidden;
+  }
+
+  .logo-gather-demo-edit-wrapper {
+    transform: translateY(100%);
+    transition: transform .45s ease-in-out;
+  }
+
+  .logo-gather-demo-edit-wrapper.open{
+    transform: translateY(0);
+  }
+
+  .logo-gather-demo-edit-wrapper .anticon-down{
+    transition: transform .45s ease-in-out;
+  }
+
+  .logo-gather-demo-edit-wrapper.open .anticon-down{
+    transform: rotate(180deg);
+  }
+
+  .logo-gather-demo-edit-wrapper > div {
+    width: 90%;
+    line-height: 24px !important;
+    margin-bottom: 5px;
+  }
+
+  .exhibition-details-demo .edit-button{
+    position: absolute;
+    top: -20px;
+    width: 30px;
+    height: 20px;
+    border-radius: 30px 30px 0 0;
+    background: #f1f1f1;
+    text-align: center;
+    left: 0;
+    right: 0;
+    margin: auto;
+    box-shadow: 0 -5px 5px rgba(0, 0, 0, 0.15);
+  }
+
+  .logo-gather-demo-edit-wrapper ul {
+    margin: 5px auto;
+  }
+
+  .phone-float-none {
+    clear: both;
+    margin-left: 0 !important;
+  }
+
+  .none {
+    display: none;
+  }
+
+}
 ```

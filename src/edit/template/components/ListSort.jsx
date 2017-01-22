@@ -127,6 +127,7 @@ export default class ListSort extends React.Component {
       return;
     }
     const rect = this.dom.getBoundingClientRect();
+    document.body.style.overflow = 'hidden';
     const style = {
       height: `${rect.height}px`,
       userSelect: 'none',
@@ -195,6 +196,7 @@ export default class ListSort extends React.Component {
       return;
     }
     this.mouseXY = null;
+    document.body.style.overflow = null;
     const animation = this.state.animation.map((item, i) => {
       if (this.index === i) {
         const animate = {};

@@ -67,25 +67,25 @@ class TableEnterLeave extends React.Component {
         key: 1,
         name: 'John Brown',
         age: 32,
-        address: 'New York No. 1 Lake Park',
+        address: 'New York No.1 Lake Park',
       },
       {
         key: 2,
         name: 'Jim Green',
         age: 42,
-        address: 'London No. 1 Lake Park',
+        address: 'London No.1 Lake Park',
       },
       {
         key: 3,
         name: 'Joe Black',
         age: 32,
-        address: 'Sidney No. 1 Lake Park',
+        address: 'Sidney No.1 Lake Park',
       },
       {
         key: 4,
         name: 'Jim Red',
         age: 18,
-        address: 'London No. 1 Lake Park',
+        address: 'London No.1 Lake Park',
       },
     ];
     this.currentPage = 1;
@@ -416,4 +416,20 @@ ReactDOM.render(
   width: 20%;
 }
 
+@media screen and (max-width: 414px) {
+  .table-enter-leave-demo {
+    transform: scale(.65) translateX(12px);
+    transform-origin: left center;
+  }
+}
+@media screen and (max-width: 375px) {
+  .table-enter-leave-demo {
+    transform: scale(.6) translateX(7px);
+  }
+}
+@media screen and (max-width: 320px) {
+  .table-enter-leave-demo {
+    transform: scale(.5) translateX(12px);
+  }
+}
 ```

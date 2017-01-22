@@ -216,3 +216,22 @@
 .table-enter-leave-demo-table .ant-table-thead > tr > th:nth-child(4), .table-enter-leave-demo-table .ant-table-tbody > tr > td:nth-child(4) {
   width: 20%;
 }
+
+@media screen and (max-width: 414px) {
+  .table-enter-leave-demo {
+    transform: scale(.65) translateX(12px);
+    transform-origin: left center;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .table-enter-leave-demo {
+    transform: scale(.6) translateX(7px);
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .table-enter-leave-demo {
+    transform: scale(.5) translateX(12px);
+  }
+}

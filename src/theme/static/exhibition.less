@@ -1,7 +1,7 @@
 @import 'custom';
 
-@css: exhibition-list;
-.@{css} {
+@exhibition: exhibition-list;
+.@{exhibition} {
   & > li {
     width: 45%;
     display: inline-block;
@@ -27,21 +27,30 @@
 @details: exhibition-details;
 .@{details} {
   margin-bottom: 60px;
-  &-demo{
+  &-demo {
     margin-bottom: 40px;
   }
-  .replay-button{
+  .replay-button {
     float: right;
     margin: -85px 10px;
     position: relative;
     bottom: 0;
     right: 0;
   }
-  & > pre{
+  & > pre {
     max-height: 600px;
     overflow: auto;
   }
-  & h3{
+  & h3 {
     margin: 1em 0 .6em 0;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .@{exhibition} {
+    > li {
+      width: 100%;
+      margin-left: auto !important;
+    }
   }
 }

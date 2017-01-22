@@ -93,7 +93,8 @@ ReactDOM.render(
 
 .list-sort-demo {
   margin: 40px auto;
-  width: 350px;
+  max-width: 350px;
+  width: 90%;
   cursor: url('http://gtms02.alicdn.com/tps/i2/T1_PMSFLBaXXcu5FDa-20-20.png') 10 10,pointer!important;
   position: relative;
   height: 305px;
@@ -137,4 +138,10 @@ ReactDOM.render(
   font-size: 12px;
 }
 
+@media screen and (max-width: 320px) {
+  .list-sort-demo-text h1 {
+    font-size: 14px;
+    line-height: 28px;
+  }
+}
 ```

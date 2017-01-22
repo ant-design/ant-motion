@@ -388,4 +388,20 @@ ReactDOM.render(
   margin-top: 10px;
   line-height: 16px;
 }
+@media screen and (max-width: 414px) {
+  .pic-details-demo{
+    transform: scale(.65) translateX(12px);
+    transform-origin: left center;
+  }
+}
+@media screen and (max-width: 375px) {
+  .pic-details-demo{
+    transform: scale(.6) translateX(7px);
+  }
+}
+@media screen and (max-width: 320px) {
+  .pic-details-demo{
+    transform: scale(.5) translateX(12px);
+  }
+}
 ```

@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import TweenOne, { TweenOneGroup } from 'rc-tween-one';
 import ticker from 'rc-tween-one/lib/ticker';
-import { Input, Button, InputNumber, Radio } from 'antd';
+import { Input, Button, InputNumber, Radio, Icon } from 'antd';
+import enquire from 'enquire.js';
 import './logo-gather-anim.css';
 
 const RadioGroup = Radio.Group;
@@ -177,7 +178,9 @@ class LogoGather extends React.Component {
         className="right-side blur"
         onMouseEnter={this.onMouseEnter}
         onMouseLeave={this.onMouseLeave}
-        ref={(c) => { this.sideBoxComp = c; }}
+        ref={(c) => {
+          this.sideBoxComp = c;
+        }}
       >
         {this.state.children}
       </TweenOne>
@@ -196,7 +199,15 @@ class Edit extends React.Component {
       image: this.defaultImage.a,
       pixSize: 20,
       pointSize: 10,
+      isMode: false,
+      show: false,
     };
+  }
+
+  componentDidMount() {
+    this.enquireScreen((isMode) => {
+      this.setState({ isMode });
+    });
   }
 
   onChangeImage = (e) => {
@@ -236,6 +247,25 @@ class Edit extends React.Component {
     this.pointSize = num;
   }
 
+  phoneClick = () => {
+    this.setState({
+      show: !this.state.show,
+    });
+  };
+
+  enquireScreen = (cb) => {
+    /* eslint-disable no-unused-expressions */
+    enquire.register('only screen and (min-width: 320px) and (max-width: 767px)', {
+      match: () => {
+        cb && cb(true);
+      },
+      unmatch: () => {
+        cb && cb();
+      },
+    });
+    /* eslint-enable no-unused-expressions */
+  }
+
   render() {
     return (<div style={{ position: 'relative' }}>
       {!this.state.update && <LogoGather
@@ -243,7 +273,10 @@ class Edit extends React.Component {
         pixSize={this.state.pixSize}
         pointSizeMin={this.state.pointSize}
       />}
-      <div className="logo-gather-demo-edit-wrapper">
+      <div className={`logo-gather-demo-edit-wrapper ${this.state.show ? 'open' : ''}`}>
+        {this.state.isMode && (<div className="edit-button" onClick={this.phoneClick}>
+          <Icon type="down" />
+        </div>)}
         <ul>
           <li>图片:</li>
           <li >
@@ -266,7 +299,7 @@ class Edit extends React.Component {
                   height="30"
                 />
               </Radio>
-              <Radio key="d" value="d">
+              <Radio key="d" value="d" className={`${this.state.isMode ? 'none' : ''}`}>
                 其它
                 <TweenOneGroup
                   style={{ display: 'inline-block', height: 0 }}
@@ -285,7 +318,7 @@ class Edit extends React.Component {
               </Radio>
             </RadioGroup>
           </li>
-          <li>图片取点像素：</li>
+          <li className={`${this.state.isMode ? 'phone-float-none' : ''}`}>图片取点像素：</li>
           <li>
             <InputNumber
               defaultValue={this.state.pixSize}
@@ -294,7 +327,7 @@ class Edit extends React.Component {
               onChange={this.onChangePix}
             />
           </li>
-          <li>点的宽加随机：</li>
+          <li className={`${this.state.isMode ? 'phone-float-none' : ''}`}>点的宽加随机：</li>
           <li>
             <InputNumber
               defaultValue={this.state.pointSize}
@@ -302,7 +335,9 @@ class Edit extends React.Component {
               onChange={this.onChangePoint}
             />
           </li>
-          <li><Button type="primary" onClick={this.onClick}>更新</Button></li>
+          <li className={`${this.state.isMode ? 'phone-float-none' : ''}`}>
+            <Button type="primary" onClick={this.onClick}>更新</Button>
+          </li>
         </ul>
         <div style={{ lineHeight: '32px' }}>
           注：图片尺寸为正方形的PNG或SVG，请确保图片开启跨域；像数点的数值越大则点越少，为流畅最小值为15
