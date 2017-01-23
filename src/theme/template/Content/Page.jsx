@@ -28,7 +28,7 @@ class Page extends React.Component {
       isHash: false,
       isMode: this.isMode,
       open: false,
-      zIndex: 1,
+      zIndex: 998,
       barAnim: [],
     };
   }
@@ -145,7 +145,7 @@ class Page extends React.Component {
 
   setZIndex = () => {
     this.setState({
-      zIndex: 1,
+      zIndex: 998,
     });
   }
 
