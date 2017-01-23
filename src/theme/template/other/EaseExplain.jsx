@@ -49,6 +49,8 @@ class EaseExplain extends React.Component {
           className={this.props.className}
           onMouseEnter={this.mouseOver}
           onMouseLeave={this.mouseOut}
+          onTouchStart={this.mouseOver}
+          onTouchEnd={this.mouseOut}
         >
           <div className="demo-wrapper">
             {this.props.leftHide ? null : <div className="circle-dashed" style={{ left: 0 }} />}
@@ -62,7 +64,7 @@ class EaseExplain extends React.Component {
               <i
                 className="line"
                 style={{
-                  width: 330 + lineWidth,
+                  width: `calc(100% - ${120 - lineWidth}px)`,
                   left: 60 - ((this.props.leftHide && 40) || 0),
                 }}
               />

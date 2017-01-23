@@ -74,6 +74,8 @@ class Item extends React.Component {
           className={`${this.props.className}-demo`}
           onMouseEnter={this.props.mouseEnter ? this.mouseEnter : null}
           onMouseLeave={this.props.mouseEnter ? this.mouseLeave : null}
+          onTouchStart={this.props.mouseEnter ? this.mouseEnter : null}
+          onTouchEnd={this.props.mouseEnter ? this.mouseLeave : null}
         >
           {children}
           {this.props.cStyle ?

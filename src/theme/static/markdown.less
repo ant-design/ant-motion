@@ -146,6 +146,7 @@ section.markdown {
       background: #fff;
       .page-pro();
       & .demo-wrapper {
+        // width: 100%;
         width: 450px;
         margin: 20px auto;
         height: 61px;
@@ -153,6 +154,7 @@ section.markdown {
         overflow: hidden;
         & .east {
           & .line {
+            // width: calc(~"100% - 120px");
             width: 330px;
             height: 1px;
             background: @line-deep-color;
@@ -245,6 +247,70 @@ section.markdown {
       background: transparent;
       & .ant-steps-title {
         background: transparent;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .markdown section, .markdown {
+    .content-wrapper {
+      .demo-wrapper {
+        transform: scale(.73);
+        transform-origin: left center;
+      }
+    }
+    > table {
+      border: none;
+      > thead {
+        display: none;
+      }
+      > tbody {
+        tr {
+          border-top: 2px solid #E8E8E8;
+          td {
+            border: none;
+            border-bottom: 1px solid #E8E8E8;
+            display: block;
+            &:before{
+              display: inline-block;
+              content: '';
+              margin-right: 5px;
+            }
+            &:nth-child(1):before{
+              content: '参数: ';
+            }
+            &:nth-child(2):before{
+              content: '类型: ';
+            }
+            &:nth-child(3):before{
+              content: '默认: ';
+            }
+            &:nth-child(4):before{
+              content: '说明: ';
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .markdown section, .markdown {
+    .content-wrapper {
+      .demo-wrapper {
+        transform: scale(.65);
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .markdown section, .markdown {
+    .content-wrapper {
+      .demo-wrapper {
+        transform: scale(.55);
       }
     }
   }

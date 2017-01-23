@@ -89,9 +89,9 @@ class Header extends React.Component {
       </li>);
     });
     return (<header
-      className={`${this.props.className}-wrapper`}
+      className={`${this.props.className}-wrapper${this.state.phoneOpen ? ' open' : ''}`}
     >
-      <div className={`${this.props.className} ${this.state.phoneOpen ? 'open' : ''}`}>
+      <div className={this.props.className}>
         <TweenOne
           className={`${this.props.className}-logo`}
           animation={{ opacity: 0, type: 'from' }}

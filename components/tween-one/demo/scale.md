@@ -4,7 +4,7 @@ title: 缩放效果
 mouseEnter: true
 ---
 
-鼠标经过可查看缩放效果。
+鼠标经过或手指按下可查看缩放效果。
 
 ```jsx
 import { PropTypes } from 'react';

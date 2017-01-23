@@ -38,7 +38,7 @@ ReactDOM.render((
 
 ### props 
 
-|   name    |   type   |   default  |   description     |
+|   参数    |   类型   |   默认  |   说明     |
 |-----------|----------|------------|-------------------|
 | showProp  | String   |  null      | 子级动画的类型，显示或隐藏。 [demo](http://react-component.github.io/animate/examples/hide-todo.html) |
 | exclusive | Boolean  |  false     | 同时触发动画时，是否只允许只播放一个动画 |

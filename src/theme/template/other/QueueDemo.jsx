@@ -33,10 +33,10 @@ class Demo extends React.Component {
       <div className="content-wrapper">
         <h3>4.区块出场栅格</h3>
         <div className="content">
-          <div style={{ width: 760, margin: '20px auto' }}>
+          <div style={{ width: '100%', maxWidth: 760, margin: '20px auto' }}>
             <img src="https://zos.alipayobjects.com/rmsportal/DutrIokHSewITZb.png" width="100%" />
           </div>
-          <p style={{ width: 760, margin: '20px auto' }}>
+          <p style={{ width: '100%', maxWidth: 760, margin: '20px auto' }}>
             以屏幕的对角线为轴，将页面的栅格体系45°旋转，形成出场栅格体系，
             同一栅格体系里的组件和内容的出场时间和效果相同。如果单位刚好居中则更具页面内容和区块划分。
           </p>

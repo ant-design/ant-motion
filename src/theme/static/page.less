@@ -156,8 +156,106 @@
       width: 90%;
       margin: auto;
     }
-    &-wrapper{
+    .list-bg{
+      width: 100%;
+      height: 100%;
+      background: fade(#000000, 30);
+      position: fixed;
+      top: 0;
+      z-index: 1001;
+    }
+    &-wrapper {
       width: 90%;
+      .list-wrapper {
+        position: fixed;
+        float: none;
+        height: 100%;
+        width: 150px;
+        top: 0;
+        left: 0;
+        background: #fff;
+        border-right: 1px solid @line-color;
+        box-shadow: 0 0 0 fade(#ccc, 50);
+        transform: translateX(-100%);
+        transition: transform .45s @ease-in-out, box-shadow .45s @ease-in-out;
+        &.open{
+          box-shadow: 2px 0 4px fade(#000, 30);
+          transform: translateX(0);
+          .icon-list .bar-wrapper {
+            em{
+
+            }
+          }
+        }
+        .icon-list {
+          width: 44px;
+          height: 44px;
+          position: absolute;
+          top: 80px;
+          right: -45px;
+          overflow: hidden;
+          .bar-wrapper {
+            width: 42px;
+            height: 36px;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px fade(#000, 30);
+            background: #fff;
+            position: relative;
+            left: -6px;
+            top: 4px;
+            em {
+              display: block;
+              width: 15px;
+              height: 2px;
+              background: #666;
+              margin: 3px auto 0;
+              position: relative;
+              top: 12px;
+              left: 4px;
+            }
+            :first-child {
+              margin-top: 0;
+            }
+          }
+          &:after {
+            display: block;
+            position: absolute;
+            content: '';
+            border-top: 6px solid transparent;
+            border-bottom: 6px solid transparent;
+            border-left: 6px solid @line-color;
+            top: 17px;
+          }
+        }
+        .list {
+          h2, ul {
+            position: relative;
+            padding-left: 40px;
+          }
+          h2 {
+            line-height: 32px;
+
+            margin: 40px auto 20px;
+            i {
+              float: right;
+              line-height: 32px;
+            }
+          }
+          ul {
+            top: 0;
+            li a{
+              height: 36px;
+              line-height: 36px;
+            }
+          }
+        }
+      }
+      > section {
+        padding-left: 0;
+        &:before {
+          display: none;
+        }
+      }
     }
   }
 }
