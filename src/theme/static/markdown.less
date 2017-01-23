@@ -266,28 +266,32 @@ section.markdown {
         display: none;
       }
       > tbody {
+        border-bottom: 3px solid #E8E8E8;
         tr {
-          border-top: 2px solid #E8E8E8;
+          border-top: 3px solid #E8E8E8;
           td {
             border: none;
             border-bottom: 1px solid #E8E8E8;
             display: block;
-            &:before{
+            &:before {
               display: inline-block;
               content: '';
               margin-right: 5px;
             }
-            &:nth-child(1):before{
+            &:nth-child(1):before {
               content: '参数: ';
             }
-            &:nth-child(2):before{
+            &:nth-child(2):before {
               content: '类型: ';
             }
-            &:nth-child(3):before{
+            &:nth-child(3):before {
               content: '默认: ';
             }
-            &:nth-child(4):before{
-              content: '说明: ';
+            &:nth-child(4) {
+              border-bottom: none;
+              &:before {
+                content: '说明: ';
+              }
             }
           }
         }
