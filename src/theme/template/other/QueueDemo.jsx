@@ -40,11 +40,13 @@ class Demo extends React.Component {
             以屏幕的对角线为轴，将页面的栅格体系45°旋转，形成出场栅格体系，
             同一栅格体系里的组件和内容的出场时间和效果相同。如果单位刚好居中则更具页面内容和区块划分。
           </p>
-          <h3>示例 demo: (鼠标移到以下灰色区域出来效果)</h3>
+          <h3>示例 demo: (鼠标移到或手指按住以下灰色区域出来效果)</h3>
           <div
             className="timer-queue-wrapper"
             onMouseEnter={this.mouseOverQueue}
             onMouseLeave={this.mouseOutQueue}
+            onTouchStart={this.mouseOverQueue}
+            onTouchEnd={this.mouseOutQueue}
           >
             <div className="demo-content">
               <div className="demo-kp" key="a">
