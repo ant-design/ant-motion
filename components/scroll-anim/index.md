@@ -120,7 +120,6 @@ scrollScreen.unMount();
 | animation | object / array | null | 组件动画数据 |
 | location | string | null | 定位到父级元素，以父级元素的位置为准，`Element` 的 `scrollName` 值， 必需是唯一的 |
 | always | boolean | true | 同上，重复播放 |
-| scrollName | string | null | 需要定位的名称，parallax的 location 或 link 的 location, 都需要以此元素做定位 |
 | component | string | div | 同上 |
 
 #### animation 为 object 时
@@ -138,7 +137,7 @@ scrollScreen.unMount();
 
 |   参数   |    类型    |   默认  |  说明   |
 |---------|------------|---------|--------|
-| to | string | null | 必需; 指定元素到达顶部; `Element` `Parallax` `OverPack`的 scrollName 值, 元素必需是唯一 |
+| to | string | null | 必需; 指定元素到达顶部; `Element` `Parallax` `OverPack`的 id 值 |
 | toHash | boolean  | true  | 默认将 `to` 里的值添加到 url 链接; |
 | duration | number | 450 | 滚动动画的时间 |
 | ease |  string | `easeInQutQuad` | 动画缓动参数 |
