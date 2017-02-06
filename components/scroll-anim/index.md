@@ -118,7 +118,7 @@ scrollScreen.unMount();
 |   参数   |    类型    |   默认  |  说明   |
 |---------|------------|---------|--------|
 | animation | object / array | null | 组件动画数据 |
-| location | string | null | 定位到父级元素，以父级元素的位置为准，`Element` 的 `scrollName` 值， 必需是唯一的 |
+| location | string | null | 定位到父级元素，以父级元素的位置为准，元素的 id 值， 必需是唯一的 |
 | always | boolean | true | 同上，重复播放 |
 | component | string | div | 同上 |
 
