@@ -1,18 +1,118 @@
 @import 'custom';
 
-.preview-container {
+.preview-wrapper {
   float: left;
   width: calc(~"100% - 320px");
   height: 100%;
-  overflow: auto;
   box-shadow: 5px 0 5px @edit-shadow-color;
-  position: relative;
   z-index: 11;
-  iframe {
+  background: #363b3e;
+  position: relative;
+  div {
     width: 100%;
     height: 100%;
-    border: 0;
-    position: absolute;
-    top: 0;
+  }
+  .edit-cover {
+    position: relative;
+    box-shadow: 0 0 30px fade(#000, 65);
+    > div {
+      margin: auto;
+    }
+    &.edit-phone {
+      width: 320px;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: calc(~"100% - 60px");
+      max-height: 688px;
+      margin: auto;
+      border-radius: 25px;
+      position: absolute;
+
+      .phone-head, .phone-footer {
+        height: 60px;
+        background: #000;
+        position: relative;
+        em {
+          display: block;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          margin: auto;
+        }
+      }
+      .phone-head {
+        border-radius: 25px 25px 0 0;
+        .camera {
+          width: 10px;
+          height: 10px;
+          border-radius: 10px;
+          background: #175f6e;
+          border: 3px solid fade(#222222, 70);
+          transform: translateX(-50px);
+        }
+        .receiver {
+          width: 70px;
+          height: 8px;
+          background: #000;
+          border-radius: 10px;
+          border: 2px solid #222222;
+        }
+      }
+      .phone-footer {
+        border-radius: 0 0 25px 25px;
+        .home-key {
+          width: 40px;
+          height: 40px;
+          border-radius: 40px;
+          background: #000;
+          border: 4px solid #222222;
+        }
+      }
+      .edit-iframe-wrapper {
+        height: calc(~"100% - 120px");
+        max-height: 568px;
+        position: relative;
+      }
+
+    }
+
+    .preview-container {
+      overflow: auto;
+      position: relative;
+      z-index: 11;
+      iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        position: absolute;
+        top: 0;
+      }
+    }
+    .edit-state-wrapper {
+      position: absolute;
+      pointer-events: none;
+      overflow-y: auto;
+      overflow-x: hidden;
+      user-select: none;
+      z-index: 12;
+      top: 0;
+      .edit-state {
+        position: absolute;
+        width: 100%;
+      }
+      .enter-box {
+        border: 1px dotted fade(@line-deep-color, 65);
+        position: absolute;
+        color: @primary-color;
+      }
+      .layout {
+        border: 1px solid @primary-color;
+        position: absolute;
+      }
+    }
   }
 }

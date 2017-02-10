@@ -59,6 +59,7 @@ export default class ListSort extends React.Component {
     onChange: React.PropTypes.any,
     dragClassName: React.PropTypes.string,
     appearAnim: React.PropTypes.object,
+    onEventChange: React.PropTypes.any,
   };
 
   static defaultProps = {
@@ -66,6 +67,8 @@ export default class ListSort extends React.Component {
     components: [],
     animType: 'y',
     onChange: () => {
+    },
+    onEventChange: () => {
     },
   };
 
@@ -128,6 +131,7 @@ export default class ListSort extends React.Component {
     }
     const rect = this.dom.getBoundingClientRect();
     document.body.style.overflow = 'hidden';
+    this.props.onEventChange(e, 'down');
     const style = {
       height: `${rect.height}px`,
       userSelect: 'none',
@@ -168,7 +172,7 @@ export default class ListSort extends React.Component {
     });
     const animation = this.children.map((item, ii) =>
       i === ii && (!this.props.dragClassName ?
-      { scale: 1.2, boxShadow: '0 10px 10px rgba(0,0,0,0.15)' } : null) || null
+        { scale: 1.2, boxShadow: '0 10px 10px rgba(0,0,0,0.15)' } : null) || null
     );
     this.index = i;
     this.swapIndex = i;
@@ -191,12 +195,13 @@ export default class ListSort extends React.Component {
     });
   };
 
-  onMouseUp = () => {
+  onMouseUp = (e) => {
     if (!this.mouseXY) {
       return;
     }
     this.mouseXY = null;
     document.body.style.overflow = null;
+    this.props.onEventChange(e, 'up');
     const animation = this.state.animation.map((item, i) => {
       if (this.index === i) {
         const animate = {};
@@ -269,7 +274,7 @@ export default class ListSort extends React.Component {
         0 : this.index;
       this.swapIndex = childStyle[this.index].top >
       this.childStyle[this.index].top + this.childStyle[this.index].height ?
-      childStyle.length - 1 : this.swapIndex;
+        childStyle.length - 1 : this.swapIndex;
 
       const top = childStyle[this.index].top;
       this.childStyle.forEach((item, i) => {
@@ -338,7 +343,14 @@ export default class ListSort extends React.Component {
   render() {
     const childrenToRender = toArrayChildren(this.state.children).map(this.getChildren);
     const props = { ...this.props };
-    ['component', 'components', 'animType', 'dragClassName', 'appearAnim'].forEach(key => delete props[key]);
+    [
+      'component',
+      'components',
+      'animType',
+      'dragClassName',
+      'appearAnim',
+      'onEventChange',
+    ].forEach(key => delete props[key]);
     if (this.props.appearAnim) {
       return React.createElement(QueueAnim, {
         ...props,

@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { Button, Icon, Modal, message } from 'antd';
+import { Button, Icon, Modal, message, Tooltip } from 'antd';
 import CopyToClipboard from 'react-copy-to-clipboard';
 import saveJsZip from './saveJsZip';
 
@@ -11,10 +11,14 @@ class NavController extends React.Component {
     className: PropTypes.string,
     urlHash: PropTypes.string,
     urlData: PropTypes.object,
+    isMode: PropTypes.bool,
+    typeSwitch: PropTypes.func,
   };
 
   static defaultProps = {
     className: 'edit-nav',
+    typeSwitch: () => {
+    },
   };
 
   constructor(props) {
@@ -32,6 +36,12 @@ class NavController extends React.Component {
 
   onCopy = () => {
     message.success('拷贝成功，现在可以去分享你定制的页面了！');
+  }
+
+  onTypeSwitch = (isMode) => {
+    if (isMode !== this.props.isMode) {
+      this.props.typeSwitch(isMode);
+    }
   }
 
   removeUrlData = (name, hash) => {
@@ -132,13 +142,34 @@ class NavController extends React.Component {
         <div
           className={`${this.props.className}-bar`}
         >
+          <ul className="type-switch">
+            <Tooltip title="desktop">
+              <li
+                onClick={() => {
+                  this.onTypeSwitch(false);
+                }}
+                className={!this.props.isMode ? 'active' : ''}
+              >
+                <Icon type="desktop" />
+              </li>
+            </Tooltip>
+            <Tooltip title="mobile">
+              <li
+                onClick={() => {
+                  this.onTypeSwitch(true);
+                }}
+                className={this.props.isMode ? 'active' : ''}
+              >
+                <Icon type="mobile" />
+              </li>
+            </Tooltip>
+          </ul>
           <ul>
             <li><a onClick={this.openLook} className={`${this.props.className}-remark`}>
               <Icon type="exclamation-circle-o" />
               注意事项</a>
             </li>
             <li><a href="../">返回主站</a></li>
-            <li><a onClick={this.resetData}>重置参数</a></li>
             <li>
               <a onClick={this.openHelp}>查看教程</a>
               <Modal
@@ -154,6 +185,11 @@ class NavController extends React.Component {
                 />
               </Modal>
 
+            </li>
+            <li>
+              <Button type="primary" onClick={this.resetData}>
+                重置参数
+              </Button>
             </li>
             <li>
               <Button type="primary" onClick={this.makePageURLEdit}>

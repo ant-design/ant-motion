@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { scrollScreen } from 'rc-scroll-anim';
 import webData from '../template.config';
-import { getURLData, mergeURLDataToDefault, dataValueReplace } from './utils';
+import { getURLData, mergeURLDataToDefault, dataValueReplace, styleToCssString } from './utils';
+import { enquireScreen } from '../../theme/template/utils';
 import '../static/common.less';
 import '../static/point.less';
 
@@ -27,12 +28,18 @@ export default class Templates extends React.Component {
       },
       enterKey: null,
       currentKey: null,
+      isMode: false,
     };
+    this.webStyle = '';
+    this.phoneStyle = '';
     this.myRef = {};
   }
 
   componentDidMount() {
     this.componentDidUpdate();
+    enquireScreen((isMode) => {
+      this.setState({ isMode });
+    });
   }
 
   componentDidUpdate() {
@@ -48,11 +55,42 @@ export default class Templates extends React.Component {
     }
   }
 
+  getWebOrPhoneCss = (item, strObj, key) => {
+    if (key === 'children') {
+      return;
+    }
+    const obj = strObj;
+    const cItem = item[key];
+    obj[key] = styleToCssString(cItem);
+  };
+
+  setStyle = (id, data) => {
+    if (data) {
+      Object.keys(data).forEach((key) => {
+        const item = data[key];
+        const names = key.split('_');
+        const childrenName = names[1];
+        const cssName = `#${id}${childrenName ? `-${childrenName}` : ''}`;
+        if (item) {
+          const strObj = {};
+          Object.keys(item).map(this.getWebOrPhoneCss.bind(this, item, strObj));
+          if (strObj.phoneStyle) {
+            this.phoneStyle += `${cssName}{${strObj.phoneStyle}}`;
+          }
+          if (strObj.style) {
+            this.webStyle += `${cssName}{${strObj.style}}`;
+          }
+        }
+      });
+    }
+  }
+
   getTemplatesToChildren = () => {
     const tData = getURLData('t', this.props.location.hash);
     if (!tData) {
       return (<div>请添加你的模块</div>);
     }
+    this.webStyle = this.phoneStyle = '';
     const otherData = getURLData('o', this.props.location.hash) || '';
     const data = tData.split(',');
     const other = otherData.split(',');
@@ -69,10 +107,12 @@ export default class Templates extends React.Component {
         return null;
       }
       const dataSource = dataValueReplace(nextData);
+      this.setStyle(item, urlData);
       return React.createElement(Component,
         {
           key: item,
           id: item,
+          isMode: this.state.isMode,
           ref: (c) => {
             this.myRef[item] = c;
           },
@@ -85,29 +125,38 @@ export default class Templates extends React.Component {
     // 判断其它里的；
     other.forEach((item) => {
       switch (item) {
-        case 'point':
-          {
-            this.listPoint = true;
-            children.push(<Point key="list" data={data} ref={(c) => { this.listComp = c; }} />);
-            break;
-          }
-        case 'full':
-          {
-            this.scrollScreen = true;
-            break;
-          }
-        default:
-          {
-            break;
-          }
+        case 'point': {
+          this.listPoint = true;
+          children.push(<Point
+            key="list" data={data} ref={(c) => {
+              this.listComp = c;
+            }}
+          />);
+          break;
+        }
+        case 'full': {
+          this.scrollScreen = true;
+          break;
+        }
+        default: {
+          break;
+        }
       }
     });
     return children;
   };
 
+  getCss = () => {
+    if (this.phoneStyle) {
+      this.webStyle += `\n@media screen and (max-width: 768px) {${this.phoneStyle}}`;
+    }
+    return this.webStyle;
+  }
+
   render() {
     const children = this.getTemplatesToChildren();
     return (<div className="templates-wrapper">
+      <style dangerouslySetInnerHTML={{ __html: this.getCss() }} />
       {children}
     </div>);
   }

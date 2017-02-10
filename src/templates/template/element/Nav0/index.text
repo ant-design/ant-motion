@@ -39,6 +39,7 @@ class Header extends React.Component {
 
 Header.propTypes = {
   className: PropTypes.string,
+  isMode: PropTypes.bool,
 };
 
 Header.defaultProps = {

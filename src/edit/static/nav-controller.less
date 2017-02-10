@@ -1,15 +1,16 @@
 @import 'custom';
+
 .edit-nav {
   width: 100%;
   position: fixed;
   top: 0;
   z-index: 981;
   pointer-events: none;
-  & *{
+  & * {
     pointer-events: auto;
   }
-  &-remark{
-    & i{
+  &-remark {
+    & i {
       margin-right: 5px;
       color: #FAC450
     }
@@ -35,6 +36,25 @@
           }
         }
       }
+      &.type-switch {
+        float: left;
+        margin-left: 16px;
+        font-size: 16px;
+        color: @text-color-light;
+        li {
+          &.active {
+            color: @text-color-dark;
+            background: @bar-color;
+          }
+          padding: 0 20px;
+          border-left: 1px solid @disabled-color;
+          cursor: pointer;
+          transition: color .3s @ease-in-out, background .3s @ease-in-out;
+          &:last-child {
+            border-right: 1px solid @disabled-color;
+          }
+        }
+      }
     }
   }
 }
@@ -43,7 +63,7 @@
   color: @primary-color !important;
 }
 
-.ant-modal-container .copy{
+.ant-modal-container .copy {
   display: block;
   width: 60px;
   height: 30px;

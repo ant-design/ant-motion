@@ -81,6 +81,22 @@ export default {
           remark: '请填写上单位 "px" 或 "%"',
         },
       },
+      stylePhone: {
+        color: {
+          value: '#fff',
+          name: '字体颜色',
+          remark: '格式为：#000000 或 rgba(0,0,0,1)',
+        },
+        em: {
+          name: '横条样式',
+          stylePhone: {
+            backgroundColor: {
+              value: '#fff',
+              name: '条状颜色',
+            },
+          },
+        },
+      },
       children: {
         menu1: {
           name: '导航一',

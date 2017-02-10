@@ -2,12 +2,11 @@ import JSZip from 'jszip';
 import { saveAs } from 'file-saver';
 import deepCopy from 'deepcopy';
 import { dataToArray } from '../utils';
-import config from '../../../templates/template.config';
+import webData from '../../../templates/template.config';
 import less from '../../../templates/static/lessToString';
 import otherComp from '../../../templates/template/other/otherToString';
 import { dataValueReplace } from '../../../templates/template/utils';
 
-let webData;
 const templateStrObj = {
   JS: {},
   LESS: {},
@@ -165,7 +164,7 @@ const setChildrenToIndex = () => {
   }).forEach((key) => {
     const item = jsData[key];
     importStr += `import ${item.name} from './${item.name}';\n`;
-    childStr += `      <${item.name} id="${item.name}" key="${item.name}"/>,\n`;
+    childStr += `      <${item.name} id="${item.name}" key="${item.name}" isMode={this.state.isMode}/>,\n`;
   });
   if ('point' in templateStrObj.OTHER) {
     importStr += 'import Point from \'./Point\';\n';
@@ -185,7 +184,6 @@ const setChildrenToIndex = () => {
 export default function saveJsZip(urlData) {
   const pageData = deepCopy(urlData.t);
   const otherData = urlData.o;
-  webData = deepCopy(config);
   let contentNum = 0;
   dataToArray(pageData).forEach((key, i) => {
     const keys = key.split('_');

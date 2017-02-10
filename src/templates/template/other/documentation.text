@@ -37,6 +37,7 @@
 
 5. 安装依赖, package.json 里的 dependencies 加下以下：
 "antd": "~2.6.3",
+"enquire.js": "^2.1.1", // 适配；
 "rc-queue-anim": "~0.12.6",
 "rc-scroll-anim": "~0.6.0",
 "rc-tween-one": "~1.0.0",
@@ -63,5 +64,5 @@
 
 8. 配置自定义皮服，参考 https://ant.design/docs/react/customize-theme-cn#1)-package.theme（推荐）;
 
-9. 将当前文件删除。
+9. 在你的 index.html 里的 head 里添加上 <meta name="viewport" content="width=device-width, initial-scale=1.0">。
 

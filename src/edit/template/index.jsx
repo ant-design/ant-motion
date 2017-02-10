@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Modal } from 'antd';
 import NavController from './components/NavController';
 import ContentController from './components/ContentController';
 import EditStateController from './components/EditStateController';
@@ -24,6 +25,7 @@ class Edit extends React.Component {
       tabsKey: '1',
       editId: null,
       iframeHeight: null,
+      isMode: true,
     };
   }
 
@@ -59,6 +61,19 @@ class Edit extends React.Component {
         $(window).resize(this.onResize);
       });
     });
+    const isMode = [
+      'Android', 'iPhone', 'SymbianOS',
+      'Windows Phone', 'iPad', 'iPod',
+    ].filter(key =>
+      navigator.userAgent.indexOf(key) > 0
+    )[0];
+    if (isMode) {
+      Modal.warning({
+        title: '警告!!!',
+        content: '请在电脑端查看并编辑此页面',
+        width: 550,
+      });
+    }
   }
 
   onChangeTabs = (key) => {
@@ -80,12 +95,12 @@ class Edit extends React.Component {
   onResize = () => {
     if (this.state.editId) {
       /* const dom = $('#preview').contents().find(`#${this.state.editId}`);
-      if (dom.length) {
-        const rect = getRect(dom);
-        this.setState({ selectRect: rect });
-      } else {
-        this.selectHide = true;
-      }*/
+       if (dom.length) {
+       const rect = getRect(dom);
+       this.setState({ selectRect: rect });
+       } else {
+       this.selectHide = true;
+       }*/
       // 窗口变动关掉所以操作, 回到选择 tabs;
       this.setState({
         editId: null,
@@ -105,13 +120,13 @@ class Edit extends React.Component {
     const editState = ReactDOM.findDOMNode(this.editState);
     $(editState).scrollTop(scrollTop);
     /* if (this.selectHide) {
-      const dom = $('#preview').contents().find(`#${this.state.editId}`);
-      if (dom.length) {
-        this.selectHide = false;
-        const rect = getRect(dom);
-        this.setState({ selectRect: rect });
-      }
-    }*/
+     const dom = $('#preview').contents().find(`#${this.state.editId}`);
+     if (dom.length) {
+     this.selectHide = false;
+     const rect = getRect(dom);
+     this.setState({ selectRect: rect });
+     }
+     }*/
   };
 
   setUrlData = (obj, reload) => {
@@ -176,6 +191,18 @@ class Edit extends React.Component {
     return item.parentNode && this.getByIdDom(item.parentNode);
   };
 
+  typeSwitch = (isMode) => {
+    this.setState({
+      isMode,
+      selectRect: null,
+      editId: null,
+    }, () => {
+      this.setState({
+        iframeHeight: $('#preview').contents().height(),
+      });
+    });
+  };
+
   reloadIFrame = () => {
     clearTimeout(this.setTime);
     this.setTime = setTimeout(() => {
@@ -186,7 +213,12 @@ class Edit extends React.Component {
 
   render() {
     return (<div>
-      <NavController urlHash={this.state.urlHash} urlData={this.state.urlData} />
+      <NavController
+        urlHash={this.state.urlHash}
+        urlData={this.state.urlData}
+        typeSwitch={this.typeSwitch}
+        isMode={this.state.isMode}
+      />
       <div className="edit-wrapper">
         <ContentController
           setUrlData={this.setUrlData}
@@ -194,18 +226,34 @@ class Edit extends React.Component {
           onChangeTabs={this.onChangeTabs}
           editId={this.state.editId}
           urlData={this.state.urlData}
+          isMode={this.state.isMode}
         />
-        <div className="preview-container">
-          <iframe id="preview" src={`/templates/${this.state.urlHash}`} />
+        <div className="preview-wrapper">
+          <div className={`edit-cover ${this.state.isMode ? 'edit-phone' : ''}`}>
+            {this.state.isMode && (<div className="phone-head">
+              <em className="camera" />
+              <em className="receiver" />
+            </div>)}
+            <div className="edit-iframe-wrapper">
+              <div className="preview-container">
+                <iframe id="preview" src={`/templates/${this.state.urlHash}`} />
+              </div>
+              <EditStateController
+                enterRect={this.state.enterRect}
+                selectRect={this.state.selectRect}
+                height={this.state.iframeHeight}
+                ref={(c) => {
+                  this.editState = c;
+                }}
+              >
+                {this.state.enterDom && this.state.enterDom.id}
+              </EditStateController>
+            </div>
+            {this.state.isMode && (<div className="phone-footer">
+              <em className="home-key" />
+            </div>)}
+          </div>
         </div>
-        <EditStateController
-          enterRect={this.state.enterRect}
-          selectRect={this.state.selectRect}
-          height={this.state.iframeHeight}
-          ref={(c) => { this.editState = c; }}
-        >
-          {this.state.enterDom && this.state.enterDom.id}
-        </EditStateController>
       </div>
     </div>);
   }

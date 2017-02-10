@@ -1,4 +1,7 @@
 import deepCopy from 'deepcopy';
+import toStyle from 'to-style';
+
+const toStyleString = toStyle.string;
 
 export function getURLData(name, url) {
   const myUrl = decodeURIComponent(url || window.location.hash || '').replace('#', '');
@@ -30,20 +33,20 @@ export function mergeURLDataToDefault(urlData, defaultData) {
   return data;
 }
 
-export function ping(url, callback) {
-  const img = new window.Image();
-  let done;
-  const finish = (status) => {
-    if (!done) {
-      done = true;
-      img.src = '';
-      callback(status);
-    }
-  };
-  img.onload = () => finish('responded');
-  img.onerror = () => finish('error');
-  img.src = url;
-}
+/* export function ping(url, callback) {
+ const img = new window.Image();
+ let done;
+ const finish = (status) => {
+ if (!done) {
+ done = true;
+ img.src = '';
+ callback(status);
+ }
+ };
+ img.onload = () => finish('responded');
+ img.onerror = () => finish('error');
+ img.src = url;
+ }*/
 
 
 export function getRect(dom) {
@@ -78,4 +81,10 @@ export function dataValueReplace(data) {
   }
   Object.keys(data).forEach(setProps.bind(this, data));
   return data;
+}
+
+export function styleToCssString(obj) {
+  const strArr = [];
+  strArr.push(toStyleString(obj));
+  return `${strArr.join(';\n')};`;
 }

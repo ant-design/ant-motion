@@ -47,3 +47,72 @@
     }
   }
 }
+
+@media screen and (max-width: 768px) {
+  .@{header} {
+    &-logo {
+      z-index: 101;
+    }
+    &-phone-nav {
+      width: 16px;
+      height: 14px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      right: 20px;
+      &-bar {
+        position: relative;
+        z-index: 100;
+        em {
+          display: block;
+          width: 100%;
+          height: 2px;
+          background: #FFF;
+          margin-top: 4px;
+          transition: transform .3s @ease-in-out, opacity .3s @ease-in-out;
+        }
+        :first-child {
+          margin-top: 0;
+        }
+      }
+      &.open {
+        .@{header}-phone-nav-bar {
+          em {
+            &:nth-child(1) {
+              transform: translateY(6px) rotate(45deg);
+            }
+            &:nth-child(2) {
+              opacity: 0;
+            }
+            &:nth-child(3) {
+              transform: translateY(-6px) rotate(-45deg);
+            }
+          }
+        }
+        .@{header}-phone-nav-text {
+          opacity: 1;
+          pointer-events: auto;
+          transition-timing-function: @ease-out;
+        }
+      }
+
+      &-text {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        margin-top: 64px;
+        opacity: 0;
+        transition: opacity .3s @ease-in;
+        pointer-events: none;
+        background: #404040;
+        .ant-menu-item-selected {
+          border: none;
+        }
+      }
+    }
+  }
+}

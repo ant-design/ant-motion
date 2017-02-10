@@ -24,6 +24,7 @@ export default class EditView extends React.Component {
     editId: PropTypes.string,
     urlData: PropTypes.object,
     setUrlData: PropTypes.func,
+    isMode: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -97,6 +98,7 @@ export default class EditView extends React.Component {
     if (!('value' in data)) {
       const parentKeys = [parentKey];
       parentKeys.push(typeKey, key);
+      console.log(data, typeKey, key);
       return (<li key={key}>
         {this.getChildren(data, parentKeys, true)}
       </li>);
@@ -222,8 +224,12 @@ export default class EditView extends React.Component {
   }
 
   getChildren = (data, parentKey, childrenLi) =>
-    Object.keys(data).map((key) => {
+    Object.keys(data).sort((a, b) => b === 'name' || (b === 'stylePhone' && a !== 'name')).map((key) => {
       let name;
+      if (this.props.isMode && key === 'style'
+        || !this.props.isMode && key === 'stylePhone') {
+        return null;
+      }
       switch (key) {
         case 'style':
           name = '样式编辑';
@@ -231,9 +237,15 @@ export default class EditView extends React.Component {
         case 'children':
           name = '内容编辑';
           break;
+        case 'stylePhone':
+          name = '样式编辑';
+          break;
         default:
-          return <h2 key={key}>{data.name}</h2>;
+          return (<h2 key={key}>{data.name}</h2>);
       }
+      console.log(data, key, data[key].value || key === 'style'
+        || data[key][Object.keys(data[key])[0]].value
+        || data[key].value === '');
       return (<div
         key={key}
         className={`${this.props.className}-module-wrapper ${
