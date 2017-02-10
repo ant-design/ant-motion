@@ -2,12 +2,12 @@ import JSZip from 'jszip';
 import { saveAs } from 'file-saver';
 import deepCopy from 'deepcopy';
 import { dataToArray } from '../utils';
-import config from '../../../templates/template.config';
+import webData from '../../../templates/template.config';
 import less from '../../../templates/static/lessToString';
 import otherComp from '../../../templates/template/other/otherToString';
 import { dataValueReplace } from '../../../templates/template/utils';
 
-let webData;
+
 const templateStrObj = {
   JS: {},
   LESS: {},
@@ -185,7 +185,6 @@ const setChildrenToIndex = () => {
 export default function saveJsZip(urlData) {
   const pageData = deepCopy(urlData.t);
   const otherData = urlData.o;
-  webData = deepCopy(config);
   let contentNum = 0;
   dataToArray(pageData).forEach((key, i) => {
     const keys = key.split('_');
