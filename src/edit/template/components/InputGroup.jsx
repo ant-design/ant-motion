@@ -1,6 +1,9 @@
 import React, { PropTypes } from 'react';
+import { Input } from 'antd';
 
 import { toArrayChildren } from '../../../theme/template/utils';
+
+const Group = Input.Group;
 
 export default class InputGroup extends React.Component {
   static propTypes = {
@@ -29,8 +32,7 @@ export default class InputGroup extends React.Component {
 
   onChange = (i, e) => {
     const values = this.values;
-    const eValue = e || e === 0 ? e : this.props.value;
-    values[i] = e.target ? e.target.value : eValue;
+    values[i] = e.target ? e.target.value : parseFloat(e) || '';
     if (Array.isArray(values[i])) {
       values[i] = values[i].join('');
     }
@@ -53,6 +55,6 @@ export default class InputGroup extends React.Component {
       };
       return React.cloneElement(item, { ...item.props, onChange });
     });
-    return React.createElement(this.props.component, { ...props }, children);
+    return React.createElement(Group, { ...props, compact: true }, children);
   }
 }

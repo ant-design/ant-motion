@@ -30,6 +30,7 @@ class Header extends React.Component {
     const navData = dataSource[`${name}_menu`].children;
     const navChildren = Object.keys(dataSource[`${name}_menu`].children)
       .map((key, i) => (<Item key={i}>{navData[key]}</Item>));
+    const func = dataSource[`${name}_menu`].func;
     return (<TweenOne
       component="header"
       animation={{ opacity: 0, type: 'from' }}
@@ -43,7 +44,7 @@ class Header extends React.Component {
         <img width="100%" src={dataSource[`${name}_logo`].children} />
       </TweenOne>
       {isMode ? (<div
-        className={`${this.props.className}-phone-nav${this.state.phoneOpen ? ' open' : ''}`}
+        className={`${this.props.className}-phone-nav${this.state.phoneOpen || (func && func.switch) ? ' open' : ''}`}
         id={`${this.props.id}-menu`}
       >
         <div

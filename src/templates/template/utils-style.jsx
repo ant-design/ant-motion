@@ -4,6 +4,7 @@ export function textStyleData(_data) {
     fontSize: {
       value: data.size || '12px',
       name: '文字大小',
+      type: 'number',
     },
     color: {
       value: data.color || '#666',
@@ -12,6 +13,7 @@ export function textStyleData(_data) {
     lineHeight: {
       value: data.lineHeight || '1.5em',
       name: '文字行高',
+      type: 'number',
     },
   };
   if (data.align) {
@@ -19,6 +21,13 @@ export function textStyleData(_data) {
       value: data.align,
       name: '文字位置',
       select: ['center', 'left', 'right'],
+    };
+  }
+  if (data.fontWeight) {
+    d.fontWeight = {
+      value: data.fontWeight,
+      name: '文字加粗',
+      select: ['normal', 'bold', 'bolder', 'lighter'],
     };
   }
   return d;
@@ -32,6 +41,7 @@ export function borderStyleData(_data) {
       name: '描边线宽',
       length: 4,
       remark: '参数： 上，右，下，左',
+      type: 'number',
     },
     borderStyle: {
       value: data.style || 'none',
@@ -47,6 +57,7 @@ export function borderStyleData(_data) {
     borderColor: {
       value: data.color || '#666',
       name: '描边颜色',
+
     },
   };
 }
@@ -106,4 +117,54 @@ export function bgStyleData(_data) {
       remark: '参数为： "relative", "absolute", "fixed"; "fixed" 为背景随滚动条滚动',
     },
   };
+}
+
+export function marginAndPaddingStyle(data = {}) {
+  const d = {};
+  if (data.margin) {
+    d.margin = {
+      value: data.margin,
+      length: 4,
+      name: 'margin',
+    };
+  }
+  if (data.padding) {
+    d.padding = {
+      value: data.padding,
+      length: 4,
+      name: 'padding',
+    };
+  }
+  return d;
+}
+
+export function offsetStyle(data = {}) {
+  const d = {};
+  if (data.top) {
+    d.top = {
+      value: data.top,
+      name: '上边距离',
+    };
+  }
+  if (data.right) {
+    d.right = {
+      value: data.right,
+      name: '右边距离',
+    };
+  }
+
+  if (data.bottom) {
+    d.bottom = {
+      value: data.bottom,
+      name: '下边距离',
+    };
+  }
+
+  if (data.left) {
+    d.left = {
+      value: data.left,
+      name: '左边距离',
+    };
+  }
+  return d;
 }

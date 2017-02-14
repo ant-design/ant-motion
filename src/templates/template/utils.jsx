@@ -3,6 +3,29 @@ import toStyle from 'to-style';
 
 const toStyleString = toStyle.string;
 
+const colorLookup = {
+  aqua: 1,
+  lime: 1,
+  silver: 1,
+  black: 1,
+  maroon: 1,
+  teal: 1,
+  blue: 1,
+  navy: 1,
+  white: 1,
+  fuchsia: 1,
+  olive: 1,
+  yellow: 1,
+  orange: 1,
+  gray: 1,
+  purple: 1,
+  green: 1,
+  red: 1,
+  pink: 1,
+  cyan: 1,
+  transparent: 1,
+};
+
 export function getURLData(name, url) {
   const myUrl = decodeURIComponent(url || window.location.hash || '').replace('#', '');
   const reg = new RegExp(`(^|&)${name}=([^&]*)(&|$)`, 'i');
@@ -83,8 +106,24 @@ export function dataValueReplace(data) {
   return data;
 }
 
-export function styleToCssString(obj) {
-  const strArr = [];
-  strArr.push(toStyleString(obj));
-  return `${strArr.join(';\n')};`;
+export function isColorFuc(v) {
+  return /^rgb\(|rgba\(|hex\(/.test(v) ||
+    /(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i.test(v) ||
+    v in colorLookup;
+}
+
+export function styleToCssString(_obj) {
+  const strObj = {};
+  const obj = _obj || {};
+  Object.keys(obj).forEach((key) => {
+    const item = obj[key];
+    if (typeof item === 'object') {
+      delete obj[key];
+      strObj[key] = toStyleString(item.stylePhone || item.style);
+    }
+  });
+  if (Object.keys(obj).length) {
+    strObj.default = toStyleString(obj);
+  }
+  return strObj;
 }

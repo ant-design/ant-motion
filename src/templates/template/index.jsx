@@ -31,7 +31,7 @@ export default class Templates extends React.Component {
       isMode: false,
     };
     this.webStyle = '';
-    this.phoneStyle = '';
+    this.stylePhone = '';
     this.myRef = {};
   }
 
@@ -72,17 +72,26 @@ export default class Templates extends React.Component {
         const childrenName = names[1];
         const cssName = `#${id}${childrenName ? `-${childrenName}` : ''}`;
         if (item) {
-          const strObj = {};
-          Object.keys(item).map(this.getWebOrPhoneCss.bind(this, item, strObj));
-          if (strObj.phoneStyle) {
-            this.phoneStyle += `${cssName}{${strObj.phoneStyle}}`;
+          const styleObj = {};
+          Object.keys(item).forEach(this.getWebOrPhoneCss.bind(this, item, styleObj));
+          if (styleObj.stylePhone) {
+            this.stylePhone += this.getStyleToString(cssName, styleObj.stylePhone);
           }
-          if (strObj.style) {
-            this.webStyle += `${cssName}{${strObj.style}}`;
+          if (styleObj.style) {
+            this.webStyle += this.getStyleToString(cssName, styleObj.style);
           }
         }
       });
     }
+  }
+
+  getStyleToString = (cssName, data) => {
+    let style = '';
+    Object.keys(data).forEach((key) => {
+      const cStyle = data[key];
+      style += `${cssName}${key === 'default' ? '' : ` ${key}`} { ${cStyle} }\n`;
+    });
+    return style;
   }
 
   getTemplatesToChildren = () => {
@@ -90,7 +99,7 @@ export default class Templates extends React.Component {
     if (!tData) {
       return (<div>请添加你的模块</div>);
     }
-    this.webStyle = this.phoneStyle = '';
+    this.webStyle = this.stylePhone = '';
     const otherData = getURLData('o', this.props.location.hash) || '';
     const data = tData.split(',');
     const other = otherData.split(',');
@@ -147,8 +156,8 @@ export default class Templates extends React.Component {
   };
 
   getCss = () => {
-    if (this.phoneStyle) {
-      this.webStyle += `\n@media screen and (max-width: 768px) {${this.phoneStyle}}`;
+    if (this.stylePhone) {
+      this.webStyle += `\n@media screen and (max-width: 768px) {\n${this.stylePhone}}`;
     }
     return this.webStyle;
   }

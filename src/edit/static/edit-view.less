@@ -96,7 +96,20 @@
         position: relative;
       }
     }
-
+    &-func {
+      > div {
+        > span {
+          width: 28%;
+          display: inline-block;
+        }
+        div {
+          display: inline-block;
+          width: 72%;
+          padding-left: 10px;
+          position: relative;
+        }
+      }
+    }
   }
 
   .button-wrapper {
@@ -113,41 +126,53 @@
       border-color: @line-deep-color;
     }
     &.small {
-      width: calc(~"50% - 3px");
+      width: 50%;
     }
   }
   .input-group-max {
     width: 100%;
     > * {
-      width: calc(~"50% - 3px");
+      width: 50%;
       display: inline-block;
+    }
+    .input-group-max-number {
+      width: 70%;
+    }
+    .input-group-max-select {
+      width: 30%;
+    }
+    .input-group-min-number {
+      width: 45%;
+    }
+    .input-group-min-select {
+      width: 55%;
+    }
+    .input-group-min {
+      width: calc(~"50% - 3px");
       margin: 0 6px 6px 0;
       &:nth-child(2n) {
         margin-right: 0;
       }
-      &:nth-child(n+2) {
+      &:nth-child(n+3) {
         margin-bottom: 0;
       }
     }
-    .input-group-max-number {
-      width: 60%;
-      margin-right: 6px;
-    }
-    .input-group-max-select {
-      width: calc(~"40% - 6px");
-    }
-    .input-group-min-number{
-      width: 45%;
-      margin-right: 3px;
-    }
-    .input-group-min-select{
-      width: calc(~"55% - 3px");
-    }
-    .input-group-min {
+    .one-input {
+      border-radius: 4px !important;
+      border-right-width: 1px;
       width: calc(~"50% - 3px");
+      margin: 0 6px 6px 0;
+      &:nth-child(2n) {
+        margin-right: 0;
+      }
+      &:nth-child(n+3) {
+        margin-bottom: 0;
+      }
+      &:last-child {
+        border-radius: 4px;
+      }
     }
   }
-
 
   ul li.ant-select-search {
     margin: auto;
@@ -164,6 +189,11 @@
     background: transparent !important;
     color: fade(@text-color-light, 55);
     border-color: @line-deep-color;
+    .ant-input-number-handler {
+      .ant-input-number-handler-up-inner, .ant-input-number-handler-down-inner {
+        color: fade(@text-color-light, 55);
+      }
+    }
   }
 }
 

@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import ReactDOM from 'react-dom';
-import { Icon, Tooltip, Button, Input, InputNumber, Select } from 'antd';
+import { Icon, Tooltip, Input, InputNumber, Select, Switch } from 'antd';
 import { TweenOneGroup } from 'rc-tween-one';
 import SketchPicker from 'react-color';
 import deepCopy from 'deepcopy';
@@ -12,7 +12,6 @@ import {
   getEditID,
   createChildrenObject,
   getChildrenObject,
-  isColorFuc,
 } from '../utils';
 
 const $ = window.$;
@@ -51,15 +50,38 @@ export default class EditView extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.editId !== this.props.editId) {
       this.remIsColor();
+      // 关闭 switch 开启；
+      if (this.switchKeyArray) {
+        const config = this.state.config;
+        let item = config;
+        this.switchKeyArray.forEach((key, i) => {
+          item = item[key];
+          if (i === this.switchKeyArray.length - 2) {
+            item[this.switchKeyArray[i + 1]] = false;
+          }
+        });
+        this.switchKeyArray = null;
+        this.setState({ config }, this.clickMake);
+      }
     }
+  }
+
+  onSwitchChange = (value, key, k) => {
+    const config = this.state.config;
+    const ids = getEditID(this.props.editId);
+    const ct = config[ids.id] = config[ids.id] || {};
+    const t = ct[ids.childId] = ct[ids.childId] || {};
+    const tt = t[key] = t[key] || {};
+    tt[k] = value;
+    this.switchKeyArray = [ids.id, ids.childId, key, k];
+    this.setState({ config }, this.clickMake);
   }
 
   getColorChildren = () => {
     const keyObj = this.sketchColorKeyObj;
     const parentKey = Array.isArray(keyObj.parentKey) ?
       keyObj.parentKey.join('') : keyObj.parentKey;
-    let key = parentKey ? `${parentKey}${keyObj.typeKey}${keyObj.key}` :
-      `${keyObj.typeKey}${keyObj.key}`;
+    let key = `${parentKey || ''}${keyObj.typeKey}${keyObj.key}`;
     key = keyObj.key ? key : '';
     return (
       <TweenOneGroup
@@ -98,23 +120,23 @@ export default class EditView extends React.Component {
     if (!('value' in data)) {
       const parentKeys = [parentKey];
       parentKeys.push(typeKey, key);
-      console.log(data, typeKey, key);
       return (<li key={key}>
         {this.getChildren(data, parentKeys, true)}
       </li>);
     }
+    const type = data.type;
     const changeValue = (e) => {
       this.changeValue(key, typeKey, parentKey, e);
     };
     let inputFocus = !data.blend && ((e) => {
-      this.inputFocus(key, typeKey, parentKey, null, null, e);
+      this.inputFocus(key, typeKey, parentKey, null, null, type, e);
     });
     const v = this.getCurrentConfigData(key, typeKey, parentKey);
     const value = v || v === '' ? v : data.value;
     let childItem = (<Input
       value={value}
-      type={!isColorFuc(data.value) ? 'textarea' : 'input'}
-      autosize={!isColorFuc(data.value)}
+      type={data.type !== 'color' ? 'textarea' : 'input'}
+      autosize={data.type !== 'color'}
       onChange={changeValue}
       key={data.name}
       size="small"
@@ -131,29 +153,26 @@ export default class EditView extends React.Component {
         {sChildren}
       </Select>);
     }
-    const av = parseFloat(data.value);
-    if (typeKey !== 'children' && (av || av === 0)) {
-      childItem = this.getInputNumberChildren(value, changeValue, data.value, 'input-group-max', true);
+    if (type === 'number') {
+      childItem = this.getInputNumberChildren(value, changeValue, data.name, 'input-group-max', true);
     }
     if (data.length) {
       const values = value.split(/\s+/);
-      const dataValues = data.value.split(/\s+/);
       const children = [];
-      childItem = (<InputGroup onChange={changeValue} key={data.value} className="input-group-max">
+      childItem = (<InputGroup onChange={changeValue} key={data.name} className="input-group-max">
         {children}
       </InputGroup>);
       for (let i = 0; i < data.length; i += 1) {
         const cValue = values[i] || values[i - 2] || values[0];
-        const dValue = dataValues[i] || dataValues[i - 2] || dataValues[0];
+        const cType = data.type ? data.type[i] : null;
         inputFocus = !data.blend && ((e) => {
-          this.inputFocus(key, typeKey, parentKey, values, i, e);
+          this.inputFocus(key, typeKey, parentKey, values, i, cType, e);
         });
-        const cv = parseFloat(dValue);
-        if (cv || cv === 0) {
+        if (cType === 'number') {
           children.push(this.getInputNumberChildren(cValue, null, i, 'input-group-min'));
         } else {
           children.push(
-            <Input key={i} value={cValue} size="small" onFocus={inputFocus} />
+            <Input key={i} value={cValue} size="small" onFocus={inputFocus} className="one-input" />
           );
         }
       }
@@ -171,7 +190,7 @@ export default class EditView extends React.Component {
   }
 
   getInputNumberChildren = (value, changeValue, key, className, isMax) => {
-    const cv = parseFloat(value);
+    const cv = parseFloat(value) || 0;
     return (<InputGroup
       onChange={changeValue}
       key={key}
@@ -223,12 +242,22 @@ export default class EditView extends React.Component {
     return this.getChildren(defaultData[childId]);
   }
 
-  getChildren = (data, parentKey, childrenLi) =>
-    Object.keys(data).sort((a, b) => b === 'name' || (b === 'stylePhone' && a !== 'name')).map((key) => {
+  getChildren = (data, parentKey, childrenLi) => {
+    const c = ['func', 'name', 'stylePhone', 'style', 'children'];
+    return Object.keys(data).sort((a, b) => {
+      let aa = a.indexOf(c);
+      let bb = b.indexOf(c);
+      aa = aa === -1 ? c.length + 1 : aa;
+      bb = bb === -1 ? c.length + 1 : aa;
+      return aa < bb;
+    }).map((key) => {
       let name;
       if (this.props.isMode && key === 'style'
-        || !this.props.isMode && key === 'stylePhone') {
+        || !this.props.isMode && key === 'stylePhone' || key === 'className') {
         return null;
+      }
+      if (key === 'func') {
+        return this.getExtraFunc(data[key], key);
       }
       switch (key) {
         case 'style':
@@ -238,26 +267,58 @@ export default class EditView extends React.Component {
           name = '内容编辑';
           break;
         case 'stylePhone':
-          name = '样式编辑';
+          name = '手机样式';
           break;
         default:
           return (<h2 key={key}>{data.name}</h2>);
       }
-      console.log(data, key, data[key].value || key === 'style'
-        || data[key][Object.keys(data[key])[0]].value
-        || data[key].value === '');
       return (<div
         key={key}
         className={`${this.props.className}-module-wrapper ${
-          childrenLi && 'children-wrapper' || ''}`}
+        childrenLi && 'children-wrapper' || ''}`}
       >
         {(data[key].value || key === 'style'
-          || data[key][Object.keys(data[key])[0]].value
-          || data[key].value === '')
-          && <h3><span>{name}</span></h3>}
+        || data[key][Object.keys(data[key])[0]].value
+        || data[key].value === '')
+        && <h3><span>{name}</span></h3>}
         <ul>{this.getEditChild(data[key], key, parentKey)}</ul>
       </div>);
     });
+  }
+
+  getExtraFunc = (data, key) => {
+    const children = Object.keys(data).map((k) => {
+      const item = data[k];
+      if (k === 'name' || item.isMode && !this.props.isMode) {
+        return null;
+      }
+      let child;
+      switch (item.type) {
+        case 'switch':
+          child = (<Switch
+            size="small" onChange={(v) => {
+              this.onSwitchChange(v, key, k);
+            }} defaultChecked={item.value}
+          />);
+          break;
+        case 'page':
+          break;
+        default:
+          break;
+      }
+      return (<div key={k}>
+        <span>{item.name}</span>
+        <div>{child}</div>
+      </div>);
+    }).filter(item => item);
+    if (!children.length) {
+      return null;
+    }
+    return (<div key={data.name} className={`${this.props.className}-func`}>
+      <h3><span>{data.name}</span></h3>
+      {children}
+    </div>);
+  };
 
   getAllData = defaultData =>
     Object.keys(defaultData).filter(key => typeof defaultData[key] === 'object')
@@ -329,11 +390,11 @@ export default class EditView extends React.Component {
     } else {
       b[typeKey] = value;
     }
-    this.setState({ config });
+    this.setState({ config }, this.clickMake);
   }
 
   clickMake = () => {
-    const obj = { c: deepCopy(this.state.config) };
+    const obj = { c: this.state.config };
     this.props.setUrlData(obj);
   }
 
@@ -358,13 +419,14 @@ export default class EditView extends React.Component {
     });
   }
 
-  inputFocus = (key, typeKey, parentKey, values, i, e) => {
+  inputFocus = (key, typeKey, parentKey, values, i, type, e) => {
     const input = e.target;
     const value = input.value;
     const rect = getRect($(input));
     this.wrapperRect = getRect($(ReactDOM.findDOMNode(this.wrapperDom)));
     this.isArrayValue = null;
-    if (isColorFuc(value)) {
+
+    if (type === 'color') {
       if (this.inputDom) {
         this.remIsColor();
       }
@@ -376,7 +438,7 @@ export default class EditView extends React.Component {
       };
       this.isArrayValue = values && { values, i };
       this.setState({
-        pickerColor: value,
+        pickerColor: value || 'rgba(0,0,0,0)',
         rect,
       });
     }
@@ -413,21 +475,23 @@ export default class EditView extends React.Component {
           enter={{ x: 30, opacity: 0, type: 'from' }}
           leave={{ x: -30, opacity: 0 }}
           appear={false}
-          ref={(c) => { this.wrapperDom = c; }}
+          ref={(c) => {
+            this.wrapperDom = c;
+          }}
         >
           <div
             key={this.props.editId}
             className={this.props.className}
           >
             {children}
-            <div className="button-wrapper">
-              <Button
-                type="primary"
-                onClick={this.clickMake}
-              >
-                保存
-              </Button>
-            </div>
+            {/* <div className="button-wrapper">
+             <Button
+             type="primary"
+             onClick={this.clickMake}
+             >
+             保存
+             </Button>
+             </div>*/}
           </div>
         </TweenOneGroup>
         {this.getColorChildren()}

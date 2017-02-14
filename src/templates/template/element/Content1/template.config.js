@@ -55,7 +55,7 @@ export default {
             },
             margin: {
               value: 'auto',
-              select: ['auto', 'inherit'],
+              length: 4,
               name: 'margin',
             },
             textAlign: {
@@ -175,7 +175,7 @@ export default {
             },
             margin: {
               value: 'auto',
-              select: ['auto', 'inherit'],
+              length: 4,
               name: 'margin',
             },
             textAlign: {
