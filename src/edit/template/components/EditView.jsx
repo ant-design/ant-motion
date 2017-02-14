@@ -163,7 +163,7 @@ export default class EditView extends React.Component {
         {children}
       </InputGroup>);
       for (let i = 0; i < data.length; i += 1) {
-        const cValue = values[i] || values[i - 2] || values[0];
+        let cValue = values[i] || values[i - 2] || values[0];
         const cType = data.type ? data.type[i] : null;
         inputFocus = !data.blend && ((e) => {
           this.inputFocus(key, typeKey, parentKey, values, i, cType, e);
@@ -171,6 +171,9 @@ export default class EditView extends React.Component {
         if (cType === 'number') {
           children.push(this.getInputNumberChildren(cValue, null, i, 'input-group-min'));
         } else {
+          if (cType === 'color') {
+            cValue = values[i];
+          }
           children.push(
             <Input key={i} value={cValue} size="small" onFocus={inputFocus} className="one-input" />
           );

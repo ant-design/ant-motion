@@ -32,7 +32,7 @@ export default class InputGroup extends React.Component {
 
   onChange = (i, e) => {
     const values = this.values;
-    values[i] = e.target ? e.target.value : parseFloat(e) || '';
+    values[i] = e.target ? e.target.value : parseFloat(e) || 0;
     if (Array.isArray(values[i])) {
       values[i] = values[i].join('');
     }
