@@ -501,5 +501,3 @@ export default class EditView extends React.Component {
       </div>);
   }
 }
-const c = ['func', 'name', 'stylePhone', 'style', 'children'];
-console.log(c.indexOf('children'));
