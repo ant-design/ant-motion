@@ -1,11 +1,6 @@
-export function textStyleData(_data) {
+export function textStyle(_data) {
   const data = _data || {};
   const d = {
-    fontSize: {
-      value: data.size || '12px',
-      name: '文字大小',
-      type: 'number',
-    },
     color: {
       value: data.color || '#666',
       name: '文字颜色',
@@ -16,6 +11,13 @@ export function textStyleData(_data) {
       type: 'number',
     },
   };
+  if (data.size) {
+    d.fontSize = {
+      value: data.size || '12px',
+      name: '文字大小',
+      type: 'number',
+    };
+  }
   if (data.align) {
     d.textAlign = {
       value: data.align,
@@ -33,7 +35,7 @@ export function textStyleData(_data) {
   return d;
 }
 
-export function borderStyleData(_data) {
+export function borderStyle(_data) {
   const data = _data || {};
   return {
     borderWidth: {
@@ -62,7 +64,7 @@ export function borderStyleData(_data) {
   };
 }
 
-export function bgStyleData(_data) {
+export function bgStyle(_data) {
   const data = _data || {};
   return {
     backgroundColor: {
@@ -167,4 +169,27 @@ export function offsetStyle(data = {}) {
     };
   }
   return d;
+}
+
+export function boxShadowStyle(data = '0') {
+  return {
+    boxShadow: {
+      value: data.boxShadow || data.value || data,
+      name: '区块阴影',
+      remark: '参数从左上右上左下右下: x y blur color;',
+      length: 4,
+      type: ['number', 'number', 'number', 'color'],
+    },
+  };
+}
+
+export function positionStyle(data = 'relative') {
+  return {
+    position: {
+      value: data.value || data,
+      select: ['relative', 'absolute', 'fixed'],
+      name: data.name || '定位选择',
+      remark: '参数为： "relative", "absolute", "fixed"; "fixed" 为始终浮在窗口；',
+    },
+  };
 }

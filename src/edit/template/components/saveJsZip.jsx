@@ -5,11 +5,13 @@ import { dataToArray } from '../utils';
 import webData from '../../../templates/template.config';
 import less from '../../../templates/static/lessToString';
 import otherComp from '../../../templates/template/other/otherToString';
-import { dataValueReplace } from '../../../templates/template/utils';
+import { dataValueReplace, getWebOrPhoneCss, getStyleToString } from '../../../templates/template/utils';
 
 const templateStrObj = {
   JS: {},
   LESS: {},
+  stylePhone: '',
+  styleWeb: '',
   OTHER: {
     index: otherComp.index,
     documentation: otherComp.documentation,
@@ -17,6 +19,7 @@ const templateStrObj = {
 };
 
 const isImg = /\.(gif|jpg|jpeg|png|svg|JPG|PNG|GIF|JPEG|SVG)$/;
+let pointBool = false;
 
 const getValueToString = vars =>
   JSON.stringify(vars, null)
@@ -87,6 +90,7 @@ const replaceValue = (_value, replaceDataArray, data) => {
   replaceDataArray.forEach((key) => {
     const ids = key.split('-');
     const id = ids[0].replace(/\&/g, '');
+
     if (id in data) {
       const cId = ids[1] && ids[1].replace(/\&/g, '');
       const item = cId ? data[id][cId] : data[id];
@@ -109,9 +113,8 @@ const setUrlDataToTemplateStr = (cData, pageData) => {
   const pData = pageData;
   pData.forEach((key) => {
     const id = templateStrObj.JS[key].id;
-    const item = webData[id];
     // const wData = mergeURLDataToDefault(cData[key], item);
-    const wData = dataValueReplace(item.dataSource);
+    const wData = dataValueReplace(deepCopy(webData[id].dataSource));
     // 遍历子级
     Object.keys(wData).forEach(replaceData.bind(this, cData && cData[key], wData));
     // 把一级下的 img 换成标签；
@@ -134,6 +137,13 @@ const jsToZip = () => {
     }
     zip.file(`${key === 'index' ? key : toUpperCase(key)}.jsx`, templateStrObj.OTHER[key]);
   });
+
+  // 编辑样式添加
+  if (templateStrObj.stylePhone) {
+    templateStrObj.styleWeb += `\n@media screen and (max-width: 768px) {\n${templateStrObj.stylePhone}}`;
+  }
+  zip.file('less/edit.css', templateStrObj.styleWeb);
+
   // 创建 less 里的 index.js;
   let indexLessStr = '';
   Object.keys(less).forEach((key) => {
@@ -147,6 +157,7 @@ const jsToZip = () => {
     zip.file(`less/${key}.less`, templateStrObj.LESS[key].value);
     indexLessStr += `@import './${key}.less';\n`;
   });
+  indexLessStr += '@import \'./edit.css\';';
   zip.file('less/antMotion_style.less', indexLessStr);
   zip.generateAsync({ type: 'blob' }).then((content) => {
     saveAs(content, 'Home.zip');
@@ -164,21 +175,44 @@ const setChildrenToIndex = () => {
   }).forEach((key) => {
     const item = jsData[key];
     importStr += `import ${item.name} from './${item.name}';\n`;
-    childStr += `      <${item.name} id="${item.name}" key="${item.name}" isMode={this.state.isMode}/>,\n`;
+    childStr += `      <${item.name} id="${key}" key="${key}" isMode={this.state.isMode}/>,\n`;
   });
   if ('point' in templateStrObj.OTHER) {
+    // 点转换
     importStr += 'import Point from \'./Point\';\n';
-    const ids = Object.keys(templateStrObj.JS).map(key => templateStrObj.JS[key].name)
-      .filter(key => !key.match(/Nav|Footer/i));
-    const dataStr = `['${ids}']`.replace(/,/g, '\', \'');
-    childStr += '      // 导航和页尾不进入锚点区，如果需要，自行添加;\n';
-    childStr += `      <Point key="list" ref="list" data={${dataStr}} />,\n`;
+    const ids = Object.keys(templateStrObj.JS).map(key => templateStrObj.JS[key].key)
+      .filter(key => !key.match(/nav|footer/i));
+    const dataStr = ids.length ? `['${ids}']`.replace(/,/g, '\', \'') : null;
+    if (dataStr) {
+      pointBool = true;
+      childStr += '      // 导航和页尾不进入锚点区，如果需要，自行添加;\n';
+      childStr += `      <Point key="list" ref="list" data={${dataStr}} />,\n`;
+    }
   }
   childStr += '    ];';
   templateStrObj.OTHER.index = templateStrObj.OTHER.index
     .replace('&import&', importStr);
   templateStrObj.OTHER.index = templateStrObj.OTHER.index
     .replace('&children&', childStr);
+};
+
+const setEditCss = (id, data) => {
+  Object.keys(data).forEach((key) => {
+    const item = data[key];
+    const names = key.split('_');
+    const childrenName = names[1];
+    const cssName = `#${id}${childrenName ? `-${childrenName}` : ''}`;
+    if (item) {
+      const styleObj = {};
+      Object.keys(item).forEach(getWebOrPhoneCss.bind(this, item, styleObj));
+      if (styleObj.stylePhone) {
+        templateStrObj.stylePhone += getStyleToString(cssName, styleObj.stylePhone);
+      }
+      if (styleObj.style) {
+        templateStrObj.styleWeb += getStyleToString(cssName, styleObj.style);
+      }
+    }
+  });
 };
 
 export default function saveJsZip(urlData) {
@@ -197,7 +231,7 @@ export default function saveJsZip(urlData) {
       caseKey = `${toUpperCase(keys[0])}${contentNum}`;
       contentNum += 1;
     }
-    templateStrObj.JS[key] = { i, id, name: caseKey, value: templateStr };
+    templateStrObj.JS[key] = { i, id, key, name: caseKey, value: templateStr };
     // 去重复 less;
     templateStrObj.LESS[caseKey.toLowerCase()] = { id, value: cLess };
   });
@@ -221,7 +255,9 @@ export default function saveJsZip(urlData) {
     switch (key) {
       case 'point':
         templateStrObj.OTHER[key] = otherComp[key];
-        setMountPotion();
+        if (pointBool) {
+          setMountPotion();
+        }
         break;
       case 'full':
         setScrollScreen();
@@ -230,6 +266,18 @@ export default function saveJsZip(urlData) {
         break;
     }
   });
+  // 编辑过的样式保存。。urlData.c;
+  const editData = urlData.c;
+  templateStrObj.stylePhone = templateStrObj.styleWeb = '';
+  if (editData) {
+    Object.keys(editData).forEach((id) => {
+      const item = editData[id];
+      if (typeof item === 'object') {
+        setEditCss(id, item);
+      }
+    });
+  }
+
   // 替换首页里的children；
   setChildrenToIndex();
   // 保存面页;

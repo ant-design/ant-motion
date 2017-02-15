@@ -77,7 +77,6 @@ class Header extends React.Component {
       >
         <Menu
           mode="horizontal" defaultSelectedKeys={['0']}
-          style={dataSource[`${name}_menu`].style || {}}
           id={`${this.props.id}-menu`}
         >
           {navChildren}

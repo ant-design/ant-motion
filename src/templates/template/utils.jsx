@@ -127,3 +127,21 @@ export function styleToCssString(_obj) {
   }
   return strObj;
 }
+
+export function getWebOrPhoneCss(item, strObj, key) {
+  if (key === 'children') {
+    return;
+  }
+  const obj = strObj;
+  const cItem = item[key];
+  obj[key] = styleToCssString(cItem);
+}
+
+export function getStyleToString(cssName, data) {
+  let style = '';
+  Object.keys(data).forEach((key) => {
+    const cStyle = data[key];
+    style += `${cssName}${key === 'default' ? '' : ` ${key}`} { ${cStyle} }\n`;
+  });
+  return style;
+}

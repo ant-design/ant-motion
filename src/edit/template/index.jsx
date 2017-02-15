@@ -252,6 +252,7 @@ class Edit extends React.Component {
             {this.state.isMode && (<div className="phone-footer">
               <em className="home-key" />
             </div>)}
+            {this.state.isMode && (<div />)}
           </div>
         </div>
       </div>

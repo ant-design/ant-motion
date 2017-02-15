@@ -43,4 +43,3 @@ export function getChildrenObject(object, keys) {
   });
   return t;
 }
-

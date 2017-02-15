@@ -248,11 +248,11 @@ export default class EditView extends React.Component {
   getChildren = (data, parentKey, childrenLi) => {
     const c = ['func', 'name', 'stylePhone', 'style', 'children'];
     return Object.keys(data).sort((a, b) => {
-      let aa = a.indexOf(c);
-      let bb = b.indexOf(c);
-      aa = aa === -1 ? c.length + 1 : aa;
-      bb = bb === -1 ? c.length + 1 : aa;
-      return aa < bb;
+      let aa = c.indexOf(a);
+      let bb = c.indexOf(b);
+      aa = aa === -1 ? c.length : aa;
+      bb = bb === -1 ? c.length : bb;
+      return aa > bb;
     }).map((key) => {
       let name;
       if (this.props.isMode && key === 'style'
@@ -501,3 +501,5 @@ export default class EditView extends React.Component {
       </div>);
   }
 }
+const c = ['func', 'name', 'stylePhone', 'style', 'children'];
+console.log(c.indexOf('children'));

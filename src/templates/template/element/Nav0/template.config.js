@@ -1,4 +1,10 @@
-import { marginAndPaddingStyle, offsetStyle } from '../../utils-style';
+import {
+  marginAndPaddingStyle,
+  offsetStyle,
+  boxShadowStyle,
+  positionStyle,
+  textStyle,
+} from '../../utils-style';
 
 const component = require('./index');
 const templateStr = require('!raw!./index.text');
@@ -21,41 +27,18 @@ export default {
           name: '背景颜色',
           type: 'color',
         },
-        boxShadow: {
-          value: '0 5px 8px rgba(0,0,0,0.15)',
-          name: '区块阴影',
-          remark: '参数从左上右上左下右下: x y blur color;',
-          length: 4,
-          type: ['number', 'number', 'number', 'color'],
-        },
-        position: {
-          value: 'relative', // 方便第一屏不用设 calc，直接用 absolute;
-          select: ['relative', 'absolute', 'fixed'],
-          name: '导航位置',
-          remark: '参数为： "relative", "absolute", "fixed"; "fixed" 为始终浮在窗口；',
-        },
-        top: {
-          value: '0',
-          name: '顶部距离',
-        },
+        ...boxShadowStyle('0 5px 8px rgba(0,0,0,0.15)'),
+        ...positionStyle({ value: 'relative', name: '导航位置' }),
+        ...offsetStyle({ top: 0 }),
       },
     },
     nav0_logo: {
       style: {
-        left: {
-          value: '4%',
-          name: '左边距离',
-          remark: '请填写上单位 "px" 或 "%"',
-        },
+        ...offsetStyle({ left: '4%' }),
         width: {
           value: '150px',
           name: '图片宽度',
           remark: '请填写上单位 "px" 或 "%"',
-        },
-        lineHeight: {
-          value: '64px',
-          name: '区块行高',
-          remark: '图片垂直居中, 每行的行高',
         },
       },
       children: {
@@ -75,20 +58,10 @@ export default {
         },
       },
       style: {
-        color: {
-          value: '#fff',
-          name: '字体颜色',
-          remark: '格式为：#000000 或 rgba(0,0,0,1)',
-        },
+        ...textStyle({ color: '#fff', lineHeight: '62px' }),
         backgroundColor: {
           value: 'transparent',
           name: '背景颜色',
-          remark: '格式为：#000000 或 rgba(0,0,0,1)',
-        },
-        lineHeight: {
-          value: '62px',
-          name: '文字行高',
-          remark: '请填写上单位 "px" 或 "%"',
         },
         height: {
           value: '100%',
@@ -139,7 +112,8 @@ export default {
               value: '64px',
               name: 'paddingTop',
             },
-            ...offsetStyle({ top: '0px', right: '0px', left: '0px', bottom: '0px' }),
+            ...offsetStyle({ top: '0px', left: '0px' }),
+            ...boxShadowStyle('0 0 0 rgba(0,0,0,0)'),
           },
         },
       },

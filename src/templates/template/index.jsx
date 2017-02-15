@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { scrollScreen } from 'rc-scroll-anim';
 import webData from '../template.config';
-import { getURLData, mergeURLDataToDefault, dataValueReplace, styleToCssString } from './utils';
+import { getURLData, mergeURLDataToDefault, dataValueReplace, getWebOrPhoneCss, getStyleToString } from './utils';
 import { enquireScreen } from '../../theme/template/utils';
 import '../static/common.less';
 import '../static/point.less';
@@ -55,15 +55,6 @@ export default class Templates extends React.Component {
     }
   }
 
-  getWebOrPhoneCss = (item, strObj, key) => {
-    if (key === 'children') {
-      return;
-    }
-    const obj = strObj;
-    const cItem = item[key];
-    obj[key] = styleToCssString(cItem);
-  };
-
   setStyle = (id, data) => {
     if (data) {
       Object.keys(data).forEach((key) => {
@@ -73,25 +64,16 @@ export default class Templates extends React.Component {
         const cssName = `#${id}${childrenName ? `-${childrenName}` : ''}`;
         if (item) {
           const styleObj = {};
-          Object.keys(item).forEach(this.getWebOrPhoneCss.bind(this, item, styleObj));
+          Object.keys(item).forEach(getWebOrPhoneCss.bind(this, item, styleObj));
           if (styleObj.stylePhone) {
-            this.stylePhone += this.getStyleToString(cssName, styleObj.stylePhone);
+            this.stylePhone += getStyleToString(cssName, styleObj.stylePhone);
           }
           if (styleObj.style) {
-            this.webStyle += this.getStyleToString(cssName, styleObj.style);
+            this.webStyle += getStyleToString(cssName, styleObj.style);
           }
         }
       });
     }
-  }
-
-  getStyleToString = (cssName, data) => {
-    let style = '';
-    Object.keys(data).forEach((key) => {
-      const cStyle = data[key];
-      style += `${cssName}${key === 'default' ? '' : ` ${key}`} { ${cStyle} }\n`;
-    });
-    return style;
   }
 
   getTemplatesToChildren = () => {

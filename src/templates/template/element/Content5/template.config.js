@@ -1,11 +1,13 @@
+import {
+  textStyle,
+  bgStyle,
+  borderStyle,
+} from '../../utils-style';
+
 const component = require('./index');
 const templateStr = require('!raw!./index.text');
 const less = require('!raw!./index.less');
-const style = require('../../utils-style');
 
-const bgStyle = style.bgStyleData;
-const borderStyle = style.borderStyleData;
-const textStyle = style.textStyleData;
 
 export default {
   component,
