@@ -20,8 +20,8 @@ class Header extends React.Component {
   }
 
   render() {
-    const dataSource = this.props.dataSource;
     const props = { ...this.props };
+    const dataSource = props.dataSource;
     const isMode = props.isMode;
     delete props.dataSource;
     delete props.isMode;
@@ -59,9 +59,6 @@ class Header extends React.Component {
         </div>
         <div
           className={`${this.props.className}-phone-nav-text`}
-          onClick={() => {
-            this.phoneClick();
-          }}
         >
           <Menu
             defaultSelectedKeys={['0']}
@@ -88,7 +85,6 @@ class Header extends React.Component {
 
 Header.propTypes = {
   className: PropTypes.string,
-  dataSource: PropTypes.object,
   id: PropTypes.string,
 };
 

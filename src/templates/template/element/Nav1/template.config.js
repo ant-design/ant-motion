@@ -1,3 +1,12 @@
+import {
+  marginAndPaddingStyle,
+  offsetStyle,
+  boxShadowStyle,
+  positionStyle,
+  textStyle,
+  bgStyle,
+  borderStyle,
+} from '../../utils-style';
 
 const component = require('./index');
 const templateStr = require('!raw!./index.text');
@@ -10,44 +19,15 @@ export default {
   dataSource: {
     nav1: {
       style: {
-        height: {
-          value: '64px',
-          name: '区块高度',
-        },
-        backgroundColor: {
-          value: 'rgba(51, 51, 51, 0.95)',
-          name: '背景颜色',
-        },
-        boxShadow: {
-          value: '0 5px 8px rgba(0,0,0,0.15)',
-          name: '区块阴影',
-          remark: '参数从左到右: x y blur color, 参数之间都需要空格;',
-          length: 4,
-        },
-        position: {
-          value: 'relative', // 方便第一屏不用设 calc，直接用 absolute;
-          select: ['relative', 'absolute', 'fixed'],
-          name: '导航位置',
-          remark: '参数为： "relative", "absolute", "fixed"; "fixed" 为始终浮在窗口；',
-        },
-        top: {
-          value: '0',
-          name: '顶部距离',
-        },
+        ...offsetStyle({ height: '64px', top: '0px' }),
+        ...positionStyle({ value: 'relative', name: '导航位置' }),
+        ...bgStyle({ color: 'rgba(51, 51, 51, 0.95)', select: 'backgroundColor' }),
+        ...boxShadowStyle('0 5px 8px rgba(0,0,0,0.15)'),
       },
     },
     nav1_logo: {
       style: {
-        left: {
-          value: '4%',
-          name: '左边距离',
-          remark: '请填写上单位 "px" 或 "%"',
-        },
-        width: {
-          value: '150px',
-          name: '图片宽度',
-          remark: '请填写上单位 "px" 或 "%"',
-        },
+        ...offsetStyle({ width: '150px', left: '4%' }),
         lineHeight: {
           value: '64px',
           name: '区块行高',
@@ -59,45 +39,107 @@ export default {
         name: 'logo 图片',
       },
     },
-    nav1_user: {
-      style: {
-        margin: {
-          name: 'margin',
-          value: '0 4% 0 0',
-          remark: 'margin 边距，右边留 4%',
-          length: 4,
+    nav1_menu: {
+      func: {
+        name: '其它功能',
+        switch: {
+          value: false,
+          name: '切换导航',
+          type: 'switch',
+          isMode: true,
+          close: true, // 关闭时恢复
         },
-        lineHeight: {
-          name: '文字行高',
-          value: '62px',
-          remark: '请填写上单位 "px" 或 "%"',
-        },
-        height: {
-          name: '区块高度',
-          value: '64px',
-          remark: '请填写上单位 "px" 或 "%"',
+        switchMenu: {
+          value: false,
+          name: '展开二级',
+          type: 'switch',
+          close: true,
         },
       },
-    },
-    nav1_menu: {
       style: {
-        color: {
-          value: '#fff',
-          name: '字体颜色',
+        ...offsetStyle({ height: '64px' }),
+        ...textStyle({ color: '#fff', lineHeight: '62px' }),
+        ...bgStyle({ color: 'transparent', select: ['backgroundColor'] }),
+        '.ant-menu-item-active, $ .ant-menu-item-selected, $ .ant-menu-submenu-selected, $ .ant-menu-submenu-active': {
+          name: 'hover 与选中样式',
+          style: {
+            ...textStyle({ color: '#019BF0' }),
+            ...borderStyle({ color: '#019BF0' }),
+          },
         },
-        backgroundColor: {
-          value: 'transparent',
-          name: '背景颜色',
+        '.ant-menu-sub': {
+          name: '下拉框外框样式',
+          style: {
+            ...textStyle({ color: 'rgba(102,102,102,0.75)' }),
+            ...bgStyle({ color: '#fff', select: ['backgroundColor'] }),
+            ...boxShadowStyle('0 1px 6px rgba(0,0,0,0.2)'),
+          },
         },
-        lineHeight: {
-          value: '62px',
-          name: '文字行高',
-          remark: '请填写上单位 "px" 或 "%"',
+        '.ant-menu-sub > li.ant-menu-item': {
+          name: '下拉框横条样式',
+          style: {
+            ...offsetStyle({ height: '42px' }),
+            ...textStyle({ lineHeight: '42px', size: '12px' }),
+
+          },
         },
-        height: {
-          value: '100%',
-          name: '区块高度',
-          remark: '请填写上单位 "px" 或 "%"',
+        '.ant-menu-sub .ant-menu-item-active': {
+          name: '下拉框横条 hover 样式',
+          style: {
+            ...textStyle({ color: '#019BF0' }),
+            ...bgStyle({ color: 'transparent', select: ['backgroundColor'] }),
+          },
+        },
+        '.ant-menu-sub .ant-menu-item.ant-menu-item-selected': {
+          name: '下拉框横条选中样式',
+          style: {
+            ...textStyle({ color: '#019BF0' }),
+            ...bgStyle({ color: '#ebf7fe', select: ['backgroundColor'] }),
+          },
+        },
+      },
+      stylePhone: {
+        ...offsetStyle({ top: '0px', right: '20px', width: '16px', height: '14px' }),
+        ...marginAndPaddingStyle({ margin: 'auto' }),
+        '.header1-phone-nav-bar em': {
+          name: '横条样式',
+          stylePhone: {
+            ...bgStyle({ color: 'rgba(51, 51, 51, 0.95)', select: 'backgroundColor' }),
+          },
+        },
+        '.header1-phone-nav-text': {
+          name: '菜单打开后外框',
+          stylePhone: {
+            ...offsetStyle({ width: '100%', height: '100%', top: '0px', left: '0px' }),
+            paddingTop: {
+              value: '64px',
+              name: 'paddingTop',
+            },
+            ...bgStyle({ color: '404040', select: 'backgroundColor' }),
+            ...boxShadowStyle('0 0 0 rgba(0,0,0,0)'),
+          },
+        },
+        '.header1-phone-nav-text .ant-menu .ant-menu-item': {
+          name: '菜单默认',
+          stylePhone: {
+            ...offsetStyle({ height: '42px' }),
+            ...bgStyle({ color: '#404040', select: 'backgroundColor' }),
+            ...textStyle({ size: '12px', color: 'rgba(255, 255, 255, 0.67)', lineHeight: '42px' }),
+          },
+        },
+        '.header1-phone-nav-text .ant-menu .ant-menu-item-active': {
+          name: '菜单经过',
+          stylePhone: {
+            ...bgStyle({ color: 'transparent', select: 'backgroundColor' }),
+            ...textStyle({ color: '#ffffff' }),
+          },
+        },
+        '.header1-phone-nav-text .ant-menu .ant-menu-item.ant-menu-item-selected': {
+          name: '菜单选中',
+          stylePhone: {
+            ...bgStyle({ color: '#019BF0', select: 'backgroundColor' }),
+            ...textStyle({ color: '#ffffff' }),
+          },
         },
       },
       children: {

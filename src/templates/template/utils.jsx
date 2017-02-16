@@ -141,7 +141,7 @@ export function getStyleToString(cssName, data) {
   let style = '';
   Object.keys(data).forEach((key) => {
     const cStyle = data[key];
-    style += `${cssName}${key === 'default' ? '' : ` ${key}`} { ${cStyle} }\n`;
+    style += `${cssName}${key === 'default' ? '' : ` ${key.replace(/\$/g, cssName)}`} { ${cStyle} }\n`;
   });
   return style;
 }

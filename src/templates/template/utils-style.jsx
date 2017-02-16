@@ -2,21 +2,31 @@ import { dataToArray } from '../../edit/template/utils';
 
 export function textStyle(_data) {
   const data = _data || {};
-  const d = {
-    color: {
+  const d = {};
+  if ('color' in data) {
+    d.color = {
       value: data.color || '#666',
       name: '文字颜色',
-    },
-    lineHeight: {
-      value: data.lineHeight || '1.5em',
-      name: '文字行高',
-      type: 'number',
-    },
-  };
+    };
+  }
   if ('size' in data) {
     d.fontSize = {
       value: data.size || '12px',
       name: '文字大小',
+      type: 'number',
+    };
+  }
+  if ('fontFamily' in data) {
+    d.fontFamily = {
+      value: data.fontFamily,
+      name: '字体样式',
+      remark: '字体间请用 , 隔开',
+    };
+  }
+  if ('lineHeight' in data) {
+    d.lineHeight = {
+      value: data.lineHeight || '1.5em',
+      name: '文字行高',
       type: 'number',
     };
   }
@@ -158,6 +168,20 @@ export function marginAndPaddingStyle(data = {}) {
 
 export function offsetStyle(data = {}) {
   const d = {};
+  if ('width' in data) {
+    d.width = {
+      value: data.width,
+      name: '区块宽度',
+    };
+  }
+
+  if ('height' in data) {
+    d.height = {
+      value: data.height,
+      name: '区块高度',
+    };
+  }
+
   if ('top' in data) {
     d.top = {
       value: data.top,
@@ -182,20 +206,6 @@ export function offsetStyle(data = {}) {
     d.left = {
       value: data.left,
       name: '左边距离',
-    };
-  }
-
-  if ('width' in data) {
-    d.width = {
-      value: data.width,
-      name: '区块宽度',
-    };
-  }
-
-  if ('height' in data) {
-    d.height = {
-      value: data.height,
-      name: '区块高度',
     };
   }
   return d;

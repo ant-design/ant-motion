@@ -53,9 +53,6 @@ class Header extends React.Component {
         </div>
         <div
           className={`${this.props.className}-phone-nav-text`}
-          onClick={() => {
-            this.phoneClick();
-          }}
         >
           <Menu
             defaultSelectedKeys={['0']}

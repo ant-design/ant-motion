@@ -25,7 +25,7 @@ class Edit extends React.Component {
       tabsKey: '1',
       editId: null,
       iframeHeight: null,
-      isMode: true,
+      isMode: false,
     };
   }
 
@@ -36,7 +36,7 @@ class Edit extends React.Component {
       }, () => {
         $('#preview').contents().find('body #react-content').mousemove((e) => {
           const dom = this.getByIdDom(e.target);
-          if (dom.id === 'react-content') {
+          if (dom.id.match(/react-content|\$/g)) {
             return;
           }
           if (dom !== this.state.enterDom) {
@@ -196,6 +196,7 @@ class Edit extends React.Component {
       isMode,
       selectRect: null,
       editId: null,
+      tabsKey: '1',
     }, () => {
       this.setState({
         iframeHeight: $('#preview').contents().height(),
