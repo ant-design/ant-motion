@@ -138,8 +138,9 @@ export default class Templates extends React.Component {
   };
 
   getCss = () => {
+    this.webStyle = `\n@media screen and (min-width: 415px) {\n${this.webStyle}}`;
     if (this.stylePhone) {
-      this.webStyle += `\n@media screen and (max-width: 768px) {\n${this.stylePhone}}`;
+      this.webStyle += `\n@media screen and (max-width: 414px) {\n${this.stylePhone}}`;
     }
     return this.webStyle;
   }

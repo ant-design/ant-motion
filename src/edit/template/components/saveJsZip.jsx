@@ -139,8 +139,9 @@ const jsToZip = () => {
   });
 
   // 编辑样式添加
+  templateStrObj.styleWeb = `\n@media screen and (min-width: 415px) {\n${templateStrObj.styleWeb}}`;
   if (templateStrObj.stylePhone) {
-    templateStrObj.styleWeb += `\n@media screen and (max-width: 768px) {\n${templateStrObj.stylePhone}}`;
+    templateStrObj.styleWeb += `\n@media screen and (max-width: 414px) {\n${templateStrObj.stylePhone}}`;
   }
   zip.file('less/edit.css', templateStrObj.styleWeb);
 

@@ -54,7 +54,7 @@ export default {
         ...textStyle({ color: '#fff', lineHeight: '62px' }),
         ...offsetStyle({ height: '100%' }),
         ...bgStyle({ color: 'transparent', select: ['backgroundColor'] }),
-        '.ant-menu-item-active,$.ant-menu-horizontal > .ant-menu-item-selected': {
+        '$ .ant-menu-item-active,$.ant-menu-horizontal > .ant-menu-item-selected': {
           name: 'hover 与选中样式',
           style: {
             ...textStyle({ color: '#019BF0' }),
@@ -65,13 +65,13 @@ export default {
       stylePhone: {
         ...offsetStyle({ top: '0px', right: '20px', width: '16px', height: '14px' }),
         ...marginAndPaddingStyle({ margin: 'auto' }),
-        '.header0-phone-nav-bar em': {
+        '$ .header0-phone-nav-bar em': {
           name: '横条样式',
           stylePhone: {
             ...bgStyle({ color: 'rgba(51, 51, 51, 0.95)', select: 'backgroundColor' }),
           },
         },
-        '.header0-phone-nav-text': {
+        '$ .header0-phone-nav-text': {
           name: '菜单打开后外框',
           stylePhone: {
             ...offsetStyle({ width: '100%', height: '100%', top: '0px', left: '0px' }),
@@ -83,7 +83,7 @@ export default {
             ...boxShadowStyle('0 0 0 rgba(0,0,0,0)'),
           },
         },
-        '.header0-phone-nav-text .ant-menu .ant-menu-item': {
+        '$ .header0-phone-nav-text .ant-menu .ant-menu-item': {
           name: '菜单默认',
           stylePhone: {
             ...offsetStyle({ height: '42px' }),
@@ -91,14 +91,14 @@ export default {
             ...textStyle({ size: '12px', color: 'rgba(255, 255, 255, 0.67)', lineHeight: '42px' }),
           },
         },
-        '.header0-phone-nav-text .ant-menu .ant-menu-item:hover': {
+        '$ .header0-phone-nav-text .ant-menu .ant-menu-item:hover': {
           name: '菜单经过',
           stylePhone: {
             ...bgStyle({ color: 'transparent', select: 'backgroundColor' }),
             ...textStyle({ color: '#ffffff' }),
           },
         },
-        '.header0-phone-nav-text .ant-menu .ant-menu-item.ant-menu-item-selected': {
+        '$ .header0-phone-nav-text .ant-menu .ant-menu-item.ant-menu-item-selected': {
           name: '菜单选中',
           stylePhone: {
             ...bgStyle({ color: '#019BF0', select: 'backgroundColor' }),

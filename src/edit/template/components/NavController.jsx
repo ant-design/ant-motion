@@ -69,9 +69,6 @@ class NavController extends React.Component {
         <li>
           3. 本站不提供图片上传功能，请自行解决图片上传的问题;
         </li>
-        <li>
-          4. 本站改为实时触发修改行为，inputNumber 由于需要检验是否是数据，需要 onblur 后才触发。
-        </li>
         <li />
       </ul>),
       width: 550,

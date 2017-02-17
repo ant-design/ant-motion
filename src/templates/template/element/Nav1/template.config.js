@@ -60,14 +60,14 @@ export default {
         ...offsetStyle({ height: '64px' }),
         ...textStyle({ color: '#fff', lineHeight: '62px' }),
         ...bgStyle({ color: 'transparent', select: ['backgroundColor'] }),
-        '.ant-menu-item-active, $ .ant-menu-item-selected, $ .ant-menu-submenu-selected, $ .ant-menu-submenu-active': {
+        '$ .ant-menu-item-active, $ .ant-menu-item-selected, $ .ant-menu-submenu-selected, $ .ant-menu-submenu-active': {
           name: 'hover 与选中样式',
           style: {
             ...textStyle({ color: '#019BF0' }),
             ...borderStyle({ color: '#019BF0' }),
           },
         },
-        '.ant-menu-sub': {
+        '$ .ant-menu-sub': {
           name: '下拉框外框样式',
           style: {
             ...textStyle({ color: 'rgba(102,102,102,0.75)' }),
@@ -75,7 +75,7 @@ export default {
             ...boxShadowStyle('0 1px 6px rgba(0,0,0,0.2)'),
           },
         },
-        '.ant-menu-sub > li.ant-menu-item': {
+        '$ .ant-menu-sub > li.ant-menu-item': {
           name: '下拉框横条样式',
           style: {
             ...offsetStyle({ height: '42px' }),
@@ -83,14 +83,14 @@ export default {
 
           },
         },
-        '.ant-menu-sub .ant-menu-item-active': {
+        '$ .ant-menu-sub .ant-menu-item-active': {
           name: '下拉框横条 hover 样式',
           style: {
             ...textStyle({ color: '#019BF0' }),
             ...bgStyle({ color: 'transparent', select: ['backgroundColor'] }),
           },
         },
-        '.ant-menu-sub .ant-menu-item.ant-menu-item-selected': {
+        '$ .ant-menu-sub .ant-menu-item.ant-menu-item-selected': {
           name: '下拉框横条选中样式',
           style: {
             ...textStyle({ color: '#019BF0' }),
@@ -101,13 +101,13 @@ export default {
       stylePhone: {
         ...offsetStyle({ top: '0px', right: '20px', width: '16px', height: '14px' }),
         ...marginAndPaddingStyle({ margin: 'auto' }),
-        '.header1-phone-nav-bar em': {
+        '$ .header1-phone-nav-bar em': {
           name: '横条样式',
           stylePhone: {
             ...bgStyle({ color: 'rgba(51, 51, 51, 0.95)', select: 'backgroundColor' }),
           },
         },
-        '.header1-phone-nav-text': {
+        '$ .header1-phone-nav-text': {
           name: '菜单打开后外框',
           stylePhone: {
             ...offsetStyle({ width: '100%', height: '100%', top: '0px', left: '0px' }),
@@ -115,11 +115,11 @@ export default {
               value: '64px',
               name: 'paddingTop',
             },
-            ...bgStyle({ color: '404040', select: 'backgroundColor' }),
+            ...bgStyle({ color: '#404040', select: 'backgroundColor' }),
             ...boxShadowStyle('0 0 0 rgba(0,0,0,0)'),
           },
         },
-        '.header1-phone-nav-text .ant-menu .ant-menu-item': {
+        '$ .header1-phone-nav-text .ant-menu .ant-menu-item, $ .header1-phone-nav-text .ant-menu-submenu': {
           name: '菜单默认',
           stylePhone: {
             ...offsetStyle({ height: '42px' }),
@@ -127,14 +127,14 @@ export default {
             ...textStyle({ size: '12px', color: 'rgba(255, 255, 255, 0.67)', lineHeight: '42px' }),
           },
         },
-        '.header1-phone-nav-text .ant-menu .ant-menu-item-active': {
+        '$ .header1-phone-nav-text .ant-menu .ant-menu-item-active': {
           name: '菜单经过',
           stylePhone: {
             ...bgStyle({ color: 'transparent', select: 'backgroundColor' }),
             ...textStyle({ color: '#ffffff' }),
           },
         },
-        '.header1-phone-nav-text .ant-menu .ant-menu-item.ant-menu-item-selected': {
+        '$ .header1-phone-nav-text .ant-menu .ant-menu-item.ant-menu-item-selected': {
           name: '菜单选中',
           stylePhone: {
             ...bgStyle({ color: '#019BF0', select: 'backgroundColor' }),

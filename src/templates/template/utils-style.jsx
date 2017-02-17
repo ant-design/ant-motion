@@ -56,7 +56,7 @@ export function borderStyle(_data) {
       name: '描边线宽',
       length: 4,
       remark: '参数： 上，右，下，左',
-      type: 'number',
+      type: ['number', 'number', 'number', 'number'],
     };
   }
   if ('style' in data) {
@@ -76,6 +76,14 @@ export function borderStyle(_data) {
     d.borderColor = {
       value: data.color,
       name: '描边颜色',
+    };
+  }
+  if ('radius' in data) {
+    d.borderRadius = {
+      value: data.radius,
+      name: '圆角样式',
+      length: data.radiusLength,
+      type: data.radiusType || 'number',
     };
   }
   return d;

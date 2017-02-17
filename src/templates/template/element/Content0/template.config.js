@@ -1,4 +1,7 @@
 import {
+  marginAndPaddingStyle,
+  offsetStyle,
+  boxShadowStyle,
   textStyle,
   bgStyle,
   borderStyle,
@@ -15,43 +18,26 @@ export default {
   dataSource: {
     content0: {
       style: {
-        height: {
-          name: '区块高度',
-          value: '100vh',
-          remark: '请填写上单位 "px" 或 "vh", 如果在第一屏且导航位置为 relative, 一屏为 calc(100vh - 64px)',
-        },
-        textAlign: {
-          name: '内容对齐',
-          value: 'center',
-          select: ['center', 'left', 'right'],
-        },
+        ...offsetStyle({ height: '100vh' }),
+        ...textStyle({ align: 'center' }),
         ...bgStyle({
           image: 'https://zos.alipayobjects.com/rmsportal/gGlUMYGEIvjDOOw.jpg',
           attachment: 'fixed',
         }),
-        ...borderStyle(),
+        ...borderStyle({ width: '0px', style: 'none', color: '#666' }),
       },
     },
     content0_wrapper: {
       style: {
-        width: {
-          value: '550px',
-          name: '内容宽度',
-          remark: '请填写上单位 "px" 或 "%" ',
+        ...offsetStyle({ width: '550px', top: '20%', left: '0' }),
+        margin: {
+          value: 'auto',
+          select: ['auto', 'inherit'],
+          name: 'margin',
         },
-        top: {
-          value: '20%',
-          name: '距顶部位置',
-          remark: '请填写上单位 "px" 或 "%" ',
-        },
-        left: {
-          value: '0',
-          name: '距左边位置',
-        },
-        right: {
-          value: '0',
-          name: '距右边位置',
-        },
+      },
+      stylePhone: {
+        ...offsetStyle({ width: '90%', top: '20%', left: '0' }),
         margin: {
           value: 'auto',
           select: ['auto', 'inherit'],
@@ -61,25 +47,12 @@ export default {
     },
     content0_title: {
       style: {
-        width: {
-          value: '350px',
-          name: '当前宽度',
-          remark: '请填写上单位 "px" 或 "%" ',
-        },
-        left: {
-          value: '30px',
-          name: '距左边位置',
-        },
-        fontSize: {
-          value: '40px',
-          name: '文字大小',
-          remark: '如是图片不需要设置, 请填写上单位 "px" 或 "%" ',
-        },
-        color: {
-          value: '#ffffff',
-          name: '文字颜色',
-          remark: '如是图片不需要设置',
-        },
+        ...offsetStyle({ width: '350px', left: '30px' }),
+        ...textStyle({ size: '40px', color: '#fff' }),
+      },
+      stylePhone: {
+        ...offsetStyle({ width: '90%', left: '0px' }),
+        ...textStyle({ size: '40px', color: '#fff' }),
       },
       children: {
         value: 'https://zos.alipayobjects.com/rmsportal/HqnZZjBjWRbjyMr.png',
@@ -94,11 +67,7 @@ export default {
           color: '#fff',
           align: 'center',
         }),
-        margin: {
-          name: 'margin',
-          value: '0px 0px 20px 0px',
-          length: 4,
-        },
+        ...marginAndPaddingStyle({ margin: '0px 0px 20px 0px' }),
       },
       children: {
         value: '一个高效的页面动画解决方案',
@@ -107,17 +76,23 @@ export default {
     },
     content0_button: {
       style: {
-        color: {
-          value: '#ffffff',
-          name: '文字颜色',
-        },
-        backgroundColor: {
-          value: 'transparent',
-          name: '按钮颜色',
-        },
-        borderColor: {
-          value: '#fff',
-          name: '描边颜色',
+        ...textStyle({ color: '#fff' }),
+        ...borderStyle({ color: '#fff', radius: '4px' }),
+        ...bgStyle({ color: 'transparent', select: ['backgroundColor'] }),
+        '$:hover': {
+          name: 'hover 样式',
+          style: {
+            ...textStyle({ color: '#fff' }),
+            ...borderStyle({ color: '#fff' }),
+            ...bgStyle({ color: 'transparent', select: ['backgroundColor'] }),
+            ...boxShadowStyle('0 0 10px rgba(50,250,255,0.75)'),
+          },
+          stylePhone: {
+            ...textStyle({ color: '#fff' }),
+            ...borderStyle({ color: '#fff' }),
+            ...bgStyle({ color: 'transparent', select: ['backgroundColor'] }),
+            ...boxShadowStyle('0 0 10px rgba(50,250,255,0.75)'),
+          },
         },
       },
       children: {
