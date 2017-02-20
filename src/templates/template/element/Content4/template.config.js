@@ -1,4 +1,6 @@
 import {
+  marginAndPaddingStyle,
+  offsetStyle,
   textStyle,
   bgStyle,
   borderStyle,
@@ -15,36 +17,29 @@ export default {
   dataSource: {
     content4: {
       style: {
-        height: {
-          name: '区块高度',
-          value: '100vh',
-          remark: '请填写上单位 "px" 或 "vh", 如果在第一屏且导航没加 fixed, 一屏为 calc(100vh - 64px)',
-        },
+        ...offsetStyle({ height: '100vh' }),
         ...bgStyle(),
-        ...borderStyle(),
+        ...borderStyle({ width: '0px', style: 'none', color: '#666' }),
+      },
+      stylePhone: {
+        ...offsetStyle({ height: '750px' }),
+        ...bgStyle(),
+        ...borderStyle({ width: '0px', style: 'none', color: '#666' }),
       },
     },
     content4_title: {
       style: {
-        width: {
-          value: '100%',
-          name: '区块宽度',
-        },
-        top: {
-          value: '15%',
-          name: '顶部距离',
-        },
+        ...offsetStyle({ width: '100%', top: '15%' }),
         ...textStyle({
           size: '32px',
           color: '#404040',
           align: 'center',
           lineHeight: '48px',
         }),
-        margin: {
-          value: 'auto',
-          name: 'margin',
-          length: 4,
-        },
+        ...marginAndPaddingStyle({ margin: 'auto' }),
+      },
+      stylePhone: {
+        ...offsetStyle({ width: '100%' }),
       },
       children: {
         value: '蚂蚁金融云提供专业的服务',

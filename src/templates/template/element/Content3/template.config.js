@@ -4,6 +4,7 @@ import {
   textStyle,
   bgStyle,
   borderStyle,
+  floatStyle,
 } from '../../utils-style';
 
 const component = require('./index');
@@ -22,6 +23,13 @@ export default {
           imageRemark: '图片尺寸参考： 1920*540',
         }),
         ...borderStyle({ width: '0px', style: 'none', color: '#666' }),
+        '$ .content-template': {
+          name: '区块内框',
+          style: {
+            ...offsetStyle({ width: '100%', maxWidth: '1200px' }),
+            ...marginAndPaddingStyle({ margin: 'auto' }),
+          },
+        },
       },
       stylePhone: {
         ...offsetStyle({ height: '400px' }),
@@ -29,29 +37,36 @@ export default {
           imageRemark: '图片尺寸参考： 1920*540',
         }),
         ...borderStyle({ width: '0px', style: 'none', color: '#666' }),
+        '$ .content-template': {
+          name: '区块内框',
+          stylePhone: {
+            ...offsetStyle({ width: '90%' }),
+            ...marginAndPaddingStyle({ margin: 'auto' }),
+          },
+        },
       },
     },
     content3_imgWrapper: {
       style: {
         ...offsetStyle({ width: '40%' }),
-        lineHeight: {
-          value: '50vh',
-          name: '区块行高',
-          remark: '控制图片垂直居中元素',
-        },
       },
       stylePhone: {
-        ...offsetStyle({ height: '200px', width: '90%' }),
-        ...textStyle({ lineHeight: '200px' }),
+        ...offsetStyle({ height: '200px', width: '100%' }),
         ...marginAndPaddingStyle({ margin: '20px auto' }),
       },
     },
     content3_img: {
       style: {
-        ...offsetStyle({ width: '55%', left: '10%' }),
+        ...offsetStyle({ width: '55%', left: '10%', height: '50vh' }),
+        lineHeight: {
+          value: '50vh',
+          name: '区块行高',
+          remark: '控制图片垂直居中元素, 跟区块高度一样为居中',
+        },
       },
       stylePhone: {
         ...offsetStyle({ width: '180px', height: '200px', right: '0px', left: '0px' }),
+        ...textStyle({ lineHeight: '200px' }),
         ...marginAndPaddingStyle({ margin: 'auto' }),
       },
       children: {
@@ -62,11 +77,10 @@ export default {
     },
     content3_textWrapper: {
       style: {
-        ...offsetStyle({ width: '55%' }),
-        ...marginAndPaddingStyle({ margin: '0 0 0 5%' }),
+        ...offsetStyle({ width: '55%', height: '150px' }),
       },
       stylePhone: {
-        ...offsetStyle({ width: '90%', height: '140px' }),
+        ...offsetStyle({ width: '100%', height: '140px' }),
         ...marginAndPaddingStyle({ margin: 'auto auto 20px' }),
         ...textStyle({ align: 'center' }),
       },
@@ -79,10 +93,11 @@ export default {
           color: '#404040',
           align: 'left',
         }),
+        ...floatStyle('right'),
       },
       stylePhone: {
         ...offsetStyle({ width: '100%' }),
-        ...textStyle({ size: '32px', color: '#404040', align: 'center' }),
+        ...textStyle({ size: '24px', color: '#404040', align: 'center' }),
         ...marginAndPaddingStyle({ margin: '10px auto' }),
       },
       children: {
@@ -98,11 +113,13 @@ export default {
           color: '#666',
           align: 'left',
         }),
+        ...marginAndPaddingStyle({ margin: '20px auto auto' }),
+        ...floatStyle('right'),
       },
       stylePhone: {
         ...offsetStyle({ width: '100%' }),
         ...textStyle({ size: '12px', color: '#666', align: 'center' }),
-        ...marginAndPaddingStyle({ margin: 'auto' }),
+        ...marginAndPaddingStyle({ margin: '20px auto auto' }),
       },
       children: {
         name: '详细说明',

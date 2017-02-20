@@ -2,26 +2,26 @@
 
 @content2: content2;
 .@{content2} {
-  & > h1, & > p {
+  > h1, > p {
     text-align: center;
     position: relative;
     top: 15%;
   }
-  & > ul {
+  > ul {
     position: relative;
     top: 20%;
-    & > li {
+    > li {
       // display: inline-block;
       width: 33.33%;
       padding: 6% 5% 0;
       vertical-align: top;
       position: absolute;
-      & .img {
+      .img {
         display: inline-block;
         width: 15%;
         vertical-align: top;
       }
-      & .text {
+      .text {
         width: 85%;
         display: inline-block;
         padding-left: 8%;
@@ -30,3 +30,36 @@
   }
 }
 
+@media screen and (max-width: 414px) {
+  .@{content2}-wrapper {
+    height: 750px;
+    .@{content2} {
+      overflow: hidden;
+      width: 90%;
+      margin: auto;
+      > h1, > p {
+        position: relative;
+        top: auto;
+      }
+      > h1 {
+        margin: 20px auto;
+        font-size: 24px;
+      }
+      > ul {
+        top: auto;
+        margin: 20px auto;
+        > li {
+          position: relative;
+          width: 90%;
+          margin: auto;
+          h1 {
+            font-size: 20px;
+          }
+          &.queue-anim-leaving {
+            position: relative !important;
+          }
+        }
+      }
+    }
+  }
+}

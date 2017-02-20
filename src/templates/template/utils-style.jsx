@@ -185,10 +185,38 @@ export function offsetStyle(data = {}) {
     };
   }
 
+  if ('maxWidth' in data) {
+    d.maxWidth = {
+      value: data.maxWidth,
+      name: '最大宽度',
+    };
+  }
+
+  if ('minWidth' in data) {
+    d.minWidth = {
+      value: data.minWidth,
+      name: '最小宽度',
+    };
+  }
+
   if ('height' in data) {
     d.height = {
       value: data.height,
       name: '区块高度',
+    };
+  }
+
+  if ('maxHeight' in data) {
+    d.maxHeight = {
+      value: data.maxHeight,
+      name: '最大高度',
+    };
+  }
+
+  if ('minHeight' in data) {
+    d.minHeight = {
+      value: data.minHeight,
+      name: '最小高度',
     };
   }
 
@@ -240,6 +268,16 @@ export function positionStyle(data = 'relative') {
       select: ['relative', 'absolute', 'fixed'],
       name: data.name || '定位选择',
       remark: '参数为： "relative", "absolute", "fixed"; "fixed" 为始终浮在窗口；',
+    },
+  };
+}
+
+export function floatStyle(data = 'left') {
+  return {
+    float: {
+      value: data.value || data,
+      select: ['left', 'right'],
+      name: data.name || '浮动位置',
     },
   };
 }
