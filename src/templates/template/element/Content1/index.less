@@ -1,4 +1,5 @@
 @import '../../../static/custom.less';
+
 @banner1: banner1;
 .@{banner1} {
   width: 100%;
@@ -6,32 +7,39 @@
   height: 100vh;
   position: relative;
   border-color: #666;
-  .banner-anim{
+  .banner-anim {
     height: 100%;
   }
   & .queue-anim-leaving {
     position: relative !important;
     width: auto;
   }
-  .banner-user-elem{
+  .banner-user-elem {
     height: 100%;
     color: #fff;
     position: relative;
     overflow: hidden;
   }
-  .bg{
+  .bg0 {
+    background: url("https://zos.alipayobjects.com/rmsportal/hzPBTkqtFpLlWCi.jpg") center;
+  }
+  .bg1{
+    background: url("https://zos.alipayobjects.com/rmsportal/xHxWkcvaIcuAdQl.jpg") center;
+  }
+  .bg {
     width: 100%;
     height: 100%;
     position: absolute;
     top: 0;
     left: 0;
     overflow: hidden;
+    background-size: cover;
   }
-  .banner-user-elem .banner-user-title{
+  .banner-user-elem .banner-user-title {
     font-size: 22px;
     top: 40%;
   }
-  .banner-user-elem .banner-user-text{
+  .banner-user-elem .banner-user-text {
     top: 40%;
   }
   &-title {
@@ -54,7 +62,7 @@
     }
     & p {
       margin-bottom: 20px;
-      word-wrap:break-word;
+      word-wrap: break-word;
     }
     & button {
       border: 1px solid #fff;
@@ -89,9 +97,22 @@
     color: @template-text-color-light;
   }
 }
-.banner-anim-thumb-default span{
+
+.banner-anim-thumb-default span {
   width: 10px;
   height: 10px;
   border-radius: 10px;
   background: rgba(255, 255, 255, .5);
+}
+
+@media screen and (max-width: 768px) {
+  .@{banner1}{
+    &-title{
+      width: 90%;
+      .logo{
+        width: 90%;
+        left: 0;
+      }
+    }
+  }
 }

@@ -53,12 +53,13 @@ const replaceData = (urlData, _configData, key) => {
   const item = configData[key];
   if (typeof item === 'object') {
     const urlItem = urlData && urlData[key];
-    if (key === 'style') {
-      if (urlItem) {
+    if (key === 'style' || key === 'stylePhone') {
+      /* if (urlItem) {
         configData[key] = urlItem;
       } else {
         delete configData[key];
-      }
+      }*/
+      delete configData[key];
     } else {
       Object.keys(item).forEach(replaceData.bind(this, urlItem, item));
     }

@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import ReactDOM from 'react-dom';
-import { Icon, Tooltip, Input, InputNumber, Select, Switch } from 'antd';
+import { Icon, Tooltip, Input, InputNumber, Select, Switch, Radio } from 'antd';
 import { TweenOneGroup } from 'rc-tween-one';
 import SketchPicker from 'react-color';
 import deepCopy from 'deepcopy';
@@ -16,6 +16,8 @@ import {
 
 const $ = window.$;
 const Option = Select.Option;
+const RadioGroup = Radio.Group;
+const RadioButton = Radio.Button;
 
 export default class EditView extends React.Component {
   static propTypes = {
@@ -67,14 +69,26 @@ export default class EditView extends React.Component {
   }
 
   onSwitchChange = (value, key, k) => {
+    const configData = this.setStateConfigFunc(value, key, k);
+    const config = configData.config;
+    this.switchKeyArray = [configData.ids.id, configData.ids.childId, key, k];
+    this.setState({ config }, this.clickMake);
+  }
+
+  onPageChange = (value, key, k) => {
+    const configData = this.setStateConfigFunc(value, key, k);
+    const config = configData.config;
+    this.setState({ config }, this.clickMake);
+  }
+
+  setStateConfigFunc = (value, key, k) => {
     const config = this.state.config;
     const ids = getEditID(this.props.editId);
     const ct = config[ids.id] = config[ids.id] || {};
     const t = ct[ids.childId] = ct[ids.childId] || {};
     const tt = t[key] = t[key] || {};
     tt[k] = value;
-    this.switchKeyArray = [ids.id, ids.childId, key, k];
-    this.setState({ config }, this.clickMake);
+    return { config, ids };
   }
 
   getColorChildren = () => {
@@ -239,9 +253,9 @@ export default class EditView extends React.Component {
     const sData = this.props.urlData.c || {};
     const data = sData[id];
     const defaultData = mergeURLDataToDefault(data, currentData);
-    if (defaultData.all) {
-      return this.getAllData(defaultData);
-    }
+    /* if (defaultData.all) {
+     return this.getAllData(defaultData);
+     }*/
     return this.getChildren(defaultData[childId]);
   }
 
@@ -304,8 +318,21 @@ export default class EditView extends React.Component {
             }} defaultChecked={item.value}
           />);
           break;
-        case 'page':
+        case 'page': {
+          const readioChild = [];
+          for (let i = 1; i <= item.total; i += 1) {
+            readioChild.push(<RadioButton value={i} key={i}>{i}</RadioButton>);
+          }
+          child = (<RadioGroup
+            size="small" value={item.value}
+            onChange={(e) => {
+              this.onPageChange(e.target.value, key, k);
+            }}
+          >
+            {readioChild}
+          </RadioGroup>);
           break;
+        }
         default:
           break;
       }
@@ -323,12 +350,12 @@ export default class EditView extends React.Component {
     </div>);
   };
 
-  getAllData = defaultData =>
-    Object.keys(defaultData).filter(key => typeof defaultData[key] === 'object')
-      .map((key) => {
-        const item = defaultData[key];
-        return this.getChildren(item, key);
-      });
+  /* getAllData = defaultData =>
+   Object.keys(defaultData).filter(key => typeof defaultData[key] === 'object')
+   .map((key) => {
+   const item = defaultData[key];
+   return this.getChildren(item, key);
+   });*/
 
   getCurrentConfigData = (key, typeKey, editId) => {
     const ids = getEditID(this.props.editId);

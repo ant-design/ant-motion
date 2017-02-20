@@ -47,7 +47,6 @@ export default {
           name: '切换导航',
           type: 'switch',
           isMode: true,
-          close: true, // 关闭时恢复
         },
       },
       style: {

@@ -47,13 +47,11 @@ export default {
           name: '切换导航',
           type: 'switch',
           isMode: true,
-          close: true, // 关闭时恢复
         },
         switchMenu: {
           value: false,
           name: '展开二级',
           type: 'switch',
-          close: true,
         },
       },
       style: {

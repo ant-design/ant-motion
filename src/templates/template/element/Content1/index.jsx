@@ -9,52 +9,71 @@ import './index.less';
 
 const BgElement = Element.BgElement;
 class Banner extends React.Component {
+  componentWillReceiveProps(nextProps) {
+    const dataSource = nextProps.dataSource;
+    const names = nextProps.id.split('_');
+    const name = `${names[0]}${names[1]}`;
+    const func = dataSource[name].func;
+    if (func && this.banner) {
+      this.banner.slickGoTo(func.page - 1);
+    }
+  }
+
   render() {
-    const dataSource = this.props.dataSource;
     const props = { ...this.props };
+    const dataSource = props.dataSource;
     const names = props.id.split('_');
     const name = `${names[0]}${names[1]}`;
     delete props.dataSource;
-    const childrenData = Object.keys(dataSource)
-      .filter(key => key.match('block')).map(key => dataSource[key]);
+    delete props.isMode;
+    const childrenData = [];
+    Object.keys(dataSource).filter(key => key.match('Block')).forEach((key) => {
+      const keys = key.split('Block');
+      const i = keys[1];
+      const t = childrenData[i] = childrenData[i] || {};
+      t[key] = dataSource[key];
+    });
     const childrenToRender = childrenData.map((item, i) => {
-      const children = item.children;
-      const isImg = children.title.children
+      const title = item[`${name}_titleBlock${i}`];
+      const content = item[`${name}_contentBlock${i}`];
+      const button = item[`${name}_buttonBlock${i}`];
+      const isImg = title.children
         .match(/\.(gif|jpg|jpeg|png|JPG|PNG|GIF|JPEG)$/);
       return (<Element
         key={i}
         prefixCls="banner-user-elem"
       >
         <BgElement
-          className="bg"
+          className={`bg bg${i}`}
           key="bg"
-          style={children.bg.style}
         />
         <QueueAnim
           type={['bottom', 'top']} delay={200}
-          className={`${this.props.className}-title`} key="text"
-          style={children.wrapper.style}
+          className={`${props.className}-title`}
+          key="text"
+          id={`${props.id}-wrapperBlock${i}`}
         >
           <span
-            className="logo" key="logo"
-            style={children.title.style}
+            className="logo"
+            key="logo"
+            id={`${props.id}-titleBlock${i}`}
           >
             {isImg ?
-              (<img width="100%" src={children.title.children} />) :
-              children.title.children}
+              (<img width="100%" src={title.children} />) :
+              title.children}
           </span>
           <p
             key="content"
-            style={children.content.style}
+            id={`${props.id}-contentBlock${i}`}
           >
-            {children.content.children}
+            {content.children}
           </p>
           <Button
             type="ghost"
             key="button"
-            style={children.button.style}
+            id={`${props.id}-buttonBlock${i}`}
           >
-            {children.button.children}
+            {button.children}
           </Button>
         </QueueAnim>
       </Element>);
@@ -64,10 +83,12 @@ class Banner extends React.Component {
         <OverPack
           {...props}
           hideProps={{ icon: { reverse: true } }}
-          style={dataSource[name].style}
         >
           <BannerAnim
             key="banner"
+            ref={(c) => {
+              this.banner = c;
+            }}
           >
             {childrenToRender}
           </BannerAnim>
@@ -87,7 +108,6 @@ class Banner extends React.Component {
 
 Banner.propTypes = {
   className: PropTypes.string,
-  dataSource: PropTypes.object,
 };
 
 Banner.defaultProps = {
