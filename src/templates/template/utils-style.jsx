@@ -162,6 +162,7 @@ export function marginAndPaddingStyle(data = {}) {
       value: data.margin,
       length: 4,
       name: 'margin',
+      remark: '参数: 左上 右上 左下 右下 => top right bottom left. 单位自填.',
     };
   }
   if ('padding' in data) {
@@ -169,6 +170,7 @@ export function marginAndPaddingStyle(data = {}) {
       value: data.padding,
       length: 4,
       name: 'padding',
+      remark: '参数: 左上 右上 左下 右下 => top right bottom left. 单位自填.',
     };
   }
   return d;
