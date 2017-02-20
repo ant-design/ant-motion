@@ -38,6 +38,7 @@ class Content extends React.Component {
             animation={animType.one}
             className={`${props.className}-img`}
             id={`${props.id}-imgWrapper`}
+            resetStyleBool
           >
             <span
               id={`${props.id}-img`}

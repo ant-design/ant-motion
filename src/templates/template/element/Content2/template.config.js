@@ -66,8 +66,8 @@ export default {
         ...marginAndPaddingStyle({ margin: '0 0 0 5%' }),
       },
       stylePhone: {
-        ...offsetStyle({ width: '90%', height: '160px' }),
-        ...marginAndPaddingStyle({ margin: 'auto' }),
+        ...offsetStyle({ width: '90%', height: '140px' }),
+        ...marginAndPaddingStyle({ margin: 'auto auto 20px' }),
         ...textStyle({ align: 'center' }),
       },
     },

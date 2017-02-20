@@ -44,3 +44,39 @@
   }
 }
 
+@media screen and (max-width: 414px) {
+  .content-half-wrapper {
+    height: 400px;
+    .@{content1} {
+      overflow: hidden;
+      &-img, &-text {
+        width: 90%;
+        margin: auto;
+        display: block;
+        text-align: center;
+      }
+      &-img {
+        height: 200px;
+        line-height: 200px;
+        margin: 20px auto;
+        span {
+          right: 0;
+          left: 0;
+          margin: auto;
+          width: 180px;
+        }
+      }
+      &-text {
+        height: 140px;
+        margin-top: 20px;
+        p, h1 {
+          width: 100%;
+          top: auto;
+        }
+        h1{
+          margin: 10px auto;
+        }
+      }
+    }
+  }
+}

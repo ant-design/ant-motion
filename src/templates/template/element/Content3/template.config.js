@@ -1,4 +1,6 @@
 import {
+  marginAndPaddingStyle,
+  offsetStyle,
   textStyle,
   bgStyle,
   borderStyle,
@@ -15,39 +17,42 @@ export default {
   dataSource: {
     content3: {
       style: {
-        height: {
-          value: '50vh',
-          name: '区块高度',
-        },
+        ...offsetStyle({ height: '50vh' }),
         ...bgStyle({
           imageRemark: '图片尺寸参考： 1920*540',
         }),
-        ...borderStyle(),
+        ...borderStyle({ width: '0px', style: 'none', color: '#666' }),
+      },
+      stylePhone: {
+        ...offsetStyle({ height: '400px' }),
+        ...bgStyle({
+          imageRemark: '图片尺寸参考： 1920*540',
+        }),
+        ...borderStyle({ width: '0px', style: 'none', color: '#666' }),
       },
     },
     content3_imgWrapper: {
       style: {
-        width: {
-          value: '40%',
-          name: '区块宽度',
-        },
+        ...offsetStyle({ width: '40%' }),
         lineHeight: {
           value: '50vh',
           name: '区块行高',
           remark: '控制图片垂直居中元素',
         },
       },
+      stylePhone: {
+        ...offsetStyle({ height: '200px', width: '90%' }),
+        ...textStyle({ lineHeight: '200px' }),
+        ...marginAndPaddingStyle({ margin: '20px auto' }),
+      },
     },
     content3_img: {
       style: {
-        width: {
-          value: '55%',
-          name: '图片宽度',
-        },
-        left: {
-          value: '10%',
-          name: '左边距离',
-        },
+        ...offsetStyle({ width: '55%', left: '10%' }),
+      },
+      stylePhone: {
+        ...offsetStyle({ width: '180px', height: '200px', right: '0px', left: '0px' }),
+        ...marginAndPaddingStyle({ margin: 'auto' }),
       },
       children: {
         name: '图片展示',
@@ -57,29 +62,28 @@ export default {
     },
     content3_textWrapper: {
       style: {
-        width: {
-          value: '55%',
-          name: '区块宽度',
-        },
-        margin: {
-          value: '0 5% 0 0',
-          name: 'margin',
-          length: 4,
-          remark: '为调整区块位置; 第一行为上右, 第二行为下左; 必须加单位',
-        },
+        ...offsetStyle({ width: '55%' }),
+        ...marginAndPaddingStyle({ margin: '0 0 0 5%' }),
+      },
+      stylePhone: {
+        ...offsetStyle({ width: '90%', height: '140px' }),
+        ...marginAndPaddingStyle({ margin: 'auto auto 20px' }),
+        ...textStyle({ align: 'center' }),
       },
     },
     content3_title: {
       style: {
-        width: {
-          value: '75%',
-          name: '区块宽度',
-        },
+        ...offsetStyle({ width: '75%', top: '35%' }),
         ...textStyle({
           size: '32px',
           color: '#404040',
           align: 'left',
         }),
+      },
+      stylePhone: {
+        ...offsetStyle({ width: '100%' }),
+        ...textStyle({ size: '32px', color: '#404040', align: 'center' }),
+        ...marginAndPaddingStyle({ margin: '10px auto' }),
       },
       children: {
         name: '标题名称',
@@ -88,14 +92,17 @@ export default {
     },
     content3_content: {
       style: {
-        width: {
-          value: '75%',
-          name: '区块宽度',
-        },
+        ...offsetStyle({ width: '75%', top: '37%' }),
         ...textStyle({
           size: '12px',
+          color: '#666',
           align: 'left',
         }),
+      },
+      stylePhone: {
+        ...offsetStyle({ width: '100%' }),
+        ...textStyle({ size: '12px', color: '#666', align: 'center' }),
+        ...marginAndPaddingStyle({ margin: 'auto' }),
       },
       children: {
         name: '详细说明',
