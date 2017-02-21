@@ -45,9 +45,9 @@ Through a simple configuration, you can add animations which follow the scollbar
 ####  [rc-banner-anim banner slider effects](http://motion.ant.design/components/banner-anim)
 With a simple configuration, you can set up a modern and professional banner slider. Refer to the [API](http://motion.ant.design/api/banner-anim) for the specific parameters.
 
-## 首页的解决方案
+## Home solution
 
-这是以 Ant Motion 的 React 组件遵从 Ant Design 的视觉规范来完成的 demo 页面，可灵活又快速的配置出你想要的首页模板。
+This is based on the Ant Motion React components to follow with the design specifications of Ant Design to complete the demo page, you can quickly and flexibly configure the page template you want.
 
 It provides a single-element example and a full-page example after configuration.
 
