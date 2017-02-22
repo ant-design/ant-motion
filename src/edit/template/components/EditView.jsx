@@ -207,7 +207,7 @@ export default class EditView extends React.Component {
   }
 
   getInputNumberChildren = (value, changeValue, key, className, isMax) => {
-    const cv = parseFloat(value) || 0;
+    const cv = value && value.replace(/[a-z|%]/ig, '') || 0;
     return (<InputGroup
       onChange={changeValue}
       key={key}
@@ -270,7 +270,9 @@ export default class EditView extends React.Component {
     }).map((key) => {
       let name;
       if (this.props.isMode && key === 'style'
-        || !this.props.isMode && key === 'stylePhone' || key === 'className') {
+        || !this.props.isMode && key === 'stylePhone'
+        || key === 'className' || key === 'remark'
+        || !Object.keys(data[key]).length) {
         return null;
       }
       if (key === 'func') {
@@ -289,15 +291,19 @@ export default class EditView extends React.Component {
         default:
           return (<h2 key={key}>{data.name}</h2>);
       }
+      const isChildrenValue = typeof data[key][Object.keys(data[key])[0]] === 'object'
+        && data[key][Object.keys(data[key])[0]].value;
+      const remark = typeof data.remark === 'object' ? data.remark[key] : data.remark;
       return (<div
         key={key}
         className={`${this.props.className}-module-wrapper ${
         childrenLi && 'children-wrapper' || ''}`}
       >
-        {(data[key].value || key === 'style'
-        || data[key][Object.keys(data[key])[0]].value
+        {typeof data[key] === 'object' && !parentKey && (data[key].value ||
+        (key.match('style') || key === 'children')
+        || isChildrenValue
         || data[key].value === '')
-        && <h3><span>{name}</span></h3>}
+        && <h1>{name}<span>{remark}</span></h1>}
         <ul>{this.getEditChild(data[key], key, parentKey)}</ul>
       </div>);
     });
@@ -344,8 +350,9 @@ export default class EditView extends React.Component {
     if (!children.length) {
       return null;
     }
+    const remark = typeof data.remark === 'object' ? data.remark[key] : data.remark;
     return (<div key={data.name} className={`${this.props.className}-func`}>
-      <h3><span>{data.name}</span></h3>
+      <h1>{data.name}<span>{remark}</span></h1>
       {children}
     </div>);
   };

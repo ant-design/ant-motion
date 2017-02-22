@@ -48,6 +48,14 @@ function addData(data) {
   Object.keys(dataSource).forEach((key) => {
     const item = dataSource[key];
     if (typeof item === 'object' && !('stylePhone' in item) && 'style' in item) {
+      const styleObj = Object.keys(item.style);
+      const isCssArray = styleObj.filter(k => k.match(/\$/));
+      isCssArray.forEach((cKey) => {
+        const cItem = item.style[cKey];
+        if (typeof cItem === 'object' && !('stylePhone' in cItem) && 'style' in cItem) {
+          item.style[cKey].stylePhone = deepCopy(item.style[cKey].style);
+        }
+      });
       item.stylePhone = deepCopy(item.style);
     }
   });

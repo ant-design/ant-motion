@@ -11,16 +11,16 @@ class Content extends React.Component {
     className: 'content2',
   };
 
-  getDelay = e => e.index % 3 * 100 + Math.floor(e.index / 3) * 100 + 200;
+  getDelay = e => e % 3 * 100 + Math.floor(e / 3) * 100 + 300;
 
   render() {
     const props = { ...this.props };
     const dataSource = props.dataSource;
-    const isMode = props.isMode;
     const names = props.id.split('_');
     const name = `${names[0]}${names[1]}`;
     delete props.dataSource;
     delete props.isMode;
+    const oneAnim = { y: '+=30', opacity: 0, type: 'from', ease: 'easeOutQuad' };
     const children = Object.keys(dataSource).filter(key => key.match('block'))
       .sort((a, b) => {
         const aa = Number(a.replace(/[^0-9]/ig, ''));
@@ -31,12 +31,13 @@ class Content extends React.Component {
         const item = dataSource[key];
         const childrenObj = item.children;
         const id = key.split('_')[1];
-        const left = isMode ? 'auto' : `${i % 3 * 33.33}%`;
-        const top = isMode ? 'auto' : `${Math.floor(i / 3) * 200}px`;
-        const childrenAnim = { x: '+=10', opacity: 0, type: 'from', delay: 100, ease: 'easeOutQuad' };
-        return (<li
+        const delay = this.getDelay(i);
+        const liAnim = { opacity: 0, type: 'from', ease: 'easeOutQuad', delay };
+        const childrenAnim = { ...liAnim, x: '+=10', delay: delay + 100 };
+        return (<TweenOne
+          component="li"
+          animation={liAnim}
           key={i}
-          style={{ left, top }}
           id={`${props.id}-${id}`}
         >
           <TweenOne
@@ -50,13 +51,12 @@ class Content extends React.Component {
             <TweenOne key="h1" animation={childrenAnim} component="h1">
               {childrenObj.title.children}
             </TweenOne>
-            <TweenOne key="p" animation={{ ...childrenAnim, delay: 200 }} component="p">
+            <TweenOne key="p" animation={{ ...childrenAnim, delay: delay + 200 }} component="p">
               {childrenObj.content.children}
             </TweenOne>
           </div>
-        </li>);
+        </TweenOne>);
       });
-    const titleAnim = { y: '+=30', opacity: 0, type: 'from', ease: 'easeOutQuad' };
     return (
       <div {...props} className={`content-template-wrapper ${props.className}-wrapper`}>
         <OverPack
@@ -66,7 +66,7 @@ class Content extends React.Component {
         >
           <TweenOne
             key="h1"
-            animation={titleAnim}
+            animation={oneAnim}
             component="h1"
             id={`${props.id}-title`}
             reverseDelay={100}
@@ -75,7 +75,7 @@ class Content extends React.Component {
           </TweenOne>
           <TweenOne
             key="p"
-            animation={titleAnim}
+            animation={{ ...oneAnim, delay: 100 }}
             component="p"
             id={`${props.id}-titleContent`}
           >
@@ -83,13 +83,13 @@ class Content extends React.Component {
           </TweenOne>
           <QueueAnim
             key="ul"
-            component="ul"
-            leaveReverse
             type="bottom"
-            interval={[isMode ? 50 : 0, 0]}
-            delay={[isMode ? 0 : this.getDelay, 0]}
+            className={`${props.className}-contentWrapper`}
+            id={`${props.id}-contentWrapper`}
           >
-            {children}
+            <ul key="ul">
+              {children}
+            </ul>
           </QueueAnim>
         </OverPack>
       </div>

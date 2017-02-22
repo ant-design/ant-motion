@@ -34,6 +34,17 @@ class Content extends React.Component {
           hideProps={{ img: { reverse: true } }}
           location={props.id}
         >
+          <TweenOne
+            key="img"
+            animation={animType.one}
+            className={`${props.className}-img`}
+            id={`${props.id}-imgWrapper`}
+            resetStyleBool
+          >
+            <span id={`${props.id}-img`}>
+              <img src={dataSource[`${name}_img`].children} width="100%" />
+            </span>
+          </TweenOne>
           <QueueAnim
             type={animType.queue}
             className={`${props.className}-text`}
@@ -49,17 +60,6 @@ class Content extends React.Component {
               {dataSource[`${name}_content`].children}
             </p>
           </QueueAnim>
-          <TweenOne
-            key="img"
-            animation={animType.one}
-            className={`${props.className}-img`}
-            id={`${props.id}-imgWrapper`}
-            resetStyleBool
-          >
-            <span id={`${props.id}-img`}>
-              <img src={dataSource[`${name}_img`].children} width="100%" />
-            </span>
-          </TweenOne>
         </OverPack>
       </div>
     );
