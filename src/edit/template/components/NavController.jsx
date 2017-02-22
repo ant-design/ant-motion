@@ -58,7 +58,7 @@ class NavController extends React.Component {
 
   openLook = () => {
     Modal.warning({
-      title: '注意事项',
+      title: '注意事项, 请仔细阅读',
       content: (<ul>
         <li>
           1. 在编辑时是数值注意旁边的单位，如 "px", "vh", "%"; "px" 为像素点, "vh" 屏幕高度的百分比;
@@ -69,7 +69,12 @@ class NavController extends React.Component {
         <li>
           3. 本站不提供图片上传功能，请自行解决图片上传的问题;
         </li>
-        <li />
+        <li>
+          4. 内容编辑区块请不要用(')单引号作为内容； 如需使用，请用(\');
+        </li>
+        <li>
+          5. mobile 样式与 web 样式编辑是分开的，如编辑了请切换到 mobile 再编辑;
+        </li>
       </ul>),
       width: 550,
     });

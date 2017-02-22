@@ -20,8 +20,8 @@ class Content extends React.Component {
     delete props.isMode;
     const animType = {
       queue: isMode ? 'bottom' : 'right',
-      one: isMode ? { y: '+=30', opacity: 0, type: 'from' }
-        : { x: '-=30', opacity: 0, type: 'from' },
+      one: isMode ? { y: '+=30', opacity: 0, type: 'from', ease: 'easeOutQuad' }
+        : { x: '-=30', opacity: 0, type: 'from', ease: 'easeOutQuad' },
     };
     return (
       <div
@@ -51,7 +51,7 @@ class Content extends React.Component {
             key="text"
             type={animType.queue}
             leaveReverse
-            ease={['easeOutCubic', 'easeInCubic']}
+            ease={['easeOutQuad', 'easeInQuad']}
             id={`${props.id}-textWrapper`}
           >
             <h1 key="h1" id={`${props.id}-title`}>
