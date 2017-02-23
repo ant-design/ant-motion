@@ -54,14 +54,14 @@ export function borderStyle(_data) {
     d.borderWidth = {
       value: data.width,
       name: '描边线宽',
-      length: 4,
-      remark: '参数： 上，右，下，左',
-      type: ['number', 'number', 'number', 'number'],
+      length: data.widthLength ? 4 : 0,
+      remark: data.widthLength && '参数： 上，右，下，左',
+      type: data.widthLength ? ['number', 'number', 'number', 'number'] : 'number',
     };
   }
-  if ('style' in data) {
+  if ('borderStyle' in data) {
     d.borderStyle = {
-      value: data.style,
+      value: data.borderStyle,
       name: '描边样式',
       select: [
         { name: '无边框', value: 'none' },
@@ -102,13 +102,13 @@ export function bgStyle(_data) {
       remark: data.imageRemark || '尺寸参考:1920*1080',
     },
     backgroundSize: {
-      value: data.size || 'cover',
+      value: data.size || 'inherit',
       name: '背景大小',
       select: ['contain', 'cover', 'inherit'],
       remark: 'css 里的参数，"contain", "cover"等参数',
     },
     backgroundPosition: {
-      value: data.position || 'center',
+      value: data.position || 'left',
       name: '背景对齐',
       select: ['center', 'top', 'left', 'bottom', 'right',
         'left top', 'left bottom', 'right top', 'right bottom'],
@@ -276,7 +276,7 @@ export function floatStyle(data = 'left') {
   return {
     float: {
       value: data.value || data,
-      select: ['left', 'right'],
+      select: data.select || ['left', 'right'],
       name: data.name || '浮动位置',
     },
   };

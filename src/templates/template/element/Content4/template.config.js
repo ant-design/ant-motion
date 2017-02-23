@@ -15,21 +15,21 @@ const getLiBlock = children => ({
   style: {
     ...offsetStyle({ width: '33.33%' }),
     ...marginAndPaddingStyle({ padding: '6% 5% 0' }),
-    '$ .img': {
+    '.content2 $ .img': {
       name: '当前 icon 样式',
       style: {
         ...offsetStyle({ width: '15%' }),
         ...marginAndPaddingStyle({ margin: '0', padding: '0' }),
       },
     },
-    '$ .text': {
+    '.content2 $ .text': {
       name: '当前文字区块样式',
       style: {
         ...offsetStyle({ width: '85%' }),
         ...marginAndPaddingStyle({ margin: '0', padding: '0 0 0 8%' }),
       },
     },
-    '$ .text h1': {
+    '.content2 $ .text h1': {
       name: '当前标题样式',
       style: {
         ...textStyle({
@@ -39,7 +39,7 @@ const getLiBlock = children => ({
         ...marginAndPaddingStyle({ margin: '0' }),
       },
     },
-    '$ .text p': {
+    '.content2 $ .text p': {
       name: '当前内容样式',
       style: {
         ...textStyle({ size: '12px', color: '#666' }),
@@ -49,26 +49,17 @@ const getLiBlock = children => ({
   },
   children: {
     icon: {
-      name: 'icon 内容',
-      children: {
-        value: children.icon,
-        name: 'icon图片',
-        remark: '尺寸参考:40*40',
-      },
+      value: children.icon,
+      name: 'icon图片',
+      remark: '尺寸参考:40*40',
     },
     title: {
-      name: '标题区块',
-      children: {
-        value: children.title,
-        name: '标题文字',
-      },
+      value: children.title,
+      name: '标题文字',
     },
     content: {
-      name: '内容区块',
-      children: {
-        value: children.content,
-        name: '详细说明',
-      },
+      value: children.content,
+      name: '详细说明',
     },
   },
 });

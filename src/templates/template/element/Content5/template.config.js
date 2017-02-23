@@ -7,7 +7,6 @@ import {
   boxShadowStyle,
 } from '../../utils-style';
 
-
 const component = require('./index');
 const templateStr = require('!raw!./index.text');
 const less = require('!raw!./index.less');
@@ -84,7 +83,7 @@ export default {
           color: '#666',
           lineHeight: '24px',
         }),
-        ...offsetStyle({ maxWidth: '600px' }),
+        ...offsetStyle({ maxWidth: '600px', width: '100%' }),
       },
       children: {
         value: '科技想象力，金融创造力',

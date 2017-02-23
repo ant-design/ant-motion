@@ -1,12 +1,116 @@
 import {
+  marginAndPaddingStyle,
+  offsetStyle,
   textStyle,
   bgStyle,
   borderStyle,
+  positionStyle,
 } from '../../utils-style';
 
 const component = require('./index');
 const templateStr = require('!raw!./index.text');
 const less = require('!raw!./index.less');
+
+const getLiBlock = data => ({
+  remark: { style: '如需编辑全局请选择外框' },
+  style: {
+    ...offsetStyle({ width: '25%', height: '220px' }),
+    ...marginAndPaddingStyle({ padding: '1%', margin: 'auto' }),
+    '.content4-img-wrapper $ .content-wrapper': {
+      name: '当前区块外壳样式',
+      style: {
+        ...offsetStyle({ height: '220px' }),
+        ...borderStyle({ radius: '6px', width: '1px', borderStyle: 'solid', color: '#e9e9e9' }),
+        ...bgStyle({ color: '#fff', select: 'backgroundColor' }),
+        ...marginAndPaddingStyle({ padding: '10px' }),
+      },
+    },
+    '.content4-img-wrapper $ .content-wrapper > span': {
+      name: '当前图片样式',
+      style: {
+        ...offsetStyle({ height: '100%' }),
+        ...marginAndPaddingStyle({ padding: '5%' }),
+        ...bgStyle({ color: '#e9e9e9', select: 'backgroundColor' }),
+      },
+    },
+    '.content4-img-wrapper $ .content-wrapper > p': {
+      name: '当前内容文字区块样式',
+      style: {
+        ...offsetStyle({ width: '100%', bottom: '-30px' }),
+        ...textStyle({
+          color: '#fff',
+          lineHeight: '30px',
+        }),
+        ...bgStyle({ color: 'rgba(1, 155,240, 0.75)', select: 'backgroundColor' }),
+        ...positionStyle({ value: 'absolute', select: ['relative', 'absolute'] }),
+      },
+    },
+    '.content4-img-wrapper $ .content-wrapper:hover p': {
+      name: '当前内容区块 hover 样式',
+      style: {
+        ...offsetStyle({ width: '100%', bottom: '0px' }),
+        ...textStyle({
+          color: '#fff',
+          lineHeight: '30px',
+        }),
+        ...bgStyle({ color: 'rgba(1, 155,240, 0.75)', select: 'backgroundColor' }),
+      },
+    },
+  },
+  stylePhone: {
+    ...offsetStyle({ width: '100%', top: '80px' }),
+    ...marginAndPaddingStyle({ margin: 'auto', padding: '2%' }),
+    '.content4-img-wrapper $ .content-wrapper': {
+      name: '当前区块外壳样式',
+      stylePhone: {
+        ...offsetStyle({ width: '100%', height: '220px' }),
+        ...borderStyle({ radius: '6px', width: '1px', borderStyle: 'solid', color: '#e9e9e9' }),
+        ...bgStyle({ color: '#fff', select: 'backgroundColor' }),
+        ...marginAndPaddingStyle({ padding: '1%' }),
+      },
+    },
+    '.content4-img-wrapper $ .content-wrapper > span': {
+      name: '当前图片样式',
+      stylePhone: {
+        ...offsetStyle({ height: '168px' }),
+        ...marginAndPaddingStyle({ padding: '5%' }),
+        ...bgStyle({ color: '#e9e9e9', select: 'backgroundColor' }),
+      },
+    },
+    '.content4-img-wrapper $ .content-wrapper > p': {
+      name: '当前内容文字区块样式',
+      style: {
+        ...offsetStyle({ width: '100%' }),
+        ...textStyle({
+          color: '#fff',
+          lineHeight: '30px',
+        }),
+        ...bgStyle({ color: 'rgba(1, 155,240, 0.75)', select: 'backgroundColor' }),
+      },
+    },
+    '.content4-img-wrapper $ .content-wrapper:hover p': {
+      name: '当前内容区块 hover 样式',
+      style: {
+        ...offsetStyle({ width: '100%' }),
+        ...textStyle({
+          color: '#fff',
+          lineHeight: '30px',
+        }),
+        ...bgStyle({ color: 'rgba(1, 155,240, 0.75)', select: 'backgroundColor' }),
+      },
+    },
+  },
+  children: {
+    img: {
+      value: data.img,
+      name: '案例 logo',
+    },
+    content: {
+      name: '文字说明',
+      value: data.content,
+    },
+  },
+});
 
 export default {
   component,
@@ -15,36 +119,48 @@ export default {
   dataSource: {
     content6: {
       style: {
-        height: {
-          value: '100vh',
-          name: '区块高度',
-          remark: '请填写上单位 "px" 或 "vh" ',
+        ...offsetStyle({ height: '100vh' }),
+        ...bgStyle({ color: '#f3f3f3' }),
+        ...borderStyle({ width: '0px', style: 'none', color: '#666' }),
+        '$ content4': {
+          name: '内框样式',
+          style: {
+            ...offsetStyle({ width: '100%', maxWidth: '1200px', height: '100%' }),
+            ...marginAndPaddingStyle({ margin: 'auto' }),
+          },
         },
-        ...bgStyle(),
-        ...borderStyle(),
+      },
+      stylePhone: {
+        ...offsetStyle({ height: '2000px' }),
+        '$ content4': {
+          name: '内框样式',
+          style: {
+            ...offsetStyle({ width: '90%' }),
+            ...marginAndPaddingStyle({ margin: 'auto' }),
+          },
+        },
       },
     },
     content6_title: {
       style: {
-        width: {
-          value: '100%',
-          name: '区块宽度',
-        },
-        top: {
-          value: '10%',
-          name: '顶部距离',
-        },
+        ...offsetStyle({ width: '100%', top: '10%' }),
         ...textStyle({
           size: '32px',
           color: '#404040',
           align: 'center',
           lineHeight: '48px',
         }),
-        margin: {
-          value: 'auto',
-          name: 'margin',
-          length: 4,
-        },
+        ...marginAndPaddingStyle({ margin: 'auto' }),
+      },
+      stylePhone: {
+        ...offsetStyle({ width: '100%' }),
+        ...textStyle({
+          size: '24px',
+          color: '#404040',
+          align: 'center',
+          lineHeight: '48px',
+        }),
+        ...marginAndPaddingStyle({ margin: '20px auto' }),
       },
       children: {
         value: '客户案例',
@@ -53,13 +169,13 @@ export default {
     },
     content6_content: {
       style: {
+        ...offsetStyle({ width: '100%', maxWidth: '600px' }),
         ...textStyle({
+          size: '12px',
+          color: '#666',
+          align: 'center',
           lineHeight: '24px',
         }),
-        maxWidth: {
-          value: '600px',
-          name: '最大宽度',
-        },
       },
       children: {
         value: '在这里用一段话介绍服务的案例情况',
@@ -68,804 +184,138 @@ export default {
     },
     content6_ul: {
       style: {
-        top: {
-          value: '25%',
-          name: '距离顶部',
-        },
-        width: {
-          value: '98%',
-          name: '区块宽度',
-        },
-        padding: {
-          value: '20px 0',
-          name: 'padding',
-          length: 4,
-        },
-      },
-    },
-    content6_block0: {
-      style: {
-        width: {
-          value: '25%',
-          name: 'li的宽度',
-          remark: '一排几个在这调整，默认 4 个，宽为 25%;',
-        },
-        padding: {
-          value: '1%',
-          name: 'padding',
-          length: 4,
-        },
-      },
-      children: {
-        wrapper: {
-          name: '区块外壳',
+        ...offsetStyle({ width: '98%', top: '25%' }),
+        ...marginAndPaddingStyle({ padding: '20px 0' }),
+        '$>li': {
+          name: '区块 li 样式',
           style: {
-            padding: {
-              value: '10px',
-              name: 'padding',
-              length: 4,
-            },
-            height: {
-              value: '200px',
-              name: '区块高度',
-            },
-            borderRadius: {
-              value: '6px',
-              name: '区块圆角',
-            },
-            background: {
-              value: '#fff',
-              name: '背景颜色',
-            },
-            border: {
-              value: '1px solid #e9e9e9',
-              name: '区块描边',
-              remark: '参数顺序参考左上角导航说明: 线的粗细, 线的属性(solid 为实线), 颜色;',
-              length: 3,
-            },
+            ...offsetStyle({ width: '25%' }),
+            ...marginAndPaddingStyle({ padding: '1%', margin: 'auto' }),
           },
         },
-        img: {
-          name: '图片区块',
+        '$ .content-wrapper': {
+          name: '全部区块外壳样式',
           style: {
-            height: {
-              value: '100%',
-              name: '图片的高度',
-            },
-            padding: {
-              value: '5%',
-              name: 'padding',
-              length: 4,
-            },
-            background: {
-              value: '#e9e9e9',
-              name: '背景颜色',
-            },
-          },
-          children: {
-            value: 'https://t.alipayobjects.com/images/rmsweb/T11aVgXc4eXXXXXXXX.svg',
-            name: '案例 logo',
+            ...offsetStyle({ height: '220px' }),
+            ...borderStyle({ radius: '6px', width: '1px', borderStyle: 'solid', color: '#e9e9e9' }),
+            ...bgStyle({ color: '#fff', select: 'backgroundColor' }),
+            ...marginAndPaddingStyle({ padding: '10px' }),
           },
         },
-        content: {
-          name: '区块内容',
+        '$ .content-wrapper > span': {
+          name: '全部图片样式',
           style: {
-            width: {
-              value: '100%',
-              name: '背景宽度',
-            },
+            ...offsetStyle({ height: '100%' }),
+            ...marginAndPaddingStyle({ padding: '5%' }),
+            ...bgStyle({ color: '#e9e9e9', select: 'backgroundColor' }),
+          },
+        },
+        '$ .content-wrapper > p': {
+          name: '全部内容文字区块样式',
+          style: {
+            ...offsetStyle({ width: '100%', bottom: '-30px' }),
             ...textStyle({
               color: '#fff',
               lineHeight: '30px',
             }),
-            background: {
-              value: 'rgba(1, 155,240, 0.75)',
-              name: '背景颜色',
-            },
-            position: {
-              name: 'position',
-              value: 'absolute',
-              select: ['relative', 'absolute'],
-              remark: '参数有: "relative", "absolute"等, 改为 "relative" 为不浮动',
-            },
-            bottom: {
-              name: 'bottom',
-              value: '-30px',
-              remark: '不浮动请设为0',
-            },
-          },
-          children: {
-            name: '文字说明',
-            value: 'ant Design',
+            ...bgStyle({ color: 'rgba(1, 155,240, 0.75)', select: 'backgroundColor' }),
+            ...positionStyle({ value: 'absolute', select: ['relative', 'absolute'] }),
           },
         },
-      },
-    },
-    content6_block1: {
-      style: {
-        width: {
-          value: '25%',
-          name: 'li的宽度',
-          remark: '一排几个在这调整，默认 4 个，宽为 25%;',
-        },
-        padding: {
-          value: '1%',
-          name: 'padding',
-          length: 4,
-        },
-      },
-      children: {
-        wrapper: {
-          name: '区块外壳',
+        '$ .content-wrapper:hover p': {
+          name: '全部内容区块 hover 样式',
           style: {
-            padding: {
-              value: '10px',
-              name: 'padding',
-              length: 4,
-            },
-            height: {
-              value: '200px',
-              name: '区块高度',
-            },
-            borderRadius: {
-              value: '6px',
-              name: '区块圆角',
-            },
-            background: {
-              value: '#fff',
-              name: '背景颜色',
-            },
-            border: {
-              value: '1px solid #e9e9e9',
-              name: '区块描边',
-              remark: '参数顺序参考左上角导航说明: 线的粗细, 线的属性(solid 为实线), 颜色;',
-              length: 3,
-            },
-          },
-        },
-        img: {
-          name: '图片区块',
-          style: {
-            height: {
-              value: '100%',
-              name: '图片的高度',
-            },
-            padding: {
-              value: '5%',
-              name: 'padding',
-              length: 4,
-            },
-            background: {
-              value: '#e9e9e9',
-              name: '背景颜色',
-            },
-          },
-          children: {
-            value: 'https://os.alipayobjects.com/rmsportal/IwAqwmFOJJVHsBY.svg',
-            name: '案例 logo',
-          },
-        },
-        content: {
-          name: '区块内容',
-          style: {
-            width: {
-              value: '100%',
-              name: '背景宽度',
-            },
+            ...offsetStyle({ width: '100%', bottom: '0px' }),
             ...textStyle({
               color: '#fff',
               lineHeight: '30px',
             }),
-            background: {
-              value: 'rgba(1, 155,240, 0.75)',
-              name: '背景颜色',
-            },
-            position: {
-              name: 'position',
-              value: 'absolute',
-              select: ['relative', 'absolute'],
-              remark: '参数有: "relative", "absolute"等, 改为 "relative" 为不浮动',
-            },
-            bottom: {
-              name: 'bottom',
-              value: '-30px',
-              remark: '不浮动请设为0',
-            },
-          },
-          children: {
-            name: '文字说明',
-            value: 'ant motion',
+            ...bgStyle({ color: 'rgba(1, 155,240, 0.75)', select: 'backgroundColor' }),
           },
         },
       },
-    },
-    content6_block2: {
-      style: {
-        width: {
-          value: '25%',
-          name: 'li的宽度',
-          remark: '一排几个在这调整，默认 4 个，宽为 25%;',
-        },
-        padding: {
-          value: '1%',
-          name: 'padding',
-          length: 4,
-        },
-      },
-      children: {
-        wrapper: {
-          name: '区块外壳',
-          style: {
-            padding: {
-              value: '10px',
-              name: 'padding',
-              length: 4,
-            },
-            height: {
-              value: '200px',
-              name: '区块高度',
-            },
-            borderRadius: {
-              value: '6px',
-              name: '区块圆角',
-            },
-            background: {
-              value: '#fff',
-              name: '背景颜色',
-            },
-            border: {
-              value: '1px solid #e9e9e9',
-              name: '区块描边',
-              remark: '参数顺序参考左上角导航说明: 线的粗细, 线的属性(solid 为实线), 颜色;',
-              length: 3,
-            },
+      stylePhone: {
+        ...offsetStyle({ width: '100%', top: '80px' }),
+        ...marginAndPaddingStyle({ margin: 'auto', padding: '20px 0' }),
+        '$>li': {
+          name: '区块 li 样式',
+          stylePhone: {
+            ...offsetStyle({ width: '100%' }),
+            ...marginAndPaddingStyle({ padding: '1%', margin: 'auto' }),
           },
         },
-        img: {
-          name: '图片区块',
-          style: {
-            height: {
-              value: '100%',
-              name: '图片的高度',
-            },
-            padding: {
-              value: '5%',
-              name: 'padding',
-              length: 4,
-            },
-            background: {
-              value: '#e9e9e9',
-              name: '背景颜色',
-            },
-          },
-          children: {
-            value: 'https://t.alipayobjects.com/images/rmsweb/T11aVgXc4eXXXXXXXX.svg',
-            name: '案例 logo',
+        '$ .content-wrapper': {
+          name: '全部区块外壳样式',
+          stylePhone: {
+            ...offsetStyle({ width: '100%', height: '220px' }),
+            ...borderStyle({ radius: '6px', width: '1px', borderStyle: 'solid', color: '#e9e9e9' }),
+            ...bgStyle({ color: '#fff', select: 'backgroundColor' }),
+            ...marginAndPaddingStyle({ padding: '1%' }),
           },
         },
-        content: {
-          name: '区块内容',
+        '$ .content-wrapper > span': {
+          name: '全部图片样式',
+          stylePhone: {
+            ...offsetStyle({ height: '168px' }),
+            ...marginAndPaddingStyle({ padding: '5%' }),
+            ...bgStyle({ color: '#e9e9e9', select: 'backgroundColor' }),
+          },
+        },
+        '$ .content-wrapper > p': {
+          name: '全部内容文字区块样式',
           style: {
-            width: {
-              value: '100%',
-              name: '背景宽度',
-            },
+            ...offsetStyle({ width: '100%' }),
             ...textStyle({
               color: '#fff',
               lineHeight: '30px',
             }),
-            background: {
-              value: 'rgba(1, 155,240, 0.75)',
-              name: '背景颜色',
-            },
-            position: {
-              name: 'position',
-              value: 'absolute',
-              select: ['relative', 'absolute'],
-              remark: '参数有: "relative", "absolute"等, 改为 "relative" 为不浮动',
-            },
-            bottom: {
-              name: 'bottom',
-              value: '-30px',
-              remark: '不浮动请设为0',
-            },
-          },
-          children: {
-            name: '文字说明',
-            value: 'ant Design',
+            ...bgStyle({ color: 'rgba(1, 155,240, 0.75)', select: 'backgroundColor' }),
           },
         },
-      },
-    },
-    content6_block3: {
-      style: {
-        width: {
-          value: '25%',
-          name: 'li的宽度',
-          remark: '一排几个在这调整，默认 4 个，宽为 25%;',
-        },
-        padding: {
-          value: '1%',
-          name: 'padding',
-          length: 4,
-        },
-      },
-      children: {
-        wrapper: {
-          name: '区块外壳',
+        '$ .content-wrapper:hover p': {
+          name: '全部内容区块 hover 样式',
           style: {
-            padding: {
-              value: '10px',
-              name: 'padding',
-              length: 4,
-            },
-            height: {
-              value: '200px',
-              name: '区块高度',
-            },
-            borderRadius: {
-              value: '6px',
-              name: '区块圆角',
-            },
-            background: {
-              value: '#fff',
-              name: '背景颜色',
-            },
-            border: {
-              value: '1px solid #e9e9e9',
-              name: '区块描边',
-              remark: '参数顺序参考左上角导航说明: 线的粗细, 线的属性(solid 为实线), 颜色;',
-              length: 3,
-            },
-          },
-        },
-        img: {
-          name: '图片区块',
-          style: {
-            height: {
-              value: '100%',
-              name: '图片的高度',
-            },
-            padding: {
-              value: '5%',
-              name: 'padding',
-              length: 4,
-            },
-            background: {
-              value: '#e9e9e9',
-              name: '背景颜色',
-            },
-          },
-          children: {
-            value: 'https://os.alipayobjects.com/rmsportal/IwAqwmFOJJVHsBY.svg',
-            name: '案例 logo',
-          },
-        },
-        content: {
-          name: '区块内容',
-          style: {
-            width: {
-              value: '100%',
-              name: '背景宽度',
-            },
+            ...offsetStyle({ width: '100%' }),
             ...textStyle({
               color: '#fff',
               lineHeight: '30px',
             }),
-            background: {
-              value: 'rgba(1, 155,240, 0.75)',
-              name: '背景颜色',
-            },
-            position: {
-              name: 'position',
-              value: 'absolute',
-              select: ['relative', 'absolute'],
-              remark: '参数有: "relative", "absolute"等, 改为 "relative" 为不浮动',
-            },
-            bottom: {
-              name: 'bottom',
-              value: '-30px',
-              remark: '不浮动请设为0',
-            },
-          },
-          children: {
-            name: '文字说明',
-            value: 'ant motion',
+            ...bgStyle({ color: 'rgba(1, 155,240, 0.75)', select: 'backgroundColor' }),
           },
         },
       },
     },
-    content6_block4: {
-      style: {
-        width: {
-          value: '25%',
-          name: 'li的宽度',
-          remark: '一排几个在这调整，默认 4 个，宽为 25%;',
-        },
-        padding: {
-          value: '1%',
-          name: 'padding',
-          length: 4,
-        },
-      },
-      children: {
-        wrapper: {
-          name: '区块外壳',
-          style: {
-            padding: {
-              value: '10px',
-              name: 'padding',
-              length: 4,
-            },
-            height: {
-              value: '200px',
-              name: '区块高度',
-            },
-            borderRadius: {
-              value: '6px',
-              name: '区块圆角',
-            },
-            background: {
-              value: '#fff',
-              name: '背景颜色',
-            },
-            border: {
-              value: '1px solid #e9e9e9',
-              name: '区块描边',
-              remark: '参数顺序参考左上角导航说明: 线的粗细, 线的属性(solid 为实线), 颜色;',
-              length: 3,
-            },
-          },
-        },
-        img: {
-          name: '图片区块',
-          style: {
-            height: {
-              value: '100%',
-              name: '图片的高度',
-            },
-            padding: {
-              value: '5%',
-              name: 'padding',
-              length: 4,
-            },
-            background: {
-              value: '#e9e9e9',
-              name: '背景颜色',
-            },
-          },
-          children: {
-            value: 'https://t.alipayobjects.com/images/rmsweb/T11aVgXc4eXXXXXXXX.svg',
-            name: '案例 logo',
-          },
-        },
-        content: {
-          name: '区块内容',
-          style: {
-            width: {
-              value: '100%',
-              name: '背景宽度',
-            },
-            ...textStyle({
-              color: '#fff',
-              lineHeight: '30px',
-            }),
-            background: {
-              value: 'rgba(1, 155,240, 0.75)',
-              name: '背景颜色',
-            },
-            position: {
-              name: 'position',
-              value: 'absolute',
-              select: ['relative', 'absolute'],
-              remark: '参数有: "relative", "absolute"等, 改为 "relative" 为不浮动',
-            },
-            bottom: {
-              name: 'bottom',
-              value: '-30px',
-              remark: '不浮动请设为0',
-            },
-          },
-          children: {
-            name: '文字说明',
-            value: 'ant Design',
-          },
-        },
-      },
-    },
-    content6_block5: {
-      style: {
-        width: {
-          value: '25%',
-          name: 'li的宽度',
-          remark: '一排几个在这调整，默认 4 个，宽为 25%;',
-        },
-        padding: {
-          value: '1%',
-          name: 'padding',
-          length: 4,
-        },
-      },
-      children: {
-        wrapper: {
-          name: '区块外壳',
-          style: {
-            padding: {
-              value: '10px',
-              name: 'padding',
-              length: 4,
-            },
-            height: {
-              value: '200px',
-              name: '区块高度',
-            },
-            borderRadius: {
-              value: '6px',
-              name: '区块圆角',
-            },
-            background: {
-              value: '#fff',
-              name: '背景颜色',
-            },
-            border: {
-              value: '1px solid #e9e9e9',
-              name: '区块描边',
-              remark: '参数顺序参考左上角导航说明: 线的粗细, 线的属性(solid 为实线), 颜色;',
-              length: 3,
-            },
-          },
-        },
-        img: {
-          name: '图片区块',
-          style: {
-            height: {
-              value: '100%',
-              name: '图片的高度',
-            },
-            padding: {
-              value: '5%',
-              name: 'padding',
-              length: 4,
-            },
-            background: {
-              value: '#e9e9e9',
-              name: '背景颜色',
-            },
-          },
-          children: {
-            value: 'https://os.alipayobjects.com/rmsportal/IwAqwmFOJJVHsBY.svg',
-            name: '案例 logo',
-          },
-        },
-        content: {
-          name: '区块内容',
-          style: {
-            width: {
-              value: '100%',
-              name: '背景宽度',
-            },
-            ...textStyle({
-              color: '#fff',
-              lineHeight: '30px',
-            }),
-            background: {
-              value: 'rgba(1, 155,240, 0.75)',
-              name: '背景颜色',
-            },
-            position: {
-              name: 'position',
-              value: 'absolute',
-              select: ['relative', 'absolute'],
-              remark: '参数有: "relative", "absolute"等, 改为 "relative" 为不浮动',
-            },
-            bottom: {
-              name: 'bottom',
-              value: '-30px',
-              remark: '不浮动请设为0',
-            },
-          },
-          children: {
-            name: '文字说明',
-            value: 'ant motion',
-          },
-        },
-      },
-    },
-    content6_block6: {
-      style: {
-        width: {
-          value: '25%',
-          name: 'li的宽度',
-          remark: '一排几个在这调整，默认 4 个，宽为 25%;',
-        },
-        padding: {
-          value: '1%',
-          name: 'padding',
-          length: 4,
-        },
-      },
-      children: {
-        wrapper: {
-          name: '区块外壳',
-          style: {
-            padding: {
-              value: '10px',
-              name: 'padding',
-              length: 4,
-            },
-            height: {
-              value: '200px',
-              name: '区块高度',
-            },
-            borderRadius: {
-              value: '6px',
-              name: '区块圆角',
-            },
-            background: {
-              value: '#fff',
-              name: '背景颜色',
-            },
-            border: {
-              value: '1px solid #e9e9e9',
-              name: '区块描边',
-              remark: '参数顺序参考左上角导航说明: 线的粗细, 线的属性(solid 为实线), 颜色;',
-              length: 3,
-            },
-          },
-        },
-        img: {
-          name: '图片区块',
-          style: {
-            height: {
-              value: '100%',
-              name: '图片的高度',
-            },
-            padding: {
-              value: '5%',
-              name: 'padding',
-              length: 4,
-            },
-            background: {
-              value: '#e9e9e9',
-              name: '背景颜色',
-            },
-          },
-          children: {
-            value: 'https://t.alipayobjects.com/images/rmsweb/T11aVgXc4eXXXXXXXX.svg',
-            name: '案例 logo',
-          },
-        },
-        content: {
-          name: '区块内容',
-          style: {
-            width: {
-              value: '100%',
-              name: '背景宽度',
-            },
-            ...textStyle({
-              color: '#fff',
-              lineHeight: '30px',
-            }),
-            background: {
-              value: 'rgba(1, 155,240, 0.75)',
-              name: '背景颜色',
-            },
-            position: {
-              name: 'position',
-              value: 'absolute',
-              select: ['relative', 'absolute'],
-              remark: '参数有: "relative", "absolute"等, 改为 "relative" 为不浮动',
-            },
-            bottom: {
-              name: 'bottom',
-              value: '-30px',
-              remark: '不浮动请设为0',
-            },
-          },
-          children: {
-            name: '文字说明',
-            value: 'ant Design',
-          },
-        },
-      },
-    },
-    content6_block7: {
-      style: {
-        width: {
-          value: '25%',
-          name: 'li的宽度',
-          remark: '一排几个在这调整，默认 4 个，宽为 25%;',
-        },
-        padding: {
-          value: '1%',
-          name: 'padding',
-          length: 4,
-        },
-      },
-      children: {
-        wrapper: {
-          name: '区块外壳',
-          style: {
-            padding: {
-              value: '10px',
-              name: 'padding',
-              length: 4,
-            },
-            height: {
-              value: '200px',
-              name: '区块高度',
-            },
-            borderRadius: {
-              value: '6px',
-              name: '区块圆角',
-            },
-            background: {
-              value: '#fff',
-              name: '背景颜色',
-            },
-            border: {
-              value: '1px solid #e9e9e9',
-              name: '区块描边',
-              remark: '参数顺序参考左上角导航说明: 线的粗细, 线的属性(solid 为实线), 颜色;',
-              length: 3,
-            },
-          },
-        },
-        img: {
-          name: '图片区块',
-          style: {
-            height: {
-              value: '100%',
-              name: '图片的高度',
-            },
-            padding: {
-              value: '5%',
-              name: 'padding',
-              length: 4,
-            },
-            background: {
-              value: '#e9e9e9',
-              name: '背景颜色',
-            },
-          },
-          children: {
-            value: 'https://os.alipayobjects.com/rmsportal/IwAqwmFOJJVHsBY.svg',
-            name: '案例 logo',
-          },
-        },
-        content: {
-          name: '区块内容',
-          style: {
-            width: {
-              value: '100%',
-              name: '背景宽度',
-            },
-            ...textStyle({
-              color: '#fff',
-              lineHeight: '30px',
-            }),
-            background: {
-              value: 'rgba(1, 155,240, 0.75)',
-              name: '背景颜色',
-            },
-            position: {
-              name: 'position',
-              value: 'absolute',
-              select: ['relative', 'absolute'],
-              remark: '参数有: "relative", "absolute"等, 改为 "relative" 为不浮动',
-            },
-            bottom: {
-              name: 'bottom',
-              value: '-30px',
-              remark: '不浮动请设为0',
-            },
-          },
-          children: {
-            name: '文字说明',
-            value: 'ant motion',
-          },
-        },
-      },
-    },
+    content6_block0: getLiBlock({
+      img: 'https://t.alipayobjects.com/images/rmsweb/T11aVgXc4eXXXXXXXX.svg',
+      content: 'Ant Design',
+    }),
+    content6_block1: getLiBlock({
+      img: 'https://zos.alipayobjects.com/rmsportal/faKjZtrmIbwJvVR.svg',
+      content: 'Ant Motion',
+    }),
+    content6_block2: getLiBlock({
+      img: 'https://t.alipayobjects.com/images/rmsweb/T11aVgXc4eXXXXXXXX.svg',
+      content: 'Ant Design',
+    }),
+    content6_block3: getLiBlock({
+      img: 'https://zos.alipayobjects.com/rmsportal/faKjZtrmIbwJvVR.svg',
+      content: 'Ant Motion',
+    }),
+    content6_block4: getLiBlock({
+      img: 'https://t.alipayobjects.com/images/rmsweb/T11aVgXc4eXXXXXXXX.svg',
+      content: 'Ant Design',
+    }),
+    content6_block5: getLiBlock({
+      img: 'https://zos.alipayobjects.com/rmsportal/faKjZtrmIbwJvVR.svg',
+      content: 'Ant Motion',
+    }),
+    content6_block6: getLiBlock({
+      img: 'https://t.alipayobjects.com/images/rmsweb/T11aVgXc4eXXXXXXXX.svg',
+      content: 'Ant Design',
+    }),
+    content6_block7: getLiBlock({
+      img: 'https://zos.alipayobjects.com/rmsportal/faKjZtrmIbwJvVR.svg',
+      content: 'Ant Motion',
+    }),
   },
 };

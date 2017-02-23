@@ -120,6 +120,8 @@ export function styleToCssString(_obj) {
     if (typeof item === 'object') {
       delete obj[key];
       strObj[key] = toStyleString(item.stylePhone || item.style);
+    } else if (key === 'backgroundImage') {
+      obj[key] = `url(${item})`;
     }
   });
   if (Object.keys(obj).length) {
