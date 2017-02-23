@@ -23,6 +23,8 @@ export default {
         ...bgStyle({
           image: 'https://zos.alipayobjects.com/rmsportal/gGlUMYGEIvjDOOw.jpg',
           attachment: 'fixed',
+          position: 'center',
+          size: 'cover',
         }),
         ...borderStyle({ width: '0px', style: 'none', color: '#666' }),
       },

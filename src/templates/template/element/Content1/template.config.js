@@ -34,11 +34,15 @@ export default {
           style: {
             ...bgStyle({
               image: 'https://zos.alipayobjects.com/rmsportal/hzPBTkqtFpLlWCi.jpg',
+              position: 'center',
+              size: 'cover',
             }),
           },
           stylePhone: {
             ...bgStyle({
               image: 'https://zos.alipayobjects.com/rmsportal/hzPBTkqtFpLlWCi.jpg',
+              position: 'center',
+              size: 'cover',
             }),
           },
         },
@@ -47,11 +51,15 @@ export default {
           style: {
             ...bgStyle({
               image: 'https://zos.alipayobjects.com/rmsportal/xHxWkcvaIcuAdQl.jpg',
+              position: 'center',
+              size: 'cover',
             }),
           },
           stylePhone: {
             ...bgStyle({
               image: 'https://zos.alipayobjects.com/rmsportal/xHxWkcvaIcuAdQl.jpg',
+              position: 'center',
+              size: 'cover',
             }),
           },
         },

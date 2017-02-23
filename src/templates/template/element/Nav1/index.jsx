@@ -82,7 +82,7 @@ class Header extends React.Component {
           className={`${this.props.className}-phone-nav-text`}
         >
           <Menu
-            defaultSelectedKeys={['a']}
+            defaultSelectedKeys={['0']}
             mode="inline"
             theme="dark"
             openKeys={(func && func.switchMenu) ? ['user'] : []}
@@ -96,7 +96,7 @@ class Header extends React.Component {
         className={`${this.props.className}-nav`}
       >
         <Menu
-          mode="horizontal" defaultSelectedKeys={['a']}
+          mode="horizontal" defaultSelectedKeys={['0']}
           id={`${this.props.id}-menu`}
           openKeys={(func && func.switchMenu) ? ['user'] : []}
         >
