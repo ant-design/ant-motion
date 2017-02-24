@@ -63,7 +63,7 @@ class Content extends React.Component {
           hideProps={{ h1: { reverse: true }, p: { reverse: true } }}
         >
           <TweenOne
-            animation={{ y: '+=30', opacity: 0, type: 'from' }}
+            animation={{ y: '+=30', opacity: 0, type: 'from', ease: 'easeOutQuad' }}
             component="h1"
             key="h1"
             reverseDelay={300}
@@ -72,7 +72,7 @@ class Content extends React.Component {
             {dataSource[`${name}_title`].children}
           </TweenOne>
           <TweenOne
-            animation={{ y: '+=30', opacity: 0, type: 'from', delay: 200 }}
+            animation={{ y: '+=30', opacity: 0, type: 'from', delay: 200, ease: 'easeOutQuad' }}
             component="p"
             key="p"
             reverseDelay={200}
@@ -85,7 +85,7 @@ class Content extends React.Component {
             component="ul"
             key="ul"
             enter={e => this.getEnterAnim(e, isMode)}
-            leave={{ y: '+=30', opacity: 0 }}
+            leave={{ y: '+=30', opacity: 0, ease: 'easeOutQuad' }}
             id={`${props.id}-ul`}
           >
             {childrenToRender}

@@ -7,7 +7,6 @@ class Content extends React.Component {
 
   static propTypes = {
     id: React.PropTypes.string,
-    className: React.PropTypes.string,
   };
 
   static defaultProps = {
@@ -17,63 +16,71 @@ class Content extends React.Component {
   getBlockChildren = (item, i) =>
     (<li
       key={i}
-      style={item.style}
+      id={`${this.props.id}-block${i}`}
     >
-      <span style={item.children.img.style}>
-        <img src={item.children.img.children} width="100%" />
+      <span>
+        <img src={item.img} width="100%" />
       </span>
-      <h2 style={item.children.title.style}>{item.children.title.children}</h2>
-      <p style={item.children.content.style}>{item.children.content.children}</p>
+      <h2>{item.title}</h2>
+      <p>{item.content}</p>
     </li>);
 
 
   render() {
+    const props = { ...this.props };
+    const isMode = props.isMode;
     const dataSource = [
-      &content7_block0&,
-      &content7_block1&,
-      &content7_block2&,
+      &content7_block0-children&,
+      &content7_block1-children&,
+      &content7_block2-children&,
     ];
     const ulChildren = dataSource.map(this.getBlockChildren);
+    delete props.isMode;
+    const queue = isMode ? 'bottom' : 'left';
+    const imgAnim = isMode ? { y: 30, opacity: 0, delay: 400, type: 'from', ease: 'easeOutQuad' }
+      : { x: 30, opacity: 0, type: 'from', ease: 'easeOutQuad' };
     return (
-      <div
-        {...this.props}
-        className="content-template-wrapper"
-        &content7-style&
-      >
+      <div {...props} className="content-template-wrapper content5-wrapper">
         <OverPack
-          className={`content-template ${this.props.className}`}
+          className={`content-template ${props.className}`}
           hideProps={{ img: { reverse: true } }}
-          location={this.props.id}
+          location={props.id}
         >
           <QueueAnim
-            className={`${this.props.className}-text`}
+            className={`${props.className}-text`}
             key="text"
-            type="left"
+            type={queue}
             leaveReverse
-            ease={['easeOutCubic', 'easeInCubic']}
-            &content7_textWrapper-style&
+            ease={['easeOutQuad', 'easeInQuad']}
+            id={`${props.id}-textWrapper`}
           >
             <h1
               key="h1"
-              &content7_title-style&
+              id={`${props.id}-title`}
             >
               &content7_title-children&
             </h1>
             <p
               key="p"
-              &content7_content-style&
+              id={`${props.id}-content`}
             >
               &content7_content-children&
             </p>
-            <QueueAnim component="ul" key="ul" type="left">
+            <QueueAnim
+              component="ul"
+              key="ul" type={queue}
+              id={`${props.id}-ul`}
+              ease="easeOutQuad"
+            >
               {ulChildren}
             </QueueAnim>
           </QueueAnim>
           <TweenOne
-            className={`${this.props.className}-img`}
+            className={`${props.className}-img`}
             key="img"
-            animation={{ x: 30, opacity: 0, type: 'from' }}
-            &content7_img-style&
+            animation={imgAnim}
+            id={`${props.id}-img`}
+            resetStyleBool
           >
             &content7_img-children&
           </TweenOne>
@@ -82,5 +89,6 @@ class Content extends React.Component {
     );
   }
 }
+
 
 export default Content;

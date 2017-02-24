@@ -122,7 +122,7 @@ export default {
         ...offsetStyle({ height: '100vh' }),
         ...bgStyle({ color: '#f3f3f3' }),
         ...borderStyle({ width: '0px', style: 'none', color: '#666' }),
-        '$ content4': {
+        '$ .content-template': {
           name: '内框样式',
           style: {
             ...offsetStyle({ width: '100%', maxWidth: '1200px', height: '100%' }),
@@ -132,7 +132,7 @@ export default {
       },
       stylePhone: {
         ...offsetStyle({ height: '2000px' }),
-        '$ content4': {
+        '$ .content-template': {
           name: '内框样式',
           style: {
             ...offsetStyle({ width: '90%' }),

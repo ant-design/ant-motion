@@ -84,15 +84,17 @@ export function getRect(dom) {
 function setProps(_data, key) {
   const item = _data[key];
   const data = _data;
-  if (typeof item !== 'object') {
+  // 是样式 style  直接退出；样式在 setStyle 里处理
+  if (typeof item !== 'object' || key.match(/style/i)) {
     return;
   }
   if ('value' in item) {
-    if (key === 'backgroundImage') {
+    /* if (key === 'backgroundImage') {
       data[key] = `url(${item.value})`;
     } else {
       data[key] = item.value;
-    }
+    }*/
+    data[key] = item.value;
   } else {
     Object.keys(data[key]).forEach(setProps.bind(this, data[key]));
   }
