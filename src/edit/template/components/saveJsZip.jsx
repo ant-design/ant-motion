@@ -55,10 +55,10 @@ const replaceData = (urlData, _configData, key) => {
     const urlItem = urlData && urlData[key];
     if (key === 'style' || key === 'stylePhone') {
       /* if (urlItem) {
-        configData[key] = urlItem;
-      } else {
-        delete configData[key];
-      }*/
+       configData[key] = urlItem;
+       } else {
+       delete configData[key];
+       }*/
       delete configData[key];
     } else {
       Object.keys(item).forEach(replaceData.bind(this, urlItem, item));
@@ -140,10 +140,11 @@ const jsToZip = () => {
   });
 
   // 编辑样式添加
-  templateStrObj.styleWeb = `\n@media screen and (min-width: 768px) {\n${templateStrObj.styleWeb}}`;
-  if (templateStrObj.stylePhone) {
-    templateStrObj.styleWeb += `\n@media screen and (max-width: 767px) {\n${templateStrObj.stylePhone}}`;
-  }
+  templateStrObj.styleWeb = templateStrObj.styleWeb ?
+    `\n@media screen and (min-width: 768px) {\n${templateStrObj.styleWeb}}` :
+    templateStrObj.styleWeb || '';
+  templateStrObj.styleWeb += templateStrObj.stylePhone ?
+    `\n@media screen and (max-width: 767px) {\n${templateStrObj.stylePhone}}` : '';
   zip.file('less/edit.css', templateStrObj.styleWeb);
 
   // 创建 less 里的 index.js;

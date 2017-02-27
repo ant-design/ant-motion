@@ -319,7 +319,8 @@ export default class EditView extends React.Component {
       switch (item.type) {
         case 'switch':
           child = (<Switch
-            size="small" onChange={(v) => {
+            size="small"
+            onChange={(v) => {
               this.onSwitchChange(v, key, k);
             }} defaultChecked={item.value}
           />);
@@ -327,7 +328,8 @@ export default class EditView extends React.Component {
         case 'page': {
           const readioChild = [];
           for (let i = 1; i <= item.total; i += 1) {
-            readioChild.push(<RadioButton value={i} key={i}>{i}</RadioButton>);
+            const value = item.values ? item.values[i - 1] : i;
+            readioChild.push(<RadioButton value={i} key={i}>{value}</RadioButton>);
           }
           child = (<RadioGroup
             size="small" value={item.value}
