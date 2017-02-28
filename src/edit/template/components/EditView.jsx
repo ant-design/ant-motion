@@ -286,7 +286,7 @@ export default class EditView extends React.Component {
           name = '内容编辑';
           break;
         case 'stylePhone':
-          name = '手机样式';
+          name = '样式编辑';
           break;
         default:
           return (<h2 key={key}>{data.name}</h2>);

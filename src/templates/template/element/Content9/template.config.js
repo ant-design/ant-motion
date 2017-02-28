@@ -1,4 +1,6 @@
 import {
+  marginAndPaddingStyle,
+  offsetStyle,
   textStyle,
   bgStyle,
   borderStyle,
@@ -8,6 +10,73 @@ const component = require('./index');
 const templateStr = require('!raw!./index.text');
 const less = require('!raw!./index.less');
 
+const getBlock = data => (
+  {
+    style: {
+      ...offsetStyle({ width: '33.33%' }),
+      ...marginAndPaddingStyle({ padding: '0 4%' }),
+      '.content7 $ .icon': {
+        name: '图片样式',
+        style: {
+          ...offsetStyle({ width: '100px', height: '100px' }),
+          ...marginAndPaddingStyle({ margin: 'auto' }),
+        },
+      },
+      '.content7 $ h3': {
+        name: '标题标式',
+        style: {
+          ...textStyle({ size: '1.17em', lineHeight: '32px', color: '#3e3e3e' }),
+          ...marginAndPaddingStyle({ margin: '10px auto' }),
+        },
+      },
+      '.content7 $ p': {
+        name: '内容样式',
+        style: {
+          ...textStyle({ size: '12px', lineHeight: '1.5em', color: '#666' }),
+        },
+      },
+    },
+    stylePhone: {
+      ...offsetStyle({ width: '100%', maxWidth: '250px' }),
+      ...marginAndPaddingStyle({ padding: '0', margin: '20px auto 40px' }),
+      '.content7 $ .icon': {
+        name: '图片样式',
+        stylePhone: {
+          ...offsetStyle({ width: '100px', height: '100px', maxWidth: '250px' }),
+          ...marginAndPaddingStyle({ margin: 'auto' }),
+        },
+      },
+      '.content7 $ h3': {
+        name: '标题样式',
+        stylePhone: {
+          ...textStyle({ size: '1.17em', lineHeight: '32px', color: '#3e3e3e' }),
+          ...marginAndPaddingStyle({ margin: '10px auto' }),
+        },
+      },
+      '.content7 $ p': {
+        name: '内容样式',
+        stylePhone: {
+          ...textStyle({ size: '12px', lineHeight: '1.5em', color: '#666' }),
+        },
+      },
+    },
+    children: {
+      icon: {
+        value: data.icon,
+        name: 'icon地址',
+      },
+      title: {
+        value: data.title,
+        name: '标题名称',
+      },
+      content: {
+        value: data.content,
+        name: '区块内容',
+      },
+    },
+  }
+);
+
 export default {
   component,
   templateStr,
@@ -15,35 +84,50 @@ export default {
   dataSource: {
     content9: {
       style: {
-        height: {
-          value: '500px',
-          name: '区块高度',
-        },
+        ...offsetStyle({ height: '500px' }),
         ...bgStyle(),
-        ...borderStyle(),
+        ...borderStyle({ width: '0px', style: 'none', color: '#666' }),
+        '$ .content-template': {
+          name: '内框样式',
+          style: {
+            ...offsetStyle({ width: '100%', maxWidth: '1200px', height: '100%' }),
+            ...marginAndPaddingStyle({ margin: 'auto' }),
+          },
+        },
+      },
+      stylePhone: {
+        ...offsetStyle({ width: '100%', height: '760px' }),
+        ...bgStyle(),
+        ...borderStyle({ width: '0px', style: 'none', color: '#666' }),
+        '$ .content-template': {
+          name: '内框样式',
+          style: {
+            ...offsetStyle({ width: '90%' }),
+            ...marginAndPaddingStyle({ margin: 'auto' }),
+          },
+        },
       },
     },
     content9_title: {
       style: {
-        width: {
-          value: '100%',
-          name: '区块宽度',
-        },
-        top: {
-          value: '15%',
-          name: '顶部距离',
-        },
+        ...offsetStyle({ width: '100%', top: '15%' }),
         ...textStyle({
           size: '32px',
           color: '#404040',
           align: 'center',
           lineHeight: '48px',
         }),
-        margin: {
-          value: 'auto',
-          name: 'margin',
-          length: 4,
-        },
+        ...marginAndPaddingStyle({ margin: 'auto' }),
+      },
+      stylePhone: {
+        ...offsetStyle({ width: '100%' }),
+        ...textStyle({
+          size: '24px',
+          color: '#404040',
+          align: 'center',
+          lineHeight: '48px',
+        }),
+        ...marginAndPaddingStyle({ margin: '40px auto 20px' }),
       },
       children: {
         name: '标题文案',
@@ -52,230 +136,83 @@ export default {
     },
     content9_contentWrapper: {
       style: {
-        width: {
-          value: '100%',
-          name: '区块宽度',
+        ...offsetStyle({ width: '100%', top: '25%' }),
+        ...marginAndPaddingStyle({ margin: '0' }),
+        '$ li': {
+          name: '全部 li 区块样式',
+          style: {
+            ...offsetStyle({ width: '33.33%' }),
+            ...marginAndPaddingStyle({ padding: '0 4%' }),
+          },
         },
-        top: {
-          value: '25%',
-          name: '顶部距离',
+        '$ .icon': {
+          name: '全部图片样式',
+          style: {
+            ...offsetStyle({ width: '100px', height: '100px' }),
+            ...marginAndPaddingStyle({ margin: 'auto' }),
+          },
         },
-        margin: {
-          value: '0',
-          name: 'margin',
-          length: 4,
+        '$ h3': {
+          name: '全部标题样式',
+          style: {
+            ...textStyle({ size: '1.17em', lineHeight: '32px', color: '#3e3e3e' }),
+            ...marginAndPaddingStyle({ margin: '10px auto' }),
+          },
         },
-        padding: {
-          value: '20px 0',
-          name: 'padding',
-          length: 4,
+        '$ p': {
+          name: '全部内容样式',
+          style: {
+            ...textStyle({ size: '12px', lineHeight: '1.5em', color: '#666' }),
+          },
         },
       },
-    },
-    content9_block0: {
-      name: '外框样式',
-      style: {
-        width: {
-          value: '33.33%',
-          name: '区块宽度',
-        },
-        padding: {
-          value: '0 4%',
-          name: 'padding',
-          length: 4,
-        },
-      },
-      children: {
-        icon: {
-          name: 'icon 区块',
-          style: {
-            width: {
-              value: '100px',
-              name: 'icon宽度',
-            },
-            height: {
-              value: '100px',
-              name: 'icon高度',
-            },
-            margin: {
-              value: 'auto',
-              name: 'margin',
-              length: 4,
-            },
-          },
-          children: {
-            value: 'https://zos.alipayobjects.com/rmsportal/WBnVOjtIlGWbzyQivuyq.png',
-            name: 'icon地址',
+      stylePhone: {
+        ...offsetStyle({ width: '100%' }),
+        ...marginAndPaddingStyle({ padding: '0', margin: '0' }),
+        '$ li': {
+          name: '全部 li 区块样式',
+          stylePhone: {
+            ...offsetStyle({ width: '100%', maxWidth: '250px' }),
+            ...marginAndPaddingStyle({ padding: '0', margin: '20px auto 40px' }),
           },
         },
-        title: {
-          name: '标题区块',
-          style: {
-            ...textStyle({
-              size: '14px',
-              align: 'center',
-            }),
-            margin: {
-              value: '10px 0',
-              name: 'margin',
-              length: 4,
-            },
-          },
-          children: {
-            value: '一站式业务接入',
-            name: '标题名称',
+        '$ .icon': {
+          name: '全部图片样式',
+          stylePhone: {
+            ...offsetStyle({ width: '100px', height: '100px' }),
+            ...marginAndPaddingStyle({ margin: 'auto' }),
           },
         },
-        content: {
-          name: '内容区块',
-          style: {
-            ...textStyle({
-              align: 'center',
-            }),
+        '$ h3': {
+          name: '全部标题样式',
+          stylePhone: {
+            ...textStyle({ size: '1.17em', lineHeight: '32px', color: '#3e3e3e' }),
+            ...marginAndPaddingStyle({ margin: '10px auto' }),
           },
-          children: {
-            value: '支付、结算、核算接入产品效率翻四倍',
-            name: '区块内容',
+        },
+        '$ p': {
+          name: '全部内容样式',
+          stylePhone: {
+            ...textStyle({ size: '12px', lineHeight: '1.5em', color: '#666' }),
           },
         },
       },
     },
-    content9_block1: {
-      name: '外框样式',
-      style: {
-        width: {
-          value: '33.33%',
-          name: '区块宽度',
-        },
-        padding: {
-          value: '0 4%',
-          name: 'padding',
-          length: 4,
-        },
-      },
-      children: {
-        icon: {
-          name: 'icon 区块',
-          style: {
-            width: {
-              value: '100px',
-              name: 'icon宽度',
-            },
-            height: {
-              value: '100px',
-              name: 'icon高度',
-            },
-            margin: {
-              value: 'auto',
-              name: 'margin',
-              length: 4,
-            },
-          },
-          children: {
-            value: 'https://zos.alipayobjects.com/rmsportal/YPMsLQuCEXtuEkmXTTdk.png',
-            name: 'icon地址',
-          },
-        },
-        title: {
-          name: '标题区块',
-          style: {
-            ...textStyle({
-              size: '14px',
-              align: 'center',
-            }),
-            margin: {
-              value: '10px 0',
-              name: 'margin',
-              length: 4,
-            },
-          },
-          children: {
-            value: '一站式事中风险监控',
-            name: '标题名称',
-          },
-        },
-        content: {
-          name: '内容区块',
-          style: {
-            ...textStyle({
-              align: 'center',
-            }),
-          },
-          children: {
-            value: '在所有需求配置环节事前风险控制和质量控制能力',
-            name: '区块内容',
-          },
-        },
-      },
-    },
-    content9_block2: {
-      name: '外框样式',
-      style: {
-        width: {
-          value: '33.33%',
-          name: '区块宽度',
-        },
-        padding: {
-          value: '0 4%',
-          name: 'padding',
-          length: 4,
-        },
-      },
-      children: {
-        icon: {
-          name: 'icon 区块',
-          style: {
-            width: {
-              value: '100px',
-              name: 'icon宽度',
-            },
-            height: {
-              value: '100px',
-              name: 'icon高度',
-            },
-            margin: {
-              value: 'auto',
-              name: 'margin',
-              length: 4,
-            },
-          },
-          children: {
-            value: 'https://zos.alipayobjects.com/rmsportal/EkXWVvAaFJKCzhMmQYiX.png',
-            name: 'icon地址',
-          },
-        },
-        title: {
-          name: '标题区块',
-          style: {
-            ...textStyle({
-              size: '14px',
-              align: 'center',
-            }),
-            margin: {
-              value: '10px 0',
-              name: 'margin',
-              length: 4,
-            },
-          },
-          children: {
-            value: '一站式数据运营',
-            name: '标题名称',
-          },
-        },
-        content: {
-          name: '内容区块',
-          style: {
-            ...textStyle({
-              align: 'center',
-            }),
-          },
-          children: {
-            value: '沉淀产品接入效率和运营小二工作效率数据',
-            name: '区块内容',
-          },
-        },
-      },
-    },
+    content9_block0: getBlock({
+      icon: 'https://zos.alipayobjects.com/rmsportal/WBnVOjtIlGWbzyQivuyq.png',
+      title: '一站式业务接入',
+      content: '支付、结算、核算接入产品效率翻四倍',
+    }),
+    content9_block1: getBlock({
+      icon: 'https://zos.alipayobjects.com/rmsportal/YPMsLQuCEXtuEkmXTTdk.png',
+      title: '一站式事中风险监控',
+      content: '在所有需求配置环节事前风险控制和质量控制能力',
+    }),
+    content9_block2: getBlock({
+      icon: 'https://zos.alipayobjects.com/rmsportal/EkXWVvAaFJKCzhMmQYiX.png',
+      title: '一站式数据运营',
+      content: '沉淀产品接入效率和运营小二工作效率数据',
+    }),
   },
 };
 
