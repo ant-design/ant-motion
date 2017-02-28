@@ -6,8 +6,18 @@
   text-align: center;
   height: 80px;
   color: @template-footer-text-color;
-  span{
-    display: inline-block;
-    line-height: 60px;
+  overflow: hidden;
+  span {
+    display: block;
+    margin: 20px auto 0;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .@{footer} {
+    > div {
+      width: 90%;
+      margin: auto;
+    }
   }
 }

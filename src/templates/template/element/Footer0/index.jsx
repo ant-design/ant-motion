@@ -20,7 +20,6 @@ class Footer extends React.Component {
       {...props}
       playScale={0.05}
       hideProps={{ footer: { reverse: true } }}
-      style={dataSource[name].style}
     >
       <TweenOne
         animation={{ y: '+=30', opacity: 0, type: 'from' }}
@@ -28,7 +27,6 @@ class Footer extends React.Component {
       >
         <span
           dangerouslySetInnerHTML={{ __html: dataSource[`${name}_content`].children }}
-          style={dataSource[`${name}_content`].style}
           id={`${props.id}-content`}
         />
       </TweenOne>
