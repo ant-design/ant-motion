@@ -76,7 +76,7 @@ export default {
         ...borderStyle({ width: '0px', style: 'none', color: '#666' }),
       },
       stylePhone: {
-        ...offsetStyle({ height: '750px' }),
+        ...offsetStyle({ height: '900px' }),
         ...bgStyle(),
         ...borderStyle({ width: '0px', style: 'none', color: '#666' }),
       },
