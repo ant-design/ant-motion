@@ -8,7 +8,6 @@ class Content extends React.Component {
 
   static propTypes = {
     id: React.PropTypes.string,
-    dataSource: React.PropTypes.object,
   };
 
   static defaultProps = {
@@ -26,60 +25,58 @@ class Content extends React.Component {
         const item = data[key];
         return (<li
           key={key}
-          style={item.style}
           id={`${this.props.id}-${key.split('_')[1]}`}
         >
-          <div className="content-wrapper" style={item.children.wrapper.style}>
-            <span style={item.children.img.style}>
-              <img src={item.children.img.children} height="100%" />
+          <div className="content-wrapper">
+            <span>
+              <img src={item.children.img} height="100%" />
             </span>
-            <p style={item.children.content.style}>
-              {item.children.content.children}
+            <p>
+              {item.children.content}
             </p>
           </div>
         </li>);
       });
 
-  getEnterAnim = (e) => {
+  getEnterAnim = (e, isMode) => {
     const index = e.index;
-    const delay = index % 4 * 100 + Math.floor(index / 4) * 100 + 300;
+    const delay = isMode ? index * 50 + 200 : index % 4 * 100 + Math.floor(index / 4) * 100 + 300;
     return { y: '+=30', opacity: 0, type: 'from', delay };
   };
 
   render() {
-    const dataSource = this.props.dataSource;
     const props = { ...this.props };
+    const dataSource = props.dataSource;
+    const isMode = props.isMode;
     const names = props.id.split('_');
     const name = `${names[0]}${names[1]}`;
     const childrenToRender = this.getChildrenToRender(dataSource);
     delete props.dataSource;
+    delete props.isMode;
     return (
       <div
         {...props}
         className="content-template-wrapper content4-wrapper"
-        style={dataSource[name].style}
       >
         <OverPack
           className={`content-template ${props.className}`}
           hideProps={{ h1: { reverse: true }, p: { reverse: true } }}
         >
           <TweenOne
-            animation={{ y: '+=30', opacity: 0, type: 'from' }}
+            animation={{ y: '+=30', opacity: 0, type: 'from', ease: 'easeOutQuad' }}
             component="h1"
             key="h1"
             reverseDelay={300}
             id={`${props.id}-title`}
-            style={dataSource[`${name}_title`].style}
           >
             {dataSource[`${name}_title`].children}
           </TweenOne>
           <TweenOne
-            animation={{ y: '+=30', opacity: 0, type: 'from', delay: 200 }}
+            animation={{ y: '+=30', opacity: 0, type: 'from', delay: 200, ease: 'easeOutQuad' }}
             component="p"
             key="p"
             reverseDelay={200}
             id={`${props.id}-content`}
-            style={dataSource[`${name}_content`].style}
           >
             {dataSource[`${name}_content`].children}
           </TweenOne>
@@ -87,10 +84,9 @@ class Content extends React.Component {
             className={`${props.className}-img-wrapper`}
             component="ul"
             key="ul"
-            enter={this.getEnterAnim}
-            leave={{ y: '+=30', opacity: 0 }}
+            enter={e => this.getEnterAnim(e, isMode)}
+            leave={{ y: '+=30', opacity: 0, ease: 'easeOutQuad' }}
             id={`${props.id}-ul`}
-            style={dataSource[`${name}_ul`].style}
           >
             {childrenToRender}
           </TweenOneGroup>

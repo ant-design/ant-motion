@@ -1,4 +1,30 @@
 import deepCopy from 'deepcopy';
+import toStyle from 'to-style';
+
+const toStyleString = toStyle.string;
+
+const colorLookup = {
+  aqua: 1,
+  lime: 1,
+  silver: 1,
+  black: 1,
+  maroon: 1,
+  teal: 1,
+  blue: 1,
+  navy: 1,
+  white: 1,
+  fuchsia: 1,
+  olive: 1,
+  yellow: 1,
+  orange: 1,
+  gray: 1,
+  purple: 1,
+  green: 1,
+  red: 1,
+  pink: 1,
+  cyan: 1,
+  transparent: 1,
+};
 
 export function getURLData(name, url) {
   const myUrl = decodeURIComponent(url || window.location.hash || '').replace('#', '');
@@ -30,20 +56,20 @@ export function mergeURLDataToDefault(urlData, defaultData) {
   return data;
 }
 
-export function ping(url, callback) {
-  const img = new window.Image();
-  let done;
-  const finish = (status) => {
-    if (!done) {
-      done = true;
-      img.src = '';
-      callback(status);
-    }
-  };
-  img.onload = () => finish('responded');
-  img.onerror = () => finish('error');
-  img.src = url;
-}
+/* export function ping(url, callback) {
+ const img = new window.Image();
+ let done;
+ const finish = (status) => {
+ if (!done) {
+ done = true;
+ img.src = '';
+ callback(status);
+ }
+ };
+ img.onload = () => finish('responded');
+ img.onerror = () => finish('error');
+ img.src = url;
+ }*/
 
 
 export function getRect(dom) {
@@ -58,15 +84,17 @@ export function getRect(dom) {
 function setProps(_data, key) {
   const item = _data[key];
   const data = _data;
-  if (typeof item !== 'object') {
+  // 是样式 style  直接退出；样式在 setStyle 里处理
+  if (typeof item !== 'object' || key.match(/style/i)) {
     return;
   }
   if ('value' in item) {
-    if (key === 'backgroundImage') {
+    /* if (key === 'backgroundImage') {
       data[key] = `url(${item.value})`;
     } else {
       data[key] = item.value;
-    }
+    }*/
+    data[key] = item.value;
   } else {
     Object.keys(data[key]).forEach(setProps.bind(this, data[key]));
   }
@@ -78,4 +106,47 @@ export function dataValueReplace(data) {
   }
   Object.keys(data).forEach(setProps.bind(this, data));
   return data;
+}
+
+export function isColorFuc(v) {
+  return /^rgb\(|rgba\(|hex\(/.test(v) ||
+    /(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i.test(v) ||
+    v in colorLookup;
+}
+
+export function styleToCssString(_obj) {
+  const strObj = {};
+  const obj = _obj || {};
+  Object.keys(obj).forEach((key) => {
+    const item = obj[key];
+    if (typeof item === 'object') {
+      delete obj[key];
+      strObj[key] = toStyleString(item.stylePhone || item.style);
+    } else if (key === 'backgroundImage') {
+      obj[key] = `url(${item})`;
+    }
+  });
+  if (Object.keys(obj).length) {
+    strObj.default = toStyleString(obj);
+  }
+  return strObj;
+}
+
+export function getWebOrPhoneCss(item, strObj, key) {
+  if (key === 'children') {
+    return;
+  }
+  const obj = strObj;
+  const cItem = item[key];
+  obj[key] = styleToCssString(cItem);
+}
+
+export function getStyleToString(cssName, data) {
+  let style = '';
+  Object.keys(data).forEach((key) => {
+    const cStyle = data[key];
+    const tStyle = key.replace(/\$/g, cssName);
+    style += `${key === 'default' ? cssName : tStyle} { ${cStyle} }\n`;
+  });
+  return style;
 }

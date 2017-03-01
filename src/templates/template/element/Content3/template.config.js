@@ -1,11 +1,15 @@
+import {
+  marginAndPaddingStyle,
+  offsetStyle,
+  textStyle,
+  bgStyle,
+  borderStyle,
+  floatStyle,
+} from '../../utils-style';
+
 const component = require('./index');
 const templateStr = require('!raw!./index.text');
 const less = require('!raw!./index.less');
-const style = require('../../utils-style');
-
-const bgStyle = style.bgStyleData;
-const borderStyle = style.borderStyleData;
-const textStyle = style.textStyleData;
 
 export default {
   component,
@@ -14,39 +18,57 @@ export default {
   dataSource: {
     content3: {
       style: {
-        height: {
-          value: '50vh',
-          name: '区块高度',
-        },
+        ...offsetStyle({ height: '50vh' }),
         ...bgStyle({
           imageRemark: '图片尺寸参考： 1920*540',
         }),
-        ...borderStyle(),
+        ...borderStyle({ width: '0px', style: 'none', color: '#666' }),
+        '$ .content-template': {
+          name: '区块内框',
+          style: {
+            ...offsetStyle({ width: '100%', maxWidth: '1200px' }),
+            ...marginAndPaddingStyle({ margin: 'auto' }),
+          },
+        },
+      },
+      stylePhone: {
+        ...offsetStyle({ height: '400px' }),
+        ...bgStyle({
+          imageRemark: '图片尺寸参考： 1920*540',
+          isMode: true,
+        }),
+        ...borderStyle({ width: '0px', style: 'none', color: '#666' }),
+        '$ .content-template': {
+          name: '区块内框',
+          stylePhone: {
+            ...offsetStyle({ width: '90%' }),
+            ...marginAndPaddingStyle({ margin: 'auto' }),
+          },
+        },
       },
     },
     content3_imgWrapper: {
       style: {
-        width: {
-          value: '40%',
-          name: '区块宽度',
-        },
-        lineHeight: {
-          value: '50vh',
-          name: '区块行高',
-          remark: '控制图片垂直居中元素',
-        },
+        ...offsetStyle({ width: '40%' }),
+      },
+      stylePhone: {
+        ...offsetStyle({ height: '200px', width: '100%' }),
+        ...marginAndPaddingStyle({ margin: '20px auto' }),
       },
     },
     content3_img: {
       style: {
-        width: {
-          value: '55%',
-          name: '图片宽度',
+        ...offsetStyle({ width: '55%', left: '10%', height: '50vh' }),
+        lineHeight: {
+          value: '50vh',
+          name: '区块行高',
+          remark: '控制图片垂直居中元素, 跟区块高度一样为居中',
         },
-        left: {
-          value: '10%',
-          name: '左边距离',
-        },
+      },
+      stylePhone: {
+        ...offsetStyle({ width: '180px', height: '200px', right: '0px', left: '0px' }),
+        ...textStyle({ lineHeight: '200px' }),
+        ...marginAndPaddingStyle({ margin: 'auto' }),
       },
       children: {
         name: '图片展示',
@@ -56,29 +78,28 @@ export default {
     },
     content3_textWrapper: {
       style: {
-        width: {
-          value: '55%',
-          name: '区块宽度',
-        },
-        margin: {
-          value: '0 5% 0 0',
-          name: 'margin',
-          length: 4,
-          remark: '为调整区块位置; 第一行为上右, 第二行为下左; 必须加单位',
-        },
+        ...offsetStyle({ width: '55%', height: '150px' }),
+      },
+      stylePhone: {
+        ...offsetStyle({ width: '100%', height: '140px' }),
+        ...marginAndPaddingStyle({ margin: 'auto auto 20px' }),
+        ...textStyle({ align: 'center' }),
       },
     },
     content3_title: {
       style: {
-        width: {
-          value: '75%',
-          name: '区块宽度',
-        },
+        ...offsetStyle({ width: '75%', top: '35%' }),
         ...textStyle({
           size: '32px',
           color: '#404040',
           align: 'left',
         }),
+        ...floatStyle('right'),
+      },
+      stylePhone: {
+        ...offsetStyle({ width: '100%' }),
+        ...textStyle({ size: '24px', color: '#404040', align: 'center' }),
+        ...marginAndPaddingStyle({ margin: '10px auto' }),
       },
       children: {
         name: '标题名称',
@@ -87,14 +108,19 @@ export default {
     },
     content3_content: {
       style: {
-        width: {
-          value: '75%',
-          name: '区块宽度',
-        },
+        ...offsetStyle({ width: '75%', top: '37%' }),
         ...textStyle({
           size: '12px',
+          color: '#666',
           align: 'left',
         }),
+        ...marginAndPaddingStyle({ margin: '20px auto auto' }),
+        ...floatStyle('right'),
+      },
+      stylePhone: {
+        ...offsetStyle({ width: '100%' }),
+        ...textStyle({ size: '12px', color: '#666', align: 'center' }),
+        ...marginAndPaddingStyle({ margin: '20px auto auto' }),
       },
       children: {
         name: '详细说明',

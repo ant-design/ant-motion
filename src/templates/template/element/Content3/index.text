@@ -5,57 +5,52 @@ import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
 
 class Content extends React.Component {
 
-  static propTypes = {
-    id: React.PropTypes.string,
-    className: React.PropTypes.string,
-  };
-
   static defaultProps = {
     className: 'content1',
   };
 
   render() {
+    const props = { ...this.props };
+    const isMode = props.isMode;
+    delete props.isMode;
+    const animType = {
+      queue: isMode ? 'bottom' : 'left',
+      one: isMode ? { y: '+=30', opacity: 0, type: 'from' }
+        : { x: '+=30', opacity: 0, type: 'from' },
+    };
     return (
       <div
-        {...this.props}
-        className="content-template-wrapper content-half-wrapper"
-        &content3-style&
+        {...props}
+        className={`content-template-wrapper content-half-wrapper ${props.className}-wrapper`}
       >
         <OverPack
-          className={`content-template ${this.props.className}`}
+          className={`content-template ${props.className}`}
           hideProps={{ img: { reverse: true } }}
-          location={this.props.id}
+          location={props.id}
         >
           <QueueAnim
-            type="left"
-            className={`${this.props.className}-text`}
+            type={animType.queue}
+            className={`${props.className}-text`}
             key="text"
             leaveReverse
             ease={['easeOutCubic', 'easeInCubic']}
-            &content3_testWrapper-style&
+            id={`${props.id}-textWrapper`}
           >
-            <h1
-              key="h1"
-              &content3_title-style&
-            >
+            <h1 key="h1" id={`${props.id}-title`}>
               &content3_title-children&
             </h1>
-            <p
-              key="p"
-              &content3_content-style&
-            >
+            <p key="p" id={`${props.id}-content`}>
               &content3_content-children&
             </p>
           </QueueAnim>
           <TweenOne
             key="img"
-            animation={{ x: '+=30', opacity: 0, type: 'from' }}
-            className={`${this.props.className}-img`}
-            &content3_imgWrapper-style&
+            animation={animType.one}
+            className={`${props.className}-img`}
+            id={`${props.id}-imgWrapper`}
+            resetStyleBool
           >
-            <span
-              &content3_img-style&
-            >
+            <span id={`${props.id}-img`}>
               &content3_img-children&
             </span>
           </TweenOne>
@@ -64,6 +59,5 @@ class Content extends React.Component {
     );
   }
 }
-
 
 export default Content;

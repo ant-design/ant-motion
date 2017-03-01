@@ -1,271 +1,178 @@
+import {
+  marginAndPaddingStyle,
+  offsetStyle,
+  boxShadowStyle,
+  textStyle,
+  bgStyle,
+  borderStyle,
+} from '../../utils-style';
+
 const component = require('./index');
 const templateStr = require('!raw!./index.text');
 const less = require('!raw!./index.less');
-const style = require('../../utils-style');
-
-const bgStyle = style.bgStyleData;
-const borderStyle = style.borderStyleData;
 
 export default {
   component,
   templateStr,
   less,
   dataSource: {
-    all: true,
     content1: {
-      name: '整个区块',
-      style: {
-        height: {
-          value: '100vh',
-          name: '区块高度',
-          remark: '请填写上单位 "px" 或 "vh", 如果在第一屏且导航位置为 relative, 一屏为 calc(100vh - 64px)',
+      func: {
+        name: '其它功能',
+        page: {
+          value: 1,
+          total: 2,
+          name: '显示当前面页',
+          type: 'page',
         },
-        ...borderStyle(),
       },
-    },
-    content1_block0: {
-      children: {
-        bg: {
+      style: {
+        ...offsetStyle({ height: '100vh' }),
+        ...borderStyle({ width: '0px', style: 'none', color: '#666' }),
+        '$ .bg0': {
           name: '第一屏背景',
           style: {
             ...bgStyle({
               image: 'https://zos.alipayobjects.com/rmsportal/hzPBTkqtFpLlWCi.jpg',
+              position: 'center',
+              size: 'cover',
+            }),
+          },
+          stylePhone: {
+            ...bgStyle({
+              image: 'https://zos.alipayobjects.com/rmsportal/hzPBTkqtFpLlWCi.jpg',
+              position: 'center',
+              size: 'cover',
+              isMode: true,
             }),
           },
         },
-        wrapper: {
-          name: '第一屏文字区块外壳',
-          style: {
-            width: {
-              value: '550px',
-              name: '内容宽度',
-            },
-            top: {
-              value: '20%',
-              name: '距顶部位置',
-              remark: '请填写上单位 "px" 或 "%" ',
-            },
-            left: {
-              value: '0',
-              name: '距左边位置',
-            },
-            right: {
-              value: '0',
-              name: '距右边位置',
-            },
-            margin: {
-              value: 'auto',
-              select: ['auto', 'inherit'],
-              name: 'margin',
-            },
-            textAlign: {
-              name: '文字对齐',
-              value: 'center',
-              select: ['center', 'left', 'right'],
-            },
-          },
-        },
-        title: {
-          name: '第一屏标题',
-          style: {
-            width: {
-              value: '350px',
-              name: '当前宽度',
-            },
-            left: {
-              value: '30px',
-              name: '距左边位置',
-            },
-            fontSize: {
-              value: '40px',
-              name: '文字大小',
-              remark: '如是图片不需要设置',
-            },
-            color: {
-              value: '#ffffff',
-              name: '文字颜色',
-              remark: '如是图片不需要设置',
-            },
-            textAlign: {
-              name: '文字对齐',
-              value: 'center',
-              select: ['center', 'left', 'right'],
-            },
-          },
-          children: {
-            value: 'https://zos.alipayobjects.com/rmsportal/HqnZZjBjWRbjyMr.png',
-            name: '图片标题',
-            remark: '如果不是图片结尾将自动转换成标题',
-          },
-        },
-        content: {
-          name: '第一屏内容',
-          style: {
-            fontSize: {
-              value: '14px',
-              name: '文字大小',
-            },
-            color: {
-              value: '#ffffff',
-              name: '文字颜色',
-            },
-            textAlign: {
-              name: '文字对齐',
-              value: 'center',
-              select: ['center', 'left', 'right'],
-            },
-            margin: {
-              name: 'margin',
-              value: '0px 0px 20px 0px',
-              length: 4,
-            },
-          },
-          children: {
-            value: '一个高效的页面动画解决方案',
-            name: '广告语',
-          },
-        },
-        button: {
-          name: '第一屏按钮',
-          style: {
-            color: {
-              value: '#ffffff',
-              name: '文字颜色',
-            },
-            backgroundColor: {
-              value: 'transparent',
-              name: '按钮颜色',
-            },
-            borderColor: {
-              value: '#fff',
-              name: '描边颜色',
-            },
-          },
-          children: {
-            value: 'Learn More',
-            name: '按钮文字',
-          },
-        },
-      },
-    },
-    content1_block1: {
-      children: {
-        bg: {
+        '$ .bg1': {
           name: '第二屏背景',
           style: {
             ...bgStyle({
               image: 'https://zos.alipayobjects.com/rmsportal/xHxWkcvaIcuAdQl.jpg',
+              position: 'center',
+              size: 'cover',
+            }),
+          },
+          stylePhone: {
+            ...bgStyle({
+              image: 'https://zos.alipayobjects.com/rmsportal/xHxWkcvaIcuAdQl.jpg',
+              position: 'center',
+              size: 'cover',
+              isMode: true,
             }),
           },
         },
-        wrapper: {
-          name: '第二屏文字区块外壳',
+      },
+    },
+    content1_wrapperBlock0: {
+      style: {
+        ...offsetStyle({ width: '550px', top: '20%', left: '0px', right: '0px' }),
+        ...marginAndPaddingStyle({ margin: 'auto' }),
+        ...textStyle({ align: 'center' }),
+      },
+    },
+    content1_titleBlock0: {
+      style: {
+        ...offsetStyle({ width: '350px', left: '30px' }),
+        ...textStyle({ size: '40px', color: '#fff', align: 'center' }),
+      },
+      children: {
+        value: 'https://zos.alipayobjects.com/rmsportal/HqnZZjBjWRbjyMr.png',
+        name: '图片标题',
+        remark: '如果不是图片结尾将自动转换成标题',
+      },
+    },
+    content1_contentBlock0: {
+      style: {
+        ...textStyle({ size: '14px', color: '#fff', align: 'center' }),
+        ...marginAndPaddingStyle({ margin: '0px 0px 20px 0px' }),
+      },
+      children: {
+        value: '一个高效的页面动画解决方案',
+        name: '广告语',
+      },
+    },
+    content1_buttonBlock0: {
+      style: {
+        ...textStyle({ color: '#fff' }),
+        ...borderStyle({ color: '#fff', radius: '4px' }),
+        ...bgStyle({ color: 'transparent', select: ['backgroundColor'] }),
+        '$:hover': {
+          name: 'hover 样式',
           style: {
-            width: {
-              value: '550px',
-              name: '内容宽度',
-            },
-            left: {
-              value: '0',
-              name: '距左边位置',
-            },
-            right: {
-              value: '0',
-              name: '距右边位置',
-            },
-            margin: {
-              value: 'auto',
-              select: ['auto', 'inherit'],
-              name: 'margin',
-            },
-            textAlign: {
-              name: '文字对齐',
-              value: 'center',
-              select: ['center', 'left', 'right'],
-            },
+            ...textStyle({ color: '#fff' }),
+            ...borderStyle({ color: '#fff' }),
+            ...bgStyle({ color: 'transparent', select: ['backgroundColor'] }),
+            ...boxShadowStyle('0 0 10px rgba(50,250,255,0.75)'),
+          },
+          stylePhone: {
+            ...textStyle({ color: '#fff' }),
+            ...borderStyle({ color: '#fff' }),
+            ...bgStyle({ color: 'transparent', select: ['backgroundColor'] }),
+            ...boxShadowStyle('0 0 10px rgba(50,250,255,0.75)'),
           },
         },
-        title: {
-          name: '第二屏标题',
+      },
+      children: {
+        value: 'Learn More',
+        name: '按钮文字',
+      },
+    },
+    content1_wrapperBlock1: {
+      style: {
+        ...offsetStyle({ width: '550px', top: '20%', left: '0px', right: '0px' }),
+        ...marginAndPaddingStyle({ margin: 'auto' }),
+        ...textStyle({ align: 'center' }),
+      },
+    },
+    content1_titleBlock1: {
+      style: {
+        ...offsetStyle({ width: '350px', left: '30px' }),
+        ...textStyle({ size: '40px', color: '#fff', align: 'center' }),
+      },
+      children: {
+        value: 'https://zos.alipayobjects.com/rmsportal/HqnZZjBjWRbjyMr.png',
+        name: '图片标题',
+        remark: '如果不是图片结尾将自动转换成标题',
+      },
+    },
+    content1_contentBlock1: {
+      style: {
+        ...textStyle({ size: '14px', color: '#fff', align: 'center' }),
+        ...marginAndPaddingStyle({ margin: '0px 0px 20px 0px' }),
+      },
+      children: {
+        value: '一个高效的页面动画解决方案',
+        name: '广告语',
+      },
+    },
+    content1_buttonBlock1: {
+      style: {
+        ...textStyle({ color: '#fff' }),
+        ...borderStyle({ color: '#fff', radius: '4px' }),
+        ...bgStyle({ color: 'transparent', select: ['backgroundColor'] }),
+        '$:hover': {
+          name: 'hover 样式',
           style: {
-            width: {
-              value: '350px',
-              name: '当前宽度',
-            },
-            left: {
-              value: '30px',
-              name: '距左边位置',
-            },
-            fontSize: {
-              value: '40px',
-              name: '文字大小',
-              remark: '如是图片不需要设置',
-            },
-            color: {
-              value: '#ffffff',
-              name: '文字颜色',
-              remark: '如是图片不需要设置',
-            },
-            textAlign: {
-              name: '文字对齐',
-              value: 'center',
-              select: ['center', 'left', 'right'],
-            },
+            ...textStyle({ color: '#fff' }),
+            ...borderStyle({ color: '#fff' }),
+            ...bgStyle({ color: 'transparent', select: ['backgroundColor'] }),
+            ...boxShadowStyle('0 0 10px rgba(50,250,255,0.75)'),
           },
-          children: {
-            value: 'https://zos.alipayobjects.com/rmsportal/HqnZZjBjWRbjyMr.png',
-            name: '图片标题',
-            remark: '如果不是图片结尾将自动转换成标题',
+          stylePhone: {
+            ...textStyle({ color: '#fff' }),
+            ...borderStyle({ color: '#fff' }),
+            ...bgStyle({ color: 'transparent', select: ['backgroundColor'] }),
+            ...boxShadowStyle('0 0 10px rgba(50,250,255,0.75)'),
           },
         },
-        content: {
-          name: '第二屏内容',
-          style: {
-            fontSize: {
-              value: '14px',
-              name: '文字大小',
-            },
-            color: {
-              value: '#ffffff',
-              name: '文字颜色',
-            },
-            textAlign: {
-              name: '文字对齐',
-              value: 'center',
-              select: ['center', 'left', 'right'],
-            },
-            margin: {
-              name: 'margin',
-              value: '0px 0px 20px 0px',
-              length: 4,
-            },
-          },
-          children: {
-            value: '一个高效的页面动画解决方案',
-            name: '广告语',
-          },
-        },
-        button: {
-          name: '第二屏按钮',
-          style: {
-            color: {
-              value: '#ffffff',
-              name: '文字颜色',
-            },
-            backgroundColor: {
-              value: 'transparent',
-              name: '按钮颜色',
-            },
-            borderColor: {
-              value: '#fff',
-              name: '描边颜色',
-            },
-          },
-          children: {
-            value: 'Learn More',
-            name: '按钮文字',
-          },
-        },
+      },
+      children: {
+        value: 'Learn More',
+        name: '按钮文字',
       },
     },
   },

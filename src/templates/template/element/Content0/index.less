@@ -7,11 +7,23 @@
   height: 100vh;
   position: relative;
   text-align: center;
-  background-image: url("https://zos.alipayobjects.com/rmsportal/gGlUMYGEIvjDOOw.jpg");
-  background-size: cover;
-  background-attachment: fixed;
-  background-position: center;
+  background: transparent;
   border-color: #666;
+  &:before {
+    background-image: url("https://zos.alipayobjects.com/rmsportal/gGlUMYGEIvjDOOw.jpg");
+    background-size: cover;
+    // background-attachment: fixed;
+    background-position: center;
+    position: fixed;
+    display: block;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    content: '';
+  }
   &-wrapper {
     display: inline-block;
     position: absolute;
@@ -71,5 +83,17 @@
     left: 50%;
     margin-left: -12px;
     color: @template-text-color-light;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .@{banner0} {
+    &-wrapper {
+      width: 90%;
+      .title {
+        width: 90%;
+        left: 0;
+      }
+    }
   }
 }

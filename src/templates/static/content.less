@@ -4,21 +4,23 @@
   background: #fff;
   height: 100vh;
   border-color: #666;
+  position: relative;
   // min-height: 685px;
   // align-items: center;
   // display: flex;
-  & .@{content} {
+  .@{content} {
     width: 100%;
     max-width: 1200px;
     height: 100%;
     margin: auto;
     position: relative;
-    & h1 {
+    h1 {
       font-size: 32px;
       font-weight: normal;
       color: #404040;
+      line-height: 48px;
     }
-    & > p {
+    > p {
       font-size: 12px;
       margin: 20px auto;
     }
@@ -28,4 +30,18 @@
 .content-half-wrapper {
   height: 50vh;
   // min-height: 342px;
+}
+
+@media screen and (max-width: 414px) {
+  .@{content}-wrapper {
+    .@{content} {
+      // width: 90%;
+      h1 {
+        font-size: 24px;
+      }
+      /*h1, > p {
+        text-align: center;
+      }*/
+    }
+  }
 }

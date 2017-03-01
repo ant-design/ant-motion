@@ -5,83 +5,85 @@ import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
 
 class Content extends React.Component {
 
-  static propTypes = {
-    id: React.PropTypes.string,
-  };
-
   static defaultProps = {
     className: 'content2',
   };
 
-  getDelay = e => e.index % 3 * 100 + Math.floor(e.index / 3) * 100 + 200;
+  getDelay = e => e % 3 * 100 + Math.floor(e / 3) * 100 + 300;
 
   render() {
+    const props = { ...this.props };
+    delete props.isMode;
+    const oneAnim = { y: '+=30', opacity: 0, type: 'from', ease: 'easeOutQuad' };
     const blockArray = [
-      &content4_block0&,
-      &content4_block1&,
-      &content4_block2&,
-      &content4_block3&,
-      &content4_block4&,
-      &content4_block5&,
+      &content4_block0-children&,
+      &content4_block1-children&,
+      &content4_block2-children&,
+      &content4_block3-children&,
+      &content4_block4-children&,
+      &content4_block5-children&,
     ];
     const children = blockArray.map((item, i) => {
-      const children = item.children;
-      const styleObj = item.style || {};
-      return (<li
+      const id = `block${i}`;
+      const delay = this.getDelay(i);
+      const liAnim = { opacity: 0, type: 'from', ease: 'easeOutQuad', delay };
+      const childrenAnim = { ...liAnim, x: '+=10', delay: delay + 100,};
+      return (<TweenOne
+        component="li"
+        animation={liAnim}
         key={i}
-        style={{ left: `${i % 3 * 33.33}%`, top: `${Math.floor(i / 3) * 200}px`, ...styleObj }}
+        id={`${props.id}-${id}`}
       >
         <TweenOne
-          animation={{ x: '-=10', opacity: 0, type: 'from' }}
+          animation={{ x: '-=10', opacity: 0, type: 'from', ease: 'easeOutQuad' }}
           className="img"
           key="img"
-          style={children.icon.style}
         >
-          <img src={children.icon.children} width="100%" />
+          <img src={item.icon} width="100%" />
         </TweenOne>
-        <QueueAnim delay={100} leaveReverse key="text" className="text">
-          <h1 key="h1" style={children.title.style}>{children.title.children}</h1>
-          <p key="p" style={children.content.style}>{children.content.children}</p>
-        </QueueAnim>
-      </li>);
+        <div className="text">
+          <TweenOne key="h1" animation={childrenAnim} component="h1">
+            {item.title}
+          </TweenOne>
+          <TweenOne key="p" animation={{ ...childrenAnim, delay: delay + 200 }} component="p">
+            {item.content}
+          </TweenOne>
+        </div>
+      </TweenOne>);
     });
-    const titleAnim = { y: '+=30', opacity: 0, type: 'from' };
     return (
-      <div
-        {...this.props}
-        className="content-template-wrapper"
-        &content4-style&
-      >
+      <div {...props} className={`content-template-wrapper ${props.className}-wrapper`}>
         <OverPack
-          className={`content-template ${this.props.className}`}
+          className={`content-template ${props.className}`}
           hideProps={{ h1: { reverse: true }, p: { reverse: true } }}
-          location={this.props.id}
+          location={props.id}
         >
           <TweenOne
             key="h1"
-            animation={titleAnim}
+            animation={oneAnim}
             component="h1"
-            &content4_title-style&
+            id={`${props.id}-title`}
+            reverseDelay={100}
           >
-            &content4_title-children&
+             &content4_title-children&
           </TweenOne>
           <TweenOne
             key="p"
-            animation={titleAnim}
+            animation={{ ...oneAnim, delay: 100 }}
             component="p"
-            &content4_titleContent-style&
+            id={`${props.id}-titleContent`}
           >
             &content4_titleContent-children&
           </TweenOne>
           <QueueAnim
             key="ul"
-            component="ul"
-            leaveReverse
             type="bottom"
-            interval={0}
-            delay={this.getDelay}
+            className={`${props.className}-contentWrapper`}
+            id={`${props.id}-contentWrapper`}
           >
-            {children}
+            <ul key="ul">
+              {children}
+            </ul>
           </QueueAnim>
         </OverPack>
       </div>

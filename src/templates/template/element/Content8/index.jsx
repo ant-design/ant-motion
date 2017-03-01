@@ -12,67 +12,96 @@ class Content extends React.Component {
   static propTypes = {
     className: React.PropTypes.string,
     id: React.PropTypes.string,
-    dataSource: React.PropTypes.object,
   };
 
   static defaultProps = {
     className: 'content6',
   };
 
-  getBlockChildren = data =>
-    Object.keys(data).filter(key => key.match('block'))
-      .sort((a, b) => {
-        const aa = Number(a.replace(/[^0-9]/ig, ''));
-        const bb = Number(b.replace(/[^0-9]/ig, ''));
-        return aa - bb;
-      })
-      .map((key, i) => {
-        const item = data[key];
-        return (
-          <TabPane
-            key={key}
-            tab={(<span
-              className={`${this.props.className}-tag`}
-              id={`${this.props.id}-${key.split('_')[1]}`}
-            >
-              <i><img src={item.children.icon.children} width="100%" /></i>
-              {item.children.tag.children}
-            </span>)}
-          >
-            <TweenOne
-              animation={{ x: -30, delay: 300, opacity: 0, type: 'from' }}
-              className={`${this.props.className}-text`}
-              style={item.children.content.style}
-              dangerouslySetInnerHTML={{ __html: item.children.content.children }}
-            />
-            <TweenOne
-              animation={{ x: 30, delay: 400, opacity: 0, type: 'from' }}
-              className={`${this.props.className}-img`}
-              style={item.children.img.style}
-            >
-              <img src={item.children.img.children} width="100%" />
-            </TweenOne>
-          </TabPane>
-        );
-      });
+  constructor(props) {
+    super(props);
+    this.state = {
+      show: 0,
+    };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const dataSource = nextProps.dataSource;
+    const names = nextProps.id.split('_');
+    const name = `${names[0]}${names[1]}`;
+    const func = dataSource[`${name}_tabs`].func || {};
+    this.setState({
+      show: (func.page - 1) || 0,
+    });
+  }
+
+  onChange = (key) => {
+    this.setState({ show: parseFloat(key) });
+  }
+
+  getBlockChildren = (name, item, i) => {
+    const tag = item[`${name}_tagBlock${i}`];
+    const img = item[`${name}_imgBlock${i}`];
+    const text = item[`${name}_textBlock${i}`];
+    return (
+      <TabPane
+        key={i}
+        tab={(<span
+          className={`${this.props.className}-tag`}
+          id={`${this.props.id}-tagBlock${i}`}
+        >
+          <i><img src={tag.children.icon} width="100%" /></i>
+          {tag.children.tag}
+        </span>)}
+      >
+        <TweenOne.TweenOneGroup
+          enter={{ y: 30, delay: 300, opacity: 0, type: 'from', ease: 'easeOutQuad' }}
+          leave={null}
+          component=""
+        >
+          {this.state.show === i && (
+            <div key="content">
+              <div
+                className={`${this.props.className}-img`}
+                id={`${this.props.id}-imgBlock${i}`}
+              >
+                <img src={img.children} width="100%" />
+              </div>
+              <div
+                className={`${this.props.className}-text`}
+                id={`${this.props.id}-textBlock${i}`}
+                dangerouslySetInnerHTML={{ __html: text.children }}
+              />
+            </div>)}
+        </TweenOne.TweenOneGroup>
+      </TabPane>
+    );
+  };
 
   render() {
-    const dataSource = this.props.dataSource;
     const props = { ...this.props };
+    const dataSource = props.dataSource;
     const names = props.id.split('_');
     const name = `${names[0]}${names[1]}`;
     delete props.dataSource;
-    const tabsChildren = this.getBlockChildren(dataSource);
+    delete props.isMode;
+    const childrenData = [];
+    Object.keys(dataSource).filter(key => key.match('Block')).forEach((key) => {
+      const keys = key.split('Block');
+      const i = keys[1];
+      const t = childrenData[i] = childrenData[i] || {};
+      t[key] = dataSource[key];
+    });
+    const tabsChildren = childrenData.map((item, i) => this.getBlockChildren(name, item, i));
     return (
       <div
         {...props}
-        className={`content-template-wrapper ${this.props.className}-wrapper`}
-        style={dataSource[name].style}
+        className={`content-template-wrapper ${props.className}-wrapper`}
       >
         <OverPack
           className={`content-template ${props.className}`}
           hideProps={{ h1: { reverse: true }, p: { reverse: true } }}
-          location={this.props.id}
+          location={props.id}
         >
           <TweenOne
             animation={{ y: '+=30', opacity: 0, type: 'from' }}
@@ -80,7 +109,6 @@ class Content extends React.Component {
             key="h1"
             reverseDelay={200}
             id={`${props.id}-title`}
-            style={dataSource[`${name}_title`].style}
           >
             {dataSource[`${name}_title`].children}
           </TweenOne>
@@ -90,7 +118,6 @@ class Content extends React.Component {
             key="p"
             reverseDelay={100}
             id={`${props.id}-content`}
-            style={dataSource[`${name}_content`].style}
           >
             {dataSource[`${name}_content`].children}
           </TweenOne>
@@ -99,8 +126,9 @@ class Content extends React.Component {
             enter={{ y: 30, opacity: 0, delay: 200, type: 'from' }}
             leave={{ y: 30, opacity: 0 }}
             className={`${props.className}-tabs`}
+            id={`${props.id}-tabs`}
           >
-            <Tabs key="tabs">
+            <Tabs key="tabs" onChange={this.onChange} activeKey={`${this.state.show}`}>
               {tabsChildren}
             </Tabs>
           </TweenOne.TweenOneGroup>

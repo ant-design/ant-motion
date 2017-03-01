@@ -1,11 +1,16 @@
+import {
+  marginAndPaddingStyle,
+  offsetStyle,
+  textStyle,
+  bgStyle,
+  borderStyle,
+  boxShadowStyle,
+} from '../../utils-style';
+
 const component = require('./index');
 const templateStr = require('!raw!./index.text');
 const less = require('!raw!./index.less');
-const style = require('../../utils-style');
 
-const bgStyle = style.bgStyleData;
-const borderStyle = style.borderStyleData;
-const textStyle = style.textStyleData;
 
 export default {
   component,
@@ -14,39 +19,30 @@ export default {
   dataSource: {
     content5: {
       style: {
-        height: {
-          value: '100vh',
-          name: '区块高度',
-          remark: '请填写上单位 "px" 或 "vh", 如果在第一屏且导航没加 fixed, 一屏为 calc(100vh - 64px)',
-        },
+        ...offsetStyle({ height: '100vh' }),
         ...bgStyle(),
-        ...borderStyle(),
+        ...borderStyle({ width: '0px', style: 'none', color: '#666' }),
+      },
+      stylePhone: {
+        ...offsetStyle({ height: '350px' }),
+        ...bgStyle({ isMode: true }),
+        ...borderStyle({ width: '0px', style: 'none', color: '#666' }),
       },
     },
     content5_video: {
       style: {
-        width: {
-          value: '90%',
-          name: '视频宽度',
-        },
-        maxWidth: {
-          value: '800px',
-          name: '最大宽度',
-        },
-        top: {
-          value: '20%',
-          name: '顶部距离',
-        },
-        boxShadow: {
-          value: '0 2px 6px rgba(0,0,0,0.2)',
-          name: '区块阴影',
-          remark: '参数: x y blur color;',
-          length: 4,
-        },
-        borderRadius: {
-          value: '6px',
-          name: '区块圆角',
-        },
+        ...offsetStyle({ width: '90%', maxWidth: '800px', top: '20%' }),
+        ...boxShadowStyle('0 2px 6px rgba(0,0,0,0.2)'),
+        ...borderStyle({ radius: '6px' }),
+      },
+      stylePhone: {
+        ...offsetStyle({ width: '90%', maxWidth: '800px', top: '20%' }),
+        ...boxShadowStyle('0 2px 6px rgba(0,0,0,0.2)'),
+        ...borderStyle({ radius: '6px' }),
+        ...bgStyle({
+          image: 'https://zos.alipayobjects.com/rmsportal/HZgzhugQZkqUwBVeNyfz.jpg',
+          select: 'backgroundImage',
+        }),
       },
       children: {
         value: 'https://os.alipayobjects.com/rmsportal/EejaUGsyExkXyXr.mp4',
@@ -55,25 +51,24 @@ export default {
     },
     content5_title: {
       style: {
-        width: {
-          value: '100%',
-          name: '区块宽度',
-        },
-        top: {
-          value: '10%',
-          name: '顶部距离',
-        },
+        ...offsetStyle({ width: '100%', top: '10%' }),
         ...textStyle({
           size: '32px',
           color: '#404040',
           align: 'center',
           lineHeight: '48px',
         }),
-        margin: {
-          value: 'auto',
-          name: 'margin',
-          length: 4,
-        },
+        ...marginAndPaddingStyle({ margin: 'auto' }),
+      },
+      stylePhone: {
+        ...offsetStyle({ width: '100%', top: '10%' }),
+        ...textStyle({
+          size: '24px',
+          color: '#404040',
+          align: 'center',
+          lineHeight: '48px',
+        }),
+        ...marginAndPaddingStyle({ margin: 'auto' }),
       },
       children: {
         value: '蚂蚁金融云提供专业的服务',
@@ -84,12 +79,11 @@ export default {
       style: {
         ...textStyle({
           size: '12px',
+          align: 'center',
+          color: '#666',
           lineHeight: '24px',
         }),
-        maxWidth: {
-          value: '600px',
-          name: '最大宽度',
-        },
+        ...offsetStyle({ maxWidth: '600px', width: '100%' }),
       },
       children: {
         value: '科技想象力，金融创造力',

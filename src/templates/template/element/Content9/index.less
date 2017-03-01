@@ -21,7 +21,7 @@
       padding: 0 4%;
       display: inline-block;
       text-align: center;
-      &.queue-anim-leaving{
+      &.queue-anim-leaving {
         position: relative !important;
       }
       .icon {
@@ -39,3 +39,27 @@
   }
 }
 
+@media screen and (max-width: 767px) {
+  .@{content7}-wrapper {
+    height: 760px;
+    .@{content7} {
+      width: 90%;
+      max-width: 100%;
+      > h1{
+        top: auto;
+        margin: 40px auto 20px;
+      }
+      > ul {
+        top: auto;
+        padding: 0;
+        > li{
+          width: 100%;
+          max-width: 250px;
+          display: block;
+          margin: 20px auto 40px;
+          padding: 0;
+        }
+      }
+    }
+  }
+}

@@ -7,23 +7,20 @@ import './index.less';
 
 class Content extends React.Component {
 
-  static propTypes = {
-    id: React.PropTypes.string,
-    dataSource: React.PropTypes.object,
-  };
-
   static defaultProps = {
     className: 'content2',
   };
 
-  getDelay = e => e.index % 3 * 100 + Math.floor(e.index / 3) * 100 + 200;
+  getDelay = e => e % 3 * 100 + Math.floor(e / 3) * 100 + 300;
 
   render() {
-    const dataSource = this.props.dataSource;
     const props = { ...this.props };
+    const dataSource = props.dataSource;
     const names = props.id.split('_');
     const name = `${names[0]}${names[1]}`;
     delete props.dataSource;
+    delete props.isMode;
+    const oneAnim = { y: '+=30', opacity: 0, type: 'from', ease: 'easeOutQuad' };
     const children = Object.keys(dataSource).filter(key => key.match('block'))
       .sort((a, b) => {
         const aa = Number(a.replace(/[^0-9]/ig, ''));
@@ -33,30 +30,35 @@ class Content extends React.Component {
       .map((key, i) => {
         const item = dataSource[key];
         const childrenObj = item.children;
-        const styleObj = item.style || {};
         const id = key.split('_')[1];
-        return (<li
+        const delay = this.getDelay(i);
+        const liAnim = { opacity: 0, type: 'from', ease: 'easeOutQuad', delay };
+        const childrenAnim = { ...liAnim, x: '+=10', delay: delay + 100 };
+        return (<TweenOne
+          component="li"
+          animation={liAnim}
           key={i}
-          style={{ left: `${i % 3 * 33.33}%`, top: `${Math.floor(i / 3) * 200}px`, ...styleObj }}
-          id={`${this.props.id}-${id}`}
+          id={`${props.id}-${id}`}
         >
           <TweenOne
-            animation={{ x: '-=10', opacity: 0, type: 'from' }}
+            animation={{ x: '-=10', opacity: 0, type: 'from', ease: 'easeOutQuad' }}
             className="img"
             key="img"
-            style={childrenObj.icon.style}
           >
-            <img src={childrenObj.icon.children} width="100%" />
+            <img src={childrenObj.icon} width="100%" />
           </TweenOne>
-          <QueueAnim delay={100} leaveReverse key="text" className="text">
-            <h1 key="h1" style={childrenObj.title.style}>{childrenObj.title.children}</h1>
-            <p key="p" style={childrenObj.content.style}>{childrenObj.content.children}</p>
-          </QueueAnim>
-        </li>);
+          <div className="text">
+            <TweenOne key="h1" animation={childrenAnim} component="h1">
+              {childrenObj.title}
+            </TweenOne>
+            <TweenOne key="p" animation={{ ...childrenAnim, delay: delay + 200 }} component="p">
+              {childrenObj.content}
+            </TweenOne>
+          </div>
+        </TweenOne>);
       });
-    const titleAnim = { y: '+=30', opacity: 0, type: 'from' };
     return (
-      <div {...props} className="content-template-wrapper" style={dataSource[name].style}>
+      <div {...props} className={`content-template-wrapper ${props.className}-wrapper`}>
         <OverPack
           className={`content-template ${props.className}`}
           hideProps={{ h1: { reverse: true }, p: { reverse: true } }}
@@ -64,31 +66,30 @@ class Content extends React.Component {
         >
           <TweenOne
             key="h1"
-            animation={titleAnim}
+            animation={oneAnim}
             component="h1"
-            id={`${this.props.id}-title`}
-            style={dataSource[`${name}_title`].style}
+            id={`${props.id}-title`}
+            reverseDelay={100}
           >
             {dataSource[`${name}_title`].children}
           </TweenOne>
           <TweenOne
             key="p"
-            animation={titleAnim}
+            animation={{ ...oneAnim, delay: 100 }}
             component="p"
-            id={`${this.props.id}-titleContent`}
-            style={dataSource[`${name}_titleContent`].style}
+            id={`${props.id}-titleContent`}
           >
             {dataSource[`${name}_titleContent`].children}
           </TweenOne>
           <QueueAnim
             key="ul"
-            component="ul"
-            leaveReverse
             type="bottom"
-            interval={0}
-            delay={this.getDelay}
+            className={`${props.className}-contentWrapper`}
+            id={`${props.id}-contentWrapper`}
           >
-            {children}
+            <ul key="ul">
+              {children}
+            </ul>
           </QueueAnim>
         </OverPack>
       </div>

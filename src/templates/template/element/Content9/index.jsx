@@ -9,7 +9,6 @@ class Content extends React.Component {
 
   static propTypes = {
     id: React.PropTypes.string,
-    dataSource: React.PropTypes.object,
   };
 
   static defaultProps = {
@@ -26,28 +25,28 @@ class Content extends React.Component {
       .map((key, i) => {
         const item = data[key];
         return (
-          <li key={i} style={item.style} id={`${this.props.id}-${key.split('_')[1]}`}>
-            <div className="icon" style={item.children.icon.style}>
-              <img src={item.children.icon.children} width="100%" />
+          <li key={i} id={`${this.props.id}-${key.split('_')[1]}`}>
+            <div className="icon">
+              <img src={item.children.icon} width="100%" />
             </div>
-            <h3 style={item.children.title.style}>{item.children.title.children}</h3>
-            <p style={item.children.content.style}>{item.children.content.children}</p>
+            <h3>{item.children.title}</h3>
+            <p>{item.children.content}</p>
           </li>
         );
       });
 
   render() {
-    const dataSource = this.props.dataSource;
     const props = { ...this.props };
+    const dataSource = props.dataSource;
     const names = props.id.split('_');
     const name = `${names[0]}${names[1]}`;
     delete props.dataSource;
+    delete props.isMode;
     const listChildren = this.getBlockChildren(dataSource);
     return (
       <div
         {...props}
         className={`content-template-wrapper ${props.className}-wrapper`}
-        style={dataSource[name].style}
       >
         <OverPack
           className={`content-template ${props.className}`}
@@ -60,14 +59,12 @@ class Content extends React.Component {
             key="h1"
             reverseDelay={300}
             id={`${props.id}-title`}
-            style={dataSource[`${name}_title`].style}
           >
             {dataSource[`${name}_title`].children}
           </TweenOne>
           <QueueAnim
             component="ul" type="bottom" key="block" leaveReverse
             id={`${props.id}-contentWrapper`}
-            style={dataSource[`${name}_contentWrapper`].style}
           >
             {listChildren}
           </QueueAnim>

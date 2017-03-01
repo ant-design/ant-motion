@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { Button, Icon, Modal, message } from 'antd';
+import { Button, Icon, Modal, message, Tooltip } from 'antd';
 import CopyToClipboard from 'react-copy-to-clipboard';
 import saveJsZip from './saveJsZip';
 
@@ -11,10 +11,14 @@ class NavController extends React.Component {
     className: PropTypes.string,
     urlHash: PropTypes.string,
     urlData: PropTypes.object,
+    isMode: PropTypes.bool,
+    typeSwitch: PropTypes.func,
   };
 
   static defaultProps = {
     className: 'edit-nav',
+    typeSwitch: () => {
+    },
   };
 
   constructor(props) {
@@ -34,6 +38,12 @@ class NavController extends React.Component {
     message.success('拷贝成功，现在可以去分享你定制的页面了！');
   }
 
+  onTypeSwitch = (isMode) => {
+    if (isMode !== this.props.isMode) {
+      this.props.typeSwitch(isMode);
+    }
+  }
+
   removeUrlData = (name, hash) => {
     const url = decodeURIComponent(location.hash || hash).replace('#', '');
     const reg = new RegExp(`(^|&)${name}=([^&]*)(&|$)`, 'i');
@@ -48,7 +58,7 @@ class NavController extends React.Component {
 
   openLook = () => {
     Modal.warning({
-      title: '注意事项',
+      title: '注意事项, 请仔细阅读',
       content: (<ul>
         <li>
           1. 在编辑时是数值注意旁边的单位，如 "px", "vh", "%"; "px" 为像素点, "vh" 屏幕高度的百分比;
@@ -59,7 +69,12 @@ class NavController extends React.Component {
         <li>
           3. 本站不提供图片上传功能，请自行解决图片上传的问题;
         </li>
-        <li />
+        <li>
+          4. 内容编辑区块请不要用(')单引号作为内容； 如需使用，请用(\');
+        </li>
+        <li>
+          5. mobile 样式与 web 样式编辑是分开的，如编辑了请切换到 mobile 再编辑;
+        </li>
       </ul>),
       width: 550,
     });
@@ -132,13 +147,34 @@ class NavController extends React.Component {
         <div
           className={`${this.props.className}-bar`}
         >
+          <ul className="type-switch">
+            <Tooltip title="desktop">
+              <li
+                onClick={() => {
+                  this.onTypeSwitch(false);
+                }}
+                className={!this.props.isMode ? 'active' : ''}
+              >
+                <Icon type="desktop" />
+              </li>
+            </Tooltip>
+            <Tooltip title="mobile">
+              <li
+                onClick={() => {
+                  this.onTypeSwitch(true);
+                }}
+                className={this.props.isMode ? 'active' : ''}
+              >
+                <Icon type="mobile" />
+              </li>
+            </Tooltip>
+          </ul>
           <ul>
             <li><a onClick={this.openLook} className={`${this.props.className}-remark`}>
               <Icon type="exclamation-circle-o" />
               注意事项</a>
             </li>
             <li><a href="../">返回主站</a></li>
-            <li><a onClick={this.resetData}>重置参数</a></li>
             <li>
               <a onClick={this.openHelp}>查看教程</a>
               <Modal
@@ -154,6 +190,11 @@ class NavController extends React.Component {
                 />
               </Modal>
 
+            </li>
+            <li>
+              <Button type="primary" onClick={this.resetData}>
+                重置参数
+              </Button>
             </li>
             <li>
               <Button type="primary" onClick={this.makePageURLEdit}>

@@ -1,3 +1,7 @@
+import deepCopy from 'deepcopy';
+
+import { isColorFuc } from './template/utils';
+
 const Nav0 = require('./template/element/Nav0/template.config');
 const Nav1 = require('./template/element/Nav1/template.config');
 const Content0 = require('./template/element/Content0/template.config');
@@ -13,6 +17,64 @@ const Content9 = require('./template/element/Content9/template.config');
 const Footer0 = require('./template/element/Footer0/template.config');
 const Footer1 = require('./template/element/Footer1/template.config');
 
+function addTypeToStyle(d) {
+  const data = d;
+  Object.keys(data).forEach((key) => {
+    const item = data[key];
+    if (typeof item === 'object') {
+      if ('value' in item) {
+        const isNumber = parseFloat(item.value) || parseFloat(item.value) === 0;
+        const isColor = isColorFuc(item.value);
+        if (item.type) {
+          return;
+        }
+        if (isNumber) {
+          item.type = 'number';
+        }
+        if (isColor) {
+          item.type = 'color';
+        }
+      } else {
+        addTypeToStyle(item);
+      }
+    }
+  });
+}
+
+// 增加 phoneStyle;
+function addData(data) {
+  const dataSource = data.dataSource;
+  addTypeToStyle(dataSource);
+  Object.keys(dataSource).forEach((key) => {
+    const item = dataSource[key];
+    if (typeof item === 'object' && !('stylePhone' in item) && 'style' in item) {
+      const styleObj = Object.keys(item.style);
+      const isCssArray = styleObj.filter(k => k.match(/\$/));
+      isCssArray.forEach((cKey) => {
+        const cItem = item.style[cKey];
+        if (typeof cItem === 'object' && !('stylePhone' in cItem) && 'style' in cItem) {
+          item.style[cKey].stylePhone = deepCopy(item.style[cKey].style);
+        }
+      });
+      item.stylePhone = deepCopy(item.style);
+    }
+  });
+}
+
+addData(Nav0);
+addData(Nav1);
+addData(Content0);
+addData(Content1);
+addData(Content2);
+addData(Content3);
+addData(Content4);
+addData(Content5);
+addData(Content6);
+addData(Content7);
+addData(Content8);
+addData(Content9);
+addData(Footer0);
+addData(Footer1);
 export default {
   Nav0,
   Nav1,

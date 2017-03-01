@@ -5,5 +5,4 @@ import './edit-view.less';
 import './list-view.less';
 import './other-view.less';
 import './preview.less';
-import './edit-state.less';
 
