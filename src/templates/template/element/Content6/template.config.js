@@ -132,6 +132,8 @@ export default {
       },
       stylePhone: {
         ...offsetStyle({ height: '2000px' }),
+        ...bgStyle({ color: '#f3f3f3', isMode: true }),
+        ...borderStyle({ width: '0px', style: 'none', color: '#666' }),
         '$ .content-template': {
           name: '内框样式',
           style: {

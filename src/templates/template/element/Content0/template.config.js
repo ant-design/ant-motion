@@ -20,13 +20,19 @@ export default {
       style: {
         ...offsetStyle({ height: '100vh' }),
         ...textStyle({ align: 'center' }),
-        ...bgStyle({
-          image: 'https://zos.alipayobjects.com/rmsportal/gGlUMYGEIvjDOOw.jpg',
-          attachment: 'fixed',
-          position: 'center',
-          size: 'cover',
-        }),
         ...borderStyle({ width: '0px', style: 'none', color: '#666' }),
+        '$:before': {
+          name: '背景图片',
+          style: {
+            ...bgStyle({
+              image: 'https://zos.alipayobjects.com/rmsportal/gGlUMYGEIvjDOOw.jpg',
+              attachment: 'fixed',
+              position: 'center',
+              size: 'cover',
+              isBanner: true,
+            }),
+          },
+        },
       },
     },
     content0_wrapper: {

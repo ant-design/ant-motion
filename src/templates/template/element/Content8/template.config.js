@@ -130,7 +130,7 @@ export default {
       },
       stylePhone: {
         ...offsetStyle({ height: '800px' }),
-        ...bgStyle(),
+        ...bgStyle({ isMode: true }),
         ...borderStyle({ width: '0px', style: 'none', color: '#666' }),
         '$ .content-template': {
           name: '内框样式',
