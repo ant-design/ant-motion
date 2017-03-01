@@ -67,7 +67,7 @@ export default {
         '$ .header0-phone-nav-bar em': {
           name: '横条样式',
           stylePhone: {
-            ...bgStyle({ color: 'rgba(51, 51, 51, 0.95)', select: 'backgroundColor' }),
+            ...bgStyle({ color: '#fff', select: 'backgroundColor' }),
           },
         },
         '$ .header0-phone-nav-text': {
