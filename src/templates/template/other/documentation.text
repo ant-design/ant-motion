@@ -8,59 +8,36 @@
 
 4. 如果用的是 antd 的脚手 dva-cli (https://github.com/dvajs/dva-cli)； dva-cli 的具体教程请查看: https://github.com/sorrycc/blog/issues/18
 
- 1) dva-cli ~0.7.0;
- 请不要使用 css-modules, 将在下个版本做混用兼容, 详细查看 issuse (https://github.com/sorrycc/roadhog/issues/89)；
+ dva-cli ~0.7.0;
+
+ 请不要使用 css-modules, 将在下个版本做混用兼容；
  在 .roadhogrc 文件里加上: "disableCSSModules": true,
 
  如果项目已使用 css-modules, 请在项目根目录建 public 目录，这里的文件会被 copy 到输出目录下，然后在 html 文件里引这个文件。
 
- 2) dva-cli 0.7.0 以下的，需要注意在 webpack.config.js 里加上 /antMotion_style\.less/ 的.
-   // Parse all less files as css module.
-   webpackConfig.module.loaders.forEach(function (loader, index) {
-     if (typeof loader.test === 'function' && loader.test.toString().indexOf('\\.less$') > -1) {
-       loader.include = [/node_modules/, /antMotion_style\.less/];
-       loader.test = /\.less$/;
-     }
-     if (loader.test.toString() === '/\\.module\\.less$/') {
-       loader.exclude = [/node_modules/, /antMotion_style\.less/];
-       loader.test = /\.less$/;
-     }
-     if (typeof loader.test === 'function' && loader.test.toString().indexOf('\\.css$') > -1) {
-       loader.include = /node_modules/;
-       loader.test = /\.css$/;
-     }
-     if (loader.test.toString() === '/\\.module\\.css$/') {
-       loader.exclude = /node_modules/;
-       loader.test = /\.css$/;
-     }
-   });
+ 或在每个 less 里加上 :global, 详细查看: https://github.com/css-modules/css-modules#usage-with-preprocessors;
 
-5. 安装依赖, package.json 里的 dependencies 加下以下：
-"antd": "~2.6.3",
-"enquire.js": "^2.1.1", // 适配；
-"rc-queue-anim": "~0.12.6",
-"rc-scroll-anim": "~0.6.0",
-"rc-tween-one": "~1.0.0",
-"rc-banner-anim": "~0.5.4", // 如果用的是多屏滑动型的 banner，加上这条。
+5. 安装依赖:
 
-6. 按需加载 antd, package.json 里的 devDependencies 加上:
-"babel-plugin-import": "^1.1.0",
+npm install antd --save;
+npm install enquire --save;
+npm install rc-queue-anim --save;
+npm install rc-scroll-anim --save;
+npm install rc-tween-anim --save;
+npm install rc-banner-anim --save;// 如果用的是多屏滑动型的 banner，加上这条。
 
-5 与 6 的具体版本按最新的来修改。
+6. 按需加载 antd, 安装 babel-plugin-import:
 
-7. 运用 "babel-plugin-import" 滤境，
-  1) dva-cli: ~0.7.0， 修改 .roadhogrc，在 "extraBabelPlugins" 里加上： ["import", { "libraryName": "antd", "style": true }]
+npm install babel-plugin-import --save-dev;
+
+7. 运用 "babel-plugin-import" 滤境:
+
+  dva-cli: ~0.7.0， 修改 .roadhogrc，在 "extraBabelPlugins" 里加上： ["import", { "libraryName": "antd", "style": true }]
   参考： https://github.com/dvajs/dva-example-user-dashboard/blob/master/.roadhogrc#L20
   "extraBabelPlugins": [
     "transform-runtime",
     ["import", { "libraryName": "antd", "style": true }]
   ],
-
-  2）dva-cli 0.7.0 以下的，在 webpack.config.js 里加上;
-  webpackConfig.babel.plugins.push(['import', {
-    libraryName: 'antd',
-    style: true,
-  }]);
 
 8. 配置自定义皮服，参考 https://ant.design/docs/react/customize-theme-cn#1)-package.theme（推荐）;
 
