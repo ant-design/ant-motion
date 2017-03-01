@@ -11,11 +11,13 @@ class Content extends React.Component {
 
   static propTypes = {
     className: React.PropTypes.string,
+    dataSource: React.PropTypes.object,
     id: React.PropTypes.string,
   };
 
   static defaultProps = {
     className: 'content6',
+    dataSource: {},
   };
 
   constructor(props) {
@@ -80,7 +82,7 @@ class Content extends React.Component {
 
   render() {
     const props = { ...this.props };
-    const dataSource = props.dataSource;
+    const dataSource = this.props.dataSource;
     const names = props.id.split('_');
     const name = `${names[0]}${names[1]}`;
     delete props.dataSource;

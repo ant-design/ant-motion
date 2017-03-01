@@ -21,8 +21,8 @@ class Banner extends React.Component {
 
   render() {
     const props = { ...this.props };
-    const dataSource = props.dataSource;
-    const names = props.id.split('_');
+    const dataSource = this.props.dataSource;
+    const names = this.props.id.split('_');
     const name = `${names[0]}${names[1]}`;
     delete props.dataSource;
     delete props.isMode;
@@ -108,6 +108,8 @@ class Banner extends React.Component {
 
 Banner.propTypes = {
   className: PropTypes.string,
+  dataSource: PropTypes.object,
+  id: PropTypes.string,
 };
 
 Banner.defaultProps = {

@@ -13,6 +13,7 @@ class NavController extends React.Component {
     urlData: PropTypes.object,
     isMode: PropTypes.bool,
     typeSwitch: PropTypes.func,
+    defaultValue: PropTypes.any,
   };
 
   static defaultProps = {
