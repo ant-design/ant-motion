@@ -114,8 +114,12 @@ export default class ListView extends React.Component {
       return null;
     }
     const imgChildren = item.data.map((cItem, i) => {
-      const onChange = this.onChange.bind(this, key, i, item.checkbox);
-      const value = this.state.templateOptData.filter(aItem => aItem.match(`${key}_${i}`)).length;
+      const t = cItem;
+      t.i = i;
+      return t;
+    }).sort((a, b) => a.order > b.order).map((cItem, i) => {
+      const onChange = this.onChange.bind(this, key, cItem.i, item.checkbox);
+      const value = this.state.templateOptData.filter(aItem => aItem.match(`${key}_${cItem.i}`)).length;
       return (<li key={i} disabled={cItem.disabled}>
         {cItem.disabled && <span className="disabled-test"><p>敬请期待</p></span>}
         <div className="img-wrapper"><img src={cItem.src} width="100%" /></div>
@@ -209,7 +213,9 @@ export default class ListView extends React.Component {
         >
           {this.state.oneRemove && <span
             key="close"
-            onClick={() => { this.removeOneClick(key); }}
+            onClick={() => {
+              this.removeOneClick(key);
+            }}
           >
             <Icon type="close" />
           </span>}
