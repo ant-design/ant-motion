@@ -14,6 +14,7 @@ const Content6 = require('./template/element/Content6/template.config');
 const Content7 = require('./template/element/Content7/template.config');
 const Content8 = require('./template/element/Content8/template.config');
 const Content9 = require('./template/element/Content9/template.config');
+const Content10 = require('./template/element/Content10/template.config');
 const Footer0 = require('./template/element/Footer0/template.config');
 const Footer1 = require('./template/element/Footer1/template.config');
 
@@ -73,6 +74,7 @@ addData(Content6);
 addData(Content7);
 addData(Content8);
 addData(Content9);
+addData(Content10);
 addData(Footer0);
 addData(Footer1);
 export default {
@@ -88,6 +90,7 @@ export default {
   Content7,
   Content8,
   Content9,
+  Content10,
   Footer0,
   Footer1,
 };

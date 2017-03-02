@@ -1,10 +1,10 @@
 @import '../../../static/custom.less';
 
-@banner1: banner1;
+@banner1: banner2;
 .@{banner1} {
   width: 100%;
-  // 如果在第一屏且导航位置为 relative, 一屏为 height: calc(~"100vh - 64px");
-  height: 100vh;
+  // 如果在第一屏且导航位置为 relative, 一屏为 height: calc(100vh - 64px);
+  height: calc(~"100vh - 64px");
   position: relative;
   border-color: #666;
   .banner-anim {
@@ -21,10 +21,15 @@
     overflow: hidden;
   }
   .bg0 {
-    background: url("https://zos.alipayobjects.com/rmsportal/hzPBTkqtFpLlWCi.jpg") center;
-  }
-  .bg1{
-    background: url("https://zos.alipayobjects.com/rmsportal/xHxWkcvaIcuAdQl.jpg") center;
+    background: url("https://zos.alipayobjects.com/rmsportal/bXNBIyzSLHaycUGDzwLG.jpg") center;
+    transform: scale(1.1);
+    &:before {
+      width: 100%;
+      height: 100%;
+      content: '';
+      background: fade(#000, 35);
+      display: block;
+    }
   }
   .bg {
     width: 100%;
@@ -45,24 +50,25 @@
   &-title {
     display: block;
     position: relative;
-    top: 20%;
-    left: 0;
-    right: 0;
-    margin: auto;
+    top: 25%;
+    left: 10%;
     font-size: 14px;
     color: @template-text-color-light;
-    width: 550px;
-    text-align: center;
+    width: 400px;
+    text-align: left;
+    padding: 20px;
     & .logo {
       width: 350px;
-      left: 30px;
+      left: 0;
       margin: auto;
       display: inline-block;
       position: relative;
+      font-size: 56px;
     }
     & p {
-      margin-bottom: 20px;
       word-wrap: break-word;
+      margin: auto auto 20px auto;
+      font-weight: lighter;
     }
     & button {
       border: 1px solid #fff;
@@ -106,10 +112,14 @@
 }
 
 @media screen and (max-width: 414px) {
-  .@{banner1}{
-    &-title{
+  .@{banner1} {
+    &-title {
       width: 90%;
-      .logo{
+      left: 0;
+      margin: auto;
+      padding: 0;
+      text-align: center;
+      .logo {
         width: 90%;
         left: 0;
       }
