@@ -31,6 +31,11 @@ export default {
         order: 1,
       },
       {
+        src: 'https://zos.alipayobjects.com/rmsportal/xLbbmipjHaqSoJSXhIzP.jpg',
+        text: '单张背景图Banner2',
+        order: 10,
+      },
+      {
         src: 'https://zos.alipayobjects.com/rmsportal/tFEFnHEpyPhRnFCsKjdR.jpg',
         text: '产品介绍',
         order: 9,

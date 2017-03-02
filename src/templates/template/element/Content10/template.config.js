@@ -1,7 +1,6 @@
 import {
   marginAndPaddingStyle,
   offsetStyle,
-  boxShadowStyle,
   textStyle,
   bgStyle,
   borderStyle,
@@ -17,20 +16,11 @@ export default {
   less,
   dataSource: {
     content10: {
-      func: {
-        name: '其它功能',
-        page: {
-          value: 1,
-          total: 2,
-          name: '显示当前面页',
-          type: 'page',
-        },
-      },
       style: {
-        ...offsetStyle({ height: '100vh' }),
+        ...offsetStyle({ height: 'calc(100vh - 64px)' }),
         ...borderStyle({ width: '0px', style: 'none', color: '#666' }),
         '$ .bg0': {
-          name: '第一屏背景',
+          name: '背景样式',
           style: {
             ...bgStyle({
               image: 'https://zos.alipayobjects.com/rmsportal/hzPBTkqtFpLlWCi.jpg',
@@ -51,9 +41,9 @@ export default {
     },
     content10_wrapperBlock0: {
       style: {
-        ...offsetStyle({ width: '550px', top: '20%', left: '0px', right: '0px' }),
-        ...marginAndPaddingStyle({ margin: 'auto' }),
-        ...textStyle({ align: 'center' }),
+        ...offsetStyle({ width: '400px', top: '25%', left: '10%' }),
+        ...textStyle({ align: 'left' }),
+        ...marginAndPaddingStyle({ padding: '20px' }),
       },
     },
     content10_titleBlock0: {
@@ -69,8 +59,8 @@ export default {
     },
     content10_contentBlock0: {
       style: {
-        ...textStyle({ size: '14px', color: '#fff', align: 'center' }),
-        ...marginAndPaddingStyle({ margin: '0px 0px 20px 0px' }),
+        ...textStyle({ size: '14px', lineHeight: '1.5em', color: '#fff', align: 'center' }),
+        ...marginAndPaddingStyle({ margin: 'auto auto 20px auto' }),
       },
       children: {
         value: 'Ant Motion 在界面里主要是来加强体验舒适度、描述层级关系、增加界面活力、反馈与意向等功能性的动效。',
@@ -80,21 +70,19 @@ export default {
     content10_buttonBlock0: {
       style: {
         ...textStyle({ color: '#fff' }),
-        ...borderStyle({ color: '#fff', radius: '4px' }),
+        ...borderStyle({ color: '#fff', width: '1px', style: 'solid', radius: '4px' }),
         ...bgStyle({ color: 'transparent', select: ['backgroundColor'] }),
         '$:hover': {
           name: 'hover 样式',
           style: {
             ...textStyle({ color: '#fff' }),
-            ...borderStyle({ color: '#fff' }),
-            ...bgStyle({ color: 'transparent', select: ['backgroundColor'] }),
-            ...boxShadowStyle('0 0 10px rgba(50,250,255,0.75)'),
+            ...borderStyle({ color: '#019BF0', width: '1px', style: 'solid' }),
+            ...bgStyle({ color: '#019BF0', select: ['backgroundColor'] }),
           },
           stylePhone: {
             ...textStyle({ color: '#fff' }),
-            ...borderStyle({ color: '#fff' }),
-            ...bgStyle({ color: 'transparent', select: ['backgroundColor'] }),
-            ...boxShadowStyle('0 0 10px rgba(50,250,255,0.75)'),
+            ...borderStyle({ color: '#019BF0', width: '1px', style: 'solid' }),
+            ...bgStyle({ color: '#019BF0', select: ['backgroundColor'] }),
           },
         },
       },

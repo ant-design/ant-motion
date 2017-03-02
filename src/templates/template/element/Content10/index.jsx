@@ -20,22 +20,12 @@ class Banner extends React.Component {
     className: 'banner2',
   };
 
-
-  componentWillReceiveProps(nextProps) {
-    const dataSource = nextProps.dataSource;
-    const names = nextProps.id.split('_');
-    const name = `${names[0]}${names[1]}`;
-    const func = dataSource[name].func;
-    if (func && this.banner) {
-      this.banner.slickGoTo(func.page - 1);
-    }
-  }
-
   render() {
     const props = { ...this.props };
     const dataSource = this.props.dataSource;
     const names = this.props.id.split('_');
     const name = `${names[0]}${names[1]}`;
+    const isMode = props.isMode;
     delete props.dataSource;
     delete props.isMode;
     const childrenData = [];
@@ -51,14 +41,24 @@ class Banner extends React.Component {
       const button = item[`${name}_buttonBlock${i}`];
       const isImg = title.children
         .match(/\.(gif|jpg|jpeg|png|JPG|PNG|GIF|JPEG)$/);
+      const follow = !isMode ? {
+        delay: 1000,
+        minMove: 0.1,
+        data: [
+            { id: `bg$${i}`, value: 15, bgPosition: '50%', type: ['backgroundPositionX'] },
+            { id: `${props.id}-wrapperBlock${i}`, value: -15, type: 'x' },
+        ],
+      } : null;
       return (<Element
         key={i}
         prefixCls="banner-user-elem"
+        followParallax={follow}
       >
         <BgElement
           className={`bg bg${i}`}
           key="bg"
-          scrollParallax={{ y: 200 }}
+          id={`bg$${i}`}
+          scrollParallax={{ y: 300 }}
         />
         <QueueAnim
           type={['bottom', 'top']} delay={200}
@@ -99,9 +99,6 @@ class Banner extends React.Component {
         >
           <BannerAnim
             key="banner"
-            ref={(c) => {
-              this.banner = c;
-            }}
           >
             {childrenToRender}
           </BannerAnim>

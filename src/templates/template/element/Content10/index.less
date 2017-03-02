@@ -48,7 +48,7 @@
     top: 40%;
   }
   &-title {
-    display: block;
+    display: inline-block;
     position: relative;
     top: 25%;
     left: 10%;
@@ -74,8 +74,7 @@
       border: 1px solid #fff;
       color: #fff;
       background: transparent;
-      box-shadow: 0 0 0 transparent;
-      transition: background .45s @ease-out, box-shadow .45s @ease-out;
+      transition: background .45s @ease-in, border .45s @ease-in;
       line-height: 30px;
       font-size: 16px;
       & span {
@@ -84,9 +83,9 @@
       }
       &:hover {
         color: #fff;
-        border-color: #fff;
-        background: rgba(255, 255, 255, 0.1);
-        box-shadow: 0 0 10px rgba(50, 250, 255, 0.75);
+        border-color: @primary-color;
+        background: @primary-color;
+        transition: background .45s @ease-out, border .45s @ease-out;
         & span {
           text-shadow: 1px 1px 3px rgba(0, 0, 0, .35);
         }
@@ -119,6 +118,7 @@
       margin: auto;
       padding: 0;
       text-align: center;
+      display: block;
       .logo {
         width: 90%;
         left: 0;

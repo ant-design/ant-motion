@@ -81,7 +81,10 @@ export default class ListView extends React.Component {
         }
       }
     } else {
-      const length = data.filter(item => item.match(`${key}_${i}`)).length;
+      const length = data.filter((item) => {
+        const names = item.split('_');
+        return `${names[0]}_${names[1]}` === `${key}_${i}`;
+      }).length;
       const endIsFooter = data.length && data[data.length - 1].match('footer');
       if (length !== value) {
         const newData = [];
@@ -89,9 +92,10 @@ export default class ListView extends React.Component {
           newData.push(`${key}_${i}_${j}`);
         }
         data = data.map((item) => {
+          const names = item.split('_');
           if (newData.indexOf(item) >= 0) {
             newData.splice(newData.indexOf(item), 1);
-          } else if (item.match(`${key}_${i}`)) {
+          } else if (`${names[0]}_${names[1]}` === `${key}_${i}`) {
             return null;
           }
           return item;
@@ -114,8 +118,12 @@ export default class ListView extends React.Component {
       return null;
     }
     const imgChildren = item.data.map((cItem, i) => {
-      const onChange = this.onChange.bind(this, key, cItem.order, item.checkbox);
-      const value = this.state.templateOptData.filter(aItem => aItem.match(`${key}_${cItem.order}`)).length;
+      const order = cItem.order || i;
+      const onChange = this.onChange.bind(this, key, order, item.checkbox);
+      const value = this.state.templateOptData.filter((aItem) => {
+        const names = aItem.split('_');
+        return `${names[0]}_${names[1]}` === `${key}_${order}`;
+      }).length;
       return (<li key={i} disabled={cItem.disabled}>
         {cItem.disabled && <span className="disabled-test"><p>敬请期待</p></span>}
         <div className="img-wrapper"><img src={cItem.src} width="100%" /></div>
@@ -200,7 +208,15 @@ export default class ListView extends React.Component {
     const listData = this.props.listData;
     const children = this.state.data.filter(item => item).map((key) => {
       const keys = key.split('_');
-      const data = listData[keys[0]].data[keys[1]];
+      const order = parseFloat(keys[1]);
+      const pData = listData[keys[0]].data;
+      const data = Object.keys(pData).map((cKey, i) => {
+        const cItem = pData[cKey];
+        if (cItem.order && cItem.order === order || i === order) {
+          return cItem;
+        }
+        return null;
+      }).filter(cItem => cItem)[0];
       return (<li key={key} className={this.state.oneRemove && 'close-wrapper'}>
         <TweenOneGroup
           className="close"
