@@ -138,15 +138,7 @@ export function bgStyle(_data) {
       remark: '与psd里的滤镜一样, 在图片和颜色做滤境效果;',
     },
   };
-  if (!data.isMode) {
-    // 移动端不做锁定..
-    d.backgroundAttachment = {
-      value: data.attachment || 'scroll',
-      name: '背景固定',
-      select: ['scroll', 'fixed'],
-      remark: '参数为： "relative", "absolute", "fixed"; "fixed" 为背景随滚动条滚动',
-    };
-  }
+
 
   if ('isBanner' in data) {
     d.position = {
@@ -154,6 +146,14 @@ export function bgStyle(_data) {
       name: '背景固定',
       select: ['relative', 'fixed'],
       remark: '参数为： "relative", "fixed"; "fixed" 为背景随滚动条滚动',
+    };
+  } else if (!data.isMode) {
+    // 移动端不做锁定..
+    d.backgroundAttachment = {
+      value: data.attachment || 'scroll',
+      name: '背景固定',
+      select: ['scroll', 'fixed'],
+      remark: '参数为： "scroll", "fixed"; "fixed" 为背景随滚动条滚动',
     };
   }
 
