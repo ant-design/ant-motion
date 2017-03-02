@@ -90,10 +90,10 @@ function setProps(_data, key) {
   }
   if ('value' in item) {
     /* if (key === 'backgroundImage') {
-      data[key] = `url(${item.value})`;
-    } else {
-      data[key] = item.value;
-    }*/
+     data[key] = `url(${item.value})`;
+     } else {
+     data[key] = item.value;
+     }*/
     data[key] = item.value;
   } else {
     Object.keys(data[key]).forEach(setProps.bind(this, data[key]));
@@ -120,10 +120,8 @@ export function styleToCssString(_obj) {
   Object.keys(obj).forEach((key) => {
     const item = obj[key];
     if (typeof item === 'object') {
-      delete obj[key];
+      // delete obj[key];
       strObj[key] = toStyleString(item.stylePhone || item.style);
-    } else if (key === 'backgroundImage') {
-      obj[key] = `url(${item})`;
     }
   });
   if (Object.keys(obj).length) {
@@ -131,13 +129,26 @@ export function styleToCssString(_obj) {
   }
   return strObj;
 }
+const setBgURL = (_data) => {
+  const data = _data;
+  Object.keys(data).forEach((key) => {
+    const item = data[key];
+    if (key === 'backgroundImage') {
+      data[key] = `url(${item})`;
+    } else if (typeof item === 'object') {
+      setBgURL(item);
+    }
+  });
+  return data;
+};
 
 export function getWebOrPhoneCss(item, strObj, key) {
   if (key === 'children') {
     return;
   }
   const obj = strObj;
-  const cItem = item[key];
+  const cItem = setBgURL(item[key]);
+  // 遍历子级的 backgroundImage 样式替换..;
   obj[key] = styleToCssString(cItem);
 }
 
