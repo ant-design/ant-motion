@@ -120,7 +120,7 @@ export function styleToCssString(_obj) {
   Object.keys(obj).forEach((key) => {
     const item = obj[key];
     if (typeof item === 'object') {
-      // delete obj[key];
+      delete obj[key];
       strObj[key] = toStyleString(item.stylePhone || item.style);
     }
   });
