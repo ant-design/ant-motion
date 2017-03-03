@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Button, Icon } from 'antd';
 import QueueAnim from 'rc-queue-anim';
-import TweenOne from 'rc-tween-one';
+import TweenOne, { TweenOneGroup } from 'rc-tween-one';
 import BannerAnim, { Element } from 'rc-banner-anim';
 import 'rc-banner-anim/assets/index.css';
 import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
@@ -58,7 +58,7 @@ class Banner extends React.Component {
           className={`bg bg${i}`}
           key="bg"
           id={`bg$${i}`}
-          scrollParallax={{ y: 300 }}
+          scrollParallax={{ y: 150 }}
         />
         <QueueAnim
           type={['bottom', 'top']} delay={200}
@@ -92,26 +92,31 @@ class Banner extends React.Component {
       </Element>);
     });
     return (
-      <TweenOne animation={{ opacity: 0, type: 'from' }}>
-        <OverPack
-          {...props}
-          hideProps={{ icon: { reverse: true } }}
+      <OverPack
+        {...props}
+        hideProps={{ icon: { reverse: true } }}
+      >
+        <TweenOneGroup
+          key="banner"
+          enter={{ opacity: 0, type: 'from' }}
+          leave={{ opacity: 0 }}
+          component=""
         >
           <BannerAnim
             key="banner"
           >
             {childrenToRender}
           </BannerAnim>
-          <TweenOne
-            animation={{ y: '-=20', yoyo: true, repeat: -1, duration: 1000 }}
-            className={`${this.props.className}-icon`}
-            style={{ bottom: 40 }}
-            key="icon"
-          >
-            <Icon type="down" />
-          </TweenOne>
-        </OverPack>
-      </TweenOne>
+        </TweenOneGroup>
+        <TweenOne
+          animation={{ y: '-=20', yoyo: true, repeat: -1, duration: 1000 }}
+          className={`${this.props.className}-icon`}
+          style={{ bottom: 40 }}
+          key="icon"
+        >
+          <Icon type="down" />
+        </TweenOne>
+      </OverPack>
     );
   }
 }
