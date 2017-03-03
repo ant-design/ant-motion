@@ -59,9 +59,9 @@ export function borderStyle(_data) {
       type: data.widthLength ? ['number', 'number', 'number', 'number'] : 'number',
     };
   }
-  if ('borderStyle' in data) {
+  if ('style' in data) {
     d.borderStyle = {
-      value: data.borderStyle,
+      value: data.style,
       name: '描边样式',
       select: [
         { name: '无边框', value: 'none' },

@@ -98,19 +98,19 @@ export default {
     content1_buttonBlock0: {
       style: {
         ...textStyle({ color: '#fff' }),
-        ...borderStyle({ color: '#fff', radius: '4px' }),
+        ...borderStyle({ color: '#fff', width: '1px', style: 'solid', radius: '4px' }),
         ...bgStyle({ color: 'transparent', select: ['backgroundColor'] }),
         '$:hover': {
           name: 'hover 样式',
           style: {
             ...textStyle({ color: '#fff' }),
-            ...borderStyle({ color: '#fff' }),
+            ...borderStyle({ color: '#fff', width: '1px', style: 'solid' }),
             ...bgStyle({ color: 'transparent', select: ['backgroundColor'] }),
             ...boxShadowStyle('0 0 10px rgba(50,250,255,0.75)'),
           },
           stylePhone: {
             ...textStyle({ color: '#fff' }),
-            ...borderStyle({ color: '#fff' }),
+            ...borderStyle({ color: '#fff', width: '1px', style: 'solid' }),
             ...bgStyle({ color: 'transparent', select: ['backgroundColor'] }),
             ...boxShadowStyle('0 0 10px rgba(50,250,255,0.75)'),
           },
@@ -152,19 +152,19 @@ export default {
     content1_buttonBlock1: {
       style: {
         ...textStyle({ color: '#fff' }),
-        ...borderStyle({ color: '#fff', radius: '4px' }),
+        ...borderStyle({ color: '#fff', width: '1px', style: 'solid', radius: '4px' }),
         ...bgStyle({ color: 'transparent', select: ['backgroundColor'] }),
         '$:hover': {
           name: 'hover 样式',
           style: {
             ...textStyle({ color: '#fff' }),
-            ...borderStyle({ color: '#fff' }),
+            ...borderStyle({ color: '#fff', width: '1px', style: 'solid' }),
             ...bgStyle({ color: 'transparent', select: ['backgroundColor'] }),
             ...boxShadowStyle('0 0 10px rgba(50,250,255,0.75)'),
           },
           stylePhone: {
             ...textStyle({ color: '#fff' }),
-            ...borderStyle({ color: '#fff' }),
+            ...borderStyle({ color: '#fff', width: '1px', style: 'solid' }),
             ...bgStyle({ color: 'transparent', select: ['backgroundColor'] }),
             ...boxShadowStyle('0 0 10px rgba(50,250,255,0.75)'),
           },

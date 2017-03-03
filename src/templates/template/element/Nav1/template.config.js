@@ -62,7 +62,7 @@ export default {
           name: 'hover 与选中样式',
           style: {
             ...textStyle({ color: '#019BF0' }),
-            ...borderStyle({ color: '#019BF0' }),
+            ...borderStyle({ color: '#019BF0', width: '0px', style: 'none' }),
           },
         },
         '$ .ant-menu-sub': {

@@ -185,7 +185,7 @@ class Edit extends React.Component {
   };
 
   getByIdDom = (item) => {
-    if (item.id) {
+    if (item.id && !item.id.match(/react-content|\$/g)) {
       return item;
     }
     return item.parentNode && this.getByIdDom(item.parentNode);
