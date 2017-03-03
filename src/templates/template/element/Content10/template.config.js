@@ -37,6 +37,12 @@ export default {
             }),
           },
         },
+        '$ .bg0:before': {
+          name: '背景蒙板',
+          style: {
+            ...bgStyle({ color: 'rgba(0,0,0,0.35)', select: 'backgroundColor' }),
+          },
+        },
       },
     },
     content10_wrapperBlock0: {

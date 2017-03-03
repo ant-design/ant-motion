@@ -212,7 +212,7 @@ export default class ListView extends React.Component {
       const pData = listData[keys[0]].data;
       const data = Object.keys(pData).map((cKey, i) => {
         const cItem = pData[cKey];
-        if (cItem.order && cItem.order === order || i === order) {
+        if (cItem.order && cItem.order === order || !cItem.order && i === order) {
           return cItem;
         }
         return null;
