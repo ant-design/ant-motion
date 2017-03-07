@@ -147,6 +147,7 @@ class Edit extends React.Component {
           const selectRect = getRect(dom);
           this.setState({
             selectRect,
+            iframeHeight: $('#preview').contents().height(),
           });
         }
       } else {
@@ -253,7 +254,6 @@ class Edit extends React.Component {
             {this.state.isMode && (<div className="phone-footer">
               <em className="home-key" />
             </div>)}
-            {this.state.isMode && (<div />)}
           </div>
         </div>
       </div>

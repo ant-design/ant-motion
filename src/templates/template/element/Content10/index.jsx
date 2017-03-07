@@ -45,8 +45,8 @@ class Banner extends React.Component {
         delay: 1000,
         minMove: 0.1,
         data: [
-            { id: `bg$${i}`, value: 15, bgPosition: '50%', type: ['backgroundPositionX'] },
-            { id: `${props.id}-wrapperBlock${i}`, value: -15, type: 'x' },
+          { id: `bg$${i}`, value: 15, bgPosition: '50%', type: ['backgroundPositionX'] },
+          { id: `${props.id}-wrapperBlock${i}`, value: -15, type: 'x' },
         ],
       } : null;
       return (<Element
@@ -58,7 +58,7 @@ class Banner extends React.Component {
           className={`bg bg${i}`}
           key="bg"
           id={`bg$${i}`}
-          scrollParallax={{ y: 150 }}
+          scrollParallax={{ y: 100 }}
         />
         <QueueAnim
           type={['bottom', 'top']} delay={200}

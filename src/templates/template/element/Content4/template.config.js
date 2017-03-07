@@ -47,6 +47,41 @@ const getLiBlock = children => ({
       },
     },
   },
+  stylePhone: {
+    ...offsetStyle({ width: '90%' }),
+    ...marginAndPaddingStyle({ padding: '6% 5% 0' }),
+    '.content2 $ .img': {
+      name: '当前 icon 样式',
+      stylePhone: {
+        ...offsetStyle({ width: '15%' }),
+        ...marginAndPaddingStyle({ margin: '0', padding: '0' }),
+      },
+    },
+    '.content2 $ .text': {
+      name: '当前文字区块样式',
+      stylePhone: {
+        ...offsetStyle({ width: '85%' }),
+        ...marginAndPaddingStyle({ margin: '0', padding: '0 0 0 8%' }),
+      },
+    },
+    '.content2 $ .text h1': {
+      name: '当前标题样式',
+      stylePhone: {
+        ...textStyle({
+          size: '32px',
+          color: '#404040',
+        }),
+        ...marginAndPaddingStyle({ margin: '0' }),
+      },
+    },
+    '.content2 $ .text p': {
+      name: '当前内容样式',
+      stylePhone: {
+        ...textStyle({ size: '12px', color: '#666' }),
+        ...marginAndPaddingStyle({ margin: '0' }),
+      },
+    },
+  },
   children: {
     icon: {
       value: children.icon,
@@ -139,6 +174,13 @@ export default {
             ...marginAndPaddingStyle({ margin: '0', padding: '0' }),
           },
         },
+        '.content2 $ .text': {
+          name: '全部文字区块样式',
+          style: {
+            ...offsetStyle({ width: '85%' }),
+            ...marginAndPaddingStyle({ margin: '0', padding: '0 0 0 8%' }),
+          },
+        },
         '$ .text h1': {
           name: '全部标题样式',
           style: {
@@ -169,14 +211,21 @@ export default {
         },
         '$ .img': {
           name: '全部 icon 样式',
-          style: {
+          stylePhone: {
             ...offsetStyle({ width: '15%' }),
             ...marginAndPaddingStyle({ margin: '0', padding: '0' }),
           },
         },
+        '.content2 $ .text': {
+          name: '全部文字区块样式',
+          stylePhone: {
+            ...offsetStyle({ width: '85%' }),
+            ...marginAndPaddingStyle({ margin: '0', padding: '0 0 0 8%' }),
+          },
+        },
         '$ .text h1': {
           name: '全部标题样式',
-          style: {
+          stylePhone: {
             ...textStyle({
               size: '32px',
               color: '#404040',
@@ -186,7 +235,7 @@ export default {
         },
         '$ .text p': {
           name: '全部内容样式',
-          style: {
+          stylePhone: {
             ...textStyle({ size: '12px', color: '#666' }),
             ...marginAndPaddingStyle({ margin: '0' }),
           },
