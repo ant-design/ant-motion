@@ -74,6 +74,9 @@ class Page extends React.Component {
   }
 
   getModuleData = (pageData) => {
+    if (!pageData) {
+      return null;
+    }
     const moduleData = {};
     Object.keys(pageData).forEach((key) => {
       const children = Object.keys(pageData[key]).map(cKey =>
