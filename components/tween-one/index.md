@@ -50,6 +50,8 @@ React.render(<TweenOneGroup>
 | onChange | function | null | 全局变动回调 |
 | attr       | string         | `style` | `style` or `attr`, `attr` 为替换标签上的属性(attribute). SvgMorphPlugin 必须为 `attr`.  |
 | willChange | boolean | true |  是否开启 style 里的 will-change， 默认开启，如果 scale 0->1 出现元素模糊，请关掉这项 |
+| resetStyleBool | boolean | false | 更新 animation 数据时，是否重置初始样式。  |
+| updateReStart | boolean | true | 每次更新 animation 数据时，是否重新开始动画。 |
 | component | React.Element/String  | `div` | 需要替换的标签 |
 
 ### animation
