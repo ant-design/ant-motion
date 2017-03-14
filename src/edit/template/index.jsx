@@ -36,7 +36,7 @@ class Edit extends React.Component {
       }, () => {
         $('#preview').contents().find('body #react-content').mousemove((e) => {
           const dom = this.getByIdDom(e.target);
-          if (dom.id.match(/react-content|\$/g)) {
+          if (!dom || dom.id.match(/react-content|\$/g)) {
             return;
           }
           if (dom !== this.state.enterDom) {
