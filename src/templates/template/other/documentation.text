@@ -23,7 +23,7 @@ npm install antd --save;
 npm install enquire --save;
 npm install rc-queue-anim --save;
 npm install rc-scroll-anim --save;
-npm install rc-tween-anim --save;
+npm install rc-tween-one --save;
 npm install rc-banner-anim --save;// 如果用的是多屏滑动型的 banner，加上这条。
 
 6. 按需加载 antd, 安装 babel-plugin-import:
