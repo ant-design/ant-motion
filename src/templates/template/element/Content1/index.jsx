@@ -81,7 +81,6 @@ class Banner extends React.Component {
     return (
       <OverPack
         {...props}
-        hideProps={{ icon: { reverse: true } }}
       >
         <TweenOneGroup
           key="banner"

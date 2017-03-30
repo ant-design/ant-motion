@@ -99,6 +99,7 @@ scrollScreen.unMount();
 |---------|------------|---------|--------|
 | id | string         | null    | 定位需要的 id，`parallax` 的 `location` 或 `link` 的 `to`, 都需要以此元素做定位 |
 | component | string         |  div  | 组件标签            |
+| targetId  | string   |  null | 不以 window 为滚动目标时，请设置当前目标的 id。。[详细 demo](http://react-component.github.io/scroll-anim/examples/target.html) |
 | playScale |  number / array  |  `0.5` | 要在屏幕哪个区域开始播放， 0.5 为屏幕中间, 如果为 array 时 replay 为 true, [bottom-enter, top-leave] enter为进入是的播放点， topLeave 为出屏的比例(当前显示屏的上面一屏)的百分点。topLeave 必须大于等于 bottomEnter。 |
 | onChange | func    | null  | 变更回调; callback({ mode, scrollName }); mode 为 `enter` 或 `leave` 两种状态 |
 | location | string   | null  | 定位到父级元素, 必须为 id； |
@@ -108,11 +109,13 @@ scrollScreen.unMount();
 
 > `OverPack` 继承 `Element`, `component`,`playScale`, `onChange` 参考 `Element`
 
+> 1.0.0 之后删除 `hideProps`;
+
 |   参数   |    类型    |   默认  |  说明   |
 |---------|------------|---------|--------|
 | always  | boolean | true | 重复播放，如为 false 将只进入一遍，不再触发出场效果 |
 | replay  |  boolean | false | 每次显示当前时是否都要动画, `false` 为只上往下滚时才有动画 |
-| hideProps | object | null  | v0.3.0 将 children 里的 hideProps 迁到这里，将 children 里通过切换 children 来做动画的做为默认(原来的：{ children: null })。</br>如果是 `rc-tween-one` 通过倒放来切换动画(Group为前一种方法), 需要在此设置： { userKey: { reverse: true }} userKey 为你在标签上的 key。 |
+| appear  |  boolean  | true  |  默认拥有出场动画，`false` 为出场不做动画直接显示。|
 
 ## Parallax 说明
 |   参数   |    类型    |   默认  |  说明   |

@@ -53,7 +53,6 @@ class Content extends React.Component {
       <div {...props} className="content-template-wrapper content5-wrapper">
         <OverPack
           className={`content-template ${props.className}`}
-          hideProps={{ img: { reverse: true } }}
           location={props.id}
         >
           <QueueAnim

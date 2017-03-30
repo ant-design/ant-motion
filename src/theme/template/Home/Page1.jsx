@@ -25,7 +25,6 @@ export default class Page1 extends React.Component {
     return (<OverPack
       playScale={0.8}
       className="home-content page1 vh"
-      hideProps={{ code: { reverse: true } }}
       id="page1"
     >
       <QueueAnim className="page-text" key="text" type="bottom" leaveReverse delay={100}>

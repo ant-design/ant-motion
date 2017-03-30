@@ -16,7 +16,7 @@
     "rc-animate": "~2.3.0",
     "rc-banner-anim": "~0.5.8",
     "rc-queue-anim": "~0.13.0",
-    "rc-scroll-anim": "~0.6.0",
+    "rc-scroll-anim": "~1.0.0",
     "rc-tween-one": "~1.1.1",
     "react": "15.4.x",
     "react-color": "^2.9.0",

@@ -47,7 +47,6 @@ class Footer extends React.Component {
     return (<OverPack
       {...props}
       playScale={isMode ? 0.5 : 0.2}
-      hideProps={{ copyright: { reverse: true } }}
     >
       <QueueAnim type="bottom" component="ul" key="ul" leaveReverse id={`${props.id}-ul`}>
         <li key="logo" id={`${props.id}-logo`}>

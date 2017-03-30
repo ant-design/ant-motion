@@ -13,9 +13,7 @@ import QueueAnim from 'rc-queue-anim';
 class Demo extends React.Component {
   render() {
     return (
-      <OverPack style={{ overflow: 'hidden', height: 200 }} 
-        hideProps={{ 0: { reverse: true } }}
-      >
+      <OverPack style={{ overflow: 'hidden', height: 200 }} >
         <TweenOne key="0" animation={{ opacity: 1 }}
           className="code-box-shape"
           style={{ opacity: 0, marginBottom: 10 }}

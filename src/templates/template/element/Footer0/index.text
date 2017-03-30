@@ -14,7 +14,6 @@ class Footer extends React.Component {
     return (<OverPack
       {...props}
       playScale={0.05}
-      hideProps={{ footer: { reverse: true } }}
     >
       <TweenOne
         animation={{ y: '+=30', opacity: 0, type: 'from' }}

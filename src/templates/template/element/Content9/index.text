@@ -38,7 +38,6 @@ class Content extends React.Component {
       >
         <OverPack
           className={`content-template ${props.className}`}
-          hideProps={{ h1: { reverse: true } }}
           location={props.id}
         >
           <TweenOne

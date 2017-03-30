@@ -20,7 +20,6 @@ class Content extends React.Component {
         replay
         playScale={[0.3, 0.1]}
         {...props}
-        hideProps={{ icon: { reverse: true } }}
       >
         <QueueAnim
           type={['bottom', 'top']}

@@ -53,7 +53,6 @@ class Content extends React.Component {
       >
         <OverPack
           className={`content-template ${props.className}`}
-          hideProps={{ h1: { reverse: true }, p: { reverse: true } }}
         >
           <TweenOne
             animation={{ y: '+=30', opacity: 0, type: 'from', ease: 'easeOutQuad' }}

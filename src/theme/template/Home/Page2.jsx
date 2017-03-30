@@ -43,7 +43,6 @@ export default class Page2 extends React.Component {
 
     return (<OverPack
       className="home-content page2"
-      hideProps={{ img: { reverse: true }, a: { reverse: true } }}
       playScale={0.8}
       id="page2"
     >
