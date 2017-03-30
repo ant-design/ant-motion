@@ -4,6 +4,7 @@
 
 The react animation solution
 
+[中文阅读](https://github.com/ant-design/ant-motion/blob/master/README.cn.md)
 
 ## What is Ant Motion?
 <p align="center">
