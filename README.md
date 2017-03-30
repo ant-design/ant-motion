@@ -4,6 +4,7 @@
 
 The react animation solution
 
+[中文阅读](https://github.com/ant-design/ant-motion/blob/master/README.cn.md)
 
 ## What is Ant Motion?
 <p align="center">
@@ -50,6 +51,8 @@ With a simple configuration, you can set up a modern and professional banner sli
 This is based on the Ant Motion React components to follow with the design specifications of Ant Design to complete the demo page, you can quickly and flexibly configure the page template you want.
 
 It provides a single-element example and a full-page example after configuration.
+
+[ant-motion-dva-cli-example](https://github.com/ant-motion/ant-motion-dva-cli-example)
 
 [>> See details](http://t.cn/RIGA89W);
 
