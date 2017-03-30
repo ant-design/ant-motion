@@ -52,7 +52,7 @@ Ant Motion 在界面里主要是来加强体验舒适度、描述层级关系、
 
 主要提供了单元素示例与配置完后的整页示例。
 
-[整页示例在 dva-cli 里运行的例子](https://github.com/ant-motion/ant-motion-dva-cli-example)
+[生成首页在 dva-cli 里运行的例子](https://github.com/ant-motion/ant-motion-dva-cli-example)
 
 [>> 查看详细](http://t.cn/RIGA89W);
 
