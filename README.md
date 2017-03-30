@@ -51,6 +51,8 @@ This is based on the Ant Motion React components to follow with the design speci
 
 It provides a single-element example and a full-page example after configuration.
 
+[ant-motion-dva-cli-example](https://github.com/ant-motion/ant-motion-dva-cli-example)
+
 [>> See details](http://t.cn/RIGA89W);
 
 
