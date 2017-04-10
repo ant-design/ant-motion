@@ -75,11 +75,13 @@ class Banner extends React.Component {
           leave={{ opacity: 0 }}
           component=""
         >
-          <BannerAnim
-            key="banner"
-          >
-            {childrenToRender}
-          </BannerAnim>
+          <div className={`${props.className}-wrapper`}>
+            <BannerAnim
+              key="banner"
+            >
+              {childrenToRender}
+            </BannerAnim>
+          </div>
         </TweenOneGroup>
         <TweenOne
           animation={{ y: '-=20', yoyo: true, repeat: -1, duration: 1000 }}
@@ -93,10 +95,6 @@ class Banner extends React.Component {
     );
   }
 }
-
-Banner.propTypes = {
-  className: PropTypes.string,
-};
 
 Banner.defaultProps = {
   className: 'banner1',

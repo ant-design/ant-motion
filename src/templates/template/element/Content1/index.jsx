@@ -83,23 +83,26 @@ class Banner extends React.Component {
         {...props}
       >
         <TweenOneGroup
-          key="banner"
+          key="bannerGroup"
           enter={{ opacity: 0, type: 'from' }}
           leave={{ opacity: 0 }}
           component=""
         >
-          <BannerAnim
-            key="banner"
-            ref={(c) => {
-              this.banner = c;
-            }}
-          >
-            {childrenToRender}
-          </BannerAnim>
+          <div className={`${props.className}-wrapper`}>
+            <BannerAnim
+              key="banner"
+              ref={(c) => {
+                // 用到 ref 不能直接在 tween-one-group 组件里。 group 子级默认替换成 tween-one，，所以需套个 dom .
+                this.banner = c;
+              }}
+            >
+              {childrenToRender}
+            </BannerAnim>
+          </div>
         </TweenOneGroup>
         <TweenOne
           animation={{ y: '-=20', yoyo: true, repeat: -1, duration: 1000 }}
-          className={`${this.props.className}-icon`}
+          className={`${props.className}-icon`}
           style={{ bottom: 40 }}
           key="icon"
         >
@@ -111,7 +114,6 @@ class Banner extends React.Component {
 }
 
 Banner.propTypes = {
-  className: PropTypes.string,
   dataSource: PropTypes.object,
   id: PropTypes.string,
 };
