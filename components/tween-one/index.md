@@ -56,6 +56,8 @@ React.render(<TweenOneGroup>
 
 ### animation
 
+> 基本动画参数请查看[动画术语](/language/animate-term);
+
 |   参数   |    类型    |   默认  |  说明   |
 |---------|------------|---------|--------|
 | type    |  string    |  `to`   | 播放类型，`to` 为正常播放， `from` 反向播放 |
