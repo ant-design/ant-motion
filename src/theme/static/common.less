@@ -139,9 +139,14 @@ html, body {
   background-color: #fff;
 }
 
-.content-wrapper > .tween-one-leaving, .page-content > .tween-one-leaving, .queue-anim-leaving {
+.content-wrapper > .tween-one-leaving, .page-content > .tween-one-leaving {
   position: absolute !important;
   width: 100%;
+}
+.content-wrapper > .tween-one-leaving, .page-content > .tween-one-leaving,
+.content-wrapper > .tween-one-entering, .page-content > .tween-one-entering{
+  overflow: hidden;
+  height: 100vh;
 }
 
 .home .queue-anim-leaving {

@@ -181,17 +181,9 @@ class Page extends React.Component {
         <h2 key={`${props.pathname.split('/')[0]}-title`}>
           {isComponent ? '范例' : title[pathNames[0]]}
         </h2>
-        <QueueAnim
-          component="ul"
-          key={listKey}
-          type="bottom"
-          duration={300}
-          interval={50}
-          ease="easeInOutQuad"
-          leaveReverse
-        >
+        <ul key={listKey}>
           {listToRender}
-        </QueueAnim>
+        </ul>
       </QueueAnim>
       </Affix>)) :
       (<div
@@ -283,8 +275,16 @@ class Page extends React.Component {
         {this.state.open && <div key="bg" className="list-bg" onClick={this.openClick} />}
       </TweenOneGroup>
       <TweenOneGroup
-        enter={{ top: 30, type: 'from', opacity: 0 }}
-        leave={{ top: -30, opacity: 0 }}
+        enter={{
+          y: 30,
+          type: 'from',
+          opacity: 0,
+          onComplete: (e) => {
+            const { target } = { ...e };
+            target.style.cssText = '';
+          },
+        }}
+        leave={{ y: -30, opacity: 0 }}
         className={`${className}-wrapper`}
       >
         {listToRender}
