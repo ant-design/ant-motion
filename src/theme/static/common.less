@@ -37,9 +37,11 @@ html, body {
       }
     }
     .web-nav {
-      float: right;
+      // float: right;
       line-height: 64px;
-      position: relative;
+      position: absolute;
+      right: 130px;
+      top: 0;
       height: 64px;
       & ul {
         display: inline-block;
@@ -71,7 +73,9 @@ html, body {
       display: none;
     }
     .git-but {
-      float: right;
+      // float: right;
+      position: absolute;
+      right: 0;
       margin: 22px 0 0 32px;
     }
   }
@@ -143,8 +147,9 @@ html, body {
   position: absolute !important;
   width: 100%;
 }
+
 .content-wrapper > .tween-one-leaving, .page-content > .tween-one-leaving,
-.content-wrapper > .tween-one-entering, .page-content > .tween-one-entering{
+.content-wrapper > .tween-one-entering, .page-content > .tween-one-entering {
   overflow: hidden;
   height: 100vh;
 }
@@ -222,7 +227,7 @@ html, body {
   }
 }
 
-@media screen and (max-width: 414px) {
+@media screen and (max-width: 768px)  {
   .home .@{header}-wrapper .@{header} {
     transform: none;
   }
@@ -242,6 +247,8 @@ html, body {
       .git-but {
         margin: 0 0 0 10px;
         float: none;
+        position: relative;
+        right: auto;
         display: inline-block;
         transform: translateY(8px);
       }
