@@ -64,7 +64,7 @@ React.render(<TweenOneGroup>
 | duration | number    | 450    | 动画时间 |
 | delay   | number   |  0   |  动画延时  |
 | repeat  | number   | 0    | 重复次数，-1 为无限重复播放 |
-| repeatDelay | number | 0 | 每次重复揪放开始时延时 |
+| repeatDelay | number | 0 | 每次重复播放开始时延时 |
 | appearTo   | number         | null    | 添加到时间轴的某个时间段 |
 | yoyo   | boolean | false | 重复时执行返回动画 |
 | ease   | string ／ func | `easeInOutQuad` | 缓动参数. [参数名称参考](http://easings.net/zh-cn); function: TweenOne.easing.path(path, param) 详细如下 |
