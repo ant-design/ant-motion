@@ -95,12 +95,14 @@ scrollScreen.unMount();
 
 ## Element 说明
 
+> `Element` 或 `OverPack` 在最后一屏时必需设置高度，否则高度末达到 playScale 的播放点时将不会被渲染。
+
 |   参数   |    类型    |   默认  |  说明   |
 |---------|------------|---------|--------|
 | id | string         | null    | 定位需要的 id，`parallax` 的 `location` 或 `link` 的 `to`, 都需要以此元素做定位 |
 | component | string         |  div  | 组件标签            |
 | targetId  | string   |  null | 不以 window 为滚动目标时，请设置当前目标的 id。。[详细 demo](http://react-component.github.io/scroll-anim/examples/target.html) |
-| playScale |  number / array  |  `0.5` | 要在屏幕哪个区域开始播放， 0.5 为屏幕中间, 如果为 array 时 replay 为 true, [bottom-enter, top-leave] enter为进入是的播放点， topLeave 为出屏的比例(当前显示屏的上面一屏)的百分点。topLeave 必须大于等于 bottomEnter。 |
+| playScale |  number / array  |  `0.5` | 要在屏幕哪个区域开始播放， 0.5 为屏幕中间。 如果为 array 时 replay 为 true, [bottom-enter, top-leave] enter为进入是的播放点， topLeave 为出屏的比例(当前显示屏的上面一屏)的百分点。topLeave 必须大于等于 bottomEnter。 <br /> 注：元素高度必须能达到播放的高度，不是子级高度，必需为当前元素高度。|
 | onChange | func    | null  | 变更回调; callback({ mode, scrollName }); mode 为 `enter` 或 `leave` 两种状态 |
 | location | string   | null  | 定位到父级元素, 必须为 id； |
 
