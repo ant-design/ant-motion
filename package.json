@@ -2,7 +2,7 @@
   "name": "ant-motion",
   "version": "1.5.1",
   "dependencies": {
-    "antd": "~2.7.0",
+    "antd": "~2.10.0",
     "autoresponsive-react": "1.1.x",
     "deepcopy": "^0.6.3",
     "enquire.js": "^2.1.1",
@@ -15,7 +15,7 @@
     "raw-loader": "^0.5.1",
     "rc-animate": "~2.3.0",
     "rc-banner-anim": "~0.5.8",
-    "rc-queue-anim": "~0.13.3",
+    "rc-queue-anim": "~1.0.3",
     "rc-scroll-anim": "~1.0.0",
     "rc-tween-one": "~1.2.0",
     "react": "15.4.x",
