@@ -171,11 +171,18 @@ class NavController extends React.Component {
             </Tooltip>
           </ul>
           <ul>
-            <li><a onClick={this.openLook} className={`${this.props.className}-remark`}>
-              <Icon type="exclamation-circle-o" />
-              注意事项</a>
+            <li>
+              <a onClick={this.openLook} className={`${this.props.className}-remark`}>
+                <Icon type="exclamation-circle-o" />
+                注意事项
+              </a>
             </li>
             <li><a href="../">返回主站</a></li>
+            <li>
+              <a href="https://github.com/ant-motion/ant-motion-dva-cli-example" target="_blank">
+                dva-cli 例子
+              </a>
+            </li>
             <li>
               <a onClick={this.openHelp}>查看教程</a>
               <Modal

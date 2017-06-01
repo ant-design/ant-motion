@@ -133,7 +133,7 @@ const jsToZip = () => {
   });
   Object.keys(templateStrObj.OTHER).forEach((key) => {
     if (key === 'documentation') {
-      zip.file(`${key}.text`, templateStrObj.OTHER[key]);
+      zip.file(`${key}.md`, templateStrObj.OTHER[key]);
       return;
     }
     zip.file(`${key === 'index' ? key : toUpperCase(key)}.jsx`, templateStrObj.OTHER[key]);

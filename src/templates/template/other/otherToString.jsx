@@ -4,7 +4,7 @@ let point = require('!raw!./Point.jsx');
 
 point = point.replace('../static/point.less', './less/point.less');
 
-const documentation = require('!raw!./documentation.text');
+const documentation = require('!raw!./documentation.md');
 
 export default {
   index,
