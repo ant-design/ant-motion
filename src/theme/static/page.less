@@ -156,13 +156,20 @@
       width: 90%;
       margin: auto;
     }
-    .list-bg{
+    .list-bg {
       width: 100%;
       height: 100%;
       background: fade(#000000, 30);
       position: fixed;
       top: 0;
       z-index: 1001;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .45s @ease-in-out;
+      &.open {
+        opacity: 1;
+        pointer-events: auto;
+      }
     }
     &-wrapper {
       width: 90%;
@@ -177,12 +184,12 @@
         border-right: 1px solid @line-color;
         box-shadow: 0 0 0 fade(#ccc, 50);
         transform: translateX(-100%);
-        transition: transform .45s @ease-in-out, box-shadow .45s @ease-in-out;
-        &.open{
+        transition: transform .45s @ease-in-out;
+        &.open {
           box-shadow: 2px 0 4px fade(#000, 30);
           transform: translateX(0);
           .icon-list .bar-wrapper {
-            em{
+            em {
 
             }
           }
@@ -243,7 +250,7 @@
           }
           ul {
             top: 0;
-            li a{
+            li a {
               height: 36px;
               line-height: 36px;
             }

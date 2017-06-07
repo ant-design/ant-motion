@@ -271,9 +271,7 @@ class Page extends React.Component {
           </ul>
         </div>}
       </TweenOneGroup>}
-      <TweenOneGroup component="" enter={{ opacity: 0, type: 'from' }} leave={{ opacity: 0 }}>
-        {this.state.open && <div key="bg" className="list-bg" onClick={this.openClick} />}
-      </TweenOneGroup>
+      <div key="bg" className={`list-bg${this.state.open ? ' open' : ''}`} onClick={this.openClick} />
       <TweenOneGroup
         enter={{
           y: 30,

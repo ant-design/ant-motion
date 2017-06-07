@@ -62,7 +62,7 @@ class Header extends React.Component {
         this.context.router.push({
           pathname: href,
         });
-      }, 550);
+      }, 850);
     }
     this.setState(this.getAnimData(phoneOpen));
   }
