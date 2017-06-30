@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 
 export default function NotFound(props) {
@@ -18,5 +19,5 @@ export default function NotFound(props) {
 }
 
 NotFound.propTypes = {
-  className: React.PropTypes.string,
+  className: PropTypes.string,
 };

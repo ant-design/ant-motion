@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 import TweenOne, { TweenOneGroup } from 'rc-tween-one';
 import ticker from 'rc-tween-one/lib/ticker';
 import SvgDrawPlugin from 'rc-tween-one/lib/plugin/SvgDrawPlugin';
@@ -9,7 +10,7 @@ TweenOne.plugins.push(SvgDrawPlugin);
 
 export default class Demo extends React.Component {
   static propTypes = {
-    image: React.PropTypes.string,
+    image: PropTypes.string,
   };
 
   static defaultProps = {

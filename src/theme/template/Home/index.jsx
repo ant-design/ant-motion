@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import DocumentTitle from 'react-document-title';
 import ScrollLink from 'rc-scroll-anim/lib/ScrollLink';
 import { scrollTo } from '../utils';

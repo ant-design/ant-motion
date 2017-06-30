@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import TweenOne, { TweenOneGroup } from 'rc-tween-one';
 import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
 import '../../../static/content.less';
@@ -7,7 +8,7 @@ import './index.less';
 class Content extends React.Component {
 
   static propTypes = {
-    id: React.PropTypes.string,
+    id: PropTypes.string,
   };
 
   static defaultProps = {

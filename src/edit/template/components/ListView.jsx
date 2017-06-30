@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Icon, Modal, Alert, Checkbox, InputNumber } from 'antd';
 import { TweenOneGroup } from 'rc-tween-one';
 import ListSort from './ListSort';

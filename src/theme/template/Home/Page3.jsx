@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
 import QueueAnim from 'rc-queue-anim';
 
@@ -6,7 +7,7 @@ import { Link } from 'react-router';
 
 export default class Page3 extends React.Component {
   static propTypes = {
-    onButtonClick: React.PropTypes.func,
+    onButtonClick: PropTypes.func,
   };
 
   static defaultProps = {

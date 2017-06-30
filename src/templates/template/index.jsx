@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 import { scrollScreen } from 'rc-scroll-anim';
 import webData from '../template.config';
 import { getURLData, mergeURLDataToDefault, dataValueReplace, getWebOrPhoneCss, getStyleToString } from './utils';
@@ -11,7 +12,7 @@ const Point = require('./other/Point');
 
 export default class Templates extends React.Component {
   static propTypes = {
-    location: React.PropTypes.any,
+    location: PropTypes.any,
   };
 
   constructor(props) {

@@ -1,13 +1,14 @@
 import React from 'react';
 import ReactDom from 'react-dom';
+import PropTypes from 'prop-types';
 import { Icon } from 'antd';
 import { enquireScreen } from '../utils';
 
 class CodeDemo extends React.Component {
   static propTypes = {
-    className: React.PropTypes.string,
-    pageData: React.PropTypes.object,
-    utils: React.PropTypes.any,
+    className: PropTypes.string,
+    pageData: PropTypes.object,
+    utils: PropTypes.any,
   };
 
   static defaultProps = {

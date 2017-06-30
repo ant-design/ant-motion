@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import { Icon, Tooltip, Input, InputNumber, Select, Switch, Radio } from 'antd';
 import { TweenOneGroup } from 'rc-tween-one';

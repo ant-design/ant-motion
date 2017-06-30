@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
 import QueueAnim from 'rc-queue-anim';
 import TweenOne from 'rc-tween-one';
@@ -7,10 +8,10 @@ import { Link } from 'react-router';
 
 export default class Page2 extends React.Component {
   static propTypes = {
-    pageData: React.PropTypes.object,
-    utils: React.PropTypes.object,
-    tweenAnim: React.PropTypes.object,
-    onButtonClick: React.PropTypes.func,
+    pageData: PropTypes.object,
+    utils: PropTypes.object,
+    tweenAnim: PropTypes.object,
+    onButtonClick: PropTypes.func,
   };
 
   static defaultProps = {

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import TweenOne from 'rc-tween-one';
 import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
 import { Tabs } from 'antd';
@@ -10,9 +11,9 @@ const TabPane = Tabs.TabPane;
 class Content extends React.Component {
 
   static propTypes = {
-    className: React.PropTypes.string,
-    dataSource: React.PropTypes.object,
-    id: React.PropTypes.string,
+    className: PropTypes.string,
+    dataSource: PropTypes.object,
+    id: PropTypes.string,
   };
 
   static defaultProps = {

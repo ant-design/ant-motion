@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Button, Icon, Modal, message, Tooltip } from 'antd';
 import CopyToClipboard from 'react-copy-to-clipboard';
 import saveJsZip from './saveJsZip';

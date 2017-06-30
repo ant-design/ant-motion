@@ -1,12 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import TweenOne from 'rc-tween-one';
 import DocumentTitle from 'react-document-title';
 import { Link } from 'react-router';
 
 export default class Exhibition extends React.Component {
   static propTypes = {
-    className: React.PropTypes.string,
-    pageData: React.PropTypes.object,
+    className: PropTypes.string,
+    pageData: PropTypes.object,
   };
 
   static defaultProps = {

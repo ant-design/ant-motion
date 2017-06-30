@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import TweenOne from 'rc-tween-one';
 import QueueAnim from 'rc-queue-anim';
 import ScrollElement from 'rc-scroll-anim/lib/ScrollElement';
@@ -11,7 +12,7 @@ TweenOne.plugins.push(SvgMorphPlugin);
 
 export default class Banner extends React.Component {
   static propTypes = {
-    className: React.PropTypes.string,
+    className: PropTypes.string,
   };
 
   static defaultProps = {
