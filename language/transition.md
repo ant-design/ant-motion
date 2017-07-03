@@ -22,7 +22,7 @@ english: Transition
 
 ### 页面间切换
 
-在视图变化时保持上下文; 滑入与滑出: 可以有效构建虚拟空
+在视图变化时保持上下文; 滑入与滑出: 可以有效构建虚拟空间。
 
 <video src="https://os.alipayobjects.com/rmsportal/EejaUGsyExkXyXr.mp4" loop="true" class="video"/>
 

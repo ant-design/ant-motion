@@ -34,6 +34,6 @@ console.log(121)
 
 ### 弹出框呼出
 
-从页面的某个按钮呼出弹出框时, 弹框从按钮处呼起, 可提示用户弹框与按钮的关第;
+从页面的某个按钮呼出弹出框时, 弹框从按钮处呼起, 可提示用户弹框与按钮的关系;
 
 <video src="https://os.alipayobjects.com/rmsportal/gSNilqbiXOufDXF.mp4" class="video"/>
