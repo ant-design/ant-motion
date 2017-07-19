@@ -217,9 +217,9 @@ class Edit extends React.Component {
     const location = window.location;
     const protocol = location.protocol;
     const isLocalMode = location.port;
-    const host = isLocalMode ? ':8113' : window.location.host;
+    const port = isLocalMode ? ':8113' : '';
     const mainPath = isLocalMode ? '' : '/templates';
-    const iframeSrc = `${protocol}//${location.hostname}${host}${mainPath}/${this.state.urlHash}`;
+    const iframeSrc = `${protocol}//${location.hostname}${port}${mainPath}/${this.state.urlHash}`;
     return (<div>
       <NavController
         urlHash={this.state.urlHash}
