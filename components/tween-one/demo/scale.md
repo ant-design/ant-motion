@@ -7,7 +7,7 @@ mouseEnter: true
 鼠标经过或手指按下可查看缩放效果。
 
 ```jsx
-import { PropTypes } from 'react';
+import PropTypes from 'prop-types';
 import TweenOne from 'rc-tween-one';
 
 class Demo extends React.Component {

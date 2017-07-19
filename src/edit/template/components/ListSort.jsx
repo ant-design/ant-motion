@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import TweenOne from 'rc-tween-one';
 import QueueAnim from 'rc-queue-anim';
+import PropTypes from 'prop-types';
 
 function toArrayChildren(children) {
   const ret = [];
@@ -53,13 +54,13 @@ function mergeChildren(prev, next) {
 
 export default class ListSort extends React.Component {
   static propTypes = {
-    component: React.PropTypes.any,
-    children: React.PropTypes.any,
-    animType: React.PropTypes.string,
-    onChange: React.PropTypes.any,
-    dragClassName: React.PropTypes.string,
-    appearAnim: React.PropTypes.object,
-    onEventChange: React.PropTypes.any,
+    component: PropTypes.any,
+    children: PropTypes.any,
+    animType: PropTypes.string,
+    onChange: PropTypes.any,
+    dragClassName: PropTypes.string,
+    appearAnim: PropTypes.object,
+    onEventChange: PropTypes.any,
   };
 
   static defaultProps = {

@@ -9,6 +9,7 @@ mouseEnter: true
 
 ```jsx
 import TweenOne from 'rc-tween-one';
+import PropTypes from 'prop-types';
 
 class Demo extends React.Component {
 
@@ -29,9 +30,9 @@ class Demo extends React.Component {
   }
 }
 Demo.propTypes = {
-  children: React.PropTypes.any,
-  className: React.PropTypes.string,
-  paused: React.PropTypes.bool,
+  children: PropTypes.any,
+  className: PropTypes.string,
+  paused: PropTypes.bool,
 };
 
 ReactDOM.render(<Demo/>, mountNode);

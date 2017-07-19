@@ -9,8 +9,9 @@ mouseEnter: true
 
 ```jsx
 import TweenOne from 'rc-tween-one';
-import {Button} from 'antd';
+import Button from 'antd/lib/button';
 import SvgMorphPlugin from 'rc-tween-one/lib/plugin/SvgMorphPlugin';
+import PropTypes from 'prop-types';
 TweenOne.plugins.push(SvgMorphPlugin);
 
 class Demo extends React.Component {
@@ -47,9 +48,9 @@ class Demo extends React.Component {
   }
 }
 Demo.propTypes = {
-  children: React.PropTypes.any,
-  className: React.PropTypes.string,
-  paused: React.PropTypes.bool,
+  children: PropTypes.any,
+  className: PropTypes.string,
+  paused: PropTypes.bool,
 };
 ReactDOM.render(<Demo/>, mountNode);
 

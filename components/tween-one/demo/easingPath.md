@@ -8,7 +8,7 @@ mouseEnter: true
 
 
 ```jsx
-import { PropTypes } from 'react';
+import PropTypes from 'prop-types';
 import TweenOne from 'rc-tween-one';
 
 const p0 = 'M0,100 L25,100 C34,20 40,0 100,0';

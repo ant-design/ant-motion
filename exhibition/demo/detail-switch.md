@@ -15,7 +15,8 @@ image: https://zos.alipayobjects.com/rmsportal/cvLbMZkjkNvqbVF.png
 import BannerAnim from 'rc-banner-anim';
 import QueueAnim from 'rc-queue-anim';
 import { TweenOneGroup } from 'rc-tween-one';
-import { Icon } from 'antd';
+import Icon from 'antd/lib/icon';
+import PropTypes from 'prop-types';
 
 const Element = BannerAnim.Element;
 
@@ -54,7 +55,7 @@ dataArray = dataArray.map(item => ({ ...item, ...textData }));
 
 class DetailSwitchDemo extends React.Component {
   static propTypes = {
-    className: React.PropTypes.string,
+    className: PropTypes.string,
   };
 
   static defaultProps = {

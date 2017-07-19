@@ -1,5 +1,6 @@
 import React from 'react';
-import { Icon } from 'antd';
+import Icon from 'antd/lib/icon';
+import PropTypes from 'prop-types';
 import ListSort from '../../src/edit/template/components/ListSort';
 import './list-sort.css';
 
@@ -31,7 +32,7 @@ const dataArray = [
 ];
 export default class ListSortDemo extends React.Component {
   static propTypes = {
-    className: React.PropTypes.string,
+    className: PropTypes.string,
   };
 
   static defaultProps = {

@@ -1,11 +1,12 @@
 import React from 'react';
 import QueueAnim from 'rc-queue-anim';
 import TweenOne from 'rc-tween-one';
+import PropTypes from 'prop-types';
 import './list-anim-animateDemo.css';
 
 export default class ListDemo extends React.Component {
   static propTypes = {
-    className: React.PropTypes.string,
+    className: PropTypes.string,
   };
 
   static defaultProps = {

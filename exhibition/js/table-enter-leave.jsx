@@ -1,12 +1,14 @@
 import React from 'react';
-import { Table, Button } from 'antd';
+import Table from 'antd/lib/table';
+import Button from 'antd/lib/button';
 import QueueAnim from 'rc-queue-anim';
 import { TweenOneGroup } from 'rc-tween-one';
+import PropTypes from 'prop-types';
 import './table-enter-leave.css';
 
 export default class TableEnterLeave extends React.Component {
   static propTypes = {
-    className: React.PropTypes.string,
+    className: PropTypes.string,
   };
 
   static defaultProps = {

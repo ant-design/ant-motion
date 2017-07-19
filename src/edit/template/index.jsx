@@ -214,6 +214,11 @@ class Edit extends React.Component {
   }
 
   render() {
+    const location = window.location;
+    const protocol = location.protocol;
+    const isLocalMode = location.port;
+    const host = isLocalMode ? ':8113' : window.location.host;
+    const iframeSrc = `${protocol}//${location.hostname}${host}/${this.state.urlHash}`;
     return (<div>
       <NavController
         urlHash={this.state.urlHash}
@@ -238,7 +243,7 @@ class Edit extends React.Component {
             </div>)}
             <div className="edit-iframe-wrapper">
               <div className="preview-container">
-                <iframe id="preview" src={`/templates/${this.state.urlHash}`} />
+                <iframe id="preview" src={iframeSrc} />
               </div>
               <EditStateController
                 enterRect={this.state.enterRect}

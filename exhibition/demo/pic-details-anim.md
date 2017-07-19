@@ -13,8 +13,9 @@ image: https://zos.alipayobjects.com/rmsportal/RJoNICBzRCkOsMv.png
 
 ```jsx
 import QueueAnim from 'rc-queue-anim';
+import PropTypes from 'prop-types';
 import TweenOne, { TweenOneGroup } from 'rc-tween-one';
-import { Icon } from 'antd';
+import Icon from 'antd/lib/icon';
 
 const textData = {
   content: 'Taiwan called motorcycle, motor bike [1] or a motorcycle,' +
@@ -39,7 +40,7 @@ let dataArray = [
 dataArray = dataArray.map(item => ({ ...item, ...textData }));
 class PicDetailsDemo extends React.Component {
   static propTypes = {
-    className: React.PropTypes.string,
+    className: PropTypes.string,
   };
 
   static defaultProps = {

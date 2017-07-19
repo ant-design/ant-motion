@@ -150,7 +150,7 @@ class Header extends React.Component {
     </header>);
   }
 }
-const objectOrArray = React.PropTypes.oneOfType([PropTypes.string, PropTypes.array]);
+const objectOrArray = PropTypes.oneOfType([PropTypes.string, PropTypes.array]);
 Header.propTypes = {
   className: PropTypes.string,
   activeKey: objectOrArray,

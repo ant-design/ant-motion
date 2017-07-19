@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Icon, Modal, Alert, Checkbox, InputNumber } from 'antd';
 import { TweenOneGroup } from 'rc-tween-one';
 import ListSort from './ListSort';
-import webData from './../template.config';
+import webData from '../template.config';
 
 export default class ListView extends React.Component {
   static propTypes = {

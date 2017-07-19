@@ -8,8 +8,9 @@ title: svg 线性动画
 
 ```jsx
 import TweenOne from 'rc-tween-one';
-import {Button} from 'antd';
+import Button from 'antd/lib/button';
 import SvgDrawPlugin from 'rc-tween-one/lib/plugin/SvgDrawPlugin';
+import PropTypes from 'prop-types';
 TweenOne.plugins.push(SvgDrawPlugin);
 
 const dataStartArr = ['30 150', '50% 50%', '30% 200', '20 30%', 0, '100%'];
@@ -54,9 +55,9 @@ class Demo extends React.Component {
   }
 }
 Demo.propTypes = {
-  children: React.PropTypes.any,
-  className: React.PropTypes.string,
-  paused: React.PropTypes.bool,
+  children: PropTypes.any,
+  className: PropTypes.string,
+  paused: PropTypes.bool,
 };
 ReactDOM.render(<Demo/>, mountNode);
 

@@ -1,7 +1,8 @@
 import React from 'react';
 import QueueAnim from 'rc-queue-anim';
 import TweenOne, { TweenOneGroup } from 'rc-tween-one';
-import { Icon } from 'antd';
+import Icon from 'antd/lib/icon';
+import PropTypes from 'prop-types';
 import './pic-details-anim.css';
 
 const textData = {
@@ -27,7 +28,7 @@ let dataArray = [
 dataArray = dataArray.map(item => ({ ...item, ...textData }));
 export default class PicDetailsDemo extends React.Component {
   static propTypes = {
-    className: React.PropTypes.string,
+    className: PropTypes.string,
   };
 
   static defaultProps = {

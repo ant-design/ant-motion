@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Checkbox } from 'antd';
-import webData from './../template.config';
+import webData from '../template.config';
 
 export default class OtherView extends React.Component {
 

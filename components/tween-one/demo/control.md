@@ -7,9 +7,9 @@ mouseEnter: true
 可操作型变更动画。
 
 ```jsx
-import { PropTypes } from 'react';
+import PropTypes from 'prop-types';
 import TweenOne from 'rc-tween-one';
-import {Button} from 'antd';
+import Button from 'antd/lib/button';
 
 class Demo extends React.Component {
 

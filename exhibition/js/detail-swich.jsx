@@ -2,7 +2,8 @@ import React from 'react';
 import BannerAnim from 'rc-banner-anim';
 import QueueAnim from 'rc-queue-anim';
 import { TweenOneGroup } from 'rc-tween-one';
-import { Icon } from 'antd';
+import Icon from 'antd/lib/icon';
+import PropTypes from 'prop-types';
 import './detail-swich.css';
 
 const Element = BannerAnim.Element;
@@ -42,7 +43,7 @@ dataArray = dataArray.map(item => ({ ...item, ...textData }));
 
 export default class DetailSwitchDemo extends React.Component {
   static propTypes = {
-    className: React.PropTypes.string,
+    className: PropTypes.string,
   };
 
   static defaultProps = {

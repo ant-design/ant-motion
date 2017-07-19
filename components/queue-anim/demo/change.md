@@ -6,25 +6,23 @@ title: 添加与删除
 场景里有增加或删除条目时也会触发动画。
 
 ````jsx
-import { Button } from 'antd';
+import Button from 'antd/lib/button';
 import QueueAnim from 'rc-queue-anim';
 
-const Test = React.createClass({
-  getInitialState() {
-    return {
-      show: true,
-      items: [
-        <li key="0"></li>,
-        <li key="1"></li>,
-        <li key="2"></li>
-      ],
-    };
-  },
+class Test extends React.Component{
+  state = {
+    show: true,
+    items: [
+      <li key="0"></li>,
+      <li key="1"></li>,
+      <li key="2"></li>
+    ],
+  };
   onClick() {
     this.setState({
       show: !this.state.show,
     });
-  },
+  }
   onAdd() {
     let items = this.state.items;
     items.push(<li key={Date.now()}></li>);
@@ -32,7 +30,7 @@ const Test = React.createClass({
       show: true,
       items,
     });
-  },
+  }
   onRemove() {
     let items = this.state.items;
     items.splice(items.length - 1, 1);
@@ -40,7 +38,7 @@ const Test = React.createClass({
       show: true,
       items,
     });
-  },
+  }
   render() {
     return (
       <div className="queue-demo">
@@ -66,7 +64,7 @@ const Test = React.createClass({
       </div>
     );
   }
-});
+};
 
 ReactDOM.render(<Test />, mountNode);
 ````

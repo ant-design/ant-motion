@@ -16,10 +16,11 @@ image: https://zos.alipayobjects.com/rmsportal/ivfCWzEWHsTPWMW.png
 ````jsx
 import QueueAnim from 'rc-queue-anim';
 import TweenOne from 'rc-tween-one';
+import PropTypes from 'prop-types';
 
 class ListDemo extends React.Component {
   static propTypes = {
-    className: React.PropTypes.string,
+    className: PropTypes.string,
   };
 
   static defaultProps = {
