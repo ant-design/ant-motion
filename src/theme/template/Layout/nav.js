@@ -5,7 +5,8 @@ const location = window.location;
 const protocol = location.protocol;
 const isLocalMode = location.port;
 const host = isLocalMode ? ':8112' : window.location.host;
-const href = `${protocol}//${location.hostname}${host}`;
+const mainPath = isLocalMode ? '' : '/edit';
+const href = `${protocol}//${location.hostname}${host}${mainPath}`;
 
 export default [
   { name: '动效展示', href: '/exhibition/', key: 'exhibition' },
