@@ -60,7 +60,6 @@
     "site": "concurrently \"bisheng build -c ./src/bisheng.index.config.js\" \"bisheng build -c ./src/bisheng.edit.config.js\" \"bisheng build -c ./src/bisheng.templates.config.js\"",
     "re-site": "rm -rf _site && mkdir -p _site",
     "deploy": "npm run re-site && npm run site && bisheng gh-pages --push-only",
-    "just-deploy": "npm run pre-deploy && bisheng gh-pages -c ./src/bisheng.index.config.js",
     "lint": "eslint ./src ./exhibition --ext '.js,.jsx'",
     "demolint": "RUN_ENV=DEMO eslint components/*/demo/*.md --ext '.md'",
     "eslint-fix": "eslint --fix ./src ./exhibition --ext '.js,.jsx'",
