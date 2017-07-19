@@ -19,18 +19,23 @@ image: https://zos.alipayobjects.com/rmsportal/YsRZqQwpiAVgWrX.png
 ```jsx
 import TweenOne, { TweenOneGroup } from 'rc-tween-one';
 import ticker from 'rc-tween-one/lib/ticker';
-import { Input, Button, InputNumber, Radio, Icon } from 'antd';
+import Input from 'antd/lib/input';
+import Button from 'antd/lib/button';
+import InputNumber from 'antd/lib/input-number';
+import Radio from 'antd/lib/radio';
+import Icon from 'antd/lib/icon';
 import enquire from 'enquire.js';
+import PropTypes from 'prop-types';
 
 const RadioGroup = Radio.Group;
 
 class LogoGather extends React.Component {
   static propTypes = {
-    image: React.PropTypes.string,
-    w: React.PropTypes.number,
-    h: React.PropTypes.number,
-    pixSize: React.PropTypes.number,
-    pointSizeMin: React.PropTypes.number,
+    image: PropTypes.string,
+    w: PropTypes.number,
+    h: PropTypes.number,
+    pixSize: PropTypes.number,
+    pointSizeMin: PropTypes.number,
   };
 
   static defaultProps = {

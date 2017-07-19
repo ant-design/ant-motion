@@ -24,6 +24,7 @@ ReactDOM.render(<EaseExplain
 ```
 
 ```__react
+import EaseExplain from '../src/theme/template/other/EaseExplain';
 ReactDOM.render(<EaseExplain
   title="2.单物体可视范围外进场的运动"
   leftHide
@@ -36,6 +37,7 @@ ReactDOM.render(<EaseExplain
 ```
 
 ```__react
+import EaseExplain from '../src/theme/template/other/EaseExplain';
 ReactDOM.render(<EaseExplain
   title="3.单物体可视范围内出场的运动"
   rightHide

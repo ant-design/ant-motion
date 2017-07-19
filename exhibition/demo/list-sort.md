@@ -12,7 +12,8 @@ image: https://zos.alipayobjects.com/rmsportal/BgYxbsXLrUfkkRT.png
 ListSort 组件地址： [地址](https://github.com/ant-design/ant-motion/blob/master/src/edit/template/components/ListSort.jsx)
 
 ```jsx
-import { Icon } from 'antd';
+import Icon from 'antd/lib/icon';
+import PropTypes from 'prop-types';
 import ListSort from '../../src/edit/template/components/ListSort';
 
 const dataArray = [
@@ -43,7 +44,7 @@ const dataArray = [
 ];
 class ListSortDemo extends React.Component {
   static propTypes = {
-    className: React.PropTypes.string,
+    className: PropTypes.string,
   };
 
   static defaultProps = {

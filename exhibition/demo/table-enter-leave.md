@@ -16,13 +16,15 @@ image: https://zos.alipayobjects.com/rmsportal/wJDizWNyyxVhULT.png
 此效果为设计语言里的对象增加与对象删除的实现。[查看视频演示](/language/interact)
 
 ```jsx
-import { Table, Button } from 'antd';
+import Table from 'antd/lib/table';
+import Button from 'antd/lib/button';
 import QueueAnim from 'rc-queue-anim';
+import PropTypes from 'prop-types';
 import { TweenOneGroup } from 'rc-tween-one';
 
 class TableEnterLeave extends React.Component {
   static propTypes = {
-    className: React.PropTypes.string,
+    className: PropTypes.string,
   };
 
   static defaultProps = {

@@ -178,7 +178,7 @@ class NavController extends React.Component {
                 注意事项
               </a>
             </li>
-            <li><a href="../">返回主站</a></li>
+            <li><a href="https://motion.ant.design/">返回主站</a></li>
             <li>
               <a href="https://github.com/ant-motion/ant-motion-dva-cli-example" target="_blank">
                 dva-cli 例子

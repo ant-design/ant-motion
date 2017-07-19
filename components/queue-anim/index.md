@@ -40,7 +40,7 @@ ReactDOM.render(<QueueAnim>
 |参数        |类型             |默认     |详细             |
 |------------|----------------|---------|----------------|
 | type       | string / array | `right` | 动画内置参数 <br/> `alpha` `left` `right` `top` `bottom` `scale` `scaleBig` `scaleX` `scaleY`|
-| animConfig | object / array | null    | 配置动画参数 <br/> 如 `{opacity:[1, 0],translateY:[0, -30]}`; Array: [enter, leave]|
+| animConfig | object / array | null    | 配置动画参数 <br/> 如 `{opacity:[1, 0],translateY:[0, -30]}`; Array: [enter, leave], v1.3.0 增加 [timeline](http://react-component.github.io/queue-anim/examples/timeline.html)|
 | delay      | number / array | 0       | 整个动画的延时,以毫秒为单位 |
 | duration   | number / array | 450     | 每个动画的时间,以毫秒为单位  |
 | interval   | number / array | 100     | 每个动画的间隔时间,以毫秒为单位  |

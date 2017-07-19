@@ -9,7 +9,7 @@ vertical: true
 
 
 ```jsx
-import { PropTypes } from 'react';
+import PropTypes from 'prop-types';
 import TweenOne from 'rc-tween-one';
 import PathPlugin from 'rc-tween-one/lib/plugin/PathPlugin';
 TweenOne.plugins.push(PathPlugin);

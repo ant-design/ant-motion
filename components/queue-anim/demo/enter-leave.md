@@ -6,20 +6,18 @@ title: 进场和离场
 通过把属性设置一个数组来分别表示进出场的效果，`type`、`animConfig`、`delay`、`duration`、`interval`、`ease` 等属性均支持配置为数组。
 
 ````jsx
-import { Button } from 'antd';
+import Button from 'antd/lib/button';
 import QueueAnim from 'rc-queue-anim';
 
-const Test = React.createClass({
-  getInitialState() {
-    return {
-      show: true
-    };
-  },
+class Test extends React.Component{
+  state = {
+    show: true
+  };
   onClick() {
     this.setState({
       show: !this.state.show
     });
-  },
+  }
   render() {
     return (
       <div className="queue-demo">
@@ -50,7 +48,7 @@ const Test = React.createClass({
       </div>
     );
   }
-});
+};
 
 ReactDOM.render(<Test />, mountNode);
 ````

@@ -6,20 +6,18 @@ title: 进场和离场
 同时支持进场和离场动画。
 
 ````jsx
-import { Button } from 'antd';
+import Button from 'antd/lib/button';
 import QueueAnim from 'rc-queue-anim';
 
-const Test = React.createClass({
-  getInitialState() {
-    return {
-      show: true
-    };
-  },
+class Test extends React.Component{
+  state = {
+    show: true
+  };
   onClick() {
     this.setState({
       show: !this.state.show
     });
-  },
+  }
   render() {
     return (
       <div className="queue-demo">
@@ -47,7 +45,7 @@ const Test = React.createClass({
       </div>
     );
   }
-});
+};
 
 ReactDOM.render(<Test />, mountNode);
 ````

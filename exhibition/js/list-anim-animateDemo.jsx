@@ -1,6 +1,7 @@
 import React from 'react';
 import QueueAnim from 'rc-queue-anim';
 import Animate from 'rc-animate';
+import PropTypes from 'prop-types';
 import './list-anim-animateDemo.css';
 
 class Todo extends React.Component {
@@ -17,7 +18,7 @@ class Todo extends React.Component {
 
 export default class ListDemoAnimate extends React.Component {
   static propTypes = {
-    className: React.PropTypes.string,
+    className: PropTypes.string,
   };
 
   static defaultProps = {

@@ -8,7 +8,7 @@ mouseEnter: true
 
 
 ```jsx
-import { PropTypes } from 'react';
+import PropTypes from 'prop-types';
 import TweenOne from 'rc-tween-one';
 
 class Demo extends React.Component {
