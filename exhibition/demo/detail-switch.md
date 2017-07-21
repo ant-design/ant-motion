@@ -69,7 +69,7 @@ class DetailSwitchDemo extends React.Component {
       delay: 0,
       imgAnim: [
         { translateX: [0, 300], opacity: [1, 0] },
-        { translateX: [0, -300], opacity: [0, 1] },
+        { translateX: [0, -300], opacity: [1, 0] },
       ],
     };
     this.oneEnter = false;
@@ -87,7 +87,7 @@ class DetailSwitchDemo extends React.Component {
     showInt -= 1;
     const imgAnim = [
       { translateX: [0, -300], opacity: [1, 0] },
-      { translateX: [0, 300], opacity: [0, 1] },
+      { translateX: [0, 300], opacity: [1, 0] },
     ];
     if (showInt <= 0) {
       showInt = 0;
@@ -101,7 +101,7 @@ class DetailSwitchDemo extends React.Component {
     let showInt = this.state.showInt;
     const imgAnim = [
       { translateX: [0, 300], opacity: [1, 0] },
-      { translateX: [0, -300], opacity: [0, 1] },
+      { translateX: [0, -300], opacity: [1, 0] },
     ];
     showInt += 1;
     if (showInt > dataArray.length - 1) {

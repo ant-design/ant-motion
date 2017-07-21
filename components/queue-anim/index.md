@@ -37,10 +37,13 @@ ReactDOM.render(<QueueAnim>
 > 每个子标签必须带 key，如果未设置 key 将不执行动画。
 
 ## API
+
+> v1.3.0 animConfig 增加 [timeline](http://react-component.github.io/queue-anim/examples/timeline.html)
+
 |参数        |类型             |默认     |详细             |
 |------------|----------------|---------|----------------|
 | type       | string / array | `right` | 动画内置参数 <br/> `alpha` `left` `right` `top` `bottom` `scale` `scaleBig` `scaleX` `scaleY`|
-| animConfig | object / array | null    | 配置动画参数 <br/> 如 `{opacity:[1, 0],translateY:[0, -30]}`; Array: [enter, leave], v1.3.0 增加 [timeline](http://react-component.github.io/queue-anim/examples/timeline.html)|
+| animConfig | object / array | null    | 配置动画参数<br/>  如 `{ opacity:[1, 0] }` <br/>参数为: `{ opacity: Array<end, start> }`<br/>出场则相反: `{ opacity: Array<start, end> }`; 详细说明查看下面的 [animConfig](#animConfig) |
 | delay      | number / array | 0       | 整个动画的延时,以毫秒为单位 |
 | duration   | number / array | 450     | 每个动画的时间,以毫秒为单位  |
 | interval   | number / array | 100     | 每个动画的间隔时间,以毫秒为单位  |
@@ -53,3 +56,23 @@ ReactDOM.render(<QueueAnim>
 
 > 当以上数据类型为 Array 时，`['left', 'top']` 第一个为进场动画属性, 第二个为离场属性。
 
+### animConfig
+
+**数据分为三种：**
+
+- 自定义设定开始样式: `{ opacity:[1, 0] }` ；
+<br/> 默认数据类型；
+<br/>参数类型: `{ opacity: Array<end, start> }`；
+<br/>出场自动反向: `{ opacity: Array<start, end> }`；
+<br/>
+<br/>
+
+- 自定义样式: `{ opacity: 0 }`；
+<br/> 不设置开始位置。
+<br/>
+<br/>
+
+
+- 自定义数组进出场样式: `[{ opacity:[1, 0] }, { opacity:[1, 0] }]`；
+<br/> 数组型;
+<br/> 参数类型: `[{ opacity: Array<end, start> }, { opacity: Array<start, end>}]`
