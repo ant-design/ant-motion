@@ -44,7 +44,7 @@ export default class Page2 extends React.Component {
 
     return (<OverPack
       className="home-content page2"
-      playScale={0.8}
+      playScale={0.6}
       id="page2"
     >
       <QueueAnim

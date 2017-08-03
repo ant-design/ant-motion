@@ -24,7 +24,7 @@ export default class Page1 extends React.Component {
 
   render() {
     return (<OverPack
-      playScale={0.8}
+      playScale={0.6}
       className="home-content page1 vh"
       id="page1"
     >

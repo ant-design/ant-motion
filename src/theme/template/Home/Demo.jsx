@@ -32,7 +32,7 @@ export default class Demo extends React.Component {
 
   componentDidMount() {
     this.dom = ReactDOM.findDOMNode(this);
-    this.tickerOut = ticker.timeout(this.createPointData, 1400);
+    // this.tickerOut = ticker.timeout(this.createPointData, 1400);
   }
 
   componentWillUnmount() {
@@ -250,32 +250,32 @@ export default class Demo extends React.Component {
             d="M30,265L30,25"
             component="path"
             animation={[
-                { opacity: 0, type: 'from', delay: 300, duration: 0 },
-                { SVGDraw: 0, type: 'from', duration: 300, ease: 'easeInQuart' },
+              { opacity: 0, type: 'from', delay: 300, duration: 0 },
+              { SVGDraw: 0, type: 'from', duration: 300, ease: 'easeInQuart' },
             ]}
           />
           <TweenOne
             d="M30,25L137,135"
             component="path"
             animation={[
-                { opacity: 0, type: 'from', delay: 600, duration: 0 },
-                { SVGDraw: 0, type: 'from', duration: 250, ease: 'linear' },
+              { opacity: 0, type: 'from', delay: 600, duration: 0 },
+              { SVGDraw: 0, type: 'from', duration: 250, ease: 'linear' },
             ]}
           />
           <TweenOne
             d="M137,135L245,25"
             component="path"
             animation={[
-                { opacity: 0, type: 'from', delay: 850, duration: 0 },
-                { SVGDraw: 0, type: 'from', duration: 250, ease: 'linear' },
+              { opacity: 0, type: 'from', delay: 850, duration: 0 },
+              { SVGDraw: 0, type: 'from', duration: 250, ease: 'linear' },
             ]}
           />
           <TweenOne
             d="M245,25L245,190"
             component="path"
             animation={[
-                { opacity: 0, type: 'from', delay: 1100, duration: 0 },
-                { SVGDraw: 0, type: 'from', duration: 300, ease: 'easeOutQuart' },
+              { opacity: 0, type: 'from', delay: 1100, duration: 0 },
+              { SVGDraw: 0, type: 'from', duration: 300, ease: 'easeOutQuart' },
             ]}
           />
           <TweenOne
