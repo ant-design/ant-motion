@@ -32,7 +32,7 @@ export default class Demo extends React.Component {
 
   componentDidMount() {
     this.dom = ReactDOM.findDOMNode(this);
-    // this.tickerOut = ticker.timeout(this.createPointData, 1400);
+    this.tickerOut = ticker.timeout(this.createPointData, 1400);
   }
 
   componentWillUnmount() {
