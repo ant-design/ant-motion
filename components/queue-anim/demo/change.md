@@ -18,12 +18,12 @@ class Test extends React.Component{
       <li key="2"></li>
     ],
   };
-  onClick() {
+  onClick = () => {
     this.setState({
       show: !this.state.show,
     });
   }
-  onAdd() {
+  onAdd = () => {
     let items = this.state.items;
     items.push(<li key={Date.now()}></li>);
     this.setState({
@@ -31,7 +31,7 @@ class Test extends React.Component{
       items,
     });
   }
-  onRemove() {
+  onRemove = () => {
     let items = this.state.items;
     items.splice(items.length - 1, 1);
     this.setState({

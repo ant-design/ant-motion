@@ -13,7 +13,7 @@ class Test extends React.Component{
   state = {
     show: true
   };
-  onClick() {
+  onClick = () => {
     this.setState({
       show: !this.state.show
     });
