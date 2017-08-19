@@ -116,9 +116,9 @@ TweenOne.plugins.push(SvgMorphPlugin);
 ``` jsx
 import PathPlugin from 'rc-tween-one/lib/plugin/PathPlugin';
 TweenOne.plugins.push(PathPlugin);
-<TweenOne animation={{ path: 'M0,100 C30,60 0,20 50,50 C70,70 60,0 100,0' }} />
+<TweenOne animation={{ path: 'M0,100 C30,60 0,20 50,50 C70,70 60,0 100,0' }} attr="attr"/>
 或
-<TweenOne animation={{ path: { x: path, y: path, rotate: path } }} />
+<TweenOne animation={{ path: { x: path, y: path, rotate: path } }} attr="attr"/>
 ```
 
 path: string or object;
