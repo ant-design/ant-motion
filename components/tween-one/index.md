@@ -101,14 +101,14 @@ TweenOne.plugins.push(SvgDrawPlugin);
 
 ## SvgMorphPlugin
 
-svg 路径形变动画，如 `{ d: 'M0 0L100 100', attr: 'attr' }`
+svg 路径形变动画，如 `{ d: 'M0 0L100 100' }`
 
 > 注: SvgMorphPlugin 必须设定 `attr: 'attr'`
 
 ``` jsx
 import SvgMorphPlugin from 'rc-tween-one/lib/plugin/SvgMorphPlugin';
 TweenOne.plugins.push(SvgMorphPlugin);
-<TweenOne animation={{ d: 'M0 0L100 100', attr: 'attr' }} />
+<TweenOne animation={{ d: 'M0 0L100 100' }} attr="attr"/>
 ```
 
 ## PathPlugin
