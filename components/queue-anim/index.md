@@ -38,7 +38,7 @@ ReactDOM.render(<QueueAnim>
 
 ## API
 
-> v1.3.0 animConfig 增加 [timeline](http://react-component.github.io/queue-anim/examples/timeline.html)
+> v1.2.0 animConfig 增加 [timeline](http://react-component.github.io/queue-anim/examples/timeline.html)
 
 |参数        |类型             |默认     |详细             |
 |------------|----------------|---------|----------------|

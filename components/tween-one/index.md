@@ -29,8 +29,7 @@ ReactDOM.render(<TweenOne animation={{ x:100 }} />, mountNode);
 
 ### TweenOneGroup
 ```js
-var TweenOne = require('rc-tween-one');
-var React = require('react');
+import TweenOne from 'rc-tween-one';
 var TweenOneGroup = TweenOne.TweenOneGroup;
 React.render(<TweenOneGroup>
   <div key="0">demo</div>
