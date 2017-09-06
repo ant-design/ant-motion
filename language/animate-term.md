@@ -39,8 +39,8 @@ english: animate term
 |   borderWidth     | `{ borderWidth: 2 }` 元素当前边框宽度到 2px，同样可用 `borderTopWidth` `borderRightWidth` `borderBottomWidth` `borderLeftWidth` |
 |   borderRadius    | `{ borderRadius: 5 }` 元素当前圆角到 5px, 同上, 同样可用 `上 左 下 右`  |
 |   borderColor     | `{ borderColor: '#FFFFFF' }` 元素当前边框颜色到白色 |
-|   boxShadow       | `{ boxShadow: '0 0 10px #000' }` 元素当前阴影到 Y 轴 10px |
-|   textShadow      | `{ textShadow: '0 0 10px #000' }` 元素当前文字内容阴影到 Y 轴 10px |
+|   boxShadow       | `{ boxShadow: '0 0 10px #000' }` 元素当前阴影模糊到 10px |
+|   textShadow      | `{ textShadow: '0 0 10px #000' }` 元素当前文字内容阴影模糊到 10px |
 
 ## transform 参数
 
