@@ -49,7 +49,7 @@ export default class Banner extends React.Component {
           delay={300}
         >
           <h1 key="h1">Motion Design</h1>
-          <h3 key="h3">The react animation solution</h3>
+          <h3 key="h3">Animation specification and components of Ant Design.</h3>
           <p key="p">
             使用 Ant Motion 能够快速在 React 框架中使用动画。<br />
             我们提供了单项，组合动画，以及整套解决方案
