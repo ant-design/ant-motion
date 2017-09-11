@@ -20,12 +20,13 @@ Ant Motion is a motion design specification from Ant Design, and also a set of s
 
 You can quickly achieve different animations set using the React JSX syntax with a simple configuration to complete the desired animation.
 
-## Animated demos
-#### [List animations](http://motion.ant.design/exhibition/demo/list-anim);
-#### [Detailed explanation of the switching effect](http://motion.ant.design/exhibition/demo/detail-switch);
-#### [Sortable animated drag and drop list](http://motion.ant.design/exhibition/demo/list-sort);
-#### [Thumbnail expand with details animation](http://motion.ant.design/exhibition/demo/pic-details-anim);
-[>> View more](http://motion.ant.design/exhibition/);
+## Demos
+
+- [List animations](http://motion.ant.design/exhibition/demo/list-anim)
+- [Detailed explanation of the switching effect](http://motion.ant.design/exhibition/demo/detail-switch)
+- [Sortable animated drag and drop list](http://motion.ant.design/exhibition/demo/list-sort)
+- [Thumbnail expand with details animation](http://motion.ant.design/exhibition/demo/pic-details-anim)
+- [View more](http://motion.ant.design/exhibition/)
 
 ## Specification
 
