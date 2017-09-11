@@ -14,11 +14,12 @@ The react animation solution.
 
 ## What is Ant Motion?
 
-Ant Motion is a motion design specification from Ant Design, and also a set of solutions that can provide a complete solution with lots of out-of-box animations for their your applications.
+Ant Motion is a motion design specification from Ant Design, and also a set of solutions that can provide a complete solution with lots of out-of-box animations for your applications.
 
 ## What can Ant Motion do?
 
-You can quickly achieve different animations set using the React JSX syntax with a simple configuration to complete the desired animation.
+- Create neat animations by using React components with a simple configuration.
+- Create beautiful landing page with motions by a few steps.
 
 ## Demos
 
