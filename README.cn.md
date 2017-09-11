@@ -1,14 +1,15 @@
+<p align="center">
+  <a href="http://motion.and.design">
+    <img width="200" src="https://zos.alipayobjects.com/rmsportal/TOXWfHIUGHvZIyb.svg"/>
+  </a>
+</p>
+
 # Ant Motion 
 
 Animation specification and components of Ant Design.
 
 
 ## 什么是 Ant Motion ？
-<p align="center">
-  <a href="http://motion.and.design">
-    <img width="200" src="https://zos.alipayobjects.com/rmsportal/TOXWfHIUGHvZIyb.svg"/>
-  </a>
-</p>
 
 Ant Motion 是 Ant Design 中提炼出来的动效语言。他不仅仅是动效语言，同时也是一套 React 框架动效解决方案，可以帮助开发者，更容易的在项目中使用动效。
 我们提供了单项，组合动画，以及整套解决方案。
