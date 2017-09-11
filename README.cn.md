@@ -1,8 +1,6 @@
-# Ant Motion [![node version][node-image]][node-url]
-[node-image]: https://img.shields.io/badge/node.js-%3E=_0.10-green.svg?style=flat-square
-[node-url]: http://nodejs.org/download/
+# Ant Motion 
 
-The react animation solution
+Animation specification and components of Ant Design.
 
 
 ## 什么是 Ant Motion ？
