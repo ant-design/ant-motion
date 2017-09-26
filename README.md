@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="http://motion.and.design">
+  <a href="http://motion.ant.design">
     <img width="200" src="https://zos.alipayobjects.com/rmsportal/TOXWfHIUGHvZIyb.svg"/>
   </a>
 </p>
