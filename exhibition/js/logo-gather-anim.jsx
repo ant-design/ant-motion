@@ -24,7 +24,6 @@ class LogoGather extends React.Component {
 
   static defaultProps = {
     image: 'https://zos.alipayobjects.com/rmsportal/gsRUrUdxeGNDVfO.svg',
-    className: 'logo-gather-demo',
     w: 300,
     h: 300,
     pixSize: 20,
@@ -79,7 +78,7 @@ class LogoGather extends React.Component {
     this.pointArray.forEach((item, i) => {
       const r = Math.random() * this.props.pointSizeMin + this.props.pointSizeMin;
       const b = Math.random() * 0.4 + 0.1;
-      children.push(
+      children.push((
         <TweenOne className="point-wrapper" key={i} style={{ left: item.x, top: item.y }}>
           <TweenOne
             className="point"
@@ -100,7 +99,7 @@ class LogoGather extends React.Component {
             }}
           />
         </TweenOne>
-      );
+      ));
     });
     this.setState({
       children,
@@ -140,8 +139,7 @@ class LogoGather extends React.Component {
           duration: 800,
           ease: 'easeInOutQuint',
         },
-      })
-    );
+      }));
     this.setState({ children });
   };
 
@@ -160,8 +158,7 @@ class LogoGather extends React.Component {
           duration: Math.random() * 500 + 500,
           ease: 'easeInOutQuint',
         },
-      })
-    );
+      }));
 
     this.setState({
       children,
@@ -176,20 +173,22 @@ class LogoGather extends React.Component {
   };
 
   render() {
-    return (<div className="logo-gather-demo-wrapper">
-      <canvas id="canvas" />
-      <TweenOne
-        animation={this.state.boxAnim}
-        className="right-side blur"
-        onMouseEnter={this.onMouseEnter}
-        onMouseLeave={this.onMouseLeave}
-        ref={(c) => {
-          this.sideBoxComp = c;
-        }}
-      >
-        {this.state.children}
-      </TweenOne>
-    </div>);
+    return (
+      <div className="logo-gather-demo-wrapper">
+        <canvas id="canvas" />
+        <TweenOne
+          animation={this.state.boxAnim}
+          className="right-side blur"
+          onMouseEnter={this.onMouseEnter}
+          onMouseLeave={this.onMouseLeave}
+          ref={(c) => {
+            this.sideBoxComp = c;
+          }}
+        >
+          {this.state.children}
+        </TweenOne>
+      </div>
+    );
   }
 }
 class Edit extends React.Component {
@@ -272,83 +271,90 @@ class Edit extends React.Component {
   }
 
   render() {
-    return (<div style={{ position: 'relative' }}>
-      {!this.state.update && <LogoGather
-        image={this.state.image}
-        pixSize={this.state.pixSize}
-        pointSizeMin={this.state.pointSize}
-      />}
-      <div className={`logo-gather-demo-edit-wrapper ${this.state.show ? 'open' : ''}`}>
-        {this.state.isMode && (<div className="edit-button" onClick={this.phoneClick}>
-          <Icon type="down" />
-        </div>)}
-        <ul>
-          <li>图片:</li>
-          <li >
-            <RadioGroup onChange={this.onChangeRadio} defaultValue="a">
-              <Radio value="a">
-                <img
-                  src={this.defaultImage.a}
-                  height="30"
-                />
-              </Radio>
-              <Radio value="b">
-                <img
-                  src={this.defaultImage.b}
-                  height="30"
-                />
-              </Radio>
-              <Radio value="c">
-                <img
-                  src={this.defaultImage.c}
-                  height="30"
-                />
-              </Radio>
-              <Radio key="d" value="d" className={`${this.state.isMode ? 'none' : ''}`}>
-                其它
-                <TweenOneGroup
-                  style={{ display: 'inline-block', height: 0 }}
-                  enter={{ width: 0, opacity: 0, type: 'from' }}
-                  leave={{ width: 0, opacity: 0 }}
-                >
-                  {this.state.value === 'd' ?
-                    (<div key="d">
-                      <Input
-                        placeholder="或自行输入"
-                        style={{ width: 120, marginLeft: 5 }}
-                        onChange={this.onChangeImage}
-                      />
-                    </div>) : null}
-                </TweenOneGroup>
-              </Radio>
-            </RadioGroup>
-          </li>
-          <li className={`${this.state.isMode ? 'phone-float-none' : ''}`}>图片取点像素：</li>
-          <li>
-            <InputNumber
-              defaultValue={this.state.pixSize}
-              min={15}
-              style={{ width: 60 }}
-              onChange={this.onChangePix}
-            />
-          </li>
-          <li className={`${this.state.isMode ? 'phone-float-none' : ''}`}>点的宽加随机：</li>
-          <li>
-            <InputNumber
-              defaultValue={this.state.pointSize}
-              style={{ width: 60 }}
-              onChange={this.onChangePoint}
-            />
-          </li>
-          <li className={`${this.state.isMode ? 'phone-float-none' : ''}`}>
-            <Button type="primary" onClick={this.onClick}>更新</Button>
-          </li>
-        </ul>
-        <div style={{ lineHeight: '32px' }}>
-          注：图片尺寸为正方形的PNG或SVG，请确保图片开启跨域；像数点的数值越大则点越少，为流畅最小值为15
+    return (
+      <div style={{ position: 'relative' }}>
+        {!this.state.update && (
+          <LogoGather
+            image={this.state.image}
+            pixSize={this.state.pixSize}
+            pointSizeMin={this.state.pointSize}
+          />
+        )}
+        <div className={`logo-gather-demo-edit-wrapper ${this.state.show ? 'open' : ''}`}>
+          {this.state.isMode && (
+            <div className="edit-button" onClick={this.phoneClick}>
+              <Icon type="down" />
+            </div>
+          )}
+          <ul>
+            <li>图片:</li>
+            <li >
+              <RadioGroup onChange={this.onChangeRadio} defaultValue="a">
+                <Radio value="a">
+                  <img
+                    src={this.defaultImage.a}
+                    height="30"
+                  />
+                </Radio>
+                <Radio value="b">
+                  <img
+                    src={this.defaultImage.b}
+                    height="30"
+                  />
+                </Radio>
+                <Radio value="c">
+                  <img
+                    src={this.defaultImage.c}
+                    height="30"
+                  />
+                </Radio>
+                <Radio key="d" value="d" className={`${this.state.isMode ? 'none' : ''}`}>
+                  其它
+                  <TweenOneGroup
+                    style={{ display: 'inline-block', height: 0 }}
+                    enter={{ width: 0, opacity: 0, type: 'from' }}
+                    leave={{ width: 0, opacity: 0 }}
+                  >
+                    {this.state.value === 'd' ? (
+                      <div key="d">
+                        <Input
+                          placeholder="或自行输入"
+                          style={{ width: 120, marginLeft: 5 }}
+                          onChange={this.onChangeImage}
+                        />
+                      </div>
+                    ) : null}
+                  </TweenOneGroup>
+                </Radio>
+              </RadioGroup>
+            </li>
+            <li className={`${this.state.isMode ? 'phone-float-none' : ''}`}>图片取点像素：</li>
+            <li>
+              <InputNumber
+                defaultValue={this.state.pixSize}
+                min={15}
+                style={{ width: 60 }}
+                onChange={this.onChangePix}
+              />
+            </li>
+            <li className={`${this.state.isMode ? 'phone-float-none' : ''}`}>点的宽加随机：</li>
+            <li>
+              <InputNumber
+                defaultValue={this.state.pointSize}
+                style={{ width: 60 }}
+                onChange={this.onChangePoint}
+              />
+            </li>
+            <li className={`${this.state.isMode ? 'phone-float-none' : ''}`}>
+              <Button type="primary" onClick={this.onClick}>更新</Button>
+            </li>
+          </ul>
+          <div style={{ lineHeight: '32px' }}>
+            注：图片尺寸为正方形的PNG或SVG，请确保图片开启跨域；像数点的数值越大则点越少，为流畅最小值为15
+          </div>
         </div>
       </div>
-    </div>);
+    );
   }
 }
 

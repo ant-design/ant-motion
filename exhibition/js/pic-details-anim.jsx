@@ -43,7 +43,7 @@ export default class PicDetailsDemo extends React.Component {
   }
 
   onImgClick = (e, i) => {
-    const picOpen = this.state.picOpen;
+    const { picOpen } = this.state;
     Object.keys(picOpen).forEach((key) => {
       if (key !== i && picOpen[key]) {
         picOpen[key] = false;
@@ -56,7 +56,7 @@ export default class PicDetailsDemo extends React.Component {
   };
 
   onClose = (e, i) => {
-    const picOpen = this.state.picOpen;
+    const { picOpen } = this.state;
     picOpen[i] = false;
     this.setState({
       picOpen,
@@ -64,7 +64,7 @@ export default class PicDetailsDemo extends React.Component {
   };
 
   onTweenEnd = (i) => {
-    const picOpen = this.state.picOpen;
+    const { picOpen } = this.state;
     delete picOpen[i];
     this.setState({
       picOpen,
@@ -119,81 +119,89 @@ export default class PicDetailsDemo extends React.Component {
         }) : aAnimation;
 
       // 位置 js 控制；
-      return (<TweenOne
-        key={i}
-        style={{
-          left,
-          top,
-          ...liStyle,
-        }}
-        component="li"
-        className={isOpen ? 'open' : ''}
-        animation={liAnimation}
-      >
+      return (
         <TweenOne
-          component="a"
-          onClick={e => this.onImgClick(e, i)}
+          key={i}
           style={{
-            left: imgLeft,
-            top: imgTop,
+            left,
+            top,
+            ...liStyle,
           }}
-          animation={aAnimation}
+          component="li"
+          className={isOpen ? 'open' : ''}
+          animation={liAnimation}
         >
-          <img src={image} width="100%" height="100%" />
-        </TweenOne>
-        <TweenOneGroup
-          enter={[
-            { opacity: 0, duration: 0, type: 'from', delay: 400 },
-            { ease: 'easeOutCubic', type: 'from', left: isRight ? '50%' : '0%' },
-          ]}
-          leave={{ ease: 'easeInOutCubic', left: isRight ? '50%' : '0%' }}
-          component=""
-        >
-          {isOpen && <div
-            className={`${this.props.className}-text-wrapper`}
-            key="text"
+          <TweenOne
+            component="a"
+            onClick={e => this.onImgClick(e, i)}
             style={{
-              left: isRight ? '0%' : '50%',
+              left: imgLeft,
+              top: imgTop,
             }}
+            animation={aAnimation}
           >
-            <h1>{title}</h1>
-            <Icon type="cross" onClick={e => this.onClose(e, i)} />
-            <em />
-            <p>{content}</p>
-          </div>}
-        </TweenOneGroup>
-      </TweenOne>);
+            <img src={image} width="100%" height="100%" />
+          </TweenOne>
+          <TweenOneGroup
+            enter={[
+              {
+                opacity: 0, duration: 0, type: 'from', delay: 400,
+              },
+              { ease: 'easeOutCubic', type: 'from', left: isRight ? '50%' : '0%' },
+            ]}
+            leave={{ ease: 'easeInOutCubic', left: isRight ? '50%' : '0%' }}
+            component=""
+          >
+            {isOpen && (
+              <div
+                className={`${this.props.className}-text-wrapper`}
+                key="text"
+                style={{
+                  left: isRight ? '0%' : '50%',
+                }}
+              >
+                <h1>{title}</h1>
+                <Icon type="cross" onClick={e => this.onClose(e, i)} />
+                <em />
+                <p>{content}</p>
+              </div>
+            )}
+          </TweenOneGroup>
+        </TweenOne>
+      );
     });
   };
 
   render() {
-    return (<div>
-      <div className={`${this.props.className}-wrapper`}>
-        <div className={this.props.className}>
-          <div className={`${this.props.className}-header`}>
-            <ul>
-              <li />
-              <li />
-              <li />
-              <li />
-              <li />
-            </ul>
+    return (
+      <div>
+        <div className={`${this.props.className}-wrapper`}>
+          <div className={this.props.className}>
+            <div className={`${this.props.className}-header`}>
+              <ul>
+                <li />
+                <li />
+                <li />
+                <li />
+                <li />
+              </ul>
+            </div>
+            <QueueAnim type="bottom" className={`${this.props.className}-title`}>
+              <h1 key="h1">Motion Design</h1>
+              <p key="p">The react animation solution</p>
+            </QueueAnim>
+            <QueueAnim
+              delay={this.getDelay}
+              component="ul"
+              className={`${this.props.className}-image-wrapper`}
+              interval={0}
+              type="bottom"
+            >
+              {this.getLiChildren()}
+            </QueueAnim>
           </div>
-          <QueueAnim type="bottom" className={`${this.props.className}-title`}>
-            <h1 key="h1">Motion Design</h1>
-            <p key="p">The react animation solution</p>
-          </QueueAnim>
-          <QueueAnim
-            delay={this.getDelay}
-            component="ul"
-            className={`${this.props.className}-image-wrapper`}
-            interval={0}
-            type="bottom"
-          >
-            {this.getLiChildren()}
-          </QueueAnim>
         </div>
       </div>
-    </div>);
+    );
   }
 }

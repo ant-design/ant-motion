@@ -22,7 +22,9 @@ export default {
     },
     footer0_content: {
       style: {
-        ...textStyle({ color: '#666', size: '12px', lineHeight: '1.5em', align: 'center' }),
+        ...textStyle({
+          color: '#666', size: '12px', lineHeight: '1.5em', align: 'center',
+        }),
         ...marginAndPaddingStyle({ margin: '20px auto 0' }),
       },
       children: {

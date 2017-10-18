@@ -20,15 +20,6 @@ export default class Templates extends React.Component {
     this.scrollScreen = false;
     this.listPoint = false;
     this.state = {
-      overlay: {
-        left: 0,
-        top: 0,
-        width: 0,
-        height: 0,
-        children: '',
-      },
-      enterKey: null,
-      currentKey: null,
       isMode: false,
     };
     this.webStyle = '';
@@ -82,7 +73,8 @@ export default class Templates extends React.Component {
     if (!tData) {
       return (<div>请添加你的模块</div>);
     }
-    this.webStyle = this.stylePhone = '';
+    this.webStyle = '';
+    this.stylePhone = '';
     const otherData = getURLData('o', this.props.location.hash) || '';
     const data = tData.split(',');
     const other = otherData.split(',');
@@ -100,7 +92,8 @@ export default class Templates extends React.Component {
       }
       const dataSource = dataValueReplace(nextData);
       this.setStyle(item, urlData);
-      return React.createElement(Component,
+      return React.createElement(
+        Component,
         {
           key: item,
           id: item,
@@ -109,7 +102,8 @@ export default class Templates extends React.Component {
             this.myRef[item] = c;
           },
           dataSource,
-        });
+        }
+      );
     });
 
     this.listPoint = false;
@@ -120,7 +114,9 @@ export default class Templates extends React.Component {
         case 'point': {
           this.listPoint = true;
           children.push(<Point
-            key="list" data={data} ref={(c) => {
+            key="list"
+            data={data}
+            ref={(c) => {
               this.listComp = c;
             }}
           />);

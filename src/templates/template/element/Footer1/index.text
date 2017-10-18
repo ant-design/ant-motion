@@ -6,6 +6,7 @@ import QueueAnim from 'rc-queue-anim';
 
 class Footer extends React.Component {
   static propTypes = {
+    className: PropTypes.string,
     id: PropTypes.string,
   };
 

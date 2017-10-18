@@ -69,17 +69,17 @@ ReactDOM.render(<BannerAnim>
 
 ### BannerAnim
 
-> ref 来控制跳转: `<BannerAnim ref="banner"/>`
+> ref 来控制跳转: `<BannerAnim ref={(c) => { this.banner = ReactDOM.findDOMNode(c); }}/>`
 
-> 上一个: this.refs.banner.prev();
+> 上一个: this.banner.prev();
 
-> 下一个: this.refs.banner.next();
+> 下一个: this.banner.next();
 
-> 跳转:  this.refs.banner.slickGoTo(number); number 从 0 开始;
+> 跳转:  this.banner.slickGoTo(number); number 从 0 开始;
 
 |参数        |类型             |默认     |详细             |
 |----------|-----------------|--------------|-----------------------|
-|   type   |  string / array | All animType | 提供: `across`, `vertical`, `acrossOverlay`, `verticalOverlay`, `gridBar`, `grid`; `grid` 和 `gridBar` 单个块状动画时间是 `duration`; 可自行添加动画效果，如 `const animType = BannerAnim.animType; animType.xxx=function(elem, type, direction, animData, elemOffset){return react.Component}` elem: react.Component 当前进出场的元素, type: `enter` 或 `leave`, direction: `next` 或 `prev`, animData: 回调之类的，带上就行了, elemOffset: 当前元素是宽高  |
+|   type   |  string / array | All animType | 提供: `across`, `vertical`, `acrossOverlay`, `verticalOverlay`, `gridBar`, `grid`; <br/>`grid` 和 `gridBar` 单个块状动画时间是 `duration`; <br/>自定义动画效果，[详细参考](http://react-component.github.io/banner-anim/examples/customAnimType.html) |
 | duration |      number     |      450     | 动画过场时间  |
 | delay    |      number     |       0      |   过场的延时  |
 | ease     |      string     | `easeInOutQuad` | 缓动            |
@@ -102,7 +102,7 @@ ReactDOM.render(<BannerAnim>
 |参数        |类型             |默认     |详细             |
 |----------|-----------------|--------------|-----------------------|
 | key      |     string      |      -       |  必须                 |
-| hideProps | object / boolean |  false   | 子级出场时切换的参数，同 [scrollAnim](/api/scroll-anim) 里的 hideProps， false 为出场不做出场效果。 | 
+| leaveChildHide | boolean |  false   | 子级出场时是否需要切换的动画，替换原来的 `hideProps`。 | 
 | sync      |   boolean      |   false       | 子级动画进入与滑动动画是否同步。默认 false 为滑动完成后再做子级动画 |  
 | prefixCls |     string      |   -           |  自定义样式 |
 | followParallax | object   |  null        | 跟随鼠标上下或左右晃动效果 |
@@ -112,9 +112,9 @@ ReactDOM.render(<BannerAnim>
 |参数        |类型             |默认     |详细             |
 |----------|-----------------|--------------|-----------------------|
 | delay    |   number        |  null        | 必须，在单个区块进入后延迟开启鼠标效果，比如子级是 tween-one 时，需要等 tween-one 的动画结束后再执行鼠标效果，不然两者会冲突 |
-| data     | array           |  null        | 数组里的内容: { id: string, value: number, type: array or string, bgPosition: string }; id: 子级的 id; value: 晃动时的值，如果值为 20, 那左右晃动的值为：最左边 -20, 最右边 20; type: style 里的样式 或 `x` `y`; bgPosition: 初始背景图片的坐标，只在 type 为 backgroundPosition 时生效，默认为 50%, 详细查看 鼠标跟随例子 |
+| data     | array           |  null        | 数组里的内容: { id: string, value: number, type: array or string, bgPosition: string }; id: 子级的 id; value: 晃动时的值，如果值为 20, 那左右晃动的值为：最左边 -20, 最右边 20; type: style 里的样式 或 `x` `y`; bgPosition: 初始背景图片的坐标，只在 type 为 backgroundPosition 时生效，默认为 50%, 详细查看 [鼠标跟随例子](http://react-component.github.io/banner-anim/examples/followMouse.html) |
 | ease | string        | `easeInOutQuad`         |  鼠标移动时, 元素缓动效果。[参数名称参考](http://easings.net/zh-cn)  |
-| minMove | number     | null        | 区域为 0 - 1, easeInOutQuad(startMousePosition, minMove, 1, currentMousePosition); 在有缓动时，鼠标移动时，最小移动的值，如果为 0，鼠标移动时不会移动，移动结束后触发动画， 最大值为 1。 |
+| minMove | number     | 0.08        | 区域为 0 - 0.1, `easeInOutQuad(startMousePosition, minMove, 1, currentMousePosition)`; 在有缓动时，鼠标移动时，最小移动的值，如果为 0，鼠标移动时不会移动，移动结束后触发动画。 |
 
 ### Element.BgElement
 

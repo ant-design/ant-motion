@@ -6,7 +6,6 @@ import '../../../static/content.less';
 import './index.less';
 
 class Content extends React.Component {
-
   static defaultProps = {
     className: 'content2',
   };
@@ -20,7 +19,9 @@ class Content extends React.Component {
     const name = `${names[0]}${names[1]}`;
     delete props.dataSource;
     delete props.isMode;
-    const oneAnim = { y: '+=30', opacity: 0, type: 'from', ease: 'easeOutQuad' };
+    const oneAnim = {
+      y: '+=30', opacity: 0, type: 'from', ease: 'easeOutQuad',
+    };
     const children = Object.keys(dataSource).filter(key => key.match('block'))
       .sort((a, b) => {
         const aa = Number(a.replace(/[^0-9]/ig, ''));
@@ -32,7 +33,9 @@ class Content extends React.Component {
         const childrenObj = item.children;
         const id = key.split('_')[1];
         const delay = this.getDelay(i);
-        const liAnim = { opacity: 0, type: 'from', ease: 'easeOutQuad', delay };
+        const liAnim = {
+          opacity: 0, type: 'from', ease: 'easeOutQuad', delay,
+        };
         const childrenAnim = { ...liAnim, x: '+=10', delay: delay + 100 };
         return (<TweenOne
           component="li"
@@ -41,7 +44,9 @@ class Content extends React.Component {
           id={`${props.id}-${id}`}
         >
           <TweenOne
-            animation={{ x: '-=10', opacity: 0, type: 'from', ease: 'easeOutQuad' }}
+            animation={{
+ x: '-=10', opacity: 0, type: 'from', ease: 'easeOutQuad',
+}}
             className="img"
             key="img"
           >

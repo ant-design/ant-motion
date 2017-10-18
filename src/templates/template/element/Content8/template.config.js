@@ -69,7 +69,9 @@ const getBlock = data => ({
     stylePhone: {
       '.content6 $.content6-text': {
         stylePhone: {
-          ...textStyle({ size: '12px', color: '#666', lineHeight: '1.5em', align: 'left' }),
+          ...textStyle({
+            size: '12px', color: '#666', lineHeight: '1.5em', align: 'left',
+          }),
           ...offsetStyle({ width: '90%' }),
           ...marginAndPaddingStyle({ padding: '20px 0 0' }),
         },

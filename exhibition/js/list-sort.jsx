@@ -41,7 +41,9 @@ export default class ListSortDemo extends React.Component {
 
   render() {
     const childrenToRender = dataArray.map((item, i) => {
-      const { icon, color, title, text } = item;
+      const {
+        icon, color, title, text,
+      } = item;
       return (
         <div key={i} className={`${this.props.className}-list`}>
           <div className={`${this.props.className}-icon`}>
@@ -54,15 +56,17 @@ export default class ListSortDemo extends React.Component {
         </div>
       );
     });
-    return (<div className={`${this.props.className}-wrapper`}>
-      <div className={this.props.className}>
-        <ListSort
-          dragClassName="list-drag-selected"
-          appearAnim={{ animConfig: { marginTop: [5, 30], opacity: [1, 0] } }}
-        >
-          {childrenToRender}
-        </ListSort>
+    return (
+      <div className={`${this.props.className}-wrapper`}>
+        <div className={this.props.className}>
+          <ListSort
+            dragClassName="list-drag-selected"
+            appearAnim={{ animConfig: { marginTop: [5, 30], opacity: [1, 0] } }}
+          >
+            {childrenToRender}
+          </ListSort>
+        </div>
       </div>
-    </div>);
+    );
   }
 }

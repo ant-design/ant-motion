@@ -7,8 +7,8 @@ import '../../../static/content.less';
 import './index.less';
 
 class Content extends React.Component {
-
   static propTypes = {
+    className: PropTypes.string,
     id: PropTypes.string,
   };
 
@@ -48,8 +48,12 @@ class Content extends React.Component {
     delete props.dataSource;
     delete props.isMode;
     const queue = isMode ? 'bottom' : 'left';
-    const imgAnim = isMode ? { y: 30, opacity: 0, delay: 400, type: 'from', ease: 'easeOutQuad' }
-      : { x: 30, opacity: 0, type: 'from', ease: 'easeOutQuad' };
+    const imgAnim = isMode ? {
+      y: 30, opacity: 0, delay: 400, type: 'from', ease: 'easeOutQuad',
+    }
+      : {
+        x: 30, opacity: 0, type: 'from', ease: 'easeOutQuad',
+      };
     return (
       <div {...props} className="content-template-wrapper content5-wrapper">
         <OverPack
@@ -78,7 +82,8 @@ class Content extends React.Component {
             </p>
             <QueueAnim
               component="ul"
-              key="ul" type={queue}
+              key="ul"
+              type={queue}
               id={`${props.id}-ul`}
               ease="easeOutQuad"
             >

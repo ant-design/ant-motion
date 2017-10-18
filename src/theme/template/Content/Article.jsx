@@ -11,15 +11,18 @@ class Article extends React.Component {
   render() {
     const props = this.props;
     const pageData = props.pageData;
-    const { meta, content, toc, api } = pageData;
-    const { title, subtitle, chinese, english } = meta;
+    const {
+      meta, content, toc, api,
+    } = pageData;
+    const {
+      title, subtitle, chinese, english,
+    } = meta;
     const tocItem = props.utils.toReactComponent(toc);
     const tocChildren = utils.toArrayChildren(tocItem.props.children).map((item) => {
       const itemChildren = utils.toArrayChildren(item.props.children).map(cItem =>
         React.cloneElement(cItem, {
           onClick: utils.scrollClick,
-        })
-      );
+        }));
       return React.cloneElement(item, item.props, itemChildren);
     });
     return (<DocumentTitle title={`${title || chinese || english} - Ant Motion`}>

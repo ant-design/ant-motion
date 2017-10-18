@@ -42,13 +42,18 @@ class TableEnterLeave extends React.Component {
         dataIndex: '',
         key: 'x',
         render: (text, record) => (
-          <span className={`${this.props.className}-delete`} onClick={e => this.onDelete(record.key, e)}>
-          Delete
-        </span>),
+          <span
+            className={`${this.props.className}-delete`}
+            onClick={(e) => { this.onDelete(record.key, e); }}
+          >
+            Delete
+          </span>),
       },
     ];
     this.enterAnim = [
-      { opacity: 0, x: 30, backgroundColor: '#fffeee', duration: 0 },
+      {
+        opacity: 0, x: 30, backgroundColor: '#fffeee', duration: 0,
+      },
       {
         height: 0,
         duration: 200,
@@ -57,7 +62,9 @@ class TableEnterLeave extends React.Component {
         ease: 'easeOutQuad',
         onComplete: this.onEnd,
       },
-      { opacity: 1, x: 0, duration: 250, ease: 'easeOutQuad' },
+      {
+        opacity: 1, x: 0, duration: 250, ease: 'easeOutQuad',
+      },
       { delay: 1000, backgroundColor: '#fff' },
     ];
     this.leaveAnim = [
@@ -103,7 +110,7 @@ class TableEnterLeave extends React.Component {
   }
 
   onAdd = () => {
-    const data = this.state.data;
+    const { data } = this.state;
     const i = Math.round(Math.random() * (this.data.length - 1));
     data.unshift({
       key: Date.now(),
@@ -128,15 +135,17 @@ class TableEnterLeave extends React.Component {
       this.currentPage = this.newPage;
       return body;
     }
-    return (<TweenOneGroup
-      component="tbody"
-      className={body.props.className}
-      enter={this.enterAnim}
-      leave={this.leaveAnim}
-      appear={false}
-    >
-      {body.props.children}
-    </TweenOneGroup>);
+    return (
+      <TweenOneGroup
+        component="tbody"
+        className={body.props.className}
+        enter={this.enterAnim}
+        leave={this.leaveAnim}
+        appear={false}
+      >
+        {body.props.children}
+      </TweenOneGroup>
+    );
   }
 
   pageChange = (pagination) => {
@@ -144,53 +153,57 @@ class TableEnterLeave extends React.Component {
   };
 
   render() {
-    return (<div>
-      <div className={`${this.props.className}-wrapper`}>
-        <div className={this.props.className}>
-          <div className={`${this.props.className}-header`}>
-            <ul>
-              <li />
-              <li />
-              <li />
-              <li />
-              <li />
-            </ul>
-          </div>
-          <div className={`${this.props.className}-nav`}>
-            <span>
-              <img
-                height="24" src="https://zos.alipayobjects.com/rmsportal/TOXWfHIUGHvZIyb.svg"
-              />
-              <img
-                height="14" src="https://zos.alipayobjects.com/rmsportal/bNfCyCcgnyTgRmz.svg"
-              />
-            </span>
-          </div>
-          <div className={`${this.props.className}-list`}>
-            <QueueAnim type="bottom" component="ul">
-              <li key="0" />
-              <li key="1" />
-              <li key="2" />
-              <li key="3" />
-              <li key="4" />
-            </QueueAnim>
-          </div>
-          <div className={`${this.props.className}-table-wrapper`}>
-            <div className={`${this.props.className}-action-bar`}>
-              <Button type="primary" onClick={this.onAdd}>Add</Button>
+    return (
+      <div>
+        <div className={`${this.props.className}-wrapper`}>
+          <div className={this.props.className}>
+            <div className={`${this.props.className}-header`}>
+              <ul>
+                <li />
+                <li />
+                <li />
+                <li />
+                <li />
+              </ul>
             </div>
-            <Table
-              columns={this.columns}
-              pagination={{ pageSize: 4 }}
-              dataSource={this.state.data}
-              className={`${this.props.className}-table`}
-              getBodyWrapper={this.getBodyWrapper}
-              onChange={this.pageChange}
-            />
+            <div className={`${this.props.className}-nav`}>
+              <span>
+                <img
+                  height="24"
+                  src="https://zos.alipayobjects.com/rmsportal/TOXWfHIUGHvZIyb.svg"
+                />
+                <img
+                  height="14"
+                  src="https://zos.alipayobjects.com/rmsportal/bNfCyCcgnyTgRmz.svg"
+                />
+              </span>
+            </div>
+            <div className={`${this.props.className}-list`}>
+              <QueueAnim type="bottom" component="ul">
+                <li key="0" />
+                <li key="1" />
+                <li key="2" />
+                <li key="3" />
+                <li key="4" />
+              </QueueAnim>
+            </div>
+            <div className={`${this.props.className}-table-wrapper`}>
+              <div className={`${this.props.className}-action-bar`}>
+                <Button type="primary" onClick={this.onAdd}>Add</Button>
+              </div>
+              <Table
+                columns={this.columns}
+                pagination={{ pageSize: 4 }}
+                dataSource={this.state.data}
+                className={`${this.props.className}-table`}
+                getBodyWrapper={this.getBodyWrapper}
+                onChange={this.pageChange}
+              />
+            </div>
           </div>
         </div>
       </div>
-    </div>);
+    );
   }
 }
 ReactDOM.render(

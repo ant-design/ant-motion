@@ -83,33 +83,45 @@ html, body {
 
 @footer: footer;
 .@{footer} {
-  height: 155px;
+  height: 220px;
   background: @footer-bg-color;
   overflow: hidden;
   position: relative;
   z-index: 997;
   border-top: 1px solid @line-color;
   transition: background @animate-duration @ease-out, border @animate-duration @ease-out;
-  & ul {
+  ul {
     max-width: 960px;
     width: 100%;
     margin: 0 auto;
-    & li {
+     li {
       float: left;
       padding: 15px 2%;
       width: 25%;
-
-      & h2 {
+       h2 {
         font-size: 14px;
         line-height: 30px;
         color: @title-color;
+        position: relative;
+        > .anticon{
+          color: #aaa;
+          left: -20px;
+          position: absolute;
+          height: 14px;
+          margin: auto;
+          top: 0;
+          bottom: 0;
+        }
       }
-      & a {
+      a {
         color: @footer-link-color;
         transition: color @animate-duration @ease-out;
         &:hover {
           color: @primary-color;
         }
+      }
+      >div{
+        line-height: 22px;
       }
     }
   }

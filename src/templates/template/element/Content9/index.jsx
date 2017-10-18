@@ -7,8 +7,8 @@ import '../../../static/content.less';
 import './index.less';
 
 class Content extends React.Component {
-
   static propTypes = {
+    className: PropTypes.string,
     id: PropTypes.string,
   };
 
@@ -63,7 +63,10 @@ class Content extends React.Component {
             {dataSource[`${name}_title`].children}
           </TweenOne>
           <QueueAnim
-            component="ul" type="bottom" key="block" leaveReverse
+            component="ul"
+            type="bottom"
+            key="block"
+            leaveReverse
             id={`${props.id}-contentWrapper`}
           >
             {listChildren}

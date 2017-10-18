@@ -43,15 +43,17 @@ class Header extends React.Component {
       </span>
       <span>用户名</span>
     </div>);
-    navChildren.push((<Item className="help" key="help">
-      <Icon type="question-circle-o" />
-      <span>帮助</span>
-    </Item>),
+    navChildren.push(
+      (<Item className="help" key="help">
+        <Icon type="question-circle-o" />
+        <span>帮助</span>
+      </Item>),
       (<SubMenu className="user" title={userTitle} key="user">
         <Item key="a">用户中心</Item>
         <Item key="b">修改密码</Item>
         <Item key="c">登出</Item>
-      </SubMenu>));
+      </SubMenu>)
+    );
     const func = dataSource[`${name}_menu`].func;
     return (<TweenOne
       component="header"
@@ -60,7 +62,9 @@ class Header extends React.Component {
     >
       <TweenOne
         className={`${this.props.className}-logo`}
-        animation={{ x: -30, delay: 100, type: 'from', ease: 'easeOutQuad' }}
+        animation={{
+ x: -30, delay: 100, type: 'from', ease: 'easeOutQuad',
+}}
         id={`${this.props.id}-logo`}
       >
         <img width="100%" src={dataSource[`${name}_logo`].children} />
@@ -93,11 +97,14 @@ class Header extends React.Component {
         </div>
       </div>) :
       <TweenOne
-        animation={{ x: 30, delay: 100, opacity: 0, type: 'from', ease: 'easeOutQuad' }}
+        animation={{
+ x: 30, delay: 100, opacity: 0, type: 'from', ease: 'easeOutQuad',
+}}
         className={`${this.props.className}-nav`}
       >
         <Menu
-          mode="horizontal" defaultSelectedKeys={['0']}
+          mode="horizontal"
+          defaultSelectedKeys={['0']}
           id={`${this.props.id}-menu`}
           openKeys={(func && func.switchMenu) ? ['user'] : []}
         >

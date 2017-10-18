@@ -6,7 +6,6 @@ import '../../../static/content.less';
 import './index.less';
 
 class Content extends React.Component {
-
   static defaultProps = {
     className: 'content1',
   };
@@ -21,8 +20,12 @@ class Content extends React.Component {
     delete props.isMode;
     const animType = {
       queue: isMode ? 'bottom' : 'left',
-      one: isMode ? { y: '+=30', opacity: 0, type: 'from', ease: 'easeOutQuad' }
-        : { x: '+=30', opacity: 0, type: 'from', ease: 'easeOutQuad' },
+      one: isMode ? {
+        y: '+=30', opacity: 0, type: 'from', ease: 'easeOutQuad',
+      }
+        : {
+          x: '+=30', opacity: 0, type: 'from', ease: 'easeOutQuad',
+        },
     };
     return (
       <div

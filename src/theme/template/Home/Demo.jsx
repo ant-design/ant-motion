@@ -85,45 +85,14 @@ export default class Demo extends React.Component {
     let children = [];
     this.pointArray.forEach((item, i) => {
       const b = Math.random() * 0.4 + 0.1;
-      children.push(
-        <TweenOne className="point-wrapper" key={i} style={{ left: item.x, top: item.y }}>
-          <TweenOne
-            className="point"
-            style={{
-              width: item.r,
-              height: item.r,
-              opacity: b,
-              backgroundColor: `rgb(${Math.round(Math.random() * 95 + 160)},255,255)`,
-            }}
-            animation={{
-              y: (Math.random() * 2 - 1) * 10 || 5,
-              x: (Math.random() * 2 - 1) * 5 || 2.5,
-              delay: Math.random() * 1000,
-              repeat: -1,
-              duration: 3000,
-              yoyo: true,
-              ease: 'easeInOutQuad',
-            }}
-          />
-        </TweenOne>
-      );
-    });
-    this.pointArray.push({ x: 75, y: 180, r: 40 });
-    children.push(
-      <TweenOne
-        className="point-wrapper" key={children.length}
-        style={{
-          left: 75,
-          top: 180,
-        }}
-      >
+      children.push(<TweenOne className="point-wrapper" key={i} style={{ left: item.x, top: item.y }}>
         <TweenOne
           className="point"
           style={{
-            width: 40,
-            height: 40,
+            width: item.r,
+            height: item.r,
+            opacity: b,
             backgroundColor: `rgb(${Math.round(Math.random() * 95 + 160)},255,255)`,
-            opacity: Math.random() * 0.5 + 0.2,
           }}
           animation={{
             y: (Math.random() * 2 - 1) * 10 || 5,
@@ -135,8 +104,36 @@ export default class Demo extends React.Component {
             ease: 'easeInOutQuad',
           }}
         />
-      </TweenOne>
-    );
+      </TweenOne>);
+    });
+    this.pointArray.push({ x: 75, y: 180, r: 40 });
+    children.push(<TweenOne
+      className="point-wrapper"
+      key={children.length}
+      style={{
+        left: 75,
+        top: 180,
+      }}
+    >
+      <TweenOne
+        className="point"
+        style={{
+          width: 40,
+          height: 40,
+          backgroundColor: `rgb(${Math.round(Math.random() * 95 + 160)},255,255)`,
+          opacity: Math.random() * 0.5 + 0.2,
+        }}
+        animation={{
+          y: (Math.random() * 2 - 1) * 10 || 5,
+          x: (Math.random() * 2 - 1) * 5 || 2.5,
+          delay: Math.random() * 1000,
+          repeat: -1,
+          duration: 3000,
+          yoyo: true,
+          ease: 'easeInOutQuad',
+        }}
+      />
+    </TweenOne>);
     children = this.resizeData(children);
     this.setState({
       children,
@@ -202,8 +199,7 @@ export default class Demo extends React.Component {
           duration: 800,
           ease: 'easeInOutQuint',
         },
-      })
-    );
+      }));
     this.setState({ children });
   };
 
@@ -221,8 +217,7 @@ export default class Demo extends React.Component {
           duration: Math.random() * 500 + 500,
           ease: 'easeInOutQuint',
         },
-      })
-    );
+      }));
 
     this.setState({
       children,
@@ -250,36 +245,56 @@ export default class Demo extends React.Component {
             d="M30,265L30,25"
             component="path"
             animation={[
-              { opacity: 0, type: 'from', delay: 300, duration: 0 },
-              { SVGDraw: 0, type: 'from', duration: 300, ease: 'easeInQuart' },
+              {
+                opacity: 0, type: 'from', delay: 300, duration: 0,
+              },
+              {
+                SVGDraw: 0, type: 'from', duration: 300, ease: 'easeInQuart',
+              },
             ]}
           />
           <TweenOne
             d="M30,25L137,135"
             component="path"
             animation={[
-              { opacity: 0, type: 'from', delay: 600, duration: 0 },
-              { SVGDraw: 0, type: 'from', duration: 250, ease: 'linear' },
+              {
+                opacity: 0, type: 'from', delay: 600, duration: 0,
+              },
+              {
+                SVGDraw: 0, type: 'from', duration: 250, ease: 'linear',
+              },
             ]}
           />
           <TweenOne
             d="M137,135L245,25"
             component="path"
             animation={[
-              { opacity: 0, type: 'from', delay: 850, duration: 0 },
-              { SVGDraw: 0, type: 'from', duration: 250, ease: 'linear' },
+              {
+                opacity: 0, type: 'from', delay: 850, duration: 0,
+              },
+              {
+                SVGDraw: 0, type: 'from', duration: 250, ease: 'linear',
+              },
             ]}
           />
           <TweenOne
             d="M245,25L245,190"
             component="path"
             animation={[
-              { opacity: 0, type: 'from', delay: 1100, duration: 0 },
-              { SVGDraw: 0, type: 'from', duration: 300, ease: 'easeOutQuart' },
+              {
+                opacity: 0, type: 'from', delay: 1100, duration: 0,
+              },
+              {
+                SVGDraw: 0, type: 'from', duration: 300, ease: 'easeOutQuart',
+              },
             ]}
           />
           <TweenOne
-            component="circle" r="20" fill="#fff" cx="95" cy="200"
+            component="circle"
+            r="20"
+            fill="#fff"
+            cx="95"
+            cy="200"
             animation={{
               delay: 1300,
               r: 0,

@@ -5,18 +5,17 @@ import TweenOne from 'rc-tween-one';
 class EaseExplain extends React.Component {
   static propTypes = {
     className: PropTypes.string,
-    leftHide: PropTypes.bool,
-    rightHide: PropTypes.bool,
-    title: PropTypes.string,
-    circleStyle: PropTypes.object,
-    animation: PropTypes.object,
-    children: PropTypes.any,
+    leftHide: PropTypes.bool.isRequired,
+    rightHide: PropTypes.bool.isRequired,
+    title: PropTypes.string.isRequired,
+    circleStyle: PropTypes.object.isRequired,
+    animation: PropTypes.object.isRequired,
+    children: PropTypes.any.isRequired,
   };
 
   static defaultProps = {
     className: 'content',
   };
-
 
   constructor(props) {
     super(props);

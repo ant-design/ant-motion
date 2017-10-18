@@ -65,7 +65,9 @@ export default {
     },
     content10_contentBlock0: {
       style: {
-        ...textStyle({ size: '14px', lineHeight: '1.5em', color: '#fff', align: 'center' }),
+        ...textStyle({
+          size: '14px', lineHeight: '1.5em', color: '#fff', align: 'center',
+        }),
         ...marginAndPaddingStyle({ margin: 'auto auto 20px auto' }),
       },
       children: {
@@ -76,7 +78,9 @@ export default {
     content10_buttonBlock0: {
       style: {
         ...textStyle({ color: '#fff' }),
-        ...borderStyle({ color: '#fff', width: '1px', style: 'solid', radius: '4px' }),
+        ...borderStyle({
+          color: '#fff', width: '1px', style: 'solid', radius: '4px',
+        }),
         ...bgStyle({ color: 'transparent', select: ['backgroundColor'] }),
         '$:hover': {
           name: 'hover 样式',

@@ -31,7 +31,8 @@ class Banner extends React.Component {
     Object.keys(dataSource).filter(key => key.match('Block')).forEach((key) => {
       const keys = key.split('Block');
       const i = keys[1];
-      const t = childrenData[i] = childrenData[i] || {};
+      childrenData[i] = childrenData[i] || {};
+      const t = childrenData[i];
       t[key] = dataSource[key];
     });
     const childrenToRender = childrenData.map((item, i) => {
@@ -49,7 +50,8 @@ class Banner extends React.Component {
           key="bg"
         />
         <QueueAnim
-          type={['bottom', 'top']} delay={200}
+          type={['bottom', 'top']}
+          delay={200}
           className={`${props.className}-title`}
           key="text"
           id={`${props.id}-wrapperBlock${i}`}
@@ -102,7 +104,9 @@ class Banner extends React.Component {
           </div>
         </TweenOneGroup>
         <TweenOne
-          animation={{ y: '-=20', yoyo: true, repeat: -1, duration: 1000 }}
+          animation={{
+ y: '-=20', yoyo: true, repeat: -1, duration: 1000,
+}}
           className={`${props.className}-icon`}
           style={{ bottom: 40 }}
           key="icon"
@@ -115,6 +119,7 @@ class Banner extends React.Component {
 }
 
 Banner.propTypes = {
+  className: PropTypes.string,
   dataSource: PropTypes.object,
   id: PropTypes.string,
 };

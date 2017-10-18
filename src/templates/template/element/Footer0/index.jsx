@@ -4,7 +4,6 @@ import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
 import './index.less';
 
 class Footer extends React.Component {
-
   static defaultProps = {
     className: 'footer0',
   };

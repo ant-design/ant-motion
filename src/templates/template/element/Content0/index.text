@@ -52,7 +52,6 @@ class Content extends React.Component {
 
 Content.propTypes = {
   className: PropTypes.string,
-  id: PropTypes.string,
 };
 
 Content.defaultProps = {

@@ -5,7 +5,7 @@ mouseEnter: true
 vertical: true
 ---
 
-贝赛尔曲线动画。功能重复，即将去除，请使用 PathPlugin;
+贝赛尔曲线动画。 gsap 的 BezierPlugin 曲线动画;
 
 
 ```jsx

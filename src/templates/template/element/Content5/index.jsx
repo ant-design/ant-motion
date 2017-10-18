@@ -6,7 +6,6 @@ import '../../../static/content.less';
 import './index.less';
 
 class Content extends React.Component {
-
   static defaultProps = {
     className: 'content3',
   };
@@ -19,7 +18,9 @@ class Content extends React.Component {
     const name = `${names[0]}${names[1]}`;
     delete props.dataSource;
     delete props.isMode;
-    const animation = { y: '+=30', opacity: 0, type: 'from', ease: 'easeOutQuad' };
+    const animation = {
+      y: '+=30', opacity: 0, type: 'from', ease: 'easeOutQuad',
+    };
     const videoChildren = dataSource[`${name}_video`].children;
     return (
       <div {...props} className={`content-template-wrapper ${props.className}-wrapper`}>

@@ -1,4 +1,4 @@
-/* eslint no-param-reassign: 0*/
+/* eslint no-param-reassign: 0 */
 module.exports = {
   webpackConfig(config) {
     config.babel.plugins.push([

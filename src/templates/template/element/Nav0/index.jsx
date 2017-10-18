@@ -44,42 +44,47 @@ class Header extends React.Component {
       >
         <img width="100%" src={dataSource[`${name}_logo`].children} />
       </TweenOne>
-      {isMode ? (<div
-        className={`${this.props.className}-phone-nav${this.state.phoneOpen || (func && func.switch) ? ' open' : ''}`}
-        id={`${this.props.id}-menu`}
-      >
+      {isMode ? (
         <div
-          className={`${this.props.className}-phone-nav-bar`}
-          onClick={() => {
-            this.phoneClick();
-          }}
-        >
-          <em />
-          <em />
-          <em />
-        </div>
-        <div
-          className={`${this.props.className}-phone-nav-text`}
-        >
-          <Menu
-            defaultSelectedKeys={['0']}
-            mode="inline"
-            theme="dark"
-          >
-            {navChildren}
-          </Menu>
-        </div>
-      </div>) : (<TweenOne
-        className={`${this.props.className}-nav`}
-        animation={{ x: 30, type: 'from', ease: 'easeOutQuad' }}
-      >
-        <Menu
-          mode="horizontal" defaultSelectedKeys={['0']}
+          className={`${this.props.className}-phone-nav${this.state.phoneOpen || (func && func.switch) ? ' open' : ''}`}
           id={`${this.props.id}-menu`}
         >
-          {navChildren}
-        </Menu>
-      </TweenOne>)}
+          <div
+            className={`${this.props.className}-phone-nav-bar`}
+            onClick={() => {
+              this.phoneClick();
+            }}
+          >
+            <em />
+            <em />
+            <em />
+          </div>
+          <div
+            className={`${this.props.className}-phone-nav-text`}
+          >
+            <Menu
+              defaultSelectedKeys={['0']}
+              mode="inline"
+              theme="dark"
+            >
+              {navChildren}
+            </Menu>
+          </div>
+        </div>) : (
+          <TweenOne
+            className={`${this.props.className}-nav`}
+            animation={{ x: 30, type: 'from', ease: 'easeOutQuad' }}
+          >
+            <Menu
+              mode="horizontal"
+              defaultSelectedKeys={['0']}
+              id={`${this.props.id}-menu`}
+            >
+              {navChildren}
+            </Menu>
+          </TweenOne>
+        )
+      }
     </TweenOne>);
   }
 }

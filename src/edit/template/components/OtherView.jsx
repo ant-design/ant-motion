@@ -4,7 +4,6 @@ import { Checkbox } from 'antd';
 import webData from '../template.config';
 
 export default class OtherView extends React.Component {
-
   static propTypes = {
     className: PropTypes.string,
     setUrlData: PropTypes.func,
@@ -49,7 +48,10 @@ export default class OtherView extends React.Component {
         <img src={item.src} width="100%" />;
 
       return (
-        <li key={i} onClick={() => { this.onClick(item.value); }}>
+        <li
+          key={i}
+          onClick={() => { this.onClick(item.value); }}
+        >
           <p>{toChildren}</p>
           <div>
             <span>{item.label}</span>

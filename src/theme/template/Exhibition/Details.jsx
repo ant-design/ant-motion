@@ -40,9 +40,13 @@ export default class Details extends React.Component {
     // const { pageData, className } = props;
     const pageData = this.props.pageData;
     const className = this.props.className;
-    const { meta, content, description,
-      style, preview, highlightedCode, highlightedStyle } = pageData;
-    const { title, subtitle, chinese, english } = meta;
+    const {
+      meta, content, description,
+      style, preview, highlightedCode, highlightedStyle,
+    } = pageData;
+    const {
+      title, subtitle, chinese, english,
+    } = meta;
     return (<DocumentTitle title={`${subtitle || chinese || ''} ${title || english} - Ant Motion`}>
       <div className="page">
         <TweenOne animation={{ y: 30, opacity: 0, type: 'from' }} className="page-wrapper">

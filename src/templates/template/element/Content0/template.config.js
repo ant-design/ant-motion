@@ -85,7 +85,9 @@ export default {
     content0_button: {
       style: {
         ...textStyle({ color: '#fff' }),
-        ...borderStyle({ color: '#fff', width: '1px', style: 'solid', radius: '4px' }),
+        ...borderStyle({
+          color: '#fff', width: '1px', style: 'solid', radius: '4px',
+        }),
         ...bgStyle({ color: 'transparent', select: ['backgroundColor'] }),
         '$:hover': {
           name: 'hover 样式',

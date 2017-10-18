@@ -14,7 +14,6 @@ class NavController extends React.Component {
     urlData: PropTypes.object,
     isMode: PropTypes.bool,
     typeSwitch: PropTypes.func,
-    defaultValue: PropTypes.any,
   };
 
   static defaultProps = {
@@ -29,12 +28,6 @@ class NavController extends React.Component {
       helpOpen: false,
     };
   }
-
-  componentWillReceiveProps(nextProps) {
-    const { defaultValue } = nextProps;
-    this.setState({ defaultValue });
-  }
-
 
   onCopy = () => {
     message.success('拷贝成功，现在可以去分享你定制的页面了！');
@@ -115,7 +108,9 @@ class NavController extends React.Component {
   }
 
   makePageURLPreview = () => {
-    const url = `${location.origin}/templates/${this.props.urlHash}`;
+    const url = location.port ?
+      `${location.protocol}//${location.hostname}:8113/${this.props.urlHash}`
+      : `${location.origin}/templates/${this.props.urlHash}`;
     this.makePageURL(url, '已生成当前预览地址的短链接，赶快去共享你的首页吧~');
     if (!location.port && window.ga) {
       window.ga('send', 'event', 'preview', 'click', 'preview');
@@ -195,7 +190,10 @@ class NavController extends React.Component {
               >
                 <video
                   src="https://os.alipayobjects.com/rmsportal/GOsdyUIGZrNPSntOoRpe.mp4"
-                  width="100%" controls autoPlay loop
+                  width="100%"
+                  controls
+                  autoPlay
+                  loop
                 />
               </Modal>
 

@@ -18,7 +18,9 @@ class Home extends React.Component {
 
   constructor(props) {
     super(props);
-    this.tweenAnim = { y: 30, opacity: 0, type: 'from', ease: 'easeOutQuad' };
+    this.tweenAnim = {
+      y: 30, opacity: 0, type: 'from', ease: 'easeOutQuad',
+    };
   }
 
   scrollToTop = () => {
@@ -37,11 +39,15 @@ class Home extends React.Component {
           </div>
           <Banner />
           <Page1
-            pageData={this.props.pageData} utils={this.props.utils} tweenAnim={this.tweenAnim}
+            pageData={this.props.pageData}
+            utils={this.props.utils}
+            tweenAnim={this.tweenAnim}
             onButtonClick={this.scrollToTop}
           />
           <Page2
-            pageData={this.props.pageData} utils={this.props.utils} tweenAnim={this.tweenAnim}
+            pageData={this.props.pageData}
+            utils={this.props.utils}
+            tweenAnim={this.tweenAnim}
             onButtonClick={this.scrollToTop}
           />
           <Page3 onButtonClick={this.scrollToTop} />
