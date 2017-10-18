@@ -9,7 +9,6 @@ import './index.less';
 const TabPane = Tabs.TabPane;
 
 class Content extends React.Component {
-
   static propTypes = {
     className: PropTypes.string,
     dataSource: PropTypes.object,
@@ -58,7 +57,9 @@ class Content extends React.Component {
         </span>)}
       >
         <TweenOne.TweenOneGroup
-          enter={{ y: 30, delay: 300, opacity: 0, type: 'from', ease: 'easeOutQuad' }}
+          enter={{
+            y: 30, delay: 300, opacity: 0, type: 'from', ease: 'easeOutQuad',
+          }}
           leave={null}
           component=""
         >
@@ -92,7 +93,8 @@ class Content extends React.Component {
     Object.keys(dataSource).filter(key => key.match('Block')).forEach((key) => {
       const keys = key.split('Block');
       const i = keys[1];
-      const t = childrenData[i] = childrenData[i] || {};
+      childrenData[i] = childrenData[i] || {};
+      const t = childrenData[i];
       t[key] = dataSource[key];
     });
     const tabsChildren = childrenData.map((item, i) => this.getBlockChildren(name, item, i));
@@ -115,7 +117,9 @@ class Content extends React.Component {
             {dataSource[`${name}_title`].children}
           </TweenOne>
           <TweenOne
-            animation={{ y: '+=30', opacity: 0, type: 'from', delay: 100 }}
+            animation={{
+              y: '+=30', opacity: 0, type: 'from', delay: 100,
+            }}
             component="p"
             key="p"
             reverseDelay={100}
@@ -125,7 +129,9 @@ class Content extends React.Component {
           </TweenOne>
           <TweenOne.TweenOneGroup
             key="tabs"
-            enter={{ y: 30, opacity: 0, delay: 200, type: 'from' }}
+            enter={{
+              y: 30, opacity: 0, delay: 200, type: 'from',
+            }}
             leave={{ y: 30, opacity: 0 }}
             className={`${props.className}-tabs`}
             id={`${props.id}-tabs`}

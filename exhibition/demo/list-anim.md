@@ -40,17 +40,17 @@ class ListDemo extends React.Component {
         },
         {
           img: 'https://zos.alipayobjects.com/rmsportal/EMQSSlFQtGYEnWx.png',
-          text: 'Senior Animator',
+          text: 'Senior Product Designer',
           key: 1,
         },
         {
           img: 'https://zos.alipayobjects.com/rmsportal/OCuGZXfRioLyhKF.png',
-          text: 'Visual Designer',
+          text: 'Senior Product Designer',
           key: 2,
         },
         {
           img: 'https://zos.alipayobjects.com/rmsportal/agzYYwzggpOjqge.png',
-          text: 'Computer Engineer',
+          text: 'Senior Product Designer',
           key: 3,
         },
       ],
@@ -116,6 +116,7 @@ class ListDemo extends React.Component {
     } else {
       animation[this.index] = { x: 0, ease: 'easeOutBack' };
     }
+
     delete this.mouseXY;
     delete this.position[this.index];
     this.index = null;
@@ -146,7 +147,7 @@ class ListDemo extends React.Component {
         onTouchMove={this.onTouchMove}
       >
         <div className={`${this.props.className}-delete`}>
-          <a onClick={e => this.onDelete(e)}>删除</a>
+          <a onClick={(e) => { this.onDelete(e); }}>删除</a>
         </div>
         <TweenOne
           className={`${this.props.className}-content`}

@@ -133,7 +133,7 @@ export default class ListDemo extends React.Component {
         onTouchMove={this.onTouchMove}
       >
         <div className={`${this.props.className}-delete`}>
-          <a onClick={e => this.onDelete(e)}>删除</a>
+          <a onClick={(e) => { this.onDelete(e); }}>删除</a>
         </div>
         <TweenOne
           className={`${this.props.className}-content`}

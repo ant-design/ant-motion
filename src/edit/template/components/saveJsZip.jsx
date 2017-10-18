@@ -58,7 +58,7 @@ const replaceData = (urlData, _configData, key) => {
        configData[key] = urlItem;
        } else {
        delete configData[key];
-       }*/
+       } */
       delete configData[key];
     } else {
       Object.keys(item).forEach(replaceData.bind(this, urlItem, item));
@@ -70,7 +70,7 @@ const replaceData = (urlData, _configData, key) => {
 
     configData[key] = urlItem || configData[key];
     /* configData[key] = configData[key].match(isImg) ?
-     `<img width="100%" src="${configData[key]}" />` : configData[key];*/
+     `<img width="100%" src="${configData[key]}" />` : configData[key]; */
   }
   if (typeof item === 'object' && !Object.keys(item).length) {
     delete configData[key];
@@ -234,7 +234,9 @@ export default function saveJsZip(urlData) {
       caseKey = `${toUpperCase(keys[0])}${contentNum}`;
       contentNum += 1;
     }
-    templateStrObj.JS[key] = { i, id, key, name: caseKey, value: templateStr };
+    templateStrObj.JS[key] = {
+      i, id, key, name: caseKey, value: templateStr,
+    };
     // 去重复 less;
     templateStrObj.LESS[caseKey.toLowerCase()] = { id, value: cLess };
   });
@@ -271,7 +273,8 @@ export default function saveJsZip(urlData) {
   });
   // 编辑过的样式保存。。urlData.c;
   const editData = urlData.c;
-  templateStrObj.stylePhone = templateStrObj.styleWeb = '';
+  templateStrObj.stylePhone = '';
+  templateStrObj.styleWeb = '';
   if (editData) {
     Object.keys(editData).forEach((id) => {
       const item = editData[id];

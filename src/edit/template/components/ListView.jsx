@@ -169,7 +169,9 @@ export default class ListView extends React.Component {
         paddingBottom: 0,
         marginBottom: 0,
       }}
-      leave={{ height: 0, opacity: 0, paddingTop: 0, paddingBottom: 0, marginBottom: 0 }}
+      leave={{
+        height: 0, opacity: 0, paddingTop: 0, paddingBottom: 0, marginBottom: 0,
+      }}
       appear={false}
       onEnd={this.tweenOneEnd}
     >

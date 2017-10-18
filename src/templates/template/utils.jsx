@@ -69,7 +69,7 @@ export function mergeURLDataToDefault(urlData, defaultData) {
  img.onload = () => finish('responded');
  img.onerror = () => finish('error');
  img.src = url;
- }*/
+ } */
 
 
 export function getRect(dom) {
@@ -93,7 +93,7 @@ function setProps(_data, key) {
      data[key] = `url(${item.value})`;
      } else {
      data[key] = item.value;
-     }*/
+     } */
     data[key] = item.value;
   } else {
     Object.keys(data[key]).forEach(setProps.bind(this, data[key]));

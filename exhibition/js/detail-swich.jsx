@@ -108,8 +108,8 @@ export default class DetailSwitchDemo extends React.Component {
   };
 
   render() {
-    const imgChildren = dataArray.map((item, i) =>
-      <Element key={i} style={{ background: item.color }} hideProps>
+    const imgChildren = dataArray.map((item, i) => (
+      <Element key={i} style={{ background: item.color }} leaveChildHide>
         <QueueAnim
           animConfig={this.state.imgAnim}
           duration={this.getDuration}
@@ -124,7 +124,7 @@ export default class DetailSwitchDemo extends React.Component {
             <img src={item.pic} width="100%" />
           </div>
         </QueueAnim>
-      </Element>);
+      </Element>));
     const textChildren = dataArray.map((item, i) => {
       const { title, content, background } = item;
       return (<Element key={i}>

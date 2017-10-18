@@ -49,7 +49,9 @@ class Content extends React.Component {
           </Button>
         </QueueAnim>
         <TweenOne
-          animation={{ y: '-=20', yoyo: true, repeat: -1, duration: 1000 }}
+          animation={{
+            y: '-=20', yoyo: true, repeat: -1, duration: 1000,
+          }}
           className={`${this.props.className}-icon`}
           key="icon"
         >

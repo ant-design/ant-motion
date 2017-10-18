@@ -62,7 +62,9 @@ export default {
         },
       },
       stylePhone: {
-        ...offsetStyle({ top: '0px', right: '20px', width: '16px', height: '14px' }),
+        ...offsetStyle({
+          top: '0px', right: '20px', width: '16px', height: '14px',
+        }),
         ...marginAndPaddingStyle({ margin: 'auto' }),
         '$ .header0-phone-nav-bar em': {
           name: '横条样式',
@@ -73,7 +75,9 @@ export default {
         '$ .header0-phone-nav-text': {
           name: '菜单打开后外框',
           stylePhone: {
-            ...offsetStyle({ width: '100%', height: '100%', top: '0px', left: '0px' }),
+            ...offsetStyle({
+              width: '100%', height: '100%', top: '0px', left: '0px',
+            }),
             paddingTop: {
               value: '64px',
               name: 'paddingTop',

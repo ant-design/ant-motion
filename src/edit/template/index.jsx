@@ -65,8 +65,7 @@ class Edit extends React.Component {
       'Android', 'iPhone', 'SymbianOS',
       'Windows Phone', 'iPad', 'iPod',
     ].filter(key =>
-      navigator.userAgent.indexOf(key) > 0
-    )[0];
+      navigator.userAgent.indexOf(key) > 0)[0];
     if (isMode) {
       Modal.warning({
         title: '警告!!!',
@@ -100,7 +99,7 @@ class Edit extends React.Component {
        this.setState({ selectRect: rect });
        } else {
        this.selectHide = true;
-       }*/
+       } */
       // 窗口变动关掉所以操作, 回到选择 tabs;
       this.setState({
         editId: null,
@@ -126,7 +125,7 @@ class Edit extends React.Component {
      const rect = getRect(dom);
      this.setState({ selectRect: rect });
      }
-     }*/
+     } */
   };
 
   setUrlData = (obj, reload) => {

@@ -69,7 +69,9 @@ export default {
     },
     content1_wrapperBlock0: {
       style: {
-        ...offsetStyle({ width: '550px', top: '20%', left: '0px', right: '0px' }),
+        ...offsetStyle({
+          width: '550px', top: '20%', left: '0px', right: '0px',
+        }),
         ...marginAndPaddingStyle({ margin: 'auto' }),
         ...textStyle({ align: 'center' }),
       },
@@ -98,7 +100,9 @@ export default {
     content1_buttonBlock0: {
       style: {
         ...textStyle({ color: '#fff' }),
-        ...borderStyle({ color: '#fff', width: '1px', style: 'solid', radius: '4px' }),
+        ...borderStyle({
+          color: '#fff', width: '1px', style: 'solid', radius: '4px',
+        }),
         ...bgStyle({ color: 'transparent', select: ['backgroundColor'] }),
         '$:hover': {
           name: 'hover 样式',
@@ -123,7 +127,9 @@ export default {
     },
     content1_wrapperBlock1: {
       style: {
-        ...offsetStyle({ width: '550px', top: '20%', left: '0px', right: '0px' }),
+        ...offsetStyle({
+          width: '550px', top: '20%', left: '0px', right: '0px',
+        }),
         ...marginAndPaddingStyle({ margin: 'auto' }),
         ...textStyle({ align: 'center' }),
       },
@@ -152,7 +158,9 @@ export default {
     content1_buttonBlock1: {
       style: {
         ...textStyle({ color: '#fff' }),
-        ...borderStyle({ color: '#fff', width: '1px', style: 'solid', radius: '4px' }),
+        ...borderStyle({
+          color: '#fff', width: '1px', style: 'solid', radius: '4px',
+        }),
         ...bgStyle({ color: 'transparent', select: ['backgroundColor'] }),
         '$:hover': {
           name: 'hover 样式',

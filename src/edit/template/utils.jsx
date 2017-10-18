@@ -23,9 +23,11 @@ export function createChildrenObject(object, keys) {
   let t = {};
   keys.forEach((key, i) => {
     if (i) {
-      t = t[key] = t[key] || {};
+      t[key] = t[key] || {};
+      t = t[key];
     } else {
-      t = obj[key] = obj[key] || {};
+      obj[key] = obj[key] || {};
+      t = obj[key];
     }
   });
   return t;

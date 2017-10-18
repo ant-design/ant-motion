@@ -6,8 +6,8 @@ import '../../../static/content.less';
 import './index.less';
 
 class Content extends React.Component {
-
   static propTypes = {
+    className: PropTypes.string,
     id: PropTypes.string,
   };
 
@@ -42,7 +42,9 @@ class Content extends React.Component {
   getEnterAnim = (e, isMode) => {
     const index = e.index;
     const delay = isMode ? index * 50 + 200 : index % 4 * 100 + Math.floor(index / 4) * 100 + 300;
-    return { y: '+=30', opacity: 0, type: 'from', delay };
+    return {
+      y: '+=30', opacity: 0, type: 'from', delay,
+    };
   };
 
   render() {
@@ -63,7 +65,9 @@ class Content extends React.Component {
           className={`content-template ${props.className}`}
         >
           <TweenOne
-            animation={{ y: '+=30', opacity: 0, type: 'from', ease: 'easeOutQuad' }}
+            animation={{
+              y: '+=30', opacity: 0, type: 'from', ease: 'easeOutQuad',
+            }}
             component="h1"
             key="h1"
             reverseDelay={300}
@@ -72,7 +76,9 @@ class Content extends React.Component {
             {dataSource[`${name}_title`].children}
           </TweenOne>
           <TweenOne
-            animation={{ y: '+=30', opacity: 0, type: 'from', delay: 200, ease: 'easeOutQuad' }}
+            animation={{
+              y: '+=30', opacity: 0, type: 'from', delay: 200, ease: 'easeOutQuad',
+            }}
             component="p"
             key="p"
             reverseDelay={200}

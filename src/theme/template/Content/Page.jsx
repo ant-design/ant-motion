@@ -25,7 +25,6 @@ class Page extends React.Component {
       }
     });
     this.state = {
-      affixAnim: {},
       isHash: false,
       isMode: this.isMode,
       open: false,
@@ -81,8 +80,7 @@ class Page extends React.Component {
     const moduleData = {};
     Object.keys(pageData).forEach((key) => {
       const children = Object.keys(pageData[key]).map(cKey =>
-        pageData[key][cKey].index || pageData[key][cKey]
-      );
+        pageData[key][cKey].index || pageData[key][cKey]);
       moduleData[key] = children;
     });
     return moduleData;
@@ -95,9 +93,11 @@ class Page extends React.Component {
     const splicingListArr = [];
     if (pathNames[0] === 'cases') {
       // { meta: { filename: 'cases/full', english: 'Full', chinese: '完整模板选择', order: 2 } }
-      splicingListArr.push(
-        { meta: { filename: 'cases/splicing', english: 'Splicing', chinese: '自由搭配模板', order: 1 } }
-      );
+      splicingListArr.push({
+        meta: {
+          filename: 'cases/splicing', english: 'Splicing', chinese: '自由搭配模板', order: 1,
+        },
+      });
     }
     const children = moduleData.concat(splicingListArr).filter(item => !item.meta.hidden)
       .sort((a, b) => a.meta.order - b.meta.order);
@@ -107,7 +107,7 @@ class Page extends React.Component {
       const path = Array.isArray(pathNames) ? pathNames.join('/') : pathNames.replace('#', '');
       const hash = this.state.isHash && this.hash.replace('#', '');
       const className = hash === meta.id || path === link ||
-      (!hash && ((!path && i === 0) || path === meta.id)) ? 'active' : '';
+        (!hash && ((!path && i === 0) || path === meta.id)) ? 'active' : '';
       // api 页面，链接把 components 转成 api
       link = this.props.pathname.match('api') ? link.replace('components', 'api') : link;
       let linkToChildren = link.split('/')[1] === pathNames[1] ?
@@ -166,9 +166,11 @@ class Page extends React.Component {
       this.getModuleData(props.pageData[pathNames[0]][pathNames[1]]) :
       cModuleData;
 
-    const listToRender = moduleData && this.getMenuItems(componentBool ?
-          moduleData.demo : moduleData[pathNames[0]],
-        componentBool ? hash : pathNames, componentBool);
+    const listToRender = moduleData && this.getMenuItems(
+      componentBool ?
+        moduleData.demo : moduleData[pathNames[0]],
+      componentBool ? hash : pathNames, componentBool
+    );
 
     const listKey = pathNames[0] === 'components' && !props.pathname.match('api') ?
       props.pathname : pathNames[0];
@@ -186,7 +188,7 @@ class Page extends React.Component {
           {listToRender}
         </ul>
       </QueueAnim>
-      </Affix>)) :
+    </Affix>)) :
       (<div
         className={`list-wrapper${this.state.open ? ' open' : ''}`}
         style={{ zIndex: this.state.zIndex }}
@@ -224,19 +226,21 @@ class Page extends React.Component {
     } else {
       list.removeEventListener(transitionEnd, this.setZIndex);
     }
-    const obj = this.state.open ? {
-      barAnim: [
+    const obj = this.state.open ?
+      {
+        barAnim: [
           { rotate: 0, y: 0, duration: 300 },
           { opacity: 1, duration: 300 },
           { rotate: 0, y: 0, duration: 300 },
-      ],
-    } : {
-      barAnim: [
+        ],
+      } :
+      {
+        barAnim: [
           { rotate: 45, y: 5, duration: 300 },
           { opacity: 0, duration: 300 },
           { rotate: -45, y: -5, duration: 300 },
-      ],
-    };
+        ],
+      };
     this.setState({
       ...obj,
       open: !this.state.open,

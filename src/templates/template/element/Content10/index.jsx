@@ -10,7 +10,6 @@ import './index.less';
 
 const BgElement = Element.BgElement;
 class Banner extends React.Component {
-
   static propTypes = {
     className: PropTypes.string,
     dataSource: PropTypes.object,
@@ -33,7 +32,8 @@ class Banner extends React.Component {
     Object.keys(dataSource).filter(key => key.match('Block')).forEach((key) => {
       const keys = key.split('Block');
       const i = keys[1];
-      const t = childrenData[i] = childrenData[i] || {};
+      childrenData[i] = childrenData[i] || {};
+      const t = childrenData[i];
       t[key] = dataSource[key];
     });
     const childrenToRender = childrenData.map((item, i) => {
@@ -46,7 +46,9 @@ class Banner extends React.Component {
         delay: 1000,
         minMove: 0.1,
         data: [
-          { id: `bg$${i}`, value: 15, bgPosition: '50%', type: ['backgroundPositionX'] },
+          {
+            id: `bg$${i}`, value: 15, bgPosition: '50%', type: ['backgroundPositionX'],
+          },
           { id: `${props.id}-wrapperBlock${i}`, value: -15, type: 'x' },
         ],
       } : null;
@@ -62,7 +64,8 @@ class Banner extends React.Component {
           scrollParallax={{ y: 100 }}
         />
         <QueueAnim
-          type={['bottom', 'top']} delay={200}
+          type={['bottom', 'top']}
+          delay={200}
           className={`${props.className}-title`}
           key="text"
           id={`${props.id}-wrapperBlock${i}`}
@@ -109,7 +112,9 @@ class Banner extends React.Component {
           </BannerAnim>
         </TweenOneGroup>
         <TweenOne
-          animation={{ y: '-=20', yoyo: true, repeat: -1, duration: 1000 }}
+          animation={{
+            y: '-=20', yoyo: true, repeat: -1, duration: 1000,
+          }}
           className={`${this.props.className}-icon`}
           style={{ bottom: 40 }}
           key="icon"

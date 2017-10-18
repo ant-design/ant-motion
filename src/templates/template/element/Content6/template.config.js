@@ -20,7 +20,9 @@ const getLiBlock = data => ({
       name: '当前区块外壳样式',
       style: {
         ...offsetStyle({ height: '220px' }),
-        ...borderStyle({ radius: '6px', width: '1px', style: 'solid', color: '#e9e9e9' }),
+        ...borderStyle({
+          radius: '6px', width: '1px', style: 'solid', color: '#e9e9e9',
+        }),
         ...bgStyle({ color: '#fff', select: 'backgroundColor' }),
         ...marginAndPaddingStyle({ padding: '10px' }),
       },
@@ -64,7 +66,9 @@ const getLiBlock = data => ({
       name: '当前区块外壳样式',
       stylePhone: {
         ...offsetStyle({ width: '100%', height: '220px' }),
-        ...borderStyle({ radius: '6px', width: '1px', style: 'solid', color: '#e9e9e9' }),
+        ...borderStyle({
+          radius: '6px', width: '1px', style: 'solid', color: '#e9e9e9',
+        }),
         ...bgStyle({ color: '#fff', select: 'backgroundColor' }),
         ...marginAndPaddingStyle({ padding: '1%' }),
       },
@@ -199,7 +203,9 @@ export default {
           name: '全部区块外壳样式',
           style: {
             ...offsetStyle({ height: '220px' }),
-            ...borderStyle({ radius: '6px', width: '1px', style: 'solid', color: '#e9e9e9' }),
+            ...borderStyle({
+              radius: '6px', width: '1px', style: 'solid', color: '#e9e9e9',
+            }),
             ...bgStyle({ color: '#fff', select: 'backgroundColor' }),
             ...marginAndPaddingStyle({ padding: '10px' }),
           },
@@ -250,7 +256,9 @@ export default {
           name: '全部区块外壳样式',
           stylePhone: {
             ...offsetStyle({ width: '100%', height: '220px' }),
-            ...borderStyle({ radius: '6px', width: '1px', style: 'solid', color: '#e9e9e9' }),
+            ...borderStyle({
+              radius: '6px', width: '1px', style: 'solid', color: '#e9e9e9',
+            }),
             ...bgStyle({ color: '#fff', select: 'backgroundColor' }),
             ...marginAndPaddingStyle({ padding: '1%' }),
           },

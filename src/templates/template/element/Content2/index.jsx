@@ -20,8 +20,12 @@ class Content extends React.Component {
     delete props.isMode;
     const animType = {
       queue: isMode ? 'bottom' : 'right',
-      one: isMode ? { y: '+=30', opacity: 0, type: 'from', ease: 'easeOutQuad' }
-        : { x: '-=30', opacity: 0, type: 'from', ease: 'easeOutQuad' },
+      one: isMode ? {
+        y: '+=30', opacity: 0, type: 'from', ease: 'easeOutQuad',
+      }
+        : {
+          x: '-=30', opacity: 0, type: 'from', ease: 'easeOutQuad',
+        },
     };
     return (
       <div

@@ -66,7 +66,9 @@ export default {
         },
       },
       stylePhone: {
-        ...offsetStyle({ width: '180px', height: '200px', right: '0px', left: '0px' }),
+        ...offsetStyle({
+          width: '180px', height: '200px', right: '0px', left: '0px',
+        }),
         ...textStyle({ lineHeight: '200px' }),
         ...marginAndPaddingStyle({ margin: 'auto' }),
       },

@@ -39,17 +39,17 @@ class Header extends React.Component {
     phoneOpen: false,
     openAnim: { opacity: 0, delay: 300, duration: 400 },
     barAnim: [
-          { rotate: 0, y: 0, duration: 300 },
-          { opacity: 1, duration: 300 },
-          { rotate: 0, y: 0, duration: 300 },
+      { rotate: 0, y: 0, duration: 300 },
+      { opacity: 1, duration: 300 },
+      { rotate: 0, y: 0, duration: 300 },
     ],
   } : {
     phoneOpen: true,
     openAnim: { opacity: 1, duration: 400 },
     barAnim: [
-          { rotate: 45, y: 6, duration: 300 },
-          { opacity: 0, duration: 300 },
-          { rotate: -45, y: -6, duration: 300 },
+      { rotate: 45, y: 6, duration: 300 },
+      { opacity: 0, duration: 300 },
+      { rotate: -45, y: -6, duration: 300 },
     ],
   });
 
@@ -98,7 +98,8 @@ class Header extends React.Component {
           animation={{ opacity: 0, type: 'from' }}
         >
           <Link
-            to="/" key="logo"
+            to="/"
+            key="logo"
             onClick={(e) => {
               this.phoneClick(e, this.state.phoneOpen, '/', true);
             }}
@@ -110,14 +111,18 @@ class Header extends React.Component {
         <span className="git-but">
           <iframe
             src="https://ghbtns.com/github-btn.html?user=ant-design&repo=ant-motion&type=star&count=true"
-            frameBorder="0" scrolling="0" width="98px" height="20px"
+            frameBorder="0"
+            scrolling="0"
+            width="98px"
+            height="20px"
           />
         </span>
         {
           this.state.isMode ?
             (<div className="phone-nav">
               <div
-                className="phone-nav-bar" onClick={(e) => {
+                className="phone-nav-bar"
+                onClick={(e) => {
                   this.phoneClick(e, this.state.phoneOpen);
                 }}
               >

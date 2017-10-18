@@ -41,7 +41,9 @@ class ComponentDoc extends React.Component {
     const id = this.demoIds[tops.indexOf(t)];
     const link = `#${id}`;
     if (this.hash !== link) {
+      /* eslint-disable no-restricted-globals */
       history.pushState(null, window.title, `#${id}`);
+      /* eslint-enable no-restricted-globals */
       // cWindow.location.hash = `#${id}`;
       this.hash = link;
     }
@@ -57,7 +59,9 @@ class ComponentDoc extends React.Component {
         const content = props.utils.toReactComponent(['div'].concat(item.content));
         const comp = item.preview;
         return (<Item
-          vertical={item.meta.vertical} title={item.meta.title} content={content}
+          vertical={item.meta.vertical}
+          title={item.meta.title}
+          content={content}
           code={props.utils.toReactComponent(item.highlightedCode)}
           styleCode={item.highlightedStyle ?
             props.utils.toReactComponent(item.highlightedStyle) : null
@@ -71,7 +75,9 @@ class ComponentDoc extends React.Component {
         </Item>);
       });
     const { meta, description } = pageData.index;
-    const { title, subtitle, chinese, english } = meta;
+    const {
+      title, subtitle, chinese, english,
+    } = meta;
     this.demoIds = demosToChild.map(item => item.props.id);
     return (<DocumentTitle title={`${subtitle || chinese || ''} ${title || english} - Ant Motion`}>
       <article className="markdown">
@@ -81,7 +87,10 @@ class ComponentDoc extends React.Component {
             key="github-btn"
             src={`https://ghbtns.com/github-btn.html?user=react-component&repo=${
             this.props.params.contentName}&type=star&count=true`}
-            frameBorder="0" scrolling="0" width="98px" height="20px"
+            frameBorder="0"
+            scrolling="0"
+            width="98px"
+            height="20px"
           />
         </h1>
         {description ? props.utils.toReactComponent(description) : null}

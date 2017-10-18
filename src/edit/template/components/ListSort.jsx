@@ -65,7 +65,6 @@ export default class ListSort extends React.Component {
 
   static defaultProps = {
     component: 'div',
-    components: [],
     animType: 'y',
     onChange: () => {
     },
@@ -173,8 +172,7 @@ export default class ListSort extends React.Component {
     });
     const animation = this.children.map((item, ii) =>
       i === ii && (!this.props.dragClassName ?
-        { scale: 1.2, boxShadow: '0 10px 10px rgba(0,0,0,0.15)' } : null) || null
-    );
+        { scale: 1.2, boxShadow: '0 10px 10px rgba(0,0,0,0.15)' } : null) || null);
     this.index = i;
     this.swapIndex = i;
     this.mouseXY = {
@@ -320,12 +318,13 @@ export default class ListSort extends React.Component {
   getChildren = (item, i) => {
     const onMouseDown = this.onMouseDown.bind(this, i);
     const style = { ...this.state.childStyle[i] };
-    return React.createElement(TweenOne,
+    return React.createElement(
+      TweenOne,
       {
         ...item.props,
         onMouseDown,
         onTouchStart: onMouseDown,
-        style: { ...item.props, ...style },
+        style: { ...item.style, ...style },
         key: item.key,
         animation: this.state.animation[i],
         component: item.type,
@@ -346,7 +345,6 @@ export default class ListSort extends React.Component {
     const props = { ...this.props };
     [
       'component',
-      'components',
       'animType',
       'dragClassName',
       'appearAnim',

@@ -125,6 +125,7 @@ scrollScreen.unMount();
 | animation | object / array | null | 组件动画数据 |
 | location | string | null | 定位到父级元素，以父级元素的位置为准，元素的 id 值， 必需是唯一的 |
 | always | boolean | true | 同上，重复播放 |
+| targetId | string | null | 参考 `Element` 的 `targetId` |
 | component | string | div | 同上 |
 
 #### animation 为 object 时
@@ -150,6 +151,7 @@ scrollScreen.unMount();
 | showHeightActive | sting / number / array | `50%` | 滚动到距顶部还有`50%`的时, `link` 标签被选中同时附于 `active` 值; <br/> 在出场时是还有 `50%` 时 `link` 标签移除 `active` 值; 如果为Array时，第一个为进场，第二个为出场 |
 | toShowHeight | boolean | false | 点击时是否滚动到 `showHeightActive` 的值上 |
 | offsetTop    | number  | 0     | 到达元素距顶部位置 |
+| targetId | string | null | 参考 `Element` 的 `targetId` |
 | onFocus | function | - | 选中时的回调, 返回参数 { target, to } |
 | onBlur | function | - |失去焦点时回调, 返回参数 { target, to } |
 | onAsynchronousAddEvent | func | -  | 异步添加 `scroll` 事件接口, callback(func); [详细参考](http://react-component.github.io/scroll-anim/examples/linkAsynchronous.html)

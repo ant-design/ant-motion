@@ -85,9 +85,12 @@ export default class EditView extends React.Component {
   setStateConfigFunc = (value, key, k) => {
     const config = this.state.config;
     const ids = getEditID(this.props.editId);
-    const ct = config[ids.id] = config[ids.id] || {};
-    const t = ct[ids.childId] = ct[ids.childId] || {};
-    const tt = t[key] = t[key] || {};
+    config[ids.id] = config[ids.id] || {};
+    const ct = config[ids.id];
+    ct[ids.childId] = ct[ids.childId] || {};
+    const t = ct[ids.childId];
+    t[key] = t[key] || {};
+    const tt = t[key];
     tt[k] = value;
     return { config, ids };
   }
@@ -100,7 +103,9 @@ export default class EditView extends React.Component {
     key = keyObj.key ? key : '';
     return (
       <TweenOneGroup
-        enter={{ opacity: 0, y: '-=10', type: 'from', duration: 300 }}
+        enter={{
+          opacity: 0, y: '-=10', type: 'from', duration: 300,
+        }}
         leave={{ opacity: 0, scaleY: 0.8, duration: 300 }}
         // onBlur={this.remIsColor}
         ref={(c) => {
@@ -115,15 +120,15 @@ export default class EditView extends React.Component {
         key={key}
       >
         {this.state.pickerColor &&
-        <div
-          key="color"
-          className={`${this.props.className}-color`}
-        >
-          <SketchPicker
-            color={this.state.pickerColor}
-            onChange={this.colorHandleChange}
-          />
-        </div>}
+          <div
+            key="color"
+            className={`${this.props.className}-color`}
+          >
+            <SketchPicker
+              color={this.state.pickerColor}
+              onChange={this.colorHandleChange}
+            />
+          </div>}
       </TweenOneGroup>
     );
   }
@@ -189,9 +194,7 @@ export default class EditView extends React.Component {
           if (cType === 'color') {
             cValue = values[i];
           }
-          children.push(
-            <Input key={i} value={cValue} size="small" onFocus={inputFocus} className="one-input" />
-          );
+          children.push(<Input key={i} value={cValue} size="small" onFocus={inputFocus} className="one-input" />);
         }
       }
     }
@@ -256,7 +259,7 @@ export default class EditView extends React.Component {
     const defaultData = mergeURLDataToDefault(data, currentData);
     /* if (defaultData.all) {
      return this.getAllData(defaultData);
-     }*/
+     } */
     return this.getChildren(defaultData[childId]);
   }
 
@@ -298,13 +301,13 @@ export default class EditView extends React.Component {
       return (<div
         key={key}
         className={`${this.props.className}-module-wrapper ${
-        childrenLi && 'children-wrapper' || ''}`}
+          childrenLi && 'children-wrapper' || ''}`}
       >
         {typeof data[key] === 'object' && !parentKey && (data[key].value ||
-        (key.match('style') || key === 'children')
-        || isChildrenValue
-        || data[key].value === '')
-        && <h1>{name}<span>{remark}</span></h1>}
+          (key.match('style') || key === 'children')
+          || isChildrenValue
+          || data[key].value === '')
+          && <h1>{name}<span>{remark}</span></h1>}
         <ul>{this.getEditChild(data[key], key, parentKey)}</ul>
       </div>);
     });
@@ -323,7 +326,8 @@ export default class EditView extends React.Component {
             size="small"
             onChange={(v) => {
               this.onSwitchChange(v, key, k);
-            }} defaultChecked={item.value}
+            }}
+            defaultChecked={item.value}
           />);
           break;
         case 'page': {
@@ -333,7 +337,8 @@ export default class EditView extends React.Component {
             readioChild.push(<RadioButton value={i} key={i}>{value}</RadioButton>);
           }
           child = (<RadioGroup
-            size="small" value={item.value}
+            size="small"
+            value={item.value}
             onChange={(e) => {
               this.onPageChange(e.target.value, key, k);
             }}
@@ -365,7 +370,7 @@ export default class EditView extends React.Component {
    .map((key) => {
    const item = defaultData[key];
    return this.getChildren(item, key);
-   });*/
+   }); */
 
   getCurrentConfigData = (key, typeKey, editId) => {
     const ids = getEditID(this.props.editId);
@@ -410,7 +415,8 @@ export default class EditView extends React.Component {
     const ids = getEditID(this.props.editId);
     const id = ids.id;
     const config = this.state.config;
-    const a = config[id] = config[id] || {};
+    config[id] = config[id] || {};
+    const a = config[id];
     let childId = ids.childId;
     let b;
     if (Array.isArray(editId)) {
@@ -421,11 +427,13 @@ export default class EditView extends React.Component {
       b = createChildrenObject(a, idArray);
     } else {
       childId = editId || childId;
-      b = a[childId] = a[childId] || {};
+      a[childId] = a[childId] || {};
+      b = a[childId];
     }
     if (key) {
       // 子级不带样式直接转换；
-      const c = b[typeKey] = b[typeKey] || {};
+      b[typeKey] = b[typeKey] || {};
+      const c = b[typeKey];
       c[key] = value;
     } else {
       b[typeKey] = value;
@@ -451,7 +459,8 @@ export default class EditView extends React.Component {
     this.setState({
       pickerColor: value,
     }, () => {
-      this.changeValue(this.sketchColorKeyObj.key,
+      this.changeValue(
+        this.sketchColorKeyObj.key,
         this.sketchColorKeyObj.typeKey,
         this.sketchColorKeyObj.parentKey,
         values
@@ -531,7 +540,7 @@ export default class EditView extends React.Component {
              >
              保存
              </Button>
-             </div>*/}
+             </div> */}
           </div>
         </TweenOneGroup>
         {this.getColorChildren()}

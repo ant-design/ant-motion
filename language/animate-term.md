@@ -19,7 +19,7 @@ english: animate term
 |   minWidth        |  `{ minWidth: 100 }` 元素当前最小宽度到 100px |
 |   height          |  `{ height: 100 }` 元素当前高度到 100px |
 |   maxHeight       |  `{ maxHeight: 100 }` 元素当前最大高度到 100px |
-|   minHeight       |  `{ minHeight: 100 }` 元素当前最小高度到 100px |
+|   minHeight       |  `{ minHeight: 100 }` 元素当前最小高度到 100px |
 |   lineHeight      |  `{ lineHeight: 100 }` 区块行高到 100px |
 |   opacity         |  `{ opacity: 0 }` 元素当前透明度到 0 |
 |   top             |  `{ top: 100 }` 元素当前顶部距离到 100px, 需配合 `position: relative | absolute` |

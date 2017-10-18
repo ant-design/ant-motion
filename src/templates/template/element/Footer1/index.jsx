@@ -7,6 +7,7 @@ import './index.less';
 
 class Footer extends React.Component {
   static propTypes = {
+    className: PropTypes.string,
     id: PropTypes.string,
   };
 
