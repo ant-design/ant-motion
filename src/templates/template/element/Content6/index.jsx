@@ -66,8 +66,8 @@ class Content extends React.Component {
         >
           <TweenOne
             animation={{
- y: '+=30', opacity: 0, type: 'from', ease: 'easeOutQuad',
-}}
+              y: '+=30', opacity: 0, type: 'from', ease: 'easeOutQuad',
+            }}
             component="h1"
             key="h1"
             reverseDelay={300}
@@ -77,8 +77,8 @@ class Content extends React.Component {
           </TweenOne>
           <TweenOne
             animation={{
- y: '+=30', opacity: 0, type: 'from', delay: 200, ease: 'easeOutQuad',
-}}
+              y: '+=30', opacity: 0, type: 'from', delay: 200, ease: 'easeOutQuad',
+            }}
             component="p"
             key="p"
             reverseDelay={200}

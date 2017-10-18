@@ -29,8 +29,8 @@ export default class Banner extends React.Component {
           cx="350"
           cy="350"
           animation={{
- y: 30, x: -10, repeat: -1, duration: 3000, yoyo: true,
-}}
+            y: 30, x: -10, repeat: -1, duration: 3000, yoyo: true,
+          }}
         />
         <TweenOne
           component="circle"
@@ -39,8 +39,8 @@ export default class Banner extends React.Component {
           cx="500"
           cy="420"
           animation={{
- y: -30, x: 10, repeat: -1, duration: 3000, yoyo: true,
-}}
+            y: -30, x: 10, repeat: -1, duration: 3000, yoyo: true,
+          }}
         />
       </svg>
       <div className={this.props.className}>
@@ -78,8 +78,8 @@ export default class Banner extends React.Component {
         >
           <div key="down" className={`${this.props.className}-down`}>
             <TweenOne animation={{
- y: 5, yoyo: true, repeat: -1, duration: 900,
-}}
+              y: 5, yoyo: true, repeat: -1, duration: 900,
+            }}
             >
               <Icon type="down-circle-o" />
             </TweenOne>
@@ -91,8 +91,8 @@ export default class Banner extends React.Component {
             <TweenOne
               className="mouse-bar"
               animation={{
- y: 5, yoyo: true, repeat: -1, duration: 900,
-}}
+                y: 5, yoyo: true, repeat: -1, duration: 900,
+              }}
             />
           </div>
         </TweenOne>

@@ -58,8 +58,8 @@ class Content extends React.Component {
       >
         <TweenOne.TweenOneGroup
           enter={{
- y: 30, delay: 300, opacity: 0, type: 'from', ease: 'easeOutQuad',
-}}
+            y: 30, delay: 300, opacity: 0, type: 'from', ease: 'easeOutQuad',
+          }}
           leave={null}
           component=""
         >
@@ -118,8 +118,8 @@ class Content extends React.Component {
           </TweenOne>
           <TweenOne
             animation={{
- y: '+=30', opacity: 0, type: 'from', delay: 100,
-}}
+              y: '+=30', opacity: 0, type: 'from', delay: 100,
+            }}
             component="p"
             key="p"
             reverseDelay={100}
@@ -130,8 +130,8 @@ class Content extends React.Component {
           <TweenOne.TweenOneGroup
             key="tabs"
             enter={{
- y: 30, opacity: 0, delay: 200, type: 'from',
-}}
+              y: 30, opacity: 0, delay: 200, type: 'from',
+            }}
             leave={{ y: 30, opacity: 0 }}
             className={`${props.className}-tabs`}
             id={`${props.id}-tabs`}

@@ -105,8 +105,8 @@ class Banner extends React.Component {
         </TweenOneGroup>
         <TweenOne
           animation={{
- y: '-=20', yoyo: true, repeat: -1, duration: 1000,
-}}
+            y: '-=20', yoyo: true, repeat: -1, duration: 1000,
+          }}
           className={`${props.className}-icon`}
           style={{ bottom: 40 }}
           key="icon"

@@ -45,8 +45,8 @@ class Content extends React.Component {
         >
           <TweenOne
             animation={{
- x: '-=10', opacity: 0, type: 'from', ease: 'easeOutQuad',
-}}
+              x: '-=10', opacity: 0, type: 'from', ease: 'easeOutQuad',
+            }}
             className="img"
             key="img"
           >

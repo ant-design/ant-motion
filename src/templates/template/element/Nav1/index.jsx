@@ -63,55 +63,56 @@ class Header extends React.Component {
       <TweenOne
         className={`${this.props.className}-logo`}
         animation={{
- x: -30, delay: 100, type: 'from', ease: 'easeOutQuad',
-}}
+          x: -30, delay: 100, type: 'from', ease: 'easeOutQuad',
+        }}
         id={`${this.props.id}-logo`}
       >
         <img width="100%" src={dataSource[`${name}_logo`].children} />
       </TweenOne>
-      {isMode ? (<div
-        className={`${this.props.className}-phone-nav${this.state.phoneOpen || (func && func.switch) ? ' open' : ''}`}
-        id={`${this.props.id}-menu`}
-      >
+      {isMode ? (
         <div
-          className={`${this.props.className}-phone-nav-bar`}
-          onClick={() => {
-            this.phoneClick();
-          }}
-        >
-          <em />
-          <em />
-          <em />
-        </div>
-        <div
-          className={`${this.props.className}-phone-nav-text`}
-        >
-          <Menu
-            defaultSelectedKeys={['0']}
-            mode="inline"
-            theme="dark"
-            openKeys={(func && func.switchMenu) ? ['user'] : []}
-          >
-            {navChildren}
-          </Menu>
-        </div>
-      </div>) :
-      <TweenOne
-        animation={{
- x: 30, delay: 100, opacity: 0, type: 'from', ease: 'easeOutQuad',
-}}
-        className={`${this.props.className}-nav`}
-      >
-        <Menu
-          mode="horizontal"
-          defaultSelectedKeys={['0']}
+          className={`${this.props.className}-phone-nav${this.state.phoneOpen || (func && func.switch) ? ' open' : ''}`}
           id={`${this.props.id}-menu`}
-          openKeys={(func && func.switchMenu) ? ['user'] : []}
         >
-          {navChildren}
-        </Menu>
-      </TweenOne>
-      }
+          <div
+            className={`${this.props.className}-phone-nav-bar`}
+            onClick={() => {
+              this.phoneClick();
+            }}
+          >
+            <em />
+            <em />
+            <em />
+          </div>
+          <div
+            className={`${this.props.className}-phone-nav-text`}
+          >
+            <Menu
+              defaultSelectedKeys={['0']}
+              mode="inline"
+              theme="dark"
+              openKeys={(func && func.switchMenu) ? ['user'] : []}
+            >
+              {navChildren}
+            </Menu>
+          </div>
+        </div>) : (
+          <TweenOne
+            animation={{
+              x: 30, delay: 100, opacity: 0, type: 'from', ease: 'easeOutQuad',
+            }}
+            className={`${this.props.className}-nav`}
+          >
+            <Menu
+              mode="horizontal"
+              defaultSelectedKeys={['0']}
+              id={`${this.props.id}-menu`}
+              openKeys={(func && func.switchMenu) ? ['user'] : []}
+            >
+              {navChildren}
+            </Menu>
+          </TweenOne>
+        )}
     </TweenOne>);
   }
 }
