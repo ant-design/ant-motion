@@ -104,8 +104,8 @@ export default class EditView extends React.Component {
     return (
       <TweenOneGroup
         enter={{
- opacity: 0, y: '-=10', type: 'from', duration: 300,
-}}
+          opacity: 0, y: '-=10', type: 'from', duration: 300,
+        }}
         leave={{ opacity: 0, scaleY: 0.8, duration: 300 }}
         // onBlur={this.remIsColor}
         ref={(c) => {
@@ -120,15 +120,15 @@ export default class EditView extends React.Component {
         key={key}
       >
         {this.state.pickerColor &&
-        <div
-          key="color"
-          className={`${this.props.className}-color`}
-        >
-          <SketchPicker
-            color={this.state.pickerColor}
-            onChange={this.colorHandleChange}
-          />
-        </div>}
+          <div
+            key="color"
+            className={`${this.props.className}-color`}
+          >
+            <SketchPicker
+              color={this.state.pickerColor}
+              onChange={this.colorHandleChange}
+            />
+          </div>}
       </TweenOneGroup>
     );
   }
@@ -301,13 +301,13 @@ export default class EditView extends React.Component {
       return (<div
         key={key}
         className={`${this.props.className}-module-wrapper ${
-        childrenLi && 'children-wrapper' || ''}`}
+          childrenLi && 'children-wrapper' || ''}`}
       >
         {typeof data[key] === 'object' && !parentKey && (data[key].value ||
-        (key.match('style') || key === 'children')
-        || isChildrenValue
-        || data[key].value === '')
-        && <h1>{name}<span>{remark}</span></h1>}
+          (key.match('style') || key === 'children')
+          || isChildrenValue
+          || data[key].value === '')
+          && <h1>{name}<span>{remark}</span></h1>}
         <ul>{this.getEditChild(data[key], key, parentKey)}</ul>
       </div>);
     });
