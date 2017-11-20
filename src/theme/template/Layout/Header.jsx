@@ -39,15 +39,16 @@ class Header extends React.PureComponent {
       { opacity: 1, duration: 300 },
       { rotate: 0, y: 0, duration: 300 },
     ],
-  } : {
-    phoneOpen: true,
-    openAnim: { opacity: 1, duration: 400 },
-    barAnim: [
-      { rotate: 45, y: 6, duration: 300 },
-      { opacity: 0, duration: 300 },
-      { rotate: -45, y: -6, duration: 300 },
-    ],
-  });
+  } :
+    {
+      phoneOpen: true,
+      openAnim: { opacity: 1, duration: 400 },
+      barAnim: [
+        { rotate: 45, y: 6, duration: 300 },
+        { opacity: 0, duration: 300 },
+        { rotate: -45, y: -6, duration: 300 },
+      ],
+    });
 
   phoneClick = (e, phoneOpen, href, isLogo) => {
     if (!this.props.isMobile || isLogo && !phoneOpen) {
@@ -59,7 +60,7 @@ class Header extends React.PureComponent {
         this.context.router.push({
           pathname: href,
         });
-      }, 850);
+      }, 600);
     }
     this.setState(this.getAnimData(phoneOpen));
   }
@@ -131,7 +132,15 @@ class Header extends React.PureComponent {
                 animation={this.state.openAnim}
                 style={{ pointerEvents: this.state.phoneOpen ? 'auto' : 'none' }}
               >
-                <QueueAnim component="ul" delay={[300, 0]} type="bottom" leaveReverse>
+                <QueueAnim
+                  component="ul"
+                  duration={150}
+                  interval={50}
+                  delay={[200, 0]}
+                  ease={['easeOutQuad', 'easeInQuad']}
+                  type="bottom"
+                  leaveReverse
+                >
                   {this.state.phoneOpen && navToRender}
                 </QueueAnim>
 

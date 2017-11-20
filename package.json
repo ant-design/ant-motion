@@ -14,7 +14,7 @@
     "raw-loader": "^0.5.1",
     "rc-animate": "~2.4.1",
     "rc-banner-anim": "~1.0.0",
-    "rc-drawer-menu": "^0.3.2",
+    "rc-drawer-menu": "^0.3.4",
     "rc-queue-anim": "~1.4.0",
     "rc-scroll-anim": "~2.0.2",
     "rc-tween-one": "~1.5.3",

@@ -1,7 +1,7 @@
 @import 'custom';
 @import 'global';
-
-html, body {
+html,
+body {
   background: #fff;
 }
 
@@ -32,7 +32,7 @@ html, body {
         }
       }
       & a {
-        display: block;
+        display: block; // transition: filter .4s;
       }
     }
     .web-nav {
@@ -57,8 +57,8 @@ html, body {
             color: @nav-link-color;
             letter-spacing: 0.5px;
             transition: color @animate-duration @ease-out;
-
-            &:hover, &.active {
+            &:hover,
+            &.active {
               color: @nav-link-active-color;
             }
             &[disabled] {
@@ -93,16 +93,16 @@ html, body {
     max-width: 960px;
     width: 100%;
     margin: 0 auto;
-     li {
+    li {
       float: left;
       padding: 15px 2%;
       width: 25%;
-       h2 {
+      h2 {
         font-size: 14px;
         line-height: 30px;
         color: @title-color;
         position: relative;
-        > .anticon{
+        >.anticon {
           color: #aaa;
           left: -20px;
           position: absolute;
@@ -119,7 +119,7 @@ html, body {
           color: @primary-color;
         }
       }
-      >div{
+      >div {
         line-height: 22px;
       }
     }
@@ -133,6 +133,7 @@ html, body {
     .@{header} {
       transform: translateY(50%);
       & a {
+        filter: grayscale(1) brightness(3);
         color: @nav-link-active-color;
       }
     }
@@ -153,13 +154,16 @@ html, body {
   background-color: #fff;
 }
 
-.content-wrapper > .tween-one-leaving, .page-content > .tween-one-leaving {
+.content-wrapper>.tween-one-leaving,
+.page-content>.tween-one-leaving {
   position: absolute !important;
   width: 100%;
 }
 
-.content-wrapper > .tween-one-leaving, .page-content > .tween-one-leaving,
-.content-wrapper > .tween-one-entering, .page-content > .tween-one-entering {
+.content-wrapper>.tween-one-leaving,
+.page-content>.tween-one-leaving,
+.content-wrapper>.tween-one-entering,
+.page-content>.tween-one-entering {
   overflow: hidden;
   height: 100vh;
 }
@@ -174,7 +178,9 @@ html, body {
 }
 
 // 修改弹出框动画
-.ant-modal.zoom-appear, .ant-modal.zoom-enter, .ant-modal.zoom-leave {
+.ant-modal.zoom-appear,
+.ant-modal.zoom-enter,
+.ant-modal.zoom-leave {
   animation-duration: .35s;
 }
 
@@ -223,7 +229,8 @@ html, body {
     display: block;
     margin: 6px auto;
   }
-  &:active, &:visited {
+  &:active,
+  &:visited {
     transform: translateY(2px);
     box-shadow: 0 3px 15px fade(#000, 15);
   }
@@ -237,11 +244,10 @@ html, body {
   }
 }
 
-@media screen and (max-width: 768px)  {
+@media screen and (max-width: 768px) {
   .home .@{header}-wrapper .@{header} {
     transform: none;
   }
-
   .@{header}-wrapper {
     &.open {
       .@{header}-logo a {
@@ -261,7 +267,6 @@ html, body {
         display: inline-block;
         transform: translateY(8px);
       }
-
       .phone-nav {
         width: 16px;
         height: 14px;
@@ -283,7 +288,7 @@ html, body {
             background: #FFF;
             margin-top: 4px;
           }
-          :first-child {
+           :first-child {
             margin-top: 0;
           }
         }
@@ -304,7 +309,7 @@ html, body {
           ul {
             li {
               margin: 40px 0 40px 5%;
-              :only-child {
+               :only-child {
                 margin-left: 37px;
               }
               &.queue-anim-leaving {
@@ -320,7 +325,6 @@ html, body {
       }
     }
   }
-
   .@{footer} {
     height: 550px;
     ul li {
@@ -331,6 +335,21 @@ html, body {
         margin: 10px 20px 10px 0;
       }
     }
+  }
+}
+
+.drawer {
+  animation: AlphaTo .3s ease-out .3s;
+  animation-fill-mode: forwards;
+  opacity: 0;
+  transform: translateX(-40px);
+}
+
+@keyframes AlphaTo {
+  to {
+    opacity: 1;
+    left: 0;
+    transform: translateX(0px);
   }
 }
 
