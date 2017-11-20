@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import TweenOne from 'rc-tween-one';
 import { Icon } from 'antd';
 
-class Item extends React.Component {
+class Item extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {

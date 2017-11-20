@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import DocumentTitle from 'react-document-title';
 import DemoLayout, { Item } from './DemoLayout';
 
-class ComponentDoc extends React.Component {
+class ComponentDoc extends React.PureComponent {
   componentDidMount() {
     const props = this.props;
     const { location } = props;
@@ -14,10 +14,6 @@ class ComponentDoc extends React.Component {
     } else {
       window.attachEvent('onscroll', this.onScroll);
     }
-  }
-
-  shouldComponentUpdate() {
-    return false;
   }
 
   componentWillUnmount() {

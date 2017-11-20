@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Item from './DemoItem';
 
-class DemoLayout extends React.Component {
+class DemoLayout extends React.PureComponent {
   renderChildren = () =>
     React.Children.map(this.props.children, (item) => {
       if (item.type === Item) {

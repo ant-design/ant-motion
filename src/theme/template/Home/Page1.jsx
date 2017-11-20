@@ -6,7 +6,7 @@ import TweenOne from 'rc-tween-one';
 import { Link } from 'react-router';
 import CoderDemo from './CodeDemo';
 
-export default class Page1 extends React.Component {
+export default class Page1 extends React.PureComponent {
   static propTypes = {
     pageData: PropTypes.object,
     utils: PropTypes.object,

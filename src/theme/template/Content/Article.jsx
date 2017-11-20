@@ -3,11 +3,7 @@ import { getChildren } from 'jsonml.js/lib/utils';
 import DocumentTitle from 'react-document-title';
 import * as utils from '../utils';
 
-class Article extends React.Component {
-  shouldComponentUpdate() {
-    return false;
-  }
-
+class Article extends React.PureComponent {
   render() {
     const props = this.props;
     const pageData = props.pageData;

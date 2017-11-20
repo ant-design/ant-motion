@@ -10,7 +10,7 @@ import Demo from './Demo';
 
 TweenOne.plugins.push(SvgMorphPlugin);
 
-export default class Banner extends React.Component {
+export default class Banner extends React.PureComponent {
   static propTypes = {
     className: PropTypes.string,
   };

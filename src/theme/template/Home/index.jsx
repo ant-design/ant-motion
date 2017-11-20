@@ -10,7 +10,7 @@ import Page2 from './Page2';
 import Page3 from './Page3';
 
 
-class Home extends React.Component {
+class Home extends React.PureComponent {
   static propTypes = {
     pageData: PropTypes.object,
     utils: PropTypes.object,

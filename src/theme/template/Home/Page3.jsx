@@ -5,7 +5,7 @@ import QueueAnim from 'rc-queue-anim';
 
 import { Link } from 'react-router';
 
-export default class Page3 extends React.Component {
+export default class Page3 extends React.PureComponent {
   static propTypes = {
     onButtonClick: PropTypes.func,
   };

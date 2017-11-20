@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Icon } from 'antd';
 import { enquireScreen } from '../utils';
 
-class CodeDemo extends React.Component {
+class CodeDemo extends React.PureComponent {
   static propTypes = {
     className: PropTypes.string,
     pageData: PropTypes.object,

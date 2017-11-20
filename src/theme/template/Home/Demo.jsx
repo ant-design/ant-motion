@@ -8,7 +8,7 @@ import { currentScrollTop, enquireScreen } from '../utils';
 
 TweenOne.plugins.push(SvgDrawPlugin);
 
-export default class Demo extends React.Component {
+export default class Demo extends React.PureComponent {
   static propTypes = {
     image: PropTypes.string,
   };
