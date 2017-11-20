@@ -9,7 +9,7 @@ html, body {
 .@{header}-wrapper {
   height: 64px;
   position: relative;
-  z-index: 999;
+  z-index: 10000;
   background: @nav-color;
   transition: background .3s @ease-out, border @animate-duration @ease-out;
   .@{header} {
@@ -33,7 +33,6 @@ html, body {
       }
       & a {
         display: block;
-        // transition: filter .4s;
       }
     }
     .web-nav {
@@ -134,7 +133,6 @@ html, body {
     .@{header} {
       transform: translateY(50%);
       & a {
-        filter: grayscale(1) brightness(3);
         color: @nav-link-active-color;
       }
     }
@@ -247,7 +245,6 @@ html, body {
   .@{header}-wrapper {
     &.open {
       .@{header}-logo a {
-        filter: grayscale(1) brightness(3);
         color: #fff;
       }
     }

@@ -5,14 +5,32 @@ import TweenOne from 'rc-tween-one';
 import Header from './Header';
 import Footer from './Footer';
 import Page from '../Content/Page';
+import { enquireScreen } from '../utils';
 import '../../static/style';
 
-class Layout extends React.Component {
+let isMobile;
+enquireScreen((b) => {
+  isMobile = b;
+});
+
+class Index extends React.PureComponent {
   static propTypes = {
     children: PropTypes.any,
     location: PropTypes.object,
     pageData: PropTypes.any,
   };
+
+  state = {
+    isMobile,
+  };
+
+  componentDidMount() {
+    enquireScreen((b) => {
+      this.setState({
+        isMobile: !!b,
+      });
+    });
+  }
 
   onChange = (e) => {
     // fixed 与 transform
@@ -38,11 +56,12 @@ class Layout extends React.Component {
         pathname={this.props.location.pathname}
         pageData={this.props.pageData}
         hash={this.props.location.hash}
+        isMobile={this.state.isMobile}
       >
         {this.props.children}
       </Page>);
     return (<div id="react-root" className={!pathKey ? 'home' : ''}>
-      <Header activeKey={pathKey} />
+      <Header activeKey={pathKey} isMobile={this.state.isMobile} />
       <TweenOne.TweenOneGroup
         className="content-wrapper"
         onEnd={this.onChange}
@@ -57,5 +76,5 @@ class Layout extends React.Component {
   }
 }
 
-export default Layout;
+export default Index;
 

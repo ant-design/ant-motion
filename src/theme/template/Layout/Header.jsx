@@ -3,14 +3,19 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 import TweenOne from 'rc-tween-one';
 import QueueAnim from 'rc-queue-anim';
-import { enquireScreen } from '../utils';
 
 // const navArr = require('./list').nav;
 const navArr = require('./nav');
 
-class Header extends React.Component {
+class Header extends React.PureComponent {
   static propTypes = {
     className: PropTypes.string,
+    isMobile: PropTypes.bool,
+    activeKey: PropTypes.any,
+  };
+
+  static defaultProps = {
+    className: 'header',
   };
 
   static contextTypes = {
@@ -20,19 +25,10 @@ class Header extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isMode: false,
       openAnim: null,
       phoneOpen: false,
       barAnim: [],
     };
-  }
-
-  componentDidMount() {
-    enquireScreen((bool) => {
-      this.setState({
-        isMode: bool,
-      });
-    });
   }
 
   getAnimData = phoneOpen => (phoneOpen ? {
@@ -54,7 +50,7 @@ class Header extends React.Component {
   });
 
   phoneClick = (e, phoneOpen, href, isLogo) => {
-    if (!this.state.isMode || isLogo && !phoneOpen) {
+    if (!this.props.isMobile || isLogo && !phoneOpen) {
       return;
     }
     if (href) {
@@ -118,7 +114,7 @@ class Header extends React.Component {
           />
         </span>
         {
-          this.state.isMode ?
+          this.props.isMobile ?
             (<div className="phone-nav">
               <div
                 className="phone-nav-bar"
@@ -155,14 +151,5 @@ class Header extends React.Component {
     </header>);
   }
 }
-const objectOrArray = PropTypes.oneOfType([PropTypes.string, PropTypes.array]);
-Header.propTypes = {
-  className: PropTypes.string,
-  activeKey: objectOrArray,
-};
-
-Header.defaultProps = {
-  className: 'header',
-};
 
 export default Header;

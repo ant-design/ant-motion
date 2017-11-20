@@ -1,35 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import TweenOne, { TweenOneGroup } from 'rc-tween-one';
+import { TweenOneGroup } from 'rc-tween-one';
 import QueueAnim from 'rc-queue-anim';
 import { Link } from 'react-router';
 import { Affix } from 'antd';
+import MobileMenu from 'rc-drawer-menu';
 import nav from '../Layout/nav';
-import { scrollClick, enquireScreen } from '../utils';
+import { scrollClick } from '../utils';
 
 const title = {};
 nav.forEach((item) => {
   title[item.key] = item.name;
 });
 
-class Page extends React.Component {
+class Page extends React.PureComponent {
+  static propTypes = {
+    className: PropTypes.string,
+    pathname: PropTypes.string,
+    isMobile: PropTypes.bool,
+  };
+
+  static defaultProps = {
+    className: 'page',
+  };
   constructor(props) {
     super(props);
-    this.isMode = false;
-    enquireScreen((bool) => {
-      this.isMode = bool;
-      if (this.enter) {
-        this.setState({
-          isMode: this.isMode,
-        });
-      }
-    });
+    console.log(props.isMobile);
     this.state = {
       isHash: false,
-      isMode: this.isMode,
-      open: false,
-      zIndex: 998,
-      barAnim: [],
     };
   }
 
@@ -147,12 +145,6 @@ class Page extends React.Component {
     }).filter(item => item)[0];
   }
 
-  setZIndex = () => {
-    this.setState({
-      zIndex: 998,
-    });
-  }
-
   getListChildren = (cPathNames, cModuleData, isComponent) => {
     const props = this.props;
     const hash = props.hash;
@@ -160,7 +152,7 @@ class Page extends React.Component {
     // Ａpi页面, 地址转成 components;
     const isApi = pathNames[0] === 'api';
     pathNames[0] = pathNames[0] === 'api' ? 'components' : pathNames[0];
-    const componentBool = isComponent && !this.state.isMode;
+    const componentBool = isComponent && !this.props.isMobile;
 
     const moduleData = componentBool ?
       this.getModuleData(props.pageData[pathNames[0]][pathNames[1]]) :
@@ -174,12 +166,12 @@ class Page extends React.Component {
 
     const listKey = pathNames[0] === 'components' && !props.pathname.match('api') ?
       props.pathname : pathNames[0];
-    return (!this.state.isMode ? (listToRender && (<Affix offsetTop={60} key="list" className="list-wrapper">
+    return (!this.props.isMobile ? (listToRender && (<Affix offsetTop={60} key="list" className="nav-list-wrapper">
       <QueueAnim
         type={['bottom', 'top']}
         duration={450}
         ease="easeInOutQuad"
-        className="list"
+        className="nav-list"
       >
         <h2 key={`${props.pathname.split('/')[0]}-title`}>
           {isComponent ? '范例' : title[pathNames[0]]}
@@ -189,64 +181,25 @@ class Page extends React.Component {
         </ul>
       </QueueAnim>
     </Affix>)) :
-      (<div
-        className={`list-wrapper${this.state.open ? ' open' : ''}`}
-        style={{ zIndex: this.state.zIndex }}
-        id="J-List"
-      >
-        <div className="icon-list" onClick={this.openClick}>
-          <div className="bar-wrapper">
-            <TweenOne component="em" animation={this.state.barAnim[0]} />
-            <TweenOne component="em" animation={this.state.barAnim[1]} />
-            <TweenOne component="em" animation={this.state.barAnim[2]} />
+      (<MobileMenu width="180px">
+        <div className="nav-list-wrapper">
+          <div className="nav-list">
+            <h2 key={`${props.pathname.split('/')[0]}-title`}>
+              {isApi ? 'API' : title[pathNames[0]]}
+            </h2>
+            <ul>
+              {listToRender}
+            </ul>
           </div>
         </div>
-        <div className="list">
-          <h2 key={`${props.pathname.split('/')[0]}-title`}>
-            {isApi ? 'API' : title[pathNames[0]]}
-          </h2>
-          <ul>
-            {listToRender}
-          </ul>
-        </div>
-      </div>));
+      </MobileMenu>
+      ));
   }
 
   cScrollClick = (e) => {
     e.preventDefault();
     scrollClick(e);
   };
-
-  openClick = () => {
-    const zIndex = 1002;
-    const list = document.getElementById('J-List');
-    const transitionEnd = this.getTransitionEnd();
-    if (this.state.open) {
-      list.addEventListener(transitionEnd, this.setZIndex);
-    } else {
-      list.removeEventListener(transitionEnd, this.setZIndex);
-    }
-    const obj = this.state.open ?
-      {
-        barAnim: [
-          { rotate: 0, y: 0, duration: 300 },
-          { opacity: 1, duration: 300 },
-          { rotate: 0, y: 0, duration: 300 },
-        ],
-      } :
-      {
-        barAnim: [
-          { rotate: 45, y: 5, duration: 300 },
-          { opacity: 0, duration: 300 },
-          { rotate: -45, y: -5, duration: 300 },
-        ],
-      };
-    this.setState({
-      ...obj,
-      open: !this.state.open,
-      zIndex,
-    });
-  }
 
   render() {
     const props = this.props;
@@ -256,7 +209,7 @@ class Page extends React.Component {
     const isComponent = pathNames[0] === 'components';
     const moduleData = this.getModuleData(props.pageData);
 
-    const navToRender = isComponent && !this.state.isMode ?
+    const navToRender = isComponent && !this.props.isMobile ?
       this.getMenuItems(moduleData[pathNames[0]], pathNames, false, true) : null;
     const listToRender = this.getListChildren(pathNames, moduleData, isComponent);
     const pageData = props.pathname.match('api') ?
@@ -265,18 +218,17 @@ class Page extends React.Component {
       React.cloneElement(props.children, { pageData }) : props.children;
 
     return (<div className={className}>
-      {!this.state.isMode && <TweenOneGroup
+      {!this.props.isMobile && (<TweenOneGroup
         enter={{ height: 0, type: 'from', ease: 'easeInOutCubic' }}
         leave={{ height: 0, ease: 'easeInOutCubic' }}
         component=""
       >
-        {navToRender && <div key="nav" className={`${className}-nav`}>
+        {navToRender && (<div key="nav" className={`${className}-nav`}>
           <ul>
             {navToRender}
           </ul>
-        </div>}
-      </TweenOneGroup>}
-      <div key="bg" className={`list-bg${this.state.open ? ' open' : ''}`} onClick={this.openClick} />
+        </div>)}
+      </TweenOneGroup>)}
       <TweenOneGroup
         enter={{
           y: 30,
@@ -305,12 +257,5 @@ class Page extends React.Component {
     </div>);
   }
 }
-Page.propTypes = {
-  className: PropTypes.string,
-  pathname: PropTypes.string,
-};
 
-Page.defaultProps = {
-  className: 'page',
-};
 export default Page;
