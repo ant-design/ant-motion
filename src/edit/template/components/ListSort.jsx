@@ -170,9 +170,10 @@ export default class ListSort extends React.Component {
       this.childStyle.push({ ...d });
       return d;
     });
-    const animation = this.children.map((item, ii) =>
-      i === ii && (!this.props.dragClassName ?
-        { scale: 1.2, boxShadow: '0 10px 10px rgba(0,0,0,0.15)' } : null) || null);
+    const animation = this.children.map((item, ii) =>{
+			return (i === ii && (!this.props.dragClassName ?
+			{ scale: 1.2, boxShadow: '0 10px 10px rgba(0,0,0,0.15)' } : null) || null)
+		});
     this.index = i;
     this.swapIndex = i;
     this.mouseXY = {
