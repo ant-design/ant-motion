@@ -120,7 +120,7 @@ export default class ListView extends React.Component {
     }
     const imgChildren = item.data.map((cItem, i) => {
       const order = cItem.order || i;
-      const onChange = () => { this.onChange(key, order, item.checkbox); };
+      const onChange = (e) => { this.onChange(key, order, item.checkbox, e); };
       const value = this.state.templateOptData.filter((aItem) => {
         const names = aItem.split('_');
         return `${names[0]}_${names[1]}` === `${key}_${order}`;
