@@ -220,7 +220,7 @@ export default class ListView extends React.Component {
         }
         return null;
       }).filter(cItem => cItem)[0];
-      return (<li key={key} className={this.state.oneRemove && 'close-wrapper'}>
+      return (<li key={key} className={this.state.oneRemove ? 'close-wrapper' : ''}>
         <TweenOneGroup
           className="close"
           enter={{ scale: 1.5, opacity: 0, type: 'from' }}
