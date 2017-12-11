@@ -133,7 +133,6 @@ class Edit extends React.Component {
     Object.keys(obj).forEach((key) => {
       urlData[key] = obj[key];
     });
-
     const urlHash = this.getHash(urlData);
     this.setState({
       urlHash,

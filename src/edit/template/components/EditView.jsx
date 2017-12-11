@@ -153,6 +153,7 @@ export default class EditView extends React.Component {
     });
     const v = this.getCurrentConfigData(key, typeKey, parentKey);
     const value = v || v === '' ? v : data.value;
+    console.log(data.type);
     let childItem = (<Input
       value={value}
       type={data.type !== 'color' ? 'textarea' : 'input'}

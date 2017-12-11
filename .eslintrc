@@ -27,7 +27,8 @@
     "jsx-a11y/iframe-has-title": 0,
     "jsx-a11y/media-has-caption": 0,
     "jsx-a11y/no-noninteractive-element-interactions": 0,
-    "no-restricted-globals": 0
+    "no-restricted-globals": 0,
+    "import/prefer-default-export": 0
     // "no-unused-expressions": 0
   }
 }

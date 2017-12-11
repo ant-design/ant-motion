@@ -302,8 +302,6 @@
         width: 30%;
         background: @page-bg-color;
         height: 360px;
-        box-shadow: 0 10px 16px fade(#000, 10);
-        border-radius: 6px;
         overflow: hidden;
         margin-bottom: 60px;
         &:nth-child(3n+2) {
@@ -329,12 +327,9 @@
             }
           }
         }
-        position: relative;
-        will-change: transform, box-shadow;
-        // .page-pro();
-        transition: transform @animate-duration @ease-out, box-shadow @animate-duration @ease-out;
+        .page-pro();
+        box-shadow: 0 10px 16px fade(#000, 10);
         &:hover {
-          transform: translateY(-5px);
           box-shadow: 0 12px 18px fade(#000, 15);
         }
       }

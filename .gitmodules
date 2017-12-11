@@ -1,0 +1,4 @@
+[submodule "landingpage/ant-design-pro"]
+	path = landingpage/ant-design-pro
+	url = https://github.com/ant-motion/ant-design-pro-landing-page
+	branch = gh-pages

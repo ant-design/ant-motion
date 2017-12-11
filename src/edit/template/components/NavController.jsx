@@ -128,7 +128,7 @@ class NavController extends React.Component {
 
   saveCode = () => {
     if (!location.port && window.ga) {
-      window.ga('send', 'event', 'button', 'click', 'download');
+      window.ga('send', 'event', 'download', 'click', 'download');
     }
     saveJsZip(this.props.urlData);
   }

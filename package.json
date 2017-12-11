@@ -2,7 +2,8 @@
   "name": "ant-motion",
   "version": "1.5.2",
   "dependencies": {
-    "antd": "~2.13.0",
+    "antd": "~3.0.0",
+    "classnames": "^2.2.5",
     "deepcopy": "^0.6.3",
     "enquire.js": "^2.1.1",
     "file-saver": "^1.3.3",
@@ -10,6 +11,7 @@
     "jsonml.js": "^0.1.0",
     "jszip": "^3.1.4",
     "less-loader": "^4.0.5",
+    "prop-types": "15.5.x",
     "raw-js-loader": "^1.4.0",
     "raw-loader": "^0.5.1",
     "rc-animate": "~2.4.1",
@@ -17,17 +19,17 @@
     "rc-drawer-menu": "^0.3.4",
     "rc-queue-anim": "~1.4.0",
     "rc-scroll-anim": "~2.0.2",
-    "rc-tween-one": "~1.5.3",
+    "rc-tween-one": "~1.5.7",
     "react": "^16.0.0",
     "react-color": "^2.13.8",
     "react-copy-to-clipboard": "~5.0.0",
     "react-document-title": "^2.0.1",
     "react-dom": "^16.0.0",
-    "prop-types": "15.5.x",
     "react-router": "~3.0.0",
     "react-sublime-video": "^0.2.0",
     "to-style": "^1.3.3",
-    "tween-functions": "^1.2.0"
+    "tween-functions": "^1.2.0",
+    "universal-cookie": "^2.1.2"
   },
   "devDependencies": {
     "babel-eslint": "^8.0.1",
@@ -55,7 +57,7 @@
     "lint"
   ],
   "scripts": {
-    "start": "concurrently \"bisheng start -c ./src/bisheng.index.config.js --no-livereload\" \"bisheng start -c ./src/bisheng.edit.config.js --no-livereload\" \"bisheng start -c ./src/bisheng.templates.config.js --no-livereload\"",
+    "start": "npm run re-site && cp -R landingpage _site && concurrently \"bisheng start -c ./src/bisheng.index.config.js --no-livereload\" \"bisheng start -c ./src/bisheng.edit.config.js --no-livereload\" \"bisheng start -c ./src/bisheng.templates.config.js --no-livereload\"",
     "site": "concurrently \"bisheng build -c ./src/bisheng.index.config.js\" \"bisheng build -c ./src/bisheng.edit.config.js\" \"bisheng build -c ./src/bisheng.templates.config.js\"",
     "re-site": "rm -rf _site && mkdir -p _site",
     "deploy": "npm run re-site && npm run site && bisheng gh-pages --push-only",

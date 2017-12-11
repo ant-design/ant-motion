@@ -5,8 +5,9 @@ import QueueAnim from 'rc-queue-anim';
 import { Link } from 'react-router';
 import { Affix } from 'antd';
 import MobileMenu from 'rc-drawer-menu';
+import classnames from 'classnames';
 import nav from '../Layout/nav';
-import { scrollClick } from '../utils';
+import { scrollClick, getModuleData, reSort } from '../utils';
 
 const title = {};
 nav.forEach((item) => {
@@ -16,11 +17,13 @@ nav.forEach((item) => {
 class Page extends React.PureComponent {
   static propTypes = {
     className: PropTypes.string,
+    prefixCls: PropTypes.string,
     pathname: PropTypes.string,
     isMobile: PropTypes.bool,
     pageData: PropTypes.any,
     hash: PropTypes.any,
     children: PropTypes.any,
+    moduleData: PropTypes.any,
   };
 
   static defaultProps = {
@@ -73,35 +76,11 @@ class Page extends React.PureComponent {
     }
   }
 
-  getModuleData = (pageData) => {
-    if (!pageData) {
-      return null;
-    }
-    const moduleData = {};
-    Object.keys(pageData).forEach((key) => {
-      const children = Object.keys(pageData[key]).map(cKey =>
-        pageData[key][cKey].index || pageData[key][cKey]);
-      moduleData[key] = children;
-    });
-    return moduleData;
-  };
-
-  getMenuItems(moduleData, pathNames, isComponent, isNav) {
+  getMenuItems(moduleData, pathNames, isComponent) {
     if (!moduleData) {
       return null;
     }
-    const splicingListArr = [];
-    if (pathNames[0] === 'cases') {
-      // { meta: { filename: 'cases/full', english: 'Full', chinese: '完整模板选择', order: 2 } }
-      splicingListArr.push({
-        meta: {
-          filename: 'cases/splicing', english: 'Splicing', chinese: '自由搭配模板', order: 1,
-        },
-      });
-    }
-    const children = moduleData.concat(splicingListArr).filter(item => !item.meta.hidden)
-      .sort((a, b) => a.meta.order - b.meta.order);
-    return children.map((item, i) => {
+    return reSort(moduleData).map((item, i) => {
       const meta = item.meta;
       let link = meta.filename.replace(/(\/index)|(.md)/g, '');
       const path = Array.isArray(pathNames) ? pathNames.join('/') : pathNames.replace('#', '');
@@ -110,41 +89,20 @@ class Page extends React.PureComponent {
         (!hash && ((!path && i === 0) || path === meta.id)) ? 'active' : '';
       // api 页面，链接把 components 转成 api
       link = this.props.pathname.match('api') ? link.replace('components', 'api') : link;
-      let linkToChildren = link.split('/')[1] === pathNames[1] ?
-        (<a>
-          {isNav ? meta.chinese : <span>{meta.chinese || meta.english}</span>}
-        </a>) :
-        (<Link to={link}>
-          {isNav ? meta.chinese : <span>{meta.chinese || meta.english}</span>}
-        </Link>);
-      linkToChildren = isComponent ?
+      const linkToChildren = isComponent ?
         (<a href={`#${meta.id}`} onClick={this.cScrollClick}>
           {meta.title}
-        </a>) : linkToChildren;
+        </a>) : (<Link to={link.split('/')[1] === pathNames[1] ? '' : link}>
+          <span>{meta.chinese || meta.english}</span>
+        </Link>);
       return (<li
         key={meta.english || meta.chinese || meta.id}
         className={className}
         disabled={meta.disabled}
-        style={isNav ? { width: `${100 / children.length}%` } : null}
       >
         {linkToChildren}
       </li>);
     });
-  }
-
-  getTransitionEnd = () => {
-    const transEndEventNames = {
-      transition: 'transitionend',
-      WebkitTransition: 'webkitTransitionEnd',
-      MozTransition: 'transitionend',
-      OTransition: 'oTransitionEnd otransitionend',
-    };
-    return Object.keys(transEndEventNames).map((name) => {
-      if (typeof document.body.style[name] === 'string') {
-        return transEndEventNames[name];
-      }
-      return null;
-    }).filter(item => item)[0];
   }
 
   getListChildren = (cPathNames, cModuleData, isComponent) => {
@@ -156,15 +114,13 @@ class Page extends React.PureComponent {
     const isApi = pathNames[0] === 'api';
     pathNames[0] = pathNames[0] === 'api' ? 'components' : pathNames[0];
     const componentBool = isComponent && !isMobile;
-
     const moduleData = componentBool ?
-      this.getModuleData(pageData[pathNames[0]][pathNames[1]]) :
+      getModuleData(pageData[pathNames[0]][pathNames[1]]) :
       cModuleData;
-
     const listToRender = moduleData && this.getMenuItems(
-      componentBool ?
-        moduleData.demo : moduleData[pathNames[0]],
-      componentBool ? hash : pathNames, componentBool
+      componentBool ? moduleData.demo : moduleData[pathNames[0]],
+      componentBool ? hash : pathNames,
+      componentBool
     );
 
     const listKey = pathNames[0] === 'components' && !pathname.match('api') ?
@@ -206,30 +162,16 @@ class Page extends React.PureComponent {
 
   render() {
     const {
-      className, pathname, isMobile, pageData, children,
+      className, pathname, moduleData, pageData, children, prefixCls,
     } = this.props;
     const pathNames = pathname.split('/');
     const isComponent = pathNames[0] === 'components';
-    const moduleData = this.getModuleData(pageData);
-    const navToRender = isComponent && !isMobile ?
-      this.getMenuItems(moduleData[pathNames[0]], pathNames, false, true) : null;
     const listToRender = this.getListChildren(pathNames, moduleData, isComponent);
     const pageDataNew = pathname.match('api') ?
       pageData.components[pathNames[1]].index : pageData;
     const childrenToRender = pathname.match('api') ?
       React.cloneElement(children, { pageData: pageDataNew }) : children;
-    return (<div className={className}>
-      {!isMobile && (<TweenOneGroup
-        enter={{ height: 0, type: 'from', ease: 'easeInOutCubic' }}
-        leave={{ height: 0, ease: 'easeInOutCubic' }}
-        component=""
-      >
-        {navToRender && (<div key="nav" className={`${className}-nav`}>
-          <ul>
-            {navToRender}
-          </ul>
-        </div>)}
-      </TweenOneGroup>)}
+    return (<div className={classnames(className, { [`${prefixCls}`]: !!prefixCls })}>
       <TweenOneGroup
         enter={{
           y: 30,

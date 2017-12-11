@@ -1,8 +1,7 @@
 @import 'custom';
-
 @exhibition: exhibition-list;
 .@{exhibition} {
-  & > li {
+  &>li {
     width: 45%;
     display: inline-block;
     text-align: center;
@@ -10,8 +9,12 @@
     &:nth-child(2n) {
       margin-left: 10%;
     }
-    & a, & a img {
+    & a,
+    & a img {
       display: block;
+    }
+    a {
+      overflow: hidden;
     }
     & h3 {
       line-height: 42px;
@@ -19,8 +22,7 @@
       background: @page-bg-color;
     }
     .page-pro();
-    border: none;
-    border-radius: 0;
+    overflow: hidden;
   }
 }
 
@@ -37,7 +39,7 @@
     bottom: 0;
     right: 0;
   }
-  & > pre {
+  &>pre {
     max-height: 600px;
     overflow: auto;
   }
@@ -48,7 +50,7 @@
 
 @media screen and (max-width: 414px) {
   .@{exhibition} {
-    > li {
+    >li {
       width: 100%;
       margin-left: auto !important;
     }

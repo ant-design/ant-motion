@@ -57,3 +57,21 @@ export function enquireScreen(cb) {
   });
   /* eslint-enable no-unused-expressions */
 }
+
+export function getModuleData(pageData) {
+  if (!pageData) {
+    return null;
+  }
+  const moduleData = {};
+  Object.keys(pageData).forEach((key) => {
+    const children = Object.keys(pageData[key]).map(cKey =>
+      pageData[key][cKey].index || pageData[key][cKey]);
+    moduleData[key] = children;
+  });
+  return moduleData;
+}
+
+export function reSort(moduleData) {
+  return moduleData.filter(item => !item.meta.hidden)
+    .sort((a, b) => (a.meta.order - b.meta.order));
+}

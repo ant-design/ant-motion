@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 import TweenOne from 'rc-tween-one';
 import QueueAnim from 'rc-queue-anim';
+import classnames from 'classnames';
 
 // const navArr = require('./list').nav;
 const navArr = require('./nav');
@@ -67,7 +68,7 @@ class Header extends React.PureComponent {
 
   render() {
     const navToRender = navArr.map((item) => {
-      const className = this.props.activeKey === item.key ? 'active' : '';
+      const className = classnames({ active: this.props.activeKey === item.key });
       if (item.open) {
         return (<li key={item.key}>
           <a href={item.href} target="_blank">{item.name}</a>
@@ -87,7 +88,7 @@ class Header extends React.PureComponent {
       </li>);
     });
     return (<header
-      className={`${this.props.className}-wrapper${this.state.phoneOpen ? ' open' : ''}`}
+      className={classnames(`${this.props.className}-wrapper`, { open: this.state.phoneOpen })}
     >
       <div className={this.props.className}>
         <TweenOne
