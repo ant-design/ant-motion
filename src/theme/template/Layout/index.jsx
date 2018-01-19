@@ -11,7 +11,6 @@ import Footer from './Footer';
 import Page from '../Content/Page';
 import CheckableTagGroup from '../LandingPage/CheckableTagGroup';
 import { enquireScreen, getModuleData, reSort } from '../utils';
-import { getURLData } from '../../../templates/template/utils';
 import { classify } from '../LandingPage/data';
 
 import '../../static/style';
@@ -22,7 +21,7 @@ enquireScreen((b) => {
   isMobile = b;
 });
 
-class Index extends React.PureComponent {
+class Index extends React.Component {
   static propTypes = {
     children: PropTypes.any,
     location: PropTypes.object,
@@ -36,6 +35,7 @@ class Index extends React.PureComponent {
     this.state = {
       isMobile,
       gridType,
+      classify: 'all',
     };
   }
 
@@ -67,7 +67,9 @@ class Index extends React.PureComponent {
   }
 
   onTagChange = (e) => {
-    console.log(e);
+    this.setState({
+      classify: e,
+    });
   }
 
   getTowNavItems = (metaArray) => {
@@ -107,10 +109,13 @@ class Index extends React.PureComponent {
   )
 
   getLandingPageNav = () => {
-    const classifyUrl = parseFloat(getURLData('classify')) || 'all';
-
+    // const classifyUrl = parseFloat(getURLData('classify')) || 'all';
     const classifyToRrender = Object.keys(classify).map(key => (
-      <CheckableTag key={key} value={key} defaultValue={classifyUrl}>
+      <CheckableTag
+        key={classify[key].toString()}
+        value={classify[key].toString()}
+        defaultValue={this.state.classify}
+      >
         {key}
       </CheckableTag>
     ));
@@ -162,6 +167,7 @@ class Index extends React.PureComponent {
       React.cloneElement(this.props.children, {
         key: pathKey ? path : key,
         gridType: this.state.gridType,
+        classify: this.state.classify,
       }) :
       (<Page
         key={key}

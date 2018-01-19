@@ -13,7 +13,7 @@ export const landingPageData = [
     down: 'https://github.com/ant-motion/ant-design-pro-landing-page',
   },
   {
-    name: 'Ant Design Pro',
+    name: 'Ant Design Pro1',
     src: 'https://gw.alipayobjects.com/zos/rmsportal/WHNPLIDaoLdiROFkyMwa.jpg',
     href: 'ant-design-pro/index.html',
     content: '开箱即用的中台前端/设计解决方案',
@@ -21,7 +21,7 @@ export const landingPageData = [
     down: 'https://github.com/ant-motion/ant-design-pro-landing-page',
   },
   {
-    name: 'Ant Design Pro',
+    name: 'Ant Design Pro2',
     src: 'https://gw.alipayobjects.com/zos/rmsportal/WHNPLIDaoLdiROFkyMwa.jpg',
     href: 'ant-design-pro/index.html',
     content: '开箱即用的中台前端/设计解决方案',
@@ -29,7 +29,7 @@ export const landingPageData = [
     down: 'https://github.com/ant-motion/ant-design-pro-landing-page',
   },
   {
-    name: 'Ant Design Pro',
+    name: 'Ant Design Pro3',
     src: 'https://gw.alipayobjects.com/zos/rmsportal/WHNPLIDaoLdiROFkyMwa.jpg',
     href: 'ant-design-pro/index.html',
     content: '开箱即用的中台前端/设计解决方案',
@@ -37,7 +37,7 @@ export const landingPageData = [
     down: 'https://github.com/ant-motion/ant-design-pro-landing-page',
   },
   {
-    name: 'Ant Design Pro',
+    name: 'Ant Design Pro4',
     src: 'https://gw.alipayobjects.com/zos/rmsportal/WHNPLIDaoLdiROFkyMwa.jpg',
     href: 'ant-design-pro/index.html',
     content: '开箱即用的中台前端/设计解决方案',

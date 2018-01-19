@@ -24,7 +24,7 @@ export default class CheckableTagGroup extends React.Component {
     const checkedTags = props.defaultValue === 'all' ?
       React.Children.map(
         props.children,
-        child => child.type.isCheckableTag && (child.value || child.key)
+        child => child.type.isCheckableTag && (child.props.value || child.key)
       ) :
       props.defaultValue;
     this.state = {
@@ -32,21 +32,7 @@ export default class CheckableTagGroup extends React.Component {
     };
   }
 
-  onSelectCurrentTag = (key) => {
-    this.setState({
-      checkedTags: [key],
-    });
-    if (this.props.onChange) {
-      this.props.onChange([key]);
-    }
-    this.doubleTime = 0;
-  }
-
   onSelectTag = (key, checked) => {
-    this.doubleTime = this.doubleTime || Date.now();
-    if (Date.now() - this.doubleTime > 0 && Date.now() - this.doubleTime < 500) {
-      return;
-    }
     // 默认不可出现空数组，全部取消时为全部分类
     let { checkedTags } = this.state;
     if (key === 'all') {
@@ -85,9 +71,6 @@ export default class CheckableTagGroup extends React.Component {
           onChange: (bool) => {
             this.onSelectTag(key, bool);
           },
-          onDoubleClick: () => {
-            this.onSelectCurrentTag(key);
-          },
         });
       }
       return child;
@@ -95,9 +78,6 @@ export default class CheckableTagGroup extends React.Component {
     return [
       <CheckableTag
         key="tag-all"
-        onChange={(bool) => {
-          this.onSelectTag('all', bool);
-        }}
         checked={checkedTags.length === this.allTags.length}
       >
         {allName}

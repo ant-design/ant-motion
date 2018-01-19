@@ -87,10 +87,10 @@
 
 .@{landing} {
   &-page {
+    transition: height @animate-duration @ease-in-out;
     &-wrapper {
       margin-top: 32px;
-      transition: height @animate-duration @ease-in-out;
-      min-height: auto;
+      // min-height: auto;
     }
     &-item {
       height: 360px;
@@ -99,7 +99,11 @@
       position: absolute; // border: 1px solid @line-color;
       border-radius: 4px;
       overflow: hidden;
+      background: #fff;
       transition: all @animate-duration @ease-in-out;
+      &.tween-one-entering,&.tween-one-leaving{
+        transition: none;
+      }
       &.min {
         width: 24%;
         height: 210px;

@@ -6,40 +6,21 @@ import classnames from 'classnames';
 import { Icon } from 'antd';
 import { landingPageData } from './data';
 
-import { getURLData } from '../../../templates/template/utils';
-
-export default class LandingPage extends React.PureComponent {
+export default class LandingPage extends React.Component {
   static propTypes = {
     className: PropTypes.string,
     gridType: PropTypes.string,
+    classify: PropTypes.any,
   };
 
   static defaultProps = {
     className: 'landing-page',
   };
 
-  constructor(props) {
-    super(props);
-    const classify = parseFloat(getURLData('classify')) || 0;
-    // const page = parseFloat(getURLData('page')) || 0;
-
-    this.state = {
-      classify,
-      // page,
-    };
-  }
-
   onToGa = (key, name) => {
     if (!location.port && window.ga) {
       window.ga('send', 'event', 'landingpage', key, name);
     }
-  }
-  getLeaveFunc = () => {
-
-  }
-
-  getEnterFunc = () => {
-
   }
 
   getIconButton = (preview, download, name, showText) => (
@@ -68,22 +49,22 @@ export default class LandingPage extends React.PureComponent {
   )
 
   getChildToRender = (className) => {
-    const { classify } = this.state;
+    const { classify } = this.props;
     const isMin = this.props.gridType === 'min';
-    // const pageNum = isMin ? 20 : 10;
     let heightNum = 0;
-    const children = landingPageData.map((item, i) => {
-      if (classify && item.classify !== classify) {
-        return null;
-      }
+    const newPageData = landingPageData.filter(item => (
+      classify && (classify === 'all' || classify.indexOf(item.classify.toString()) > -1)
+    ));
+    const children = newPageData.map((item, i) => {
       const left = i % (isMin ? 4 : 2) * (isMin ? 25 : 52);
       const top = Math.floor(i / (isMin ? 4 : 2)) * (isMin ? 234 : 400);
-      const delay = isMin ? `${i * 30}ms` : `${(landingPageData.length - 1 - i) * 50}ms`;
       heightNum += 1;
       return (<div
         className={classnames(`${className}-item`, { min: isMin })}
-        key={i.toString()}
-        style={{ left: `${left}%`, top, transitionDelay: delay }}
+        key={item.name}
+        style={{
+          left: `${left}%`, top,
+        }}
       >
         <div className="item-image-wrapper">
           <a href={item.href} target="_blank" onClick={() => { this.onToGa('preview', item.name); }}>
@@ -103,22 +84,30 @@ export default class LandingPage extends React.PureComponent {
     this.wrapperHeight = Math.ceil(heightNum / (isMin ? 4 : 2)) * (isMin ? 234 : 400);
     return children;
   }
+  enterRemStyle = (e) => {
+    e.target.style.transform = '';
+    e.target.style.opacity = '';
+  }
   render() {
     const { className } = this.props;
     const children = this.getChildToRender(className);
-    console.log(this.wrapperHeight);
     return (
       <div className="page padding-top">
         <DocumentTitle title="模板案例 - Ant Motion" />
         <div
           className={`page-wrapper ${className}-wrapper`}
-          style={{ height: this.wrapperHeight }}
         >
-          <TweenOne className={className} animation={{ y: 30, type: 'from', opacity: 0 }}>
+          <TweenOne
+            className={className}
+            animation={{ y: 30, type: 'from', opacity: 0 }}
+            style={{ height: this.wrapperHeight }}
+          >
             <TweenOneGroup
               appear={false}
-              enter={this.getEnterFunc}
-              leave={this.getLeaveFunc}
+              enter={{
+                scale: 0, opacity: 0, type: 'from', onComplete: this.enterRemStyle,
+              }}
+              leave={{ scale: 0, opacity: 0 }}
             >
               {children}
             </TweenOneGroup>
