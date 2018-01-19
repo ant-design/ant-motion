@@ -42,40 +42,44 @@ export default class Page2 extends React.PureComponent {
         </li>);
       });
 
-    return (<OverPack
-      className="home-content page2"
-      playScale={0.6}
-      id="page2"
-    >
-      <QueueAnim
-        className="page-text"
-        key="text"
-        type="bottom"
-        leaveReverse
-        delay={[0, 100]}
-      >
-        <h1 key="h1">动效展示</h1>
-        <p key="p">
-          通过 Ant Motion ，可以快速的实现不同组合的动画效果。<br />
-          配合不同交互模式，可以直接运用到你的项目当中。
-        </p>
-      </QueueAnim>
-      <TweenOne
-        animation={{ delay: 200, ...this.props.tweenAnim }}
-        key="img"
-        className="home-anim-demo"
-      >
-        <ul>
-          {demoToChildren}
-        </ul>
-      </TweenOne>
-      <TweenOne
-        key="a"
-        animation={{ delay: 300, ...this.props.tweenAnim }}
-        className="home-button"
-      >
-        <Link to="/exhibition/" onClick={this.props.onButtonClick}>更多动画</Link>
-      </TweenOne>
-    </OverPack>);
+    return (
+      <div className="home-page-wrapper page2">
+        <OverPack
+          className="page"
+          playScale={0.6}
+          id="page2"
+        >
+          <QueueAnim
+            className="page-text"
+            key="text"
+            type="bottom"
+            leaveReverse
+            delay={[0, 100]}
+          >
+            <h1 key="h1">动效展示</h1>
+            <p key="p">
+              通过 Ant Motion ，可以快速的实现不同组合的动画效果。<br />
+              配合不同交互模式，可以直接运用到你的项目当中。
+            </p>
+          </QueueAnim>
+          <TweenOne
+            animation={{ delay: 200, ...this.props.tweenAnim }}
+            key="img"
+            className="home-anim-demo"
+          >
+            <ul>
+              {demoToChildren}
+            </ul>
+          </TweenOne>
+          <TweenOne
+            key="a"
+            animation={{ delay: 300, ...this.props.tweenAnim }}
+            className="home-button"
+          >
+            <Link to="/exhibition/" onClick={this.props.onButtonClick}>更多动画</Link>
+          </TweenOne>
+        </OverPack>
+      </div>
+    );
   }
 }
