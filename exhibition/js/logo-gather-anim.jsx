@@ -7,7 +7,7 @@ import Button from 'antd/lib/button';
 import InputNumber from 'antd/lib/input-number';
 import Radio from 'antd/lib/radio';
 import Icon from 'antd/lib/icon';
-import enquire from 'enquire.js';
+import { enquireScreen } from 'enquire-js';
 import PropTypes from 'prop-types';
 import './logo-gather-anim.css';
 
@@ -209,7 +209,7 @@ class Edit extends React.Component {
   }
 
   componentDidMount() {
-    this.enquireScreen((isMode) => {
+    enquireScreen((isMode) => {
       this.setState({ isMode });
     });
   }
@@ -256,19 +256,6 @@ class Edit extends React.Component {
       show: !this.state.show,
     });
   };
-
-  enquireScreen = (cb) => {
-    /* eslint-disable no-unused-expressions */
-    enquire.register('only screen and (min-width: 320px) and (max-width: 767px)', {
-      match: () => {
-        cb && cb(true);
-      },
-      unmatch: () => {
-        cb && cb();
-      },
-    });
-    /* eslint-enable no-unused-expressions */
-  }
 
   render() {
     return (

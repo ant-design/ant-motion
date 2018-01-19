@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import TweenOne from 'rc-tween-one';
+import { enquireScreen } from 'enquire-js';
 import Header from './Header';
 import Footer from './Footer';
 import Page from '../Content/Page';
-import { enquireScreen } from '../utils';
 import '../../static/style';
 
 let isMobile;

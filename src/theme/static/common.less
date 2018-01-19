@@ -11,10 +11,12 @@ body {
   position: relative;
   z-index: 10000;
   background: @nav-color;
+  width: 100%;
+  padding: 0 24px;
+  max-width: 1200px;
   transition: background .3s @ease-out, border @animate-duration @ease-out;
   .@{header} {
-    width: 95%;
-    max-width: 1024px;
+    width: 100%;
     margin: auto;
     position: relative;
     transition: transform @animate-duration @ease-out;
@@ -49,6 +51,7 @@ body {
         & li {
           float: left;
           margin-left: 60px;
+          transition: margin .3s;
           & a {
             width: 100%;
             height: 100%;
@@ -76,11 +79,10 @@ body {
       // float: right;
       position: absolute;
       right: 0;
-      margin: 22px 0 0 32px;
+      margin: 22px 0 0;
     }
   }
 }
-
 
 .home {
   .@{header}-wrapper {
@@ -191,7 +193,6 @@ body {
     box-shadow: 0 3px 15px fade(#000, 15);
   }
 }
-
 
 .drawer {
   animation: AlphaTo .3s ease-out .3s;

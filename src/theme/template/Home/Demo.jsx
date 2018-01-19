@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 import TweenOne, { TweenOneGroup } from 'rc-tween-one';
 import ticker from 'rc-tween-one/lib/ticker';
 import SvgDrawPlugin from 'rc-tween-one/lib/plugin/SvgDrawPlugin';
-import { currentScrollTop, enquireScreen } from '../utils';
+import { enquireScreen } from 'enquire-js';
+import { currentScrollTop } from '../utils';
 
 TweenOne.plugins.push(SvgDrawPlugin);
 
@@ -52,7 +53,7 @@ export default class Demo extends React.PureComponent {
           this.interval = ticker.interval(this.updateTweenData, this.intervalTime);
         });
       }
-    });
+    }, 'only screen and (max-width: 414px)');
   };
 
   onMouseEnter = () => {

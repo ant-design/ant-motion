@@ -1,7 +1,6 @@
 import React from 'react';
 import ticker from 'rc-tween-one/lib/ticker';
 import easingTypes from 'tween-functions';
-import enquire from 'enquire.js';
 
 export function toArrayChildren(children) {
   const ret = [];
@@ -42,18 +41,4 @@ export function scrollClick(e) {
     toTop = Math.round(toTop) - Math.round(docTop);
     scrollTo(toTop);
   }
-}
-
-export function enquireScreen(cb) {
-  /* eslint-disable no-unused-expressions */
-  // and (min-width: 320px)
-  enquire.register('only screen and (max-width: 767px)', {
-    match: () => {
-      cb && cb(true);
-    },
-    unmatch: () => {
-      cb && cb();
-    },
-  });
-  /* eslint-enable no-unused-expressions */
 }
