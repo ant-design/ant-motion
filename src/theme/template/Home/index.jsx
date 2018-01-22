@@ -29,7 +29,7 @@ class Home extends React.PureComponent {
 
   render() {
     return (
-      <DocumentTitle title="Ant Motion - 一个 React 的动效设计解决方案">
+      <DocumentTitle title="Ant Motion - Ant Design 的动效规范与组件">
         <div className="home-wrapper">
           <div className="nav-wrapper">
             <ScrollLink to="banner" showHeightActive={['100%', '30%']} toHash={false} />
