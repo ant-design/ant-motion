@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { scrollScreen } from 'rc-scroll-anim';
+import { enquireScreen } from 'enquire-js';
 import webData from '../template.config';
 import { getURLData, mergeURLDataToDefault, dataValueReplace, getWebOrPhoneCss, getStyleToString } from './utils';
-import { enquireScreen } from '../../theme/template/utils';
 import '../static/common.less';
 import '../static/point.less';
 
