@@ -19,6 +19,7 @@ const $ = window.$;
 const Option = Select.Option;
 const RadioGroup = Radio.Group;
 const RadioButton = Radio.Button;
+const { TextArea } = Input;
 
 export default class EditView extends React.Component {
   static propTypes = {
@@ -153,10 +154,17 @@ export default class EditView extends React.Component {
     });
     const v = this.getCurrentConfigData(key, typeKey, parentKey);
     const value = v || v === '' ? v : data.value;
-    let childItem = (<Input
+    let childItem = data.type !== 'color' ? (
+      <TextArea
+        value={value}
+        autosize
+        onChange={changeValue}
+        key={data.name}
+        size="small"
+        onFocus={inputFocus}
+      />
+    ) : (<Input
       value={value}
-      type={data.type !== 'color' ? 'textarea' : 'input'}
-      autosize={data.type !== 'color'}
       onChange={changeValue}
       key={data.name}
       size="small"
