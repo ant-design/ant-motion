@@ -18,7 +18,6 @@ export default class Templates extends React.Component {
   constructor(props) {
     super(props);
     this.scrollScreen = false;
-    this.listPoint = false;
     this.state = {
       isMode: false,
     };
@@ -39,11 +38,6 @@ export default class Templates extends React.Component {
     if (this.scrollScreen) {
       const docHeight = ReactDOM.findDOMNode(this).getBoundingClientRect().height;
       scrollScreen.init({ docHeight });
-    }
-    if (this.listPoint) {
-      const list = ReactDOM.findDOMNode(this.listComp);
-      const listHeight = list.getBoundingClientRect().height;
-      list.style.marginTop = `-${listHeight / 2}px`;
     }
   }
 
@@ -106,19 +100,14 @@ export default class Templates extends React.Component {
       );
     });
 
-    this.listPoint = false;
     this.scrollScreen = false;
     // 判断其它里的；
     other.forEach((item) => {
       switch (item) {
         case 'point': {
-          this.listPoint = true;
           children.push(<Point
             key="list"
             data={data}
-            ref={(c) => {
-              this.listComp = c;
-            }}
           />);
           break;
         }

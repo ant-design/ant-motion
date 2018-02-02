@@ -19,7 +19,6 @@ const templateStrObj = {
 };
 
 const isImg = /\.(gif|jpg|jpeg|png|svg|JPG|PNG|GIF|JPEG|SVG)$/;
-let pointBool = false;
 
 const getValueToString = vars =>
   JSON.stringify(vars, null)
@@ -31,14 +30,6 @@ const getValueToString = vars =>
 
 
 const toUpperCase = string => string.replace(/\b(\w)|\s(\w)/g, m => m.toUpperCase());
-const setMountPotion = () => {
-  templateStrObj.OTHER.index = templateStrObj.OTHER.index
-    .replace('componentDidMount() {', `componentDidMount() {
-    // 点的位置居中
-    const list = ReactDOM.findDOMNode(this.refs.list);
-    const listHeight = list.getBoundingClientRect().height;
-    list.style.marginTop = \` -\$\{listHeight / 2\}px\`;`);
-};
 
 const setScrollScreen = () => {
   templateStrObj.OTHER.index = templateStrObj.OTHER.index
@@ -187,7 +178,6 @@ const setChildrenToIndex = () => {
       .filter(key => !key.match(/nav|footer/i));
     const dataStr = ids.length ? `['${ids}']`.replace(/,/g, '\', \'') : null;
     if (dataStr) {
-      pointBool = true;
       childStr += '      // 导航和页尾不进入锚点区，如果需要，自行添加;\n';
       childStr += `      <Point key="list" ref="list" data={${dataStr}} />,\n`;
     }
@@ -260,9 +250,6 @@ export default function saveJsZip(urlData) {
     switch (key) {
       case 'point':
         templateStrObj.OTHER[key] = otherComp[key];
-        if (pointBool) {
-          setMountPotion();
-        }
         break;
       case 'full':
         setScrollScreen();

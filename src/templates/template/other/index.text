@@ -1,44 +1,48 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import enquire from 'enquire.js';
-import { scrollScreen } from 'rc-scroll-anim';
+import { enquireScreen } from 'enquire-js';
+import ScrollAnim from 'rc-scroll-anim';
 
 &import&
 import './less/antMotion_style.less';
+
+const scrollScreen = ScrollAnim.scrollScreen;
+
+let isMobile;
+enquireScreen((b) => {
+  isMobile = b;
+});
 
 export default class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isMode: false
+      isMobile: false,
+      show: !location.port,
     };
   }
 
   componentDidMount() {
     // 适配手机屏幕;
-    this.enquireScreen((isMode) => {
-      this.setState({ isMode });
+    enquireScreen((b) => {
+      this.setState({ isMobile: !!b });
     });
-  }
-
-  enquireScreen = (cb) => {
-    /* eslint-disable no-unused-expressions */
-    enquire.register('only screen and (min-width: 320px) and (max-width: 767px)', {
-      match: () => {
-        cb && cb(true);
-      },
-      unmatch: () => {
-        cb && cb();
-      },
-    });
-    /* eslint-enable no-unused-expressions */
+    // dva 2.0 样式在组件渲染之后动态加载，导致滚动组件不生效；线上不影响；
+    if (location.port) {
+      // 样式 build 时间在 200-300ms 之间;
+      setTimeout(() => {
+        this.setState({
+          show: true,
+        });
+      }, 500);
+    }
   }
 
   render() {
     &children&
     return (
       <div className="templates-wrapper">
-        {children}
+        {this.state.show && children}
       </div>
     );
   }

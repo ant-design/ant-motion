@@ -25,7 +25,7 @@ import IndexPage from './routes/Home'
 
 ```
 npm install antd --save;
-npm install enquire --save;
+npm install enquire-js --save;
 npm install rc-queue-anim --save;
 npm install rc-scroll-anim --save;
 npm install rc-tween-one --save;
