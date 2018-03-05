@@ -69,7 +69,7 @@ ReactDOM.render(<BannerAnim>
 
 ### BannerAnim
 
-> ref 来控制跳转: `<BannerAnim ref={(c) => { this.banner = ReactDOM.findDOMNode(c); }}/>`
+> ref 来控制跳转: `<BannerAnim ref={(c) => { this.banner = c; }}/>`
 
 > 上一个: this.banner.prev();
 
