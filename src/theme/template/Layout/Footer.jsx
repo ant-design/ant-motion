@@ -33,6 +33,9 @@ function Footer() {
                 <a href="http://ant.design">Ant Design</a>
               </div>
               <div>
+                <a href="http://pro.ant.design">Ant Design Pro</a>
+              </div>
+              <div>
                 <a target="_blank" rel="noopener noreferrer" href="https://mobile.ant.design/index-cn">Ant Design Mobile</a>
                 <span> - </span>
                 移动端
