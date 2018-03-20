@@ -19,6 +19,11 @@ function Footer() {
                 <span> - </span>
                 模板例子
               </div>
+              <div>
+                <a href="http://ant-motion.gitee.io/" target="_blank ">
+                  <span>国内镜像站点 🇨🇳</span>
+                </a>
+              </div>
             </div>
           </Col>
           <Col md={6} sm={24} xs={24}>

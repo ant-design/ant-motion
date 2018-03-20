@@ -10,6 +10,8 @@ Animation specification and components of Ant Design.
 
 [中文 README](https://github.com/ant-design/ant-motion/blob/master/README.cn.md)
 
+[国内镜象](http://ant-motion.gitee.io/);
+
 ## What is Ant Motion?
 
 Ant Motion is a motion design specification from Ant Design, and also provide a complete solution with lots of out-of-box animations for your React applications.
