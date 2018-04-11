@@ -103,20 +103,21 @@ scrollScreen.unMount();
 | component | string         |  div  | 组件标签            |
 | targetId  | string   |  null | 不以 window 为滚动目标时，请设置当前目标的 id。。[详细 demo](http://react-component.github.io/scroll-anim/examples/target.html) |
 | playScale |  number / array  |  `0.5` | 要在屏幕哪个区域开始播放， 0.5 为屏幕中间。 如果为 array 时 replay 为 true, [bottom-enter, top-leave] enter为进入是的播放点， topLeave 为出屏的比例(当前显示屏的上面一屏)的百分点。topLeave 必须大于等于 bottomEnter。 <br /> 注：元素高度必须能达到播放的高度，不是子级高度，必需为当前元素高度。|
-| onChange | func    | null  | 变更回调; callback({ mode, scrollName }); mode 为 `enter` 或 `leave` 两种状态 |
+| replay  |  boolean | false | 每次显示当前时是否都要动画, `false` 为只上往下滚时才有动画 |
+| onChange | func    | null  | 变更回调; callback({ mode, id }); mode 为 `enter` 或 `leave` 两种状态 |
+| onScroll | func     | null | 滚动回调; callback({ domEvent, scrollTop, offsetTop, showHeight, id}); |
 | location | string   | null  | 定位到父级元素, 必须为 id； |
 
 
 ### OverPack 说明
 
-> `OverPack` 继承 `Element`, `component`,`playScale`, `onChange` 参考 `Element`
+> `OverPack` 继承 `Element`, `component`,`playScale`, `replay`, `onChange`, `onScroll` 参考 `Element`
 
 > 1.0.0 之后删除 `hideProps`;
 
 |   参数   |    类型    |   默认  |  说明   |
 |---------|------------|---------|--------|
 | always  | boolean | true | 重复播放，如为 false 将只进入一遍，不再触发出场效果 |
-| replay  |  boolean | false | 每次显示当前时是否都要动画, `false` 为只上往下滚时才有动画 |
 | appear  |  boolean  | true  |  默认拥有出场动画，`false` 为出场不做动画直接显示。|
 
 ## Parallax 说明
