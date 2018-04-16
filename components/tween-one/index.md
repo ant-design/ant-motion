@@ -94,7 +94,9 @@ svg 线性动画
 ``` jsx
 import SvgDrawPlugin from 'rc-tween-one/lib/plugin/SvgDrawPlugin';
 TweenOne.plugins.push(SvgDrawPlugin);
-<TweenOne animation={{ SVGDraw: 0 }} />
+<svg>
+  <TweenOne animation={{ SVGDraw: 0 }} component="path"/>
+</svg>
 ```
 `{ SVGDraw: 30 }` or `{ SVGDraw: 'start end' }` 值可以为 `%`；
 
@@ -107,7 +109,9 @@ svg 路径形变动画，如 `{ d: 'M0 0L100 100' }`
 ``` jsx
 import SvgMorphPlugin from 'rc-tween-one/lib/plugin/SvgMorphPlugin';
 TweenOne.plugins.push(SvgMorphPlugin);
-<TweenOne animation={{ d: 'M0 0L100 100' }} attr="attr"/>
+<svg>
+  <TweenOne animation={{ d: 'M0 0L100 100' }} attr="attr" component="path"/>
+</svg>
 ```
 
 ## PathPlugin
@@ -115,9 +119,18 @@ TweenOne.plugins.push(SvgMorphPlugin);
 ``` jsx
 import PathPlugin from 'rc-tween-one/lib/plugin/PathPlugin';
 TweenOne.plugins.push(PathPlugin);
-<TweenOne animation={{ path: 'M0,100 C30,60 0,20 50,50 C70,70 60,0 100,0' }} attr="attr"/>
-或
-<TweenOne animation={{ path: { x: path, y: path, rotate: path } }} attr="attr"/>
+<svg>
+  <TweenOne 
+    animation={{ path: 'M0,100 C30,60 0,20 50,50 C70,70 60,0 100,0' }}    attr="attr" 
+    component="path" 
+  />
+  或
+  <TweenOne 
+    animation={{ path: { x: path, y: path, rotate: path } }} 
+    attr="attr" 
+    component="path" 
+  />
+</svg>
 ```
 
 path: string or object;
