@@ -15,7 +15,7 @@ function Footer() {
                 </a>
               </div>
               <div>
-                <a href="http://pro.ant.design">example</a>
+                <a href="https://github.com/ant-motion/ant-motion-dva-cli-example">example</a>
                 <span> - </span>
                 模板例子
               </div>
