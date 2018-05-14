@@ -35,7 +35,7 @@ export default {
         ...offsetStyle({ height: '400px' }),
         ...bgStyle({
           imageRemark: '图片尺寸参考： 1920*540',
-          isMode: true,
+          isMobile: true,
         }),
         ...borderStyle({ width: '0px', style: 'none', color: '#666' }),
         '$ .content-template': {

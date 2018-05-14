@@ -41,14 +41,14 @@ class Content extends React.Component {
   render() {
     const props = { ...this.props };
     const dataSource = props.dataSource;
-    const isMode = props.isMode;
+    const isMobile = props.isMobile;
     const names = props.id.split('_');
     const name = `${names[0]}${names[1]}`;
     const ulChildren = this.getBlockChildren(dataSource);
     delete props.dataSource;
-    delete props.isMode;
-    const queue = isMode ? 'bottom' : 'left';
-    const imgAnim = isMode ? {
+    delete props.isMobile;
+    const queue = isMobile ? 'bottom' : 'left';
+    const imgAnim = isMobile ? {
       y: 30, opacity: 0, delay: 400, type: 'from', ease: 'easeOutQuad',
     }
       : {

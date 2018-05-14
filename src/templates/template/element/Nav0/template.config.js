@@ -46,7 +46,7 @@ export default {
           value: false,
           name: '切换导航',
           type: 'switch',
-          isMode: true,
+          isMobile: true,
         },
       },
       style: {

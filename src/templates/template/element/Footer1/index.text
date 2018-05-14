@@ -36,8 +36,8 @@ class Footer extends React.Component {
 
   render() {
     const props = { ...this.props };
-    const isMode = props.isMode;
-    delete props.isMode;
+    const isMobile = props.isMobile;
+    delete props.isMobile;
     const logoContent = &footer1_logo-children&;
     const dataSource = [
       &footer1_block0-children&,
@@ -48,7 +48,7 @@ class Footer extends React.Component {
     const liChildrenToRender = dataSource.map(this.getLiChildren);
     return (<OverPack
       {...props}
-      playScale={isMode ? 0.5 : 0.2}
+      playScale={isMobile ? 0.5 : 0.2}
     >
       <QueueAnim type="bottom" component="ul" key="ul" leaveReverse id={`${props.id}-ul`}>
         <li key="logo" id={`${props.id}-logo`}>

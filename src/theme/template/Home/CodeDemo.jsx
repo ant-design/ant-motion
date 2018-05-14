@@ -23,15 +23,15 @@ class CodeDemo extends React.PureComponent {
         .toReactComponent(this.components['queue-anim'].demo.simple.highlightedCode),
       component: this.components['queue-anim'].demo.simple.preview(React, ReactDom),
       replay: false,
-      isMode: false,
+      isMobile: false,
       openCode: false,
     };
   }
 
   componentDidMount() {
     enquireScreen((bool) => {
-      const isMode = bool;
-      this.setState({ isMode });
+      const isMobile = bool;
+      this.setState({ isMobile });
     });
   }
 
@@ -72,7 +72,7 @@ class CodeDemo extends React.PureComponent {
             <img height="8" src="https://zos.alipayobjects.com/rmsportal/glnFNVQMvQinmUr.svg" />
           </div>
         </div>
-        {this.state.isMode && (<div className={`${this.props.className}-close`} onClick={this.codeCloseClick}>
+        {this.state.isMobile && (<div className={`${this.props.className}-close`} onClick={this.codeCloseClick}>
           <Icon type="close" />
         </div>)}
       </div>
@@ -83,7 +83,7 @@ class CodeDemo extends React.PureComponent {
         </div>
       </div>
       {
-        this.state.isMode && (<div className={`${this.props.className}-icon`} onClick={this.codeClick}>
+        this.state.isMobile && (<div className={`${this.props.className}-icon`} onClick={this.codeClick}>
           <Icon type="code-o" />
         </div>)
       }

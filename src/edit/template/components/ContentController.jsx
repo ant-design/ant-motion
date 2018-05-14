@@ -22,7 +22,7 @@ export default class ContentController extends React.Component {
     editId: PropTypes.string,
     onChangeTabs: PropTypes.func,
     urlData: PropTypes.object,
-    isMode: PropTypes.bool,
+    isMobile: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -48,7 +48,7 @@ export default class ContentController extends React.Component {
               editId={this.props.editId}
               urlData={this.props.urlData}
               setUrlData={this.props.setUrlData}
-              isMode={this.props.isMode}
+              isMobile={this.props.isMobile}
             />
           </TabPane>
           <TabPane tab={<Tooltip title="功能"><i><img src={imgUrl[2]} /></i></Tooltip>} key="3">

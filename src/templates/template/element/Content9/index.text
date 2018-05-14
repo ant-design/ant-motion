@@ -26,7 +26,7 @@ class Content extends React.Component {
 
   render() {
     const props = { ...this.props };
-    delete props.isMode;
+    delete props.isMobile;
     const dataSource = [
       &content9_block0-children&,
       &content9_block1-children&,

@@ -19,7 +19,7 @@ export default class Templates extends React.Component {
     super(props);
     this.scrollScreen = false;
     this.state = {
-      isMode: false,
+      isMobile: false,
     };
     this.webStyle = '';
     this.stylePhone = '';
@@ -28,8 +28,8 @@ export default class Templates extends React.Component {
 
   componentDidMount() {
     this.componentDidUpdate();
-    enquireScreen((isMode) => {
-      this.setState({ isMode });
+    enquireScreen((isMobile) => {
+      this.setState({ isMobile });
     });
   }
 
@@ -91,7 +91,7 @@ export default class Templates extends React.Component {
         {
           key: item,
           id: item,
-          isMode: this.state.isMode,
+          isMobile: this.state.isMobile,
           ref: (c) => {
             this.myRef[item] = c;
           },

@@ -23,10 +23,10 @@ class Header extends React.Component {
 
   render() {
     const props = { ...this.props };
-    const isMode = props.isMode;
+    const isMobile = props.isMobile;
     const dataSource = props.dataSource;
     delete props.dataSource;
-    delete props.isMode;
+    delete props.isMobile;
     const names = props.id.split('_');
     const name = `${names[0]}${names[1]}`;
     const navData = dataSource[`${name}_menu`].children;
@@ -69,7 +69,7 @@ class Header extends React.Component {
       >
         <img width="100%" src={dataSource[`${name}_logo`].children} />
       </TweenOne>
-      {isMode ? (
+      {isMobile ? (
         <div
           className={`${this.props.className}-phone-nav${this.state.phoneOpen || (func && func.switch) ? ' open' : ''}`}
           id={`${this.props.id}-menu`}

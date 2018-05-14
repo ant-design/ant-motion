@@ -27,7 +27,7 @@ export default class EditView extends React.Component {
     editId: PropTypes.string,
     urlData: PropTypes.object,
     setUrlData: PropTypes.func,
-    isMode: PropTypes.bool,
+    isMobile: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -281,8 +281,8 @@ export default class EditView extends React.Component {
       return aa > bb;
     }).map((key) => {
       let name;
-      if (this.props.isMode && key === 'style'
-        || !this.props.isMode && key === 'stylePhone'
+      if (this.props.isMobile && key === 'style'
+        || !this.props.isMobile && key === 'stylePhone'
         || key === 'className' || key === 'remark'
         || !Object.keys(data[key]).length) {
         return null;
@@ -324,7 +324,7 @@ export default class EditView extends React.Component {
   getExtraFunc = (data, key) => {
     const children = Object.keys(data).map((k) => {
       const item = data[k];
-      if (k === 'name' || item.isMode && !this.props.isMode) {
+      if (k === 'name' || item.isMobile && !this.props.isMobile) {
         return null;
       }
       let child;

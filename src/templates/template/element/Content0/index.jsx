@@ -13,7 +13,7 @@ class Content extends React.Component {
     const names = props.id.split('_');
     const name = `${names[0]}${names[1]}`;
     delete props.dataSource;
-    delete props.isMode;
+    delete props.isMobile;
     const isImg = dataSource[`${name}_title`].children
       .match(/\.(gif|jpg|jpeg|png|JPG|PNG|GIF|JPEG)$/);
     return (

@@ -25,9 +25,9 @@ class Banner extends React.Component {
     const dataSource = this.props.dataSource;
     const names = this.props.id.split('_');
     const name = `${names[0]}${names[1]}`;
-    const isMode = props.isMode;
+    const isMobile = props.isMobile;
     delete props.dataSource;
-    delete props.isMode;
+    delete props.isMobile;
     const childrenData = [];
     Object.keys(dataSource).filter(key => key.match('Block')).forEach((key) => {
       const keys = key.split('Block');
@@ -42,7 +42,7 @@ class Banner extends React.Component {
       const button = item[`${name}_buttonBlock${i}`];
       const isImg = title.children
         .match(/\.(gif|jpg|jpeg|png|JPG|PNG|GIF|JPEG)$/);
-      const follow = !isMode ? {
+      const follow = !isMobile ? {
         delay: 1000,
         minMove: 0.1,
         data: [

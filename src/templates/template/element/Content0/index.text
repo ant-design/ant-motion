@@ -7,7 +7,7 @@ import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
 class Content extends React.Component {
   render() {
     const props = { ...this.props };
-    delete props.isMode;
+    delete props.isMobile;
     return (
       <OverPack
         replay

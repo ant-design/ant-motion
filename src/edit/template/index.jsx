@@ -25,7 +25,7 @@ class Edit extends React.Component {
       tabsKey: '1',
       editId: null,
       iframeHeight: null,
-      isMode: false,
+      isMobile: false,
     };
   }
 
@@ -61,12 +61,12 @@ class Edit extends React.Component {
         $(window).resize(this.onResize);
       });
     });
-    const isMode = [
+    const isMobile = [
       'Android', 'iPhone', 'SymbianOS',
       'Windows Phone', 'iPad', 'iPod',
     ].filter(key =>
       navigator.userAgent.indexOf(key) > 0)[0];
-    if (isMode) {
+    if (isMobile) {
       Modal.warning({
         title: '警告!!!',
         content: '请在电脑端查看并编辑此页面',
@@ -191,9 +191,9 @@ class Edit extends React.Component {
     return item.parentNode && this.getByIdDom(item.parentNode);
   };
 
-  typeSwitch = (isMode) => {
+  typeSwitch = (isMobile) => {
     this.setState({
-      isMode,
+      isMobile,
       selectRect: null,
       editId: null,
       tabsKey: '1',
@@ -224,7 +224,7 @@ class Edit extends React.Component {
         urlHash={this.state.urlHash}
         urlData={this.state.urlData}
         typeSwitch={this.typeSwitch}
-        isMode={this.state.isMode}
+        isMobile={this.state.isMobile}
       />
       <div className="edit-wrapper">
         <ContentController
@@ -233,11 +233,11 @@ class Edit extends React.Component {
           onChangeTabs={this.onChangeTabs}
           editId={this.state.editId}
           urlData={this.state.urlData}
-          isMode={this.state.isMode}
+          isMobile={this.state.isMobile}
         />
         <div className="preview-wrapper">
-          <div className={`edit-cover ${this.state.isMode ? 'edit-phone' : ''}`}>
-            {this.state.isMode && (<div className="phone-head">
+          <div className={`edit-cover ${this.state.isMobile ? 'edit-phone' : ''}`}>
+            {this.state.isMobile && (<div className="phone-head">
               <em className="camera" />
               <em className="receiver" />
             </div>)}
@@ -256,7 +256,7 @@ class Edit extends React.Component {
                 {this.state.enterDom && this.state.enterDom.id}
               </EditStateController>
             </div>
-            {this.state.isMode && (<div className="phone-footer">
+            {this.state.isMobile && (<div className="phone-footer">
               <em className="home-key" />
             </div>)}
           </div>

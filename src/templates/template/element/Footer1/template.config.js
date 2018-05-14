@@ -87,7 +87,7 @@ export default {
       },
       stylePhone: {
         ...offsetStyle({ height: '550px' }),
-        ...bgStyle({ color: '#333', isMode: true }),
+        ...bgStyle({ color: '#333', isMobile: true }),
       },
     },
     footer1_logo: {

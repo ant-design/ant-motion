@@ -10,7 +10,7 @@ class Footer extends React.Component {
 
   render() {
     const props = { ...this.props };
-    delete props.isMode;
+    delete props.isMobile;
     return (<OverPack
       {...props}
       playScale={0.05}

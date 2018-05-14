@@ -18,7 +18,7 @@ class Content extends React.Component {
     const names = props.id.split('_');
     const name = `${names[0]}${names[1]}`;
     delete props.dataSource;
-    delete props.isMode;
+    delete props.isMobile;
     const oneAnim = {
       y: '+=30', opacity: 0, type: 'from', ease: 'easeOutQuad',
     };

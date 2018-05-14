@@ -33,7 +33,7 @@ export default {
               image: 'https://zos.alipayobjects.com/rmsportal/hzPBTkqtFpLlWCi.jpg',
               position: 'center',
               size: 'cover',
-              isMode: true,
+              isMobile: true,
             }),
           },
         },

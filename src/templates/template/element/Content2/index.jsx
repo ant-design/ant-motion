@@ -13,14 +13,14 @@ class Content extends React.Component {
   render() {
     const props = { ...this.props };
     const dataSource = props.dataSource;
-    const isMode = props.isMode;
+    const isMobile = props.isMobile;
     const names = props.id.split('_');
     const name = `${names[0]}${names[1]}`;
     delete props.dataSource;
-    delete props.isMode;
+    delete props.isMobile;
     const animType = {
-      queue: isMode ? 'bottom' : 'right',
-      one: isMode ? {
+      queue: isMobile ? 'bottom' : 'right',
+      one: isMobile ? {
         y: '+=30', opacity: 0, type: 'from', ease: 'easeOutQuad',
       }
         : {

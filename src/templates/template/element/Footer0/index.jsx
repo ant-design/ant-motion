@@ -14,7 +14,7 @@ class Footer extends React.Component {
     const names = props.id.split('_');
     const name = `${names[0]}${names[1]}`;
     delete props.dataSource;
-    delete props.isMode;
+    delete props.isMobile;
     return (<OverPack
       {...props}
       playScale={0.05}

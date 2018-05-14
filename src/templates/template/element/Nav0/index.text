@@ -21,8 +21,8 @@ class Header extends React.Component {
 
   render() {
     const props = { ...this.props };
-    const isMode = props.isMode;
-    delete props.isMode;
+    const isMobile = props.isMobile;
+    delete props.isMobile;
     const navData = &nav0_menu-children&;;
     const navChildren = Object.keys(navData)
       .map((key, i) => (<Item key={i}>{navData[key]}</Item>));
@@ -38,7 +38,7 @@ class Header extends React.Component {
       >
         &nav0_logo-children&
       </TweenOne>
-      {isMode ? (<div
+      {isMobile ? (<div
         className={`${this.props.className}-phone-nav${this.state.phoneOpen ? ' open' : ''}`}
         id={`${this.props.id}-menu`}
       >

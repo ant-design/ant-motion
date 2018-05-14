@@ -169,7 +169,7 @@ const setChildrenToIndex = () => {
   }).forEach((key) => {
     const item = jsData[key];
     importStr += `import ${item.name} from './${item.name}';\n`;
-    childStr += `      <${item.name} id="${key}" key="${key}" isMode={this.state.isMode}/>,\n`;
+    childStr += `      <${item.name} id="${key}" key="${key}" isMobile={this.state.isMobile}/>,\n`;
   });
   if ('point' in templateStrObj.OTHER) {
     // 点转换

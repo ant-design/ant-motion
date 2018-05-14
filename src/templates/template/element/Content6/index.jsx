@@ -39,9 +39,9 @@ class Content extends React.Component {
         </li>);
       });
 
-  getEnterAnim = (e, isMode) => {
+  getEnterAnim = (e, isMobile) => {
     const index = e.index;
-    const delay = isMode ? index * 50 + 200 : index % 4 * 100 + Math.floor(index / 4) * 100 + 300;
+    const delay = isMobile ? index * 50 + 200 : index % 4 * 100 + Math.floor(index / 4) * 100 + 300;
     return {
       y: '+=30', opacity: 0, type: 'from', delay,
     };
@@ -50,12 +50,12 @@ class Content extends React.Component {
   render() {
     const props = { ...this.props };
     const dataSource = props.dataSource;
-    const isMode = props.isMode;
+    const isMobile = props.isMobile;
     const names = props.id.split('_');
     const name = `${names[0]}${names[1]}`;
     const childrenToRender = this.getChildrenToRender(dataSource);
     delete props.dataSource;
-    delete props.isMode;
+    delete props.isMobile;
     return (
       <div
         {...props}
@@ -90,7 +90,7 @@ class Content extends React.Component {
             className={`${props.className}-img-wrapper`}
             component="ul"
             key="ul"
-            enter={e => this.getEnterAnim(e, isMode)}
+            enter={e => this.getEnterAnim(e, isMobile)}
             leave={{ y: '+=30', opacity: 0, ease: 'easeOutQuad' }}
             id={`${props.id}-ul`}
           >

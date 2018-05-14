@@ -97,7 +97,7 @@ export default {
       },
       stylePhone: {
         ...offsetStyle({ width: '100%', height: '760px' }),
-        ...bgStyle({ isMode: true }),
+        ...bgStyle({ isMobile: true }),
         ...borderStyle({ width: '0px', style: 'none', color: '#666' }),
         '$ .content-template': {
           name: '内框样式',

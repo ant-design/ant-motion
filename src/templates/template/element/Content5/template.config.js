@@ -25,7 +25,7 @@ export default {
       },
       stylePhone: {
         ...offsetStyle({ height: '350px' }),
-        ...bgStyle({ isMode: true }),
+        ...bgStyle({ isMobile: true }),
         ...borderStyle({ width: '0px', style: 'none', color: '#666' }),
       },
     },

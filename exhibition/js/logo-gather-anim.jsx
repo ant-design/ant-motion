@@ -203,14 +203,14 @@ class Edit extends React.Component {
       image: this.defaultImage.a,
       pixSize: 20,
       pointSize: 10,
-      isMode: false,
+      isMobile: false,
       show: false,
     };
   }
 
   componentDidMount() {
-    enquireScreen((isMode) => {
-      this.setState({ isMode });
+    enquireScreen((isMobile) => {
+      this.setState({ isMobile });
     });
   }
 
@@ -268,7 +268,7 @@ class Edit extends React.Component {
           />
         )}
         <div className={`logo-gather-demo-edit-wrapper ${this.state.show ? 'open' : ''}`}>
-          {this.state.isMode && (
+          {this.state.isMobile && (
             <div className="edit-button" onClick={this.phoneClick}>
               <Icon type="down" />
             </div>
@@ -295,7 +295,7 @@ class Edit extends React.Component {
                     height="30"
                   />
                 </Radio>
-                <Radio key="d" value="d" className={`${this.state.isMode ? 'none' : ''}`}>
+                <Radio key="d" value="d" className={`${this.state.isMobile ? 'none' : ''}`}>
                   其它
                   <TweenOneGroup
                     style={{ display: 'inline-block', height: 0 }}
@@ -315,7 +315,7 @@ class Edit extends React.Component {
                 </Radio>
               </RadioGroup>
             </li>
-            <li className={`${this.state.isMode ? 'phone-float-none' : ''}`}>图片取点像素：</li>
+            <li className={`${this.state.isMobile ? 'phone-float-none' : ''}`}>图片取点像素：</li>
             <li>
               <InputNumber
                 defaultValue={this.state.pixSize}
@@ -324,7 +324,7 @@ class Edit extends React.Component {
                 onChange={this.onChangePix}
               />
             </li>
-            <li className={`${this.state.isMode ? 'phone-float-none' : ''}`}>点的宽加随机：</li>
+            <li className={`${this.state.isMobile ? 'phone-float-none' : ''}`}>点的宽加随机：</li>
             <li>
               <InputNumber
                 defaultValue={this.state.pointSize}
@@ -332,7 +332,7 @@ class Edit extends React.Component {
                 onChange={this.onChangePoint}
               />
             </li>
-            <li className={`${this.state.isMode ? 'phone-float-none' : ''}`}>
+            <li className={`${this.state.isMobile ? 'phone-float-none' : ''}`}>
               <Button type="primary" onClick={this.onClick}>更新</Button>
             </li>
           </ul>

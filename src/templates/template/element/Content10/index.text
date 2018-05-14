@@ -22,9 +22,9 @@ class Banner2 extends React.Component {
 
   render() {
     const props = { ...this.props };
-    const isMode = props.isMode;
-    delete props.isMode;
-    const follow = !isMode ? {
+    const isMobile = props.isMobile;
+    delete props.isMobile;
+    const follow = !isMobile ? {
         delay: 1000,
         minMove: 0.1,
         data: [

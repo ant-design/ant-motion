@@ -147,7 +147,7 @@ export function bgStyle(_data) {
       select: ['relative', 'fixed'],
       remark: '参数为： "relative", "fixed"; "fixed" 为背景随滚动条滚动',
     };
-  } else if (!data.isMode) {
+  } else if (!data.isMobile) {
     // 移动端不做锁定..
     d.backgroundAttachment = {
       value: data.attachment || 'scroll',

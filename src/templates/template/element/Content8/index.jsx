@@ -88,7 +88,7 @@ class Content extends React.Component {
     const names = props.id.split('_');
     const name = `${names[0]}${names[1]}`;
     delete props.dataSource;
-    delete props.isMode;
+    delete props.isMobile;
     const childrenData = [];
     Object.keys(dataSource).filter(key => key.match('Block')).forEach((key) => {
       const keys = key.split('Block');

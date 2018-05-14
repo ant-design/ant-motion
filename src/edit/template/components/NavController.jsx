@@ -12,7 +12,7 @@ class NavController extends React.Component {
     className: PropTypes.string,
     urlHash: PropTypes.string,
     urlData: PropTypes.object,
-    isMode: PropTypes.bool,
+    isMobile: PropTypes.bool,
     typeSwitch: PropTypes.func,
   };
 
@@ -33,9 +33,9 @@ class NavController extends React.Component {
     message.success('拷贝成功，现在可以去分享你定制的页面了！');
   }
 
-  onTypeSwitch = (isMode) => {
-    if (isMode !== this.props.isMode) {
-      this.props.typeSwitch(isMode);
+  onTypeSwitch = (isMobile) => {
+    if (isMobile !== this.props.isMobile) {
+      this.props.typeSwitch(isMobile);
     }
   }
 
@@ -150,7 +150,7 @@ class NavController extends React.Component {
                 onClick={() => {
                   this.onTypeSwitch(false);
                 }}
-                className={!this.props.isMode ? 'active' : ''}
+                className={!this.props.isMobile ? 'active' : ''}
               >
                 <Icon type="desktop" />
               </li>
@@ -160,7 +160,7 @@ class NavController extends React.Component {
                 onClick={() => {
                   this.onTypeSwitch(true);
                 }}
-                className={this.props.isMode ? 'active' : ''}
+                className={this.props.isMobile ? 'active' : ''}
               >
                 <Icon type="mobile" />
               </li>
