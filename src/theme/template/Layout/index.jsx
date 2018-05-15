@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import TweenOne from 'rc-tween-one';
 import { enquireScreen } from 'enquire-js';
+import { notification } from 'antd';
 import Header from './Header';
 import Footer from './Footer';
 import Page from '../Content/Page';
@@ -29,6 +30,16 @@ class Index extends React.PureComponent {
       this.setState({
         isMobile: !!b,
       });
+    });
+    notification.open({
+      message: '使用量调查',
+      placement: 'bottomLeft',
+      description: <p>
+        如果你用了 Ant Motion 组件或 Landing page(首页)，麻烦将你的项目名称与链接
+        <a href=" https://github.com/ant-design/ant-motion/issues/30 " target="_blank"> issues </a>
+        留言，或直接在右侧的 Hotjar 里留言，以便后期对 Ant Motion 的更新。
+      </p>,
+      duration: 0,
     });
   }
 
@@ -60,19 +71,20 @@ class Index extends React.PureComponent {
       >
         {this.props.children}
       </Page>);
-    return (<div id="react-root" className={!pathKey ? 'home' : ''}>
-      <Header activeKey={pathKey} isMobile={this.state.isMobile} />
-      <TweenOne.TweenOneGroup
-        className="content-wrapper"
-        onEnd={this.onChange}
-        enter={{ type: 'from', opacity: 0, ease: 'easeOutQuart' }}
-        leave={{ opacity: 0, ease: 'easeInOutQuart' }}
-        ref={(c) => { this.content = c; }}
-      >
-        {children}
-      </TweenOne.TweenOneGroup>
-      <Footer />
-    </div>);
+    return (
+      <div id="react-root" className={!pathKey ? 'home' : ''}>
+        <Header activeKey={pathKey} isMobile={this.state.isMobile} />
+        <TweenOne.TweenOneGroup
+          className="content-wrapper"
+          onEnd={this.onChange}
+          enter={{ type: 'from', opacity: 0, ease: 'easeOutQuart' }}
+          leave={{ opacity: 0, ease: 'easeInOutQuart' }}
+          ref={(c) => { this.content = c; }}
+        >
+          {children}
+        </TweenOne.TweenOneGroup>
+        <Footer />
+      </div>);
   }
 }
 

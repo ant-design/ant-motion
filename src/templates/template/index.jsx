@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { scrollScreen } from 'rc-scroll-anim';
 import { enquireScreen } from 'enquire-js';
+import { notification } from 'antd';
 import webData from '../template.config';
 import { getURLData, mergeURLDataToDefault, dataValueReplace, getWebOrPhoneCss, getStyleToString } from './utils';
 import '../static/common.less';
@@ -30,6 +31,16 @@ export default class Templates extends React.Component {
     this.componentDidUpdate();
     enquireScreen((isMobile) => {
       this.setState({ isMobile });
+    });
+    notification.open({
+      message: '使用量调查',
+      placement: 'bottomLeft',
+      description: <p>
+        如果你用了 Ant Motion 组件或 Landing page(首页)，麻烦将你的项目名称与链接
+        <a href=" https://github.com/ant-design/ant-motion/issues/30 " target="_blank"> issues </a>
+        留言，或在首页右侧的 Hotjar 里留言，以便后期对 Ant Motion 的更新。
+      </p>,
+      duration: 0,
     });
   }
 
