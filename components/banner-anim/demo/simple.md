@@ -62,3 +62,30 @@ ReactDOM.render(
   <Demo />
 , mountNode);
 ````
+```css
+/* 通用样式, 下例 demo 单独使用都需要这块样式 */
+.banner-user{
+  height: 220px;
+}
+.banner-user-elem{
+  text-align: center;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.banner-user-elem .banner-user-title{
+  font-size: 32px;
+  top: 40%;
+}
+.banner-user-elem .banner-user-text{
+  top: 40%;
+}
+.banner-anim-elem .bg{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+```
