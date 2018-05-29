@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { enquireScreen } from 'enquire-js';
-import scrollScreen from 'rc-scroll-anim/lib/ScrollScreen';
+&importScrollScreen&
 
 &import&
 import './less/antMotion_style.less';
