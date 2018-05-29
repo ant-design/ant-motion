@@ -1,12 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { enquireScreen } from 'enquire-js';
-import ScrollAnim from 'rc-scroll-anim';
+import scrollScreen from 'rc-scroll-anim/lib/ScrollScreen';
 
 &import&
 import './less/antMotion_style.less';
-
-const scrollScreen = ScrollAnim.scrollScreen;
 
 let isMobile;
 enquireScreen((b) => {
@@ -17,7 +15,7 @@ export default class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isMobile: false,
+      isMobile,
       show: !location.port,
     };
   }
@@ -33,9 +31,10 @@ export default class Home extends React.Component {
       setTimeout(() => {
         this.setState({
           show: true,
-        });
+        }&stateScrollScreen&);
       }, 500);
-    }
+    } 
+    &elseScrollScreen&
   }
 
   render() {

@@ -33,10 +33,20 @@ const toUpperCase = string => string.replace(/\b(\w)|\s(\w)/g, m => m.toUpperCas
 
 const setScrollScreen = () => {
   templateStrObj.OTHER.index = templateStrObj.OTHER.index
-    .replace('componentDidMount() {', `componentDidMount() {
-    // 实现整屏滚动
-    const docHeight = ReactDOM.findDOMNode(this).getBoundingClientRect().height;
-    scrollScreen.init({ docHeight });`);
+    .replace('&stateScrollScreen&', `, () => {
+          // 实现整屏滚动
+          const docHeight = ReactDOM.findDOMNode(this).getBoundingClientRect().height;
+          scrollScreen.init({ docHeight });
+        }`)
+    .replace('&elseScrollScreen&', `else {
+      // 实现整屏滚动
+      const docHeight = ReactDOM.findDOMNode(this).getBoundingClientRect().height;
+      scrollScreen.init({ docHeight });
+    }`)
+    .replace(
+      '&importScrollScreen&',
+      'import scrollScreen from \'rc-scroll-anim/lib/ScrollScreen\';'
+    );
 };
 
 const replaceData = (urlData, _configData, key) => {
@@ -136,7 +146,7 @@ const jsToZip = () => {
     templateStrObj.styleWeb || '';
   templateStrObj.styleWeb += templateStrObj.stylePhone ?
     `\n@media screen and (max-width: 767px) {\n${templateStrObj.stylePhone}}` : '';
-  zip.file('less/edit.css', templateStrObj.styleWeb);
+  zip.file('less/edit.less', templateStrObj.styleWeb);
 
   // 创建 less 里的 index.js;
   let indexLessStr = '';
@@ -151,7 +161,7 @@ const jsToZip = () => {
     zip.file(`less/${key}.less`, templateStrObj.LESS[key].value);
     indexLessStr += `@import './${key}.less';\n`;
   });
-  indexLessStr += '@import \'./edit.css\';';
+  indexLessStr += '@import \'./edit.less\';';
   zip.file('less/antMotion_style.less', indexLessStr);
   zip.generateAsync({ type: 'blob' }).then((content) => {
     saveAs(content, 'Home.zip');
@@ -258,6 +268,10 @@ export default function saveJsZip(urlData) {
         break;
     }
   });
+  // 去除 full
+  templateStrObj.OTHER.index = templateStrObj.OTHER.index
+    .replace('&stateScrollScreen&', '').replace('&elseScrollScreen&', '')
+    .replace('&importScrollScreen&', '');
   // 编辑过的样式保存。。urlData.c;
   const editData = urlData.c;
   templateStrObj.stylePhone = '';
