@@ -31,7 +31,7 @@ export default class Page3 extends React.PureComponent {
           >
             <h1 key="h1">为产品添加有趣的动效</h1>
             <p key="p">
-              通过更有好的交互方式，让动化效果穿梭在不同的元素之间，<br />
+              通过更友好的交互方式，让动化效果穿梭在不同的元素之间，<br />
               让产品能够更好的和用户对话。
             </p>
             <div
