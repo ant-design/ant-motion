@@ -4,7 +4,7 @@ import { TweenOneGroup } from 'rc-tween-one';
 import QueueAnim from 'rc-queue-anim';
 import { Link } from 'react-router';
 import { Affix } from 'antd';
-import MobileMenu from 'rc-drawer-menu';
+import MobileMenu from 'rc-drawer';
 import nav from '../Layout/nav';
 import { scrollClick } from '../utils';
 
@@ -184,7 +184,7 @@ class Page extends React.PureComponent {
         </ul>
       </QueueAnim>
     </Affix>)) :
-      (<MobileMenu width="180px">
+      (<MobileMenu >
         <div className="nav-list-wrapper">
           <div className="nav-list">
             <h2 key={`${pathname.split('/')[0]}-title`}>

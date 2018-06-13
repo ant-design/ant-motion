@@ -1,5 +1,5 @@
 ---
-order: 5
+order: 2
 title: 变更动画参数
 mouseEnter: true
 ---
@@ -74,9 +74,9 @@ class Demo extends React.Component {
         <div className="demo-buttons"
           style={{ 
             position: 'absolute', 
-            width: 292, 
+            width: 300, 
             left: '50%', 
-            marginLeft: -146, 
+            marginLeft: -150, 
             bottom: 25 
           }}
         >

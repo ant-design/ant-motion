@@ -14,12 +14,12 @@ class Header extends React.PureComponent {
     activeKey: PropTypes.any,
   };
 
-  static defaultProps = {
-    className: 'header',
-  };
-
   static contextTypes = {
     router: PropTypes.object.isRequired,
+  };
+
+  static defaultProps = {
+    className: 'header',
   };
 
   constructor(props) {

@@ -1,5 +1,5 @@
 ---
-order: 10
+order: 8
 title: 曲线动画
 mouseEnter: true
 vertical: true
@@ -28,6 +28,8 @@ class Demo extends React.Component {
           { x: 600, y: 0 },
         ],
       },
+      repeat: -1,
+      yoyo: true,
       duration: 5000,
     };
   }

@@ -1,10 +1,10 @@
 ---
-order: 4
+order: 1
 title: 时间轴效果
 mouseEnter: true
 ---
 
-鼠标经过或手指按下可查看时间轴效果。
+鼠标经过或手指按下可查看时间轴效果, 时间轴效果，无限循环时间轴效果。
 
 
 ```jsx
@@ -19,38 +19,22 @@ class Demo extends React.Component {
     this.animation = [
       { left: '-40%' },
       { left: '40%' },
-      { top: '30px' },
+      { top: '60px' },
       { scale: 0.7 },
       { scale: 1 },
       { top: 0 },
       { left: '0%' },
     ];
-    this.state = {
-      moment: null,
-    };
   }
 
-  onChange = (e) => {
-    if (e.mode === 'onComplete' && e.index === 6) {
-      setTimeout(() => {
-        this.setState({
-          moment: 0,
-        });
-      }, 0);
-    } else {
-      this.setState({
-        moment: null,
-      });
-    }
-  }
 
   render() {
     return (
       <TweenOne
         animation={this.animation}
         paused={this.props.paused}
-        onChange={this.onChange}
-        moment={this.state.moment}
+        repeat={-1} // demo 演示需要，时间轴循环
+        yoyo // demo 演示需要，时间轴循环
         style={{ transform: 'scale(1)' }}
         className="code-box-shape"
       />

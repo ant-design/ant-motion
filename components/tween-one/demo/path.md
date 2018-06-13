@@ -1,8 +1,8 @@
 ---
-order: 9
+order: 7
 title: 曲线路径动画
 mouseEnter: true
-vertical: true
+
 ---
 
 曲线路径动画。
@@ -32,7 +32,7 @@ class Demo extends React.Component {
 
   render() {
     return (
-      <div style={{ position: 'relative', height: 200, width: 200, margin: '40px auto' }}>
+      <div style={{ position: 'relative', height: 200, width: 200, margin: '10px auto' }}>
         <TweenOne
           animation={this.animation}
           style={{ margin: 0, width: 20, height: 20, transform: 'translate(-10px, -10px)' }}

@@ -42,7 +42,7 @@
             background: #FFF;
             margin-top: 4px;
           }
-           :first-child {
+          :first-child {
             margin-top: 0;
           }
         }
@@ -63,7 +63,7 @@
           ul {
             li {
               margin: 40px 0 40px 5%;
-               :only-child {
+              :only-child {
                 margin-left: 37px;
               }
               &.queue-anim-leaving {
@@ -145,8 +145,12 @@
       justify-content: center;
     }
     .nav-list {
+      display: inline-block;
       &-wrapper {
-        width: auto;
+        width: 180px;
+        position: relative;
+        float: left;
+        text-align: center;
       }
       h2,
       ul {
@@ -304,7 +308,7 @@
           margin: 0 auto 40px !important;
         }
       }
-      .home-button{
+      .home-button {
         bottom: 60px;
       }
     }
