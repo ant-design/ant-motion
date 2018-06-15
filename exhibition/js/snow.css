@@ -1,0 +1,37 @@
+.snow-demo-wrapper {
+  background: #4777E3;
+  overflow: hidden;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.snow-demo {
+  width: 300px;
+  height: 90%;
+  margin: auto;
+  position: relative;
+  background-image: url(https://gw.alipayobjects.com/zos/rmsportal/dNpuKMDHFEpMGrTxdLVR.jpg);
+  background-position: top;
+  background-size: 100% auto;
+  box-shadow: 0 0 32px rgba(0, 0, 0, 0.15);
+}
+
+.snow {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  overflow: hidden;
+}
+
+.snowChild {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.snowRotate {
+  transform-origin: center center;
+}

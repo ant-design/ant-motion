@@ -1,0 +1,62 @@
+.carousel-demo-wrapper {
+  position: relative;
+  background: #3949C0;
+  background: linear-gradient(45deg, #1e5799 0%,#3949c0 0%,#4e7de4 100%);
+  overflow: hidden;
+  height: 500px;
+}
+
+.carousel-demo {
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-wrapper {
+  position: absolute;
+  width: 250px;
+  height: 300px;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 120px;
+  padding-top: 350px;
+  margin-top: -350px;
+}
+
+.carousel {
+  position: relative;
+  width: 100%;
+  margin: auto;
+  height: 100%;
+}
+
+.carouselContent {
+  transform-style: preserve-3d;
+  width: 100%;
+}
+
+.itemWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-style: preserve-3d;
+  width: 100%;
+}
+
+.itemWrapper .rotateLayer .bgAndBlurLayer {
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+  transition: filter .45s;
+  margin: auto;
+}
+
+.itemWrapper .rotateLayer .bgAndBlurLayer .contentLayer {
+  transition: opacity .65s;
+}
+
+.img-wrapper {
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+}
