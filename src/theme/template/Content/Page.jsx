@@ -223,10 +223,11 @@ class Page extends React.PureComponent {
         {meta.title}
       </a>) : linkToChildren;
     if (isNav) {
+      const className = pathNames[1] === key ? 'active' : '';
       return (
         <li
           key={key}
-          // className={className}
+          className={className}
           disabled={meta.disabled}
           style={{ width: `${100 / length}%` }}
         >
