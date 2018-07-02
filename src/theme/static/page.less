@@ -4,18 +4,19 @@
   margin-top: 64px;
 }
 
-.@{contentPage} {
+.@{contentPage}-wrapper {
   width: 100%;
   overflow: hidden;
   position: relative;
-  &-nav {
+  .@{contentPage}-nav {
     background: #fff;
     box-shadow: 0 1px 0 #EEE;
     overflow: hidden;
     height: 80px;
     position: relative;
     & ul {
-      max-width: 960px;
+      max-width: 1200px;
+      padding: 0 24px;
       margin: auto;
       position: relative;
       & li {
@@ -63,41 +64,29 @@
       }
     }
   }
-  &-wrapper {
-    width: 95%;
+  .@{contentPage} {
+    width: 100%;
     border-radius: 6px;
-    max-width: 1024px;
+    max-width: 1200px;
     min-height: 800px;
-    margin: 60px auto 0;
+    padding: 64px 24px 0;
+    margin: auto;
     position: relative;
-    &>section {
+    & .page-content-wrapper {
+      padding: 0 0 64px 64px;
+      border-left: 1px solid @line-color;
+    }
+    & .page-content {
       position: relative;
-      width: 100%;
-      padding-left: 200px;
-      padding-bottom: 60px;
-      &:before {
-        content: '';
-        display: block;
-        width: 1px;
-        height: 100%;
-        position: absolute;
-        left: 150px;
-        background: @line-color;
-      }
-      & .page-content {
-        position: relative;
-      }
     }
   }
 }
 
 .nav-list {
   &-wrapper {
-    width: 150px;
-    position: absolute;
-    z-index: 1;
-    float: left;
     height: 100%;
+    position: relative;
+    z-index: 1;
     li {
       &[disabled] {
         cursor: not-allowed;
@@ -107,14 +96,14 @@
         }
       }
       a {
-        line-height: 30px;
-        height: 30px;
         display: block;
         font-size: 14px;
-        color: @text-color;
+        // color: @text-color;
+        overflow: hidden;
+        text-overflow: ellipsis;
         transition: color @animate-duration @ease-out;
         &:hover {
-          color: @primary-color;
+          // color: @primary-color;
         }
       }
       &.active a {
@@ -124,25 +113,29 @@
   }
   h2 {
     font-size: 16px;
-    margin-bottom: 10px;
+    margin-bottom: 32px;
+    position: absolute;
+    padding-left: 16px;
+  }
+  >ul {
+    top: 48px;
     position: absolute;
   }
-  ul {
-    top: 30px;
-    position: absolute;
-    >li {
-      overflow: hidden;
-      position: relative;
-      z-index: 1;
-      i {
-        margin-left: 6px;
-        opacity: .67;
-        font-style: normal;
-        font-size: 12px;
-      }
-      >div>ul {
-        margin-left: 16px;
-      }
+  .ant-menu-inline .ant-menu-item,
+  .ant-menu-inline .ant-menu-submenu-title {
+    width: ~"calc(100% + 1px)";
+  }
+  .ant-menu {
+    background: transparent;
+    &.ant-menu-inline {
+      border-right: none;
+    }
+    .ant-menu-item-selected {
+      background-color: transparent;
+    }
+    .ant-menu-item {
+      line-height: 32px;
+      height: 32px;
     }
   }
 }

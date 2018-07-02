@@ -3,15 +3,22 @@ import PropTypes from 'prop-types';
 import { TweenOneGroup } from 'rc-tween-one';
 import QueueAnim from 'rc-queue-anim';
 import { Link } from 'react-router';
-import { Affix } from 'antd';
+import { Affix, Row, Col, Menu } from 'antd';
 import MobileMenu from 'rc-drawer';
 import nav from '../Layout/nav';
-import { scrollClick } from '../utils';
+import { scrollClick, getMenuItems } from '../utils';
+
+const { SubMenu, Item, ItemGroup } = Menu;
 
 const title = {};
 nav.forEach((item) => {
   title[item.key] = item.name;
 });
+
+function fileNameToPath(filename) {
+  const snippets = filename.replace(/(\/index)?((\.zh-CN)|(\.en-US))?\.md$/i, '').split('/');
+  return snippets[snippets.length - 1];
+}
 
 class Page extends React.PureComponent {
   static propTypes = {
@@ -86,11 +93,12 @@ class Page extends React.PureComponent {
     return moduleData;
   };
 
+
   getMenuItems(moduleData, pathNames, isComponent, isNav) {
     if (!moduleData) {
       return null;
     }
-    const splicingListArr = [];
+    /* const splicingListArr = [];
     if (pathNames[0] === 'cases') {
       // { meta: { filename: 'cases/full', english: 'Full', chinese: '完整模板选择', order: 2 } }
       splicingListArr.push({
@@ -99,52 +107,35 @@ class Page extends React.PureComponent {
         },
       });
     }
-    const children = moduleData.concat(splicingListArr).filter(item => !item.meta.hidden)
-      .sort((a, b) => a.meta.order - b.meta.order);
-    return children.map((item, i) => {
-      const meta = item.meta;
-      let link = meta.filename.replace(/(\/index)|(.md)/g, '');
-      const path = Array.isArray(pathNames) ? pathNames.join('/') : pathNames.replace('#', '');
-      const hash = this.state.isHash && this.hash.replace('#', '');
-      const className = hash === meta.id || path === link ||
-        (!hash && ((!path && i === 0) || path === meta.id)) ? 'active' : '';
-      // api 页面，链接把 components 转成 api
-      link = this.props.pathname.match('api') ? link.replace('components', 'api') : link;
-      let linkToChildren = link.split('/')[1] === pathNames[1] ?
-        (<a>
-          {isNav ? meta.chinese : <span>{meta.chinese || meta.english}</span>}
-        </a>) :
-        (<Link to={link}>
-          {isNav ? meta.chinese : <span>{meta.chinese || meta.english}</span>}
-        </Link>);
-      linkToChildren = isComponent ?
-        (<a href={`#${meta.id}`} onClick={this.cScrollClick}>
-          {meta.title}
-        </a>) : linkToChildren;
-      return (<li
-        key={meta.english || meta.chinese || meta.id}
-        className={className}
-        disabled={meta.disabled}
-        style={isNav ? { width: `${100 / children.length}%` } : null}
-      >
-        {linkToChildren}
-      </li>);
-    });
-  }
-
-  getTransitionEnd = () => {
-    const transEndEventNames = {
-      transition: 'transitionend',
-      WebkitTransition: 'webkitTransitionEnd',
-      MozTransition: 'transitionend',
-      OTransition: 'oTransitionEnd otransitionend',
-    };
-    return Object.keys(transEndEventNames).map((name) => {
-      if (typeof document.body.style[name] === 'string') {
-        return transEndEventNames[name];
+    const menuData = getMenuItems(moduleData.concat(splicingListArr)
+      .filter(item => !item.meta.hidden));
+     */
+    const menuData = getMenuItems(moduleData.filter(item => !item.meta.hidden));
+    this.openKeys = [];
+    return menuData.map((menuItem) => {
+      if (!menuItem.children) {
+        return this.generateMenuItem(menuItem, pathNames, isComponent, isNav, menuData.length);
       }
-      return null;
-    }).filter(item => item)[0];
+      this.openKeys.push(menuItem.title);
+      return (
+        <SubMenu title={<h4>{menuItem.title}</h4>} key={menuItem.title}>
+          {menuItem.children.map((child) => {
+            if (child.type === 'type') {
+              return (
+                <ItemGroup title={child.title} key={child.title}>
+                  {child.children.sort((a, b) => a.title.charCodeAt(0) - b.title.charCodeAt(0))
+                    .map(leaf => this.generateMenuItem(
+                      leaf, pathNames,
+                      isComponent, isNav, menuData.length
+                    ))}
+                </ItemGroup>
+              );
+            }
+            return this.generateMenuItem(child, pathNames, isComponent, isNav, menuData.length);
+          })}
+        </SubMenu>
+      );
+    });
   }
 
   getListChildren = (cPathNames, cModuleData, isComponent) => {
@@ -169,6 +160,22 @@ class Page extends React.PureComponent {
 
     const listKey = pathNames[0] === 'components' && !pathname.match('api') ?
       pathname : pathNames[0];
+    const getHashActive = () => {
+      const hashArray = this.hash.replace('#', '').split('-');
+      return hashArray[hashArray.length - 1];
+    };
+    const activeMenuItem = this.state.isHash ? getHashActive() : pathNames[1];
+    const menu = (
+      <Menu
+        key={listKey}
+        inlineIndent="16"
+        mode="inline"
+        defaultOpenKeys={this.openKeys}
+        selectedKeys={[activeMenuItem]}
+      >
+        {listToRender}
+      </Menu>
+    );
     return (!isMobile ? (listToRender && (<Affix offsetTop={60} key="list" className="nav-list-wrapper">
       <QueueAnim
         type={['bottom', 'top']}
@@ -179,9 +186,7 @@ class Page extends React.PureComponent {
         <h2 key={`${pathname.split('/')[0]}-title`}>
           {isComponent ? '范例' : title[pathNames[0]]}
         </h2>
-        <ul key={listKey}>
-          {listToRender}
-        </ul>
+        {menu}
       </QueueAnim>
     </Affix>)) :
       (<MobileMenu >
@@ -190,13 +195,52 @@ class Page extends React.PureComponent {
             <h2 key={`${pathname.split('/')[0]}-title`}>
               {isApi ? 'API' : title[pathNames[0]]}
             </h2>
-            <ul>
-              {listToRender}
-            </ul>
+            {menu}
           </div>
         </div>
       </MobileMenu>
       ));
+  }
+
+  generateMenuItem = (meta, pathNames, isComponent, isNav, length) => {
+    let link = meta.filename.replace(/(\/index)|(.md)/g, '');
+    // const path = Array.isArray(pathNames) ? pathNames.join('/') : pathNames.replace('#', '');
+    // const hash = this.state.isHash && this.hash.replace('#', '');
+    const key = fileNameToPath(meta.filename);
+    /* const className = hash === meta.id || path === link ||
+      (!hash && ((!path && i === 0) || path === meta.id)) ? 'active' : ''; */
+    // api 页面，链接把 components 转成 api
+    link = this.props.pathname.match('api') ? link.replace('components', 'api') : link;
+    let linkToChildren = link.split('/')[1] === pathNames[1] ?
+      (<a>
+        {isNav ? meta.chinese : <span>{meta.chinese || meta.english}</span>}
+      </a>) :
+      (<Link to={link}>
+        {isNav ? meta.chinese : <span>{meta.chinese || meta.english}</span>}
+      </Link>);
+    linkToChildren = isComponent ?
+      (<a href={`#${meta.id}`} onClick={this.cScrollClick}>
+        {meta.title}
+      </a>) : linkToChildren;
+    if (isNav) {
+      return (
+        <li
+          key={key}
+          // className={className}
+          disabled={meta.disabled}
+          style={{ width: `${100 / length}%` }}
+        >
+          {linkToChildren}
+        </li>
+      );
+    }
+    return (<Item
+      key={key}
+      // className={className}
+      disabled={meta.disabled}
+    >
+      {linkToChildren}
+    </Item>);
   }
 
   cScrollClick = (e) => {
@@ -218,7 +262,7 @@ class Page extends React.PureComponent {
       pageData.components[pathNames[1]].index : pageData;
     const childrenToRender = pathname.match('api') ?
       React.cloneElement(children, { pageData: pageDataNew }) : children;
-    return (<div className={className}>
+    return (<div className={`${className}-wrapper`}>
       {!isMobile && (<TweenOneGroup
         enter={{ height: 0, type: 'from', ease: 'easeInOutCubic' }}
         leave={{ height: 0, ease: 'easeInOutCubic' }}
@@ -241,10 +285,20 @@ class Page extends React.PureComponent {
           },
         }}
         leave={{ y: -30, opacity: 0 }}
-        className={`${className}-wrapper`}
+        className={className}
+        component={Row}
       >
-        {listToRender}
-        <section key="content">
+        <Col key="list" lg={4} md={5} sm={0} xs={0}>
+          {listToRender}
+        </Col>
+        <Col
+          lg={20}
+          md={19}
+          sm={24}
+          xs={24}
+          key="content"
+          className={`${className}-content-wrapper`}
+        >
           <TweenOneGroup
             enter={{ y: 30, type: 'from', opacity: 0 }}
             leave={{ y: -30, opacity: 0 }}
@@ -253,10 +307,9 @@ class Page extends React.PureComponent {
           >
             <div key={pathname}>{childrenToRender}</div>
           </TweenOneGroup>
-        </section>
+        </Col>
       </TweenOneGroup>
     </div>);
   }
 }
-
 export default Page;

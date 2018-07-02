@@ -1,6 +1,6 @@
 {
   "name": "ant-motion",
-  "version": "1.5.2",
+  "version": "1.6.0",
   "dependencies": {
     "antd": "~3.6.2",
     "deepcopy": "^0.6.3",
@@ -14,11 +14,11 @@
     "raw-js-loader": "^1.4.0",
     "raw-loader": "^0.5.1",
     "rc-animate": "~2.4.4",
-    "rc-banner-anim": "~1.0.0",
-    "rc-drawer": "^1.2.0",
+    "rc-banner-anim": "~2.0.0",
+    "rc-drawer": "^1.5.0",
     "rc-queue-anim": "~1.6.0",
     "rc-scroll-anim": "~2.5.0",
-    "rc-tween-one": "~2.0.6",
+    "rc-tween-one": "~2.1.0",
     "react": "^16.4.0",
     "react-color": "^2.13.8",
     "react-copy-to-clipboard": "~5.0.0",

@@ -48,8 +48,8 @@ export default class Details extends React.Component {
       title, subtitle, chinese, english,
     } = meta;
     return (<DocumentTitle title={`${subtitle || chinese || ''} ${title || english} - Ant Motion`}>
-      <div className="page">
-        <TweenOne animation={{ y: 30, opacity: 0, type: 'from' }} className="page-wrapper">
+      <div className="page-wrapper">
+        <TweenOne animation={{ y: 30, opacity: 0, type: 'from' }} className="page">
           <article className={`markdown ${className}`}>
             <div className={`${className}-demo`}>
               {!this.state.replay && preview(React, ReactDOM)}

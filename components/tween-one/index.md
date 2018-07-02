@@ -1,5 +1,4 @@
 ---
-category: Components
 chinese: 单元素动画
 order: 0
 english: TweenOne
