@@ -42,3 +42,42 @@ export function scrollClick(e) {
     scrollTo(toTop);
   }
 }
+
+const themeConfig = {
+  categoryOrder: {
+    基本原则: 0,
+    设计语言: 1,
+    动画术语: 2,
+  },
+};
+
+export function getMenuItems(moduleData) {
+  const menuMeta = moduleData.map(item => item.meta);
+  const menuItems = [];
+  const sortFn = (a, b) => (a.order || 0) - (b.order || 0);
+  menuMeta.sort(sortFn).forEach((meta) => {
+    if (!meta.category) {
+      menuItems.push(meta);
+    } else {
+      const category = meta.category;
+      let group = menuItems.filter(i => i.title === category)[0];
+      if (!group) {
+        group = {
+          type: 'category',
+          title: category,
+          children: [],
+          order: themeConfig.categoryOrder[category],
+        };
+        menuItems.push(group);
+      }
+      group.children.push(meta);
+    }
+  });
+  return menuItems.map((i) => {
+    const item = i;
+    if (item.children) {
+      item.children = item.children.sort(sortFn);
+    }
+    return item;
+  }).sort(sortFn);
+}

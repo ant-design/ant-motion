@@ -1,5 +1,4 @@
 ---
-category: Components
 order: 4
 chinese: Banner动画
 english: BannerAnim

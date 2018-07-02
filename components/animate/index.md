@@ -1,5 +1,4 @@
 ---
-category: Components
 order: 1
 chinese: Css样式动画
 english: Animate

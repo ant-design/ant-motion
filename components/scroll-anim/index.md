@@ -1,5 +1,4 @@
 ---
-category: Components
 chinese: 页面滚动动画
 order: 3
 english: ScrollAnim

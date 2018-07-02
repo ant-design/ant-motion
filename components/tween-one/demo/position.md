@@ -4,7 +4,7 @@ title: 基本动画效果
 mouseEnter: true
 ---
 
-鼠标经过或手指按下可查看位移效果。如 x, y, z, scale, rotate, blur, marign等, 更多参数参考 [动画述语里](language/animate-term);
+鼠标经过或手指按下可查看位移效果。如 x, y, z, scale, rotate, blur, marign等, 更多参数参考 [动画术语](language/animate-term);
 
 
 ```jsx

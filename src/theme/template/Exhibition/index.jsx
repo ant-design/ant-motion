@@ -29,8 +29,8 @@ export default class Exhibition extends React.Component {
           <h3>{title}</h3>
         </li>);
       });
-    return (<div className="page">
-      <div className="page-wrapper">
+    return (<div className="page-wrapper">
+      <div className="page">
         <TweenOne
           className={this.props.className}
           component="ul"

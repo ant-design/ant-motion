@@ -110,8 +110,8 @@
       top: 40%;
     }
   }
-  .page {
-    &-text {
+  .page-wrapper {
+    .page-text {
       margin: auto;
     }
     .list-bg {
@@ -129,13 +129,11 @@
         pointer-events: auto;
       }
     }
-    &-wrapper {
-      width: 90%;
-      >section {
+    .page {
+      width: 100%;
+      .page-content-wrapper {
         padding-left: 0;
-        &:before {
-          display: none;
-        }
+        border: none;
       }
     }
   }
@@ -145,12 +143,9 @@
       justify-content: center;
     }
     .nav-list {
-      display: inline-block;
       &-wrapper {
         width: 180px;
         position: relative;
-        float: left;
-        text-align: center;
       }
       h2,
       ul {
@@ -159,17 +154,9 @@
       h2 {
         line-height: 32px;
         margin: 40px auto 20px;
-        i {
-          float: right;
-          line-height: 32px;
-        }
       }
       ul {
         top: 0;
-        li a {
-          height: 36px;
-          line-height: 36px;
-        }
       }
     }
   }
