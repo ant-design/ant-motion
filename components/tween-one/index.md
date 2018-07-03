@@ -183,7 +183,7 @@ TweenOne.plugins.push(BezierPlugin);
 ```jsx
 import ChildrenPlugin from 'rc-tween-one/lib/plugin/ChildrenPlugin';
 TweenOne.plugins.push(ChildrenPlugin);
-<TweenOne aniamtion={{
+<TweenOne animation={{
   Children: { value: 10000, floatLength: 2, formatMoney: true }
 }} />
 ```
