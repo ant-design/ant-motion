@@ -49,8 +49,7 @@ React.render(<TweenOneGroup>
 | onChange       | function             | null    | 全局变动回调                                                                           |
 | moment         | number               | null    | 设置当前时间上的时间，设置完后设回 null                                                |
 | attr           | string               | `style` | `style` or `attr`, `attr` 为替换标签上的属性(attribute). SvgMorphPlugin 必须为 `attr`. |
-| resetStyleBool | boolean              | false   | 更新 animation 数据时，是否重置初始样式。                                              |
-| updateReStart  | boolean              | true    | 每次更新 animation 数据时，是否重新开始动画。                                          |
+| resetStyle     | boolean              | false   | 更新 animation 数据时，是否重置初始样式。                                              |
 | component      | React.Element/String | `div`   | 需要替换的标签                                                                         |
 | componentProps | object               | null    | component 如果是组件，component 组件的 props 写在此处.                                 |
 
@@ -201,13 +200,13 @@ TweenOne.plugins.push(ChildrenPlugin);
 
 ## TweenOneGroup API
 
-| 参数               | 类型                  | 默认                                          | 说明                                                                                                      |
-| ------------------ | --------------------- | --------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
-| appear             | boolean               | true                                          | 元素是否有刚开始的进场动画                                                                                |
-| enter              | object / array / func | { x: 30, opacity: 0, type: 'from' }           | 进场的 tween-one 数据，如果是数组是 tween-one 的 timeline。 func 参照 queue-anim, callbac({ key, index }) |
-| leave              | object / array / func | { x: 30, opacity: 0 }                         | 出场时的数据，同上                                                                                        |
-| onEnd              | func                  | -                                             | 每个动画结束后回调                                                                                        |
-| animatingClassName | array                 | `['tween-one-entering', 'tween-one-leaving']` | 进出场的样式，如果是组件形式，需把 className 带到你的组件里                                               |
-| resetStyleBool     | boolean               | true                                          | 每次动画时是否强制重置样式                                                                                |
-| component          | React.Element/String  | div                                           | 需要替换的标签                                                                                            |
+|   参数   |    类型    |   默认  |  说明   |
+|---------|------------|---------|--------|
+| appear  | boolean    | true    | 元素是否有刚开始的进场动画 |
+| enter   | object / array / func | { x: 30, opacity: 0, type: 'from' } | 进场的 tween-one 数据，如果是数组是 tween-one 的 timeline。 func 参照 queue-anim, callbac({ key, index }) |
+| leave   | object / array / func | { x: 30, opacity: 0 } | 出场时的数据，同上 |
+| onEnd   | func       | -       | 每个动画结束后回调 |
+| animatingClassName | array | `['tween-one-entering', 'tween-one-leaving']` | 进出场的样式，如果是组件形式，需把 className 带到你的组件里 |
+| exclusive | boolean | false | 是否允许在切换时立即执行新的动画。 `enter => leave`：立即执行离开动画 |
+| component | React.Element/String | div | 需要替换的标签 |
 
