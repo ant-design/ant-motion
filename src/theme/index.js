@@ -25,6 +25,7 @@ module.exports = {
       { path: '/api/queue-anim', component: Article },
       { path: '/api/scroll-anim', component: Article },
       { path: '/api/banner-anim', component: Article },
+      { path: '/api/texty', component: Article },
     ],
   },
 };

@@ -95,7 +95,7 @@ class Content extends React.Component {
             key="img"
             animation={imgAnim}
             id={`${props.id}-img`}
-            resetStyleBool
+            resetStyle
           >
             <img src={dataSource[`${name}_img`].children} width="100%" />
           </TweenOne>

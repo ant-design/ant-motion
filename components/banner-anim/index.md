@@ -1,5 +1,5 @@
 ---
-order: 4
+order: 5
 chinese: Banner动画
 english: BannerAnim
 vertical: true

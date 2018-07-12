@@ -1,6 +1,6 @@
 ---
 chinese: 页面滚动动画
-order: 3
+order: 4
 english: ScrollAnim
 vertical: true
 ---

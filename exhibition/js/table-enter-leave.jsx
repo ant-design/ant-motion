@@ -82,9 +82,9 @@ export default class TableEnterLeave extends React.Component {
       },
     ];
     this.currentPage = 1;
-    this.newPage = 1;
     this.state = {
       data: this.data,
+      page: 1,
     };
   }
 
@@ -113,30 +113,31 @@ export default class TableEnterLeave extends React.Component {
     this.setState({ data });
   }
 
-  getBodyWrapper = (body) => {
-    // 切换分页去除动画;
-    if (this.currentPage !== this.newPage) {
-      this.currentPage = this.newPage;
-      return body;
-    }
-    return (
-      <TweenOneGroup
-        component="tbody"
-        className={body.props.className}
-        enter={this.enterAnim}
-        leave={this.leaveAnim}
-        appear={false}
-      >
-        {body.props.children}
-      </TweenOneGroup>
-    );
-  }
-
   pageChange = (pagination) => {
-    this.newPage = pagination.current;
+    this.setState({
+      page: pagination.current,
+    });
   };
 
   render() {
+    const body = {};
+    if (this.state.page !== this.currentPage) {
+      this.currentPage = this.state.page;
+    } else {
+      body.wrapper = props => (
+        <TweenOneGroup
+          component="tbody"
+          {...props}
+          className={props.className}
+          enter={this.enterAnim}
+          leave={this.leaveAnim}
+          appear={false}
+          exclusive
+        >
+          {props.children}
+        </TweenOneGroup>
+      );
+    }
     return (
       <div>
         <div className={`${this.props.className}-wrapper`}>
@@ -180,7 +181,7 @@ export default class TableEnterLeave extends React.Component {
                 pagination={{ pageSize: 4 }}
                 dataSource={this.state.data}
                 className={`${this.props.className}-table`}
-                getBodyWrapper={this.getBodyWrapper}
+                components={{ body }}
                 onChange={this.pageChange}
               />
             </div>

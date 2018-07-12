@@ -41,7 +41,7 @@ class Content extends React.Component {
             animation={animType.one}
             className={`${props.className}-img`}
             id={`${props.id}-imgWrapper`}
-            resetStyleBool
+            resetStyle
           >
             <span id={`${props.id}-img`}>
               <img src={dataSource[`${name}_img`].children} width="100%" />

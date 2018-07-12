@@ -56,14 +56,14 @@ class Item extends React.PureComponent {
       children = React.cloneElement(this.props.children, childProps);
     }
     const animate = this.state.codeHeight && this.state.codeOpen ? {
-      height: this.state.codeHeight,
-    } : this.state.codeHeight && { height: 220 } || {};
+      height: this.state.codeHeight, duration: 300,
+    } : this.state.codeHeight && { height: 220, duration: 300 } || {};
     const styleAnimate = this.state.styleHeight && this.state.codeOpen ? {
-      height: this.state.styleHeight,
-    } : this.state.styleHeight && { height: 220 } || {};
+      height: this.state.styleHeight, duration: 300,
+    } : this.state.styleHeight && { height: 220, duration: 300 } || {};
     const iconAnimate = this.state.codeHeight && this.state.codeOpen ? {
-      rotate: 180, y: -2,
-    } : this.state.codeHeight && { rotate: 0, y: 0 } || {};
+      rotate: 180, y: -2, duration: 300,
+    } : this.state.codeHeight && { rotate: 0, y: 0, duration: 300 } || {};
     return (<li
       className={`${this.props.className}-wrapper ${this.props.vertical ? 'vertical' : ''}`.trim()}
       id={this.props.id}
@@ -87,7 +87,7 @@ class Item extends React.PureComponent {
             className={`${this.props.className}-code-only`}
             style={{ height: this.state.codeHeight ? 220 : null }}
             ref={(c) => { this.code = c; }}
-            animation={animate}
+            animation={this.state.codeHeight > 220 ? animate : null}
           >
             {this.props.code}
           </TweenOne>

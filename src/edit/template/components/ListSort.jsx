@@ -272,7 +272,7 @@ export default class ListSort extends React.Component {
       this.swapIndex = childStyle[this.index].top < this.childStyle[this.index].top ?
         0 : this.index;
       this.swapIndex = childStyle[this.index].top >
-      this.childStyle[this.index].top + this.childStyle[this.index].height ?
+        this.childStyle[this.index].top + this.childStyle[this.index].height ?
         childStyle.length - 1 : this.swapIndex;
 
       const top = childStyle[this.index].top;

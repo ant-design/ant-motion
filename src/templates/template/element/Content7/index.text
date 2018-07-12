@@ -81,7 +81,7 @@ class Content extends React.Component {
             key="img"
             animation={imgAnim}
             id={`${props.id}-img`}
-            resetStyleBool
+            resetStyle
           >
             &content7_img-children&
           </TweenOne>
