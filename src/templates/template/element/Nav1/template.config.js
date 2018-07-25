@@ -55,7 +55,7 @@ export default {
         },
       },
       style: {
-        ...offsetStyle({ height: '63px' }),
+        ...offsetStyle({ height: '64px' }),
         ...textStyle({ color: '#fff', lineHeight: '62px' }),
         ...bgStyle({ color: 'transparent', select: ['backgroundColor'] }),
         '$ .ant-menu-item-active, $ .ant-menu-item-selected, $ .ant-menu-submenu-selected, $ .ant-menu-submenu-active': {
