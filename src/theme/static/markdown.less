@@ -210,7 +210,7 @@ section.markdown {
     width: 100%;
     margin-bottom: 24px;
     & th {
-      background: #ececec;
+      background: rgba(0,0,0,.02);
       white-space: nowrap;
       color: #5C6B77;
       font-weight: 600;
@@ -248,6 +248,53 @@ section.markdown {
       & .ant-steps-title {
         background: transparent;
       }
+    }
+  }
+}
+
+.markdown.api-container table {
+  font-size: @font-size-base;
+  line-height: @line-height-base;
+  font-family: @code-family;
+  border-width: 0;
+  margin: 2em 0;
+  th, td {
+    padding: 14px 16px;
+    border-width: 1px 0;
+    border-color: @border-color-split;
+  }
+  th {
+    border-width: 0 0 2px 0;
+    position: relative;
+  }
+  td {
+    position: relative;
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 1px;
+      height: 8px;
+      bottom: 0;
+      right: 0;
+      background: @border-color-split;
+    }
+  }
+  td:first-child {
+    font-weight: 500;
+    color: @blue-9;
+    
+  }
+  td:nth-child(2) {
+    font-size: @font-size-base - 1px;
+    color: @magenta-7;
+  }
+  td:nth-child(3) {
+    font-size: @font-size-base - 1px;
+  }
+  td:last-child {
+    &:before {
+      display: none;
     }
   }
 }

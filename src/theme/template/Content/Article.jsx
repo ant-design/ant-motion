@@ -34,7 +34,9 @@ class Article extends React.PureComponent {
         {!content ? null :
           props.utils.toReactComponent(['section', { className: 'markdown' }]
             .concat(getChildren(content)))}
-        {api ? props.utils.toReactComponent(api) : null}
+        {api ? props.utils.toReactComponent(['section', {
+            className: 'markdown api-container',
+          }].concat(getChildren(api))) : null}
       </article>
     </DocumentTitle>);
   }
