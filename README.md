@@ -8,9 +8,7 @@
 
 Animation specification and components of Ant Design.
 
-[中文 README](https://github.com/ant-design/ant-motion/blob/master/README.cn.md)
-
-[国内镜象](http://ant-motion.gitee.io/);
+[中文 README](https://github.com/ant-design/ant-motion/blob/master/README.cn.md) | [国内镜像](http://ant-motion.gitee.io/)
 
 ## What is Ant Motion?
 
