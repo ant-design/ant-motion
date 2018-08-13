@@ -339,6 +339,7 @@ ReactDOM.render(
   width: 110px;
   height: 76px;
   position: absolute;
+  z-index: 0;
 }
 
 .pic-details-demo-image-box-shadow {
