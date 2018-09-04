@@ -144,7 +144,7 @@ scrollScreen.unMount();
 |   参数   |    类型    |   默认  |  说明   |
 |---------|------------|---------|--------|
 | to | string | null | 必需; 指定元素到达顶部; `Element` `Parallax` `OverPack`的 id 值 |
-| toHash | boolean  | true  | 默认将 `to` 里的值添加到 url 链接; |
+| toHash | boolean  | false  | 默认将 `to` 里的值添加到 url 链接; |
 | duration | number | 450 | 滚动动画的时间 |
 | ease |  string | `easeInQutQuad` | 动画缓动参数 |
 | active | string | `active` | 选中时的样式 |
