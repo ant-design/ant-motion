@@ -46,7 +46,7 @@ english: animate term
 
 |     参数名称       |    	说明     |
 |-------------------|---------------------|
-|   translateX / X  | `{ translateX: 10 } or { x: 10 } => transform: translateX(10px)`, x 方向的位置移动 10px |
+|   translateX / x  | `{ translateX: 10 } or { x: 10 } => transform: translateX(10px)`, x 方向的位置移动 10px |
 |   translateY / y  | `{ translateY: 10 } or { y: 10 } => transform: translateY(10px)`, y 方向的位置移动 10px |
 |   translateZ / z  | `{ translateZ: 10 } or { z: 10 } => transform: translateZ(10px)`, z 方向的位置移动 10px |
 |   rotate          | `{ rotate: 10 } => transform: rotate(10deg)` 元素以 transformOrigin 的中心点旋转 10deg |

@@ -34,7 +34,10 @@ class Demo extends React.Component {
     const { value, formatMoney } = this.state;
     this.setState({
       animation: {
-        Children: { value: value || 10000, floatLength: 2, formatMoney, }, 
+        Children: { 
+          value: typeof value === 'number' ? value : 10000,floatLength: 2,
+          formatMoney, 
+        }, 
         duration: 1000,
       }
     })
