@@ -18,7 +18,7 @@ class Demo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: 0,
+      value: 10000,
       animation: null,
       formatMoney: false,
     };
@@ -69,7 +69,7 @@ class Demo extends React.Component {
             0
           </TweenOne>
           <InputNumber 
-            defaultValue={this.state.value || 10000}
+            defaultValue={this.state.value}
             onChange={this.onChange}
           />
           <Checkbox style={{ margin: '0 16px' }} onChange={this.onChangeMoney}> to money</Checkbox>
