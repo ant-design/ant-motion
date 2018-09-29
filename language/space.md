@@ -1,32 +1,41 @@
 ---
-order: 2
-chinese: 层级空间
+order: 3
+chinese: 空间
 english: Space
-category: 设计语言
 ---
 
-现实空间里，物体存在远小近大的原则，运动则有远慢近快；例如汽车在公路上行驶，离汽车越近的物体，移动速度越接近汽车的速率。所以以汽车点为X轴原点，那离原点越远Z轴越大时，速度就越慢。
+现实空间里，物体存在远小近大的原则，运动则有远慢近快。在动效设计时，在处理和空间相关的话题时，我们需要考虑两方面的因素：
 
-那么动效设计中同样存在这个原则，Z轴向的空间距离来影响动画效果，可以使用时间的快慢或幅度的大小来体现。
+- **视差：**例如汽车在公路上行驶，离汽车越近的物体，移动速度越接近汽车的速率。以行进中的汽车为例，汽车所在的点为 X 轴的基准点，那离基准点越远 时，速度就越慢。动效设计中同样存在这个原则，元素的空间距离会影响动画效果，从而影响动效设计的决策。
+- **大小：**遵循远处的物体小，近处的物体大的原则。
+
 
 ## 空间示意图
 
-<img src="https://zos.alipayobjects.com/rmsportal/wjBQyXjKSMqJJlf.png" width="100%" class="content-img"/>
+<img src="https://zos.alipayobjects.com/rmsportal/wjBQyXjKSMqJJlf.png" width="80%" class="content-img"/>
 
-## 层级与时间
 
-以下时间为示例，组件动画时间按比例递增。
+## 视差
 
-<img src="https://zos.alipayobjects.com/rmsportal/bVutyJfjzrRzFaV.jpg" width="100%" class="content-img"/>
-
-## banner视差示意图
-
-如果 banner 里加入跟随鼠标移动,加入空间层次，有效的给每层元素不同的参数，就能摸拟现实的视差效果。
+在下面这个案例中，考虑动效设计时，首先应将界面中涉及到动画的元素进行分层，为界面中不同的元素假设不同的距离。而鼠标所在位置作为基准点。建立了这样的空间层次之后，在有效的给每层元素赋予不同的参数，就能摸拟自然的视差效果。
 
 <img src="https://zos.alipayobjects.com/rmsportal/IIelDRtkjpRAuvX.png" width="100%" class="content-img"/>
 
 ### 动态效果
 
-此效果由 banner-anim 实现。
+以距离的差距来体现视差。
 
 <video src="https://gw.alipayobjects.com/os/rmsportal/EvKNxwOYRGHOqkvwzQGi.mp4" loop="true" class="video"/>
+
+<br/>
+
+
+以时间的差距来体现视差，详细查看动效展示里的[详细说明切换](/exhibition/demo/detail-switch)。
+
+<video src="https://gw.alipayobjects.com/os/rmsportal/GLOykZbKTlTDpzNDwNOq.mp4" loop="true" class="video"/>
+
+## 大小
+
+在下面这个案例中，有两层抽屉式的的界面展开，遵循远小近大的原则，在当近处层级出现时，底部的层级做适当的缩小，体现出空间感。
+
+<video src="https://gw.alipayobjects.com/os/rmsportal/qpTkwUkpOmlbaEVuHDgj.mp4" loop="true" class="video"/>

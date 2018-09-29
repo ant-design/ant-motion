@@ -263,6 +263,7 @@ class Page extends React.PureComponent {
       pageData.components[pathNames[1]].index : pageData;
     const childrenToRender = pathname.match('api') ?
       React.cloneElement(children, { pageData: pageDataNew }) : children;
+    console.log(pathname);
     return (<div className={`${className}-wrapper`}>
       {!isMobile && (<TweenOneGroup
         enter={{ height: 0, type: 'from', ease: 'easeInOutCubic' }}
