@@ -44,9 +44,8 @@ export function scrollClick(e) {
 
 const themeConfig = {
   categoryOrder: {
-    基本原则: 0,
-    设计语言: 1,
-    动画术语: 2,
+    设计原则: 0,
+    动效参数: 5,
   },
 };
 

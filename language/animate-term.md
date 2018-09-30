@@ -2,6 +2,7 @@
 order: 6
 chinese: 动画术语
 english: animate term
+category: 动效参数
 ---
 
 ## 动画基本参数术语说明
@@ -69,5 +70,9 @@ english: animate term
 |   contrast        | `{ contrast: 2 }` 对比度到 200% |
 |   saturate        | `{ saturate: 2 }` 饱和度到 200% |
 |   blur            | `{ blur: '20px' }` 模糊到 20px |
+
+## svg 参数
+
+任何数值为 number 的参数，此处不添加表格，如有需求可查看 [svg 教程](https://developer.mozilla.org/zh-CN/docs/Web/SVG/Tutorial)；
 
 > 以上为 tween-one 里的动画可支持参数，如有其它样式可动画或以上有误，烦请 PR 来修改。。
