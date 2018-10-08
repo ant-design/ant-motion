@@ -106,11 +106,11 @@ scrollScreen.unMount();
 | onChange | func    | null  | 变更回调; callback({ mode, id }); mode 为 `enter` 或 `leave` 两种状态 |
 | onScroll | func     | null | 滚动回调; callback({ domEvent, scrollTop, offsetTop, showHeight, id}); |
 | location | string   | null  | 定位到父级元素, 必须为 id； |
-
+| componentProps | object | - | 如果 `component` 为组件类型，组件的 props; |
 
 ### OverPack 说明
 
-> `OverPack` 继承 `Element`, `component`,`playScale`, `replay`, `onChange`, `onScroll` 参考 `Element`
+> `OverPack` 继承 `Element`, `component`, `componentProps`,`playScale`, `replay`, `onChange`, `onScroll` 参考 `Element`
 
 > 1.0.0 之后删除 `hideProps`;
 
@@ -127,6 +127,7 @@ scrollScreen.unMount();
 | always | boolean | true | 同上，重复播放 |
 | targetId | string | null | 参考 `Element` 的 `targetId` |
 | component | string | div | 同上 |
+| componentProps | object | - | 同上 |
 
 #### animation 为 object 时
 |   参数   |    类型    |   默认  |  说明   |
@@ -154,8 +155,8 @@ scrollScreen.unMount();
 | targetId | string | null | 参考 `Element` 的 `targetId` |
 | onFocus | function | - | 选中时的回调, 返回参数 { target, to } |
 | onBlur | function | - |失去焦点时回调, 返回参数 { target, to } |
-| onAsynchronousAddEvent | func | -  | 异步添加 `scroll` 事件接口, callback(func); [详细参考](http://react-component.github.io/scroll-anim/examples/linkAsynchronous.html)
 | component |string | div | 同上 |
+| componentProps | object | - | 同上 |
 
 ## scrollScreen 说明
 
