@@ -173,7 +173,7 @@ scrollScreen.unMount();
 |---------|------------|---------|--------|
 | duration  | number         | 450     | 滚动一段的时间   |
 | ease      | string         | `easeInOutQuad` | 动画缓动 |
-| docHeight | number         | null    | 如果设置了 body 或 html 的 height: 100% 时, 页面高度无法获取, 需要自已定义; 为 null 时用的是html的高度 |
+| docHeight | number         | null    | 自已定义页面高度 |
 | loop      | boolean        | false   | 前后相接循环  |
 | scrollInterval | number    | 1000    | 滚动事件间隔时间 |
 
