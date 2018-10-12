@@ -207,6 +207,6 @@ TweenOne.plugins.push(ChildrenPlugin);
 | leave   | object / array / func | { x: 30, opacity: 0 } | 出场时的数据，同上 |
 | onEnd   | func       | -       | 每个动画结束后回调 |
 | animatingClassName | array | `['tween-one-entering', 'tween-one-leaving']` | 进出场的样式，如果是组件形式，需把 className 带到你的组件里 |
-| resetStyle  | boolean  | true   | 更新 animation 数据时，是否重置初始样式。   |
+| resetStyle  | boolean  | true   | TweenOne 的 `resetStyle`, 切换动画时重置初始样式。   |
 | exclusive | boolean | false | 是否允许在切换时立即执行新的动画。 `enter => leave`：立即执行离开动画 |
 | component | React.Element/String | div | 需要替换的标签 |
