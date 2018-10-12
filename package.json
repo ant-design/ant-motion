@@ -19,7 +19,7 @@
     "rc-queue-anim": "~1.6.0",
     "rc-scroll-anim": "~2.5.0",
     "rc-texty": "^0.1.0",
-    "rc-tween-one": "~2.2.0",
+    "rc-tween-one": "~2.2.12",
     "react": "^16.4.0",
     "react-color": "^2.13.8",
     "react-copy-to-clipboard": "~5.0.0",
