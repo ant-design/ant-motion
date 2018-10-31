@@ -48,6 +48,12 @@ class ComponentDoc extends React.PureComponent {
   render() {
     const props = this.props;
     const { pageData } = props;
+    if (!pageData) {
+      return (<div>
+        <h1>你要找的页面不存在！！！</h1>
+        <a href="/">返回首页</a>
+      </div>);
+    }
     const demosToChild = Object.keys(pageData.demo).map(key => pageData.demo[key])
       .filter(item => !item.meta.hidden)
       .sort((a, b) => a.meta.order - b.meta.order)

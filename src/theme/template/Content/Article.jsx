@@ -7,6 +7,12 @@ class Article extends React.PureComponent {
   render() {
     const props = this.props;
     const pageData = props.pageData;
+    if (!pageData) {
+      return (<div>
+        <h1>你要找的页面不存在！！！</h1>
+        <a href="/">返回首页</a>
+      </div>);
+    }
     const {
       meta, content, toc, api,
     } = pageData;
