@@ -46,7 +46,7 @@ class Edit extends React.Component {
       duration: 0,
       placement: 'bottomLeft',
     };
-    notification.warning(args);
+    notification.info(args);
 
     $('#preview').load(() => {
       this.setState({

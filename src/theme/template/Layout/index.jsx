@@ -47,7 +47,7 @@ class Index extends React.PureComponent {
       duration: 0,
       placement: 'bottomLeft',
     };
-    notification.warning(args);
+    notification.info(args);
   }
 
   onChange = (e) => {
