@@ -41,6 +41,11 @@ function Footer() {
                 移动端
               </div>
               <div>
+                <a target="_blank" rel="noopener noreferrer" href="https://landing.ant.design/">Ant Design Landing</a>
+                <span> - </span>
+                首页模板
+              </div>
+              <div>
                 <a target="_blank" rel="noopener noreferrer" href="https://github.com/dvajs/dva">dva</a>
                 <span> - </span>
                 应用框架

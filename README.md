@@ -55,11 +55,15 @@ Ant Motion is an abstraction interface mainly intended to enhance the comfortnes
 
 ## Landing page solution
 
+Landing Formally launched, [more](https://landing.ant.design). 🎉🎉🎉
+
 This is based on the Ant Motion React components to follow with the design specifications of Ant Design to complete the demo page, you can quickly and flexibly configure the page template you want.
 
 It provides a single-element example and a full-page example after configuration.
 
 [ant-motion-dva-cli-example](https://github.com/ant-motion/ant-motion-dva-cli-example)
+
+[umi-example](https://github.com/ant-motion/landing-umi-example)
 
 [More details](http://t.cn/RIGA89W)
 

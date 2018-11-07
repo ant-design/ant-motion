@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Modal } from 'antd';
+import { Modal, notification } from 'antd';
 import NavController from './components/NavController';
 import ContentController from './components/ContentController';
 import EditStateController from './components/EditStateController';
@@ -30,6 +30,24 @@ class Edit extends React.Component {
   }
 
   componentDidMount() {
+    const args = {
+      message: '编辑器下线通知',
+      description: (
+        <div>
+          <a href="https://landing.ant.design">Ant Deisng Landing</a>
+          {' '}
+          测试版已经上线，本网站的模板编辑系统将会下线，请移至
+          {' '}
+          <a href="https://landing.ant.design">Ant Deisng Landing</a>
+          {' '}
+          重新编辑你的网页。
+        </div>
+      ),
+      duration: 0,
+      placement: 'bottomLeft',
+    };
+    notification.warning(args);
+
     $('#preview').load(() => {
       this.setState({
         iframeHeight: $('#preview').contents().height(),
