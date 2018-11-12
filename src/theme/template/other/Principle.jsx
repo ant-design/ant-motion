@@ -11,7 +11,7 @@ const text = [
 export default class Principle extends React.Component {
   render() {
     const childrenToRender = text.map(item => (
-      <Col key={item.title} span={8} >
+      <Col key={item.title} sm={24} md={8} >
         <div className="principle">
           <div><img src={item.img} width="80%" /></div>
           <h4>{item.title}</h4>
@@ -20,7 +20,7 @@ export default class Principle extends React.Component {
       </Col>
     ));
     return (
-      <Row gutter={32} className="principle-wrapper">
+      <Row gutter={{ md: 32, sm: 0 }} className="principle-wrapper">
         {childrenToRender}
       </Row>
     );

@@ -44,7 +44,7 @@ english: Speed
 比如：一秒有30帧的动画，那么这动画就是由 30 张图片组成，只是每张图片里的元素指定的参数不同, 如下图:
 
 <div style="text-align: center; margin: 32px 0">
-  <img src="https://gw.alipayobjects.com/zos/rmsportal/eZpnsUOxqIQZrAVEgbPC.png" width="450">
+  <img src="https://gw.alipayobjects.com/zos/rmsportal/eZpnsUOxqIQZrAVEgbPC.png" width="100%" style="max-width: 450px">
   <p>线性动画结构图（适合于机械或环状运动）</p>
 </div>
 
@@ -53,7 +53,7 @@ english: Speed
 结合自然运动的规律，那物体运动在时间栅格中具有不同运动速率和出场，动画停止与启动都不是瞬间完成的，当物体突然移动或停止，会显的很不自然，因它需要一段缓冲的时间来加速或减速，如下图： 
 
 <div style="text-align: center; margin: 32px 0">
-  <img src="https://gw.alipayobjects.com/zos/rmsportal/kbTlqDaubwgsBKFNoyGF.png" width="450">
+  <img src="https://gw.alipayobjects.com/zos/rmsportal/kbTlqDaubwgsBKFNoyGF.png" width="100%" style="max-width: 450px">
   <p>前后缓动动画结构图（自动的运动结构）</p>
 </div>
 
