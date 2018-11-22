@@ -54,7 +54,7 @@ english: Speed
 
 <div style="text-align: center; margin: 32px 0">
   <img src="https://gw.alipayobjects.com/zos/rmsportal/kbTlqDaubwgsBKFNoyGF.png" width="100%" style="max-width: 450px">
-  <p>前后缓动动画结构图（自动的运动结构）</p>
+  <p>前后缓动动画结构图（自然的运动结构）</p>
 </div>
 
 <div>
