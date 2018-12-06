@@ -4,11 +4,19 @@
   </a>
 </p>
 
-# Ant Motion
+<h1 align="center">Ant Motion</h1> 
 
+<div align="center">
+  
 Animation specification and components of Ant Design.
 
-[中文 README](https://github.com/ant-design/ant-motion/blob/master/README.cn.md) | [国内镜像](http://ant-motion.gitee.io/)
+[![Dependencies](https://img.shields.io/david/ant-design/ant-motion.svg)](https://david-dm.org/ant-design/ant-motion)
+[![DevDependencies](https://img.shields.io/david/dev/ant-design/ant-motion.svg)](https://david-dm.org/ant-design/ant-motion?type=dev)
+
+</div>
+
+
+<div align="center"><a href="./README.cn.md">中文 README</a> | <a href="http://ant-motion.gitee.io/">国内镜像</a></div>
 
 ## What is Ant Motion?
 
