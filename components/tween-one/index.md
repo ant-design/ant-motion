@@ -57,20 +57,20 @@ React.render(<TweenOneGroup>
 
 > 基本动画参数请查看[动画术语](/language/animate-term);
 
-| 参数        | 类型               | 默认            | 说明                                                                                                          |
-| ----------- | ------------------ | --------------- | ------------------------------------------------------------------------------------------------------------- |
-| type        | string             | `to`            | 播放类型，`to` 为正常播放， `from` 反向播放                                                                   |
-| duration    | number             | 450             | 动画时间                                                                                                      |
-| delay       | number             | 0               | 动画延时                                                                                                      |
-| repeat      | number             | 0               | 重复次数，-1 为无限重复播放                                                                                   |
-| repeatDelay | number             | 0               | 每次重复播放开始时延时                                                                                        |
-| appearTo    | number             | null            | 添加到时间轴的某个时间段                                                                                      |
-| yoyo        | boolean            | false           | 重复时执行返回动画，如抽屉开关。                                                                              |
+| 参数        | 类型               | 默认            | 说明                                             |
+| ----------- | ------------------ | --------------- | ---------------------------------------------- |
+| type        | string             | `to`            | 播放类型，`to` 为正常播放， `from` 反向播放, `set` 相同于 duration 等于 0, 直接到值. |
+| duration    | number             | 450             | 动画时间|
+| delay       | number             | 0               | 动画延时|
+| repeat      | number             | 0               | 重复次数，-1 为无限重复播放|
+| repeatDelay | number             | 0               | 每次重复播放开始时延时 |
+| appearTo    | number             | null            | 添加到时间轴的某个时间段|
+| yoyo        | boolean            | false           | 重复时执行返回动画，如抽屉开关。|
 | ease        | string ／ function | `easeInOutQuad` | 缓动参数. [参数名称参考](http://easings.net/zh-cn); <br/>function: TweenOne.easing.path(path, param) 详细如下 |
-| onStart     | function           | null            | 动画开始时回调, callback(e), e: { index, target }                                                             |
-| onUpdate    | function           | null            | 动画更新时回调, callback(e), e: { index, target, ratio }                                                      |
-| onComplete  | function           | null            | 动画结束时回调, callback(e), e: { index, target }                                                             |
-| onRepeat    | function           | null            | 每次动画重复时回调, callback(e), e: { index, target }                                                         |
+| onStart     | function           | null            | 动画开始时回调, callback(e), e: { index, target }|
+| onUpdate    | function           | null            | 动画更新时回调, callback(e), e: { index, target, ratio }|
+| onComplete  | function           | null            | 动画结束时回调, callback(e), e: { index, target }|
+| onRepeat    | function           | null            | 每次动画重复时回调, callback(e), e: { index, target }|
 
 - 插件参数参考下面插件的写法。 如 bezier, SVGDraw, path, Children 等。 
 
