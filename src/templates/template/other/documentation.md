@@ -78,4 +78,4 @@ npm install babel-plugin-import --save-dev;
       }, 500);
     }
 ```
-> 如有 scrollScreen, 在删除以上时把 esle 的全屏滚动提出
+> 如有 scrollScreen, 在删除以上时把 else 的全屏滚动提出
