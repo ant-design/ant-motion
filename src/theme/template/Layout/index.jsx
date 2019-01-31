@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
-import { notification } from 'antd';
 import TweenOne from 'rc-tween-one';
 import { enquireScreen } from 'enquire-js';
 import Header from './Header';
@@ -31,23 +30,6 @@ class Index extends React.PureComponent {
         isMobile: !!b,
       });
     });
-    const args = {
-      message: '编辑器下线通知',
-      description: (
-        <div>
-          <a href="https://landing.ant.design">Ant Design Landing</a>
-          {' '}
-          测试版已经上线，本网站的模板编辑系统将会下线，请移至
-          {' '}
-          <a href="https://landing.ant.design">Ant Design Landing</a>
-          {' '}
-          重新编辑你的网页。
-        </div>
-      ),
-      duration: 0,
-      placement: 'bottomLeft',
-    };
-    notification.info(args);
   }
 
   onChange = (e) => {

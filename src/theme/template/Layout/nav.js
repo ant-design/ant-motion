@@ -1,12 +1,6 @@
 /**
  * Created by jljsj on 16/8/18.
  */
-const location = window.location;
-const protocol = location.protocol;
-const isLocalMode = location.port;
-const port = isLocalMode ? ':8112' : '';
-const mainPath = isLocalMode ? '' : '/edit';
-const href = `${protocol}//${location.hostname}${port}${mainPath}`;
 
 export default [
   { name: '动效展示', href: '/exhibition/', key: 'exhibition' },
@@ -15,7 +9,7 @@ export default [
   { name: 'API', href: '/api/tween-one', key: 'api' },
   {
     name: '动效模板',
-    href: `${href}/#t%3Dnav_0_0%2Ccontent_0_0%2Ccontent_2_0%2Ccontent_3_0%2Ccontent_4_0%2Cfooter_0_0`,
+    href: 'https://landing.ant.design',
     key: 'cases',
     open: true,
   },

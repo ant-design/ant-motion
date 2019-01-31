@@ -65,7 +65,7 @@ export default class Banner extends React.PureComponent {
             </Link>
             <a
               className={`${this.props.className}-text-button template`}
-              href="/edit#t%3Dnav_0_0%2Ccontent_0_0%2Ccontent_2_0%2Ccontent_3_0%2Ccontent_4_0%2Cfooter_0_0"
+              href="https://landing.ant.design/edit/"
               target="_blank"
             >
               快速搭建<i />
