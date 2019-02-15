@@ -14,7 +14,7 @@ ListSort 组件地址： [地址](https://github.com/ant-design/ant-motion/blob/
 ```jsx
 import Icon from 'antd/lib/icon';
 import PropTypes from 'prop-types';
-import ListSort from '../../src/edit/template/components/ListSort';
+import ListSort from '../../site/theme/template/other/ListSort';
 
 const dataArray = [
   {

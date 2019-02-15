@@ -1,0 +1,47 @@
+@import 'custom';
+
+@exhibition: exhibition-list;
+.@{exhibition} {
+  & > li {
+    width: 45%;
+    display: inline-block;
+    text-align: center;
+    margin-bottom: 40px;
+    &:nth-child(2n) {
+      margin-left: 10%;
+    }
+    & a, & a img {
+      display: block;
+    }
+    & h3 {
+      line-height: 42px;
+      color: @title-color-exhibition;
+      background: @page-bg-color;
+    }
+    .page-pro();
+    border: none;
+    border-radius: 0;
+  }
+}
+
+@details: exhibition-details;
+.@{details} {
+  margin-bottom: 60px;
+  &-demo {
+    margin-bottom: 40px;
+  }
+  .replay-button {
+    float: right;
+    margin: -85px 10px;
+    position: relative;
+    bottom: 0;
+    right: 0;
+  }
+  & > pre {
+    max-height: 600px;
+    overflow: auto;
+  }
+  & h3 {
+    margin: 1em 0 .6em 0;
+  }
+}

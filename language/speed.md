@@ -70,7 +70,7 @@ english: Speed
 > 需要注意：如果在可视窗口中消失的，属于点到点之间的运动，建议使用前后缓动，同理可视窗口中出现也一样。
 
 ```__react
-import EaseExplain from '../src/theme/template/other/EaseExplain';
+import EaseExplain from '../site/theme/template/other/EaseExplain';
 ReactDOM.render(<EaseExplain
   animation={{
     left: 410, duration: 1000, repeat: -1,
@@ -84,7 +84,7 @@ ReactDOM.render(<EaseExplain
 ```
 
 ```__react
-import EaseExplain from '../src/theme/template/other/EaseExplain';
+import EaseExplain from '../site/theme/template/other/EaseExplain';
 ReactDOM.render(<EaseExplain
   title="2.单物体可视范围外进场的运动"
   leftHide
@@ -97,7 +97,7 @@ ReactDOM.render(<EaseExplain
 ```
 
 ```__react
-import EaseExplain from '../src/theme/template/other/EaseExplain';
+import EaseExplain from '../site/theme/template/other/EaseExplain';
 ReactDOM.render(<EaseExplain
   title="3.单物体可视范围内出场的运动"
   rightHide

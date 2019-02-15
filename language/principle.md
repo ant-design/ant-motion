@@ -9,7 +9,7 @@ english: Principle
 <br/>
 
 ```__react
-import Principle from '../src/theme/template/other/Principle';
+import Principle from '../site/theme/template/other/Principle';
 ReactDOM.render(<Principle />, mountNode);
 ```
 
