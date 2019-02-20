@@ -1,8 +1,9 @@
 ---
-chinese: 页面滚动动画
 order: 4
-english: ScrollAnim
 vertical: true
+title: 
+  zh-CN: 页面滚动动画
+  en-US: ScrollAnim
 ---
 
 通过简单的配置，对页面里的元素添加随滚动条滚动的动画。具体参数请参见 [API](/api/scroll-anim)

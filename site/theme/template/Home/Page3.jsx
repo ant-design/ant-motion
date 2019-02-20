@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
 import QueueAnim from 'rc-queue-anim';
-
+import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router';
 
 export default class Page3 extends React.PureComponent {
@@ -29,17 +29,17 @@ export default class Page3 extends React.PureComponent {
             type="bottom"
             leaveReverse
           >
-            <h1 key="h1">为产品添加有趣的动效</h1>
+            <h1 key="h1"><FormattedMessage id="app.home.page3.title" /></h1>
             <p key="p">
-              通过更友好的交互方式，让动化效果穿梭在不同的元素之间，
-              <br />
-              让产品能够更好的和用户对话。
+              <FormattedMessage id="app.home.page3.content" />
             </p>
             <div
               key="a"
               className="home-button"
             >
-              <Link to="/api/tween-one" onClick={this.props.onButtonClick}>快速上手</Link>
+              <Link to="/api/tween-one" onClick={this.props.onButtonClick}>
+                <FormattedMessage id="app.home.page3.button" />
+              </Link>
             </div>
           </QueueAnim>
         </OverPack>

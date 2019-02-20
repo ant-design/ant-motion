@@ -1,7 +1,8 @@
 ---
 order: 1
-chinese: 原则
-english: Principle
+title:
+  zh-CN: 原则
+  en-US: Principle
 ---
 
 在企业级应用的产品设计中，使用动效和前台类产品有很大的不同，助力交互行为和增强信息认知显得尤为重要，在 ant design 设计价值观的基础之上，我们衍生出动效设计的三原则：

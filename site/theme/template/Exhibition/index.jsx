@@ -2,26 +2,33 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TweenOne from 'rc-tween-one';
 import DocumentTitle from 'react-document-title';
+import { injectIntl } from 'react-intl';
 import { Link } from 'react-router';
+import * as utils from '../utils';
 
-export default class Exhibition extends React.Component {
+class Exhibition extends React.Component {
   static propTypes = {
     className: PropTypes.string,
-    pageData: PropTypes.object,
+    localizedPageData: PropTypes.object,
   };
 
   static defaultProps = {
     className: 'exhibition-list',
   };
 
+  static contextTypes = {
+    intl: PropTypes.object,
+  };
+
   render() {
-    const demo = this.props.pageData.demo;
+    const { locale } = this.context.intl;
+    const demo = this.props.localizedPageData;
     const listChildren = Object.keys(demo).map(key => demo[key])
       .sort((a, b) => b.meta.order - a.meta.order)
       .map((item) => {
         const img = item.meta.image;
-        const link = item.meta.filename.replace(/(\/index)|(.md)/g, '');
-        const title = item.meta.chinese || item.meta.english;
+        const link = utils.getLocalizedPathname(item.meta.filename.replace(/(\/index)|(.md)/g, ''), locale === 'zh-CN');
+        const title = item.meta.title[locale];
         return (
           <li key={link}>
             <Link to={link}>
@@ -47,3 +54,5 @@ export default class Exhibition extends React.Component {
     );
   }
 }
+
+export default injectIntl(Exhibition);

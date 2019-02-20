@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import DocumentTitle from 'react-document-title';
+import { Alert } from 'antd';
 import DemoLayout, { Item } from './DemoLayout';
 
 class ComponentDoc extends React.PureComponent {
@@ -46,8 +47,10 @@ class ComponentDoc extends React.PureComponent {
   };
 
   render() {
-    const props = this.props;
-    const { pageData } = props;
+    const { ...props } = this.props;
+    const { pageData, demos } = props;
+    const { locale } = props.intl;
+    const isZhCN = locale === 'zh-CN';
     if (!pageData) {
       return (
         <div>
@@ -56,21 +59,21 @@ class ComponentDoc extends React.PureComponent {
         </div>
       );
     }
-    const demosToChild = Object.keys(pageData.demo).map(key => pageData.demo[key])
+    const demosToChild = Object.keys(demos).map(key => demos[key])
       .filter(item => !item.meta.hidden)
       .sort((a, b) => a.meta.order - b.meta.order)
       .map((item, i) => {
-        const content = props.utils.toReactComponent(['div'].concat(item.content));
+        const content = props.utils.toReactComponent(['div'].concat(item.content[locale] || item.content));
         const comp = item.preview;
         return (
           <Item
             vertical={item.meta.vertical}
-            title={item.meta.title}
+            title={item.meta.title[locale] || item.meta.title}
             content={content}
             code={props.utils.toReactComponent(item.highlightedCode)}
             styleCode={item.highlightedStyle
               ? props.utils.toReactComponent(item.highlightedStyle) : null
-          }
+            }
             mouseEnter={item.meta.mouseEnter}
             cStyle={item.style || null}
             key={i.toString()}
@@ -80,17 +83,34 @@ class ComponentDoc extends React.PureComponent {
           </Item>
         );
       });
-    const { meta, description } = pageData.index;
+    const { meta, description } = pageData;
     const {
-      title, subtitle, chinese, english,
+      title, subtitle,
     } = meta;
     this.demoIds = demosToChild.map(item => item.props.id);
+
+    const isNotTranslated = locale === 'en-US' && typeof title === 'object';
     return (
-      <DocumentTitle title={`${subtitle || chinese || ''} ${title || english} - Ant Motion`}>
+      <DocumentTitle title={` ${subtitle || title[locale] || title} - Ant Motion`}>
         <article className="markdown">
+          {isNotTranslated && (
+            <Alert
+              type="warning"
+              message={(
+                <span>
+                  This article has not been translated yet. Wan&apos;t to help us out?
+                  {' '}
+                  <a href="https://github.com/ant-design/ant-motion/issues/204">
+                    See this issue on GitHub.
+                  </a>
+                </span>
+              )}
+              style={{ marginBottom: 24 }}
+            />
+          )}
           <h1>
-            {title || english}
-            <i>{subtitle || chinese}</i>
+            {isZhCN ? subtitle || title['en-US'] || title : subtitle || title[locale] || title}
+            {isZhCN && <i>{title['zh-CN'] || ''}</i>}
             <iframe
               key="github-btn"
               src={`https://ghbtns.com/github-btn.html?user=react-component&repo=${

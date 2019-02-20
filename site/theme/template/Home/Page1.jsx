@@ -4,6 +4,7 @@ import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
 import QueueAnim from 'rc-queue-anim';
 import TweenOne from 'rc-tween-one';
 import { Link } from 'react-router';
+import { FormattedMessage } from 'react-intl';
 import CoderDemo from './CodeDemo';
 
 export default class Page1 extends React.PureComponent {
@@ -31,9 +32,9 @@ export default class Page1 extends React.PureComponent {
           id="page1"
         >
           <QueueAnim className="page-text" key="text" type="bottom" leaveReverse delay={100}>
-            <h1 key="h1">AntMotion 让动效更简单</h1>
+            <h1 key="h1"><FormattedMessage id="app.home.page1.title" /></h1>
             <p key="p">
-              在 React 框架下，只需要一段简单的代码就可以实现动画效果，可以更好的提高你的工作效率。
+              <FormattedMessage id="app.home.page1.content" />
             </p>
           </QueueAnim>
           <TweenOne
@@ -48,7 +49,9 @@ export default class Page1 extends React.PureComponent {
             className="home-button"
             animation={{ ...this.props.tweenAnim, delay: 300 }}
           >
-            <Link to="/components/tween-one" onClick={this.props.onButtonClick}>了解更多</Link>
+            <Link to="/components/tween-one" onClick={this.props.onButtonClick}>
+              <FormattedMessage id="app.home.learn-more" />
+            </Link>
           </TweenOne>
         </OverPack>
       </div>

@@ -3,6 +3,7 @@ import 'antd/lib/table/style';
 import 'antd/lib/input/style';
 import 'antd/lib/input-number/style';
 import 'rc-drawer/assets/index.css';
+import 'react-github-button/assets/style.css';
 import './global.less';
 import './common.less';
 import './highlight.less';

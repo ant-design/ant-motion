@@ -1,13 +1,17 @@
 ---
 order: 1
-chinese: 列表交换位置
-english: ListSort
+title:
+  zh-CN: 列表交换位置
+  en-US: ListSort
+content: 
+  zh-CN: 页面里的 List 拖动来重新排列顺序。
+  en-US: Drag the List on the page to rearrange the order.
 image: https://zos.alipayobjects.com/rmsportal/BgYxbsXLrUfkkRT.png
 ---
+## zh-CN
+ListSort 组件地址： [地址](https://github.com/ant-design/ant-motion/blob/master/src/edit/template/components/ListSort.jsx)
 
-页面里的 List 拖动来重新排列顺序。
-
----
+## en-US
 
 ListSort 组件地址： [地址](https://github.com/ant-design/ant-motion/blob/master/src/edit/template/components/ListSort.jsx)
 

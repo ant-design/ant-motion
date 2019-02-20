@@ -1,13 +1,21 @@
 ---
 order: 5
-chinese: logo 聚集与散开
-english: logoGather
+title:
+  zh-CN: logo 聚集与散开
+  en-US: logoGather
+content: 
+  zh-CN: 以圆点散开与聚集来展示 logo 的一个小动画。
+  en-US: Show a little logo animation by scattering and gathering dots.
 image: https://zos.alipayobjects.com/rmsportal/YsRZqQwpiAVgWrX.png
 ---
+## zh-CN
+首页 logo 动画的实现代码, 提供三个logo的样式， 还可自已添加 logo，如果需定制个性化的东西，请在 LogoGather 里修改。
 
-以圆点散开与聚集来展示 logo 的一个小动画
+图片默认尺寸为 300 * 300;
 
----
+图片取点像素为控制点的个数，以图片宽度除以像素点来决定点的个数, 默认为 20, 每行每排为15个取点。
+
+## en-US
 
 首页 logo 动画的实现代码, 提供三个logo的样式， 还可自已添加 logo，如果需定制个性化的东西，请在 LogoGather 里修改。
 

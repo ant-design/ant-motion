@@ -1,7 +1,8 @@
 ---
 order: 0
-chinese: 动效
-english: Motion
+title: 
+  zh-CN: 动效
+  en-US: Motion
 ---
 
 界面动效能加强用户认知且增加活力。

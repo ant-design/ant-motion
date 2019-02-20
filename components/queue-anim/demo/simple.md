@@ -1,9 +1,15 @@
 ---
 order: 0
-title: 简单的例子
+title: 
+  zh-CN: 简单的例子
+  en-US: Simple example
 ---
 
+## zh-CN
 最简单的进场例子。
+
+## en-US
+The simplest example of entry.
 
 ````jsx
 import QueueAnim from 'rc-queue-anim';

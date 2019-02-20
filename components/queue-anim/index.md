@@ -1,9 +1,10 @@
 ---
-chinese: 进出场动画
 cols: 2
 order: 2
-english: QueueAnim
 vertical: true
+title: 
+  zh-CN: 进出场动画
+  en-US: QueueAnim
 ---
 
 通过简单的配置对一组元素添加串行的进场动画效果。具体参数请参见 [API](/api/queue-anim)

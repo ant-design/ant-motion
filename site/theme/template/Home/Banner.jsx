@@ -4,9 +4,11 @@ import TweenOne from 'rc-tween-one';
 import QueueAnim from 'rc-queue-anim';
 import ScrollElement from 'rc-scroll-anim/lib/ScrollElement';
 import SvgMorphPlugin from 'rc-tween-one/lib/plugin/SvgMorphPlugin';
+import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router';
 import { Icon } from 'antd';
 import Demo from './Demo';
+import * as utils from '../utils';
 
 TweenOne.plugins.push(SvgMorphPlugin);
 
@@ -20,6 +22,8 @@ export default class Banner extends React.PureComponent {
   };
 
   render() {
+    const { pathname } = this.props.location;
+    const isZhCN = utils.isZhCN(pathname);
     return (
       <ScrollElement id="banner" className={`${this.props.className}-wrapper`}>
         <svg className={`${this.props.className}-bg-center`} width="100%" viewBox="0 0 1200 800">
@@ -56,21 +60,21 @@ export default class Banner extends React.PureComponent {
             <h1 key="h1">Motion Design</h1>
             <h3 key="h3">Animation specification and components of Ant Design.</h3>
             <p key="p">
-            使用 Ant Motion 能够快速在 React 框架中使用动画。
+              <FormattedMessage id="app.home.introduce" />
               <br />
-            我们提供了单项，组合动画，以及整套解决方案
+              <FormattedMessage id="app.home.introduce2" />
             </p>
             <div key="button">
               <Link to="/language/basic" className={`${this.props.className}-text-button`}>
-              了解更多
+                <FormattedMessage id="app.home.learn-more" />
                 <i />
               </Link>
               <a
                 className={`${this.props.className}-text-button template`}
-                href="https://landing.ant.design/edit/"
+                href={`https://landing.ant.design/edit${utils.getLocalizedPathname('/', isZhCN)}`}
                 target="_blank"
               >
-              快速搭建
+                <FormattedMessage id="app.home.enter-editor" />
                 <i />
               </a>
             </div>

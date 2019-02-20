@@ -1,16 +1,18 @@
 /**
  * Created by jljsj on 16/8/18.
  */
+import React from 'react';
+import { FormattedMessage } from 'react-intl';
 
 export default [
-  { name: '动效展示', href: '/exhibition/', key: 'exhibition' },
-  { name: '动效原则', href: '/language/basic', key: 'language' },
-  { name: '动效组件', href: '/components/tween-one', key: 'components' },
+  { name: <FormattedMessage id="app.header.menu.exhibition" />, href: '/exhibition/', key: 'exhibition' },
+  { name: <FormattedMessage id="app.header.menu.language" />, href: '/language/basic', key: 'language' },
+  { name: <FormattedMessage id="app.header.menu.components" />, href: '/components/tween-one', key: 'components' },
   { name: 'API', href: '/api/tween-one', key: 'api' },
   {
-    name: '动效模板',
+    name: <FormattedMessage id="app.header.menu.templates" />,
     href: 'https://landing.ant.design',
-    key: 'cases',
+    key: 'template',
     open: true,
   },
 ];

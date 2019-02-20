@@ -46,10 +46,11 @@ const themeConfig = {
   categoryOrder: {
     设计原则: 0,
     动效参数: 5,
+    'TweenOne param': 5,
   },
 };
 
-export function getMenuItems(moduleData) {
+export function getMenuItems(moduleData, locale) {
   const menuMeta = moduleData.map(item => item.meta);
   const menuItems = [];
   const sortFn = (a, b) => (a.order || 0) - (b.order || 0);
@@ -57,7 +58,7 @@ export function getMenuItems(moduleData) {
     if (!meta.category) {
       menuItems.push(meta);
     } else {
-      const category = meta.category;
+      const category = meta.category[locale] || meta.category;
       let group = menuItems.filter(i => i.title === category)[0];
       if (!group) {
         group = {
@@ -78,4 +79,34 @@ export function getMenuItems(moduleData) {
     }
     return item;
   }).sort(sortFn);
+}
+export function isZhCN(pathname) {
+  return /-cn\/?$/.test(pathname);
+}
+
+export function isLocalStorageNameSupported() {
+  const testKey = 'test';
+  const storage = window.localStorage;
+  try {
+    storage.setItem(testKey, '1');
+    storage.removeItem(testKey);
+    return true;
+  } catch (error) {
+    return false;
+  }
+}
+
+export function getLocalizedPathname(path, zhCN) {
+  const pathname = path.startsWith('/') ? path : `/${path}`;
+  if (!zhCN) { // to enUS
+    if (/^\/?index-cn/.test(pathname)) {
+      return '/';
+    }
+    return /\/?index-cn/.test(pathname) ? pathname.replace('/index-cn', '') : pathname.replace('-cn', '');
+  } if (pathname === '/') {
+    return '/index-cn';
+  } if (pathname.endsWith('/')) {
+    return pathname.replace(/\/$/, '-cn/');
+  }
+  return `${pathname}-cn`;
 }

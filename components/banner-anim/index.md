@@ -1,8 +1,9 @@
 ---
 order: 5
-chinese: Banner动画
-english: BannerAnim
 vertical: true
+title: 
+  zh-CN: Banner动画
+  en-US: BannerAnim
 ---
 
 通过简单的配置, 就能让你的 banner 动起来。 具体参数请参见 [API](/api/banner-anim)

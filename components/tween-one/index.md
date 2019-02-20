@@ -1,7 +1,9 @@
 ---
-chinese: 单元素动画
 order: 0
-english: TweenOne
+title: 
+  zh-CN: 单元素动画
+  en-US: TweenOne
+
 ---
 
 这是个对单个元素标签做动效的组件，可以执行所有样式动画，包括 transform3d，模糊等效果，还可以完成贝塞尔曲线动画，具体参数请参见 [API](/api/tween-one)

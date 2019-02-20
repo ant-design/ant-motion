@@ -1,7 +1,8 @@
 ---
 order: 3
-chinese: 空间
-english: Space
+title:
+  zh-CN: 空间
+  en-US: Space
 ---
 
 现实空间里，物体存在远小近大的原则，运动则有远慢近快。在动效设计时，处理和空间相关的话题时，我们需要考虑两方面的因素：

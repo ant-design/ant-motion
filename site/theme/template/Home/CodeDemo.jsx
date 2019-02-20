@@ -17,11 +17,11 @@ class CodeDemo extends React.PureComponent {
 
   constructor(props) {
     super(props);
-    this.components = this.props.pageData.components;
+    const queueAnimDemo = this.props.pageData['queue-anim'];
     this.state = {
-      code: this.props.utils
-        .toReactComponent(this.components['queue-anim'].demo.simple.highlightedCode),
-      component: this.components['queue-anim'].demo.simple.preview(React, ReactDom),
+      code: props.utils
+        .toReactComponent(queueAnimDemo.simple.highlightedCode),
+      component: queueAnimDemo.simple.preview(React, ReactDom),
       replay: false,
       isMobile: false,
       openCode: false,

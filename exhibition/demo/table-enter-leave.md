@@ -1,13 +1,21 @@
 ---
 order: 4
-chinese: 表格信息增删动画
-english: TableAddAndDelete
+title:
+  zh-CN: 表格信息增删动画
+  en-US: TableAddAndDelete
+content: 
+  zh-CN: 对表格里的信息进行操作后的一个动画效果。
+  en-US: An animation effect after manipulating the information in the table.
 image: https://zos.alipayobjects.com/rmsportal/wJDizWNyyxVhULT.png
 ---
+## zh-CN
+点击 Add 按钮为添加，Delete 为删除。
 
-对表格里的信息进行操作后的一个动画效果。
+由于接近视频演示需要变动高度，所以此示例破坏了 table 的布局，如不想破坏表格的布局可以把 height 的动画去掉或可查看 [animate的实现方法](http://react-component.github.io/table/examples/animation.html)
 
----
+此效果为设计语言里的对象增加与对象删除的实现。[查看视频演示](/language/interact)
+
+## en-US
 
 点击 Add 按钮为添加，Delete 为删除。
 

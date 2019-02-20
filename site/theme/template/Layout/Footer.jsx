@@ -1,114 +1,163 @@
 import React from 'react';
+import { FormattedMessage } from 'react-intl';
 import { Row, Col } from 'antd';
+import * as utils from '../utils';
 
-function Footer() {
-  return (
-    <footer id="footer" className="dark">
-      <div className="footer-wrap">
-        <Row>
-          <Col md={6} sm={24} xs={24}>
-            <div className="footer-center">
-              <h2>Ant Motion</h2>
-              <div>
-                <a target="_blank " href="https://github.com/ant-design/ant-motion">
-                  GitHub
-                </a>
+class Footer extends React.PureComponent {
+  render() {
+    const { pathname } = this.props.location;
+    const isZhCN = utils.isZhCN(pathname);
+    return (
+      <footer id="footer" className="dark">
+        <div className="footer-wrap">
+          <Row>
+            <Col md={6} sm={24} xs={24}>
+              <div className="footer-center">
+                <h2>Ant Motion</h2>
+                <div>
+                  <a target="_blank " href="https://github.com/ant-design/ant-motion">
+                    <FormattedMessage id="app.footer.repo" />
+                  </a>
+                </div>
+                <div>
+                  <a href="http://ant-motion.gitee.io/" target="_blank ">
+                    <FormattedMessage id="app.footer.chinamirror" />
+                  </a>
+                </div>
               </div>
-              <div>
-                <a href="https://github.com/ant-motion/ant-motion-dva-cli-example">example</a>
-                <span> - </span>
-                模板例子
+            </Col>
+            <Col md={6} sm={24} xs={24}>
+              <div className="footer-center">
+                <h2><FormattedMessage id="app.footer.links" /></h2>
+                <div>
+                  <a target="_blank " href="http://ant.design">
+                    Ant Design
+                  </a>
+                </div>
+                <div>
+                  <a target="_blank " href="https://pro.ant.design/">
+                    Ant Design Pro
+                  </a>
+                </div>
+                <div>
+                  <a href="http://mobile.ant.design">Ant Design Mobile</a>
+                </div>
+                <div>
+                  <a target="_blank" rel="noopener" href="http://landing.ant.design">Ant Design Lading</a>
+                  <span> - </span>
+                  <FormattedMessage id="app.footer.landing" />
+                </div>
+                <div>
+                  <a target="_blank" rel="noopener noreferrer" href="http://kitchen.alipay.com">Kitchen</a>
+                  <span> - </span>
+                  <FormattedMessage id="app.footer.kitchen" />
+                </div>
+                <div>
+                  <a href="http://scaffold.ant.design">Scaffolds</a>
+                  <span> - </span>
+                  <FormattedMessage id="app.footer.scaffolds" />
+                </div>
+                <div>
+                  <a target="_blank" rel="noopener" href="http://library.ant.design/">Axure Library</a>
+                  <span> - </span>
+                  <FormattedMessage id="app.footer.antd-library" />
+                </div>
+                <div>
+                  <a target="_blank" rel="noopener" href="http://ux.ant.design">Ant UX</a>
+                  <span> - </span>
+                  <FormattedMessage id="app.footer.antux" />
+                </div>
+                <div>
+                  <a target="_blank" rel="noopener noreferrer" href="http://umijs.org/">Umi</a>
+                  <span> - </span>
+                  <FormattedMessage id="app.footer.umi" />
+                </div>
+                <div>
+                  <a target="_blank" rel="noopener noreferrer" href="https://github.com/dvajs/dva">dva</a>
+                  <span> - </span>
+                  <FormattedMessage id="app.footer.dva" />
+                </div>
               </div>
-              <div>
-                <a href="http://ant-motion.gitee.io/" target="_blank ">
-                  <span>国内镜像站点 🇨🇳</span>
-                </a>
+            </Col>
+            <Col md={6} sm={24} xs={24}>
+              <div className="footer-center">
+                <h2><FormattedMessage id="app.footer.community" /></h2>
+                <div>
+                  <a target="_blank" rel="noopener" href="https://github.com/ant-design/ant-motion/issues">
+                    <FormattedMessage id="app.footer.issues" />
+                  </a>
+                </div>
+                <div>
+                  <a
+                    target="_blank"
+                    rel="noopener"
+                    href={`http://ant.design/docs/spec/work-with-us${isZhCN ? '-cn' : ''}`}
+                  >
+                    <FormattedMessage id="app.footer.work-with-us" />
+                  </a>
+                </div>
               </div>
-            </div>
-          </Col>
-          <Col md={6} sm={24} xs={24}>
-            <div className="footer-center">
-              <h2>相关站点</h2>
-              <div>
-                <a href="http://ant.design">Ant Design</a>
+            </Col>
+            <Col md={6} sm={24} xs={24}>
+              <div className="footer-center">
+                <h2>
+                  <img
+                    className="title-icon"
+                    src="https://gw.alipayobjects.com/zos/rmsportal/nBVXkrFdWHxbZlmMbsaH.svg"
+                    alt="AFX Cloud"
+                  />
+                  <FormattedMessage id="app.footer.more-product" />
+                </h2>
+                <div>
+                  <a target="_blank" rel="noopener noreferrer" href="https://yuque.com/">
+                    <FormattedMessage id="app.footer.yuque" />
+                  </a>
+                  <span> - </span>
+                  <FormattedMessage id="app.footer.yuque.slogan" />
+                </div>
+                <div>
+                  <a target="_blank" rel="noopener noreferrer" href="https://yunfengdie.com/">
+                    <FormattedMessage id="app.footer.fengdie" />
+                  </a>
+                  <span> - </span>
+                  <FormattedMessage id="app.footer.fengdie.slogan" />
+                </div>
+                <div>
+                  <a target="_blank" rel="noopener noreferrer" href="https://antv.alipay.com/">
+                    AntV
+                  </a>
+                  <span> - </span>
+                  <FormattedMessage id="app.footer.data-vis" />
+                </div>
+                <div>
+                  <a target="_blank" rel="noopener noreferrer" href="https://eggjs.org/">
+                    Egg
+                  </a>
+                  <span> - </span>
+                  <FormattedMessage id="app.footer.eggjs" />
+                </div>
+                <div>
+                  <a target="_blank" rel="noopener noreferrer" href="http://xcloud.alipay.com/">
+                    <FormattedMessage id="app.footer.xcloud" />
+                  </a>
+                </div>
               </div>
-              <div>
-                <a href="http://pro.ant.design">Ant Design Pro</a>
-              </div>
-              <div>
-                <a target="_blank" rel="noopener noreferrer" href="https://mobile.ant.design/index-cn">Ant Design Mobile</a>
-                <span> - </span>
-                移动端
-              </div>
-              <div>
-                <a target="_blank" rel="noopener noreferrer" href="https://landing.ant.design/">Ant Design Landing</a>
-                <span> - </span>
-                首页模板
-              </div>
-              <div>
-                <a target="_blank" rel="noopener noreferrer" href="https://github.com/dvajs/dva">dva</a>
-                <span> - </span>
-                应用框架
-              </div>
-              <div>
-                <a target="_blank" rel="noopener noreferrer" href="https://github.com/dvajs/dva-cli">dva-cli</a>
-                <span> - </span>
-                脚手架
-              </div>
-              <div>
-                <a target="_blank" rel="noopener noreferrer" href="http://library.ant.design/">AntD Library</a>
-                <span> - </span>
-                Axure 部件库
-              </div>
-              <div>
-                <a target="_blank" rel="noopener noreferrer" href="http://ux.ant.design">Ant UX</a>
-                <span> - </span>
-                页面逻辑素材
-              </div>
-            </div>
-          </Col>
-          <Col md={6} sm={24} xs={24}>
-            <div className="footer-center">
-              <h2>联系我们</h2>
-              <div>
-                <a href="https://github.com/ant-design/ant-motion/issues">
-                  反馈和建议
-                </a>
-              </div>
-            </div>
-          </Col>
-          <Col md={6} sm={24} xs={24}>
-            <div className="footer-center">
-              <h2>
-                <img className="title-icon" src="https://gw.alipayobjects.com/zos/rmsportal/nBVXkrFdWHxbZlmMbsaH.svg" alt="" />
-                更多产品
-              </h2>
-              <div>
-                <a target="_blank" rel="noopener noreferrer" href="https://antv.alipay.com/">AntV</a>
-                <span> - </span>
-                数据可视化
-              </div>
-              <div>
-                <a target="_blank" rel="noopener noreferrer" href="https://eggjs.org/">Egg</a>
-                <span> - </span>
-                企业级 Node 开发框架
-              </div>
-            </div>
-          </Col>
-        </Row>
-      </div>
-      <div className="bottom-bar">
+            </Col>
+          </Row>
+        </div>
+        <div className="bottom-bar">
           Made with
-        {' '}
-        <span className="heart">❤</span>
-        {' '}
-by
-        <a target="_blank" rel="noopener noreferrer" href="https://yuque.com/afx/blog">
-          AFX
-        </a>
-      </div>
-    </footer>
-  );
+          {' '}
+          <span className="heart">❤</span>
+          {' '}
+          by
+          <a target="_blank" rel="noopener noreferrer" href="https://yuque.com/afx/blog">
+            AFX
+          </a>
+        </div>
+      </footer>
+    );
+  }
 }
 
 export default Footer;

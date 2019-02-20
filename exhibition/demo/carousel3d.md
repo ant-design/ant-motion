@@ -1,13 +1,21 @@
 ---
 order: 7
-chinese: 卡片旋转
-english: carousel
+title:
+  zh-CN: 卡片旋转
+  en-US: carousel
+content: 
+  zh-CN: carousel 3d 卡片的旋转效果。
+  en-US: Rotation effect of carousel 3D card.
 image: https://gw.alipayobjects.com/zos/rmsportal/HOmyKwEoPKktzFyEsKOG.jpg
 ---
 
-carousel 3d 卡片的旋转效果。
+## zh-CN
 
----
+支付宝客户端里的小钱袋产品的心愿卡片菜单，手机上的一种卡片的收纳方式。
+
+> 模糊比较耗性能，手机上不建议开启。
+
+## en-US
 
 支付宝客户端里的小钱袋产品的心愿卡片菜单，手机上的一种卡片的收纳方式。
 

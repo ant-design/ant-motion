@@ -1,83 +1,56 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import ReactDOM from 'react-dom';
-import TweenOne from 'rc-tween-one';
-import { enquireScreen } from 'enquire-js';
-import Header from './Header';
-import Footer from './Footer';
-import Page from '../Content/Page';
-import '../../static/style';
+import collect from 'bisheng/collect';
+import Layout from './Layout';
+import * as utils from '../utils';
 
-let isMobile;
-enquireScreen((b) => {
-  isMobile = b;
-});
+export default collect(async (nextProps) => {
+  const pathname = nextProps.location.pathname;
 
-class Index extends React.PureComponent {
-  static propTypes = {
-    children: PropTypes.any,
-    location: PropTypes.object,
-    pageData: PropTypes.any,
-  };
+  const path = pathname.replace('-cn', '');
 
-  state = {
-    isMobile,
-  };
+  let pageDataPath = path.split('/');
 
-  componentDidMount() {
-    enquireScreen((b) => {
-      this.setState({
-        isMobile: !!b,
-      });
-    });
+  if (path === 'index' || path === '/') {
+    // exhibition.demo, queue-anim.simple.demo
+    const exhibitionPageData = nextProps.utils.get(nextProps.data, ['exhibition']).demo();
+    const componentsPageData = nextProps.utils.get(nextProps.data, ['components'])['queue-anim'].demo();
+    return {
+      localizedPageData: {
+        exhibition: await exhibitionPageData,
+        'queue-anim': await componentsPageData,
+      },
+    };
+  }
+  if (/\/components/.test(path) && pageDataPath[1]) {
+    const str = pageDataPath[1];
+    pageDataPath[1] = str.charAt(0).toUpperCase() + str.slice(1);
   }
 
-  onChange = (e) => {
-    // fixed 与 transform
-    if (e.type === 'enter') {
-      const dom = ReactDOM.findDOMNode(this.content);
-      Array.prototype.slice.call(dom.children).forEach((item) => {
-        const cItem = item;
-        cItem.style.transform = 'none';
-      });
-    }
+  if (/exhibition/.test(path) && pageDataPath[1]) {
+    pageDataPath = pageDataPath.slice(0, pageDataPath.length - 1);
   }
 
-  render() {
-    const path = this.props.location.pathname;
-    const pathKey = path && path.split('/')[0];
-    const key = !pathKey ? 'index' : 'page';
-    const children = !pathKey || pathKey === 'exhibition'
-      ? React.cloneElement(this.props.children, {
-        key: pathKey ? path : key,
-      })
-      : (
-        <Page
-          key={key}
-          pathname={this.props.location.pathname}
-          pageData={this.props.pageData}
-          hash={this.props.location.hash}
-          isMobile={this.state.isMobile}
-        >
-          {this.props.children}
-        </Page>
-      );
-    return (
-      <div id="react-root" className={!pathKey ? 'home' : ''}>
-        <Header activeKey={pathKey} isMobile={this.state.isMobile} />
-        <TweenOne.TweenOneGroup
-          className="content-wrapper"
-          onEnd={this.onChange}
-          enter={{ type: 'from', opacity: 0, ease: 'easeOutQuart' }}
-          leave={{ opacity: 0, ease: 'easeInOutQuart' }}
-          ref={(c) => { this.content = c; }}
-        >
-          {children}
-        </TweenOne.TweenOneGroup>
-        <Footer />
-      </div>
-    );
+  if (/api/.test(path) && pageDataPath[1]) {
+    pageDataPath = ['components', pageDataPath[1]];
   }
-}
+  let pageData = nextProps.utils.get(nextProps.data, pageDataPath);
+  pageData = pageDataPath[0] === 'exhibition' && !pageDataPath[1] ? pageData.demo : pageData;
 
-export default Index;
+  // 路由跳转统一处理
+  if (pathname === 'components') {
+    location.href = '/components/tween-one';
+    return;
+  }
+
+  if (!pageData) {
+    throw 404; // eslint-disable-line no-throw-literal
+  }
+  const locale = utils.isZhCN(pathname) ? 'zh-CN' : 'en-US';
+  const pageDataPromise = typeof pageData === 'function'
+    ? pageData() : (pageData[locale] || pageData.index[locale] || pageData.index)();
+  const demosFetcher = nextProps.utils.get(nextProps.data, [...pageDataPath, 'demo']);
+  if (demosFetcher) {
+    const [localizedPageData, demos] = await Promise.all([pageDataPromise, demosFetcher()]);
+    return { localizedPageData, demos };
+  }
+  return { localizedPageData: await pageDataPromise };
+})(Layout);

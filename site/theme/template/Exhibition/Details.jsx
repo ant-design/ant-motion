@@ -2,9 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import TweenOne from 'rc-tween-one';
+import { injectIntl } from 'react-intl';
 import DocumentTitle from 'react-document-title';
 
-export default class Details extends React.Component {
+class Details extends React.Component {
   static propTypes = {
     className: PropTypes.string,
     pageData: PropTypes.object,
@@ -12,6 +13,10 @@ export default class Details extends React.Component {
 
   static defaultProps = {
     className: 'exhibition-details',
+  };
+
+  static contextTypes = {
+    intl: PropTypes.object,
   };
 
   constructor(props) {
@@ -36,19 +41,21 @@ export default class Details extends React.Component {
   };
 
   render() {
-    const props = this.props;
-    // const { pageData, className } = props;
-    const pageData = this.props.pageData;
+    const { ...props } = this.props;
+    const { params } = props;
+    const { locale } = this.context.intl;
+    const pageData = this.props.localizedPageData[params.children.replace('-cn', '')];
     const className = this.props.className;
     const {
-      meta, content, description,
-      style, preview, highlightedCode, highlightedStyle,
+      meta, content, highlightedStyle,
+      style, preview, highlightedCode,
     } = pageData;
     const {
-      title, subtitle, chinese, english,
+      title, subtitle,
     } = meta;
+
     return (
-      <DocumentTitle title={`${subtitle || chinese || ''} ${title || english} - Ant Motion`}>
+      <DocumentTitle title={`${subtitle || title[locale] || ''} - Ant Motion`}>
         <div className="page-wrapper">
           <TweenOne animation={{ y: 30, opacity: 0, type: 'from' }} className="page">
             <article className={`markdown ${className}`}>
@@ -59,20 +66,19 @@ export default class Details extends React.Component {
                 <i onClick={this.onClick} />
               </div>
               <h1>
-                {title || english}
-                {(!subtitle && !chinese) ? null : (<i>{subtitle || chinese}</i>)}
+                {subtitle || title[locale]}
               </h1>
-              {props.utils.toReactComponent(description)}
-              {!!content.length && props.utils.toReactComponent(['section'].concat(content))}
+              {props.utils.toReactComponent(['section'].concat(meta.content[locale]))}
+              {!!content[locale].length && props.utils.toReactComponent(['section'].concat(content[locale]))}
               <h2>代码片段</h2>
               {!!style && <style dangerouslySetInnerHTML={{ __html: style }} />}
               <h3>jsx</h3>
               {!!highlightedCode.length && props.utils.toReactComponent(highlightedCode)}
               {highlightedStyle && <h3>css</h3>}
               {highlightedStyle && (
-              <pre className="css">
-                <code dangerouslySetInnerHTML={{ __html: highlightedStyle }} />
-              </pre>
+                <pre className="css">
+                  <code dangerouslySetInnerHTML={{ __html: highlightedStyle }} />
+                </pre>
               )}
             </article>
           </TweenOne>
@@ -81,3 +87,5 @@ export default class Details extends React.Component {
     );
   }
 }
+
+export default injectIntl(Details);

@@ -1,7 +1,8 @@
 ---
 order: 1
-chinese: Css样式动画
-english: Animate
+title: 
+  zh-CN: Css样式动画
+  en-US: Animate
 ---
 
 对单个元素根据状态进行动画显示隐藏，需结合 css 或其它第三方动画类一起使用；具体参数请参见 [API](/api/animate)

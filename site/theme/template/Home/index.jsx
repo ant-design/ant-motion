@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import DocumentTitle from 'react-document-title';
 import ScrollLink from 'rc-scroll-anim/lib/ScrollLink';
-import { scrollTo } from '../utils';
+import * as utils from '../utils';
 
 import Banner from './Banner';
 import Page1 from './Page1';
@@ -12,7 +12,7 @@ import Page3 from './Page3';
 
 class Home extends React.PureComponent {
   static propTypes = {
-    pageData: PropTypes.object,
+    localizedPageData: PropTypes.object,
     utils: PropTypes.object,
   };
 
@@ -24,7 +24,7 @@ class Home extends React.PureComponent {
   }
 
   scrollToTop = () => {
-    scrollTo(0);
+    utils.scrollTo(0);
   };
 
   render() {
@@ -37,15 +37,15 @@ class Home extends React.PureComponent {
             <ScrollLink to="page2" showHeightActive={['30%', '70%']} toHash={false} />
             <ScrollLink to="page3" showHeightActive="70%" toHash={false} />
           </div>
-          <Banner />
+          <Banner {...this.props} />
           <Page1
-            pageData={this.props.pageData}
+            pageData={this.props.localizedPageData}
             utils={this.props.utils}
             tweenAnim={this.tweenAnim}
             onButtonClick={this.scrollToTop}
           />
           <Page2
-            pageData={this.props.pageData}
+            pageData={this.props.localizedPageData}
             utils={this.props.utils}
             tweenAnim={this.tweenAnim}
             onButtonClick={this.scrollToTop}

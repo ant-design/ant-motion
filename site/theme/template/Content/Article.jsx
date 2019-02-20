@@ -1,11 +1,13 @@
 import React from 'react';
 import { getChildren } from 'jsonml.js/lib/utils';
 import DocumentTitle from 'react-document-title';
+import { Alert } from 'antd';
 import * as utils from '../utils';
 
 class Article extends React.PureComponent {
   render() {
-    const props = this.props;
+    const { ...props } = this.props;
+    const { locale } = props.intl;
     const pageData = props.pageData;
     if (!pageData) {
       return (
@@ -19,7 +21,7 @@ class Article extends React.PureComponent {
       meta, content, toc, api,
     } = pageData;
     const {
-      title, subtitle, chinese, english,
+      title, subtitle,
     } = meta;
     const tocItem = props.utils.toReactComponent(toc);
     const tocChildren = utils.toArrayChildren(tocItem.props.children).map((item) => {
@@ -28,12 +30,29 @@ class Article extends React.PureComponent {
       }));
       return React.cloneElement(item, item.props, itemChildren);
     });
+    const isNotTranslated = locale === 'en-US' && typeof title === 'object';
+    const isZhCN = locale === 'zh-CN';
     return (
-      <DocumentTitle title={`${title || chinese || english} - Ant Motion`}>
+      <DocumentTitle title={`${subtitle || title[locale] || title} - Ant Motion`}>
         <article className="markdown">
+          {isNotTranslated && (
+          <Alert
+            type="warning"
+            message={(
+              <span>
+                  This article has not been translated yet. Wan&apos;t to help us out?
+                {' '}
+                <a href="https://github.com/ant-design/ant-motion/issues/204">
+                    See this issue on GitHub.
+                </a>
+              </span>
+              )}
+            style={{ marginBottom: 24 }}
+          />
+          )}
           <h1>
-            {title || english}
-            {(!subtitle && !chinese) ? null : <i>{subtitle || chinese}</i>}
+            {isZhCN ? subtitle || title['en-US'] || title : subtitle || title[locale] || title}
+            {isZhCN && <i>{title['zh-CN'] || ''}</i>}
           </h1>
           {!toc || toc.length <= 1 ? null
             : (
