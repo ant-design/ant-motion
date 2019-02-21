@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import DocumentTitle from 'react-document-title';
+import GitHubButton from 'react-github-button';
 import { Alert } from 'antd';
 import DemoLayout, { Item } from './DemoLayout';
 
@@ -111,15 +112,11 @@ class ComponentDoc extends React.PureComponent {
           <h1>
             {isZhCN ? subtitle || title['en-US'] || title : subtitle || title[locale] || title}
             {isZhCN && <i>{title['zh-CN'] || ''}</i>}
-            <iframe
+            <GitHubButton
               key="github-btn"
-              src={`https://ghbtns.com/github-btn.html?user=react-component&repo=${
-                this.props.params.contentName}&type=star&count=true`}
-              frameBorder="0"
-              scrolling="0"
-              width="98px"
-              height="20px"
-              title="gitbtn"
+              type="stargazers"
+              namespace="react-component"
+              repo={this.props.params.children.replace('-cn', '')}
             />
           </h1>
           {description ? props.utils.toReactComponent(description) : null}
