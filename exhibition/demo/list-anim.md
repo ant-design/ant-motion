@@ -1,10 +1,8 @@
 ---
 order: 3
-chinese: 列表动画
-english: ListAnim
 title:
   zh-CN: 列表动画
-  en-US: ListAnim
+  en-US: List Animate
 content: 
   zh-CN: 在页面里，当我们想对区块内容进行动画时，需要解决元素的先后顺序与基本动画的属性。
   en-US: In the page, when we want to animate block content, we need to solve the sequence of elements and the attributes of basic animation.
@@ -17,7 +15,10 @@ image: https://zos.alipayobjects.com/rmsportal/ivfCWzEWHsTPWMW.png
 
 ## en-US
 
-ListSort 组件地址： [地址](https://github.com/ant-design/ant-motion/blob/master/src/edit/template/components/ListSort.jsx)
+please drag the list above to the left, and click the delete button.
+
+Drag animation effects in CSS (rc-animate) in the file package，[Demo](https://github.com/ant-design/ant-motion/tree/master/exhibition/js/);
+
 
 
 ````jsx

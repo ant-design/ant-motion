@@ -2,7 +2,7 @@
 order: 0
 title:
   zh-CN: 图片详细切换
-  en-US: PicDetailsAnim
+  en-US: Pic Details Animate
 content: 
   zh-CN: 从图片缩略图到详细说明的一个过场效果。
   en-US: From a picture thumbnail to a detailed illustration of a passing effect.
@@ -12,7 +12,7 @@ image: https://zos.alipayobjects.com/rmsportal/RJoNICBzRCkOsMv.png
 图片动画效果参考于 [dribbble](https://dribbble.com/shots/1908087-Card-Interaction)；
 
 ## en-US
-图片动画效果参考于 [dribbble](https://dribbble.com/shots/1908087-Card-Interaction)；
+Picture animation effect ref [dribbble](https://dribbble.com/shots/1908087-Card-Interaction)；
 
 ```jsx
 import QueueAnim from 'rc-queue-anim';

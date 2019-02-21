@@ -2,7 +2,7 @@
 order: 1
 title:
   zh-CN: 列表交换位置
-  en-US: ListSort
+  en-US: List Sort
 content: 
   zh-CN: 页面里的 List 拖动来重新排列顺序。
   en-US: Drag the List on the page to rearrange the order.
@@ -13,7 +13,7 @@ ListSort 组件地址： [地址](https://github.com/ant-design/ant-motion/blob/
 
 ## en-US
 
-ListSort 组件地址： [地址](https://github.com/ant-design/ant-motion/blob/master/src/edit/template/components/ListSort.jsx)
+ListSort: [Component URL](https://github.com/ant-design/ant-motion/blob/master/src/edit/template/components/ListSort.jsx)
 
 ```jsx
 import Icon from 'antd/lib/icon';

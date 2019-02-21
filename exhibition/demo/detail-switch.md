@@ -2,7 +2,7 @@
 order: 2
 title: 
   zh-CN: 详细说明切换
-  en-US: detailSwitch
+  en-US: Detail Switch
 content: 
   zh-CN: 页面里的详细说明间的走马灯切换效果。
   en-US: The effect of street light switching between the detailed instructions on the page.
@@ -15,7 +15,7 @@ image: https://zos.alipayobjects.com/rmsportal/cvLbMZkjkNvqbVF.png
 
 ## en-US
 
-图片动画效果参考于 [dribbble](https://dribbble.com/shots/2595631-Wine-catalog-browsing-animation-design)；
+Picture animation effect ref [dribbble](https://dribbble.com/shots/2595631-Wine-catalog-browsing-animation-design)；
 
 ```jsx
 import BannerAnim from 'rc-banner-anim';

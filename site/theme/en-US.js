@@ -20,6 +20,7 @@ module.exports = {
     'app.home.page3.title': 'Add interesting animatiion to your product',
     'app.home.page3.content': 'With more friendly interaction, let the animate shuttle between different elements,\n so that the product can better talk to the user.',
     'app.home.page3.button': 'Quick Start',
+    'app.details.code': 'Code Snippet',
     'app.content.edit-page': 'Edit this page on GitHub!',
     'app.content.components-exp': 'Example',
     'app.footer.repo': 'GitHub',

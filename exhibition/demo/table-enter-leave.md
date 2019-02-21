@@ -2,13 +2,16 @@
 order: 4
 title:
   zh-CN: 表格信息增删动画
-  en-US: TableAddAndDelete
+  en-US: Table Add And Delete
 content: 
   zh-CN: 对表格里的信息进行操作后的一个动画效果。
   en-US: An animation effect after manipulating the information in the table.
 image: https://zos.alipayobjects.com/rmsportal/wJDizWNyyxVhULT.png
 ---
 ## zh-CN
+
+> 由于 antd 表格组件调整，动画失效，后续我们会尽快解决。。
+
 点击 Add 按钮为添加，Delete 为删除。
 
 由于接近视频演示需要变动高度，所以此示例破坏了 table 的布局，如不想破坏表格的布局可以把 height 的动画去掉或可查看 [animate的实现方法](http://react-component.github.io/table/examples/animation.html)
@@ -17,11 +20,11 @@ image: https://zos.alipayobjects.com/rmsportal/wJDizWNyyxVhULT.png
 
 ## en-US
 
-点击 Add 按钮为添加，Delete 为删除。
+> Due to the adjustment of the antd table component, the animation fails, and we will solve it as soon as possible..
 
-由于接近视频演示需要变动高度，所以此示例破坏了 table 的布局，如不想破坏表格的布局可以把 height 的动画去掉或可查看 [animate的实现方法](http://react-component.github.io/table/examples/animation.html)
+Since the proximity video demo requires a varying height, so this example breaks the layout of the table, if you don't want to break the layout of the table, you can remove the animation of height or view it [animate demo](http://react-component.github.io/table/examples/animation.html)
 
-此效果为设计语言里的对象增加与对象删除的实现。[查看视频演示](/language/interact)
+This effect adds an implementation of object deletion to objects in the design language.[Video](/language/interact)
 
 ```jsx
 import Table from 'antd/lib/table';

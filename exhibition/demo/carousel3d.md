@@ -2,9 +2,9 @@
 order: 7
 title:
   zh-CN: 卡片旋转
-  en-US: carousel
+  en-US: Carousel
 content: 
-  zh-CN: carousel 3d 卡片的旋转效果。
+  zh-CN: Carousel 3d 卡片的旋转效果。
   en-US: Rotation effect of carousel 3D card.
 image: https://gw.alipayobjects.com/zos/rmsportal/HOmyKwEoPKktzFyEsKOG.jpg
 ---
@@ -17,9 +17,9 @@ image: https://gw.alipayobjects.com/zos/rmsportal/HOmyKwEoPKktzFyEsKOG.jpg
 
 ## en-US
 
-支付宝客户端里的小钱袋产品的心愿卡片菜单，手机上的一种卡片的收纳方式。
+A way of displaying a card on the wireless side.
 
-> 模糊比较耗性能，手机上不建议开启。
+> mobile is not recommended to open blur.
 
 ```jsx
 import PropTypes from 'prop-types';

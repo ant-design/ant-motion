@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import TweenOne from 'rc-tween-one';
-import { injectIntl } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import DocumentTitle from 'react-document-title';
 
 class Details extends React.Component {
@@ -70,7 +70,7 @@ class Details extends React.Component {
               </h1>
               {props.utils.toReactComponent(['section'].concat(meta.content[locale]))}
               {!!content[locale].length && props.utils.toReactComponent(['section'].concat(content[locale]))}
-              <h2>代码片段</h2>
+              <h2><FormattedMessage id="app.details.code" /></h2>
               {!!style && <style dangerouslySetInnerHTML={{ __html: style }} />}
               <h3>jsx</h3>
               {!!highlightedCode.length && props.utils.toReactComponent(highlightedCode)}

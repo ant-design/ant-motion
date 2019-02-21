@@ -15,9 +15,9 @@ image: https://gw.alipayobjects.com/zos/rmsportal/CdkOMmURLntHGuuqFXnj.jpg
 
 ## en-US
 
-支付宝客户端里的小钱袋产品的金钱发生变化时的金币掉落效果，重看点刷新按钮。
+Gold coin drop effect, replay click refresh button.
 
-[money.less 请查看这里](https://github.com/ant-design/ant-motion/tree/master/exhibition/js/money.less);
+[money.less](https://github.com/ant-design/ant-motion/tree/master/exhibition/js/money.less);
 
 
 ```jsx
