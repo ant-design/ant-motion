@@ -84,7 +84,7 @@ class Demo extends React.Component {
             style={{ marginBottom: 32 }}
             onClick={this.onClick}
           >
-            开始
+            Start
           </Button>
         </div>
       </div>
