@@ -20,6 +20,7 @@ module.exports = {
     'app.home.page3.title': '为产品添加有趣的动效',
     'app.home.page3.content': '通过更友好的交互方式，让动效穿梭在不同的元素之间，\n 让产品能够更好的和用户对话。',
     'app.home.page3.button': '快速上手',
+    'app.details.code': '代码片段',
     'app.content.edit-page': '在 Github 上编辑此页！',
     'app.content.components-exp': '范例',
     'app.footer.repo': '源码仓库',

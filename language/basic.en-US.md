@@ -3,22 +3,22 @@ order: 0
 title: Motion
 ---
 
-界面动效能加强用户认知且增加活力。
+Interface dynamics enhance user awareness and increase vitality.
 
-## 动效价值
+## Motion Values
 
-- **增加体验舒适度：** 让用户认知过程更为自然。
+- **Increase experience comfort:** Make the user's cognitive process more natural.
 
-- **增加界面活力：**第一时间吸引注意力，突出重点。
+- **Increase interface vigor:** The first time to attract attention and highlight the key points.
 
-- **描述层级关系：**体现元素之间的层级与空间关系。
+- **Describe the hierarchical relationship:** Reflects the hierarchical and spatial relationship between elements.
 
-- **提供反馈、明确意向：**助力交互体验。
+- **Provide feedback and clear intentions:** Boost the interactive experience.
 
-## 衡量动效意义
+## Meaningful animation
 
-衡量一个动效是否有意义，我们可以通过以下几个标准来考核：
+To measure whether a animation makes sense, we can assess it by the following criteria:
 
-- **一个动效的存在是否合理：**是否带有明确的目的性，助力交互体验，没有多余的动效。
+- **Is the existence of an animation reasonable:** Whether it has a clear purpose, boost the interactive experience, there is no extra animation.
 
-- **动效与性能：**不能出现大幅度波动丢帧或者卡顿现象, 动效的体验须是流畅的，并且不影响产品的性能。
+- **Animation and performance:** There can be no large frame loss, and the animation experience must be smooth and does not affect the performance of the product.
