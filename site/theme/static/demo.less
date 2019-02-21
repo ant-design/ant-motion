@@ -1,0 +1,277 @@
+@import './custom';
+.code-box .code-box-demo {
+  // 按钮
+  .demo-buttons, .buttons {
+    text-align: center;
+    margin: 0 auto;
+    & button {
+      margin: 0 2px;
+      &:last-child {
+        margin-right: 0;
+      }
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+  .code-box-demo-wrapper .buttons {
+    position: absolute;
+    top: 30px;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+  // tween 与 animate 的形状
+  .code-box-shape {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 50px;
+    height: 50px;
+    border-radius: 4px;
+    background: @primary-color;
+  }
+  .demo-bezier-shape {
+    width: 5px;
+    height: 5px;
+    background: #7569ff;
+    position: absolute;
+    top: 0;
+  }
+
+  // queueAnim
+  .queue-demo {
+    width: 60%;
+    margin: auto;
+    position: relative;
+    .demo-content {
+      // box-shadow: 0 2px 8px fade(#000, 35);
+      // border-radius: 6px;
+      // overflow: hidden;
+      // background: #fff;
+      margin-top: 10px;
+      & .queue-anim-leaving {
+        position: relative !important;
+      }
+      .demo-thead {
+        height: 40px;
+        line-height: 40px;
+        background: @title-bg-color;
+        border-radius: 6px 6px 0 0;
+        & ul {
+          height: 100%;
+          position: relative;
+          & li {
+            display: inline-block;
+            height: 100%;
+            &:before {
+              display: inline-block;
+              content: '';
+              vertical-align: middle;
+              background: @demo-title-color;
+            }
+            &:nth-child(1) {
+              width: 10%;
+              text-align: center;
+              &:before {
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+              }
+            }
+            &:nth-child(2) {
+              width: 70%;
+              &:before {
+                width: 50%;
+                height: 10px;
+              }
+            }
+            &:nth-child(3) {
+              width: 20%;
+              &:before {
+                width: 70%;
+                height: 10px;
+              }
+            }
+          }
+        }
+      }
+      .demo-tbody {
+        border: 1px solid @line-color;
+        border-radius: 0 0 6px 6px;
+        overflow: hidden;
+        & ul li {
+          height: 40px;
+          border-bottom: 1px solid @line-color;
+          line-height: 40px;
+          &:last-child {
+            border-bottom-color: transparent;
+          }
+          &:after, &:before {
+            display: inline-block;
+            content: '';
+            background: @demo-color;
+          }
+          &:before {
+            width: 20px;
+            height: 10px;
+            margin-left: 3%;
+          }
+          &:after {
+            width: 50%;
+            height: 10px;
+            margin-left: 3%;
+          }
+        }
+      }
+      .demo-header {
+        width: 100%;
+        background: @title-bg-color;
+        height: 28px;
+        line-height: 28px;
+        border-radius: 6px 6px 0 0;
+        position: relative;
+        & .logo {
+          display: inline-block;
+          margin-left: 10px;
+          & img:nth-child(2) {
+            margin-left: 5px;
+          }
+        }
+        & ul {
+          float: right;
+          & li {
+            width: 50px;
+            height: 8px;
+            background: #4d5c76;
+            display: inline-block;
+            margin-right: 10px;
+          }
+        }
+      }
+      .demo-banner {
+        background: #364d79;
+        height: 87px;
+        position: relative;
+        & .point {
+          text-align: center;
+          width: 100%;
+          position: absolute;
+          bottom: 5px;
+          & ul li {
+            width: 6px;
+            height: 6px;
+            background: fade(#fff, 15);
+            display: inline-block;
+            border-radius: 6px;
+            margin: 0 5px;
+            &:nth-child(2) {
+              background: fade(#fff, 35);
+            }
+          }
+        }
+      }
+      .demo-page {
+        height: 130px;
+        position: relative;
+        & > h1 {
+          width: 50px;
+          height: 8px;
+          background: fade(@primary-color, 35);
+          margin: 10px auto;
+        }
+        & > p {
+          display: block;
+          overflow: hidden;
+          &:after, &:before {
+            content: '';
+            display: block;
+            height: 4px;
+            background: fade(@primary-color, 35);
+          }
+          &:after {
+            width: 60px;
+            margin: 5px auto;
+          }
+          &:before {
+            width: 220px;
+            margin: auto;
+          }
+        }
+        & .box {
+          margin-top: 10px;
+          overflow: hidden;
+          & ul {
+            & li {
+              width: 25%;
+              margin: 0 ~"calc(25% / 6)";
+              height: 65px;
+              position: relative;
+              display: inline-block;
+              background: fade(@primary-color, 55);
+              border-radius: 6px;
+              &:before {
+                content: '';
+                display: block;
+                width: 24px;
+                height: 24px;
+                border-radius: 6px;
+                background: #fff;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                margin: auto;
+              }
+              &:nth-child(2):before {
+                transform: rotate(45deg);
+              }
+              &:nth-child(3):before {
+                transform: rotate(45deg);
+                filter: blur(2px);
+              }
+            }
+          }
+        }
+      }
+      .demo-footer {
+        height: 40px;
+        background: @title-bg-color;
+        border-radius: 0 0 6px 6px;
+        overflow: hidden;
+        &:before, &:after {
+          content: "";
+          display: block;
+          background: #4d5c76;
+          height: 4px;
+          margin: 8px auto;
+        }
+        &:before {
+          width: 180px;
+        }
+        &:after {
+          width: 50px;
+        }
+      }
+    }
+  }
+}
+
+.queue-simple {
+  padding: 10px 0;
+  & > div {
+    width: 40%;
+    height: 40px;
+    line-height: 40px;
+    margin: 5px auto;
+    text-align: center;
+    background: @primary-color;
+    border-radius: 4px;
+    color: @text-color-light;
+    opacity: 0;
+  }
+}

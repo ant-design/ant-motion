@@ -1,11 +1,16 @@
 ---
 order: 6
-title: svg 形变动画
+title: 
+  zh-CN: SVG 形变动画
+  en-US: SVG Deformation Animate
 mouseEnter: true
 ---
 
-点击切换线效果。
+## zh-CN
+SVG 图形形状变化的动态效果。
 
+## en-US
+The dynamic effect of SVG graphic shape changes.
 
 ```jsx
 import TweenOne from 'rc-tween-one';

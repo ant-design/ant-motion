@@ -1,10 +1,15 @@
 ---
 order: 5
-title: svg 线性动画
+title: 
+  zh-CN: SVG 线性动画
+  en-US: SVG Linear Animate
 ---
 
-点击切换线效果。
+## zh-CN
+基本线性生成与消失的动态效果。
 
+## en-US
+Basic linear generation and disappearing dynamic effects.
 
 ```jsx
 import TweenOne from 'rc-tween-one';
@@ -37,7 +42,7 @@ class Demo extends React.Component {
     return (
       <div style={{ textAlign: 'center', marginTop: 40 }}>
         <Button type="primary" onClick={this.onClick.bind(this)}>
-          点击切换
+          Switch
         </Button>
         <svg width="200" height="84" version="1.2"
           style={{ display: 'block', margin: 'auto' }}
@@ -49,7 +54,7 @@ class Demo extends React.Component {
             d="M10,10c65,50,115,50,180,0"
           />
         </svg>
-        <p>当前参数：{this.state.tweenData}</p>
+        <p>Current Param: {this.state.tweenData}</p>
       </div>
     );
   }

@@ -1,7 +1,8 @@
 ---
 order: 4
-chinese: 组合
-english: Combined
+title:
+  zh-CN: 组合
+  en-US: Combined
 ---
 
 组合动效是将多种动画效果组合起来运用在单个元素或者界面中的表现方式，吸引用户的注意，让用户快速了解信息的主次关系。ant design 最常用的组合动效有以下三种：

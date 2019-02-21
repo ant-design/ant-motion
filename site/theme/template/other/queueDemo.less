@@ -1,0 +1,27 @@
+@import "../../static/custom";
+.timer-queue-wrapper {
+  width: 100%;
+  height: 240px;
+  margin: 20px auto 0;
+  background: #f4f4f4;
+  border-radius: 6px;
+  overflow: hidden;
+  & .demo-content {
+    width: 80%;
+    margin: 10px auto;
+    position: relative;
+    & .demo-kp {
+      margin: 20px auto;
+      & > ul > li {
+        display: inline-block;
+        width: 22%;
+        height: 50px;
+        background: @primary-color;
+        margin-right: 4%;
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}

@@ -1,11 +1,16 @@
 ---
 order: 3
-title: 路径缓动
+title: 
+  zh-CN: 路径缓动
+  en-US: Path Easing
+  
 mouseEnter: true
 ---
-
+## zh-CN
 鼠标经过或手指按下可查看旋转效果。
 
+## en-US
+Mouse hover or touch see the animation.
 
 ```jsx
 import PropTypes from 'prop-types';

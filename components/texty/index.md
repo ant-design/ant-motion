@@ -1,7 +1,8 @@
 ---
 order: 3
-chinese: 文字动画
-english: TextyAnim
+title: 
+  zh-CN: 文字动画
+  en-US: TextyAnim
 ---
 
 一个针对文字标题的进行进出场动画的组件，提供非富的动画效果，也可以随自已的需求来配置完成不同的效果，具体参数请参见 [API](/api/texty);

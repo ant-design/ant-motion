@@ -1,7 +1,8 @@
 ---
 order: 5
-chinese: 过渡
-english: Transition
+title:
+  zh-CN: 过渡
+  en-US: Transition
 ---
 
 > 过渡是更复杂的组合动画效果，组合动画是针对当前的元素进行的一个进出场效果，而过渡往往需要多个不同的动画来完成一段多个页面中间的过渡。

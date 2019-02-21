@@ -1,17 +1,25 @@
 ---
 order: 3
-chinese: 列表动画
-english: ListAnim
+title:
+  zh-CN: 列表动画
+  en-US: List Animate
+content: 
+  zh-CN: 在页面里，当我们想对区块内容进行动画时，需要解决元素的先后顺序与基本动画的属性。
+  en-US: In the page, when we want to animate block content, we need to solve the sequence of elements and the attributes of basic animation.
 image: https://zos.alipayobjects.com/rmsportal/ivfCWzEWHsTPWMW.png
 ---
-
-在页面里，当我们想对区块内容进行动画时，需要解决元素的先后顺序与基本动画的属性。
-
----
-
+## zh-CN
 出场请拖动上面的列表往左，出现删除按扭后点击删除。
 
 拖动的动画效果以 CSS(rc-animate) 实现的在文件包里，[查看 Demo](https://github.com/ant-design/ant-motion/tree/master/exhibition/js/);
+
+## en-US
+
+please drag the list above to the left, and click the delete button.
+
+Drag animation effects in CSS (rc-animate) in the file package，[Demo](https://github.com/ant-design/ant-motion/tree/master/exhibition/js/);
+
+
 
 ````jsx
 import QueueAnim from 'rc-queue-anim';

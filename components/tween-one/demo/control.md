@@ -1,10 +1,16 @@
 ---
 order: 2
-title: 变更动画参数
+title: 
+  zh-CN: 变更动画参数
+  en-US: Change Param
 mouseEnter: true
 ---
 
+## zh-CN
 可操作型变更动画。
+
+## en-US
+Operational change animation.
 
 ```jsx
 import PropTypes from 'prop-types';

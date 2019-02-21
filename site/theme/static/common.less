@@ -1,0 +1,330 @@
+@import 'custom';
+@import 'global';
+html,
+body {
+  background: #fff;
+}
+
+@header: header;
+.@{header}-wrapper {
+  height: 64px;
+  position: relative;
+  z-index: 10000;
+  background: @nav-color;
+  width: 100%;
+  transition: background .3s @ease-out, border @animate-duration @ease-out;
+  .@{header} {
+    width: 100%;
+    padding: 0 24px;
+    max-width: 1200px;
+    margin: auto;
+    position: relative;
+    transition: transform @animate-duration @ease-out;
+    &-logo {
+      display: inline-block;
+      margin: 17px 0;
+      height: 30px;
+      position: relative;
+      z-index: 1000;
+      & img {
+        vertical-align: middle;
+        display: inline-block;
+        &:last-child {
+          margin-left: 15px;
+        }
+      }
+      & a {
+        display: block; // transition: filter .4s;
+      }
+    }
+    .web-nav {
+      // float: right;
+      line-height: 64px;
+      position: absolute;
+      right: 24px;
+      top: 0;
+      height: 64px;
+      & ul {
+        display: inline-block;
+        overflow: hidden;
+        position: relative;
+        & li {
+          float: left;
+          margin-left: 48px;
+          transition: margin .3s;
+        }
+      }
+      a {
+        height: 100%;
+      }
+      .git-btn-li {
+        margin-left: 12px;
+        min-width: 120px;
+      }
+      .lang-btn {
+        display: flex;
+        align-items: center;
+        height: 64px;
+        margin-right: 12px;
+        position: relative;
+        button {
+          border-color: @nav-link-color;
+          &:hover,
+          &.active {
+            border-color: @nav-link-active-color;
+          }
+          &[disabled] {
+            border-color: @nav-link-active-color;
+          }
+        }
+        &:before {
+          content: '';
+          display: block;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          margin: auto;
+          height: 16px;
+          width: 1px;
+          background: @nav-link-color;
+          transition: background @animate-duration @ease-out;
+          opacity: 0.75;
+          left: -24px;
+        }
+      }
+      a,
+      button {
+        width: 100%;
+        font-size: 14px;
+        display: block;
+        color: @nav-link-color;
+        letter-spacing: 0.5px;
+        transition: color @animate-duration @ease-out, border-color @animate-duration @ease-out;
+        text-decoration: none;
+        &:hover,
+        &.active {
+          color: @nav-link-active-color;
+        }
+        &[disabled] {
+          color: @nav-link-active-color;
+        }
+      }
+    }
+    .phone-nav {
+      display: none;
+    }
+    .git-btn {
+
+      display: inline-block;
+      vertical-align: middle;
+      .github-btn {
+        display: block;
+        height: 24px;
+      }
+      .gh-btn,
+      .gh-count {
+        width: auto;
+        font-family: "PingFang SC", "Helvetica Neue", Helvetica, "Hiragino Sans GB", "Microsoft YaHei", "\5FAE\8F6F\96C5\9ED1", Arial, sans-serif;
+        font-weight: normal;
+        background: transparent;
+        padding: 0 7px;
+        height: 100%;
+        line-height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 4px;
+        color: @nav-link-color;
+        border-color: @nav-link-color;
+        transition: color @animate-duration @ease-out, border-color @animate-duration @ease-out;
+        &:hover {
+          color: @nav-link-active-color;
+          border-color: @nav-link-active-color;
+          .gh-ico {
+            opacity: 1;
+          }
+        }
+        .gh-text {
+          font-size: 14px;
+          font-weight: normal;
+        }
+        .gh-ico {
+          filter: brightness(5);
+          opacity: 0.5;
+          transition: opacity @animate-duration @ease-out;
+        }
+      }
+      .gh-count {
+        margin-left: 6px;
+        &:after {
+          left: -5px;
+          border-right-color: @nav-link-color;
+          transition: border-right-color @animate-duration @ease-out;
+        }
+        &:before {
+          display: none;
+        }
+        &:hover {
+          &:after {
+            border-right-color: @nav-link-active-color;
+          }
+        }
+      }
+    }
+  }
+}
+
+.home {
+  .@{header}-wrapper {
+    background: transparent;
+    border-color: transparent;
+    .@{header} {
+      transform: translateY(50%);
+      &-logo {
+        .logo-img {
+          filter: grayscale(1) brightness(3);
+        }
+      }
+      .web-nav {
+        a,
+        .lang-btn button {
+          color: #fff;
+          border-color: #fff;
+        }
+        .lang-btn:before {
+          background: @nav-link-active-color;
+        }
+      }
+      .git-btn {
+        .gh-btn,
+        .gh-count {
+          color: #fff;
+          border-color: #fff;
+          &:after {
+            border-right-color: @nav-link-active-color;
+          }
+          .gh-ico {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+  & .content-wrapper {
+    background: transparent;
+  }
+  /* .@{footer} {
+    background: @nav-color;
+    border-top-color: transparent;
+    & h2 {
+      color: #999
+    }
+  } */
+}
+
+.content-wrapper {
+  background-color: #fff;
+}
+
+.content-wrapper >.tween-one-leaving,
+.page-content >.tween-one-leaving {
+  position: absolute !important;
+  width: 100%;
+}
+
+/* .content-wrapper>.tween-one-leaving,
+.page-content>.tween-one-leaving,
+.content-wrapper>.tween-one-entering,
+.page-content>.tween-one-entering {
+  overflow: hidden;
+  height: 100vh;
+} */
+
+.home .queue-anim-leaving {
+  position: relative !important;
+  width: auto;
+}
+
+.video {
+  max-width: 800px;
+  width: 100%;
+}
+
+.video-min,
+.video-min-m {
+  max-width: 390px;
+  width: 100%;
+  display: inline-block;
+}
+
+.video-min-m {
+  max-width: 195px;
+}
+
+.video-margin-left {
+  margin-left: 20px;
+}
+
+.preview-image-title {
+  text-align: center;
+  line-height: 48px;
+}
+
+// 修改弹出框动画
+.ant-modal.zoom-appear,
+.ant-modal.zoom-enter,
+.ant-modal.zoom-leave {
+  animation-duration: .35s;
+}
+
+@keyframes antZoomIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes antZoomOut {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+}
+
+.templates-wrapper {
+  display: inline;
+  overflow: unset;
+  user-select: none;
+}
+
+.replay-button {
+  width: 32px;
+  height: 32px;
+  background: #fff;
+  border-radius: 100%;
+  box-shadow: 0 5px 20px fade(#000, 15);
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  transition: transform .45s @ease-out, box-shadow .45s @ease-out;
+  cursor: pointer;
+  & i {
+    background: url("https://zos.alipayobjects.com/rmsportal/XInKafGVjnFqZcM.svg") no-repeat center;
+    width: 20px;
+    height: 20px;
+    display: block;
+    margin: 6px auto;
+  }
+  &:active,
+  &:visited {
+    transform: translateY(2px);
+    box-shadow: 0 3px 15px fade(#000, 15);
+  }
+}

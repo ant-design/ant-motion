@@ -1,8 +1,11 @@
 ---
 order: 6
-chinese: 动画术语
-english: animate term
-category: 动效参数
+title:
+  zh-CN: 动画术语
+  en-US: animate term
+category: 
+  zh-CN: 动效参数
+  en-US: TweenOne param
 ---
 
 ## 动画基本参数术语说明

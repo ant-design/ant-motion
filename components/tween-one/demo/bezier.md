@@ -1,12 +1,17 @@
 ---
 order: 8
-title: 曲线动画
+title: 
+  zh-CN: 曲线动画
+  en-US: Curve Animate
 mouseEnter: true
 vertical: true
 ---
 
+## zh-CN
 贝赛尔曲线动画。 gsap 的 BezierPlugin 曲线动画;
 
+## en-US
+Bezier curve animation. ref Gzap BezierPlugin curve animation;
 
 ```jsx
 import PropTypes from 'prop-types';

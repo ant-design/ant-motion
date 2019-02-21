@@ -1,19 +1,27 @@
 ---
 order: 5
-chinese: logo 聚集与散开
-english: logoGather
+title:
+  zh-CN: Logo 聚集与散开
+  en-US: Logo Gather
+content: 
+  zh-CN: 以圆点散开与聚集来展示 logo 的一个小动画。
+  en-US: Show a little logo animation by scattering and gathering dots.
 image: https://zos.alipayobjects.com/rmsportal/YsRZqQwpiAVgWrX.png
 ---
-
-以圆点散开与聚集来展示 logo 的一个小动画
-
----
-
+## zh-CN
 首页 logo 动画的实现代码, 提供三个logo的样式， 还可自已添加 logo，如果需定制个性化的东西，请在 LogoGather 里修改。
 
 图片默认尺寸为 300 * 300;
 
-图片取点像素为控制点的个数，以图片宽度除以像素点来决定点的个数, 默认为 20, 每行每排为15个取点。
+图片取点像素为控制点的个数，以图片宽度除以像素点来决定点的个数, 默认为 20, 每行每列为15个取点。
+
+## en-US
+
+The implementation code of the home logo animation.
+
+The default size of the image is 300 * 300;
+
+The width of the image is divided by the number of pixels to determine the number of points, default 20。
 
 
 ```jsx
@@ -290,7 +298,7 @@ class Edit extends React.Component {
             </div>
           )}
           <ul>
-            <li>图片:</li>
+            <li>Image:</li>
             <li >
               <RadioGroup onChange={this.onChangeRadio} defaultValue="a">
                 <Radio value="a">
@@ -312,7 +320,7 @@ class Edit extends React.Component {
                   />
                 </Radio>
                 <Radio key="d" value="d" className={`${this.state.isMobile ? 'none' : ''}`}>
-                  其它
+                  Other
                   <TweenOneGroup
                     style={{ display: 'inline-block', height: 0 }}
                     enter={{ width: 0, opacity: 0, type: 'from' }}
@@ -321,7 +329,7 @@ class Edit extends React.Component {
                     {this.state.value === 'd' ? (
                       <div key="d">
                         <Input
-                          placeholder="或自行输入"
+                          placeholder="Input image url"
                           style={{ width: 120, marginLeft: 5 }}
                           onChange={this.onChangeImage}
                         />
@@ -331,7 +339,7 @@ class Edit extends React.Component {
                 </Radio>
               </RadioGroup>
             </li>
-            <li className={`${this.state.isMobile ? 'phone-float-none' : ''}`}>图片取点像素：</li>
+            <li className={`${this.state.isMobile ? 'phone-float-none' : ''}`}>取点像素(pixel)：</li>
             <li>
               <InputNumber
                 defaultValue={this.state.pixSize}
@@ -340,7 +348,7 @@ class Edit extends React.Component {
                 onChange={this.onChangePix}
               />
             </li>
-            <li className={`${this.state.isMobile ? 'phone-float-none' : ''}`}>点的宽加随机：</li>
+            <li className={`${this.state.isMobile ? 'phone-float-none' : ''}`}>宽加随机(width)：</li>
             <li>
               <InputNumber
                 defaultValue={this.state.pointSize}
@@ -349,11 +357,13 @@ class Edit extends React.Component {
               />
             </li>
             <li className={`${this.state.isMobile ? 'phone-float-none' : ''}`}>
-              <Button type="primary" onClick={this.onClick}>更新</Button>
+              <Button type="primary" onClick={this.onClick}>Update</Button>
             </li>
           </ul>
           <div style={{ lineHeight: '32px' }}>
-            注：图片尺寸为正方形的PNG或SVG，请确保图片开启跨域；像数点的数值越大则点越少，为流畅最小值为15
+            注：图片尺寸为正方形的PNG或SVG，请确保图片开启跨域；像数点的数值越大则点越少，为流畅最小值为15.
+            <br />
+            Note: The picture size is square PNG or SVG, please make sure the image is open across domains;
           </div>
         </div>
       </div>
