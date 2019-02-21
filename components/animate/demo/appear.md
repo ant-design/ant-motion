@@ -1,9 +1,15 @@
 ---
 order: 2
-title: 开始的进场
+title: 
+  zh-CN: 开始的进场
+  en-US: Appear
 ---
 
-开始的进场动画, css样式查看第一个demo。
+## zh-CN
+开始的进场动画, css 样式查看第一个 demo。
+
+## en-US
+Appear the opening animation, css style to view the first demo.
 
 ```jsx
 import Animate from 'rc-animate';

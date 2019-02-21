@@ -1,9 +1,17 @@
 ---
 order: 1
-title: 删除子级
+title: 
+  zh-CN: 删除子级
+  en-US: Remove Child
 ---
 
+## zh-CN
+
 动画出场后将子级删除掉。
+
+## en-US
+The child is deleted after the animation leave.
+
 
 ```jsx
 import Animate from 'rc-animate';

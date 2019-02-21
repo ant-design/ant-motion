@@ -1,9 +1,14 @@
 ---
 order: 0
-title: 简单的例子
+title: 
+  zh-CN: 简单的例子
+  en-US: Simple
 ---
-
+## zh-CN
 同时支持进场和离场动画。
+
+## en-US
+Both enter and leave animations are supported.
 
 ```jsx
 import Animate from 'rc-animate';
