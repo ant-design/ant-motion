@@ -1,0 +1,106 @@
+.banner-anim {
+  position: relative;
+  overflow: hidden;
+  min-height: 100px;
+}
+.banner-anim-elem {
+  height: 100%;
+}
+.banner-anim-elem > * {
+  position: relative;
+}
+.banner-anim-elem-mask {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+.banner-anim-arrow {
+  cursor: pointer;
+  position: absolute;
+  z-index: 10;
+}
+.banner-anim-arrow-default {
+  position: absolute;
+  width: 20px;
+  height: 60px;
+  margin-top: -30px;
+  background: rgba(0, 0, 0, 0.3);
+}
+.banner-anim-arrow-default.next {
+  right: 0;
+}
+.banner-anim-arrow-default.next:before,
+.banner-anim-arrow-default.prev:before,
+.banner-anim-arrow-default.next:after,
+.banner-anim-arrow-default.prev:after {
+  width: 2px;
+  height: 15px;
+  background: #fff;
+  display: block;
+  content: ' ';
+  position: absolute;
+}
+.banner-anim-arrow-default.next:before {
+  -webkit-transform: rotate(-40deg);
+      -ms-transform: rotate(-40deg);
+          transform: rotate(-40deg);
+  top: 18px;
+  left: 10px;
+}
+.banner-anim-arrow-default.next:after {
+  -webkit-transform: rotate(40deg);
+      -ms-transform: rotate(40deg);
+          transform: rotate(40deg);
+  bottom: 17px;
+  left: 10px;
+}
+.banner-anim-arrow-default.prev:before {
+  -webkit-transform: rotate(40deg);
+      -ms-transform: rotate(40deg);
+          transform: rotate(40deg);
+  top: 18px;
+  left: 8px;
+}
+.banner-anim-arrow-default.prev:after {
+  -webkit-transform: rotate(-40deg);
+      -ms-transform: rotate(-40deg);
+          transform: rotate(-40deg);
+  bottom: 17px;
+  left: 8px;
+}
+.banner-anim-thumb {
+  position: absolute;
+  bottom: 0;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  text-align: center;
+  pointer-events: none;
+  z-index: 10;
+}
+.banner-anim-thumb > span {
+  pointer-events: auto;
+  cursor: pointer;
+  display: inline-block;
+  list-style: none;
+}
+.banner-anim-thumb-default {
+  height: 40px;
+  line-height: 40px;
+}
+.banner-anim-thumb-default span {
+  width: 8px;
+  height: 8px;
+  border-radius: 8px;
+  margin: 0 5px;
+  background: rgba(102, 102, 102, 0.35);
+  -webkit-transition: background .3s;
+  transition: background .3s;
+  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.25);
+          box-shadow: 0 0 3px rgba(0, 0, 0, 0.25);
+}
+.banner-anim-thumb-default span:active,
+.banner-anim-thumb-default span.active {
+  background: #fff;
+}
+
