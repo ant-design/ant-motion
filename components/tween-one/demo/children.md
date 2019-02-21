@@ -1,9 +1,15 @@
 ---
 order: 4
-title: 数值变化
+title: 
+  zh-CN: 数值变化
+  en-US: Number Change
 ---
 
+## zh-CN
 输入与当前不同的数值，再点开始，不输入将过渡到 10000。
+
+## en-US
+Enter a different value from the current one, then click Start. No input will transition to 10000.
 
 ```jsx
 import PropTypes from 'prop-types';

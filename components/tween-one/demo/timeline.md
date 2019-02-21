@@ -1,11 +1,15 @@
 ---
 order: 1
-title: 时间轴效果
+title: 
+  zh-CN: 时间轴效果
+  en-US: Timeline
 mouseEnter: true
 ---
-
+## zh-CN
 鼠标经过或手指按下可查看时间轴效果, 时间轴效果，无限循环时间轴效果。
 
+## en-US
+Mouse hover or touch see the animation. Timeline effects, infinite loop timeline effects.
 
 ```jsx
 import TweenOne from 'rc-tween-one';

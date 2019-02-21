@@ -2,7 +2,7 @@
 order: 0
 title: 
   zh-CN: 基本动画效果
-  en-US: Basic animate
+  en-US: Basic Animate
 mouseEnter: true
 ---
 

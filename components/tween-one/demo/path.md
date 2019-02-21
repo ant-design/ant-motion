@@ -1,12 +1,16 @@
 ---
 order: 7
-title: 曲线路径动画
+title: 
+  zh-CN: 曲线路径动画
+  en-US: Curve Path Animation
 mouseEnter: true
 
 ---
-
+## zh-CN
 曲线路径动画。
 
+## en-US
+Mouse hover or touch see the animation. Curve Path Animation.
 
 ```jsx
 import PropTypes from 'prop-types';

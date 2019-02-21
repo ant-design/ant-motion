@@ -1,10 +1,15 @@
 ---
 order: 5
-title: svg 线性动画
+title: 
+  zh-CN: SVG 线性动画
+  en-US: SVG Linear Animate
 ---
 
-点击切换线效果。
+## zh-CN
+基本线性生成与消失的动态效果。
 
+## en-US
+Basic linear generation and disappearing dynamic effects.
 
 ```jsx
 import TweenOne from 'rc-tween-one';

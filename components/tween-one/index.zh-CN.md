@@ -6,11 +6,15 @@ title:
 
 ---
 
-这是个对单个元素标签做动效的组件，可以执行所有样式动画，包括 transform3d，模糊等效果，还可以完成贝塞尔曲线动画，具体参数请参见 [API](/api/tween-one)
+这是个对单个元素标签做动效的组件，可以执行所有样式和标签上的属性动画，包括 transform3d，模糊等效果，还可以完成贝塞尔曲线动画，具体参数请参见 [API](/api/tween-one)
 
 ## 何时使用
 
-- 在单个元素需要过渡到另外一点时使用
+- 元素在样式发生变化时。
+- 元素在某个时间段完成不同的时间轴动画时。
+- 数字发生变化时。
+- SVG 线性生长或形变时。
+- 元素需要在指定的路径引导上动画时。
 
 ---
 
@@ -59,6 +63,8 @@ React.render(<TweenOneGroup>
 
 > 基本动画参数请查看[动画术语](/language/animate-term);
 
+**不能同时使用 reverse 和 repeat:-1。**
+
 | 参数        | 类型               | 默认            | 说明                                             |
 | ----------- | ------------------ | --------------- | ---------------------------------------------- |
 | type        | string             | `to`            | 播放类型，`to` 为正常播放， `from` 反向播放, `set` 相同于 duration 等于 0, 直接到值. |
@@ -76,7 +82,7 @@ React.render(<TweenOneGroup>
 
 - 插件参数参考下面插件的写法。 如 bezier, SVGDraw, path, Children 等。 
 
-> `animation` 等于 `array` 时为时间轴动画
+> `animation` 等于 `array` 时为时间轴动画，ref: `animation={[{ x: 10 }, { y: 10 }]}`;
 
 
 ### TweenOne.easing.path
