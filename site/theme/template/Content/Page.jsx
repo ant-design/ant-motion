@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { TweenOneGroup } from 'rc-tween-one';
-import QueueAnim from 'rc-queue-anim';
 import { Link } from 'react-router';
 import { Affix, Row, Col, Menu } from 'antd';
 import { FormattedMessage, injectIntl } from 'react-intl';
@@ -167,17 +166,17 @@ class Page extends React.PureComponent {
     );
     return (!isMobile ? (listToRender && (
       <Affix offsetTop={60} key="list" className="nav-list-wrapper">
-        <QueueAnim
-          type={['bottom', 'top']}
-          duration={450}
-          ease="easeInOutQuad"
+        <TweenOneGroup
+          enter={{ y: 30, type: 'from', opacity: 0 }}
+          leave={{ y: -30, opacity: 0 }}
           className="nav-list"
         >
+
           <h2 key={`${pathname.split('/')[0]}-title`}>
             {isComponent ? <FormattedMessage id="app.content.components-exp" /> : title[pathNames[0]]}
           </h2>
           {menu}
-        </QueueAnim>
+        </TweenOneGroup>
       </Affix>
     ))
       : (
