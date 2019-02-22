@@ -5,7 +5,7 @@ title: Transition
 
 > The transition is a more complex combination of animation, is an entry and leave effect for the current element,  transition requires multiple different animations to complete.
 
-ur Gray Matter are wired to react to dynamic things like movement,shape change and colour change. Transitions smooth out the jarring world of the Web, making changes appear more natural. The main purpose for Transitions is to provide an engaging interface and reinforce communication.
+Our Gray Matter are wired to react to dynamic things like movement,shape change and colour change. Transitions smooth out the jarring world of the Web, making changes appear more natural. The main purpose for Transitions is to provide an engaging interface and reinforce communication.
 
 ## Visual coherence three elements
 

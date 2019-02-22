@@ -26,7 +26,7 @@ Take the button animation design as an example. the designer imagines it as a le
 
 Enterprise-class applications pursue an efficient user experience, the corresponding animation design should also be like this, try to save time on transitions, quickly complete the animation of the transition.
 
-For example, in the animation of the leaving and entry, there is no need to attract the attention of the user, should be simple and clear, so our leaving time is faster, at the same time, does not set the queue to leaving in sequence, just need the whole piece to disappear directly.
+For example, in the animation of the leave and entry, there is no need to attract the attention of the user, should be simple and clear, so our leave time is faster, at the same time, does not set the queue to leave in sequence, just need the whole piece to disappear directly.
 
 <video src="https://gw.alipayobjects.com/os/rmsportal/wMKeLGnpDxhwfCsBqKNN.mp4" loop="true" class="video-min" />
 
