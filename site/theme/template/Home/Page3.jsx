@@ -4,6 +4,7 @@ import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
 import QueueAnim from 'rc-queue-anim';
 import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router';
+import * as utils from '../utils';
 
 export default class Page3 extends React.PureComponent {
   static propTypes = {
@@ -16,6 +17,7 @@ export default class Page3 extends React.PureComponent {
   };
 
   render() {
+    const { isZhCN } = this.props;
     return (
       <div className="home-page-wrapper page3">
         <OverPack
@@ -37,7 +39,7 @@ export default class Page3 extends React.PureComponent {
               key="a"
               className="home-button"
             >
-              <Link to="/api/tween-one" onClick={this.props.onButtonClick}>
+              <Link to={utils.getLocalizedPathname('/api/tween-one', isZhCN)} onClick={this.props.onButtonClick}>
                 <FormattedMessage id="app.home.page3.button" />
               </Link>
             </div>

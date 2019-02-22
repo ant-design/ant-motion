@@ -7,6 +7,8 @@ import TweenOne from 'rc-tween-one';
 
 import { Link } from 'react-router';
 
+import * as utils from '../utils';
+
 class Page2 extends React.PureComponent {
   static propTypes = {
     pageData: PropTypes.object,
@@ -29,6 +31,7 @@ class Page2 extends React.PureComponent {
 
   render() {
     const { locale } = this.context.intl;
+    const isZhCN = locale === 'zh-CN';
     const exhibition = this.props.pageData.exhibition;
     const demoToChildren = Object.keys(exhibition)
       .map(key => exhibition[key])
@@ -83,7 +86,7 @@ class Page2 extends React.PureComponent {
             animation={{ delay: 300, ...this.props.tweenAnim }}
             className="home-button"
           >
-            <Link to="/exhibition/" onClick={this.props.onButtonClick}>
+            <Link to={utils.getLocalizedPathname('/exhibition/', isZhCN)} onClick={this.props.onButtonClick}>
               <FormattedMessage id="app.home.page2.learn-more" />
             </Link>
           </TweenOne>

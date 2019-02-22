@@ -6,6 +6,7 @@ import TweenOne from 'rc-tween-one';
 import { Link } from 'react-router';
 import { FormattedMessage } from 'react-intl';
 import CoderDemo from './CodeDemo';
+import * as utils from '../utils';
 
 export default class Page1 extends React.PureComponent {
   static propTypes = {
@@ -24,6 +25,7 @@ export default class Page1 extends React.PureComponent {
   };
 
   render() {
+    const { isZhCN } = this.props;
     return (
       <div className="home-page-wrapper page1">
         <OverPack
@@ -49,7 +51,10 @@ export default class Page1 extends React.PureComponent {
             className="home-button"
             animation={{ ...this.props.tweenAnim, delay: 300 }}
           >
-            <Link to="/components/tween-one" onClick={this.props.onButtonClick}>
+            <Link
+              to={utils.getLocalizedPathname('/components/tween-one', isZhCN)}
+              onClick={this.props.onButtonClick}
+            >
               <FormattedMessage id="app.home.learn-more" />
             </Link>
           </TweenOne>

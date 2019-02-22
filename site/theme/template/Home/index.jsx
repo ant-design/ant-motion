@@ -28,6 +28,8 @@ class Home extends React.PureComponent {
   };
 
   render() {
+    const { pathname } = this.props.location;
+    const isZhCN = utils.isZhCN(pathname);
     return (
       <DocumentTitle title="Ant Motion - Ant Design 的动效规范与组件">
         <div className="home-wrapper">
@@ -37,12 +39,13 @@ class Home extends React.PureComponent {
             <ScrollLink to="page2" showHeightActive={['30%', '70%']} toHash={false} />
             <ScrollLink to="page3" showHeightActive="70%" toHash={false} />
           </div>
-          <Banner {...this.props} />
+          <Banner {...this.props} isZhCN={isZhCN} />
           <Page1
             pageData={this.props.localizedPageData}
             utils={this.props.utils}
             tweenAnim={this.tweenAnim}
             onButtonClick={this.scrollToTop}
+            isZhCN={isZhCN}
           />
           <Page2
             pageData={this.props.localizedPageData}
@@ -50,7 +53,7 @@ class Home extends React.PureComponent {
             tweenAnim={this.tweenAnim}
             onButtonClick={this.scrollToTop}
           />
-          <Page3 onButtonClick={this.scrollToTop} />
+          <Page3 onButtonClick={this.scrollToTop} isZhCN={isZhCN} />
         </div>
       </DocumentTitle>
     );

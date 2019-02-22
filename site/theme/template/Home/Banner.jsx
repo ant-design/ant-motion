@@ -22,8 +22,7 @@ export default class Banner extends React.PureComponent {
   };
 
   render() {
-    const { pathname } = this.props.location;
-    const isZhCN = utils.isZhCN(pathname);
+    const { isZhCN } = this.props;
     return (
       <ScrollElement id="banner" className={`${this.props.className}-wrapper`}>
         <svg className={`${this.props.className}-bg-center`} width="100%" viewBox="0 0 1200 800">
@@ -65,7 +64,10 @@ export default class Banner extends React.PureComponent {
               <FormattedMessage id="app.home.introduce2" />
             </p>
             <div key="button">
-              <Link to="/language/basic" className={`${this.props.className}-text-button`}>
+              <Link
+                to={utils.getLocalizedPathname('/language/basic', isZhCN)}
+                className={`${this.props.className}-text-button`}
+              >
                 <FormattedMessage id="app.home.learn-more" />
                 <i />
               </Link>
