@@ -1,9 +1,15 @@
 ---
 order: 5
-title: 一个复杂些的例子
+title: 
+  zh-CN: 一个复杂些的例子
+  en-US: Complex Example
 ---
-
+## zh-CN
 模拟一个完整的页面。
+
+## en-US
+
+Simulate a complete page.
 
 ````jsx
 import Button from 'antd/lib/button';

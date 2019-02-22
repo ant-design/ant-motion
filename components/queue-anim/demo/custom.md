@@ -1,9 +1,17 @@
 ---
 order: 4
-title: 自定义动画进出场
+title: 
+  zh-CN: 自定义动画进出场
+  en-US: Custom Animation
+  
 ---
 
+## zh-CN
 通过 `animConfig` 来自定义动画进出场。
+
+## en-US
+
+Customize into and out of the animation with `animConfig`.
 
 ````jsx
 import Button from 'antd/lib/button';

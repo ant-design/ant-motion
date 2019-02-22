@@ -1,9 +1,14 @@
 ---
 order: 3
-title: 添加与删除
+title: 
+  zh-CN: 添加与删除
+  en-US: Add And Remove
 ---
-
+## zh-CN
 场景里有增加或删除条目时也会触发动画。
+
+## en-US
+Animations are also triggered when there are additions or deletions to the scene.
 
 ````jsx
 import Button from 'antd/lib/button';

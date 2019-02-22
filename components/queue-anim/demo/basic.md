@@ -1,9 +1,16 @@
 ---
 order: 1
-title: 进场和离场
+title: 
+  zh-CN: 进场和离场
+  en-US: Enter and leave
+  
 ---
 
+## zh-CN
 同时支持进场和离场动画。
+
+## en-US
+Both enter and leave animations are supported.
 
 ````jsx
 import Button from 'antd/lib/button';

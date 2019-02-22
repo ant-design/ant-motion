@@ -11,9 +11,9 @@ title:
 
 ## 何时使用
 
-- 从内容A到内容B的转变过程时能有效的吸引用户注意力，突出视觉中心，提高整体视觉效果。
+- 从内容 A 到内容B的转变过程时能有效的吸引用户注意力，突出视觉中心，提高整体视觉效果。
 
-- 小的信息元素排布或块状较多的情况下，根据一定的路径层次依次进场，区分维度层级，来凸显量级，使页面转场更加流畅和舒适，提高整体视觉效果和产品的质感。
+- 小的信息元素排布或块状较多的情况下，根据一定的路径层次依次进场，区分维度层级，来突显量级，使页面转场更加流畅和舒适，提高整体视觉效果和产品的质感。
 
 - 特别适合首页和需要视觉展示效果的宣传页，以及单页应用的切换页面动效。
 
@@ -52,6 +52,7 @@ ReactDOM.render(<QueueAnim>
 | appear     | boolean        | true    | 开始进入时是否有动画    |
 | animatingClassName | array | `['queue-anim-entering', 'queue-anim-leaving']` | 进出场动画进行中的类名 |
 | component  | string | `div` | QueueAnim 替换的标签名 |
+| componentProps | object | {} | 组件的 props |
 | onEnd      | func   | null  | 动画结束后回调， callback({ key, type }); type 为 `enter` 或 `leave` |
 
 > 当以上数据类型为 Array 时，`['left', 'top']` 第一个为进场动画属性, 第二个为离场属性。
