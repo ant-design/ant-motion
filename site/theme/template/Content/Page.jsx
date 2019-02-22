@@ -149,8 +149,8 @@ class Page extends React.PureComponent {
     const listKey = pathNames[0] === 'components' && !pathname.match('api')
       ? pathname : pathNames[0];
     const getHashActive = () => {
-      const hashArray = this.hash.replace('#', '').split('-');
-      return hashArray[hashArray.length - 1];
+      const hashArray = this.hash.replace('#', '').split(`${pathNames[1]}-demo-`);
+      return hashArray[1];
     };
     const activeMenuItem = this.state.isHash ? getHashActive() : pathNames[1];
     const menu = (
