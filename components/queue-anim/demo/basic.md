@@ -2,7 +2,7 @@
 order: 1
 title: 
   zh-CN: 进场和离场
-  en-US: Enter and leave
+  en-US: Enter And Leave
   
 ---
 
@@ -29,7 +29,7 @@ class Test extends React.Component{
     return (
       <div className="queue-demo">
         <p className="buttons">
-          <Button type="primary" onClick={this.onClick}>切换</Button>
+          <Button type="primary" onClick={this.onClick}>Switch</Button>
         </p>
         <QueueAnim className="demo-content">
           {this.state.show ? [

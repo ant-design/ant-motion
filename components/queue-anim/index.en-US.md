@@ -29,10 +29,10 @@ $ npm install rc-queue-anim --save
 ```jsx
 import QueueAnim from 'rc-queue-anim';
 ReactDOM.render(<QueueAnim>
-  <div key="demo1">Entering in turn</div>
-  <div key="demo2">Entering in turn</div>
-  <div key="demo3">Entering in turn</div>
-  <div key="demo4">Entering in turn</div>
+  <div key="demo1">Queue entering</div>
+  <div key="demo2">Queue entering</div>
+  <div key="demo3">Queue entering</div>
+  <div key="demo4">Queue entering</div>
 </QueueAnim>, mountNode);
 ```
 > Each subtag must have a key, and if no key is set, no animation will be performed.

@@ -29,7 +29,7 @@ class Test extends React.Component{
     return (
       <div className="queue-demo">
         <p className="buttons">
-          <Button type="primary" onClick={this.onClick}>切换</Button>
+          <Button type="primary" onClick={this.onClick}>Switch</Button>
         </p>
         <QueueAnim className="demo-content"
           key="demo"

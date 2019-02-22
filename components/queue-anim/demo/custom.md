@@ -3,7 +3,6 @@ order: 4
 title: 
   zh-CN: 自定义动画进出场
   en-US: Custom Animation
-  
 ---
 
 ## zh-CN
@@ -30,7 +29,7 @@ class Test extends React.Component{
     return (
       <div className="queue-demo">
         <p className="buttons">
-          <Button type="primary" onClick={this.onClick}>切换</Button>
+          <Button type="primary" onClick={this.onClick}>Switch</Button>
         </p>
         <QueueAnim className="demo-content"
           animConfig={[

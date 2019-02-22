@@ -48,9 +48,9 @@ class Test extends React.Component{
     return (
       <div className="queue-demo">
         <p className="buttons">
-          <Button type="primary" onClick={this.onClick}>切换</Button>
-          <Button onClick={this.onAdd} style={{ marginLeft: 10 }}>添加</Button>
-          <Button onClick={this.onRemove} style={{ marginLeft: 10 }}>删除</Button>
+          <Button type="primary" onClick={this.onClick}>Switch</Button>
+          <Button onClick={this.onAdd} style={{ marginLeft: 10 }}>Add</Button>
+          <Button onClick={this.onRemove} style={{ marginLeft: 10 }}>Remove</Button>
         </p>
         <div className="demo-content">
           <div className="demo-thead" key="a">

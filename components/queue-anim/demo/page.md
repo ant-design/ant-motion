@@ -28,7 +28,7 @@ class Test extends React.Component{
     return (
       <div className="queue-demo">
         <p className="buttons" style={{ marginBottom: 20 }}>
-          <Button type="primary" onClick={this.onClick}>切换</Button>
+          <Button type="primary" onClick={this.onClick}>Switch</Button>
         </p>
         <QueueAnim type={['right', 'left']} className="demo-content">
         {this.state.show ? [

@@ -53,6 +53,7 @@ ReactDOM.render(<QueueAnim>
 | animatingClassName | array | `['queue-anim-entering', 'queue-anim-leaving']` | 进出场动画进行中的类名 |
 | component  | string | `div` | QueueAnim 替换的标签名 |
 | componentProps | object | {} | 组件的 props |
+| forcedReplay | boolean | false | 是否强制重放动画，比如：在出场动画时触发了进场动画，立即执行进场动画 |
 | onEnd      | func   | null  | 动画结束后回调， callback({ key, type }); type 为 `enter` 或 `leave` |
 
 > 当以上数据类型为 Array 时，`['left', 'top']` 第一个为进场动画属性, 第二个为离场属性。

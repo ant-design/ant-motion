@@ -16,10 +16,10 @@ import QueueAnim from 'rc-queue-anim';
 
 ReactDOM.render(
   <QueueAnim delay={300} className="queue-simple">
-    <div key="a">依次进场</div>
-    <div key="b">依次进场</div>
-    <div key="c">依次进场</div>
-    <div key="d">依次进场</div>
+    <div key="a">Queue Entering</div>
+    <div key="b">Queue Entering</div>
+    <div key="c">Queue Entering</div>
+    <div key="d">Queue Entering</div>
   </QueueAnim>
 , mountNode);
 ````
