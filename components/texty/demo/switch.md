@@ -1,9 +1,15 @@
 ---
 order: 1
-title: 文字切换
+title: 
+  zh-CN: 文字切换
+  en-US: Switch
 ---
 
+## zh-CN
 文字切换效果
+
+## en-US
+Text switching.
 
 ```jsx
 import Texty from 'rc-texty';
@@ -23,7 +29,7 @@ class Demo extends React.Component{
     return (
       <div className="texty-demo" style={{ marginTop: 16 }}>
         <p className="buttons" style={{ marginBottom: 16 }}>
-          <Button type="primary" onClick={this.onClick}>切换</Button>
+          <Button type="primary" onClick={this.onClick}>Switch</Button>
         </p>
         <Texty>{this.state.show && 'Ant Motion'}</Texty>
       </div>

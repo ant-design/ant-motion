@@ -150,7 +150,7 @@ class Page extends React.PureComponent {
       ? pathname : pathNames[0];
     const getHashActive = () => {
       const hashArray = this.hash.replace('#', '').split(`${pathNames[1]}-demo-`);
-      return hashArray[1];
+      return hashArray[1] || '';
     };
     const activeMenuItem = this.state.isHash ? getHashActive() : pathNames[1];
     const menu = (

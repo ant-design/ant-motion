@@ -1,10 +1,16 @@
 ---
 order: 4
-title: 一个复杂些的例子
+title: 
+  zh-CN: 一个复杂些的例子
+  en-US: Complex Example
 vertical: true
 ---
 
+## zh-CN
 一个标题和正文内容的进场效果
+
+## en-US
+Entry effect of a title and body content.
 
 ```jsx
 import Texty from 'rc-texty';

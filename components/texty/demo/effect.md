@@ -1,9 +1,15 @@
 ---
 order: 3
-title: 内置效果
+title: 
+  zh-CN: 内置效果
+  en-US: Type
 ---
 
+## zh-CN
 内置效果
+
+## en-US
+Built-in type.
 
 ```jsx
 import Texty from 'rc-texty';
@@ -42,7 +48,7 @@ class Demo extends React.Component{
     return (
       <div className="texty-demo" style={{ marginTop: 16 }}>
         <p className="buttons" style={{ marginBottom: 16 }}>
-          <Button type="primary" onClick={this.onClick}>切换</Button>
+          <Button type="primary" onClick={this.onClick}>Switch</Button>
         </p>
         <div style={{ fontSize: 14, marginBottom: 16 }}>
           type: 
