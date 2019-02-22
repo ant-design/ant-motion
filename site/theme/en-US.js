@@ -16,7 +16,7 @@ module.exports = {
     'app.home.page1.title': 'Animation easier',
     'app.home.page1.content': 'In the React framework, you only need a simple piece of code to achieve animation effects, \nwhich can improve your work efficiency.',
     'app.home.page2.content': 'With Ant Motion, you can quickly achieve animation effects.\n With different interaction modes, you can apply directly to your project.',
-    'app.home.page2.learn-more': 'More',
+    'app.home.page2.learn-more': 'Learn More',
     'app.home.page3.title': 'Add interesting animatiion to your product',
     'app.home.page3.content': 'With more friendly interaction, let the animate shuttle between different elements,\n so that the product can better talk to the user.',
     'app.home.page3.button': 'Quick Start',
