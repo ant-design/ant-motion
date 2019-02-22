@@ -35,7 +35,7 @@ class Test extends React.Component{
     return (
       <div className="code-box-demo-wrapper">
         <p className="buttons">
-          <Button type="primary" onClick={this.onClick}>切换</Button>
+          <Button type="primary" onClick={this.onClick}>Switch</Button>
         </p>
         <Animate
           transitionName="fade"
