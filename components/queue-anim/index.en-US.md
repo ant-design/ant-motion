@@ -41,7 +41,7 @@ ReactDOM.render(<QueueAnim>
 
 > v1.2.0 animConfig add [timeline](http://react-component.github.io/queue-anim/examples/timeline.html)
 
-| name           | type                 | default    | description                        |
+| name       | type       | default    | description    |
 |------------|----------------|---------|----------------|
 | type       | string / array | `right` | Animation type  <br/> `alpha` `left` `right` `top` `bottom` `scale` `scaleBig` `scaleX` `scaleY`|
 | animConfig | object / array | null    | Custom config, See below for more details [animConfig](#animConfig) |

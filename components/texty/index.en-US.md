@@ -33,7 +33,7 @@ ReactDOM.render(<Texty>text</Texty>, mountNode);
 | className | string         | `null`   | 	class name.      |
 | prefixCls | string         | `texty`  | prefix class.             |
 | type      | string         | `top`    | animation type,  `left` \| `right` \| `top` \| `bottom` \|`alpha` \| `scale` \|  `scaleX` \| `scaleBig` \| `scaleY` \| `mask-bottom` \| `mask-top` \|  `flash` \| `bounce` \| `swing` \| `swing-y` \| `swing-rotate`. |
-| mode      | string         | `smooth` | animate sport mode.  `smooth` \| `reverse` \| `random` \| `sync`                           |
+| mode      | string         | `smooth` | animate sport mode.  `smooth` \| `reverse` \| `random` \| `sync`      |
 | duration | number | `450` | Except for special animation   `flash` \| `bounce` \| `swing` \| `swing-y` \| `swing-rotate`. one text animation duration |
 | delay     | number         | `0`      | animation overall delay. |
 | interval  | number \| func | `50`     | animation interval, is function: `function: (e: { key: string }) => number.` Key is split text plus sequence(text-1). example: `text`, key is `t-0`、`e-1`、`x-2`、`t-3`.     |

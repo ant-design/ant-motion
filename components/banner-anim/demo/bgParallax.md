@@ -1,6 +1,8 @@
 ---
 order: 4
-title: 背景随滚动下滑
+title: 
+  zh-CN: 背景随滚动下滑
+  en-US: Bg Follows The Scroll Down
 hidden: true
 ---
 

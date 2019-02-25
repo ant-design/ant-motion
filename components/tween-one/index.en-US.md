@@ -59,7 +59,7 @@ React.render(<TweenOneGroup>
 
 ### animation
 
-> Basic animation param. please view[animation terms](/language/animate-term);
+> Basic animation param. please view [animation terms](/language/animate-term);
 
 **Cannot be used at the same time reverse and repeat: -1.**
 

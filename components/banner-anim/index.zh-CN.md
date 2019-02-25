@@ -12,7 +12,7 @@ title:
 
 - 在首页里的首屏展示信息时，需要将 banner 里的元素做动效时。
 
-> [查看更多 demo](http://react-component.github.io/banner-anim/)
+> [查看更多 Demo](http://react-component.github.io/banner-anim/)
 
 
 ---
@@ -78,14 +78,27 @@ ReactDOM.render(<BannerAnim>
 | prefixCls |     string      |   -           |  自定义样式 |
 | followParallax | object   |  null        | 跟随鼠标上下或左右晃动效果 |
 | component | string         |      `div`    | 组件标签  |
+| componentProps | object | {} | 组件的 props |
 
 #### followParallax is object
 |参数        |类型             |默认     |详细             |
 |----------|-----------------|--------------|-----------------------|
 | delay    |   number        |  null        | 必须，在单个区块进入后延迟开启鼠标效果，比如子级是 tween-one 时，需要等 tween-one 的动画结束后再执行鼠标效果，不然两者会冲突 |
-| data     | array           |  null        | 数组里的内容: { id: string, value: number, type: array or string, bgPosition: string }; id: 子级的 id; value: 晃动时的值，如果值为 20, 那左右晃动的值为：最左边 -20, 最右边 20; type: style 里的样式 或 `x` `y`; bgPosition: 初始背景图片的坐标，只在 type 为 backgroundPosition 时生效，默认为 50%, 详细查看 [鼠标跟随例子](http://react-component.github.io/banner-anim/examples/followMouse.html) |
+| data     | array           |  null        | 详细参数查看下面 [followParallax data](#followParallax-data), 详细 Demo 查看 [鼠标跟随例子](http://react-component.github.io/banner-anim/examples/followMouse.html) |
 | ease | string        | `easeInOutQuad`         |  鼠标移动时, 元素缓动效果。[参数名称参考](http://easings.net/zh-cn)  |
 | minMove | number     | 0.08        | 区域为 0 - 0.1, `easeInOutQuad(startMousePosition, minMove, 1, currentMousePosition)`; 在有缓动时，鼠标移动时，最小移动的值，如果为 0，鼠标移动时不会移动，移动结束后触发动画。 |
+
+#### followParallax data
+
+> data = [{ id, value, type, bgPosition }]
+
+|参数        |类型             |默认     |详细             |
+|----------|-------------|--------------|-----------------------|
+| id       | string     |  -     | 子级 id.   |
+| value    | number     |  -      | 晃动时的值，如果值为 20, 那左右晃动的值为：最左边 -20, 最右边 20。 | 
+| type     | string    |  -     |  style 里的名称或 `x` ,`y`, `x` = `translateX`, `y` = `translateY`. |
+| bgPosition | string  | - | 初始背景图片的坐标，只在 type 为 backgroundPosition 时生效，默认为 50%.  |
+
 
 ### Element.BgElement
 
@@ -95,7 +108,8 @@ ReactDOM.render(<BannerAnim>
 | className |     string      |   -           |  样式 |
 | scrollParallax | object   |  null        | { y: 100 }, 向下滚动时, 元素出顶部的到达值。 |
 | videoResize | boolean         |      `true`    | 如果子级元素为 video 时，自动响应窗口大小。  |
-| component | string         |      `div`    | 组件标签  |
+| component | React.Element/string          |      `div`    | 组件标签  |
+| componentProps | object | {} | 组件的 props |
 
 ### Arrow or Thumb
 

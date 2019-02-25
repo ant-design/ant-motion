@@ -1,9 +1,15 @@
 ---
 order: 5
-title: 随鼠标摆动
+title: 
+  zh-CN: 随鼠标摆动
+  en-US: Follow The Mouse
 ---
 
+## zh-CN
 跟随鼠标左右摆动。
+
+## en-US
+Follow the mouse to swing.
 
 ````jsx
 import BannerAnim, { Element } from 'rc-banner-anim';

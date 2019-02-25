@@ -109,7 +109,7 @@ scrollScreen.unMount();
 
 |   参数   |    类型    |   默认  |  说明   |
 |---------|------------|---------|--------|
-| component | React.Element / string |  div  | 组件标签            |
+| component | React.Element/string |  div  | 组件标签            |
 | targetId  | string   |  null | 自定义滚动事件的目标， [demo](http://react-component.github.io/scroll-anim/examples/target.html) |
 | playScale |  number / array  |  `0.5` | 到达窗口指定区域开始播放， 0.5 将转换成 \[0.5, 0.5\]（[`bottom-enter`, `top-leave`]）`bottom-enter` 是进入窗口的百分比, 0.5 为窗口从低部往上计算的 50%, `top-leave` 是离开窗口的百分比, 0.5 为窗口顶部往上计算的 50%,  `top-leave` 必须大于等于 `bottom-enter`。 <br /> 注：元素高度必须能达到播放的高度，不是子级高度，必需为当前元素高度。|
 | replay  |  boolean | false | 每次显示当前时是否都触发事件, `false` 为只上往下滚时才触发事件 |
@@ -134,7 +134,7 @@ scrollScreen.unMount();
 | location | string | null | 定位到父级元素，以父级元素的位置为准，元素的 id 值， 必需是唯一的 |
 | always | boolean | true | 同上，重复播放 |
 | targetId | string | null | 参考 `Element` 的 `targetId` |
-| component | React.Element / string | div | 同上 |
+| component | React.Element/string | div | 同上 |
 | componentProps | object | - | 同上 |
 
 #### animation 为 object 时

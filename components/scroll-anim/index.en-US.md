@@ -21,7 +21,7 @@ With a simple configuration, the element will follow the scroll bar scrolling an
 }
 </style>
 
-[更多 Demo](http://react-component.github.io/scroll-anim/) 
+[More Demo](http://react-component.github.io/scroll-anim/) 
 
 ---
 
@@ -111,7 +111,7 @@ scrollScreen.unMount();
 
 | name    | type       | default | description   |
 |---------|------------|---------|--------|
-| component | React.Element / string  |  'div'  | component tag.            |
+| component | React.Element/string  |  'div'  | component tag.            |
 | targetId  | string   |  null | Customize the goal of the scroll event, [demo](http://react-component.github.io/scroll-anim/examples/target.html). |
 | playScale |  number / array  |  `0.5` | Arrives in the specified area of the window to start playback, 0.5 will be converted to \[0.5, 0.5\]([`bottom-enter`, `top-leave`]),<br />` bottom-enter `is the percentage of entering the window, 0.5 is 50% calculated from the bottom up, `top-leave` is the percentage of leaving the window, 0.5 is 50% calculated from the top up, `top-leave` must be greater than or equal to `bottom-enter`. <br /> Note: Element height must be able to reach the playing height, not the sub-level height, must be the current element height. |
 | replay  |  boolean | false | Whether to trigger an event each time it enters, `false`:  Triggered only when the event scrolls down. |
@@ -136,7 +136,7 @@ scrollScreen.unMount();
 | location | string | null | Positioning with the position of the parent element, value is parent `id`. |
 | always | boolean | true | Same as above, repeat play. |
 | targetId | string | null | Refer to the `targetId` of `Element`. |
-| component | React.Element / string | div | Same as above. |
+| component | React.Element/string | div | Same as above. |
 | componentProps | object | - | Same as above. |
 
 #### animation={}

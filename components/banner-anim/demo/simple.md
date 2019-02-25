@@ -1,10 +1,16 @@
 ---
 order: 0
-title: 简单的例子
+title: 
+  zh-CN: 简单的例子
+  en-US: Simple
 cols: 1
 ---
 
+## zh-CN
 最简单的进场例子。
+
+## en-US
+The simplest example.
 
 ````jsx
 import BannerAnim, { Element } from 'rc-banner-anim';

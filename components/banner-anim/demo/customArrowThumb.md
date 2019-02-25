@@ -1,9 +1,16 @@
 ---
 order: 2
-title: 自定义左右箭头与缩略图
+title: 
+  zh-CN: 自定义左右箭头与缩略图
+  en-US: Custom Arrow And Thumb
 ---
 
+## zh-CN
+
 可定制自已所示的箭头。
+
+## en-US
+Customizable arrow and thumb can be customized.
 
 ````jsx
 import BannerAnim from 'rc-banner-anim';

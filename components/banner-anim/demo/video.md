@@ -1,10 +1,18 @@
 ---
 order: 3
-title: video背景
+title: 
+  zh-CN: Video 背景
+  en-US: Video Bg
 hidden: true
 ---
 
+## zh-CN
+
 用 video 作为背景时。
+
+## en-US
+
+When using video as the background.
 
 ````jsx
 import BannerAnim, { Element } from 'rc-banner-anim';

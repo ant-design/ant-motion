@@ -1,9 +1,16 @@
 ---
 order: 1
-title: 自动播放
+title: 
+  zh-CN: 自动播放
+  en-US: Auto Play
 ---
 
+## zh-CN
 自动播放示例。
+
+## en-US
+
+autoPlay example.
 
 ````jsx
 import BannerAnim, { Element } from 'rc-banner-anim';
