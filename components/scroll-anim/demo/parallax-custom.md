@@ -1,10 +1,15 @@
 ---
 order: 1
-title: 自定义 parallax 的 playScale
+title: 
+  zh-CN: 自定义 Parallax 的 playScale
+  en-US: Custom Parallax playScale
 ---
 
-自定义 playScale，在屏幕中间开始播放，到 80％ 结束动画parallax-custom.md
+## zh-CN
+自定义 playScale，在屏幕中间开始播放，到 80％ 结束动画。
 
+## en-US
+Customize playScale, start playing in the middle of the screen, and end the animation at 80%.
 
 ```jsx
 import { Parallax } from 'rc-scroll-anim';

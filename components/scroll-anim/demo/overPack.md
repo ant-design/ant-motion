@@ -1,9 +1,15 @@
 ---
 order: 3
-title: OverPack 例子
+title: 
+  zh-CN: OverPack 例子
+  en-US: OverPack
 ---
 
-设置了在屏幕下方 50％ 时开始播放动画，子级可支持 `rc-queue-anim` `rc-animate` `rc-tween-one`
+## zh-CN
+设置了在屏幕下方 50％ 时开始播放动画，子级可支持 `rc-queue-anim` `rc-animate` `rc-tween-one`。
+
+## en-US
+Set to start playing the animation at 50% below the screen, the child can support `rc-queue-anim` `rc-animate` `rc-tween-one`.
 
 ```jsx
 import { OverPack } from 'rc-scroll-anim';

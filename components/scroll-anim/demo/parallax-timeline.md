@@ -1,9 +1,13 @@
 ---
 order: 2
-title: parallax 的时间轴动画
+title: 
+  zh-CN: Parallax 的时间轴动画
+  en-US: Parallax Timeline
 ---
-
+## zh-CN
 可配置多个动画，然后再配合 playScale 完成滚动动画
+## en-US
+Multiple animations can be configured and then played with playScale.
 
 ```jsx
 import { Parallax } from 'rc-scroll-anim';

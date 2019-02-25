@@ -1,10 +1,15 @@
 ---
 order: 0
-title: Parallax 示例
+title: 
+  zh-CN: Parallax 示例
+  en-US: Parallax
 ---
 
+## zh-CN
 随滚动来播放动画
 
+## en-US
+Follow the scroll to play the animation.
 
 ```jsx
 import { Parallax } from 'rc-scroll-anim';

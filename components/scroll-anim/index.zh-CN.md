@@ -34,13 +34,23 @@ title:
 $ npm install rc-scroll-anim --save
 ```
 ### 本组件提供
-- OverPack 滚动到点直接播放动画
-- Parallax 随滚动播放动画
-- Link 锚点定位
-- Element 不需要动画，但需要锚点定位到此，请用这个
-- scrollScreen 启动整屏滚动，提供init()与unMount()方法
+- **Element:** 基本滚动事件的元素，没有动画；
+- **OverPack:** 滚动到区块播放动画
+- **Parallax:** 随滚动播放动画
+- **Link:** 锚点定位
+- **scrollScreen:** 启动整屏滚动，提供init()与unMount()方法
 
 ### 使用
+
+#### Element
+```jsx
+import { Element } from 'rc-scroll-anim';
+React.render(<div>
+  <Element className="pack-page">
+    <div>demo</div>
+  </Element>
+</div>, mountNode);
+```
 
 #### OverPack
 
@@ -56,7 +66,7 @@ ReactDOM.render((<ScrollOverPack hideProps={{ tweenOne: { reverse: true }}}>
   <TweenOne key='tweenOne' vars={{ x:100 }} >单元素动画</TweenOne>
   <Animate key='rc-animate' transitionName="fade"
     transitionAppear>
-    rc-animate示例
+    rc-animate 示例
   </Animate>
 </ScrollOverPack>), mountNode);
 ```
@@ -65,19 +75,19 @@ ReactDOM.render((<ScrollOverPack hideProps={{ tweenOne: { reverse: true }}}>
 
 ```jsx
 import ScrollParallax from 'rc-scroll-anim/lib/ScrollParallax';
-React.render((<ScrollParallax vars={{x:100}}>Parallax示例</ScrollParallax>), mountNode);
+React.render((<ScrollParallax vars={{x:100}}>Parallax 示例</ScrollParallax>), mountNode);
 ```
 
-#### Link Element
+#### Link 
 ```jsx
-import { Link, Element } from 'rc-scroll-anim';
+import { Link } from 'rc-scroll-anim';
 React.render(<div>
   <div className="nav">
     <Link className="nav-list" to="page0">nav0</Link>
     <Link className="nav-list" to="page1">nav1</Link>
   </div>
-  <Element className="pack-page" id="page0">示例</Element>
-  <Element className="pack-page" id="page1">示例</Element>
+  <div className="pack-page" id="page0">page0</div>
+  <div className="pack-page" id="page1">page1</div>
 </div>, mountNode);
 ```
 
@@ -89,21 +99,20 @@ scrollScreen.init();
 scrollScreen.unMount();
 ```
 
-> Link 例子等更多例子 [查看更多 demo](http://react-component.github.io/scroll-anim/)
+> Link 等更多例子 [查看更多 demo](http://react-component.github.io/scroll-anim/)
 
 ## API
 
 ## Element 说明
 
-> `Element` 或 `OverPack` 在最后一屏时必需设置高度，否则高度末达到 playScale 的播放点时将不会被渲染。
+> `Element` 或 `OverPack` 高度没有达到 playScale 的播放点时将不会被渲染，建议在最后一屏时设置最小高度。
 
 |   参数   |    类型    |   默认  |  说明   |
 |---------|------------|---------|--------|
-| id | string         | null    | 定位需要的 id，`parallax` 的 `location` 或 `link` 的 `to`, 都需要以此元素做定位 |
-| component | string         |  div  | 组件标签            |
-| targetId  | string   |  null | 不以 window 为滚动目标时，请设置当前目标的 id。。[详细 demo](http://react-component.github.io/scroll-anim/examples/target.html) |
-| playScale |  number / array  |  `0.5` | 要在屏幕哪个区域开始播放， 0.5 为屏幕中间。 如果为 array 时 replay 为 true, [bottom-enter, top-leave] enter为进入是的播放点， topLeave 为出屏的比例(当前显示屏的上面一屏)的百分点。topLeave 必须大于等于 bottomEnter。 <br /> 注：元素高度必须能达到播放的高度，不是子级高度，必需为当前元素高度。|
-| replay  |  boolean | false | 每次显示当前时是否都要动画, `false` 为只上往下滚时才有动画 |
+| component | React.Element / string |  div  | 组件标签            |
+| targetId  | string   |  null | 自定义滚动事件的目标， [demo](http://react-component.github.io/scroll-anim/examples/target.html) |
+| playScale |  number / array  |  `0.5` | 到达窗口指定区域开始播放， 0.5 将转换成 \[0.5, 0.5\]（[`bottom-enter`, `top-leave`]）`bottom-enter` 是进入窗口的百分比, 0.5 为窗口从低部往上计算的 50%, `top-leave` 是离开窗口的百分比, 0.5 为窗口顶部往上计算的 50%,  `top-leave` 必须大于等于 `bottom-enter`。 <br /> 注：元素高度必须能达到播放的高度，不是子级高度，必需为当前元素高度。|
+| replay  |  boolean | false | 每次显示当前时是否都触发事件, `false` 为只上往下滚时才触发事件 |
 | onChange | func    | null  | 变更回调; callback({ mode, id }); mode 为 `enter` 或 `leave` 两种状态 |
 | onScroll | func     | null | 滚动回调; callback({ domEvent, scrollTop, offsetTop, showHeight, id}); |
 | location | string   | null  | 定位到父级元素, 必须为 id； |
@@ -112,8 +121,6 @@ scrollScreen.unMount();
 ### OverPack 说明
 
 > `OverPack` 继承 `Element`, `component`, `componentProps`,`playScale`, `replay`, `onChange`, `onScroll` 参考 `Element`
-
-> 1.0.0 之后删除 `hideProps`;
 
 |   参数   |    类型    |   默认  |  说明   |
 |---------|------------|---------|--------|
@@ -127,7 +134,7 @@ scrollScreen.unMount();
 | location | string | null | 定位到父级元素，以父级元素的位置为准，元素的 id 值， 必需是唯一的 |
 | always | boolean | true | 同上，重复播放 |
 | targetId | string | null | 参考 `Element` 的 `targetId` |
-| component | string | div | 同上 |
+| component | React.Element / string | div | 同上 |
 | componentProps | object | - | 同上 |
 
 #### animation 为 object 时
@@ -145,7 +152,7 @@ scrollScreen.unMount();
 
 |   参数   |    类型    |   默认  |  说明   |
 |---------|------------|---------|--------|
-| to | string | null | 必需; 指定元素到达顶部; `Element` `Parallax` `OverPack`的 id 值 |
+| to | string | null | 必需; 指定元素到达顶部, id 值 |
 | toHash | boolean  | false  | 默认将 `to` 里的值添加到 url 链接; |
 | duration | number | 450 | 滚动动画的时间 |
 | ease |  string | `easeInQutQuad` | 动画缓动参数 |
@@ -174,7 +181,7 @@ scrollScreen.unMount();
 |---------|------------|---------|--------|
 | duration  | number         | 450     | 滚动一段的时间   |
 | ease      | string         | `easeInOutQuad` | 动画缓动 |
-| docHeight | number         | null    | 自已定义页面高度 |
+| docHeight | number         | null    | 自定义页面高度 |
 | loop      | boolean        | false   | 前后相接循环  |
 | scrollInterval | number    | 1000    | 滚动事件间隔时间 |
 

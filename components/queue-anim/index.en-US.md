@@ -52,7 +52,7 @@ ReactDOM.render(<QueueAnim>
 | ease       | string / array | `easeOutQuart` | animation easing config like 'ease', ['easeIn', 'easeOut'], [[.42,0,.58,1], [.42,0,.58,1]], [more](http://julian.com/research/velocity/#easing) |
 | appear     | boolean        | true    | whether support appear anim    |
 | animatingClassName | array | `['queue-anim-entering', 'queue-anim-leaving']` | className to every element of animating |
-| component  | string | `div` | QueueAnim replaced tag name |
+| component  | React.Element/string | `div` | QueueAnim replaced tag name |
 | componentProps | object | {} | Replaced component props |
 | forcedReplay | boolean | false | Whether to forcibly replay the animation, for example: trigger the `leave` when the `enter`, and immediately execute the `enter`. |
 | onEnd      | func   | null  | animation end callback({ key, type }); type: `enter` or `leave` |

@@ -72,7 +72,7 @@ React.render(<TweenOneGroup>
 | repeatDelay | number             | 0               | 	repeat start delay. |
 | appearTo    | number             | null            | 	Add to the specified time. |
 | yoyo        | boolean            | false           | `true`: alternating backward and forward on each repeat.  |
-| ease        | string ／ function | `easeInOutQuad` | animate ease. [refer](http://easings.net/zh-cn); <br/>function: TweenOne.easing.path(path, param) Details are as follows |
+| ease        | string ／ function | `easeInOutQuad` | animate ease. [refer](http://easings.net/); <br/>function: TweenOne.easing.path(path, param) Details are as follows |
 | onStart     | function           | null            | Callback when the animation is begin, callback(e), e: { index, target }. |
 | onUpdate    | function           | null            | Callback when the animation is update, callback(e), e: { index, target, ratio }. |
 | onComplete  | function           | null            | Callback when the animation is complete, callback(e), e: { index, target }.
