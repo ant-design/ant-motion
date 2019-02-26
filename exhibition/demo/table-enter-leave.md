@@ -33,6 +33,8 @@ import QueueAnim from 'rc-queue-anim';
 import PropTypes from 'prop-types';
 import { TweenOneGroup } from 'rc-tween-one';
 
+const TableContext = React.createContext(false);
+
 class TableEnterLeave extends React.Component {
   static propTypes = {
     className: PropTypes.string,
@@ -58,7 +60,8 @@ class TableEnterLeave extends React.Component {
             onClick={(e) => { this.onDelete(record.key, e); }}
           >
             Delete
-          </span>),
+          </span>
+        ),
       },
     ];
     this.enterAnim = [
@@ -78,9 +81,29 @@ class TableEnterLeave extends React.Component {
       },
       { delay: 1000, backgroundColor: '#fff' },
     ];
+    this.pageEnterAnim = [
+      {
+        opacity: 0, duration: 0,
+      },
+      {
+        height: 0,
+        duration: 150,
+        type: 'from',
+        delay: 150,
+        ease: 'easeOutQuad',
+        onComplete: this.onEnd,
+      },
+      {
+        opacity: 1, duration: 150, ease: 'easeOutQuad',
+      },
+    ];
     this.leaveAnim = [
       { duration: 250, opacity: 0 },
       { height: 0, duration: 200, ease: 'easeOutQuad' },
+    ];
+    this.pageLeaveAnim = [
+      { duration: 150, opacity: 0 },
+      { height: 0, duration: 150, ease: 'easeOutQuad' },
     ];
     this.data = [
       {
@@ -108,10 +131,29 @@ class TableEnterLeave extends React.Component {
         address: 'London No.1 Lake Park',
       },
     ];
-    this.currentPage = 1;
+    // 动画标签，页面切换时改用 context 传递参数；
+    this.animTag = ($props) => {
+      return (
+        <TableContext.Consumer>
+          {(isPageTween) => {
+            return (
+              <TweenOneGroup
+                component="tbody"
+                enter={!isPageTween ? this.enterAnim : this.pageEnterAnim}
+                leave={!isPageTween ? this.leaveAnim : this.pageLeaveAnim}
+                appear={false}
+                exclusive
+                {...$props}
+              />
+            );
+          }}
+        </TableContext.Consumer>
+      );
+    };
+
     this.state = {
       data: this.data,
-      page: 1
+      isPageTween: false,
     };
   }
 
@@ -131,42 +173,23 @@ class TableEnterLeave extends React.Component {
     });
     this.setState({
       data,
+      isPageTween: false,
     });
   };
 
   onDelete = (key, e) => {
     e.preventDefault();
     const data = this.state.data.filter(item => item.key !== key);
-    this.setState({ data });
+    this.setState({ data, isPageTween: false });
   }
 
-  pageChange = (pagination) => {
+  pageChange = () => {
     this.setState({
-      page: pagination.current
+      isPageTween: true,
     });
   };
 
   render() {
-    const body = {};
-    if (this.state.page !== this.currentPage) {
-      this.currentPage = this.state.page;
-      // 待 rc-table 修复
-      // body.wrapper = (props) => props.children;
-    } else {
-      body.wrapper = props => (
-        <TweenOneGroup
-          component="tbody"
-          {...props}
-          className={props.className}
-          enter={this.enterAnim}
-          leave={this.leaveAnim}
-          appear={false}
-          exclusive
-        >
-          {props.children}
-        </TweenOneGroup>
-      );
-    }
     return (
       <div>
         <div className={`${this.props.className}-wrapper`}>
@@ -184,10 +207,12 @@ class TableEnterLeave extends React.Component {
               <span>
                 <img
                   height="24"
+                  alt="img"
                   src="https://zos.alipayobjects.com/rmsportal/TOXWfHIUGHvZIyb.svg"
                 />
                 <img
                   height="14"
+                  alt="img"
                   src="https://zos.alipayobjects.com/rmsportal/bNfCyCcgnyTgRmz.svg"
                 />
               </span>
@@ -205,14 +230,16 @@ class TableEnterLeave extends React.Component {
               <div className={`${this.props.className}-action-bar`}>
                 <Button type="primary" onClick={this.onAdd}>Add</Button>
               </div>
-              <Table
-                columns={this.columns}
-                pagination={{ pageSize: 4 }}
-                dataSource={this.state.data}
-                className={`${this.props.className}-table`}
-                components={{ body }}
-                onChange={this.pageChange}
-              />
+              <TableContext.Provider value={this.state.isPageTween}>
+                <Table
+                  columns={this.columns}
+                  pagination={{ pageSize: 4 }}
+                  dataSource={this.state.data}
+                  className={`${this.props.className}-table`}
+                  components={{ body: { wrapper: this.animTag } }}
+                  onChange={this.pageChange}
+                />
+              </TableContext.Provider>
             </div>
           </div>
         </div>
@@ -220,6 +247,7 @@ class TableEnterLeave extends React.Component {
     );
   }
 }
+
 ReactDOM.render(
   <TableEnterLeave />
 , mountNode);
@@ -232,14 +260,16 @@ ReactDOM.render(
   background: #ABC3FF;
   overflow: hidden;
   height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .table-enter-leave-demo {
-  margin: 40px auto;
   box-shadow: 0 10px 40px #506CB2;
   width: 60%;
   min-width: 550px;
-  height: 420px;
+  height: 440px;
   background: #F4F4F4;
   border-radius: 6px;
   overflow: hidden;
@@ -451,11 +481,13 @@ ReactDOM.render(
     transform-origin: left center;
   }
 }
+
 @media screen and (max-width: 375px) {
   .table-enter-leave-demo {
     transform: scale(.6) translateX(7px);
   }
 }
+
 @media screen and (max-width: 320px) {
   .table-enter-leave-demo {
     transform: scale(.5) translateX(12px);

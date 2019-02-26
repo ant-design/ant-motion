@@ -6,6 +6,7 @@ import { TweenOneGroup } from 'rc-tween-one';
 import PropTypes from 'prop-types';
 import './table-enter-leave.css';
 
+const TableContext = React.createContext(false);
 export default class TableEnterLeave extends React.Component {
   static propTypes = {
     className: PropTypes.string,
@@ -31,7 +32,8 @@ export default class TableEnterLeave extends React.Component {
             onClick={(e) => { this.onDelete(record.key, e); }}
           >
             Delete
-          </span>),
+          </span>
+        ),
       },
     ];
     this.enterAnim = [
@@ -51,9 +53,29 @@ export default class TableEnterLeave extends React.Component {
       },
       { delay: 1000, backgroundColor: '#fff' },
     ];
+    this.pageEnterAnim = [
+      {
+        opacity: 0, duration: 0,
+      },
+      {
+        height: 0,
+        duration: 150,
+        type: 'from',
+        delay: 150,
+        ease: 'easeOutQuad',
+        onComplete: this.onEnd,
+      },
+      {
+        opacity: 1, duration: 150, ease: 'easeOutQuad',
+      },
+    ];
     this.leaveAnim = [
       { duration: 250, opacity: 0 },
       { height: 0, duration: 200, ease: 'easeOutQuad' },
+    ];
+    this.pageLeaveAnim = [
+      { duration: 150, opacity: 0 },
+      { height: 0, duration: 150, ease: 'easeOutQuad' },
     ];
     this.data = [
       {
@@ -81,10 +103,29 @@ export default class TableEnterLeave extends React.Component {
         address: 'London No.1 Lake Park',
       },
     ];
-    this.currentPage = 1;
+
+    this.animTag = ($props) => {
+      return (
+        <TableContext.Consumer>
+          {(isPageTween) => {
+            return (
+              <TweenOneGroup
+                component="tbody"
+                enter={!isPageTween ? this.enterAnim : this.pageEnterAnim}
+                leave={!isPageTween ? this.leaveAnim : this.pageLeaveAnim}
+                appear={false}
+                exclusive
+                {...$props}
+              />
+            );
+          }}
+        </TableContext.Consumer>
+      );
+    };
+
     this.state = {
       data: this.data,
-      page: 1,
+      isPageTween: false,
     };
   }
 
@@ -104,40 +145,23 @@ export default class TableEnterLeave extends React.Component {
     });
     this.setState({
       data,
+      isPageTween: false,
     });
   };
 
   onDelete = (key, e) => {
     e.preventDefault();
     const data = this.state.data.filter(item => item.key !== key);
-    this.setState({ data });
+    this.setState({ data, isPageTween: false });
   }
 
-  pageChange = (pagination) => {
+  pageChange = () => {
     this.setState({
-      page: pagination.current,
+      isPageTween: true,
     });
   };
 
   render() {
-    const body = {};
-    if (this.state.page !== this.currentPage) {
-      this.currentPage = this.state.page;
-    } else {
-      body.wrapper = props => (
-        <TweenOneGroup
-          component="tbody"
-          {...props}
-          className={props.className}
-          enter={this.enterAnim}
-          leave={this.leaveAnim}
-          appear={false}
-          exclusive
-        >
-          {props.children}
-        </TweenOneGroup>
-      );
-    }
     return (
       <div>
         <div className={`${this.props.className}-wrapper`}>
@@ -155,10 +179,12 @@ export default class TableEnterLeave extends React.Component {
               <span>
                 <img
                   height="24"
+                  alt="img"
                   src="https://zos.alipayobjects.com/rmsportal/TOXWfHIUGHvZIyb.svg"
                 />
                 <img
                   height="14"
+                  alt="img"
                   src="https://zos.alipayobjects.com/rmsportal/bNfCyCcgnyTgRmz.svg"
                 />
               </span>
@@ -176,14 +202,16 @@ export default class TableEnterLeave extends React.Component {
               <div className={`${this.props.className}-action-bar`}>
                 <Button type="primary" onClick={this.onAdd}>Add</Button>
               </div>
-              <Table
-                columns={this.columns}
-                pagination={{ pageSize: 4 }}
-                dataSource={this.state.data}
-                className={`${this.props.className}-table`}
-                components={{ body }}
-                onChange={this.pageChange}
-              />
+              <TableContext.Provider value={this.state.isPageTween}>
+                <Table
+                  columns={this.columns}
+                  pagination={{ pageSize: 4 }}
+                  dataSource={this.state.data}
+                  className={`${this.props.className}-table`}
+                  components={{ body: { wrapper: this.animTag } }}
+                  onChange={this.pageChange}
+                />
+              </TableContext.Provider>
             </div>
           </div>
         </div>

@@ -4,14 +4,16 @@
   background: #ABC3FF;
   overflow: hidden;
   height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .table-enter-leave-demo {
-  margin: 40px auto;
   box-shadow: 0 10px 40px #506CB2;
   width: 60%;
   min-width: 550px;
-  height: 420px;
+  height: 440px;
   background: #F4F4F4;
   border-radius: 6px;
   overflow: hidden;
