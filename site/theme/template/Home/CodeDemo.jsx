@@ -17,7 +17,7 @@ class CodeDemo extends React.PureComponent {
 
   constructor(props) {
     super(props);
-    const queueAnimDemo = this.props.pageData['queue-anim'];
+    const queueAnimDemo = props.pageData['queue-anim'];
     this.state = {
       code: props.utils
         .toReactComponent(queueAnimDemo.simple.highlightedCode),
