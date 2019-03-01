@@ -127,7 +127,14 @@ class DetailSwitchDemo extends React.Component {
 
   render() {
     const imgChildren = dataArray.map((item, i) => (
-      <Element key={i} style={{ background: item.color }} leaveChildHide>
+      <Element 
+        key={i} 
+        style={{ 
+          background: item.color,
+          height: '100%',
+        }} 
+        leaveChildHide
+       >
         <QueueAnim
           animConfig={this.state.imgAnim}
           duration={this.getDuration}
@@ -222,6 +229,8 @@ ReactDOM.render(
   width: 50%;
   display: inline-block;
   height: 100%;
+  position: relative;
+  overflow: hidden;
 }
 
 .details-switch-demo-pic,

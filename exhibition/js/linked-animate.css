@@ -1,0 +1,29 @@
+.linked-animate-demo-wrapper {
+  overflow: hidden;
+  height: 500px;
+  background: #019BF0;
+  position: relative;
+}
+
+.linked-animate-demo-box {
+  position: absolute;
+  width: 1280px;
+  height: 600px;
+  display: block;
+  left: -100%;
+  top: 0;
+  bottom: 0;
+  right: -100%;
+  margin: auto;
+}
+
+.linked-animate-demo-block {
+  position: absolute;
+  transition: transform .45s ease;
+}
+
+.linked-animate-demo-block-child {
+  border-radius: 100%;
+  width: 100%;
+  height: 100%;
+}
