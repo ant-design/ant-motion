@@ -80,11 +80,13 @@ const getPointPos = (width, height, length) => {
     let radius;
     let pos;
     let j = 0;
-    // eslint-disable-next-line no-cond-assign
-    do {
+    for(let j =0; j< num; j+=1) {
       radius = radiusArray[Math.floor(Math.random() * radiusArray.length)];
       pos = { x: Math.random() * (width - radius * 2) + radius, y: Math.random() * (height - radius * 2) + radius, radius };
-    } while (grid.hasCollisions(pos) && (j += 1) < num);
+      if (!grid.hasCollisions(pos)) {
+        break;
+      }
+    }
     posArray.push(pos);
     grid.add(pos);
   }
