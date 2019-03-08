@@ -3,22 +3,24 @@ order: 0
 title: Motion
 ---
 
-Interface dynamics enhance user awareness and increase vitality.
+Animations bring vividness to interfaces and reinforce user experiences.
 
 ## Motion Values
 
-- **Increase experience comfort:** Make the user's cognitive process more natural.
+- **Smooth interactions:** Animations can make user interactions more natural.
 
-- **Increase interface vigor:** The first time to attract attention and highlight the key points.
+- **Bring vividness:** Animations can attract users' attention and increase users' motivation to interact by bring more vividness.
 
-- **Describe the hierarchical relationship:** Reflects the hierarchical and spatial relationship between elements.
+- **Define hierarchies:** Animations can define elements' hierarchies and logical relationships in the most intuitive way.
 
-- **Provide feedback and clear intentions:** Boost the interactive experience.
+- **Provide feedbacks:** Animations can reinforce user experiences by providing motional feedbacks.
 
 ## Meaningful animation
 
 To measure whether a animation makes sense, we can assess it by the following criteria:
 
-- **Is the existence of an animation reasonable:** Whether it has a clear purpose, boost the interactive experience, there is no extra animation.
+- **Justified:** Is this animation necessary? Does this animation help its users to digest the information? An effective animation should not be redundant.
 
-- **Animation and performance:** There can be no large frame loss, and the animation experience must be smooth and does not affect the performance of the product.
+- **Performant:** Is there any frame loss or lag? An effective animation must be smooth, and must not hurt the overall performance of the product.
+
+
