@@ -8,21 +8,21 @@ const text = [
     titleEn: 'Natural',
     img: 'https://gw.alipayobjects.com/zos/rmsportal/LyTPSGknLUlxiVdwMWyu.gif',
     content: '自然运动规律，保证视觉连贯，让用户感知到动作是自然的',
-    contentEn: 'The laws of natural movement ensure visual coherence and let the user perceive that the movement is natural',
+    contentEn: 'The animation should based on law of nature. This assures the animation is smooth by its nature and intuitive to its users.',
   },
   {
     title: '高效',
     titleEn: 'Efficient',
     img: 'https://gw.alipayobjects.com/zos/rmsportal/SQOZVQVIossbXpzDmihu.gif',
     content: '尽量节省过渡的时间，快速完成过渡的动画效果',
-    contentEn: 'Try to save time in transition and quickly complete the transition animation',
+    contentEn: 'The animation should have a transition time as minimal as possible so that it serves its purpose in the most effective way.',
   },
   {
     title: '克制',
-    titleEn: 'Restraint',
+    titleEn: 'Restrain',
     img: 'https://gw.alipayobjects.com/zos/rmsportal/OkIXkscKxywYLSrilPIf.gif',
     content: '做有意义的动效，不去做太多的修饰而干扰用户',
-    contentEn: 'Do meaningful animations, don\'t do too much decoration to interfere with users',
+    contentEn: 'The animation should be meaningful and justified. An over fancy animation will frustrate its users, and therefore should always be avoided.',
   },
 ];
 
