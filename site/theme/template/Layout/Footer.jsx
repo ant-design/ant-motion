@@ -43,7 +43,7 @@ class Footer extends React.PureComponent {
                   <a href="http://mobile.ant.design">Ant Design Mobile</a>
                 </div>
                 <div>
-                  <a target="_blank" rel="noopener" href="http://landing.ant.design">Ant Design Lading</a>
+                  <a target="_blank" rel="noopener" href="http://landing.ant.design">Ant Design Landing</a>
                   <span> - </span>
                   <FormattedMessage id="app.footer.landing" />
                 </div>
