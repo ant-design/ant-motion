@@ -11,12 +11,12 @@
   "license": "MIT",
   "dependencies": {
     "rc-animate": "^2.6.0",
-    "rc-banner-anim": "^2.2.0",
+    "rc-banner-anim": "^2.2.3",
     "rc-drawer": "^1.7.0",
-    "rc-queue-anim": "~1.6.0",
-    "rc-scroll-anim": "~2.5.0",
+    "rc-queue-anim": "~1.6.12",
+    "rc-scroll-anim": "~2.5.7",
     "rc-texty": "^0.2.0",
-    "rc-tween-one": "^2.3.0"
+    "rc-tween-one": "^2.4.0"
   },
   "devDependencies": {
     "antd": "^3.13.2",
@@ -27,14 +27,14 @@
     "bisheng-plugin-description": "^0.1.4",
     "bisheng-plugin-react": "^1.0.0",
     "bisheng-plugin-toc": "^0.4.4",
-    "core-js": "^2.5.7",
+    "core-js": "^3.0.1",
     "cross-env": "^5.1.1",
     "enquire-js": "^0.2.1",
     "eslint": "^5.4.0",
     "eslint-config-airbnb": "^17.0.0",
     "eslint-loader": "^2.1.1",
     "eslint-plugin-babel": "^5.1.0",
-    "eslint-plugin-compat": "^2.6.2",
+    "eslint-plugin-compat": "^3.1.1",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-markdown": "^1.0.0-beta.6",
@@ -48,7 +48,7 @@
     "react-dom": "^16.4.0",
     "react-github-button": "^0.1.11",
     "react-intl": "^2.8.0",
-    "react-router": "~4.3.1",
+    "react-router": "~5.0.0",
     "react-sublime-video": "^0.2.0",
     "stylelint": "^9.7.1",
     "stylelint-config-standard": "^18.2.0"
