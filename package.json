@@ -60,7 +60,7 @@
     "start": "rm -rf _site && cross-env NODE_ENV=development bisheng start -c ./site/bisheng.config.js",
     "build": "rm -rf _site && cross-env NODE_ENV=production bisheng build -c ./site/bisheng.config.js",
     "site": "npm run build",
-    "deploy": "npm run site && bisheng gh-pages --push-only",
+    "deploy": "npm run site && cp CNAME _site && bisheng gh-pages --push-only",
     "lint": "npm run lint:es && npm run lint:style",
     "lint:es": "eslint --fix --ext '.js,.jsx' site",
     "lint:style": "stylelint --fix \"site/**/*.less\" --syntax less",
