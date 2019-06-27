@@ -9,11 +9,11 @@ content:
 image: https://zos.alipayobjects.com/rmsportal/BgYxbsXLrUfkkRT.png
 ---
 ## zh-CN
-ListSort 组件地址： [地址](https://github.com/ant-design/ant-motion/blob/master/src/edit/template/components/ListSort.jsx)
+ListSort 组件地址： [地址](https://github.com/ant-design/ant-motion/blob/master/site/theme/template/other/ListSort.jsx)
 
 ## en-US
 
-ListSort: [Component URL](https://github.com/ant-design/ant-motion/blob/master/src/edit/template/components/ListSort.jsx)
+ListSort: [Component URL](https://github.com/ant-design/ant-motion/blob/master/site/theme/template/other/ListSort.jsx)
 
 ```jsx
 import Icon from 'antd/lib/icon';
