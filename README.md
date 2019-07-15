@@ -10,7 +10,7 @@
   
 Animation specification and components of Ant Design.
 
-[![Dependencies](https://img.shields.io/david/ant-design/ant-motion.svg)](https://david-dm.org/ant-design/ant-motion)
+[![Financial Contributors on Open Collective](https://opencollective.com/ant-motion/all/badge.svg?label=financial+contributors)](https://opencollective.com/ant-motion) [![Dependencies](https://img.shields.io/david/ant-design/ant-motion.svg)](https://david-dm.org/ant-design/ant-motion)
 [![DevDependencies](https://img.shields.io/david/dev/ant-design/ant-motion.svg)](https://david-dm.org/ant-design/ant-motion?type=dev)
 
 </div>
@@ -84,3 +84,33 @@ npm start
 
 Go to http://localhost:8111
 
+
+## Contributors
+
+### Code Contributors
+
+This project exists thanks to all the people who contribute. [[Contribute](CONTRIBUTING.md)].
+<a href="https://github.com/ant-design/ant-motion/graphs/contributors"><img src="https://opencollective.com/ant-motion/contributors.svg?width=890&button=false" /></a>
+
+### Financial Contributors
+
+Become a financial contributor and help us sustain our community. [[Contribute](https://opencollective.com/ant-motion/contribute)]
+
+#### Individuals
+
+<a href="https://opencollective.com/ant-motion"><img src="https://opencollective.com/ant-motion/individuals.svg?width=890"></a>
+
+#### Organizations
+
+Support this project with your organization. Your logo will show up here with a link to your website. [[Contribute](https://opencollective.com/ant-motion/contribute)]
+
+<a href="https://opencollective.com/ant-motion/organization/0/website"><img src="https://opencollective.com/ant-motion/organization/0/avatar.svg"></a>
+<a href="https://opencollective.com/ant-motion/organization/1/website"><img src="https://opencollective.com/ant-motion/organization/1/avatar.svg"></a>
+<a href="https://opencollective.com/ant-motion/organization/2/website"><img src="https://opencollective.com/ant-motion/organization/2/avatar.svg"></a>
+<a href="https://opencollective.com/ant-motion/organization/3/website"><img src="https://opencollective.com/ant-motion/organization/3/avatar.svg"></a>
+<a href="https://opencollective.com/ant-motion/organization/4/website"><img src="https://opencollective.com/ant-motion/organization/4/avatar.svg"></a>
+<a href="https://opencollective.com/ant-motion/organization/5/website"><img src="https://opencollective.com/ant-motion/organization/5/avatar.svg"></a>
+<a href="https://opencollective.com/ant-motion/organization/6/website"><img src="https://opencollective.com/ant-motion/organization/6/avatar.svg"></a>
+<a href="https://opencollective.com/ant-motion/organization/7/website"><img src="https://opencollective.com/ant-motion/organization/7/avatar.svg"></a>
+<a href="https://opencollective.com/ant-motion/organization/8/website"><img src="https://opencollective.com/ant-motion/organization/8/avatar.svg"></a>
+<a href="https://opencollective.com/ant-motion/organization/9/website"><img src="https://opencollective.com/ant-motion/organization/9/avatar.svg"></a>
