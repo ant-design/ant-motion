@@ -431,6 +431,7 @@ ReactDOM.render(
 
 .table-enter-leave-demo-table {
   margin: 0 20px;
+  overflow: hidden;
 }
 
 .table-enter-leave-demo-table .ant-table-thead > tr > th {
