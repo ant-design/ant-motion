@@ -50,7 +50,7 @@
     "react-intl": "^2.8.0",
     "react-router": "~5.0.0",
     "react-sublime-video": "^0.2.0",
-    "stylelint": "^9.7.1",
+    "stylelint": "^10.1.0",
     "stylelint-config-standard": "^18.2.0"
   },
   "pre-commit": [
