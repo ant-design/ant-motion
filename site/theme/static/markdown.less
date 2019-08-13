@@ -310,7 +310,7 @@ section.markdown {
         transform-origin: left center;
       }
     }
-    > table {
+    &.api-container > table {
       border: none;
       > thead {
         display: none;
@@ -327,6 +327,13 @@ section.markdown {
               display: inline-block;
               content: '';
               margin-right: 5px;
+              position: static;
+              width: auto;
+              height: 17px;
+              bottom: auto;
+              right: auto;
+              vertical-align: middle;
+              background: transparent;
             }
             &:nth-child(1):before {
               content: '参数: ';
@@ -340,6 +347,7 @@ section.markdown {
             &:nth-child(4) {
               border-bottom: none;
               &:before {
+                display: inline-block !important;
                 content: '说明: ';
               }
             }
