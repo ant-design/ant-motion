@@ -12,7 +12,7 @@
   "dependencies": {
     "rc-animate": "^2.6.0",
     "rc-banner-anim": "^2.2.3",
-    "rc-drawer": "^1.7.0",
+    "rc-drawer": "^2.0.6",
     "rc-queue-anim": "~1.8.0",
     "rc-scroll-anim": "~2.5.7",
     "rc-texty": "^0.2.0",
