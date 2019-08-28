@@ -14,7 +14,7 @@
     "rc-banner-anim": "^2.2.3",
     "rc-drawer": "^1.7.0",
     "rc-queue-anim": "~1.8.0",
-    "rc-scroll-anim": "~2.5.7",
+    "rc-scroll-anim": "~2.6.1",
     "rc-texty": "^0.2.0",
     "rc-tween-one": "^2.4.0"
   },
