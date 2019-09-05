@@ -24,6 +24,7 @@
   width: 20px;
   height: 60px;
   margin-top: -30px;
+  top: 50%;
   background: rgba(0, 0, 0, 0.3);
 }
 .banner-anim-arrow-default.next {
