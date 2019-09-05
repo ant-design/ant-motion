@@ -33,7 +33,7 @@ class Header extends React.PureComponent {
     };
   }
 
-  getAnimData = phoneOpen => (phoneOpen ? {
+  getAnimData = (phoneOpen) => (phoneOpen ? {
     phoneOpen: false,
     openAnim: { opacity: 0, delay: 300, duration: 400 },
     barAnim: [

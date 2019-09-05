@@ -16,14 +16,10 @@ class Exhibition extends React.Component {
     className: 'exhibition-list',
   };
 
-  static contextTypes = {
-    intl: PropTypes.object,
-  };
-
   render() {
-    const { locale } = this.context.intl;
+    const { locale } = this.props.intl;
     const demo = this.props.localizedPageData;
-    const listChildren = Object.keys(demo).map(key => demo[key])
+    const listChildren = Object.keys(demo).map((key) => demo[key])
       .sort((a, b) => b.meta.order - a.meta.order)
       .map((item) => {
         const img = item.meta.image;

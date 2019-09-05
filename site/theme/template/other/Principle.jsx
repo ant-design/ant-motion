@@ -30,7 +30,7 @@ export default class Principle extends React.Component {
   render() {
     const { locale } = this.props;
     const isEnUs = locale === 'en-US';
-    const childrenToRender = text.map(item => (
+    const childrenToRender = text.map((item) => (
       <Col key={item.title} sm={24} md={8}>
         <div className="principle">
           <div><img src={item.img} width="80%" alt="img" /></div>

@@ -60,8 +60,8 @@ class ComponentDoc extends React.PureComponent {
         </div>
       );
     }
-    const demosToChild = Object.keys(demos).map(key => demos[key])
-      .filter(item => !item.meta.hidden)
+    const demosToChild = Object.keys(demos).map((key) => demos[key])
+      .filter((item) => !item.meta.hidden)
       .sort((a, b) => a.meta.order - b.meta.order)
       .map((item, i) => {
         const content = props.utils.toReactComponent(['div'].concat(item.content[locale] || item.content));
@@ -73,8 +73,7 @@ class ComponentDoc extends React.PureComponent {
             content={content}
             code={props.utils.toReactComponent(item.highlightedCode)}
             styleCode={item.highlightedStyle
-              ? props.utils.toReactComponent(item.highlightedStyle) : null
-            }
+              ? props.utils.toReactComponent(item.highlightedStyle) : null}
             mouseEnter={item.meta.mouseEnter}
             cStyle={item.style || null}
             key={i.toString()}
@@ -88,7 +87,7 @@ class ComponentDoc extends React.PureComponent {
     const {
       title, subtitle,
     } = meta;
-    this.demoIds = demosToChild.map(item => item.props.id);
+    this.demoIds = demosToChild.map((item) => item.props.id);
 
     const isNotTranslated = locale === 'en-US' && typeof title === 'object';
     return (

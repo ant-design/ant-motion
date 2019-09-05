@@ -1,8 +1,6 @@
-const appLocaleData = require('react-intl/locale-data/zh');
 
 module.exports = {
   locale: 'en-US',
-  data: appLocaleData,
   messages: {
     'app.header.menu.exhibition': 'Exhibition',
     'app.header.menu.language': 'Language',

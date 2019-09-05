@@ -25,16 +25,13 @@ class Page2 extends React.PureComponent {
     },
   };
 
-  static contextTypes = {
-    intl: PropTypes.object,
-  };
 
   render() {
-    const { locale } = this.context.intl;
+    const { locale } = this.props.intl;
     const isZhCN = locale === 'zh-CN';
     const exhibition = this.props.pageData.exhibition;
     const demoToChildren = Object.keys(exhibition)
-      .map(key => exhibition[key])
+      .map((key) => exhibition[key])
       .sort((a, b) => b.meta.order - a.meta.order)
       .filter((key, i) => i < 6)
       .map((item) => {

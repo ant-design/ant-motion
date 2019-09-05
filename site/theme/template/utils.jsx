@@ -51,7 +51,7 @@ const themeConfig = {
 };
 
 export function getMenuItems(moduleData, locale) {
-  const menuMeta = moduleData.map(item => item.meta);
+  const menuMeta = moduleData.map((item) => item.meta);
   const menuItems = [];
   const sortFn = (a, b) => (a.order || 0) - (b.order || 0);
   menuMeta.sort(sortFn).forEach((meta) => {
@@ -59,7 +59,7 @@ export function getMenuItems(moduleData, locale) {
       menuItems.push(meta);
     } else {
       const category = meta.category[locale] || meta.category;
-      let group = menuItems.filter(i => i.title === category)[0];
+      let group = menuItems.filter((i) => i.title === category)[0];
       if (!group) {
         group = {
           type: 'category',

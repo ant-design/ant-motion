@@ -85,10 +85,10 @@ class Page extends React.PureComponent {
   getModuleData = (props, isDemo) => {
     const pathname = props.location.pathname;
 
-    const moduleName = pathname.split('/').filter(item => item).slice(0, -1).join('/');
+    const moduleName = pathname.split('/').filter((item) => item).slice(0, -1).join('/');
 
     const moduleData = isDemo
-      ? Object.keys(props.demos).map(k => ({ meta: props.demos[k].meta }))
+      ? Object.keys(props.demos).map((k) => ({ meta: props.demos[k].meta }))
         .sort((a, b) => a.meta.order - b.meta.order)
       : props.picked[moduleName];
     const excludedSuffix = this.props.intl.locale === 'zh-CN' ? 'en-US.md' : 'zh-CN.md';
@@ -100,7 +100,7 @@ class Page extends React.PureComponent {
     if (!moduleData) {
       return null;
     }
-    const menuData = getMenuItems(moduleData.filter(item => !item.meta.hidden), this.props.intl.locale);
+    const menuData = getMenuItems(moduleData.filter((item) => !item.meta.hidden), this.props.intl.locale);
 
     this.openKeys = [];
     return menuData.map((menuItem) => {
@@ -115,7 +115,7 @@ class Page extends React.PureComponent {
               return (
                 <ItemGroup title={child.title} key={child.title}>
                   {child.children.sort((a, b) => a.title.charCodeAt(0) - b.title.charCodeAt(0))
-                    .map(leaf => this.generateMenuItem(
+                    .map((leaf) => this.generateMenuItem(
                       leaf, pathNames,
                       isComponent, isNav, menuData.length
                     ))}

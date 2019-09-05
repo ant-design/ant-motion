@@ -12,9 +12,9 @@
   "dependencies": {
     "rc-animate": "^2.6.0",
     "rc-banner-anim": "^2.2.3",
-    "rc-drawer": "^1.7.0",
-    "rc-queue-anim": "~1.8.0",
-    "rc-scroll-anim": "~2.5.7",
+    "rc-drawer": "^2.0.8",
+    "rc-queue-anim": "^1.7.0",
+    "rc-scroll-anim": "^2.6.1",
     "rc-texty": "^0.2.0",
     "rc-tween-one": "^2.4.0"
   },
@@ -30,9 +30,9 @@
     "core-js": "^3.0.1",
     "cross-env": "^5.1.1",
     "enquire-js": "^0.2.1",
-    "eslint": "^5.4.0",
-    "eslint-config-airbnb": "^17.0.0",
-    "eslint-loader": "^2.1.1",
+    "eslint": "^6.3.0",
+    "eslint-config-airbnb": "^18.0.0",
+    "eslint-loader": "^3.0.0",
     "eslint-plugin-babel": "^5.1.0",
     "eslint-plugin-compat": "^3.1.1",
     "eslint-plugin-import": "^2.14.0",
@@ -47,10 +47,10 @@
     "react-document-title": "^2.0.1",
     "react-dom": "^16.4.0",
     "react-github-button": "^0.1.11",
-    "react-intl": "^2.8.0",
+    "react-intl": "^3.2.0",
     "react-router": "~5.0.0",
     "react-sublime-video": "^0.2.0",
-    "stylelint": "^9.7.1",
+    "stylelint": "^10.1.0",
     "stylelint-config-standard": "^18.2.0"
   },
   "pre-commit": [

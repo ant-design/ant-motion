@@ -25,7 +25,7 @@ class Article extends React.PureComponent {
     } = meta;
     const tocItem = props.utils.toReactComponent(toc);
     const tocChildren = utils.toArrayChildren(tocItem.props.children).map((item) => {
-      const itemChildren = utils.toArrayChildren(item.props.children).map(cItem => React.cloneElement(cItem, {
+      const itemChildren = utils.toArrayChildren(item.props.children).map((cItem) => React.cloneElement(cItem, {
         onClick: utils.scrollClick,
       }));
       return React.cloneElement(item, item.props, itemChildren);

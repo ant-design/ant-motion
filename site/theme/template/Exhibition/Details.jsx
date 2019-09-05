@@ -15,10 +15,6 @@ class Details extends React.Component {
     className: 'exhibition-details',
   };
 
-  static contextTypes = {
-    intl: PropTypes.object,
-  };
-
   constructor(props) {
     super(props);
     this.state = {
@@ -42,8 +38,7 @@ class Details extends React.Component {
 
   render() {
     const { ...props } = this.props;
-    const { params } = props;
-    const { locale } = this.context.intl;
+    const { params, locale } = props;
     const pageData = this.props.localizedPageData[params.children.replace('-cn', '')];
     const className = this.props.className;
     const {

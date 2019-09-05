@@ -149,7 +149,7 @@ export default class Demo extends React.PureComponent {
     });
   }
 
-  resizeData = children => children.map((item, i) => {
+  resizeData = (children) => children.map((item, i) => {
     const child = item.props.children;
     const childrenProps = {
       ...child.props,
@@ -193,7 +193,7 @@ export default class Demo extends React.PureComponent {
   };
 
   gatherData = () => {
-    const children = this.state.children.map(item => React.cloneElement(item, {
+    const children = this.state.children.map((item) => React.cloneElement(item, {
       animation: {
         x: 0,
         y: 0,
@@ -211,7 +211,7 @@ export default class Demo extends React.PureComponent {
     const rect = document.getElementById('banner').getBoundingClientRect();// this.dom.getBoundingClientRect();
     const sideRect = document.getElementById('J-Side').getBoundingClientRect();
     const sideTop = sideRect.top + currentScrollTop();
-    const children = this.state.children.map(item => React.cloneElement(item, {
+    const children = this.state.children.map((item) => React.cloneElement(item, {
       animation: {
         x: Math.random() * document.body.clientWidth - sideRect.left - item.props.style.left,
         y: Math.random() * rect.height - sideTop - item.props.style.top,
