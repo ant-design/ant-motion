@@ -24,6 +24,7 @@ class Carousel3d extends React.PureComponent {
     z: PropTypes.number,
     current: PropTypes.number,
   }
+
   static defaultProps = {
     onChange: () => { },
     tilt: '5rem',
@@ -38,6 +39,7 @@ class Carousel3d extends React.PureComponent {
     z: 800,
     current: 0,
   };
+
   constructor(props) {
     super(props);
     this.setLengthAndAngle(props);
@@ -47,23 +49,28 @@ class Carousel3d extends React.PureComponent {
       transition: 'none',
     };
   }
+
   componentDidMount() {
     this.w = document.body.clientWidth;
     window.addEventListener('mouseup', this.onTouchEnd);
   }
-  componentWillReceiveProps(nextProps) {
-    const { current, children } = nextProps;
-    if (
-      current !== this.state.current && current !== this.props.current
-      || React.Children.toArray(children).length !== React.Children
-        .toArray(this.props.children).length
-    ) {
-      this.setLengthAndAngle(nextProps);
-      this.setState({
-        current: nextProps.current,
-        rotate: -nextProps.current * this.angle,
-        transition: `transform ${nextProps.duration} ${nextProps.ease}`,
-      });
+
+  componentDidUpdate(prevProps) {
+    if (prevProps !== this.props) {
+      const { current, children } = this.props;
+      if (
+        (current !== this.state.current && current !== prevProps.current)
+        || (React.Children.toArray(children).length !== React.Children
+          .toArray(prevProps.children).length)
+      ) {
+        this.setLengthAndAngle(this.props);
+        // eslint-disable-next-line
+        this.setState({
+          current: this.props.current,
+          rotate: -this.props.current * this.angle,
+          transition: `transform ${this.props.duration} ${this.props.ease}`,
+        });
+      }
     }
   }
 
@@ -74,6 +81,7 @@ class Carousel3d extends React.PureComponent {
     this.startX = e.pageX || e.touches[0].pageX;
     this.startRotate = Math.round(this.state.rotate / this.angle) * this.angle; // 偏移修复;
   }
+
   onTouchMove = (e) => {
     if (e.touches && e.touches.length > 1 || this.length <= 1 || !this.startX) {
       return;
@@ -95,6 +103,7 @@ class Carousel3d extends React.PureComponent {
       });
     });
   }
+
   onTouchEnd = (e) => {
     if (e.changedTouches && e.changedTouches.length > 1 || this.length <= 1 || !this.startX) {
       return;
@@ -103,8 +112,8 @@ class Carousel3d extends React.PureComponent {
     const differ = x - this.startX;
     const { current, rotate } = this.state;
     const n = differ > 0 ? 1 : -1;
-    const newRotate = this.startRotate + n * this.angle *
-      Math.round(Math.abs((rotate - this.startRotate) / this.angle));
+    const newRotate = this.startRotate + n * this.angle
+      * Math.round(Math.abs((rotate - this.startRotate) / this.angle));
     this.setState({
       rotate: newRotate,
       transition: `transform ${this.props.duration} ${this.props.ease}`,
@@ -117,11 +126,13 @@ class Carousel3d extends React.PureComponent {
       });
     });
   }
+
   setLengthAndAngle = (props) => {
     this.length = React.Children.toArray(props.children).length;
     this.length = this.length > props.childMaxLength ? props.childMaxLength : this.length;
     this.angle = 360 / this.length;
   }
+
   getAnimStyle = (n, length) => {
     const { opacityBasics, opacityDecline, blurIncrease } = this.props;
     const center = length / 2;
@@ -136,6 +147,7 @@ class Carousel3d extends React.PureComponent {
     }
     return d;
   }
+
   getChildrenToRender = (children) => {
     const { childMaxLength, z } = this.props;
     const newChildren = React.Children.toArray(children);
@@ -181,6 +193,7 @@ class Carousel3d extends React.PureComponent {
       );
     });
   }
+
   render() {
     const { onChange, ...props } = this.props;
     const {
@@ -201,7 +214,7 @@ class Carousel3d extends React.PureComponent {
       'perspective',
       'z',
       'current',
-    ].forEach(k => delete props[k]);
+    ].forEach((k) => delete props[k]);
     return (
       <div
         {...props}
@@ -263,6 +276,6 @@ export default function Carousel() {
       <Carousel3d className="carousel-demo" childMaxLength={6}>
         {children}
       </Carousel3d>
-    </div>);
+    </div>
+  );
 }
-

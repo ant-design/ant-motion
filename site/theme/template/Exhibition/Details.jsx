@@ -38,7 +38,8 @@ class Details extends React.Component {
 
   render() {
     const { ...props } = this.props;
-    const { params, locale } = props;
+    const { params, intl } = props;
+    const { locale } = intl;
     const pageData = this.props.localizedPageData[params.children.replace('-cn', '')];
     const className = this.props.className;
     const {
@@ -48,7 +49,6 @@ class Details extends React.Component {
     const {
       title, subtitle,
     } = meta;
-
     return (
       <DocumentTitle title={`${subtitle || title[locale] || ''} - Ant Motion`}>
         <div className="page-wrapper">

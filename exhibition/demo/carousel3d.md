@@ -73,19 +73,22 @@ class Carousel3d extends React.PureComponent {
     this.w = document.body.clientWidth;
     window.addEventListener('mouseup', this.onTouchEnd);
   }
-  componentWillReceiveProps(nextProps) {
-    const { current, children } = nextProps;
-    if (
-      current !== this.state.current && current !== this.props.current
-      || React.Children.toArray(children).length !== React.Children
-        .toArray(this.props.children).length
-    ) {
-      this.setLengthAndAngle(nextProps);
-      this.setState({
-        current: nextProps.current,
-        rotate: -nextProps.current * this.angle,
-        transition: `transform ${nextProps.duration} ${nextProps.ease}`,
-      });
+  componentDidUpdate(prevProps) {
+    if (prevProps !== this.props) {
+      const { current, children } = this.props;
+      if (
+        (current !== this.state.current && current !== prevProps.current)
+        || (React.Children.toArray(children).length !== React.Children
+          .toArray(prevProps.children).length)
+      ) {
+        this.setLengthAndAngle(this.props);
+        // eslint-disable-next-line
+        this.setState({
+          current: this.props.current,
+          rotate: -this.props.current * this.angle,
+          transition: `transform ${this.props.duration} ${this.props.ease}`,
+        });
+      }
     }
   }
 
