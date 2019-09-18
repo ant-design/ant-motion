@@ -28,7 +28,7 @@
     "bisheng-plugin-react": "^1.0.0",
     "bisheng-plugin-toc": "^0.4.4",
     "core-js": "^3.0.1",
-    "cross-env": "^5.1.1",
+    "cross-env": "^6.0.0",
     "enquire-js": "^0.2.1",
     "eslint": "^6.3.0",
     "eslint-config-airbnb": "^18.0.0",
