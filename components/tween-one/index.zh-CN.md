@@ -138,19 +138,15 @@ TweenOne.plugins.push(SvgMorphPlugin);
 import PathPlugin from 'rc-tween-one/lib/plugin/PathPlugin';
 TweenOne.plugins.push(PathPlugin);
 const path = 'M0,100 C30,60 0,20 50,50 C70,70 60,0 100,0';
-<svg>
   <TweenOne 
     animation={{ path }}   
-    attr="attr" 
     component="path" 
   />
   或
   <TweenOne 
     animation={{ path: { x: path, y: path, rotate: path } }} 
-    attr="attr" 
     component="path" 
   />
-</svg>
 ```
 
 path: string or object;
