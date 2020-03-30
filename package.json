@@ -47,7 +47,7 @@
     "react-document-title": "^2.0.1",
     "react-dom": "^16.4.0",
     "react-github-button": "^0.1.11",
-    "react-intl": "^3.2.0",
+    "react-intl": "^4.3.1",
     "react-router": "~5.1.2",
     "react-sublime-video": "^0.2.0",
     "stylelint": "^13.1.0",
