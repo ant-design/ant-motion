@@ -30,7 +30,7 @@
     "core-js": "^3.0.1",
     "cross-env": "^7.0.0",
     "enquire-js": "^0.2.1",
-    "eslint": "^6.3.0",
+    "eslint": "^7.1.0",
     "eslint-config-airbnb": "^18.0.0",
     "eslint-loader": "^3.0.0",
     "eslint-plugin-babel": "^5.1.0",
