@@ -19,7 +19,7 @@
     "rc-tween-one": "^2.4.0"
   },
   "devDependencies": {
-    "antd": "^3.13.2",
+    "antd": "^4.5.1",
     "antd-tools": "^7.0.0",
     "babel-eslint": "^10.0.1",
     "bisheng": "^1.1.0",
