@@ -10,7 +10,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "rc-animate": "^2.6.0",
+    "rc-animate": "^3.1.1",
     "rc-banner-anim": "^2.2.3",
     "rc-drawer": "^3.0.2",
     "rc-queue-anim": "^1.7.0",
