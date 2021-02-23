@@ -43,7 +43,7 @@
     "jsonml.js": "^0.1.0",
     "pre-commit": "1.x",
     "prop-types": "15.x",
-    "react": "^16.4.0",
+    "react": "^17.0.1",
     "react-document-title": "^2.0.1",
     "react-dom": "^16.4.0",
     "react-github-button": "^0.1.11",
