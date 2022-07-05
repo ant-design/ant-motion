@@ -1,5 +1,6 @@
 .addMoneyAnim {
-  background: url('https://gw.alipayobjects.com/zos/rmsportal/fseEOKMDOXOieJiHKuQg.png') no-repeat;
+  background: url("https://gw.alipayobjects.com/zos/rmsportal/fseEOKMDOXOieJiHKuQg.png")
+    no-repeat;
   background-size: 420px 104px;
   width: 52px;
   height: 52px;
@@ -9,10 +10,14 @@
 .addMoneyFrame(@one, @frame, @i: 0, @name: 0%) when (@i =< @frame) {
   .addMoneyFrame(@one, @frame, @i + 1, (100% / @frame * (@i + 1)));
   @{name} {
-    background-position: -(mod(@i, @one) * 52px) -(floor(@i / @one)*52px);
+    background-position: -(mod(@i, @one) * 52px) - (floor(@i / @one) * 52px);
   }
 }
 
-@keyframes rotateMoney {
+@frameContent: {
   .addMoneyFrame(8, 15);
+};
+
+@keyframes rotateMoney {
+  @frameContent();
 }
