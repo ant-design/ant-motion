@@ -22,7 +22,7 @@ const text = [
     titleEn: 'Restrain',
     img: 'https://gw.alipayobjects.com/zos/rmsportal/OkIXkscKxywYLSrilPIf.gif',
     content: '做有意义的动效，不去做太多的修饰而干扰用户',
-    contentEn: 'The animation should be meaningful and justified. An over fancy animation will frustrate its users, and therefore should always be avoided.',
+    contentEn: 'The animation should be meaningful and justified. An overly fancy animation will frustrate its users, and therefore should always be avoided.',
   },
 ];
 
